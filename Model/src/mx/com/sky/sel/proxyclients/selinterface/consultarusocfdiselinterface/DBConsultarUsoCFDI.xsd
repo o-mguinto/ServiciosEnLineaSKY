@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/DBConsultarUsoCFDI" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/DBConsultarUsoCFDI" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DBConsultarUsoCFDIInput" type="DBConsultarUsoCFDIInputType"/>
+  <xs:complexType name="DBConsultarUsoCFDIInputType">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:element name="DBConsultarUsoCFDIOutputCollection" type="DBConsultarUsoCFDIOutputCollectionType"/>
+  <xs:complexType name="DBConsultarUsoCFDIOutputCollectionType">
+    <xs:sequence>
+      <xs:element name="DBConsultarUsoCFDIOutput" type="DBConsultarUsoCFDIOutputType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DBConsultarUsoCFDIOutputType">
+    <xs:sequence>
+      <xs:element name="CFDI" type="xs:string" nillable="true"/>
+      <xs:element name="DESCRIPCION" type="xs:string" nillable="true"/>
+      <xs:element name="PERSONA_FISICA" type="xs:string" nillable="true"/>
+      <xs:element name="PERSONA_MORAL" type="xs:string" nillable="true"/>
+      <xs:element name="FECHA_INICIO_VIGENCIA" type="xs:dateTime" nillable="true"/>
+      <xs:element name="FECHA_FIN_VIGENCIA" type="xs:dateTime" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

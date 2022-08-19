@@ -1,0 +1,109 @@
+<xsd:schema targetNamespace="http://www.sky.com.mx/soasky" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns="http://www.sky.com.mx/soasky">
+    <xsd:include schemaLocation="Cabecera_consultaPPVContratados.xsd"/>
+    <xsd:element name="Suscriptor_consultaPPVContratados_Entrada" type="Suscriptor_consultaPPVContratados_Entrada_TYPE"/>
+    <xsd:element name="Suscriptor_consultaPPVContratados_Salida" type="Suscriptor_consultaPPVContratados_Salida_TYPE"/>
+    <xsd:element name="Suscriptor_consultaPPVContratados_SalidaFiltros" type="Suscriptor_consultaPPVContratados_SalidaFiltros_TYPE"/>
+    <xsd:complexType name="Suscriptor_consultaPPVContratados_Entrada_TYPE">
+        <xsd:sequence>
+            <xsd:element name="CABECERA" type="Cabecera_Entrada_TYPE"/>
+            <xsd:element name="TARJETA_INTELIGENTE" type="stringLongMin">
+                <xsd:annotation>
+                    <xsd:documentation>Número de cuenta SKY</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FECHA_INICIO" type="empty-date" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Número de cuenta SKY</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FECHA_FIN" type="empty-date" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Número de cuenta SKY</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Suscriptor_consultaPPVContratados_Salida_TYPE">
+        <xsd:sequence>
+            <xsd:element name="CABECERA" type="Cabecera_Salida_TYPE"/>
+            <xsd:element name="Resultados" type="Resultados_consultaPPVContratados_Salida_TYPE" maxOccurs="unbounded"
+                 minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Suscriptor_consultaPPVContratados_SalidaFiltros_TYPE">
+        <xsd:sequence>
+            <xsd:element name="CABECERA" type="Cabecera_Entrada_TYPE"/>
+            <xsd:element name="Resultados" type="Resultados_consultaPPVContratados_Salida_TYPE" maxOccurs="unbounded"
+                 minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Resultados_consultaPPVContratados_Salida_TYPE">
+        <xsd:sequence>
+            <xsd:element name="PRECIO" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Umbral de la cuenta.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ID_EVENTO" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Umbral de la cuenta.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="CANAL" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Código de moneda de la cuenta.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FECHA_TRANSMISION" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Fecha estimada para el bloqueo de la cuenta.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FECHA_ORDEN" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Número de días de adeudo de la cuenta a partir de la última fecha de
+            facturación.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="TITULO" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Fecha de la última factura.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="TIPO_SERVICIO" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Monto total de la deuda de la cuenta.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ESTATUS_EVENTO" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Monto total de la deuda de la cuenta.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="TARJETA_INTELIGENTE" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Monto total de la deuda de la cuenta.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ESTATUS_ORDEN" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Monto total de la deuda de la cuenta.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="stringLongMin">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="empty">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value=""/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="empty-date">
+        <xsd:union memberTypes="xsd:dateTime empty"/>
+    </xsd:simpleType>
+</xsd:schema>

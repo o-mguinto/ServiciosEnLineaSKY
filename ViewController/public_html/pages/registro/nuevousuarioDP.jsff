@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+xmlns:h="http://java.sun.com/jsf/html">
+<af:group id="g1">
+<af:panelGroupLayout id="PCRow1">
+                        <af:panelGroupLayout id="pgl3" layout="vertical" halign="center" 
+                                               inlineStyle="height:200px;">                                
+                                    <img src="/sky/imagenes/pc/tres/fondo_sombra.png"
+                                                class="fondo_sombra2"
+                                                style="top:0px;left:0%;" alt="fondo_sombr"/>
+                                     <img src="/sky/imagenes/pc/tres/icono_nube.png"
+                                                style="position: relative;     left: 32%;     top: -175px;" alt="icono_nube"/>
+                                      <h:outputText value="¡Gracias!" id="ot11"
+                                                    style="top: -303px;  left: 0%;font-weight: bold;"
+                                                    styleClass="mensajePC2_txtRose"/>   
+                                      <h:outputText value="En unos minutos recibirá el correo electrónico de  confirmación " 
+                                                    style="top: -287px;     left: -3.3%;"
+                                                    styleClass="mensajePC2_txtSDBlack" id="ot6"/>
+                                      <h:outputText value=" en la siguiente dirección: " 
+                                                    style="top: -285px;     left: -19.5%"
+                                                    styleClass="mensajePC2_txtSDBlack" id="ot5"/>
+                                      <h:outputText value="#{pageFlowScope.PFNuevoUsuario.usuario.email}"
+                                                    style="top: -283px;     left: 0%;font-weight: bold;     font-size: xx-large;"
+                                                    styleClass="mensajePC2_txtRose" id="ot4"/>   
+                        </af:panelGroupLayout>
+                     </af:panelGroupLayout>
+                     
+                                      
+                        <af:panelGroupLayout id="PCRow2">
+                            <af:panelGroupLayout id="pgl4" layout="vertical" halign="center" 
+                                                   inlineStyle="height:100px;">                                
+                                     <h:outputText value="Si la dirección es incorrecta haga"
+                                                   style="top: 23px;     left: -14%;     font-size: medium"
+                                                    styleClass="mensajePC2_txtSDBlack" id="ot2"/>   
+                                      <af:commandLink id="cl2" inlineStyle="border-color: transparent;"
+                                                      action="#{pageFlowScope.PFNuevoUsuario.botonAtras}">
+                                            <h:outputText value="click aquí"
+                                                          id="ot1"
+                                                    style="top: -1px;     left: 3.5%;     font-weight: 900;     font-size: large;"
+                                                    styleClass="mensajePC2_txtRose"/>   
+                                      </af:commandLink>
+                                      <h:outputText value="para corregirla." 
+                                                    style="top: -21px;     left: 15%;     font-size: medium;"
+                                                    styleClass="mensajePC2_txtSDBlack" id="ot3"/>   
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        
+                        <af:panelGroupLayout id="PCRow4">
+                            <af:panelGroupLayout id="pgl7" layout="vertical" halign="center" 
+                                                   inlineStyle="height:130px;">                                
+                                     <img src="/sky/imagenes/pc/tres/dispositivos.png"
+                                          style=" position: relative;     left: -27%;" alt="dispositivos"/>
+                                     <af:commandLink id="cl3" inlineStyle="border-color: transparent;"
+                                                     action="irBienvenido">
+                                        <img src="/sky/imagenes/pc/tres/boton_close.png"
+                                              style="position: relative;     left: 30%; top: -41px; border-color: transparent;"
+                                             alt="boton_close"/>
+                                        <af:clientListener method="enforcePreventUserInput"
+                                                                         type="action"/>
+                                    </af:commandLink>
+                                    
+                            </af:panelGroupLayout>
+                     </af:panelGroupLayout>
+
+</af:group>
+</ui:composition>

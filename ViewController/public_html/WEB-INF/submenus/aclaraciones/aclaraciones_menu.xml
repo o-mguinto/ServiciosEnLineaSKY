@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_aclaraciones" focusViewId="/aclaraciones" action="irPagDefaultRouter"
+            label="#{lbl.menu_ACLARACIONES_QUEJAS}" immediate="true"
+            icon="/imagenes/menu/ic_aclaraciones.svg" rendered="#{sesion.ACLARACIONES_QUEJAS}">
+    <itemNode id="itemNode_cargosNoReconocidos" label="#{lbl.smenu_ACLARACIONES_CARGOS_NO_RECONOCIDOS}"
+              action="irCargosNoReconocidos" focusViewId="/cargosNoReconocidos" rendered="#{sesion.CARGOS_NO_RECONOCIDOS}"/>
+  </itemNode>
+</menu>

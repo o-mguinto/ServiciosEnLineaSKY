@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#saldoActual').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+
+              /*var elmnt = document.getElementById("div-left");
+              var txt = "Height with padding and border: " + elmnt.offsetHeight + "px";
+              txt += "Width with padding and border: " + elmnt.offsetWidth + "px";
+              txt += "Height with padding: " + elmnt.clientHeight + "pX";
+              console.log(txt);
+
+              $('#content-div-right').height((elmnt.offsetHeight) + "px");
+              $('#content-div-left').height((elmnt.offsetHeight) + "px");*/
+
+          });
+        </af:resource>
+        <div id="saldoActual">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-sm-8 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelBox id="pb2" showDisclosure="false"
+                                     rendered="#{sesion.cuentaVetv and !sesion.userMini}"
+                                     background="medium"
+                                     inlineStyle="border: 0px;">
+                           <af:outputText value="¡Recarga y gana! "
+                                               styleClass="check-internal-bold-red"
+                                               id="ot2"/>
+                                               <af:outputText value="Disfruta"
+                                              styleClass="output-internal-red"
+                                               id="ot20"/>
+                                               <af:outputText value="exclusivas del futbol europeo "
+                                               styleClass="check-internal-bold-red"
+                                               id="ot21"/>
+                                               <af:outputText value="y 5 canales adicionales al realizar 3 recargas en 4 meses consecutivos. Consulta detalles en "
+                                               styleClass="output-internal-red"
+                                               id="ot22"/>
+                            <h:outputLink id="otl1"
+                                          value="#{selSKYBundle['lnk.vetv']}"
+                                          target="_blank"
+                                          styleClass="link-indicacion-red">
+                                <h:outputText id="ot5" value="vetv.com.mx"/>
+                            </h:outputLink>
+                        </af:panelBox>
+                         
+                        <div class="row">
+                            <af:panelBox id="pb3" showDisclosure="false"
+                                         titleHalign="center"
+                                         background="medium"
+                                         rendered="#{sesion.cuentavetvPlus and !sesion.userMini}"
+                                         inlineStyle="border: 0px;">
+                                <af:outputText value="¡Recarga y gana! "
+                                               styleClass="check-internal-bold-red"
+                                               id="ot3"/>
+                                               <af:outputText value="Disfruta"
+                                              styleClass="output-internal-red"
+                                               id="ot23"/>
+                                               <af:outputText value="exclusivas del futbol europeo "
+                                               styleClass="check-internal-bold-red"
+                                               id="ot24"/>
+                                               <af:outputText value="y 5 canales adicionales al realizar 4 recargas en 5 meses consecutivos. Consulta detalles "
+                                               styleClass="output-internal-red"
+                                               id="ot25"/>
+                                <h:outputLink id="ol1"
+                                              value="#{selSKYBundle['lnk.vetv']}"
+                                              target="_blank"
+                                              styleClass="link-indicacion-red">
+                                    <h:outputText id="ot4" value="vetv.com.mx"/>
+                                </h:outputLink>
+                            </af:panelBox>
+                        </div>
+                        <af:group rendered="#{sesion.userVeTV}" id="g2">
+                            <div id="div-left"
+                                 class="col-7 col-tb-5 col-sm-8-1 padd-right">
+                                <!--Para cada fila una div-->
+                                <div class="content-internal autocenter"
+                                     id="content-div-left">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="col-12 col-tb-8 col-sm-8">
+                                                <h:outputText id="ot8"
+                                                              value="Estado de la Recarga"
+                                                              styleClass="output-internal"/>
+                                            </div>
+                                            <div class="col-12 col-tb-8 col-sm-8">
+                                                <h:outputText id="ot7"
+                                                              value="#{sesion.suscriptor.statusRecarga}"
+                                                              styleClass="font26 perfil-input-internal"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="row">
+                                                <div class="col-12 col-tb-8 col-sm-8">
+                                                    <h:outputText id="ot9"
+                                                                  value="Fecha de Fin de Recarga"
+                                                                  styleClass="output-internal"/>
+                                                </div>
+                                                <div class="col-12 col-tb-8 col-sm-8">
+                                                    <h:outputText id="ot10"
+                                                                  value="#{sesion.dataVeTV.fechaFinRecarga}"
+                                                                  styleClass="font26 perfil-input-internal"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </af:group>
+                        <div id="div-right"
+                             class="col-5 col-tb-3 col-sm-4-1 autocenter">
+                            <!--Para cada fila una div-->
+                            <div class="content-internal autocenter"
+                                 id="content-div-right">
+                                <div class="row">
+                                    <div class="col-12 col-tb-8 col-sm-8">
+                                        <af:outputLabel id="ot6"
+                                                        value="Saldo Actual"
+                                                        styleClass="label-internal"
+                                                        for="otSaldo"/>
+                                    </div>
+                                    <div class="col-12 col-tb-8 col-sm-8">
+                                        <h:outputText id="otSaldo"
+                                                      value="$ #{ParametrosPago.saldoEnCuentaString} #{sessionScope.sesion.moneda}"
+                                                      styleClass="balance-saldo"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

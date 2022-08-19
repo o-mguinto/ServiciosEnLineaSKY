@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">compraServicioSuplementarioCelular</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">316.14844</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>compraServicioSuplementarioCelular&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">385.39648</property>
+      <property
+         name="page">/pages/compraServicioSuplementarioCelular/compraServicioSuplementarioCelular.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <TaskFlowCall
+      id="TaskFlowCall4">
+      <property
+         name="runAsDialog">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>compraRecargaTF&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="activityId">compraRecargaTF</property>
+      <property
+         name="x">635.0</property>
+      <property
+         name="y">392.1953</property>
+      <property
+         name="documentReference">/WEB-INF/compraRecargaTF.xml</property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="taskFlowId">compraRecargaTF</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View2"
+      to="TaskFlowCall4">
+      <property
+         name="tosrcid">__3</property>
+      <property
+         name="fromOutcome">compra</property>
+      <property
+         name="fromsrcid">__2</property>
+      <property
+         name="sdm:polyPoints">R50,357.14844,385.0459,594.0,391.84473,L50</property>
+   </ControlFlowCase>
+</SDM>

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.16.48" id="DataBindings"
+             SeparateXMLFiles="false" Package="view" ClientType="Generic"
+             xmlns:datacontrol="http://xmlns.oracle.com/adfm/datacontrol">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/bienvenido.jsf" usageId="view_bienvenidoPageDef"/>
+    <page path="/login.jsf" usageId="view_loginPageDef"/>
+    <page path="/pages/adelantaRecargas/pago.jsff" usageId="view_pagoPageDef"/>
+    <page path="/pages/consumoInternet/consumoInternet.jsff" usageId="view_consumoInternetPageDef1"/>
+    <page path="/pages/adelantaRecargas/tarjeta.jsff" usageId="view_tarjetaPageDef"/>
+    <page path="/pages/compraPaqueteDatos/compraPaqueteDatos.jsff" usageId="view_compraPaqueteDatosPageDef1"/>
+    <page path="/pages/registro.jsf" usageId="view_registroPageDef"/>
+    <page path="/pages/registro/nuevousuarioDP.jsff" usageId="view_nuevousuarioDPPageDef"/>
+    <page path="/registroindex.jsf" usageId="view_registroindexPageDef"/>
+    <page path="/pages/compraPaqueteDatos/datosPago.jsf" usageId="view_datosPagoPageDef"/>
+    <page path="/pages/compraPaqueteDatos/datos_nuevaTDC_confirmar.jsf" usageId="view_datos_nuevaTDC_confirmarPageDef"/>
+    <page path="/pages/estadoCuenta/estadoCuenta.jsff" usageId="view_estadoCuentaPageDef"/>
+    <page path="/pages/promesaPago/promesaPagoIndex.jsff" usageId="view_promesaPagoIndexPageDef"/>
+    <page path="/pages/blueToGoVideoEverywhere/btgvewIndex.jsff" usageId="view_btgvewIndexPageDef"/>
+    <page path="/pages/premiere/premiere.jsff" usageId="view_premierePageDef"/>
+    <page path="/pages/ppeCv/ppeCvIndex.jsf" usageId="view_ppeCvIndexPageDef"/>
+    <page path="/pages/eventos/eventos.jsff" usageId="view_eventosPageDef"/>
+    <page path="/pages/consultaEstatusPpe/consultaEstatusPpe.jsff" usageId="view_consultaEstatusPpePageDef"/>
+    <page path="/pages/contrataciones/contrataciones.jsff" usageId="view_contratacionesPageDef"/>
+    <page path="/pages/canales/canales.jsff" usageId="view_canalesPageDef"/>
+    <page path="/pages/canales/canalesIndex.jsf" usageId="view_canalesIndexPageDef"/>
+    <page path="/pages/canales/canalesPago.jsf" usageId="view_canalesPagoPageDef"/>
+    <page path="/pages/canales/canalesNuevaTDCConfirmar.jsf" usageId="view_canalesNuevaTDCConfirmarPageDef"/>
+    <page path="/pages/solicitudOtrosServicios/SolicitudOtrosServicios.jsff"
+          usageId="view_SolicitudOtrosServiciosPageDef"/>
+    <page path="/pages/aclaracionesCargosTC/aclaracionesCargosTC.jsff" usageId="view_aclaracionesCargosTCPageDef"/>
+    <page path="/pages/reporteDanoRoboExtravio/seguro.jsff" usageId="view_seguroPageDef"/>
+    <page path="/pages/canales/canalesConfirmar.jsf" usageId="view_canalesConfirmarPageDef"/>
+    <page path="/pages/canales/canalesPagoConfirmar.jsf" usageId="view_canalesPagoConfirmarPageDef"/>
+    <page path="/pages/canales/hotGoConfirmar.jsf" usageId="view_hotGoConfirmarPageDef"/>
+    <page path="/pages/revista/revistaIndex.jsff" usageId="view_revistaIndexPageDef"/>
+    <page path="/pages/control/control.jsff" usageId="view_controlPageDef"/>
+    <page path="/pages/control/controlConsulta.jsff" usageId="view_controlConsultaPageDef"/>
+    <page path="/pages/compras/pago_general.jsf" usageId="view_pago_generalPageDef"/>
+    <page path="/pages/modulosMisky/modularIndex.jsff" usageId="view_modularIndexPageDef"/>
+    <page path="/pages/cambioPaquete/cambioPaquete.jsff" usageId="view_cambioPaquetePageDef"/>
+    <page path="/pages/reporteDanoRoboExtravio/reporteTarjetaInteligente.jsff"
+          usageId="view_reporteTarjetaInteligentePageDef"/>
+    <page path="/WEB-INF/mx/com/sky/common/jsfTemplates/pagInternas_template.jsf"
+          usageId="view_pagInternas_templatePageDef"/>
+    <page path="/pages/sugerencias/sugerencias.jsff" usageId="view_sugerenciasPageDef"/>
+    <page path="/pages/quejas/quejas.jsff" usageId="view_quejasPageDef"/>
+    <page path="/pages/reenvioSenal/reenvioSenalIndex.jsff" usageId="view_reenvioSenalIndexPageDef"/>
+    <page path="/pages/reparaciones/reparacionesIndex.jsff" usageId="view_reparacionesIndexPageDef"/>
+    <page path="/pages/cambioDomicilio/cambioDomicilioIndex.jsff" usageId="view_cambioDomicilioIndexPageDef"/>
+    <page path="/pages/informacionFiscal/informacionFiscalIndex.jsff" usageId="view_informacionFiscalIndexPageDef"/>
+    <page path="/pages/consultaEstatusDf/consultaEstatusDfIndex.jsff" usageId="view_consultaEstatusDfIndexPageDef"/>
+    <page path="/pages/facturaElectronica/facturaElectronicaIndex.jsff" usageId="view_facturaElectronicaIndexPageDef"/>
+    <page path="/pages/cambioTitular/cambioTitularMX.jsff" usageId="view_cambioTitularMXPageDef"/>
+    <page path="/pages/cambioTitular/cambioTitular.jsff" usageId="view_cambioTitularPageDef"/>
+    <page path="/pages/miCuenta/admonMiCuenta.jsff" usageId="view_admonMiCuentaPageDef"/>
+    <page path="/pages/miCuenta/admonCuentas.jsff" usageId="view_admonCuentasPageDef"/>
+    <page path="/WEB-INF/submenus/pagosPorEvento/peliculasPremiere.jsf" usageId="view_peliculasPremierePageDef"/>
+    <page path="/WEB-INF/submenus/pagosPorEvento/historicoEventosC.jsf" usageId="view_historicoEventosCPageDef"/>
+    <page path="/WEB-INF/submenus/pagosPorEvento/allDay.jsf" usageId="view_allDayPageDef"/>
+    <page path="/WEB-INF/submenus/pagosPorEvento/eventosEspeciales.jsf" usageId="view_eventosEspecialesPageDef"/>
+    <page path="/WEB-INF/submenus/pagosPorEvento/statusEventosPPE.jsf" usageId="view_statusEventosPPEPageDef"/>
+    <page path="/WEB-INF/submenus/adelantaRecargas/recargas.jsf" usageId="view_recargasPageDef"/>
+    <page path="/menu_index.jsf" usageId="view_menu_indexPageDef"/>
+    <page path="/WEB-INF/submenus/btgVideoEverywhere/btgveEventosDisponibles.jsf"
+          usageId="view_btgveEventosDisponiblesPageDef"/>
+    <page path="/WEB-INF/submenus/btgVideoEverywhere/btgveContrata.jsf" usageId="view_btgveContrataPageDef"/>
+    <page path="/WEB-INF/submenus/btgVideoEverywhere/btgveSoloNetwork.jsf" usageId="view_btgveSoloNetworkPageDef"/>
+    <page path="/WEB-INF/submenus/canalesAlaCarta/canalesAlaCarta.jsf" usageId="view_canalesAlaCartaPageDef"/>
+    <page path="/WEB-INF/submenus/guiaProgramacionTv/guiaProgramacionTv.jsf" usageId="view_guiaProgramacionTvPageDef"/>
+    <page path="/WEB-INF/submenus/cambioPaquete/cambioModulo.jsf" usageId="view_cambioModuloPageDef"/>
+    <page path="/WEB-INF/submenus/cambioPaquete/cambioPaquete.jsf" usageId="view_cambioPaquetePageDef1"/>
+    <page path="/WEB-INF/submenus/adquiereEquiposAdicionales/equipoAdicional.jsf"
+          usageId="view_equipoAdicionalPageDef"/>
+    <page path="/WEB-INF/submenus/adquiereEquiposAdicionales/internetAdicional.jsf"
+          usageId="view_internetAdicionalPageDef"/>
+    <page path="/WEB-INF/submenus/compras/revistaSkyView.jsf" usageId="view_revistaSkyViewPageDef"/>
+    <page path="/WEB-INF/submenus/compras/controlRemoto.jsf" usageId="view_controlRemotoPageDef"/>
+    <page path="/WEB-INF/submenus/manuales/descargarManuales.jsf" usageId="view_descargarManualesPageDef"/>
+    <page path="/WEB-INF/submenus/consultaSaldoyPagoEnLinea/promesaPago.jsf" usageId="view_promesaPagoPageDef"/>
+    <page path="/WEB-INF/submenus/consultaSaldoyPagoEnLinea/estadoCuenta.jsf" usageId="view_estadoCuentaPageDef1"/>
+    <page path="/WEB-INF/submenus/consultaSaldoyPagoEnLinea/saldoActualVeTv.jsf" usageId="view_saldoActualVeTvPageDef"/>
+    <page path="/WEB-INF/submenus/consultaSaldoyPagoEnLinea/pago.jsf" usageId="view_pagoPageDef1"/>
+    <page path="/WEB-INF/submenus/consultaSaldoyPagoEnLinea/misTarjetas.jsf" usageId="view_misTarjetasPageDef"/>
+    <page path="/WEB-INF/submenus/consultaSaldoyPagoEnLinea/cambioFormaPago.jsf" usageId="view_cambioFormaPagoPageDef"/>
+    <page path="/WEB-INF/submenus/buscarLugaresPago/lugaresPago.jsf" usageId="view_lugaresPagoPageDef"/>
+    <page path="/WEB-INF/submenus/servTecnicoyCambioDomicilio/reenvioSenal.jsf" usageId="view_reenvioSenalPageDef"/>
+    <page path="/WEB-INF/submenus/servTecnicoyCambioDomicilio/reparaciones.jsf" usageId="view_reparacionesPageDef"/>
+    <page path="/WEB-INF/submenus/servTecnicoyCambioDomicilio/cambioDomicilio.jsf"
+          usageId="view_cambioDomicilioPageDef"/>
+    <page path="/WEB-INF/submenus/facturaElectronica/informacionFiscal.jsf" usageId="view_informacionFiscalPageDef"/>
+    <page path="/WEB-INF/submenus/facturaElectronica/consultaEstatusDF.jsf" usageId="view_consultaEstatusDFPageDef"/>
+    <page path="/WEB-INF/submenus/facturaElectronica/facturaElectronica.jsf" usageId="view_facturaElectronicaPageDef"/>
+    <page path="/pages/adelantaRecargas/pagarNuevaTarjeta.jsff" usageId="view_pagarNuevaTarjetaPageDef"/>
+    <page path="/WEB-INF/submenus/miCuenta/perfil.jsf" usageId="view_perfilPageDef"/>
+    <page path="/WEB-INF/submenus/miCuenta/admonMiCuenta.jsf" usageId="view_admonMiCuentaPageDef1"/>
+    <page path="/WEB-INF/submenus/miCuenta/admonCuentas.jsf" usageId="view_admonCuentasPageDef1"/>
+    <page path="/WEB-INF/submenus/cambioTitular/cambioTitular.jsf" usageId="view_cambioTitularPageDef1"/>
+    <page path="/WEB-INF/submenus/reporteDanoRoboExtravio/equipoIRD.jsf" usageId="view_equipoIRDPageDef"/>
+    <page path="/WEB-INF/submenus/reporteDanoRoboExtravio/tarjetaInteligente.jsf"
+          usageId="view_tarjetaInteligentePageDef"/>
+    <page path="/WEB-INF/submenus/suOpinionNosInteresa/encuestaSatisfaccion.jsf"
+          usageId="view_encuestaSatisfaccionPageDef"/>
+    <page path="/WEB-INF/submenus/suOpinionNosInteresa/sugerencias.jsf" usageId="view_sugerenciasPageDef1"/>
+    <page path="/WEB-INF/submenus/suOpinionNosInteresa/quejas.jsf" usageId="view_quejasPageDef1"/>
+    <page path="/WEB-INF/submenus/aclaraciones/cargosNoReconocidos.jsf" usageId="view_cargosNoReconocidosPageDef"/>
+    <page path="/WEB-INF/submenus/requiereOtraInfo/mandeSuSolicitud.jsf" usageId="view_mandeSuSolicitudPageDef"/>
+    <page path="/WEB-INF/submenus/estatusInternet/estatusInternet.jsf" usageId="view_estatusInternetPageDef"/>
+    <page path="/WEB-INF/submenus/compraPaqueteDatos/compraPaqueteDatos.jsf" usageId="view_compraPaqueteDatosPageDef2"/>
+    <page path="/pages/contacto/contacto.jsf" usageId="view_contactoPageDef"/>
+    <page path="/reestablecercon.jsf" usageId="view_reestablecerconPageDef"/>
+    <page path="/WEB-INF/mx/com/sky/common/jsfTemplates/pagPublicas_template.jsf"
+          usageId="view_pagPublicas_templatePageDef"/>
+    <page path="/error.jsf" usageId="view_errorPageDef"/>
+    <page path="/pages/ppeVeTv/ppvIndex.jsff" usageId="view_ppvIndexPageDef"/>
+    <page path="/pages/ppeVeTv/ppvNuevaTDCConfirmar.jsff" usageId="view_ppvNuevaTDCConfirmarPageDef"/>
+    <page path="/pages/ppeVeTv/ppvPago.jsff" usageId="view_ppvPagoPageDef"/>
+    <page path="/pages/ppeVeTv/ppvPagoConfirmar.jsff" usageId="view_ppvPagoConfirmarPageDef"/>
+    <page path="/WEB-INF/submenus/estatusCelular/estatusCelular.jsf" usageId="view_estatusCelularPageDef"/>
+    <page path="/pages/registro/registro.jsff" usageId="view_registroPageDef1"/>
+    <page path="/WEB-INF/submenus/compraServicioSuplementarioCelular/compraServicioSuplementarioCelular.jsf"
+          usageId="view_compraServicioSuplementarioCelularPageDef"/>
+    <page path="/pages/portabilidad/indexPortabilidad.jsff" usageId="view_indexPortabilidadPageDef"/>
+    <page path="/pages/portabilidad/solicitaPortabilidad.jsff" usageId="view_solicitaPortabilidadPageDef"/>
+    <page path="/WEB-INF/submenus/portabilidad/portabilidad.jsf" usageId="view_portabilidadPageDef"/>
+    <page path="/pages/canales/streamingIndex.jsf" usageId="view_streamingIndexPageDef"/>
+    <page path="/pages/canales/streamingConfirmar.jsf" usageId="view_streamingConfirmarPageDef"/>
+    <page path="/pages/compras/confirmacion_ctrl_mex.jsff" usageId="view_confirmacion_ctrl_mexPageDef1"/>
+    <page path="/pages/compras/control_Resumen.jsff" usageId="view_control_ResumenPageDef1"/>
+    <page path="/pages/compras/control_pago.jsff" usageId="view_control_pagoPageDef1"/>
+    <page path="/pages/compras/control_pagoConfirmar.jsff" usageId="view_control_pagoConfirmarPageDef1"/>
+    <page path="/WEB-INF/submenus/cambioPaqueteCelular/cambioPaqCelular.jsf" usageId="view_cambioPaqCelularPageDef"/>
+    <page path="/WEB-INF/submenus/servicioComparteCelular/servicioComparteCelular.jsf"
+          usageId="view_servicioComparteCelularPageDef"/>
+    <page path="/pages/promociones/promociones.jsf" usageId="view_promocionesPageDef"/>
+    <page path="/pages/pci/billetera.jsff" usageId="view_billeteraPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_bienvenidoPageDef" path="view.pageDefs.bienvenidoPageDef"/>
+    <page id="view_loginPageDef" path="view.pageDefs.loginPageDef"/>
+    <page id="view_indexPCPageDef" path="pages.indexPCPageDef"/>
+    <page id="view_pagoPageDef" path="pages.adelantaRecargas.pagoPageDef"/>
+    <page id="view_consumoInternetPageDef" path="pages.consumoInternetPageDef"/>
+    <page id="view_consumoInternetPageDef1" path="pages.consumoInternet.consumoInternetFragmentPageDef"/>
+    <page id="view_tarjetaPageDef" path="pages.adelantaRecargas.tarjetaPageDef"/>
+    <page id="view_compraPaqueteDatosPageDef" path="pages.compraPaqueteDatosPageDef"/>
+    <page id="view_compraPaqueteDatosPageDef1" path="pages.compraPaqueteDatos.compraPaqueteDatosPageDef"/>
+    <page id="view_registroPageDef" path="pages.registroPageDef"/>
+    <page id="view_nuevousuarioDPPageDef" path="pages.registro.nuevousuarioDPPageDef"/>
+    <page id="view_registroindexPageDef" path="view.pageDefs.registroindexPageDef"/>
+    <page id="view_datosPagoPageDef" path="pages.compraPaqueteDatos.datosPagoPageDef"/>
+    <page id="view_datos_nuevaTDC_confirmarPageDef" path="pages.compraPaqueteDatos.datos_nuevaTDC_confirmarPageDef"/>
+    <page id="view_estadoCuentaPageDef" path="pages.estadoCuenta.estadoCuentaPageDef"/>
+    <page id="view_cuentaPageDef" path="pages.cuentaPageDef"/>
+    <page id="view_promesaPagoIndexPageDef" path="pages.promesaPago.promesaPagoIndexPageDef"/>
+    <page id="view_btgvewIndexPageDef" path="pages.blueToGoVideoEverywhere.btgvewIndexPageDef"/>
+    <page id="view_premierePageDef" path="pages.premiere.premierePageDef"/>
+    <page id="view_ppvIndexPageDef" path="pages.ppvIndexPageDef"/>
+    <page id="view_ppeCvIndexPageDef" path="pages.ppeCvIndexPageDef"/>
+    <page id="view_ppvPagoPageDef" path="pages.ppvPagoPageDef"/>
+    <page id="view_premiereCarruselPageDef" path="pages.premiereCarrusel.premiereCarruselPageDef"/>
+    <page id="view_eventosPageDef" path="pages.eventos.eventosPageDef"/>
+    <page id="view_consultaEstatusPpePageDef" path="pages.consultaEstatusPpe.consultaEstatusPpePageDef"/>
+    <page id="view_contratacionesPageDef" path="pages.contrataciones.contratacionesPageDef"/>
+    <page id="view_canalesPageDef" path="canales.canalesPageDef"/>
+    <page id="view_canalesIndexPageDef" path="pages.canales.canalesIndexPageDef"/>
+    <page id="view_canalesPagoPageDef" path="pages.canales.canalesPagoPageDef"/>
+    <page id="view_canalesNuevaTDCConfirmarPageDef" path="pages.canales.canalesNuevaTDCConfirmarPageDef"/>
+    <page id="view_SolicitudOtrosServiciosPageDef" path="pages.solicitudOtrosServicios.SolicitudOtrosServiciosPageDef"/>
+    <page id="view_aclaracionesCargosTCPageDef" path="pages.aclaracionesCargosTC.aclaracionesCargosTCPageDef"/>
+    <page id="view_seguroPageDef" path="pages.reporteDanoRoboExtravio.seguroPageDef"/>
+    <page id="view_canalesConfirmarPageDef" path="pages.canales.canalesConfirmarPageDef"/>
+    <page id="view_canalesPagoConfirmarPageDef" path="pages.canales.canalesPagoConfirmarPageDef"/>
+    <page id="view_hotGoConfirmarPageDef" path="pages.canales.hotGoConfirmarPageDef"/>
+    <page id="view_ppvPagoConfirmarPageDef" path="pages.ppeVeTv.ppvPagoConfirmarPageDef"/>
+    <page id="view_revistaIndexPageDef" path="pages.revista.revistaIndexPageDef"/>
+    <page id="view_controlPageDef" path="pages.control.controlPageDef"/>
+    <page id="view_controlConsultaPageDef" path="pages.control.controlConsultaPageDef"/>
+    <page id="view_pago_generalPageDef" path="pages.compras.pago_generalPageDef"/>
+    <page id="view_programacionTvIndexPageDef" path="pages.programacionTv.programacionTvIndexPageDef"/>
+    <page id="view_modularIndexPageDef" path="pages.modulosMisky.modularIndexPageDef"/>
+    <page id="view_cambioPaquetePageDef" path="pages.cambioPaquete.cambioPaquetePageDef"/>
+    <page id="view_reporteTarjetaInteligentePageDef"
+          path="pages.reporteDanoRoboExtravio.reporteTarjetaInteligentePageDef"/>
+    <page id="view_pagInternas_templatePageDef" path="mx.com.sky.common.jsfTemplates.pagInternas_templatePageDef"/>
+    <page id="view_sugerenciasPageDef" path="pages.sugerencias.sugerenciasPageDef"/>
+    <page id="view_quejasPageDef" path="view.pageDefs.quejasPageDef"/>
+    <page id="view_reenvioSenalIndexPageDef" path="pages.reenvioSenal.reenvioSenalIndexPageDef"/>
+    <page id="view_reparacionesIndexPageDef" path="pages.reparaciones.reparacionesIndexPageDef"/>
+    <page id="view_cambioDomicilioIndexPageDef" path="pages.cambioDomicilio.cambioDomicilioIndexPageDef"/>
+    <page id="view_cambioTitularMXPageDef" path="view.pageDefs.cambioTitularMXPageDef"/>
+    <page id="view_informacionFiscalIndexPageDef" path="pages.informacionFiscal.informacionFiscalIndexPageDef"/>
+    <page id="view_consultaEstatusDfIndexPageDef" path="pages.consultaEstatusDf.consultaEstatusDfIndexPageDef"/>
+    <page id="view_facturaElectronicaIndexPageDef" path="pages.facturaElectronica.facturaElectronicaIndexPageDef"/>
+    <page id="view_cambioTitularPageDef" path="pages.cambioTitular.cambioTitularPageDef"/>
+    <page id="view_promocionesIndexPageDef" path="pages.novedades.promocionesIndexPageDef"/>
+    <page id="view_admonMiCuentaPageDef" path="pages.miCuenta.admonMiCuentaPageDef"/>
+    <page id="view_admonCuentasPageDef" path="pages.miCuenta.admonCuentasPageDef"/>
+    <page id="view_pagosPorEventoIndexPageDef" path="pagosPorEvento.pagosPorEventoIndexPageDef"/>
+    <page id="view_peliculasPremierePageDef" path="pagosPorEvento.peliculasPremierePageDef"/>
+    <page id="view_historicoEventosCPageDef" path="pagosPorEvento.historicoEventosCPageDef"/>
+    <page id="view_allDayPageDef" path="pagosPorEvento.allDayPageDef"/>
+    <page id="view_eventosEspecialesPageDef" path="pagosPorEvento.eventosEspecialesPageDef"/>
+    <page id="view_statusEventosPPEPageDef" path="pagosPorEvento.statusEventosPPEPageDef"/>
+    <page id="view_recargasPageDef" path="adelantaRecargas.recargasPageDef"/>
+    <page id="view_menu_indexPageDef" path="view.pageDefs.menu_indexPageDef"/>
+    <page id="view_btgveEventosDisponiblesPageDef" path="submenus.btgVideoEverywhere.btgveEventosDisponiblesPageDef"/>
+    <page id="view_btgveContrataPageDef" path="submenus.btgVideoEverywhere.btgveContrataPageDef"/>
+    <page id="view_btgveSoloNetworkPageDef" path="submenus.btgVideoEverywhere.btgveSoloNetworkPageDef"/>
+    <page id="view_canalesAlaCartaPageDef" path="submenus.canalesAlaCarta.canalesAlaCartaPageDef"/>
+    <page id="view_guiaProgramacionTvPageDef" path="submenus.guiaProgramacionTv.guiaProgramacionTvPageDef"/>
+    <page id="view_cambioModuloPageDef" path="submenus.cambioPaquete.cambioModuloPageDef"/>
+    <page id="view_cambioPaquetePageDef1" path="submenus.cambioPaquete.cambioPaquetePageDef"/>
+    <page id="view_equipoAdicionalPageDef" path="submenus.adquiereEquiposAdicionales.equipoAdicionalPageDef"/>
+    <page id="view_internetAdicionalPageDef" path="submenus.adquiereEquiposAdicionales.internetAdicionalPageDef"/>
+    <page id="view_revistaSkyViewPageDef" path="submenus.compras.revistaSkyViewPageDef"/>
+    <page id="view_controlRemotoPageDef" path="submenus.compras.controlRemotoPageDef"/>
+    <page id="view_controlRemotoVeTvPageDef" path="submenus.compras.controlRemotoVeTvPageDef"/>
+    <page id="view_descargarManualesPageDef" path="submenus.manuales.descargarManualesPageDef"/>
+    <page id="view_promesaPagoPageDef" path="submenus.consultaSaldoyPagoEnLinea.promesaPagoPageDef"/>
+    <page id="view_estadoCuentaPageDef1" path="submenus.consultaSaldoyPagoEnLinea.estadoCuentaPageDef"/>
+    <page id="view_saldoActualVeTvPageDef" path="submenus.consultaSaldoyPagoEnLinea.saldoActualVeTvPageDef"/>
+    <page id="view_pagoPageDef1" path="submenus.consultaSaldoyPagoEnLinea.pagoPageDef"/>
+    <page id="view_misTarjetasPageDef" path="submenus.consultaSaldoyPagoEnLinea.misTarjetasPageDef"/>
+    <page id="view_cambioFormaPagoPageDef" path="submenus.consultaSaldoyPagoEnLinea.cambioFormaPagoPageDef"/>
+    <page id="view_pagoPageDef2" path="view.pageDefs.pagoPageDef"/>
+    <page id="view_lugaresPagoPageDef" path="submenus.buscarLugaresPago.lugaresPagoPageDef"/>
+    <page id="view_reenvioSenalPageDef" path="submenus.servTecnicoyCambioDomicilio.reenvioSenalPageDef"/>
+    <page id="view_reparacionesPageDef" path="submenus.servTecnicoyCambioDomicilio.reparacionesPageDef"/>
+    <page id="view_cambioDomicilioPageDef" path="submenus.servTecnicoyCambioDomicilio.cambioDomicilioPageDef"/>
+    <page id="view_informacionFiscalPageDef" path="submenus.facturaElectronica.informacionFiscalPageDef"/>
+    <page id="view_consultaEstatusDFPageDef" path="submenus.facturaElectronica.consultaEstatusDFPageDef"/>
+    <page id="view_facturaElectronicaPageDef" path="submenus.facturaElectronica.facturaElectronicaPageDef"/>
+    <page id="view_pagarNuevaTarjetaPageDef" path="pages.adelantaRecargas.pagarNuevaTarjetaPageDef"/>
+    <page id="view_perfilPageDef" path="submenus.miCuenta.perfilPageDef"/>
+    <page id="view_admonMiCuentaPageDef1" path="submenus.miCuenta.admonMiCuentaPageDef"/>
+    <page id="view_admonCuentasPageDef1" path="submenus.miCuenta.admonCuentasPageDef"/>
+    <page id="view_cambioTitularPageDef1" path="submenus.cambioTitular.cambioTitularPageDef"/>
+    <page id="view_equipoIRDPageDef" path="submenus.reporteDanoRoboExtravio.equipoIRDPageDef"/>
+    <page id="view_tarjetaInteligentePageDef" path="submenus.reporteDanoRoboExtravio.tarjetaInteligentePageDef"/>
+    <page id="view_encuestaSatisfaccionPageDef" path="submenus.suOpinionNosInteresa.encuestaSatisfaccionPageDef"/>
+    <page id="view_sugerenciasPageDef1" path="submenus.suOpinionNosInteresa.sugerenciasPageDef"/>
+    <page id="view_quejasPageDef1" path="submenus.suOpinionNosInteresa.quejasPageDef"/>
+    <page id="view_cargosNoReconocidosPageDef" path="submenus.aclaraciones.cargosNoReconocidosPageDef"/>
+    <page id="view_mandeSuSolicitudPageDef" path="submenus.requiereOtraInfo.mandeSuSolicitudPageDef"/>
+    <page id="view_estatusInternetPageDef" path="submenus.estatusInternet.estatusInternetPageDef"/>
+    <page id="view_compraPaqueteDatosPageDef2" path="submenus.compraPaqueteDatos.compraPaqueteDatosPageDef"/>
+    <page id="view_contactoPageDef" path="pages.contacto.contactoPageDef"/>
+    <page id="view_reestablecerconPageDef" path="view.pageDefs.reestablecerconPageDef"/>
+    <page id="view_pagPublicas_templatePageDef"
+          path="mx.com.sky.common.jsfTemplates.pagPublicas_templatePageDef"/>
+    <page id="view_errorPageDef" path="view.pageDefs.errorPageDef"/>
+    <page id="view_ppvNuevaTDCConfirmarPageDef"
+          path="pages.ppeVeTv.ppvNuevaTDCConfirmarPageDef"/>
+    <page id="view_estatusCelularPageDef" path="submenus.estatusCelular.estatusCelularPageDef"/>
+    <page id="view_registroPageDef1" path="pages.registro.registroPageDef"/>
+    <page id="view_compraServicioSuplementarioCelularPageDef"
+          path="submenus.compraServicioSuplementarioCelular.compraServicioSuplementarioCelularPageDef"/>
+    <page id="view_indexPortabilidadPageDef" path="pages.portabilidad.indexPortabilidadPageDef"/>
+    <page id="view_solicitaPortabilidadPageDef" path="pages.portabilidad.solicitaPortabilidadPageDef"/>
+    <page id="view_portabilidadPageDef" path="submenus.estatusCelular.portabilidadPageDef"/>
+    <page id="view_streamingIndexPageDef" path="pages.canales.streamingIndexPageDef"/>
+    <page id="view_streamingConfirmarPageDef" path="pages.canales.streamingConfirmarPageDef"/>
+    <page id="view_confirmacion_ctrl_mexPageDef1" path="pages.compras.confirmacion_ctrl_mexPageDef1"/>
+    <page id="view_control_ResumenPageDef1" path="pages.compras.control_ResumenPageDef1"/>
+    <page id="view_control_pagoPageDef1" path="pages.compras.control_pagoPageDef1"/>
+    <page id="view_control_pagoConfirmarPageDef1" path="pages.compras.control_pagoConfirmarPageDef1"/>
+    <page id="view_cambioPaqCelularPageDef" path="submenus.cambioPaqueteCelular.cambioPaqCelularPageDef"/>
+    <page id="view_servicioComparteCelularPageDef"
+          path="submenus.servicioComparteCelular.servicioComparteCelularPageDef"/>
+    <page id="view_promocionesPageDef" path="pages.promociones.promocionesPageDef"/>
+    <page id="view_billeteraPageDef" path="pages.pci.billeteraPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="DCPortabilidad" path="model.DCPortabilidad"/>
+    <dc id="DCCuentaSkyCel" path="model.DCCuentaSkyCel"/>
+    <dc id="DCEstadoCuenta" path="model.DCEstadoCuenta"/>
+    <dc id="DCMenu" path="view.DCMenu"/>
+    <dc id="DCCofetel" path="model.DCCofetel"/>
+    <dc id="DCUsuario" path="view.DCUsuario"/>
+    <dc id="DCPromocion" path="model.DCPromocion"/>
+    <dc id="DCCambioTitular" path="model.DCCambioTitular"/>
+    <dc id="DCFactura" path="view.DCFactura"/>
+    <dc id="DCInformacionFiscal" path="view.DCInformacionFiscal"/>
+    <dc id="DCDomicilio" path="model.DCDomicilio"/>
+    <dc id="DCReparacion" path="model.DCReparacion"/>
+    <dc id="DCReenvioSenal" path="model.DCReenvioSenal"/>
+    <dc id="DCQuejas" path="model.DCQuejas"/>
+    <dc id="DCSugerencias" path="model.DCSugerencias"/>
+    <dc id="DCCambioPaquete" path="view.DCCambioPaquete"/>
+    <dc id="DCModulo" path="model.DCModulo"/>
+    <dc id="DCControlRemoto" path="view.DCControlRemoto"/>
+    <dc id="DCRevista" path="model.DCRevista"/>
+    <dc id="DCDatosGenerales" path="model.DCDatosGenerales"/>
+    <dc id="DCSeguroEquipo" path="model.DCSeguroEquipo"/>
+    <dc id="DCCanalCarta" path="view.DCCanalCarta"/>
+    <dc id="DCCorporativos" path="model.DCCorporativos"/>
+    <dc id="DCAclaracionesCargosTDC" path="model.DCAclaracionesCargosTDC"/>
+    <dc id="DCSolicitudOtrosServicios" path="model.DCSolicitudOtrosServicios"/>
+    <dc id="DCEventos" path="view.DCEventos"/>
+    <dc id="DCTarjetaInteligente" path="model.DCTarjetaInteligente"/>
+    <dc id="DCPremiere" path="model.DCPremiere"/>
+    <dc id="DCBTGEW" path="model.DCBTGEW"/>
+    <dc id="DCPromesaPago" path="model.DCPromesaPago"/>
+    <dc id="DCSaldo" path="view.DCSaldo"/>
+    <dc id="DCPagos" path="model.DCPagos"/>
+    <dc id="DCTarjetas" path="model.DCTarjetas"/>
+  </dataControlUsages>
+</Application>

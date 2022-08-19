@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/Consultas/PWConsultaInformacionFiscal/ConsultaInformacionFiscal" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://xmlns.oracle.com/Consultas/PWConsultaInformacionFiscal/ConsultaInformacionFiscal">
+  <element name="proceso">
+    <complexType>
+      <sequence>
+        <element name="cabeceraEntrada" type="xsd:cabeceraEntradaInformacionFiscal"/>
+        <element name="numeroCuenta" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="respuestaProceso">
+    <complexType>
+      <sequence>
+        <element name="cabeceraSalida" type="xsd:cabeceraSalidaInformacionFiscal"/>
+        <element name="datosInformacionFiscal" type="xsd:datosInformacionFiscal"/>
+      </sequence>
+    </complexType>
+  </element>
+  <complexType name="cabeceraEntradaInformacionFiscal">
+    <sequence>
+      <element name="operacion" type="string"/>
+      <element name="aplicativo" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="cabeceraSalidaInformacionFiscal">
+    <sequence>
+      <element name="codigoError" type="string"/>
+      <element name="descripcionError" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="datosInformacionFiscal">
+    <sequence>
+      <element name="razonSocial" type="string"/>
+      <element name="rfc" type="string"/>
+      <element name="calleFiscal" type="string"/>
+      <element name="numeroExtFiscal" type="string"/>
+      <element name="numeroIntFiscal" type="string"/>
+      <element name="coloniaFiscal" type="string"/>
+      <element name="cuidadFiscal" type="string"/>
+      <element name="delMunFiscal" type="string"/>
+      <element name="estadoFiscal" type="string"/>
+      <element name="cpFiscal" type="string"/>
+      <element name="tipoFactura" type="string"/>
+      <element name="tipopersona" type="string"/>
+      <element name="regimenfiscal" type="string"/>
+      <element name="usocfdi" type="string"/>
+    </sequence>
+  </complexType>
+</schema>

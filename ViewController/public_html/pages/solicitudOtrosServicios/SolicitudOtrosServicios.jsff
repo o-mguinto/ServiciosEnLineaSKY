@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#solicitudOtrosServicios').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="solicitudOtrosServicios">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:outputText value="#{selSKYBundle['requiereOtraInfo_mandeSolicitud_subtitulo1']}"
+                                       id="otpb1" styleClass="subtitle"/>
+                        <div class="row">
+                            <label>
+                                <h:outputText value="#{selSKYBundle['requiereOtraInfo_mandeSolicitud_indicaciones1']}"
+                                              id="ot4"/>
+                            </label>
+                        </div>
+                        <div class="row top top-2">
+                            <div class="col-6 col-tb-5 col-sm-8 right sm-cancel-align" style="float: right">
+                                <af:button text="#{selSKYBundle['requiereOtraInfo_mandeSolicitud_btnGenearSolicitud']}"
+                                           id="cb1" styleClass="btn-internal">
+                                    <af:showPopupBehavior popupId="popUpNS"
+                                                          triggerType="action"/>
+                                </af:button>
+                            </div>
+                        </div>
+                        <af:popup id="popUpNS" autoCancel="disabled"
+                                  contentDelivery="lazyUncached"
+                                  childCreation="deferred"
+                                  binding="#{backingBeanScope.BBOtrosServicios.popUpNS}">
+                            <div class="col-12 col-tb-8 col-sm-8 center-popup">
+                                <af:dialog id="dialog1" type="none"
+                                           title="Generar solicitud"
+                                           styleClass="alert"
+                                           closeIconVisible="false">
+                                    <div class="text-internal">
+                                        <div class="row">
+                                            <span class="xf">* </span>
+                                             
+                                            <af:outputLabel for="it1"
+                                                            value="#{selSKYBundle['requiereOtraInfo_mandeSolicitud_comentarios']}"
+                                                            id="ol6"/>
+                                        </div>
+                                        <div class="border-bottom">
+                                            <af:inputText showRequired="false"
+                                                          simple="true" id="it1"
+                                                          required="true"
+                                                          rows="5" columns="30"
+                                                          value="#{backingBeanScope.BBOtrosServicios.comentarios}"
+                                                          maximumLength="300"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 dialog-background">
+                                        <div class="row autocenter">
+                                                        
+                                            <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-left sm-no-padd-left" style="float: right">
+                                                <af:button text="#{selSKYBundle['requiereOtraInfo_mandeSolicitud_btnCancelar']}"
+                                                           id="cb3"
+                                                           action="#{backingBeanScope.BBOtrosServicios.cancelar}"
+                                                           styleClass="btn-pay-dialog"
+                                                           immediate="true"/>
+                                            </div>
+                                            <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-right sm-no-padd-right" style="float: right" >
+                                                <af:button text="#{selSKYBundle['requiereOtraInfo_mandeSolicitud_btnAceptar']}"
+                                                           id="cb2"
+                                                           action="#{backingBeanScope.BBOtrosServicios.aceptar}"
+                                                           styleClass="btn-pay-dialog">
+                                                    <af:clientListener method="enforcePreventUserInput"
+                                                                       type="action"/>
+                                                </af:button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </af:dialog>
+                            </div>
+                        </af:popup>
+                         
+                        <af:spacer width="10" height="10" id="s3"/>
+                         
+                        
+                    </div>
+                    
+                    <div class="row top">
+                        <af:panelCollection id="pc1"
+                                                    styleClass="AFStretchWidth">
+                                                    <f:facet name="menus"/>
+                                        <f:facet name="toolbar">
+                                            <af:toolbar id="t2">
+                                            </af:toolbar>
+                                        </f:facet>
+                                        <f:facet name="statusbar"/>
+                            <af:table value="#{bindings.Sugerencia.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.Sugerencia.rangeSize}"
+                                      emptyText="#{bindings.Sugerencia.viewable ? 'No ha presentado sugerencias.' : 'Acceso denegado.'}"
+                                      fetchSize="#{bindings.Sugerencia.rangeSize}"
+                                      rowBandingInterval="0" id="t1"
+                                      horizontalGridVisible="false"
+                                      verticalGridVisible="false"
+                                      styleClass="tbl-Class"
+                                      partialTriggers=":::cb2"
+                                      autoHeightRows="10"
+                                      width="100%"  scrollPolicy="auto" >
+                                <af:column sortProperty="#{bindings.Sugerencia.hints.numero_ss.name}"
+                                           sortable="false" displayIndex="-1"
+                                           headerText="#{selSKYBundle['requiereOtraInfo_mandeSolicitud_tablaColumna1']}"
+                                           id="c4" width="150"
+                                           headerClass="content-text">
+                                    <af:outputText value="#{row.numero_ss}"
+                                                   id="ot5"/>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.Sugerencia.hints.sugerencia.name}"
+                                           sortable="false" displayIndex="-1"
+                                           headerText="#{selSKYBundle['requiereOtraInfo_mandeSolicitud_tablaColumna2']}"
+                                           id="c6" width="250"
+                                           headerClass="content-text">
+                                    <af:outputText value="#{row.sugerencia}"
+                                                   id="ot7"/>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.Sugerencia.hints.fechaRegistroString.name}"
+                                           sortable="false"
+                                           headerText="#{selSKYBundle['requiereOtraInfo_mandeSolicitud_tablaColumna3']}"
+                                           id="c5" width="150"
+                                           headerClass="content-text">
+                                    <af:outputText value="#{row.fechaRegistroString}"
+                                                   id="ot6"/>
+                                </af:column>
+                            </af:table>
+                        </af:panelCollection>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

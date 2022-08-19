@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:h="http://java.sun.com/jsf/html">
+    <af:document id="d1" title="Contratar Blue To Go Video EveryWhere" maximized="false">
+        <af:resource type="css" source="/css/custom/pagInternas_template.css"/>
+        <af:form id="f1">
+            <!-- Google Tag Manager (noscript) -->
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZQXB5N"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+            <!-- End Google Tag Manager (noscript) -->
+            <af:pageTemplate viewId="/template_Contenido.jspx" id="pt1">
+                <af:resource type="css" source="/scrollpane/demoStyles.css"></af:resource>
+                <af:resource type="css" source="/scrollpane/jScrollPane.css"></af:resource>
+                <af:resource type="javascript" source="/scrollpane/jquery.min.js"></af:resource>
+                <af:resource type="javascript" source="/scrollpane/jScrollPane.js"></af:resource>
+                <af:resource type="javascript" source="/scrollpane/jquery.mousewheel.js"></af:resource>
+                <af:resource type="javascript" source="/scrollpane/scrollPaneConfig.js"></af:resource>
+                <f:facet name="BodyS">
+                    <af:panelGroupLayout id="pb2" styleClass="AFStretchWidth">
+                        <af:panelGroupLayout id="pgl2" layout="vertical" valign="middle" halign="end"
+                                             styleClass="AFStretchWidth">
+                            <af:panelGroupLayout id="pgl3">
+                                <div class="row">
+                                    <div class="col-3-1 left sm-cancel-align" style="float:right;">
+                                        <af:button text="Continuar" id="cb2" action="closeTaskFlow"
+                                                   styleClass="btn-pay-dialog">
+                                            <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                        </af:button>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                            <af:separator id="s1"/>
+                            <af:spacer width="10" height="30" id="s2"/>
+                            <af:outputText
+                                           value="Estimado suscriptor le informamos que su solicitud de contratación de Blue To Go Video Everywhere en Servicios en línea SKY está siendo procesada. En breve el sistema le enviará un correo electrónico en el que se notificará que el servicio está contratado y ha sido activado."
+                                           id="ot1"
+                                           styleClass="output-internal font-bolder"/>
+                            <af:panelGroupLayout id="pgl1" halign="start"
+                                                rendered="#{pageFlowScope.PFBlueToGoEveryWhere.paqueteBlack and sesion.MEX}"
+                                                 styleClass="AFStretchWidth">
+                                <af:spacer width="30" height="30" id="s3"/>
+                                <af:outputText styleClass="output-internal font-bolder"
+                                               value="¡FELICIDADES!" id="ot2"/>
+                            </af:panelGroupLayout>
+                            <af:spacer width="10" height="10" id="s4"
+                                       rendered="#{pageFlowScope.PFBlueToGoEveryWhere.paqueteBlack and sesion.MEX}"/>
+                            <af:outputText styleClass="output-internal font-bolder"
+                                           rendered="#{pageFlowScope.PFBlueToGoEveryWhere.paqueteBlack and sesion.MEX}"
+                                           value="ACABAS DE CONTRATAR BLUE TO GO VIDEO EVERYWHERE Y PODRÁS DISFRUTARLO HASTA POR 6 MESES. 
+                                RECUERDA QUE A PARTIR DEL TÉRMINO DEL BENEFICIO DEBERÁS DE PAGAR $20 ADICIONALES A TU RENTA MENSUAL DE SKY."
+                                           id="ot3"/>
+                            <af:spacer width="20" height="10" id="s5"/>
+                            <af:panelGroupLayout id="pgl4" layout="horizontal" halign="center"
+                                                 rendered="#{pageFlowScope.PFBlueToGoEveryWhere.paqueteBlack and sesion.MEX}">
+<af:outputLabel id="ot4" value="Consulta"
+                                               />
+                                
+                                <h:outputLink id="otl1" value="http://www.sky.com.mx/terminos-y-condiciones-beneficio-blue-to-go/" target="_blank"
+                                                styleClass="terminos"
+                                              style="line-height: 20px; padding-right: 2px;">
+                                                <h:outputText id="ot8" value=" términos y condiciones "
+                                                              />
+                                </h:outputLink>
+                                <af:outputLabel id="ot5" value=" de la promoción en www.sky.com.mx"
+                                               />
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

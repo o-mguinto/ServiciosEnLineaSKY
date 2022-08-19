@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48"
+                id="datos_nuevaTDC_confirmarPageDef" Package="pages.compraPaqueteDatos">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="guardarTarjetaPs" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="guardarTarjetaPs"
+                  IsViewObjectMethod="false" DataControl="DCTarjetas"
+                  InstanceName="bindings.guardarTarjetaPs.dataControl.dataProvider"
+                  ReturnName="data.DCTarjetas.methodResults.guardarTarjetaPs_guardarTarjetaPs_dataControl_dataProvider_guardarTarjetaPs_result">
+      <NamedData NDName="numeroCuentaCliente" NDType="java.lang.String"/>
+      <NamedData NDName="tarjeta"
+                 NDType="mx.com.sky.sel.services.beans.pagos.tarjetas.Tarjeta"/>
+      <NamedData NDName="organizationID" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

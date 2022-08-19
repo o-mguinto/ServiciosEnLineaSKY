@@ -1,0 +1,701 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g0">
+        <af:resource type="javascript">
+          $('#admonCuentas').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="admonCuentas">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                                <af:panelGroupLayout id="pgl2">
+                                    <p class="top">
+                                        <h:outputText styleClass="title"
+                                                      value="#{selSKYBundle['admoncuentas.ot1.value']}" id="ot6"/>
+                                         
+                                        <af:spacer width="10" height="10" id="s1"/>
+                                         
+                                        <af:statusIndicator id="si1"/>
+                                    </p>
+                                    <af:panelBox text="PanelBox1" id="pb1" showHeader="never" showDisclosure="false"
+                                                 background="medium">
+                                        <f:facet name="toolbar"/>
+                                        <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                                                            defaultToolbarItemDisplay="icon">
+                                            <f:facet name="menus"/>
+                                            <f:facet name="toolbar">
+                                                <af:toolbar id="t2">
+                                                    <af:button text="#{selSKYBundle['admoncuentas.ctbAgregarCuenta.text']}"
+                                                               id="ctbAgregarCuenta"
+                                                               icon="/imagenes/35X35/nuevacuenta19x19.png"
+                                                               action="nuevaCuenta" useWindow="true"
+                                                               windowEmbedStyle="window"
+                                                               windowModalityType="applicationModal" windowHeight="750"
+                                                               windowWidth="550">
+                                                        <af:showPopupBehavior popupId="::popUpNuevoUsuario"
+                                                                              triggerType="action"/>
+                                                    </af:button>
+                                                    <af:button text="#{selSKYBundle['admoncuentas.ctbEditarCuenta.text']}"
+                                                               id="ctbEditarCuenta"
+                                                               icon="/imagenes/35X35/servicios_35x35/Edit_SM.png"
+                                                               useWindow="true">
+                                                        <af:showPopupBehavior popupId="::popUpMod"
+                                                                              triggerType="action"/>
+                                                    </af:button>
+                                                    <af:button text="#{selSKYBundle['admoncuentas.ctbEliminar.text']}"
+                                                               id="ctbEliminar"
+                                                               icon="/imagenes/16X16/nav_16x16/button_cancel.png">
+                                                        <af:showPopupBehavior popupId="::popupEliminar"
+                                                                              triggerType="action"/>
+                                                    </af:button>
+                                                    <af:button text="#{selSKYBundle['admoncuentas.ctbMenus.text']}"
+                                                               id="ctbMenus"
+                                                               icon="/imagenes/19X19/servicios_19x19/canales-carta.png"
+                                                               useWindow="true"
+                                                               action="#{backingBeanScope.BBAdministracionUsuario.ctbMenus_action}"
+                                                               windowModalityType="modeless" partialSubmit="false">
+                                                        <af:showPopupBehavior popupId="::popUpMenus"
+                                                                              triggerType="action"/>
+                                                    </af:button>
+                                                </af:toolbar>
+                                            </f:facet>
+                                            <af:table value="#{bindings.UsuarioRegistro.collectionModel}" var="row"
+                                                      rows="#{bindings.UsuarioRegistro.rangeSize}"
+                                                      emptyText="#{bindings.UsuarioRegistro.viewable ? selSKYBundle['admoncuentas.sinregistros'] : 'Acceso Denegado'}"
+                                                      fetchSize="#{bindings.UsuarioRegistro.rangeSize}"
+                                                      rowBandingInterval="0"
+                                                      filterModel="#{bindings.UsuarioRegistroQuery.queryDescriptor}"
+                                                      queryListener="#{bindings.UsuarioRegistroQuery.processQuery}"
+                                                      filterVisible="true" varStatus="vs"
+                                                      selectedRowKeys="#{bindings.UsuarioRegistro.collectionModel.selectedRow}"
+                                                      selectionListener="#{bindings.UsuarioRegistro.collectionModel.makeCurrent}"
+                                                      rowSelection="single" id="tableCuentas" width="100%"
+                                                      scrollPolicy="auto"
+                                                      autoHeightRows="10"
+                                                      partialTriggers=":::cbCrear :::cbCancelar1 :::cbGuardar :::cbCancelar :::cbEliminar ::ctbMenus">
+                                                <af:column sortProperty="uid" filterable="true" sortable="true"
+                                                           headerText="#{selSKYBundle['admoncuentas.c7.headertext']}"
+                                                           headerClass="content-text" id="c7">
+                                                    <af:inputText value="#{row.bindings.uid.inputValue}"
+                                                                  label="#{bindings.UsuarioRegistro.hints.uid.label}"
+                                                                  required="#{bindings.UsuarioRegistro.hints.uid.mandatory}"
+                                                                  columns="#{bindings.UsuarioRegistro.hints.uid.displayWidth}"
+                                                                  maximumLength="#{bindings.UsuarioRegistro.hints.uid.precision}"
+                                                                  shortDesc="#{bindings.UsuarioRegistro.hints.uid.tooltip}"
+                                                                  id="it7" readOnly="true">
+                                                        <f:validator binding="#{row.bindings.uid.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="userName" filterable="true" sortable="true"
+                                                           headerText="#{selSKYBundle['admoncuentas.c3.headertext']}"
+                                                           headerClass="content-text" width="120" id="c3">
+                                                    <af:inputText value="#{row.bindings.userName.inputValue}"
+                                                                  label="#{bindings.UsuarioRegistro.hints.userName.label}"
+                                                                  required="#{bindings.UsuarioRegistro.hints.userName.mandatory}"
+                                                                  columns="#{bindings.UsuarioRegistro.hints.userName.displayWidth}"
+                                                                  maximumLength="#{bindings.UsuarioRegistro.hints.userName.precision}"
+                                                                  shortDesc="#{bindings.UsuarioRegistro.hints.userName.tooltip}"
+                                                                  id="it2" readOnly="true">
+                                                        <f:validator binding="#{row.bindings.userName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="nombre" filterable="true" sortable="true"
+                                                           headerText="#{selSKYBundle['admoncuentas.c5.headertext']}"
+                                                           headerClass="content-text" id="c5" width="120">
+                                                    <af:inputText value="#{row.bindings.nombre.inputValue}"
+                                                                  label="#{bindings.UsuarioRegistro.hints.nombre.label}"
+                                                                  required="#{bindings.UsuarioRegistro.hints.nombre.mandatory}"
+                                                                  columns="#{bindings.UsuarioRegistro.hints.nombre.displayWidth}"
+                                                                  maximumLength="#{bindings.UsuarioRegistro.hints.nombre.precision}"
+                                                                  shortDesc="#{bindings.UsuarioRegistro.hints.nombre.tooltip}"
+                                                                  id="it4" readOnly="true">
+                                                        <f:validator binding="#{row.bindings.nombre.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="apellidoPaterno" filterable="true"
+                                                           sortable="true"
+                                                           headerText="#{selSKYBundle['admoncuentas.c6.headertext']}"
+                                                           headerClass="content-text" id="c6" width="150">
+                                                    <af:inputText value="#{row.bindings.apellidoPaterno.inputValue}"
+                                                                  label="#{bindings.UsuarioRegistro.hints.apellidoPaterno.label}"
+                                                                  required="#{bindings.UsuarioRegistro.hints.apellidoPaterno.mandatory}"
+                                                                  columns="#{bindings.UsuarioRegistro.hints.apellidoPaterno.displayWidth}"
+                                                                  maximumLength="#{bindings.UsuarioRegistro.hints.apellidoPaterno.precision}"
+                                                                  shortDesc="#{bindings.UsuarioRegistro.hints.apellidoPaterno.tooltip}"
+                                                                  id="it10" readOnly="true">
+                                                        <f:validator binding="#{row.bindings.apellidoPaterno.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="apellidoMaterno" filterable="true"
+                                                           sortable="true"
+                                                           headerText="#{selSKYBundle['admoncuentas.c9.headertext']}"
+                                                           headerClass="content-text" id="c9" width="150">
+                                                    <af:inputText value="#{row.bindings.apellidoMaterno.inputValue}"
+                                                                  label="#{bindings.UsuarioRegistro.hints.apellidoMaterno.label}"
+                                                                  required="#{bindings.UsuarioRegistro.hints.apellidoMaterno.mandatory}"
+                                                                  columns="#{bindings.UsuarioRegistro.hints.apellidoMaterno.displayWidth}"
+                                                                  maximumLength="#{bindings.UsuarioRegistro.hints.apellidoMaterno.precision}"
+                                                                  shortDesc="#{bindings.UsuarioRegistro.hints.apellidoMaterno.tooltip}"
+                                                                  id="it9" readOnly="true">
+                                                        <f:validator binding="#{row.bindings.apellidoMaterno.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="email" filterable="true" sortable="true"
+                                                           headerText="#{selSKYBundle['admoncuentas.c10.headertext']}"
+                                                           headerClass="content-text" id="c10" width="150">
+                                                    <af:inputText value="#{row.bindings.email.inputValue}"
+                                                                  label="#{bindings.UsuarioRegistro.hints.email.label}"
+                                                                  required="#{bindings.UsuarioRegistro.hints.email.mandatory}"
+                                                                  columns="#{bindings.UsuarioRegistro.hints.email.displayWidth}"
+                                                                  maximumLength="#{bindings.UsuarioRegistro.hints.email.precision}"
+                                                                  shortDesc="#{bindings.UsuarioRegistro.hints.email.tooltip}"
+                                                                  id="it5" readOnly="true">
+                                                        <f:validator binding="#{row.bindings.email.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="telefonoTrabajo" filterable="true"
+                                                           sortable="true"
+                                                           headerText="#{selSKYBundle['admoncuentas.c1.headertext']}"
+                                                           headerClass="content-text" id="c1" width="120">
+                                                    <af:inputText value="#{row.bindings.telefonoTrabajo.inputValue}"
+                                                                  label="#{bindings.UsuarioRegistro.hints.telefonoTrabajo.label}"
+                                                                  required="#{bindings.UsuarioRegistro.hints.telefonoTrabajo.mandatory}"
+                                                                  columns="#{bindings.UsuarioRegistro.hints.telefonoTrabajo.displayWidth}"
+                                                                  maximumLength="#{bindings.UsuarioRegistro.hints.telefonoTrabajo.precision}"
+                                                                  shortDesc="#{bindings.UsuarioRegistro.hints.telefonoTrabajo.tooltip}"
+                                                                  id="it6" readOnly="true">
+                                                        <f:validator binding="#{row.bindings.telefonoTrabajo.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="telefonoTrabajoExt" filterable="true"
+                                                           sortable="true"
+                                                           headerText="#{selSKYBundle['admoncuentas.c4.headertext']}"
+                                                           headerClass="content-text" id="c4" width="80">
+                                                    <af:inputText value="#{row.bindings.telefonoTrabajoExt.inputValue}"
+                                                                  label="#{bindings.UsuarioRegistro.hints.telefonoTrabajoExt.label}"
+                                                                  required="#{bindings.UsuarioRegistro.hints.telefonoTrabajoExt.mandatory}"
+                                                                  columns="#{bindings.UsuarioRegistro.hints.telefonoTrabajoExt.displayWidth}"
+                                                                  maximumLength="#{bindings.UsuarioRegistro.hints.telefonoTrabajoExt.precision}"
+                                                                  shortDesc="#{bindings.UsuarioRegistro.hints.telefonoTrabajoExt.tooltip}"
+                                                                  id="it1" readOnly="true">
+                                                        <f:validator binding="#{row.bindings.telefonoTrabajoExt.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="telefonoMovil" filterable="true"
+                                                           sortable="true"
+                                                           headerText="#{selSKYBundle['admoncuentas.c2.headertext']}"
+                                                           headerClass="content-text" id="c2" width="100">
+                                                    <af:inputText value="#{row.bindings.telefonoMovil.inputValue}"
+                                                                  label="#{bindings.UsuarioRegistro.hints.telefonoMovil.label}"
+                                                                  required="#{bindings.UsuarioRegistro.hints.telefonoMovil.mandatory}"
+                                                                  columns="#{bindings.UsuarioRegistro.hints.telefonoMovil.displayWidth}"
+                                                                  maximumLength="#{bindings.UsuarioRegistro.hints.telefonoMovil.precision}"
+                                                                  shortDesc="#{bindings.UsuarioRegistro.hints.telefonoMovil.tooltip}"
+                                                                  id="it3" readOnly="true">
+                                                        <f:validator binding="#{row.bindings.telefonoMovil.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelCollection>
+                                    </af:panelBox>
+                                </af:panelGroupLayout>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <af:popup id="popUpNuevoUsuario">
+            <af:panelWindow id="popUpCrearCuenta" closeIconVisible="false"
+                            title="#{selSKYBundle['admoncuentas.popUpCrearCuenta.title']}" modal="true">
+                <af:panelFormLayout id="pfl1" maxColumns="2" rows="7" fieldWidth="150" labelWidth="210">
+                    
+                        <af:inputText value="#{backingBeanScope.BBAdministracionUsuario.usuario.userName}"
+                                      label="#{selSKYBundle['admoncuentas.it23.label']}" styleClass="text-internal"
+                                      required="true" maximumLength="20" id="it23" rendered="false">
+                            <af:validateRegExp messageDetailNoMatch="Solo se permiten carateres alfanuméricos"
+                                               pattern="\\w+"/>
+                        </af:inputText>
+                         
+                        <af:inputText label="#{selSKYBundle['admoncuentas.it25.label']}" styleClass="text-internal"
+                                      id="it25" value="#{backingBeanScope.BBAdministracionUsuario.usuario.email}"
+                                      required="true" maximumLength="40">
+                        <af:validateRegExp pattern="[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-\\+]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{1,4})(\\s)*"
+                                               messageDetailNoMatch="Ingrese una dirección válida"/>
+                        </af:inputText>
+                         
+                        <af:inputText label="#{selSKYBundle['admoncuentas.it22.label']}" styleClass="text-internal"
+                                      id="it22" value="#{backingBeanScope.BBAdministracionUsuario.usuario.nombre}"
+                                      required="true" maximumLength="35">
+                            <af:validateRegExp messageDetailNoMatch="No se permiten caractéres especiales"
+                                               pattern="[A-Za-zñÑ ]+"/>
+                        </af:inputText>
+                         
+                        <af:inputText label="#{selSKYBundle['admoncuentas.it32.label']}" styleClass="text-internal"
+                                      id="it32"
+                                      value="#{backingBeanScope.BBAdministracionUsuario.usuario.apellidoPaterno}"
+                                      required="true" maximumLength="35">
+                            <af:validateRegExp messageDetailNoMatch="No se permiten caractéres especiales"
+                                               pattern="[A-Za-zñÑ ]+"/>
+                        </af:inputText>
+                         
+                        <af:inputText label="#{selSKYBundle['admoncuentas.it24.label']}" styleClass="text-internal"
+                                      id="it24"
+                                      value="#{backingBeanScope.BBAdministracionUsuario.usuario.apellidoMaterno}"
+                                      required="true" maximumLength="35">
+                            <af:validateRegExp messageDetailNoMatch="No se permiten caractéres especiales"
+                                               pattern="[A-Za-zñÑ ]+"/>
+                        </af:inputText>
+                         
+                        <af:inputText label="#{selSKYBundle['admoncuentas.it34.label']}" styleClass="text-internal"
+                                      id="it34" value="#{backingBeanScope.BBAdministracionUsuario.contraseniaNueva}"
+                                      required="true" secret="true">
+                            <af:validateLength id="validateLength1" minimum="6" maximum="15"
+                                               hintNotInRange="Ingresa de 6 a 15 letras y/o números, es sensible a MAYÚSCULAS y minúsculas."/>
+                        </af:inputText>
+                         
+                        <af:outputFormatted value="#{selSKYBundle['admoncuentas.of1.value']}" id="of1" styleClass="cursiv"
+                                            inlineStyle="text-align:justify;"/>
+                         
+                        <af:inputText label="#{selSKYBundle['admoncuentas.it35.label']}" styleClass="text-internal"
+                                      id="it35" value="#{backingBeanScope.BBAdministracionUsuario.contraseniaNuevaC}"
+                                      required="true" secret="true">
+                            <af:validateLength id="passwdVal" minimum="6" maximum="15"
+                                               hintNotInRange="Ingresa de 6 a 15 letras y/o números, es sensible a MAYÚSCULAS y minúsculas."/>
+                        </af:inputText>
+                         
+                        <af:inputText label="#{selSKYBundle['admoncuentas.it26.label']}" styleClass="text-internal"
+                                      id="it26" maximumLength="15"
+                                      value="#{backingBeanScope.BBAdministracionUsuario.usuario.telefonoMovil}"
+                                      required="true">
+                            <af:validateLength id="validateLength2" minimum="8" maximum="10"
+                                               hintNotInRange="de 8 a 10 números"/>
+                            <af:validateRegExp id="validateRegExp2" pattern="[0-9]{0,10}"
+                                               messageDetailNoMatch="Debe ingresar solo números"/>
+                        </af:inputText>
+                         
+                        <af:panelLabelAndMessage label="#{selSKYBundle['admoncuentas.plam1.label']}" id="plam1" styleClass="text-internal">
+                            <af:panelFormLayout id="pfl2">
+                                <af:inputText label="Lada" id="it27" styleClass="text-internal"
+                                              value="#{backingBeanScope.BBAdministracionUsuario.usuario.telefonoLada}"
+                                              maximumLength="5">
+                                    <af:validateRegExp id="ladaVal" pattern="[0-9]{0,4}"
+                                                       messageDetailNoMatch="Hasta 4 números"/>
+                                </af:inputText>
+                                <af:inputText label="Teléfono principal" id="it28" styleClass="text-internal"
+                                              value="#{backingBeanScope.BBAdministracionUsuario.usuario.telefonoCasa}"
+                                              maximumLength="15">
+                                    <af:validateLength id="validateLength3" minimum="8" maximum="10"
+                                                       hintNotInRange="de 8 a 10 números"/>
+                                    <af:validateRegExp id="validateRegExp3" pattern="[0-9]{0,10}"
+                                                       messageDetailNoMatch="Debe ingresar solo números"/>
+                                </af:inputText>
+                            </af:panelFormLayout>
+                        </af:panelLabelAndMessage>
+                         
+                        <af:panelLabelAndMessage label="#{selSKYBundle['admoncuentas.plam2.label']}" styleClass="text-internal" id="plam2">
+                            <af:panelFormLayout id="pfl3">
+                                <af:inputText label="Lada" id="it29" styleClass="text-internal"
+                                              value="#{backingBeanScope.BBAdministracionUsuario.usuario.telefonoTrabajoLada}"
+                                              maximumLength="3">
+                                    <af:validateRegExp id="validateRegExp1" pattern="[0-9]{0,4}"
+                                                       messageDetailNoMatch="Hasta 4 números"/>
+                                </af:inputText>
+                                <af:inputText label="Teléfono" id="it30" styleClass="text-internal"
+                                              value="#{backingBeanScope.BBAdministracionUsuario.usuario.telefonoTrabajo}"
+                                              maximumLength="15">
+                                    <af:validateLength id="validateLength4" minimum="8" maximum="10"
+                                                       hintNotInRange="de 8 a 10 números"/>
+                                    <af:validateRegExp id="validateRegExp4" pattern="[0-9]{0,10}"
+                                                       messageDetailNoMatch="Debe ingresar solo números"/>
+                                </af:inputText>
+                                <af:inputText label="Ext" id="it31" styleClass="text-internal"
+                                              value="#{backingBeanScope.BBAdministracionUsuario.usuario.telefonoTrabajoExt}"
+                                              maximumLength="10">
+                                    <af:validateRegExp id="validateRegExp5" pattern="[0-9]{0,8}"
+                                                       messageDetailNoMatch="Hasta 8 números"/>
+                                </af:inputText>
+                            </af:panelFormLayout>
+                        </af:panelLabelAndMessage>
+                    
+                    <f:facet name="footer">
+                        <af:group id="g1">
+                            <af:panelGroupLayout id="pnlg1">
+                                <span class="text-internal xf" style="margin-left:30px;">* </span>
+                                <af:outputText value="#{selSKYBundle['general.obligatorio']}" id="ot11"
+                                               styleClass="cursiv"/>
+                            </af:panelGroupLayout>
+                        </af:group>
+                    </f:facet>
+                </af:panelFormLayout>
+                <af:panelGroupLayout id="pgl4">
+                                <div class="col-12 dialog-background">
+                                                        <div class="row top autocenter">
+                                                            <div class="col-6 col-tb-4 col-sm-4">
+                                        <af:button text="#{selSKYBundle['admoncuentas.cbCrear.text']}" id="cbCrear"
+                                                   styleClass="btn-pay-dialog" partialSubmit="false"
+                                                   action="#{backingBeanScope.BBAdministracionUsuario.cbCrear_action}">
+                                            <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                        </af:button>
+                                    </div>
+                                    <div class="col-6 col-tb-4 col-sm-4">
+                                        <af:button text="#{selSKYBundle['admoncuentas.cbCancelar1.text']}"
+                                                   id="cbCancelar1" styleClass="btn-pay-dialog" immediate="true"
+                                                   partialSubmit="false"
+                                                   />
+                                    </div>
+                                </div>
+                                </div>
+                            </af:panelGroupLayout>
+            </af:panelWindow>
+        </af:popup>
+        <af:popup id="popUpMod">
+            <af:panelWindow id="pw1" title="#{selSKYBundle['admoncuentas.pw1.title']}" closeIconVisible="false"
+                            modal="true">
+                <af:panelBox text="PanelBox2" id="pb2" showHeader="never" showDisclosure="false" background="medium">
+                    <f:facet name="toolbar"/>
+                    <af:panelFormLayout id="pfl4" maxColumns="2" rows="7" fieldWidth="150" labelWidth="150">
+                        <af:inputText value="#{bindings.uid.inputValue}"
+                                      label="#{selSKYBundle['admoncuentas.it11.label']}" styleClass="text-internal"
+                                      required="#{bindings.uid.hints.mandatory}"
+                                      columns="#{bindings.uid.hints.displayWidth}"
+                                      maximumLength="#{bindings.uid.hints.precision}"
+                                      shortDesc="#{bindings.uid.hints.tooltip}" id="it11" readOnly="true">
+                            <f:validator binding="#{bindings.uid.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.userName.inputValue}"
+                                      label="#{selSKYBundle['admoncuentas.it19.label']}" styleClass="text-internal"
+                                      required="#{bindings.userName.hints.mandatory}"
+                                      columns="#{bindings.userName.hints.displayWidth}"
+                                      maximumLength="#{bindings.userName.hints.precision}"
+                                      shortDesc="#{bindings.userName.hints.tooltip}" id="it19" readOnly="true">
+                            <f:validator binding="#{bindings.userName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.nombre.inputValue}"
+                                      label="#{selSKYBundle['admoncuentas.it14.label']}" required="true"
+                                      styleClass="text-internal" columns="#{bindings.nombre.hints.displayWidth}"
+                                      maximumLength="#{bindings.nombre.hints.precision}"
+                                      shortDesc="#{bindings.nombre.hints.tooltip}" id="it14">
+                            <f:validator binding="#{bindings.nombre.validator}"/>
+                            <af:validateRegExp messageDetailNoMatch="Solo se permiten carateres alfanuméricos"
+                                               pattern="\\w+"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.apellidoPaterno.inputValue}"
+                                      label="#{selSKYBundle['admoncuentas.it12.label']}" required="true"
+                                      styleClass="text-internal"
+                                      columns="#{bindings.apellidoPaterno.hints.displayWidth}"
+                                      maximumLength="#{bindings.apellidoPaterno.hints.precision}"
+                                      shortDesc="#{bindings.apellidoPaterno.hints.tooltip}" id="it12">
+                            <f:validator binding="#{bindings.apellidoPaterno.validator}"/>
+                            <af:validateRegExp messageDetailNoMatch="Solo se permiten carateres alfanuméricos"
+                                               pattern="\\w+"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.apellidoMaterno.inputValue}"
+                                      label="#{selSKYBundle['admoncuentas.it15.label']}" required="true"
+                                      styleClass="text-internal"
+                                      columns="#{bindings.apellidoMaterno.hints.displayWidth}"
+                                      maximumLength="#{bindings.apellidoMaterno.hints.precision}"
+                                      shortDesc="#{bindings.apellidoMaterno.hints.tooltip}" id="it15">
+                            <f:validator binding="#{bindings.apellidoMaterno.validator}"/>
+                            <af:validateRegExp messageDetailNoMatch="Solo se permiten carateres alfanuméricos"
+                                               pattern="\\w+"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.email.inputValue}"
+                                      label="#{selSKYBundle['admoncuentas.it20.label']}" required="true"
+                                      styleClass="text-internal" columns="#{bindings.email.hints.displayWidth}"
+                                      maximumLength="#{bindings.email.hints.precision}"
+                                      shortDesc="#{bindings.email.hints.tooltip}" id="it20">
+                            <f:validator binding="#{bindings.email.validator}"/>
+                            <af:validateRegExp pattern="[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-\\+]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{1,4})(\\s)*"
+                                               messageDetailNoMatch="Ingrese una dirección válida"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.telefonoMovil.inputValue}"
+                                      label="#{selSKYBundle['admoncuentas.it17.label']}" required="true"
+                                      styleClass="text-internal" columns="#{bindings.telefonoMovil.hints.displayWidth}"
+                                      maximumLength="#{bindings.telefonoMovil.hints.precision}"
+                                      shortDesc="#{bindings.telefonoMovil.hints.tooltip}" id="it17">
+                            <f:validator binding="#{bindings.telefonoMovil.validator}"/>
+                            <af:validateLength id="validateLength5" minimum="8" maximum="10"
+                                               hintNotInRange="de 8 a 10 números"/>
+                            <af:validateRegExp id="validateRegExp6" pattern="[0-9]{0,10}"
+                                               messageDetailNoMatch="Debe ingresar solo números"/>
+                        </af:inputText>
+                        <af:panelLabelAndMessage label="#{selSKYBundle['admoncuentas.plam4.label']}" id="plam4" styleClass="text-internal"
+                                                 >
+                                                 <af:inputText value="#{bindings.telefonoLada.inputValue}" label="Lada"
+                                              styleClass="text-internal"
+                                              required="#{bindings.telefonoLada.hints.mandatory}"
+                                              columns="#{bindings.telefonoLada.hints.displayWidth}"
+                                              maximumLength="#{bindings.telefonoLada.hints.precision}"
+                                              shortDesc="#{bindings.telefonoLada.hints.tooltip}" id="it21">
+                                    <f:validator binding="#{bindings.telefonoLada.validator}"/>
+                                    <af:validateRegExp id="validateRegExp9" pattern="[0-9]{0,4}"
+                                                       messageDetailNoMatch="Hasta 4 números"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.telefonoCasa.inputValue}" label="Teléfono"
+                                              styleClass="text-internal"
+                                              required="#{bindings.telefonoCasa.hints.mandatory}"
+                                              columns="#{bindings.telefonoCasa.hints.displayWidth}"
+                                              maximumLength="#{bindings.telefonoCasa.hints.precision}"
+                                              shortDesc="#{bindings.telefonoCasa.hints.tooltip}" id="it13">
+                                    <f:validator binding="#{bindings.telefonoCasa.validator}"/>
+                                    <af:validateLength id="telcasaVal" minimum="8" maximum="10"
+                                                       hintNotInRange="de 8 a 10 números"/>
+                                    <af:validateRegExp id="validateRegExp8" pattern="[0-9]{0,10}"
+                                                       messageDetailNoMatch="Debe ingresar solo números"/>
+                                </af:inputText>
+                            <af:panelFormLayout id="pfl6">
+                                
+                            </af:panelFormLayout>
+                        </af:panelLabelAndMessage>
+                        <af:panelLabelAndMessage label="#{selSKYBundle['admoncuentas.plam3.label']}" id="plam3" styleClass="text-internal">
+                            <af:panelFormLayout id="pfl5">
+                                <af:inputText value="#{bindings.telefonoTrabajoLada.inputValue}" label="Lada"
+                                              styleClass="text-internal"
+                                              required="#{bindings.telefonoTrabajoLada.hints.mandatory}"
+                                              columns="#{bindings.telefonoTrabajoLada.hints.displayWidth}"
+                                              maximumLength="#{bindings.telefonoTrabajoLada.hints.precision}"
+                                              shortDesc="#{bindings.telefonoTrabajoLada.hints.tooltip}" id="it8">
+                                    <f:validator binding="#{bindings.telefonoTrabajoLada.validator}"/>
+                                    <af:validateRegExp id="validateRegExp7" pattern="[0-9]{0,4}"
+                                                       messageDetailNoMatch="Hasta 4 números"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.telefonoTrabajo.inputValue}" label="Teléfono"
+                                              styleClass="text-internal"
+                                              required="#{bindings.telefonoTrabajo.hints.mandatory}"
+                                              columns="#{bindings.telefonoTrabajo.hints.displayWidth}"
+                                              maximumLength="#{bindings.telefonoTrabajo.hints.precision}"
+                                              shortDesc="#{bindings.telefonoTrabajo.hints.tooltip}" id="it16">
+                                    <f:validator binding="#{bindings.telefonoTrabajo.validator}"/>
+                                    <af:validateLength id="validateLength6" minimum="8" maximum="10"
+                                                       hintNotInRange="de 8 a 10 números"/>
+                                    <af:validateRegExp id="validateRegExp10" pattern="[0-9]{0,10}"
+                                                       messageDetailNoMatch="Debe ingresar solo números"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.telefonoTrabajoExt.inputValue}" label="Ext"
+                                              styleClass="text-internal"
+                                              required="#{bindings.telefonoTrabajoExt.hints.mandatory}"
+                                              columns="#{bindings.telefonoTrabajoExt.hints.displayWidth}"
+                                              maximumLength="#{bindings.telefonoTrabajoExt.hints.precision}"
+                                              shortDesc="#{bindings.telefonoTrabajoExt.hints.tooltip}" id="it18">
+                                    <f:validator binding="#{bindings.telefonoTrabajoExt.validator}"/>
+                                    <af:validateRegExp id="validateRegExp11" pattern="[0-9]{0,8}"
+                                                       messageDetailNoMatch="Hasta 8 números"/>
+                                </af:inputText>
+                            </af:panelFormLayout>
+                        </af:panelLabelAndMessage>
+                        <f:facet name="footer">
+                        <af:panelGroupLayout id="pnlg10">
+                        <span class="text-internal xf">* </span>
+                        <af:outputText value="#{selSKYBundle['general.obligatorio']}" id="ot2" styleClass="cursiv"/>
+                    </af:panelGroupLayout>
+                        
+                        </f:facet>
+                    </af:panelFormLayout>
+                    <af:panelGroupLayout id="pgl6">
+                                <div class="col-12 dialog-background">
+                                                        <div class="row autocenter">
+                                                            <div class="col-6 col-tb-4 col-sm-4">
+                                        <af:button text="#{selSKYBundle['admoncuentas.cbGuardar.text']}" id="cbGuardar" styleClass="btn-pay-dialog"
+                                               partialSubmit="false" 
+                                               action="#{backingBeanScope.BBAdministracionUsuario.cbGuardar_action}">
+                                        <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                    </af:button>
+                                    </div>
+                                    <div class="col-6 col-tb-4 col-sm-4">
+                                    <af:button text="#{selSKYBundle['admoncuentas.cbCancelar.text']}" id="cbCancelar" styleClass="btn-pay-dialog"
+                                               partialSubmit="false" immediate="true"
+                                               />
+                                    </div>
+                                </div>
+                                </div>
+                            </af:panelGroupLayout>
+                </af:panelBox>
+            </af:panelWindow>
+        </af:popup>
+        <af:popup id="popupEliminar" childCreation="deferred">
+            <af:panelWindow id="panelWindow1" closeIconVisible="false" 
+                            title="#{selSKYBundle['admoncuentas.panelWindow1.title']}" modal="true"
+                            styleClass="AFStretchWidth">
+                <af:panelGroupLayout id="pgl1">
+                    <af:panelFormLayout id="panelFormLayout1" maxColumns="2" rows="7" fieldWidth="150" labelWidth="150"
+                                    >
+                    <af:inputText value="#{bindings.uid.inputValue}"
+                                  label="#{selSKYBundle['admoncuentas.inputText1.label']}" styleClass="text-internal"
+                                  required="#{bindings.uid.hints.mandatory}"
+                                  columns="#{bindings.uid.hints.displayWidth}"
+                                  maximumLength="#{bindings.uid.hints.precision}"
+                                  shortDesc="#{bindings.uid.hints.tooltip}" id="inputText1" readOnly="true">
+                        <f:validator binding="#{bindings.uid.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.userName.inputValue}"
+                                  label="#{selSKYBundle['admoncuentas.inputText2.label']}" styleClass="text-internal"
+                                  required="#{bindings.userName.hints.mandatory}"
+                                  columns="#{bindings.userName.hints.displayWidth}"
+                                  maximumLength="#{bindings.userName.hints.precision}"
+                                  shortDesc="#{bindings.userName.hints.tooltip}" id="inputText2" readOnly="true">
+                        <f:validator binding="#{bindings.userName.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.nombre.inputValue}"
+                                  label="#{selSKYBundle['admoncuentas.inputText3.label']}" styleClass="text-internal"
+                                  required="#{bindings.nombre.hints.mandatory}"
+                                  columns="#{bindings.nombre.hints.displayWidth}"
+                                  maximumLength="#{bindings.nombre.hints.precision}"
+                                  shortDesc="#{bindings.nombre.hints.tooltip}" id="inputText3" readOnly="true">
+                        <f:validator binding="#{bindings.nombre.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.apellidoPaterno.inputValue}"
+                                  label="#{selSKYBundle['admoncuentas.inputText4.label']}" styleClass="text-internal"
+                                  required="#{bindings.apellidoPaterno.hints.mandatory}"
+                                  columns="#{bindings.apellidoPaterno.hints.displayWidth}"
+                                  maximumLength="#{bindings.apellidoPaterno.hints.precision}"
+                                  shortDesc="#{bindings.apellidoPaterno.hints.tooltip}" id="inputText4" readOnly="true">
+                        <f:validator binding="#{bindings.apellidoPaterno.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.apellidoMaterno.inputValue}"
+                                  label="#{selSKYBundle['admoncuentas.inputText5.label']}" styleClass="text-internal"
+                                  required="#{bindings.apellidoMaterno.hints.mandatory}"
+                                  columns="#{bindings.apellidoMaterno.hints.displayWidth}"
+                                  maximumLength="#{bindings.apellidoMaterno.hints.precision}"
+                                  shortDesc="#{bindings.apellidoMaterno.hints.tooltip}" id="inputText5" readOnly="true">
+                        <f:validator binding="#{bindings.apellidoMaterno.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.email.inputValue}"
+                                  label="#{selSKYBundle['admoncuentas.inputText6.label']}" styleClass="text-internal"
+                                  required="#{bindings.email.hints.mandatory}"
+                                  columns="#{bindings.email.hints.displayWidth}"
+                                  maximumLength="#{bindings.email.hints.precision}"
+                                  shortDesc="#{bindings.email.hints.tooltip}" id="inputText6" readOnly="true">
+                        <f:validator binding="#{bindings.email.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.telefonoMovil.inputValue}"
+                                  label="#{selSKYBundle['admoncuentas.inputText7.label']}" styleClass="text-internal"
+                                  required="#{bindings.telefonoMovil.hints.mandatory}"
+                                  columns="#{bindings.telefonoMovil.hints.displayWidth}"
+                                  maximumLength="#{bindings.telefonoMovil.hints.precision}"
+                                  shortDesc="#{bindings.telefonoMovil.hints.tooltip}" id="inputText7" readOnly="true">
+                        <f:validator binding="#{bindings.telefonoMovil.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.telefonoLada.inputValue} - #{bindings.telefonoCasa.inputValue}"
+                                  label="#{selSKYBundle['admoncuentas.inputText8.label']}" styleClass="text-internal"
+                                  required="#{bindings.telefonoLada.hints.mandatory}"
+                                  columns="#{bindings.telefonoLada.hints.displayWidth}"
+                                  maximumLength="#{bindings.telefonoLada.hints.precision}"
+                                  shortDesc="#{bindings.telefonoLada.hints.tooltip}" id="inputText8" readOnly="true">
+                        <f:validator binding="#{bindings.telefonoLada.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.telefonoTrabajoLada.inputValue} - #{bindings.telefonoTrabajo.inputValue}"
+                                  label="#{selSKYBundle['admoncuentas.inputText10.label']}" styleClass="text-internal"
+                                  required="#{bindings.telefonoTrabajoLada.hints.mandatory}"
+                                  columns="#{bindings.telefonoTrabajoLada.hints.displayWidth}"
+                                  maximumLength="#{bindings.telefonoTrabajoLada.hints.precision}"
+                                  shortDesc="#{bindings.telefonoTrabajoLada.hints.tooltip}" id="inputText10"
+                                  readOnly="true">
+                        <f:validator binding="#{bindings.telefonoTrabajoLada.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.telefonoTrabajoExt.inputValue}"
+                                  label="#{selSKYBundle['admoncuentas.inputText12.label']}" styleClass="text-internal"
+                                  required="#{bindings.telefonoTrabajoExt.hints.mandatory}"
+                                  columns="#{bindings.telefonoTrabajoExt.hints.displayWidth}"
+                                  maximumLength="#{bindings.telefonoTrabajoExt.hints.precision}"
+                                  shortDesc="#{bindings.telefonoTrabajoExt.hints.tooltip}" id="inputText12"
+                                  readOnly="true">
+                        <f:validator binding="#{bindings.telefonoTrabajoExt.validator}"/>
+                    </af:inputText>
+                    <f:facet name="footer">
+                        
+                    </f:facet>
+                    </af:panelFormLayout>
+                    <af:panelGroupLayout id="panelGroupLayout1">
+                                <div class="col-12 dialog-background">
+                                                        <div class="row top autocenter">
+                                                            <div class="col-6 col-tb-4 col-sm-4">
+									<af:button text="#{selSKYBundle['admoncuentas.cbEliminar.text']}" id="cbEliminar" styleClass="btn-pay-dialog"
+                                           partialSubmit="false"
+                                           action="#{backingBeanScope.BBAdministracionUsuario.cbEliminar_action}">
+                                            <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                        </af:button>
+                                    </div>
+                                    <div class="col-6 col-tb-4 col-sm-4">
+									<af:button text="#{selSKYBundle['admoncuentas.commandButton2.text']}"
+                                           id="commandButton2" partialSubmit="false" immediate="true"
+                                           styleClass="btn-pay-dialog"/>
+                                    </div>
+                                </div>
+                                </div>
+                            </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelWindow>
+        </af:popup>
+        <af:popup id="popUpMenus" binding="#{backingBeanScope.BBAdministracionUsuario.popUpMenus}" childCreation="deferred">
+            <af:panelWindow id="pw2" title="#{selSKYBundle['admoncuentas.pw2.title']}" modal="true"
+                            closeIconVisible="false" styleClass="AFStretchWidth" inlineStyle="width: 780px">
+                <af:table value="#{bindings.Menu.collectionModel}" var="row"
+                          emptyText="#{bindings.Menu.viewable ? 'No hay datos para mostrar.' : 'Acceso denegado.'}"
+                          varStatus="vs" rowBandingInterval="1" id="tMenu" autoHeightRows="10"
+                          partialTriggers="::pc1:ctbMenus ::cbGuardaMenus ::cb2 ::cbSA ::cbDSA" fetchSize="50"
+                          width="100%" scrollPolicy="auto">
+                    <af:column id="cNum" headerText="#{selSKYBundle['admoncuentas.cNum.headertext']}" align="end"
+                               width="60" minimumWidth="35" rowHeader="true" headerClass="content-text">
+                        <af:outputText value="#{vs.index+1}" id="ot25"/>
+                    </af:column>
+                    <af:column sortProperty="pmdescription" sortable="false" headerClass="content-text"
+                               headerText="#{selSKYBundle['admoncuentas.c8.headertext']}" id="c8" width="400">
+                        <af:inputText value="#{row.bindings.pmdescription.inputValue}"
+                                      label="#{bindings.Menu.hints.pmdescription.label}" styleClass="text-internal"
+                                      required="#{bindings.Menu.hints.pmdescription.mandatory}"
+                                      columns="#{bindings.Menu.hints.pmdescription.displayWidth}"
+                                      maximumLength="#{bindings.Menu.hints.pmdescription.precision}"
+                                      shortDesc="#{bindings.Menu.hints.pmdescription.tooltip}" id="it33"
+                                      readOnly="true">
+                            <f:validator binding="#{row.bindings.pmdescription.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="visible" sortable="false" headerClass="content-text"
+                               headerText="#{selSKYBundle['admoncuentas.c11.headertext']}" id="c11" width="150"
+                               align="center">
+                        <af:selectBooleanCheckbox id="sbc2" value="#{row.bindings.visible.inputValue}"/>
+                    </af:column>
+                </af:table>
+                <div class="row top">
+                 <af:panelGroupLayout id="pgl42">
+                                <div class="col-12 dialog-background">
+                                                        <div class="autocenter">
+                                                            <div class="col-3 col-tb-2 col-sm-2">
+                                <af:button text="Deseleccionar todo" disabled="#{!bindings.updateMenus.enabled}" id="cbSA"
+                                   
+                                   action="#{backingBeanScope.BBAdministracionUsuario.cbDeSeleccionarMenus_action}"
+                                   partialSubmit="true" styleClass="btn-pay-dialog"/>
+                                    </div>
+                                <div class="col-3 col-tb-2 col-sm-2">
+                                <af:button text="Seleccionar todo" disabled="#{!bindings.updateMenus.enabled}" id="cbDSA"
+                                   
+                                   action="#{backingBeanScope.BBAdministracionUsuario.cbSeleccionarMenus_action}"
+                                   partialSubmit="true" styleClass="btn-pay-dialog"/>
+                                    </div>
+                                    <div class="col-3 col-tb-2 col-sm-2">
+                                    <af:button text="#{selSKYBundle['admoncuentas.cbGuardaMenus.text']}"
+                                   disabled="#{!bindings.updateMenus.enabled}" id="cbGuardaMenus"
+                                   
+                                   action="#{backingBeanScope.BBAdministracionUsuario.cbGuardaMenus_action}"
+                                   partialSubmit="true" styleClass="btn-pay-dialog">
+                            <af:clientListener method="enforcePreventUserInput" type="action"/>
+                        </af:button>
+                                    </div>
+                                    <div class="col-3 col-tb-2 col-sm-2">
+                                     <af:button text="#{selSKYBundle['admoncuentas.cb2.text']}" id="cb2" partialSubmit="false"
+                                   immediate="true" 
+                                   action="#{backingBeanScope.BBAdministracionUsuario.cancelar}" styleClass="btn-pay-dialog"/>
+                                    </div>
+                                </div>
+                                </div>
+                            </af:panelGroupLayout>
+                            </div>
+            </af:panelWindow>
+        </af:popup>
+    </af:group>
+</ui:composition>

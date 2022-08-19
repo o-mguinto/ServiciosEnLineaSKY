@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+.lineaHorizontal {
+  width: 100%;
+  background-color: #ae1329;
+  height: 4px;
+  float: left;
+  margin-top: -5px;
+}
+
+.divContenedor{
+    width: 85% !important;
+    position: relative;
+    margin: 20px auto ;
+}
+
+#titulo{
+    font-size: 16px;
+    font-family: 'roboto', sans-serif;
+    font-weight: normal;
+    text-align: center;
+    padding-top: 25px;
+    margin-bottom: 60px;
+}
+
+p{
+    font-family: 'roboto', sans-serif;
+    font-weight: normal;
+    color: #999;
+    text-align: justify;
+    margin-bottom: 25px;
+}
+
+div#d1{
+    text-align: center;
+}
+
+div#acepto{
+    margin: 25px;
+}

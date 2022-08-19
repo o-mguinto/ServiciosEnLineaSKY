@@ -1,0 +1,28 @@
+/* Stylesheet for my demo pages for jScrollPane - these styles aren't necessary for using jScrollPane and aren't specific to any particular example */
+.holder {
+    margin: 2px;
+    width: 100%;
+}
+
+.scroll-pane {
+    width: 90%;
+    height: 140px;
+    overflow: auto;
+    background: White ;
+    float: left;
+}
+
+.wide {
+    width: 400px;
+}
+
+.super-wide {
+    width: 700px;
+}
+
+.tall {
+    height: 400px;
+}
+
+#pane1 {
+}

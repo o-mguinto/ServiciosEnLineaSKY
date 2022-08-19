@@ -1,0 +1,196 @@
+package mx.com.sky.sel.managedbeans.registro;
+
+import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UISelectItems;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+
+import javax.faces.event.ActionEvent;
+import javax.faces.event.ValueChangeEvent;
+
+import javax.servlet.http.HttpServletRequest;
+
+import mx.com.sky.sel.log.LogPC;
+import mx.com.sky.sel.services.utils.usuario.ServicioUsuario;
+import mx.com.sky.sel.utils.ADFUtils;
+import mx.com.sky.sel.beans.utils.usuario.UsuarioRegistro;
+
+
+public class PFNuevoUsuario implements Serializable {
+    @SuppressWarnings("compatibility:936945020004443944")
+    private static final long serialVersionUID = 726163205600674455L;
+
+    private UsuarioRegistro usuario;
+
+    private String confpass;
+    private String confemail;
+    private boolean aceptaTC;
+    private String mensaje;
+
+    public PFNuevoUsuario() {
+        super();
+        LogPC.println(this, "PFNuevoUsuario()");
+        usuario = new UsuarioRegistro();
+        mensaje = "";
+
+    }
+
+
+    public String reenviarConfirmacion() {
+        String respuesta = null;
+        LogPC.println(this, "reenviarConfirmacion()");
+        String resultado = "";
+        // Add event code here...
+        if (usuario.getEmail().equalsIgnoreCase(confemail)) {
+            //if (verifyAnswer()) {
+              ServicioUsuario susuario = new ServicioUsuario();
+                usuario.setUserName(usuario.getEmail());
+                try {
+                    //
+                    System.out.println("Here it goes");
+                    resultado = susuario.reenviarConfirmacion(usuario);
+                    respuesta = "siguiente";
+                } catch (Exception e) {
+                    mensaje = e.getMessage();
+                    ADFUtils.addFacesErrorMessage(mensaje);
+                    ADFUtils.showErrorMessage(e.getMessage());
+                    LogPC.printlnError(this, e.getMessage(), e);
+                    respuesta = null;
+                }
+                LogPC.println(this, "Resultado [" + resultado + "]respuesta["+respuesta+"]");
+        } else {
+            usuario.setEmail("");
+            confemail = "";
+            mensaje = "El correo no coincide con su confirmación";
+            ADFUtils.addFacesErrorMessage(mensaje);
+            ADFUtils.showErrorMessage(mensaje);
+            respuesta = null;
+        }
+        return respuesta;
+    }
+
+    public String preparaNuevoUsuario() {
+        LogPC.println(this, "preparaNuevoUsuario");
+        aceptaTC = false;
+        confpass = "";
+        usuario = new UsuarioRegistro();
+        return "ok";
+    }
+    public String botonAtras(){
+        aceptaTC = false;
+        usuario.setEmail("");
+        setConfemail("");
+        return "regresar";
+    }
+    public String botonCerrar(){
+        aceptaTC = false;
+        usuario.setEmail("");
+        setConfemail("");
+        return "index";
+    }
+    public String crearUsuario() {
+        LogPC.println(this, "crearUsuario()");
+        String resultado = "";
+        String respuesta = "";
+        // Add event code here...
+        if (aceptaTC) {
+            if (usuario.getEmail().equalsIgnoreCase(confemail)) {
+                            ServicioUsuario susuario = new ServicioUsuario();
+                            usuario.setUserName(usuario.getEmail());
+                            try {
+                                resultado = susuario.preRegistroUsuario(usuario);
+                                LogPC.println(this, "resultado PRE REGISTRO:" + resultado);
+                                respuesta="siguiente";
+                            } catch (Exception e) {
+                                mensaje = e.getMessage();
+                                //ADFUtils.addFacesErrorMessage(mensaje);
+                                //ADFUtils.showErrorMessage(mensaje);
+                                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, null, mensaje);
+                                FacesContext.getCurrentInstance().addMessage(null, msg);
+                                LogPC.printlnError(this, e.getMessage(), e);
+                                return null;
+                            }
+                    } else {
+                        mensaje = "El correo electrónico no coincide con su confirmación";
+                        //ADFUtils.showErrorMessage(mensaje);
+                        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, null, mensaje);
+                        FacesContext.getCurrentInstance().addMessage(null, msg);
+                        respuesta = null;
+                    }
+            } else {
+                mensaje = "Debe aceptar los términos y condiciones";
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, null, mensaje);
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+                //ADFUtils.showErrorMessage(mensaje);
+                respuesta = null;
+            }
+        LogPC.println(this, "Respuesta[" + respuesta + "]");
+        return respuesta;
+    }
+    public void setUsuario(UsuarioRegistro usuario) {
+        this.usuario = usuario;
+    }
+
+    public UsuarioRegistro getUsuario() {
+        return usuario;
+    }
+
+    public void setConfpass(String confpass) {
+        this.confpass = confpass;
+    }
+
+    public String getConfpass() {
+        return confpass;
+    }
+
+    public void setAceptaTC(boolean aceptaTC) {
+        this.aceptaTC = aceptaTC;
+    }
+
+    public boolean isAceptaTC() {
+        return aceptaTC;
+    }
+
+
+    public void setConfemail(String confemail) {
+        //eliminacion de " "
+        this.confemail = confemail.replaceAll("\\s+","");
+    }
+
+    public String getConfemail() {
+        return confemail;
+    }
+
+    public void socLada_ValueChange(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        usuario.setTelefonoLada((String)valueChangeEvent.getNewValue());
+
+    }
+
+    public void socLadaCelular_ValueChange(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        usuario.setTelefonoMovilLada((String)valueChangeEvent.getNewValue());
+    }
+
+    public void socLadaTrabajo_ValueChange(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        usuario.setTelefonoTrabajoLada((String)valueChangeEvent.getNewValue());
+    }
+
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+}

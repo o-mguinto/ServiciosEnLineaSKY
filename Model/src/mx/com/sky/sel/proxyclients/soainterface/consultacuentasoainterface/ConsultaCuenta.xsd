@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sky.com.mx/SiebelOSB/ConsultaCuenta" targetNamespace="http://www.sky.com.mx/SiebelOSB/ConsultaCuenta" elementFormDefault="qualified">
+  <xsd:element name="ConsultaCuenta_Entrada" type="ConsultaCuenta_Entrada_TYPE"/>
+  <xsd:element name="ConsultaCuenta_Salida" type="ConsultaCuenta_Salida_TYPE"/>
+  <xsd:complexType name="ConsultaCuenta_Entrada_TYPE">
+    <xsd:sequence>
+      <xsd:element name="CABECERA" type="Cabecera_Entrada_TYPE"/>
+      <xsd:element name="ListOfAccount">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Message" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="AccountNumber" type="xsd:integer"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ConsultaCuenta_Salida_TYPE">
+    <xsd:sequence>
+      <xsd:element name="CABECERA" type="Cabecera_Salida_TYPE"/>
+      <xsd:element name="ListOfAccount">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Account" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="AccountNumber" type="xsd:string"/>
+                  <xsd:element name="AccountStatus" type="xsd:string"/>
+                  <xsd:element name="ServicesNumber" type="xsd:string"/>
+                  <xsd:element name="PreActivateFlag" type="xsd:string"/>
+                  <xsd:element name="Location" type="xsd:string"/>
+                  <xsd:element name="SKYNEWERA" type="xsd:string"/>
+                  <xsd:element name="Type" type="xsd:string"/>
+                  <xsd:element name="MarketType" type="xsd:string"/>
+                  <xsd:element name="MarketClass" type="xsd:string"/>
+                  <xsd:element name="ComInvoiceBillCycle" type="xsd:string"/>
+                  <xsd:element name="CustomerSince" type="xsd:string"/>
+                  <xsd:element name="SKYPromocion" type="xsd:string"/>
+                  <xsd:element name="EstatusVeTV" type="xsd:string"/>
+                  <xsd:element name="AgreementName" type="xsd:string"/>
+                  <xsd:element name="SKYIdDistributor" type="xsd:string"/>
+                  <xsd:element name="SKYIdMaster" type="xsd:string"/>
+                  <xsd:element name="ParentAccountName" type="xsd:string"/>
+                  <xsd:element name="LegalStatus" type="xsd:string"/>
+                  <xsd:element name="ComInvoicePaymentMethod" type="xsd:string"/>
+                  <xsd:element name="AccountTechnology" type="xsd:string"/>
+                  <xsd:element name="AccountSatellite" type="xsd:string"/>
+                  <xsd:element name="BillPaymentSystem" type="xsd:string"/>
+                  <xsd:element name="SKYHJFlag" type="xsd:string"/>
+                  <xsd:element name="PrimaryAccountCountry" type="xsd:string"/>
+                  <xsd:element name="ComInvoiceBillPaymentSystem" type="xsd:string"/>
+                  <xsd:element name="AccountServicesUser" type="xsd:string"/>
+                  <xsd:element name="AccountServicesSystem" type="xsd:string"/>
+                  <xsd:element name="AccountServicesWeighting" type="xsd:string"/>
+                  <xsd:element name="ServicesPackage" type="xsd:string"/>
+                  <xsd:element name="AccountTypeRecharge" type="xsd:string"/>
+                  <xsd:element name="ErrorCode" type="xsd:string"/>
+                  <xsd:element name="ErrorMessage" type="xsd:string"/>
+                  <xsd:element name="ListOfProperty">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="Property" minOccurs="0" maxOccurs="unbounded">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="PropertyName" type="xsd:string"/>
+                              <xsd:element name="PropertyValue" type="xsd:string"/>
+                              <xsd:element name="StartDate" type="xsd:string"/>
+                              <xsd:element name="EndDate" type="xsd:string"/>
+                              <xsd:element name="Description" type="xsd:string"/>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="ListOfServiceInstance">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="ServiceInstance" minOccurs="0" maxOccurs="unbounded">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="SlaveHierarchy" type="xsd:string"/>
+                              <xsd:element name="StatusCode" type="xsd:string"/>
+                              <xsd:element name="AssetNumber" type="xsd:string"/>
+                              <xsd:element name="SecondAssetNumber" type="xsd:string"/>
+                              <xsd:element name="IntegrationId" type="xsd:string"/>
+                              <xsd:element name="ServiceProductType" type="xsd:string"/>
+                              <xsd:element name="AgreementName" type="xsd:string"/>
+                              <xsd:element name="ServiceSupplier" type="xsd:string"/>
+                              <xsd:element name="EventTypeExtern" type="xsd:string"/>
+                              <xsd:element name="MSISDN" type="xsd:int"/>
+                              <xsd:element name="HouseHoldId" type="xsd:string"/>
+                              <xsd:element name="ListOfInstanceComponent">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="InstanceComponent" minOccurs="0" maxOccurs="unbounded">
+                                      <xsd:complexType>
+                                        <xsd:sequence>
+                                          <xsd:element name="IntegrationId" type="xsd:string"/>
+                                          <xsd:element name="Product" type="xsd:string"/>
+                                          <xsd:element name="SKYHJProveedorServicio" type="xsd:string"/>
+                                          <xsd:element name="ProductCategory" type="xsd:string"/>
+                                          <xsd:element name="Action" type="xsd:string"/>
+                                          <xsd:element name="StatusCode" type="xsd:string"/>
+                                          <xsd:element name="EffectiveStartDate" type="xsd:string"/>
+                                          <xsd:element name="EffectiveEndDate" type="xsd:string"/>
+                                          <xsd:element name="ProductoVencidoFlag" type="xsd:string"/>
+                                          <xsd:element name="DownloadSpeed" type="xsd:string"/>
+                                          <xsd:element name="UOMDownloadSpeed" type="xsd:string"/>
+                                          <xsd:element name="UploadSpeed" type="xsd:string"/>
+                                          <xsd:element name="UOMUploadSpeed" type="xsd:string"/>
+                                          <xsd:element name="ExternalOffer" type="xsd:string"/>
+                                        </xsd:sequence>
+                                      </xsd:complexType>
+                                    </xsd:element>
+                                  </xsd:sequence>
+                                </xsd:complexType>
+                              </xsd:element>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="ListOfServiceInstanceType">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="ServiceInstanceType" minOccurs="0" maxOccurs="unbounded">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="ServiceProductType" type="xsd:string"/>
+                              <xsd:element name="TotalInstancias" type="xsd:string"/>
+                              <xsd:element name="Activo" type="xsd:string"/>
+                              <xsd:element name="Pendiente" type="xsd:string"/>
+                              <xsd:element name="Suspendido" type="xsd:string"/>
+                              <xsd:element name="Desconectado" type="xsd:string"/>
+                              <xsd:element name="FutureAddition" type="xsd:string"/>
+                              <xsd:element name="FutureDisconnection" type="xsd:string"/>
+                              <xsd:element name="Error" type="xsd:string"/>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="ListOfServiceAgreement">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="ServiceAgreement" minOccurs="0" maxOccurs="unbounded">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="Primary" type="xsd:string"/>
+                              <xsd:element name="SubscriptionAmount" type="xsd:string"/>
+                              <xsd:element name="AgreementNumber" type="xsd:string"/>
+                              <xsd:element name="AgreementStartDate" type="xsd:string"/>
+                              <xsd:element name="AgreementStatus" type="xsd:string"/>
+                              <xsd:element name="AgreementType" type="xsd:string"/>
+                              <xsd:element name="CanaldeVentaWEB" type="xsd:string"/>
+                              <xsd:element name="PlazoForzosoContrato" type="xsd:string"/>
+                              <xsd:element name="SKYPaquete" type="xsd:string"/>
+                              <xsd:element name="SKYPaqueteActivaciones" type="xsd:string"/>
+                              <xsd:element name="SKYPlazoForzoso" type="xsd:string"/>
+                              <xsd:element name="SKYRecargaMini" type="xsd:string"/>
+                              <xsd:element name="SKYPromocion" type="xsd:string"/>
+                              <xsd:element name="SKYPromocionActivaciones" type="xsd:string"/>
+                              <xsd:element name="SKYVTVPlazoForzoso" type="xsd:string"/>
+                              <xsd:element name="ServiceFlag" type="xsd:string"/>
+                              <xsd:element name="ServiceType" type="xsd:string"/>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="ListOfAddress">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="AccountAddress" minOccurs="0" maxOccurs="unbounded">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="Primary" type="xsd:string"/>
+                              <xsd:element name="AddrType" type="xsd:string"/>
+                              <xsd:element name="StreetAddrCalle" type="xsd:string"/>
+                              <xsd:element name="NumInt" type="xsd:string"/>
+                              <xsd:element name="ProvinceColonia" type="xsd:string"/>
+                              <xsd:element name="AddrNumNumExt" type="xsd:string"/>
+                              <xsd:element name="CityPoblacion" type="xsd:string"/>
+                              <xsd:element name="CountyDelMun" type="xsd:string"/>
+                              <xsd:element name="StateEstado" type="xsd:string"/>
+                              <xsd:element name="CountryPais" type="xsd:string"/>
+                              <xsd:element name="PostalCodeCP" type="xsd:string"/>
+                              <xsd:element name="EntreCalle1" type="xsd:string"/>
+                              <xsd:element name="EntreCalle2" type="xsd:string"/>
+                              <xsd:element name="Latitude" type="xsd:string"/>
+                              <xsd:element name="Longitude" type="xsd:string"/>
+                              <xsd:element name="MDUFlag" type="xsd:string"/>
+                              <xsd:element name="AddrId" type="xsd:string"/>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Cabecera_Entrada_TYPE">
+    <xsd:sequence>
+      <xsd:element name="OPERACION" type="xsd:string"/>
+      <xsd:element name="APLICATIVO" type="xsd:string"/>
+      <xsd:element name="PARAMETRO" maxOccurs="unbounded" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1">
+            <xsd:element name="NOMBRE" type="xsd:string"/>
+            <xsd:element name="VALOR" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Cabecera_Salida_TYPE">
+    <xsd:sequence>
+      <xsd:element name="COD_ERROR" type="xsd:string"/>
+      <xsd:element name="MSG_ERROR" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

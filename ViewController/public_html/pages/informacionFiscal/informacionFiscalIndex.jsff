@@ -1,0 +1,929 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#informacionFiscalIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+        /*solo boton*/
+            .btn-internal {
+                min-width: 50%;
+            }
+            .output-internal, .output-internal label {
+                width: 100%;
+            }
+
+            input[type="radio"] {
+                vertical-align: inherit;
+            }
+            /*para quitar el borde en el focus del radio*/
+            input[type="radio"]:focus {
+                outline: none !important;
+            }
+            /*checkbox*/
+            input[type=checkbox], input[type=radio] {
+                width: 20px !important;
+                height: 20px !important;
+                vertical-align: top;
+            }
+            /*para la seleccion del radio*/
+            /*input[type="radio"]:checked {
+           width: 23px !important;
+            height: 23px !important;
+            background: transparent url(../../imagenes/aplicacion/radio_on_light.svg) 0% 0% no-repeat padding-box !important;
+            opacity: 1 !important;
+            appearance: inherit;
+            border: 0px !important;
+        }*/
+            .solectOne-flex {
+                display: inline-block;
+                vertical-align: text-top;
+            }
+            /*for  +2 radio*/
+            .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 480px;
+                }
+            /* For mobile phones: */
+@media only screen and (min-device-width:320px) and (max-device-width:767px) {
+                /*checkbox*/
+                input[type=checkbox], input[type=radio] {
+                    width: 24px !important;
+                    height: 24px !important;
+                }
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 250px;
+                }
+                .solectOne-flex-2 td.xth > div[role="radiogroup"] div, .solectOne-flex-2 td.xvo > div[role="radiogroup"] div
+                ,.solectOne-flex-2 > div[role="radiogroup"] div{
+                    line-height: 40px;
+                }
+            }
+            /* For mobile phones: */
+            @media only screen and (min-device-width:320px) and (max-device-width:767px) and (orientation:landscape) {
+                 .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 480px;
+                }
+            }
+        /* For tablets: */
+            @media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 300px;
+                }
+                .solectOne-flex-2 td.xth > div[role="radiogroup"] div, .solectOne-flex-2 td.xvo > div[role="radiogroup"] div
+                ,.solectOne-flex-2 > div[role="radiogroup"] div{
+                    line-height: 30px;
+                }
+            }
+            /* For tablets */
+            @media only screen and (min-device-width:768px) and (max-device-width:1024px) and (orientation:landscape) {
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 480px;
+                }
+            }
+            
+            /* Añdade estilos al simbolo ayuda después del inputtext rfc */
+            a.lnkAyuda{
+                color:#5B2178;
+                padding: 10px;
+                font: bold 1.2em 'Roboto', sans-serif
+            }
+        </af:resource>
+        <div id="informacionFiscalIndex">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <!--Para cada fila una div-->
+                    <div class="row">
+                        <af:panelBox id="pb3" background="medium"
+                                     rendered="#{sesion.usuario.cuentaJerarquia}"
+                                     showDisclosure="false" showHeader="never"
+                                     inlineStyle="border: 0px;">
+                            <af:outputText value="Estimado suscriptor, por favor comuníquese con su ejecutivo de cuenta para poder realizar la actualización de información fiscal de su corporativo, el teléfono de contacto es 51690050."
+                                           styleClass="check-internal-bold top-channel"
+                                           id="ot16"/>
+                            <div class="row top"></div>
+                        </af:panelBox><!--Aqui va TODO el contenido-->
+                            <p class="bottom">
+                                <h:outputText styleClass="subtitle"
+                                              value="#{selSKYBundle['fiscal.pb1.text']}"
+                                              id="ot6"/>
+                            </p>
+                        <div class="row">
+                            <af:panelBox id="pb4" background="medium"
+                                         showHeader="never"
+                                         showDisclosure="false"
+                                         inlineStyle="border: 0px;">
+                                <f:facet name="toolbar"/>
+                                <af:outputText value="#{selSKYBundle['fiscal.ph2.text']}"
+                                               id="ot31" styleClass="subtitle"/>
+                                <af:panelList id="pl2"
+                                              inlineStyle="text-align: justify;">
+                                    <af:link text=" Clausulas Legales" id="cl1">
+                                        <af:showPopupBehavior popupId="clausulas"
+                                                              triggerType="action"/>
+                                    </af:link>
+                                    <af:outputText value="#{selSKYBundle['fiscal.ot9.value']}"
+                                                   id="ot9"/>
+                                    <af:outputText value="#{selSKYBundle['fiscal.ot1.value']}"
+                                                   id="ot17"/>
+                                    <af:outputText value="#{selSKYBundle['fiscal.ot2.value']}"
+                                                   id="ot2"/>
+                                    <af:outputText value="#{selSKYBundle['fiscal.ot10.value']}"
+                                                   id="ot10"/>
+                                    <af:outputText value="#{selSKYBundle['fiscal.ot14.value']}"
+                                                   id="ot14"
+                                                   rendered="#{sesion.CUENTA_HOTEL}"/>
+                                    <af:outputText value="#{selSKYBundle['fiscal.ot15.value']}"
+                                                   id="ot15"
+                                                   rendered="#{!sesion.CUENTA_HOTEL}"/>
+                                </af:panelList>
+                                <af:group rendered="#{!sesion.CUENTA_HOTEL}"
+                                          id="g3">
+                                    <div class="row top">
+                                        <af:outputText id="ot12"
+                                                       value="Estimado suscriptor:"
+                                                       styleClass="check-internal-bold top-channel"/>
+                                        <div class="row">
+                                            <h:outputLabel id="ot13"
+                                                           value="Si requiere la modificación o alta de su razón social para la emisión de sus facturas, es necesario que envíe un correo electrónico a la siguiente dirección: factelectronicasky@sky.com.mx para poder indicarle la documentación correspondiente."
+                                                           styleClass="top-channel padd-left"/>
+                                        </div>
+                                    </div>
+                                </af:group>
+                                <div class="row">
+                                    <p class="top">
+                                        <h:outputText styleClass="subtitle"
+                                                      value="Información Fiscal Actual"
+                                                      id="ot110"/>
+                                    </p>
+                                    <div class="col-12 padd-right sm-no-padd-right">
+                                        <af:panelBox id="pb6"
+                                                     background="medium"
+                                                     showHeader="never"
+                                                     showDisclosure="false"
+                                                     inlineStyle="border: 0px;">
+                                            <af:subform id="subFrm1">
+                                                <div class="col-6 col-tb-4 col-sm-8 padd-right sm-no-padd-right">
+                                                    <af:panelFormLayout id="pfl1" labelAlignment="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? 'start': 'top'}"
+                                                                        fieldWidth="100%"
+                                                                        labelWidth="35%">
+                                                        <af:inputText label="#{selSKYBundle['fiscal.it1.label']}"
+                                                                      id="it1"
+                                                                      value="#{bindings.razonSocial.inputValue}"
+                                                                      disabled="true"
+                                                                      readOnly="true"
+                                                                      styleClass="output-internal"
+                                                                      contentStyle="font-weight: bolder;"/>
+                                                        <af:inputText label="E-Mail :"
+                                                                      id="it15"
+                                                                      value="#{sesion.usuario.mail}"
+                                                                      readOnly="true"
+                                                                      styleClass="output-internal"
+                                                                      contentStyle="font-weight: bolder;"/>
+                                                        <af:inputText label="#{selSKYBundle['fiscal.it24.label']}"
+                                                                      required="true"
+                                                                      columns="#{bindings.rfc.hints.displayWidth}"
+                                                                      maximumLength="15"
+                                                                      shortDesc="#{bindings.rfc.hints.tooltip}"
+                                                                      id="it24"
+                                                                      styleClass="output-internal"
+                                                                      contentStyle="font-weight: bolder;"
+                                                                      readOnly="true"
+                                                                      value="#{bindings.rfc.inputValue}"/>
+                                                        <af:inputText value="#{bindings.calleNumero.inputValue}"
+                                                                      label="#{selSKYBundle['fiscal.it20.label']}"
+                                                                      required="#{true}"
+                                                                      columns="#{bindings.calleNumero.hints.displayWidth}"
+                                                                      maximumLength="100"
+                                                                      shortDesc="#{bindings.calleNumero.hints.tooltip}"
+                                                                      id="it20"
+                                                                      readOnly="true"
+                                                                      styleClass="output-internal"
+                                                                      contentStyle="font-weight: bolder;"/>
+                                                        <af:inputText value="#{bindings.numeroExt.inputValue}"
+                                                                      label="#{selSKYBundle['fiscal.it23.label']}"
+                                                                      columns="#{bindings.numeroExt.hints.displayWidth}"
+                                                                      maximumLength="15"
+                                                                      shortDesc="#{bindings.numeroExt.hints.tooltip}"
+                                                                      id="it23"
+                                                                      required="#{true}"
+                                                                      readOnly="true"
+                                                                      styleClass="output-internal"
+                                                                      contentStyle="font-weight: bolder;"/>
+                                                        <af:inputText value="#{bindings.numeroInt.inputValue}"
+                                                                      label="#{selSKYBundle['fiscal.it3.label']}"
+                                                                      columns="#{bindings.numeroInt.hints.displayWidth}"
+                                                                      maximumLength="15"
+                                                                      shortDesc="#{bindings.numeroInt.hints.tooltip}"
+                                                                      id="it3"
+                                                                      readOnly="true"
+                                                                      styleClass="output-internal"
+                                                                      contentStyle="font-weight: bolder;"/>
+                                                    </af:panelFormLayout>
+                                                </div>
+                                                <div class="col-6 col-tb-4 col-sm-8">
+                                                    <af:panelFormLayout id="pfl2" 
+                                                                        labelAlignment="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? 'start': 'top'}"
+                                                                        fieldWidth="100%"
+                                                                        labelWidth="35%">
+                                                        <af:inputText value="#{bindings.colonia.inputValue}"
+                                                                      label="#{selSKYBundle['fiscal.it9.label']}"
+                                                                      required="true"
+                                                                      columns="#{bindings.colonia.hints.displayWidth}"
+                                                                      maximumLength="100"
+                                                                      shortDesc="#{bindings.colonia.hints.tooltip}"
+                                                                      id="it9"
+                                                                      readOnly="true"
+                                                                      styleClass="output-internal"
+                                                                      contentStyle="font-weight: bolder;"/>
+                                                        <af:inputText value="#{bindings.delMun.inputValue}"
+                                                                      label="#{selSKYBundle['fiscal.it5.label']}"
+                                                                      required="#{true}"
+                                                                      columns="#{bindings.delMun.hints.displayWidth}"
+                                                                      maximumLength="100"
+                                                                      shortDesc="#{bindings.delMun.hints.tooltip}"
+                                                                      id="it5"
+                                                                      readOnly="true"
+                                                                      styleClass="output-internal"
+                                                                      contentStyle="font-weight: bolder;"/>
+                                                        <af:inputText value="#{bindings.poblacion.inputValue}"
+                                                                      label="#{selSKYBundle['fiscal.it21.label']}"
+                                                                      required="#{true}"
+                                                                      columns="#{bindings.poblacion.hints.displayWidth}"
+                                                                      maximumLength="100"
+                                                                      shortDesc="#{bindings.poblacion.hints.tooltip}"
+                                                                      id="it21"
+                                                                      readOnly="true"
+                                                                      styleClass="output-internal"
+                                                                      contentStyle="font-weight: bolder;"/>
+                                                        <af:inputText value="#{bindings.estado.inputValue}"
+                                                                      label="#{selSKYBundle['fiscal.it19.label']}"
+                                                                      required="#{true}"
+                                                                      columns="#{bindings.estado.hints.displayWidth}"
+                                                                      maximumLength="50"
+                                                                      shortDesc="#{bindings.estado.hints.tooltip}"
+                                                                      id="it19"
+                                                                      readOnly="true"
+                                                                      styleClass="output-internal"
+                                                                      contentStyle="font-weight: bolder;"/>
+                                                        <af:inputText value="#{bindings.cp.inputValue}"
+                                                                      label="#{selSKYBundle['fiscal.it25.label']}"
+                                                                      required="#{true}"
+                                                                      columns="#{bindings.cp.hints.displayWidth}"
+                                                                      maximumLength="10"
+                                                                      shortDesc="#{bindings.cp.hints.tooltip}"
+                                                                      id="it25"
+                                                                      readOnly="true"
+                                                                      styleClass="output-internal"
+                                                                      contentStyle="font-weight: bolder;"/>
+                                                        
+                                                                      
+                                                        <af:inputText value="#{pageFlowScope.InformacionFiscalBackingBean.tipoPersona}"
+                                                                      label="Tipo de persona: "
+                                                                      required="#{true}"
+                                                                      id="itiatp"
+                                                                      readOnly="true"
+                                                                      styleClass="output-internal"
+                                                                      contentStyle="font-weight: bolder;"/>
+                                                        <af:inputText value="#{pageFlowScope.InformacionFiscalBackingBean.regimenFiscalDescripcion}"
+                                                                      label="Régimen Fiscal: "
+                                                                      required="#{true}"
+                                                                      id="itiarf"
+                                                                      readOnly="true"
+                                                                      styleClass="output-internal"
+                                                                      contentStyle="font-weight: bolder;"/>
+                                                        <af:inputText value="#{pageFlowScope.InformacionFiscalBackingBean.usoCFDIDescripcion}"
+                                                                      label="Uso CFDI: "
+                                                                      required="#{true}"
+                                                                      id="itiauc"
+                                                                      readOnly="true"
+                                                                      styleClass="output-internal"
+                                                                      contentStyle="font-weight: bolder;"/>
+                                                    </af:panelFormLayout>
+                                                </div>
+                                                
+                                                    <div class="top col-12 col-sm-8 col-tb-8">
+                                                        <h:outputLink id="gl10"
+                                                                      value="http://www.sky.com.mx/sky/acerca-legales#privacidad"
+                                                                      target="_blank"
+                                                                      styleClass="terminos">
+                                                            <h:outputText id="ot81"
+                                                                          value="Aviso de Privacidad"/>
+                                                        </h:outputLink>
+                                                    </div>
+                                                
+                                            </af:subform>
+                                        </af:panelBox>
+                                    </div>
+                                </div>
+                                
+                                <af:popup id="clausulas"
+                                          contentDelivery="lazyUncached"
+                                          childCreation="deferred">
+                                    <div class="col-12 col-tb-8 col-sm-8 center-popup">
+                                        <af:dialog id="dialog1" type="ok"
+                                                   title="Clausulas Legales"
+                                                   styleClass="alert"
+                                                   affirmativeTextAndAccessKey="Salir"
+                                                   closeIconVisible="false">
+                                            <div class="text-internal">
+                                                <div class="col-12 autocenter">
+                                                    <h:outputText value="CLAUSULAS DE LA CARGA DE DATOS FISCALES DE PAGINA WEB"
+                                                                  id="outputText1"
+                                                                  styleClass="font-bolder"/>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="Corporación Novavision, S. de R.L. de C.V. (“SKY”) no se hace responsable de los datos fiscales ingresados por usted en este portal, ni de la veracidad de los mismos. Su factura será emitida con la información aquí registrada. Lo anterior con fundamento en el artículo 29 del Código Fiscal de la Federación vigente."
+                                                                      id="otClausula1"
+                                                                      style="text-align: justify;"/>
+                                                    </div>
+                                                    <div class="row top">
+                                                        <h:outputText value="Así mismo y de conformidad con el artículo 83 Fracción IX del Código Fiscal de la Federación, los comprobantes fiscales serán emitidos a nombre de la persona, ya sea física o moral, bajo el cual haya quedado registrado el Contrato de Prestación de Servicios, de Comodato y Arrendamiento celebrado con SKY."
+                                                                      id="otClausula2"
+                                                                      style="text-align: justify;"/>
+                                                    </div>
+                                                    <div class="row">
+                                                        <h:outputText value="Leído lo anterior indique:"
+                                                                      id="otClausula3"
+                                                                      style="text-align: justify;"/>
+                                                    </div>
+                                                    <div class="row">
+                                                        <h:outputText value="Si entiendo y acepto los términos:"
+                                                                      id="otClausula4"
+                                                                      style="text-align: justify;"/>
+                                                    </div>
+                                                    <div class="row">
+                                                        <h:outputText value="No acepto los términos"
+                                                                      id="otClausula5"
+                                                                      style="text-align: justify;"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </af:dialog>
+                                    </div>
+                                </af:popup>
+                                <af:popup id="mensaje"
+                                          contentDelivery="lazyUncached"
+                                          autoCancel="disabled"
+                                          childCreation="deferred"
+                                          binding="#{pageFlowScope.InformacionFiscalBackingBean.popupMensajeContratacion}">
+                                    <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                        <af:dialog id="d1" type="none"
+                                                   title="#{selSKYBundle['mensaje_Notificacion']}"
+                                                   styleClass="alert"
+                                                   closeIconVisible="false">
+                                            <div class="text-internal">
+                                                <af:outputText value="#{pageFlowScope.InformacionFiscalBackingBean.mensajeContratacion}"
+                                                               id="ot3"
+                                                               styleClass="font-bolder"/>
+                                            </div>
+                                            <div class="col-12 dialog-background">
+                                <div class="row top autocenter">
+                                                        <af:button id="b3"
+                                                                   text="#{selSKYBundle['pago.cb5.text']}"
+                                                                   styleClass="btn-pay-dialog"
+                                                                   action="#{pageFlowScope.InformacionFiscalBackingBean.aceptarCambio}"/>
+                                                    
+                                                </div>
+                                            </div>
+                                        </af:dialog>
+                                    </div>
+                                </af:popup>
+                                <af:popup id="confirmacion"
+                                          childCreation="deferred"
+                                          contentDelivery="lazyUncached"
+                                          autoCancel="disabled"
+                                          binding="#{pageFlowScope.InformacionFiscalBackingBean.popupConfirmar}">
+                                    <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                        <af:dialog id="d2"
+                                                   title="Confirmar solicitud de cambio"
+                                                   styleClass="alert"
+                                                   closeIconVisible="false"
+                                                   type="none">
+                                            <div class="text-internal">
+                                                <div class="col-12 autocenter">
+                                                    <h:outputText value="#{selSKYBundle['fiscal.d2.title']}"
+                                                                  id="otpregunta"
+                                                                  styleClass="font-bolder"/>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['fiscal.it14.label']}"
+                                                                      id="it14"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.InformacionFiscalBackingBean.razonSocial.value}"
+                                                                      id="ot1"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['fiscal.it2.label']}"
+                                                                      id="it2"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.InformacionFiscalBackingBean.rfc.value}"
+                                                                      id="ot21"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="E-Mail :"
+                                                                      id="it16"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{sesion.usuario.mail}"
+                                                                      id="ot22"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['fiscal.it6.label']}"
+                                                                      id="it6"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.InformacionFiscalBackingBean.calle.value}"
+                                                                      id="ot23"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['fiscal.it7.label']}"
+                                                                      id="it7"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.InformacionFiscalBackingBean.numExt.value}"
+                                                                      id="ot24"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['fiscal.it8.label']}"
+                                                                      id="it8"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.InformacionFiscalBackingBean.numInt.value}"
+                                                                      id="ot25"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['fiscal.it4.label']}"
+                                                                      id="it4"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.InformacionFiscalBackingBean.colonia.value}"
+                                                                      id="ot26"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['fiscal.it12.label']}"
+                                                                      id="it12"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.InformacionFiscalBackingBean.delegMncp.value}"
+                                                                      id="ot27"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['fiscal.it10.label']}"
+                                                                      id="it10"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.InformacionFiscalBackingBean.poblacion.value}"
+                                                                      id="ot28"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['fiscal.it11.label']}"
+                                                                      id="it11"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.InformacionFiscalBackingBean.estado.value}"
+                                                                      id="ot29"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['fiscal.it13.label']}"
+                                                                      id="it13"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.InformacionFiscalBackingBean.cp.value}"
+                                                                      id="ot30"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="Tipo de persona:"
+                                                                      id="itpptp"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.InformacionFiscalBackingBean.tipoPersona}"
+                                                                      id="otpptp"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="Régimen Fiscal:"
+                                                                      id="itpprf"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.InformacionFiscalBackingBean.regimenFiscalDescripcion}"
+                                                                      id="otpprf"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="Uso CFDI:"
+                                                                      id="itppucfdi"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.InformacionFiscalBackingBean.usoCFDIDescripcion}"
+                                                                      id="otppucfdi"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <!--af:group rendered="#{sesion.CUENTA_HOTEL}"
+                                                          id="g2">
+                                                    <div class="col-12">
+                                                        <div class="row top">
+                                                            <af:panelLabelAndMessage label="Aviso:"
+                                                                                     id="plam1"
+                                                                                     styleClass="panelLabelM">
+                                                                <h:outputText value="Estimado suscriptor: Le recordamos que si tiene menos de 3 cuentas usted pagará un cargo administrativo individual por $7.00. Si Usted tiene más de 3 cuentas pagará un cargo administrativo múltiple (colectivo) por $22.00. Le recordamos que nuestros precios incluyen IVA."
+                                                                              id="ot18"/>
+                                                                <af:spacer width="10"
+                                                                           height="10"
+                                                                           id="s2"/>
+                                                                <h:outputText value="Si esta deacuerdo con esta información haga clic en 'Generar solicitud' para continuar. En caso contrario haga clic en 'Cancelar'"
+                                                                              id="ot11"/>
+                                                            </af:panelLabelAndMessage>
+                                                        </div>
+                                                    </div>
+                                                </af:group-->
+                                            </div>
+                                            <div class="col-12 dialog-background">
+                                                        <div class="row top autocenter">
+                                                            <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-right sm-no-padd-right">
+                                                        <af:button id="b1"
+                                                                   text="#{selSKYBundle['pago.cb6.text']}"
+                                                                   styleClass="btn-pay-dialog"
+                                                                   action="#{pageFlowScope.InformacionFiscalBackingBean.cancelarModificar}"/>
+                                                    </div>
+                                                    <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-left sm-no-padd-left" >
+                                                        <af:button id="b2"
+                                                                   text="#{selSKYBundle['fiscal.d2.btnAceptar']}"
+                                                                   styleClass="btn-pay-dialog"
+                                                                   action="#{pageFlowScope.InformacionFiscalBackingBean.modificar}">
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </af:dialog>
+                                    </div>
+                                </af:popup>
+                            </af:panelBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="row top">
+                    <div class="content-internal">
+                        <p>
+                            <h:outputText styleClass="subtitle"
+                                          value="Capture Nueva Información Fiscal"
+                                          id="ot20"/>
+                        </p>
+                        <div class="row">
+                            <div class="col-12 padd-left sm-no-padd-left">
+                            <af:panelBox id="pb7" background="medium"
+                                         showHeader="never"
+                                         showDisclosure="false"
+                                         inlineStyle="border: 0px;">
+                                <f:facet name="toolbar"/>
+                                <af:subform id="s6">
+                                    <af:panelFormLayout id="pfl3"
+                                                        fieldWidth="100%"
+                                                        labelWidth="100%"
+                                                        maxColumns="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? '2': '1'}"
+                                                         labelAlignment="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? 'start': 'top'}"
+                                                        rows="6">
+                                        <f:facet name="footer"/>
+                                        <af:selectOneRadio value="#{pageFlowScope.InformacionFiscalBackingBean.tipoPersona}"
+                                                           label="Tipo de Persona:"
+                                                           id="sortp"
+                                                           autoSubmit="true"
+                                                           immediate="true"
+                                                           valueChangeListener="#{pageFlowScope.InformacionFiscalBackingBean.actualizarTipoPersonaListener}"
+                                                           required="true"
+                                                           styleClass="input-internal" layout="horizontal">
+                                            <f:selectItems id="sitp" value="#{pageFlowScope.InformacionFiscalBackingBean.tiposPersona}"/>
+                                        </af:selectOneRadio>
+                                        <af:inputText label="#{selSKYBundle['fiscal.it1.label']}"
+                                                      id="it33"
+                                                      value="#{bindings.razonSocial.inputValue}"
+                                                      binding="#{pageFlowScope.InformacionFiscalBackingBean.razonSocial}"
+                                                      readOnly="true"
+                                                      styleClass="input-internal"
+                                                      contentStyle="border-bottom: 1px solid #8AD5F2; font-size:15px;"/>
+                                        <af:inputText label="E-Mail :" id="it32"
+                                                      styleClass="input-internal"
+                                                      value="#{sesion.usuario.mail}"
+                                                      readOnly="true"
+                                                      contentStyle="border-bottom: 1px solid #8AD5F2; font-size:15px;"/>
+                                        <af:inputText value="#{bindings.rfc.inputValue}"
+                                                      label="#{selSKYBundle['fiscal.it24.label']}"
+                                                      required="true"
+                                                      columns="#{bindings.rfc.hints.displayWidth}"
+                                                      maximumLength="15"
+                                                      shortDesc="#{bindings.rfc.hints.tooltip}"
+                                                      autoSubmit="true"
+                                                      id="it31"
+                                                      partialTriggers="it31 sortp"
+                                                      binding="#{pageFlowScope.InformacionFiscalBackingBean.rfc}"
+                                                      readOnly="#{pageFlowScope.InformacionFiscalBackingBean.readOnlyHotel}"
+                                                      styleClass="input-internal"
+                                                      disabled="#{pageFlowScope.InformacionFiscalBackingBean.tipoPersona eq '' ? 'true' : 'false'}">
+                                            <!--af:validateRegExp pattern="(([a-zA-Z&amp;]{4}[0-9]{6}[a-zA-Z0-9]{3})|[a-zA-Z&amp;]{3}[0-9]{6}[a-zA-Z0-9]{3})"
+                                                               messageDetailNoMatch="Ingrese un RFC válido XXXX860902XXX ó XXX860903XXX"/-->
+                                                               
+                                            <af:validateRegExp messageDetailNoMatch="Ingrese un RFC válido#{pageFlowScope.InformacionFiscalBackingBean.tipoPersona eq 'FISICA' ? ' XXXX860902XXX.' : ' XXX860903XXX.'}"
+                                                           pattern="#{pageFlowScope.InformacionFiscalBackingBean.tipoPersona eq 'FISICA' ? '^((([a-zA-Z]{4})[0-9]{6}[a-zA-Z0-9]{3})?)$' : '^((([a-zA-Z&amp;]{3})[0-9]{6}[a-zA-Z0-9]{3})?)$'}"/>
+                                        </af:inputText>
+                                        <a href="#{request.contextPath}/documentos/EstructuraRFC_conformacion.pdf" title="¿Cómo se compone la clave RFC?"
+                                            target="_blank" class="lnkAyuda">
+                                            ?
+                                        </a>
+                                        
+                                        
+                                        <af:inputText value="#{bindings.calleNumero.inputValue}"
+                                                      label="#{selSKYBundle['fiscal.it20.label']}"
+                                                      required="#{true}"
+                                                      columns="#{bindings.calleNumero.hints.displayWidth}"
+                                                      maximumLength="100"
+                                                      shortDesc="#{bindings.calleNumero.hints.tooltip}"
+                                                      id="it30"
+                                                      styleClass="input-internal"
+                                                      binding="#{pageFlowScope.InformacionFiscalBackingBean.calle}"
+                                                      readOnly="#{pageFlowScope.InformacionFiscalBackingBean.readOnlyFiscal}">
+                                            <f:validator binding="#{bindings.calleNumero.validator}"/>
+                                        </af:inputText>
+                                        <af:inputText value="#{bindings.numeroExt.inputValue}"
+                                                      label="#{selSKYBundle['fiscal.it23.label']}"
+                                                      columns="#{bindings.numeroExt.hints.displayWidth}"
+                                                      maximumLength="15"
+                                                      shortDesc="#{bindings.numeroExt.hints.tooltip}"
+                                                      id="it29"
+                                                      required="#{true}"
+                                                      styleClass="input-internal"
+                                                      binding="#{pageFlowScope.InformacionFiscalBackingBean.numExt}"
+                                                      readOnly="#{pageFlowScope.InformacionFiscalBackingBean.readOnlyFiscal}">
+                                            <f:validator binding="#{bindings.numeroExt.validator}"/>
+                                        </af:inputText>
+                                        <af:inputText value="#{bindings.numeroInt.inputValue}"
+                                                      label="#{selSKYBundle['fiscal.it3.label']}"
+                                                      columns="#{bindings.numeroInt.hints.displayWidth}"
+                                                      maximumLength="15"
+                                                      shortDesc="#{bindings.numeroInt.hints.tooltip}"
+                                                      id="it28"
+                                                      styleClass="input-internal"
+                                                      binding="#{pageFlowScope.InformacionFiscalBackingBean.numInt}"
+                                                      readOnly="#{pageFlowScope.InformacionFiscalBackingBean.readOnlyFiscal}">
+                                            <f:validator binding="#{bindings.numeroInt.validator}"/>
+                                        </af:inputText>
+                                        <af:inputText value="#{bindings.colonia.inputValue}"
+                                                      label="#{selSKYBundle['fiscal.it9.label']}"
+                                                      required="true"
+                                                      columns="#{bindings.colonia.hints.displayWidth}"
+                                                      maximumLength="100"
+                                                      shortDesc="#{bindings.colonia.hints.tooltip}"
+                                                      id="it27"
+                                                      styleClass="input-internal"
+                                                      binding="#{pageFlowScope.InformacionFiscalBackingBean.colonia}"
+                                                      readOnly="#{pageFlowScope.InformacionFiscalBackingBean.readOnlyFiscal}">
+                                            <f:validator binding="#{bindings.colonia.validator}"/>
+                                        </af:inputText>
+                                        <af:inputText value="#{bindings.delMun.inputValue}"
+                                                      label="#{selSKYBundle['fiscal.it5.label']}"
+                                                      required="#{true}"
+                                                      columns="#{bindings.delMun.hints.displayWidth}"
+                                                      maximumLength="100"
+                                                      styleClass="input-internal"
+                                                      shortDesc="#{bindings.delMun.hints.tooltip}"
+                                                      id="it26"
+                                                      binding="#{pageFlowScope.InformacionFiscalBackingBean.delegMncp}"
+                                                      readOnly="#{pageFlowScope.InformacionFiscalBackingBean.readOnlyFiscal}">
+                                            <f:validator binding="#{bindings.delMun.validator}"/>
+                                        </af:inputText>
+                                        <af:inputText value="#{bindings.poblacion.inputValue}"
+                                                      label="#{selSKYBundle['fiscal.it21.label']}"
+                                                      required="#{true}"
+                                                      columns="#{bindings.poblacion.hints.displayWidth}"
+                                                      maximumLength="100"
+                                                      shortDesc="#{bindings.poblacion.hints.tooltip}"
+                                                      id="it22"
+                                                      styleClass="input-internal"
+                                                      binding="#{pageFlowScope.InformacionFiscalBackingBean.poblacion}"
+                                                      readOnly="#{pageFlowScope.InformacionFiscalBackingBean.readOnlyFiscal}">
+                                            <f:validator binding="#{bindings.poblacion.validator}"/>
+                                        </af:inputText>
+                                        <af:inputText value="#{bindings.estado.inputValue}"
+                                                      label="#{selSKYBundle['fiscal.it19.label']}"
+                                                      required="#{true}"
+                                                      columns="#{bindings.estado.hints.displayWidth}"
+                                                      maximumLength="50"
+                                                      shortDesc="#{bindings.estado.hints.tooltip}"
+                                                      id="it18"
+                                                      styleClass="input-internal"
+                                                      binding="#{pageFlowScope.InformacionFiscalBackingBean.estado}"
+                                                      readOnly="#{pageFlowScope.InformacionFiscalBackingBean.readOnlyFiscal}">
+                                            <f:validator binding="#{bindings.estado.validator}"/>
+                                        </af:inputText>
+                                        <af:inputText value="#{bindings.cp.inputValue}"
+                                                      label="#{selSKYBundle['fiscal.it25.label']}"
+                                                      required="#{true}"
+                                                      columns="#{bindings.cp.hints.displayWidth}"
+                                                      maximumLength="10"
+                                                      shortDesc="#{bindings.cp.hints.tooltip}"
+                                                      id="it17"
+                                                      styleClass="input-internal"
+                                                      binding="#{pageFlowScope.InformacionFiscalBackingBean.cp}"
+                                                      readOnly="#{pageFlowScope.InformacionFiscalBackingBean.readOnlyFiscal}">
+                                            <f:validator binding="#{bindings.cp.validator}"/>
+                                            <af:validateRegExp pattern="[0-9]{5}"
+                                                               messageDetailNoMatch="Sólo se permiten 5 números"/>
+                                        </af:inputText>
+                                        <br/>
+                                        <!--<af:selectOneRadio value="#{pageFlowScope.InformacionFiscalBackingBean.tipoPersona}"
+                                                           label="Tipo de Persona:"
+                                                           id="sortp"
+                                                           autoSubmit="true"
+                                                           immediate="true"
+                                                           valueChangeListener="#{pageFlowScope.InformacionFiscalBackingBean.actualizarTipoPersonaListener}"
+                                                           required="true"
+                                                           styleClass="input-internal" layout="horizontal">
+                                            <f:selectItems id="sitp" value="#{pageFlowScope.InformacionFiscalBackingBean.tiposPersona}"/>
+                                        </af:selectOneRadio>-->
+                                        <af:selectOneChoice value="#{pageFlowScope.InformacionFiscalBackingBean.regimenFiscal}"
+                                                label="Régimen Fiscal:" id="socrf" required="true"
+                                                unselectedLabel="Seleccione su régimen fiscal" styleClass="input-internal"
+                                                valueChangeListener="#{pageFlowScope.InformacionFiscalBackingBean.actualizarRegimenFiscalListener}"
+                                                autoSubmit="true" immediate="true" partialTriggers="sortp">
+                                            <f:selectItems value="#{pageFlowScope.InformacionFiscalBackingBean.regimenesFiscales}" id="sirf"/>
+                                        </af:selectOneChoice>
+                                        <af:selectOneChoice value="#{pageFlowScope.InformacionFiscalBackingBean.usoCFDI}"
+                                                label="Uso CFDI:" id="socusoscfdi" required="true"
+                                                unselectedLabel="Seleccione el uso CFDI" styleClass="input-internal"
+                                                autoSubmit="true" immediate="true">
+                                            <f:selectItems value="#{pageFlowScope.InformacionFiscalBackingBean.usosCFDIItems}" id="siucfdi"/>
+                                        </af:selectOneChoice>
+                                        
+                                        <af:selectOneRadio label="¿Requiere su factura?"
+                                                           id="sor1"
+                                                           value="#{pageFlowScope.InformacionFiscalBackingBean.beneficioSelect}"
+                                                           rendered="#{!sesion.CUENTA_HOTEL}"
+                                                           required="true"
+                                                           styleClass="solectOne-flex-2 top">
+                                            <af:selectItem label="SI" value="si"
+                                                           rendered="#{!sesion.CUENTA_HOTEL}"
+                                                           id="si2"/>
+                                            <af:selectItem label="NO" value="no"
+                                                           rendered="#{!sesion.CUENTA_HOTEL}"
+                                                           id="si3"/>
+                                        </af:selectOneRadio>
+                                    </af:panelFormLayout>
+                                    <af:panelGroupLayout id="pgl30">
+                                        <div class="col-12 col-tb-8 col-sm-8">
+                            <div class="row top" style="line-height: 30px;">
+                                <af:selectOneRadio label="" id="sor2" styleClass="solectOne-flex" required="true"
+                                                   showRequired="true" autoSubmit="true">
+                                    <f:selectItem id="si6" itemValue="#{selSKYBundle['mensaje_terminos1']}"
+                                                  itemLabel="#{selSKYBundle['mensaje_terminos1']}"/>
+                                </af:selectOneRadio>
+                                 
+                                <h:outputLink id="ol1" value="#{parametros.urlAvisoPrivacidad}" target="_blank"
+                                              styleClass="terminos">
+                                    <h:outputText id="otTerm" value="#{selSKYBundle.mensaje_terminos2}"/>
+                                </h:outputLink>
+                            </div>
+                        </div>
+                                    </af:panelGroupLayout>
+                                        <div class="top top-2 col-5 col-sm-8  col-tb-5 right" style="float:right;">
+                                            <af:button text="Enviar solicitud de cambio"
+                                                       id="cb4"
+                                                       action="#{pageFlowScope.InformacionFiscalBackingBean.Confirmar}"
+                                                       rendered="#{pageFlowScope.InformacionFiscalBackingBean.botonEnvia}"
+                                                       returnListener="#{pageFlowScope.InformacionFiscalBackingBean['return']}"
+                                                       styleClass="btn-internal"/>
+                                        </div>
+                                </af:subform>
+                            </af:panelBox>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row top">
+                    <div class="content-internal">
+                        <p>
+                            <h:outputText styleClass="subtitle"
+                                          value="#{selSKYBundle['fiscal.pb2.text']}"
+                                          id="ot19"/>
+                        </p>
+                        <div class="row">
+                            <af:panelBox id="pb2" background="medium"
+                                         showHeader="never"
+                                         showDisclosure="false"
+                                         inlineStyle="border: 0px;">
+                                <f:facet name="toolbar"/>
+                                <af:panelCollection id="pc1"
+                                                    styleClass="AFStretchWidth">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar"/>
+                                    <f:facet name="statusbar"/>
+                                    <af:table value="#{bindings.DetalleSolicitudServicio.collectionModel}"
+                                              var="row"
+                                              rows="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                              emptyText="#{bindings.DetalleSolicitudServicio.viewable ? 'Información no Disponible.' : 'Access Denied.'}"
+                                              fetchSize="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.DetalleSolicitudServicio.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.DetalleSolicitudServicio.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="t1"
+                                              partialTriggers=":::d2"
+                                              autoHeightRows="10" width="100%"
+                                              scrollPolicy="auto"
+                                              horizontalGridVisible="false"
+                                              verticalGridVisible="false"
+                                              styleClass="tbl-Class">
+                                        <af:column sortProperty="numeroSolicitud"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['fiscal.c2.headertext']}"
+                                                   id="c2"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.numeroSolicitud}"
+                                                           id="ot8"/>
+                                        </af:column>
+                                        <af:column sortProperty="fechaCreacion"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['fiscal.c1.headertext']}"
+                                                   id="c1" width="150"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.fechaCreacion}"
+                                                           id="ot5"/>
+                                        </af:column>
+                                        <af:column sortProperty="apellidoDeContrato"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['fiscal.c3.headertext']}"
+                                                   id="c3" width="200"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.apellidoDeContrato}"
+                                                           id="ot7"/>
+                                        </af:column>
+                                        <af:column sortProperty="comentario"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['fiscal.c4.headertext']}"
+                                                   id="c4" width="300"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.comentario}"
+                                                           id="ot4"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                            </af:panelBox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

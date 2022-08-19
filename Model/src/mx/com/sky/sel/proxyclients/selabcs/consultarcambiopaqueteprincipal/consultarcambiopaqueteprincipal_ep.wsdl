@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="ConsultarCambioPaquetePrincipal" targetNamespace="http://xmlns.sky.com.mx/ABCSImpl/Sel/ConsultarCambioPaquetePrincipal" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:client="http://xmlns.sky.com.mx/ABCSImpl/Sel/ConsultarCambioPaquetePrincipal" xmlns:ns1="http://www.sky.com.mx/EnterpriseMessages/Sel/ConsultarCambioPaquetePrincipal" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.oracle.com/bpel/extension" xmlns:ns3="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" xmlns:ns4="http://www.example.org">
+  <wsdl:documentation>
+    <abstractWSDL>https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_ABCS/ConsultarCambioPaquetePrincipalSelABCS!20210914-1408/WSDLs/ConsultarCambioPaquetePrincipal.wsdl</abstractWSDL>
+  </wsdl:documentation>
+  <plnk:partnerLinkType name="ConsultarCambioPaquetePrincipal">
+    <plnk:role name="ConsultarCambioPaquetePrincipalProvider" portType="client:ConsultarCambioPaquetePrincipal"/>
+  </plnk:partnerLinkType>
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://www.sky.com.mx/EnterpriseMessages/Sel/ConsultarCambioPaquetePrincipal" schemaLocation="ConsultarCambioPaquetePrincipalSelEBM.xsd"/>
+    </schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.example.org" schemaLocation="NumProductoPrecio.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultarCambioPaquetePrincipalRequestMessage">
+    <wsdl:part name="payload" element="ns1:ConsultarCambioPaquetePrincipalRequestEBM"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultarCambioPaquetePrincipalResponseMessage">
+    <wsdl:part name="payload" element="ns1:ConsultarCambioPaquetePrincipalResponseEBM"/>
+  </wsdl:message>
+  <wsdl:portType name="ConsultarCambioPaquetePrincipal">
+    <wsdl:operation name="ConsultarCambioPaquetePrincipal">
+      <wsdl:input message="client:ConsultarCambioPaquetePrincipalRequestMessage"/>
+      <wsdl:output message="client:ConsultarCambioPaquetePrincipalResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConsultarCambioPaquetePrincipalBinding" type="client:ConsultarCambioPaquetePrincipal">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ConsultarCambioPaquetePrincipal">
+      <soap:operation style="document" soapAction="http://xmlns.sky.com.mx/ABCSImpl/Sel/ConsultarCambioPaquetePrincipal/ConsultarCambioPaquetePrincipal"/>
+      <wsdl:input>
+        <soap:body use="literal" parts="payload"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="payload"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="consultarcambiopaqueteprincipal_ep">
+    <wsdl:port name="ConsultarCambioPaquetePrincipal_pt" binding="client:ConsultarCambioPaquetePrincipalBinding">
+      <soap:address location="https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_ABCS/ConsultarCambioPaquetePrincipalSelABCS/consultarcambiopaqueteprincipal_ep"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

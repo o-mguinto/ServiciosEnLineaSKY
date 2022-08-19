@@ -1,0 +1,158 @@
+#mosaico{
+    margin: 10px auto;
+}
+
+table#mosaico{
+    border-collapse: separate;
+    border-spacing:  4px;
+}
+
+table#mosaico td{
+    border: solid 2px #505050 ;
+}
+
+table#mosaico td img{
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+}
+
+table#mosaico td img:hover{
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+
+
+#login_header{
+    margin: 10px auto;
+}
+.login_acciones{
+    margin: 10px auto;
+}
+.botones_login{
+    margin: 10px auto;
+}
+table#login_header1{
+    border-collapse: separate;
+    border-spacing:  4px;
+}
+table#login_header1 td img{
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+}
+
+table#login_header1 td img:hover{
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+
+div.canalPortada{
+    position: relative;
+}
+
+video{
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 75%;
+}
+
+.info_canal{
+    position: relative;
+    margin: -40% 0 28% 50px;
+}
+
+.btn-secrets{
+    margin:10px 25px;
+}
+
+.btn-secrets a{
+    width: auto !important;
+}
+
+.canalSinopsis{
+    width: 40%;
+    margin: 50px 25px;
+    text-align: justify;
+}
+
+.sinopsis{
+    width: 30%;
+    height: auto;
+    margin-left: 0%;
+    margin-right: 10px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: lighter;
+    text-shadow: black 0.1em 0.1em 0.1em;
+}
+
+/* Media queries para smartphone */
+@media (max-width: 768px) and (orientation: portrait){
+    .info_canal{
+        margin-top: 0;
+        margin-left: 5px;
+        margin-bottom: 0px;
+        font-size: 8px;
+        min-height: inherit;
+    }
+    .btn-secrets{
+        margin: 5px;
+    }
+    .canalSinopsis{
+        position: relative;
+        margin: auto;
+        width: 95%;
+    }
+    .sinopsis{
+        font-size: 12px;
+    }
+    .botonesflotantes{
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape){
+    .btn-secrets{
+        margin: 5px;
+    }
+    .canalSinopsis{
+        position: relative;
+        width: 75%;
+    }
+    .sinopsis{
+        font-size: 14px;
+    }
+}
+
+.canalSinopsis{
+    min-height: 100px;
+}
+
+a.regresar, a.regresar:hover{
+    background: #AE1329;
+    padding: 8px;
+    color: #fff;
+    line-height: 25px;
+    text-decoration: none;
+}
+
+.regresar span{
+    font-size: 25px;
+    font-weight: bold;
+    vertical-align: middle;
+}

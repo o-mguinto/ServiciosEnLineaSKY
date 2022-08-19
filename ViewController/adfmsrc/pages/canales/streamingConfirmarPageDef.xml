@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="streamingConfirmarPageDef"
+                Package="pages.canales">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="contratarServicioStreaming" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="contratarServicioStreaming" IsViewObjectMethod="false" DataControl="DCCanalCarta"
+                  InstanceName="bindings.contratarServicioStreaming.dataControl.dataProvider"
+                  ReturnName="data.DCCanalCarta.methodResults.contratarServicioStreaming_contratarServicioStreaming_dataControl_dataProvider_contratarServicioStreaming_result">
+      <NamedData NDName="cuenta" NDType="java.lang.String"/>
+      <NamedData NDName="producto" NDType="java.lang.String"/>
+      <NamedData NDName="assetNumber" NDType="java.lang.String"/>
+      <NamedData NDName="secondAssetNumber" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

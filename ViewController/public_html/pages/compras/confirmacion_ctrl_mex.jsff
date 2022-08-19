@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+    <!--Aqui va TODO el contenido-->
+    <af:group id="gpControlMX_continua">
+        <af:resource type="javascript">
+          $('#controlMX_continua').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            /*solo boton*/
+            .btn-internal {
+                min-width: 50%;
+            }
+
+            .output-internal, .output-internal label {
+                width: 100%;
+            }
+
+            input[type="radio"] {
+                vertical-align: inherit;
+            }
+            /*para quitar el borde en el focus del radio*/
+            input[type="radio"]:focus {
+                outline: none !important;
+            }
+            /*checkbox*/
+            input[type=checkbox], input[type=radio] {
+                width: 20px !important;
+                height: 20px !important;
+                vertical-align: top;
+            }
+            /*para la seleccion del radio*/
+            /*input[type="radio"]:checked {
+           width: 23px !important;
+            height: 23px !important;
+            background: transparent url(../../imagenes/aplicacion/radio_on_light.svg) 0% 0% no-repeat padding-box !important;
+            opacity: 1 !important;
+            appearance: inherit;
+            border: 0px !important;
+        }*/
+            .solectOne-flex {
+                display: inline-block;
+                vertical-align: text-top;
+            }
+            /* For mobile phones: */
+@media only screen and (min-device-width:320px) and (max-device-width:767px) {
+                /*checkbox*/
+                input[type=checkbox], input[type=radio] {
+                    width: 24px !important;
+                    height: 24px !important;
+                }
+            }
+
+        </af:resource>
+        <div id="controlMX_continua">
+            <div class="col-11 col-sm-8 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <h:outputText styleClass="title" value="#{selSKYBundle['control.d3.title']}" id="otTitulo"
+                                      style="text-transform: uppercase;"/>
+                        <div class="row top">
+                            <af:panelGroupLayout id="pgl4" styleClass="col-3 col-sm-8  col-tb-3 right"
+                                                 inlineStyle="float:right;">
+                                <div class="top">
+                                    <div class="autocenter padd-top-dialog">
+                                        <af:image source="/imagenes/controlremoto/#{pageFlowScope.ControlBackingBean.control.pathIcon}"
+                                                  id="i2"/>
+                                    </div>
+                                    <div class="row autocenter">
+                                        <h:outputText id="it13"
+                                                      value="Precio: $ #{pageFlowScope.ControlBackingBean.control.precioDisplay}"
+                                                      styleClass="text-internal font-bolder"/>
+                                    </div>
+                                    <div class="row top dialog-descrip" style="max-height: 220px;">
+                                        <h:outputText id="it1"
+                                                      value="#{pageFlowScope.ControlBackingBean.control.descripcion}"/>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                             
+                            <af:panelGroupLayout id="pgl3" styleClass="col-9 col-sm-8  col-tb-5 right"
+                                                 inlineStyle="float:right;">
+                                <h:outputText styleClass="title" value="Dirección de Envío" id="ot14"/>
+                                <div class="row">
+                                    <af:panelBox showDisclosure="false" showMaximize="never" background="medium"
+                                                 showHeader="never" id="pb2"
+                                                 inlineStyle="border:none;    border-right: solid 1px #D6DFE6;     margin-right: 5px;">
+                                        <f:facet name="toolbar"/>
+                                        <af:panelFormLayout id="pfl1" partialTriggers="s1:cb4"
+                                                            labelAlignment="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? 'start': 'top'}"
+                                                            fieldWidth="100%" labelWidth="35%">
+                                            <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.calleNumero}"
+                                                          maximumLength="50"
+                                                          shortDesc="#{bindings.calleNumero.hints.tooltip}" id="it6"
+                                                          binding="#{pageFlowScope.ControlBackingBean.calle}"
+                                                          readOnly="#{pageFlowScope.ControlBackingBean.readOnlyDireccion}"
+                                                          label="#{selSKYBundle['control.it6.label']}" required="true"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder; opacity:1;"/>
+                                            <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.numeroExt}"
+                                                          maximumLength="6" id="it3numExt"
+                                                          binding="#{pageFlowScope.ControlBackingBean.numExt}"
+                                                          readOnly="#{pageFlowScope.ControlBackingBean.readOnlyDireccion}"
+                                                          label="#{selSKYBundle['control.it3.label']}" required="true"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder; opacity:1;"
+                                                          labelStyle="}"/>
+                                            <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.numeroInt}"
+                                                          maximumLength="10" id="numInt"
+                                                          binding="#{pageFlowScope.ControlBackingBean.numInt}"
+                                                          readOnly="#{pageFlowScope.ControlBackingBean.readOnlyDireccion}"
+                                                          label="#{selSKYBundle['control.it12.label']}"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder; opacity:1;"/>
+                                            <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.colonia}"
+                                                          maximumLength="50" id="it4col"
+                                                          binding="#{pageFlowScope.ControlBackingBean.colonia}"
+                                                          readOnly="#{pageFlowScope.ControlBackingBean.readOnlyDireccion}"
+                                                          label="#{selSKYBundle['control.it4.label']}" required="true"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder; opacity:1;"/>
+                                            <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.poblacion}"
+                                                          maximumLength="25" id="it5poblacion"
+                                                          binding="#{pageFlowScope.ControlBackingBean.poblacion}"
+                                                          readOnly="#{pageFlowScope.ControlBackingBean.readOnlyDireccion}"
+                                                          label="#{selSKYBundle['control.it5.label']}" required="true"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder; opacity:1;"/>
+                                            <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.delMun}"
+                                                          maximumLength="50" id="it9delmun"
+                                                          binding="#{pageFlowScope.ControlBackingBean.delegMncp}"
+                                                          readOnly="#{pageFlowScope.ControlBackingBean.readOnlyDireccion}"
+                                                          label="#{selSKYBundle['control.it9.label']}" required="true"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder; opacity:1;"/>
+                                            <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.ciudad}"
+                                                          maximumLength="50" id="it8ciudad"
+                                                          binding="#{pageFlowScope.ControlBackingBean.ciudad}"
+                                                          readOnly="#{pageFlowScope.ControlBackingBean.readOnlyDireccion}"
+                                                          label="#{selSKYBundle['control.it8.label']}" required="true"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder; opacity:1;"/>
+                                            <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.estado}"
+                                                          maximumLength="50" id="it11estado"
+                                                          binding="#{pageFlowScope.ControlBackingBean.estado}"
+                                                          readOnly="#{pageFlowScope.ControlBackingBean.readOnlyDireccion}"
+                                                          label="#{selSKYBundle['control.it11.label']}" required="true"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder; opacity:1;"/>
+                                            <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.cp}"
+                                                          maximumLength="5" id="it7CP"
+                                                          binding="#{pageFlowScope.ControlBackingBean.cp}"
+                                                          readOnly="#{pageFlowScope.ControlBackingBean.readOnlyDireccion}"
+                                                          label="#{selSKYBundle['control.it7.label']}" required="true"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder; opacity:1;">
+                                                <af:validateRegExp pattern="[0-9]{5}"
+                                                                   messageDetailNoMatch="Sólo se permiten 5 números"/>
+                                            </af:inputText>
+                                            <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.telefono}"
+                                                          maximumLength="10" id="it2tel"
+                                                          binding="#{pageFlowScope.ControlBackingBean.telefono}"
+                                                          readOnly="#{pageFlowScope.ControlBackingBean.readOnlyDireccion}"
+                                                          label="#{selSKYBundle['control.it2.label']}" required="true"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder; opacity:1;">
+                                                <f:validator binding="#{bindings.telefono.validator}"/>
+                                                <af:validateRegExp pattern="[0-9]{7,10}"
+                                                                   messageDetailNoMatch="Sólo se permiten 7 a 10 números"/>
+                                            </af:inputText>
+                                            <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.lada}"
+                                                          maximumLength="3" id="it10lada"
+                                                          binding="#{pageFlowScope.ControlBackingBean.lada}"
+                                                          readOnly="#{pageFlowScope.ControlBackingBean.readOnlyDireccion}"
+                                                          label="#{selSKYBundle['control.it10.label']}" required="true"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder; opacity:1;">
+                                                <af:validateRegExp pattern="[0-9]{2}[0-9]?"
+                                                                   messageDetailNoMatch="Sólo se permiten 2 o 3 números"/>
+                                            </af:inputText>
+                                        </af:panelFormLayout>
+                                    </af:panelBox>
+                                </div>
+                            </af:panelGroupLayout>
+                            <div class="col-12 col-tb-8 col-sm-8">
+                                <div class="row top" style="line-height: 30px;">
+                                    <af:selectOneRadio label="" id="sor1" styleClass="solectOne-flex" required="true"
+                                                       showRequired="true" autoSubmit="true">
+                                        <f:selectItem id="si6" itemValue="#{selSKYBundle['mensaje_terminos1']}"
+                                                      itemLabel="#{selSKYBundle['mensaje_terminos1']}"/>
+                                    </af:selectOneRadio>
+                                     
+                                    <h:outputLink id="ol1" value="#{parametros.urlAvisoPrivacidad}" target="_blank"
+                                                  styleClass="terminos">
+                                        <h:outputText id="ot8" value="#{selSKYBundle.mensaje_terminos2}"/>
+                                    </h:outputLink>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-8 col-tb-8">
+                                <af:panelGroupLayout id="pgl5" partialTriggers="s1:cb4">
+                                    <af:group rendered="#{!pageFlowScope.ControlBackingBean.readOnlyDireccion}" id="g1">
+                                        <span class="xf" style="margin-left:30px;">* </span>
+                                        <af:outputText value="#{selSKYBundle['general.obligatorio']}" id="ot2"
+                                                       styleClass="cursiv"/>
+                                    </af:group>
+                                </af:panelGroupLayout>
+                            </div>
+                            <af:panelGroupLayout id="pgl6">
+                                <div class="top top-2 col-2 col-sm-8  col-tb-2 right" style="float:right;">
+                                    <af:button text="Cancelar" id="cb2" action="terminar_control" immediate="true"
+                                               styleClass="btn-internal"/>
+                                </div>
+                                <af:panelGroupLayout id="pgl2" rendered="#{sesion.CONTROL_REMOTOVeTV}">
+                                    <div class="top top-2 col-2 col-sm-8  col-tb-2 right" style="float:right;">
+                                        <af:button text="Siguiente" id="cb3"
+                                                   action="#{pageFlowScope.ControlBackingBean.direccionSiguienteAction}"
+                                                   rendered="#{sesion.CONTROL_REMOTOVeTV}" styleClass="btn-internal"/>
+                                    </div>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl1" rendered="#{!sesion.CONTROL_REMOTOVeTV}">
+                                    <div class="top top-2 col-2 col-sm-8  col-tb-2 right" style="float:right;">
+                                        <af:button text="Comprar" id="cb1"
+                                                   action="#{pageFlowScope.ControlBackingBean.direccionSiguienteAction}"
+                                                   rendered="#{!sesion.CONTROL_REMOTOVeTV}" styleClass="btn-internal">
+                                            <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                        </af:button>
+                                    </div>
+                                </af:panelGroupLayout>
+                                <af:subform id="s1">
+                                    <div class="top top-2 col-5 col-sm-8  col-tb-4 right" style="float:right;">
+                                        <af:button text="#{pageFlowScope.ControlBackingBean.readOnlyDireccion ? selSKYBundle['control.sbc1.label']  : 'Atrás'}"
+                                                   id="cb4"
+                                                   visible="#{pageFlowScope.ControlBackingBean.readOnlyDireccion}"
+                                                   actionListener="#{pageFlowScope.ControlBackingBean.direccionChanged}"
+                                                   immediate="true" styleClass="btn-internal"
+                                                   inlineStyle="max-width: 220px;">
+                                            <af:resetActionListener/>
+                                        </af:button>
+                                    </div>
+                                </af:subform>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition> 

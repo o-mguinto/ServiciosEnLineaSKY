@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_requiereOtraInfo" action="irPagROIDefaultRouter" focusViewId="/requiereOtraInfo" 
+            label="#{lbl.menu_REQUIERE_OTRA_INFORMACION}" immediate="true"
+            icon="/imagenes/menu/ic_requiereOtraInfo.svg" rendered="#{sesion.REQUIERE_OTRA_INFORMACION}">
+    <itemNode id="itemNode_mandeSuSolicitud" label="#{lbl.smenu_REQUIERE_OTRA_INFO_MANDE_SOLICITUD}" action="smenu_mandeSuSolicitud"
+              focusViewId="/mandeSuSolicitud" rendered="#{sesion.MANDE_SU_SOLICITUD}" immediate="true"/>
+  </itemNode>
+</menu>

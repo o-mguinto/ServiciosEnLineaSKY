@@ -1,0 +1,506 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#tarjeta').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            input[type="radio"] {
+                vertical-align: inherit;
+            }
+            /*para quitar el borde en el focus del radio*/
+            input[type="radio"]:focus {
+                outline: none !important;
+            }
+            /*checkbox*/
+            input[type=checkbox], input[type=radio] {
+                width: 20px !important;
+                height: 20px !important;
+                vertical-align: top;
+            }
+            /*para la seleccion del radio*/
+            /*input[type="radio"]:checked {
+           width: 23px !important;
+            height: 23px !important;
+            background: transparent url(../../imagenes/aplicacion/radio_on_light.svg) 0% 0% no-repeat padding-box !important;
+            opacity: 1 !important;
+            appearance: inherit;
+            border: 0px !important;
+        }*/
+            .solectOne-flex {
+                display: inline-block;
+                vertical-align: text-top;
+            }
+            /* For mobile phones: */
+            @media only screen and (min-device-width:320px) and (max-device-width:767px) {
+                /*checkbox*/
+                input[type=checkbox], input[type=radio] {
+                    width: 24px !important;
+                    height: 24px !important;
+                }
+            }
+        </af:resource>
+        <!--scripts para implementar encriptacion Voltage-->
+        <af:resource type="javascript"  source="https://despievoltage.sky.com.mx/pie/v1/encryption.js"/>
+        <af:resource type="javascript"  source="https://despievoltage.sky.com.mx/pie/v1/voltageskytc/getkey.js"/>
+        <af:resource type="javascript"  source="js/voltage/pie-data-protection.js"/>
+        <af:resource type="javascript"  source="js/voltage/pie-services.js"/>
+        <div id="tarjeta">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelGroupLayout id="pgl7" partialTriggers="b3">
+                            <p class="bottom">
+                                <h:outputText styleClass="title"
+                                              value="Mis Tarjetas" id="ot12"/>
+                            </p>
+                            <div class="col-8 col-tb-8 col-sm-8">
+                                <div class="row">
+                                    <af:subform id="f1">
+                                        <div class="row">
+                                            <div class="col-12 col-tb-8 col-sm-8">
+                                                <span class="xf">* </span>
+                                                 
+                                                <af:outputLabel for="itdcname"
+                                                                value="#{selSKYBundle['pago.it1.label']}"
+                                                                id="ol1"
+                                                                styleClass="label-internal"/>
+                                                 
+                                                <af:inputText id="itdcname"
+                                                              value="#{pageFlowScope.TarjetaBackingBean.tarjeta.nombre}"
+                                                              autoComplete="off"
+                                                              required="true"
+                                                              maximumLength="30"
+                                                              styleClass="input-internal"
+                                                              placeholder="#{selSKYBundle['placeHolder_ingresarNombreTarjeta']}"
+                                                              simple="true"/>
+                                            </div>
+                                        </div>
+                                        <div class="row top">
+                                            <div class="col-12 col-tb-8 col-sm-8">
+                                                <span class="xf">* </span>
+                                                 
+                                                <af:outputLabel for="numeroTarjeta"
+                                                                value="#{selSKYBundle['pago.it2.label']}"
+                                                                id="ol2"
+                                                                styleClass="label-internal"/>
+                                                 
+                                                <af:inputText id="numeroTarjeta"
+                                                              secret="true"
+                                                              value="#{pageFlowScope.TarjetaBackingBean.tarjeta.numeroTarjeta}"
+                                                              required="true"
+                                                              showRequired="true"
+                                                              maximumLength="16"
+                                                              autoComplete="off"
+                                                              autoSubmit="true"
+                                                              binding="#{pageFlowScope.TarjetaBackingBean.inputTDC}"
+                                                              styleClass="input-internal"
+                                                              placeholder="#{selSKYBundle['placeHolder_ingresaNumeroTarjeta']}"
+                                                              simple="true"
+                                                              valueChangeListener="#{pageFlowScope.TarjetaBackingBean.lstnrValueChangeNumeroTarjeta}">
+                                                    <af:validateRegExp messageDetailNoMatch="#{selSKYBundle.msg_estructuraTarjetaCredito}"
+                                                                       pattern="^[0-9]{15,16}$"/>
+                                                </af:inputText>
+                                            </div>
+                                        </div>
+                                        
+                                    <af:panelGroupLayout id="pglV"
+                                                         partialTriggers="::b2">
+                                    <h:inputHidden id="creditCardNumberProtect"
+                                                    binding="#{pageFlowScope.TarjetaBackingBean.tarjetaProtegida}"/>
+                                        <div class="row top">
+                                <div class="col-12 col-tb-8 col-sm-8">
+                                    <af:outputLabel value="#{selSKYBundle.lbl_tipotarjeta}"
+                                                    id="ol33"
+                                                    styleClass="label-internal"/>
+                                </div>
+                                <div class="col-12 col-tb-8 col-sm-8">
+                                    <af:panelGroupLayout id="pgl1"
+                                                         partialTriggers="numeroTarjeta"
+                                                         inlineStyle="padding: 10px;">
+                                        <h:inputHidden id="key_id"
+                                                    binding="#{pageFlowScope.TarjetaBackingBean.key_Id}"/>
+                                        <h:inputHidden id="phase"
+                                                    binding="#{pageFlowScope.TarjetaBackingBean.phase_Id}"/>
+                                        <af:image id="i1"
+                                                  source="imagenes/pc/interno/micuenta/Visa_logo.jpg"
+                                                  rendered="#{pageFlowScope.TarjetaBackingBean.tipoTarjeta eq 'VISA'}"
+                                                  shortDesc="Visa"
+                                                  styleClass="credit-card-logo"/>
+                                        <af:image id="i2"
+                                                  source="imagenes/pc/interno/micuenta/MasterCard_logo.jpg"
+                                                  rendered="#{pageFlowScope.TarjetaBackingBean.tipoTarjeta eq 'MASTERCARD'}"
+                                                  shortDesc="MasterCard"
+                                                  styleClass="credit-card-logo"/>
+                                        <af:image id="i3"
+                                                  source="imagenes/pc/interno/micuenta/Amex_logo.jpg"
+                                                  rendered="#{pageFlowScope.TarjetaBackingBean.tipoTarjeta eq 'AMEX'}"
+                                                  shortDesc="American Express"
+                                                  styleClass="credit-card-logo"/>
+                                        <h:outputText id="ot22"
+                                                      value="#{pageFlowScope.TarjetaBackingBean.tipoTarjeta}"
+                                                      styleClass="perfil-input-internal"/>
+                                    </af:panelGroupLayout>
+                                </div>
+                            </div>
+                                    </af:panelGroupLayout>
+                                        
+                                        <div class="row top">
+                                            <div class="col-12 col-tb-8 col-sm-8">
+                                                <af:inputText id="itdcnumCod"
+                                                              label="#{selSKYBundle['pago.it2.label']}"
+                                                              value="#{pageFlowScope.TarjetaBackingBean.tarjeta.numeroTarjeta}"
+                                                              required="true"
+                                                              showRequired="true"
+                                                              maximumLength="4"
+                                                              readOnly="true"
+                                                              visible="false"
+                                                              binding="#{pageFlowScope.TarjetaBackingBean.inputTDCCod}"
+                                                              styleClass="input-internal">
+                                                    <af:validateRegExp messageDetailNoMatch="#{selSKYBundle.msg_estructuraCodigo}"
+                                                                       pattern="^[0-9]{3,4}$"/>
+                                                </af:inputText>
+                                            </div>
+                                        </div>
+                                        <div class="row top">
+                                            <div class="col-12 col-tb-8 col-sm-8">
+                                                <span class="xf">* </span>
+                                                 
+                                                <af:outputLabel for="soc2"
+                                                                styleClass="label-internal"
+                                                                id="ol4"
+                                                                value="#{selSKYBundle['pago.soc2.label']}"/>
+                                                 
+                                                <af:selectOneChoice styleClass="select-internal"
+                                                                    id="soc2"
+                                                                    simple="true"
+                                                                    autoSubmit="true"
+                                                                    showRequired="false"
+                                                                    required="true"
+                                                                    unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                                                    value="#{pageFlowScope.TarjetaBackingBean.tarjeta.mes}">
+                                                    <f:selectItems value="#{pageFlowScope.TarjetaBackingBean.meses}"
+                                                                   id="si2"/>
+                                                </af:selectOneChoice>
+                                            </div>
+                                        </div>
+                                        <div class="row top">
+                                            <div class="col-12 col-tb-8 col-sm-8">
+                                                <span class="xf">* </span>
+                                                 
+                                                <af:outputLabel for="soc3"
+                                                                styleClass="label-internal"
+                                                                id="ol3"
+                                                                value="#{selSKYBundle['pago.soc3.label']}"/>
+                                                 
+                                                <af:selectOneChoice styleClass="select-internal"
+                                                                    id="soc3"
+                                                                    simple="true"
+                                                                    autoSubmit="true"
+                                                                    showRequired="false"
+                                                                    required="true"
+                                                                    unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                                                    value="#{pageFlowScope.TarjetaBackingBean.tarjeta.anio}">
+                                                    <f:selectItems value="#{pageFlowScope.TarjetaBackingBean.anios}"
+                                                                   id="si3"/>
+                                                </af:selectOneChoice>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 col-tb-8 col-sm-8">
+                                            <div class="top" style="line-height: 30px;">
+                                                    <af:selectOneRadio label=""
+                                                                       id="sor1"
+                                                                       required="true"
+                                                                       binding="#{pageFlowScope.TarjetaBackingBean.selectOneChoiceAviso}"
+                                                                       partialTriggers="::d1"
+                                                                       showRequired="true"
+                                                                       autoSubmit="true" styleClass="solectOne-flex">
+                                                        <f:selectItems value="#{pageFlowScope.TarjetaBackingBean.terminos}"
+                                                                       id="si1"
+                                                                       binding="#{pageFlowScope.TarjetaBackingBean.siAviso}"/>
+                                                    </af:selectOneRadio>
+                                                    <h:outputLink id="ol8"
+                                                                  value="#{parametros.urlAvisoPrivacidad}"
+                                                                  target="_blank"
+                                                                  styleClass="terminos">
+                                                        <h:outputText id="ot8"
+                                                                      value="#{selSKYBundle.mensaje_terminos2}"/>
+                                                    </h:outputLink>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row top">
+                                            <af:panelGroupLayout id="pgl0">
+                                                <f:verbatim>                                                             <span class="xf">*</span>                                                                                  </f:verbatim>
+                                                <af:outputText value="#{selSKYBundle['general.obligatorio']}"
+                                                               id="outputText2"
+                                                               styleClass="cursiv"/>
+                                            </af:panelGroupLayout>
+                                        </div>
+                                        <div class="row">
+                                                <div class="top top-2 col-2 col-sm-8  col-tb-2 center" style="float:right;">
+                                                    <af:button id="cb1"
+                                                               text="#{selSKYBundle['pago.cb1.text']}"
+                                                               action="#{pageFlowScope.TarjetaBackingBean.popupAgregar}"
+                                                               styleClass="btn-internal"
+                                                               rendered="#{pageFlowScope.TarjetaBackingBean.insert}">
+                                                        <af:clientListener method="enforcePreventUserInput"
+                                                                           type="action"/>
+                                                    </af:button>
+                                                </div>
+                                                <div class="top top-2 col-2 col-sm-8  col-tb-2 center" style="#{Menu.fromPagos eq 'true' ? 'display:block;float:right;' : 'display:none;'}">
+                                                    <af:button id="cb2"
+                                                               text="#{selSKYBundle.btn_regresar}"
+                                                               action="realizarPago"
+                                                               styleClass="btn-internal"
+                                                               immediate="true"
+                                                               rendered="#{Menu.fromPagos}">
+                                                        <f:setPropertyActionListener target="#{Menu.taskFlowId}"
+                                                                                     value="/WEB-INF/pagoTF.xml#pagoTF"/>
+                                                        <f:setPropertyActionListener target="#{ParametrosPago.tipoPago}"
+                                                                                     value="PAGO"/>
+                                                        <af:clientListener method="enforcePreventUserInput"
+                                                                           type="action"/>
+                                                    </af:button>
+                                                </div>
+                                        </div>
+                                    </af:subform>
+                                </div>
+                            </div>
+                        </af:panelGroupLayout>
+                    </div>
+                </div>
+                <div class="row top">
+                    <div class="col-12 content-internal">
+                            <p>
+                                <h:outputText styleClass="title"
+                                              value="#{selSKYBundle['pago.pb1.text']}"
+                                              id="ot6"/>
+                            </p>
+                        <div class="row">
+                            <af:panelBox id="pb1" background="medium"
+                                         showHeader="never"
+                                         showDisclosure="false"
+                                         inlineStyle="border: 0px;"
+                                         contentStyle="border: 0px;">
+                                <f:facet name="toolbar"/>
+                                <af:panelCollection id="pc2"
+                                                    partialTriggers="::d1"
+                                                    defaultToolbarItemDisplay="icon"
+                                                    styleClass="AFStretchWidth">
+                                    <af:table value="#{bindings.TarjetasV.collectionModel}"
+                                              var="row"
+                                              rows="#{bindings.TarjetasV.rangeSize}"
+                                              emptyText="#{bindings.TarjetasV.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              fetchSize="#{bindings.TarjetasV.rangeSize}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.TarjetasV.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.TarjetasV.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="t2"
+                                              autoHeightRows="10"
+                                              partialTriggers=":::d1"
+                                              contentDelivery="immediate"
+                                              width="100%" scrollPolicy="auto"
+                                              horizontalGridVisible="false"
+                                              verticalGridVisible="false"
+                                              styleClass="tbl-Class">
+                                        <af:column sortProperty="id"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['pago.c9.headertext']}"
+                                                   id="c9" width="100"
+                                                   rendered="false"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.id}"
+                                                           id="ot15">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.TarjetasV.hints.id.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column sortProperty="numeroTarjeta"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['pago.c6.headertext']}"
+                                                   id="c6" width="150"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.numeroTarjeta}"
+                                                           id="ot10"/>
+                                        </af:column>
+                                        <af:column sortProperty="nombre"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['pago.c13.headertext']}"
+                                                   id="c13" width="250"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.nombre}"
+                                                           id="ot16"/>
+                                        </af:column>
+                                        <af:column sortProperty="tipo"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['pago.c8.headertext']}"
+                                                   id="c8" align="center"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.tipo}"
+                                                           id="ot11"/>
+                                        </af:column>
+                                        <af:column sortProperty="Eliminar"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['pago.c20.headertext']}"
+                                                   id="c20" align="center"
+                                                   headerClass="content-text">
+                                            <af:link text="" id="cl13"
+                                                     action="#{pageFlowScope.TarjetaBackingBean.popupEliminar}"
+                                                     immediate="true">
+                                                <f:setPropertyActionListener target="#{pageFlowScope.TarjetaBackingBean.id}"
+                                                                             value="#{row.id}"/>
+                                                <!-- <af:image source="/imagenes/aplicacion/delete.png" id="ii3"/>-->
+                                                <af:outputText value="Eliminar"
+                                                               id="ott9"/>
+                                            </af:link>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                            </af:panelBox>
+                             
+                            <af:popup id="p1"
+                                      binding="#{pageFlowScope.TarjetaBackingBean.popup}"
+                                      contentDelivery="lazyUncached"
+                                      autoCancel="disabled"
+                                      childCreation="deferred">
+                                <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                    <af:dialog id="d1"
+                                               title="Confirmar Operación"
+                                               type="none"
+                                               closeIconVisible="false"
+                                               styleClass="alert">
+                                        <div class="text-internal">
+                                            <div class="col-12 autocenter">
+                                                <h:outputText value="#{pageFlowScope.TarjetaBackingBean.messagePopup}"
+                                                              id="ot2"
+                                                              styleClass="font-bolder"/>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row top">
+                                                    <h:outputText value="#{selSKYBundle['pago.it4.label']}"
+                                                                  id="ot7"/>
+                                                </div>
+                                                <div class="border-bottom">
+                                                    <h:outputText value="#{pageFlowScope.TarjetaBackingBean.tarjeta.nombre}"
+                                                                  id="ot3"
+                                                                  styleClass="azul-internal"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <h:outputText value="#{selSKYBundle['pago.it5.label']}"
+                                                                  id="ot4"/>
+                                                </div>
+                                                <div class="border-bottom">
+                                                    <h:outputText value="#{pageFlowScope.TarjetaBackingBean.tarjeta.noCodificado}"
+                                                                  id="ot5"
+                                                                  styleClass="azul-internal"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <h:outputText value="#{selSKYBundle['pago.it9.label']}"
+                                                                  id="ot9"/>
+                                                </div>
+                                                <div class="border-bottom">
+                                                    <h:outputText value="#{pageFlowScope.TarjetaBackingBean.tarjeta.tipo}"
+                                                                  id="ot13"
+                                                                  styleClass="azul-internal"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <h:outputText value="#{selSKYBundle['pago.it12.label']}"
+                                                                  id="ot14"/>
+                                                </div>
+                                                <div class="border-bottom">
+                                                    <h:outputText value="#{pageFlowScope.TarjetaBackingBean.tarjeta.creditoDebitoTexto}"
+                                                                  id="ot17"
+                                                                  styleClass="azul-internal"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <h:outputText value="#{selSKYBundle['pago.it10.label']}"
+                                                                  id="ot18"/>
+                                                </div>
+                                                <div class="border-bottom">
+                                                    <h:outputText value="#{pageFlowScope.TarjetaBackingBean.tarjeta.mes}"
+                                                                  id="ot19"
+                                                                  styleClass="azul-internal"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <h:outputText value="#{selSKYBundle['pago.it11.label']}"
+                                                                  id="ot20"/>
+                                                </div>
+                                                <div class="border-bottom">
+                                                    <h:outputText value="#{pageFlowScope.TarjetaBackingBean.tarjeta.anio}"
+                                                                  id="ot21"
+                                                                  styleClass="azul-internal"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 dialog-background">
+                                            <div class="row autocenter">
+                                                <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align" style="float: right">
+                                                    <af:button id="b1"
+                                                               text="#{selSKYBundle['pago.cb6.text']}"
+                                                               styleClass="btn-pay-dialog"
+                                                               action="#{pageFlowScope.TarjetaBackingBean.cancelarOperacion}"/>
+                                                </div>
+                                                <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align" style="float: right">
+                                                    <af:button id="b2"
+                                                               text="#{selSKYBundle['pago.cb5.text']}"
+                                                               styleClass="btn-pay-dialog"
+                                                               action="#{pageFlowScope.TarjetaBackingBean.listenerPopup}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </af:dialog>
+                                </div>
+                            </af:popup>
+                             
+                            <af:popup id="mensajePago" autoCancel="disabled"
+                                      childCreation="deferred"
+                                      binding="#{pageFlowScope.TarjetaBackingBean.popupMensajeRespuesta}">
+                                <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                    <af:dialog id="dialog1" type="none"
+                                               title="Notificación de la Operación"
+                                               styleClass="alert"
+                                               closeIconVisible="false">
+                                        <div class="text-internal">
+                                            <af:outputText value="#{pageFlowScope.TarjetaBackingBean.mensajeRespuesta}"
+                                                           id="outputText1"
+                                                           styleClass="font-bolder"/>
+                                        </div>
+                                        <div class="col-12 dialog-background">
+                                            <div class="row top autocenter">
+                                                <af:button id="b3"
+                                                           text="#{selSKYBundle['pago.cb5.text']}"
+                                                           styleClass="btn-pay-dialog"
+                                                           action="#{pageFlowScope.TarjetaBackingBean.aceptarOperacion}"/>
+                                            </div>
+                                        </div>
+                                    </af:dialog>
+                                </div>
+                            </af:popup>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

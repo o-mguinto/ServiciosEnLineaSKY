@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="equipoIRD">
+    <page>/WEB-INF/submenus/reporteDanoRoboExtravio/equipoIRD.jsf</page>
+    <input-page-parameter id="__5">
+      <from-value>/WEB-INF/seguroTF.xml#seguroTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="tarjetaInteligente">
+    <page>/WEB-INF/submenus/reporteDanoRoboExtravio/tarjetaInteligente.jsf</page>
+    <input-page-parameter id="__7">
+      <from-value>/WEB-INF/reporteTarjetaInteligenteTF.xml#reporteTarjetaInteligenteTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <router id="seleccionarPagDefault">
+    <case id="__15">
+      <expression>#{sesion.IRD}</expression>
+      <outcome>irEquipoIRD</outcome>
+    </case>
+    <case id="__16">
+      <expression>#{sesion.SMARTCARD}</expression>
+      <outcome>irTarjetaInteligente</outcome>
+    </case>
+    <default-outcome>irRdreIndex</default-outcome>
+  </router>
+  <view id="reporteDanoRoboExtravioIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>smenu_equipoIRD</from-outcome>
+      <to-activity-id>equipoIRD</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__3">
+      <from-outcome>smenu_tarjetaInteligente</from-outcome>
+      <to-activity-id>tarjetaInteligente</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__17">
+      <from-outcome>adfMenu_reporteDanoRoboExtravioIndex</from-outcome>
+      <to-activity-id>reporteDanoRoboExtravioIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__18">
+      <from-outcome>irSeleccionarPagDefault</from-outcome>
+      <to-activity-id>seleccionarPagDefault</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__19">
+      <from-outcome>irSeleccionarPagDefault_3</from-outcome>
+      <to-activity-id>reporteDREIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__20">
+      <from-outcome>irSeleccionarPagDefault_3</from-outcome>
+      <to-activity-id>reporteDREIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__11">
+    <from-activity-id>seleccionarPagDefault</from-activity-id>
+    <control-flow-case id="__12">
+      <from-outcome>irRdreIndex</from-outcome>
+      <to-activity-id>reporteDanoRoboExtravioIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__13">
+      <from-outcome>irEquipoIRD</from-outcome>
+      <to-activity-id>equipoIRD</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__14">
+      <from-outcome>irTarjetaInteligente</from-outcome>
+      <to-activity-id>tarjetaInteligente</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__8">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>reporteDanoRoboExtravio_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__9">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__10">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/reporteDanoRoboExtravio/reporteDanoRoboExtravio_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

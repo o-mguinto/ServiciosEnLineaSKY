@@ -1,0 +1,152 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jdevws:WebServiceProxy xmlns:jdevws="http://xmlns.oracle.com/jdeveloper/10130/webserviceproxy">
+   <list n="CHILD_NODES">
+      <url path="ConsultarUsoCFDI_ep.xml"/>
+      <url path="ConsultarUsoCFDI_ep.wsdl"/>
+      <url path="ConsultarUsoCFDISelEBM.xsd"/>
+      <url path="Meta.xsd"/>
+      <url path="DBConsultarUsoCFDI.xsd"/>
+      <url path="../../../../../../../com/oracle/xmlns/pcbpel/adapter/db/dbconsultarusocfdi/DBConsultarUsoCFDIOutputCollectionType.java"/>
+      <url path="../../../../enterpriseobjects/sel/consultarusocfdi/ConsultarUsoCFDIRequestType.java"/>
+      <url path="../../../../enterpriseobjects/sel/consultarusocfdi/package-info.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/EBMHeaderRequestType.java"/>
+      <url path="ConsultarUsoCFDI.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/EBMType.java"/>
+      <url path="../../../../enterpriseobjects/sel/consultarusocfdi/ConsultarUsoCFDIResponseType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ErrorNegocioType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/package-info.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pcbpel/adapter/db/dbconsultarusocfdi/DBConsultarUsoCFDIOutputType.java"/>
+      <url path="../../../../enterpriseobjects/sel/consultarusocfdi/ObjectFactory.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ParametroItemType.java"/>
+      <url path="ConsultarUsoCFDI_ptClient.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pcbpel/adapter/db/dbconsultarusocfdi/ObjectFactory.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ObjectFactory.java"/>
+      <url path="ConsultarUsoCFDIEp.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/EBMHeaderResponseType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ParametroListType.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pcbpel/adapter/db/dbconsultarusocfdi/DBConsultarUsoCFDIInputType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ErrorTecnicoType.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pcbpel/adapter/db/dbconsultarusocfdi/package-info.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/SeguridadItemType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/SeguridadListType.java"/>
+   </list>
+   <hash n="DATA_MODEL">
+      <value n="ATTACHMENT_ENCODING" v="MIME"/>
+      <list n="LOCAL_FILES"/>
+      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy"/>
+      <url n="ORACLE_WEBSERVICES_XML" path="ConsultarUsoCFDI_ep.xml"/>
+      <hash n="PROPERTY_GROUPS">
+         <hash n="WSDL_TO_JAVA_PROPERTIES">
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+            <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.selinterface.consultarusocfdiselinterface"/>
+         </hash>
+      </hash>
+      <value n="PROXY_ASYNC_METHODS" v="FOR_NONE"/>
+      <list n="PROXY_CLIENTS">
+         <url path="ConsultarUsoCFDI_ptClient.java"/>
+      </list>
+      <value n="PROXY_MAPPING_URL"/>
+      <url n="PROXY_ORIGINAL_WSDL_URL" protocol="https" host="desselsoa.sky.com.mx" path="/soa-infra/services/SEL_Interface/ConsultarUsoCFDISelInterface/ConsultarUsoCFDI_ep" query="WSDL"/>
+      <hash n="PROXY_PORTS">
+         <hash n="ConsultarUsoCFDI_pt">
+            <value n="ACCESSES_DOC_WRAPPPED" v="true"/>
+            <value n="ACCESSES_RPC_ENCODED" v="false"/>
+            <value n="CLASS_NAME" v="mx.com.sky.sel.proxyclients.selinterface.consultarusocfdiselinterface.ConsultarUsoCFDI"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
+            <value n="NAME" v="ConsultarUsoCFDI_pt"/>
+            <hash n="OPERATIONS">
+               <hash n="ConsultarUsoCFDI">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </hash>
+            <hash n="PROPERTY_GROUPS">
+               <hash n="WS_POLICY">
+                  <value n="addressing"/>
+                  <hash n="GLOBAL_CONFIG_PROPERTIES"/>
+                  <list n="management"/>
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.policy.PolicyClientModel"/>
+                  <value n="mtom"/>
+                  <hash n="POLICY_OVERRIDE_PROPERTIES"/>
+                  <list n="security"/>
+                  <list n="wsconfig"/>
+                  <value n="wsrm"/>
+               </hash>
+            </hash>
+            <url n="PROXY_ORIGINAL_PORT_ENDPOINT" protocol="https" host="desselsoa.sky.com.mx" port="443" path="/soa-infra/services/SEL_Interface/ConsultarUsoCFDISelInterface/ConsultarUsoCFDI_ep"/>
+         </hash>
+      </hash>
+      <value n="PROXY_SERVICE_NAME" v="ConsultarUsoCFDI_ep"/>
+      <value n="PROXY_SERVICE_NAMESPACE" v="http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarUsoCFDI"/>
+      <url n="PROXY_TARGET_PROJECT" path="../../../../../../../../Model.jpr"/>
+      <list n="PROXY_WSDL_IMPORT_LIST">
+         <url path="ConsultarUsoCFDISelEBM.xsd"/>
+         <url path="Meta.xsd"/>
+         <url path="DBConsultarUsoCFDI.xsd"/>
+      </list>
+      <url n="PROXY_WSDL_URL" path="ConsultarUsoCFDI_ep.wsdl"/>
+      <hash n="REFERENCED_WEBSERVICE">
+         <list n="BD_">
+            <hash>
+               <value n="BOUND_PORT_TYPE" v="{http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarUsoCFDI}ConsultarUsoCFDI"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+               <value n="NAME" v="{http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarUsoCFDI}ConsultarUsoCFDIBinding"/>
+               <list n="OP_BINDINGS">
+                  <hash>
+                     <value n="BOUND_OPERATION" v="mx.com.sky.enterpriseobjects.sel.consultarusocfdi.ConsultarUsoCFDIResponseType.ConsultarUsoCFDI.mx.com.sky.enterpriseobjects.sel.consultarusocfdi.ConsultarUsoCFDIRequestType"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+            </hash>
+         </list>
+         <list n="BINDING_FILES"/>
+         <value n="GUID" v="b505f21b-017f-1000-809c-0afd091b7a60"/>
+         <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
+         <list n="PO_">
+            <hash>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+               <value n="NAME" v="ConsultarUsoCFDI_pt"/>
+               <value n="PORT_BINDING_NAME" v="{http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarUsoCFDI}ConsultarUsoCFDIBinding"/>
+               <list n="PORT_OPS">
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="mx.com.sky.enterpriseobjects.sel.consultarusocfdi.ConsultarUsoCFDIResponseType.consultarUsoCFDI.mx.com.sky.enterpriseobjects.sel.consultarusocfdi.ConsultarUsoCFDIRequestType"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+               <url n="URL" protocol="https" host="desselsoa.sky.com.mx" port="443" path="/soa-infra/services/SEL_Interface/ConsultarUsoCFDISelInterface/ConsultarUsoCFDI_ep"/>
+            </hash>
+         </list>
+         <hash n="PROPERTY_GROUPS">
+            <hash n="WSDL_TO_JAVA_PROPERTIES">
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+               <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.selinterface.consultarusocfdiselinterface"/>
+            </hash>
+         </hash>
+         <list n="PT_">
+            <hash>
+               <value n="AUTO_SERVICE_INTERFACE"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaPortType"/>
+               <value n="NAME" v="{http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarUsoCFDI}ConsultarUsoCFDI"/>
+               <hash n="PROPERTY_GROUPS"/>
+               <value n="PT_CLASS" v="mx.com.sky.sel.proxyclients.selinterface.consultarusocfdiselinterface.ConsultarUsoCFDIImpl"/>
+               <value n="PT_SERVICE_INTERFACE" v="mx.com.sky.sel.proxyclients.selinterface.consultarusocfdiselinterface.ConsultarUsoCFDI"/>
+               <value n="PT_TOP_DOWN_GENERATED_SEI_NAME" v="mx.com.sky.sel.proxyclients.selinterface.consultarusocfdiselinterface.ConsultarUsoCFDI"/>
+            </hash>
+         </list>
+         <url n="TARGET_PROJECT" path="../../../../../../../../Model.jpr"/>
+         <value n="WS_ORIG_GEN_DIRECTION" v="TOP_DOWN"/>
+         <value n="WS_TARGET_NAMESPACE" v="http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarUsoCFDI"/>
+         <value n="WS_URI" v="ConsultarUsoCFDI_ep"/>
+         <url n="WS_WSDL_FILE" path="ConsultarUsoCFDI_ep.wsdl"/>
+      </hash>
+      <value n="SERVICE_ASYNC" v="false"/>
+      <value n="USE_WSDL_LOCATION" v="true"/>
+   </hash>
+</jdevws:WebServiceProxy>

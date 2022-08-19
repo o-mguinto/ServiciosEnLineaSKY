@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="lugaresPago">
+    <page>/WEB-INF/submenus/buscarLugaresPago/lugaresPago.jsf</page>
+    <input-page-parameter id="__4">
+      <from-value>/WEB-INF/lugaresPagoTF.xml#lugaresPago</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <router id="routerBuscarLugares">
+    <case id="__12">
+      <expression>#{sesion.LUGARES_PAGO}</expression>
+      <outcome>irLugaresPago</outcome>
+    </case>
+    <default-outcome>irBuscarLugaresIndex</default-outcome>
+  </router>
+  <view id="buscarLugaresIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>smenu_buscarLugaresPago</from-outcome>
+      <to-activity-id>lugaresPago</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__10">
+      <from-outcome>irRouterLugaresPago</from-outcome>
+      <to-activity-id>routerBuscarLugares</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__13">
+      <from-outcome>irRouterLugaresPago_1</from-outcome>
+      <to-activity-id>buscarLugaresIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__8">
+    <from-activity-id>routerBuscarLugares</from-activity-id>
+    <control-flow-case id="__9">
+      <from-outcome>irLugaresPago</from-outcome>
+      <to-activity-id>lugaresPago</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__11">
+      <from-outcome>irBuscarLugaresIndex</from-outcome>
+      <to-activity-id>buscarLugaresIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__5">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>lugaresPago_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__6">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__7">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/buscarLugaresPago/lugaresPago_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

@@ -1,0 +1,308 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#seguro').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+        input[type="radio"] {
+            vertical-align: inherit;
+        }
+        /*para quitar el borde en el focus del radio*/
+        input[type="radio"]:focus {
+            outline: none !important ;
+        }
+        /*checkbox*/
+        input[type=checkbox], input[type=radio] {
+            width: 20px !important;
+            height: 20px !important;
+            vertical-align: top;
+        }
+        /*para la seleccion del radio*/
+        /*input[type="radio"]:checked {
+           width: 23px !important;
+            height: 23px !important;
+            background: transparent url(../../imagenes/aplicacion/radio_on_light.svg) 0% 0% no-repeat padding-box !important;
+            opacity: 1 !important;
+            appearance: inherit;
+            border: 0px !important;
+        }*/
+        /*for selectOneradio*/
+            .solectOne-flex {
+                display: inline-block;
+                vertical-align: text-top;
+            }
+            /*for  +2 radio*/
+            .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 480px;
+                }
+                .ifDocumentoSeguro tbody tr td{
+                    display: block;
+                    text-align: left;
+                }
+            /* For tablets: */
+            @media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 300px;
+                }
+                .solectOne-flex-2 td.xth > div[role="radiogroup"] div, .solectOne-flex-2 td.xvo > div[role="radiogroup"] div
+                ,.solectOne-flex-2 > div[role="radiogroup"] div{
+                    line-height: 30px;
+                }
+            }
+            /* For tablets */
+            @media only screen and (min-device-width:768px) and (max-device-width:1024px) and (orientation:landscape) {
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 480px;
+                }
+            }
+            /* For mobile phones: */
+            @media only screen and (min-device-width:320px) and (max-device-width:767px) {
+                /*checkbox*/
+                input[type=checkbox], input[type=radio] {
+                    width: 24px !important;
+                    height: 24px !important;
+                }
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 250px;
+                }
+                .solectOne-flex-2 td.xth > div[role="radiogroup"] div, .solectOne-flex-2 td.xvo > div[role="radiogroup"] div
+                ,.solectOne-flex-2 > div[role="radiogroup"] div{
+                    line-height: 40px;
+                }
+            }
+                /* For mobile phones: */
+            @media only screen and (min-device-width:320px) and (max-device-width:767px) and (orientation:landscape) {
+                 .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 480px;
+                }
+            }
+        </af:resource>
+        <div id="seguro">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:outputText value="#{selSKYBundle['seguro.pb1.text']}"
+                                       id="ot1" styleClass="subtitle"/>
+                         
+                        <af:panelList id="pl2"
+                                      listStyle="list-style-type:circle">
+                            <af:outputText value="#{selSKYBundle['seguro.ot2.value']}"
+                                           id="ot2"/>
+                            <af:outputText value="#{selSKYBundle['seguro.ot3.value']}"
+                                           id="ot3"/>
+                            <af:outputText value="#{selSKYBundle['seguro.ot4.value']}"
+                                           id="ot4"/>
+                        </af:panelList>
+                        <div class="row top">
+                            <af:outputText value="#{selSKYBundle['seguro.pb2.text']}"
+                                           id="pbot1" styleClass="subtitle"/>
+                             
+                            <af:panelList id="pl1"
+                                          listStyle="list-style-type:circle">
+                                <af:outputText rendered="#{!sesion.PAN}"
+                                               value="#{selSKYBundle['seguro.ot1.value']} #{sesion.telefonoFax}"
+                                               id="ot13"/>
+                                <af:outputText rendered="#{sesion.PAN}"
+                                               value="Fax 833 6675, 832 3298 y 00 800 226 0270"
+                                               id="ot12"/>
+                                <af:outputText value="#{selSKYBundle['seguro.ot10.value']} #{sesion.emailCAC}"
+                                               id="ot10"/>
+                                <af:outputText value="#{selSKYBundle['seguro.ot11.value']}"
+                                               id="ot11"/>
+                                <af:outputText value="Le recordamos que el tamaño máximo por documento PDF que se envíe deberá ser de 1 MB"
+                                               id="ot_6"/>
+                                <af:outputText value="El formato de imagen PNG no esta soportado, se recomienda enviar documentos en formato PDF"
+                                               id="ot_7"/>
+                            </af:panelList>
+                        </div>
+                        <div class="row top">
+                            <af:subform id="subform2">
+                                <af:panelGroupLayout id="pgl1" layout="vertical"
+                                                     halign="left">
+                                    <af:selectBooleanRadio text="#{selSKYBundle['seguro.radioTipoSeguroRobo.value']}"
+                                                           group="tipoSeguro"
+                                                           id="sbrTipoSeguroRobo"
+                                                           styleClass="sbradios solectOne-flex-2"
+                                                           valueChangeListener="#{pageFlowScope.SeguroBackingBean.seleccionTipoSeguro}"
+                                                           immediate="true"
+                                                           autoSubmit="true"
+                                                           binding="#{pageFlowScope.SeguroBackingBean.sbrRobo}"
+                                                           value="#{pageFlowScope.SeguroBackingBean.robo}"/>
+                                    <div class="top"/>
+                                    <af:selectBooleanRadio text="#{selSKYBundle['seguro.radioTipoSeguroSiniestro.value']}"
+                                                           group="tipoSeguro"
+                                                           id="sbrTipoSiniestro"
+                                                           styleClass="sbradios solectOne-flex-2"
+                                                           valueChangeListener="#{pageFlowScope.SeguroBackingBean.seleccionTipoSeguro}"
+                                                           immediate="true" autoSubmit="true"
+                                                           binding="#{pageFlowScope.SeguroBackingBean.sbrSiniestro}"
+                                                           value="#{pageFlowScope.SeguroBackingBean.siniestro}"/>
+                                    <div class="top"/>
+                                    <af:selectBooleanRadio text="#{selSKYBundle['seguro.radioTipoSeguroDano.value']}"
+                                                           group="tipoSeguro"
+                                                           id="sbrTipoSeguroDano"
+                                                           styleClass="sbradios solectOne-flex-2"
+                                                           valueChangeListener="#{pageFlowScope.SeguroBackingBean.seleccionTipoSeguro}"
+                                                           immediate="true" autoSubmit="true"
+                                                           binding="#{pageFlowScope.SeguroBackingBean.sbrDano}"
+                                                           value="#{pageFlowScope.SeguroBackingBean.dano}"/>
+                                    <div class="top"/>
+                                    <af:selectBooleanRadio text="#{selSKYBundle['seguro.radioTipoSinArchivo.value']}"
+                                                           group="tipoSeguro"
+                                                           id="sbrTipoSeguroSinArchivo"
+                                                           styleClass="sbradios solectOne-flex-2"
+                                                           valueChangeListener="#{pageFlowScope.SeguroBackingBean.seleccionTipoSeguro}"
+                                                           immediate="true" autoSubmit="true"
+                                                           binding="#{pageFlowScope.SeguroBackingBean.sbrSinArchivo}"
+                                                           value="#{pageFlowScope.SeguroBackingBean.sinArchivo}"
+                                                           selected="true"/>
+                                </af:panelGroupLayout>
+                                <div class="row top-btn">
+                                <div class="col-7 col-sm-8 col-tb-4 right padd-right"
+                                         style="float:left;">
+                                        <af:panelGroupLayout id="pgl2" visible="#{pageFlowScope.SeguroBackingBean.documentoAdjunto.visible}"
+                                                             partialTriggers="ifDocumentoSeguro sbrTipoSeguroRobo sbrTipoSiniestro sbrTipoSeguroDano sbrTipoSeguroSinArchivo">
+                                            <af:inputFile label="Documento..." id="ifDocumentoSeguro"
+                                                          styleClass="ifDocumentoSeguro"
+                                                          binding="#{pageFlowScope.SeguroBackingBean.documentoAdjunto}"
+                                                          value="#{pageFlowScope.SeguroBackingBean.documentoSeguro}"
+                                                          visible="false"
+                                                          valueChangeListener="#{pageFlowScope.SeguroBackingBean.fileUpdate}"/>
+                                            <div class="top-btn"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                    <div class="col-5 col-sm-8  col-tb-4 right padd-left"
+                                         style="float:right;">
+                                        <af:button text="#{selSKYBundle['seguro.cb1.text']}"
+                                                   id="cb1"
+                                                   styleClass="btn-internal"
+                                                   action="#{pageFlowScope.SeguroBackingBean.enviarSolicitud}">
+                                            <af:clientListener method="enforcePreventUserInput"
+                                                               type="action"/>
+                                        </af:button>
+                                    </div>
+                                    
+                                </div>
+                            </af:subform>
+                        </div>
+                        <af:popup id="mensaje" contentDelivery="lazyUncached"
+                                  autoCancel="disabled" childCreation="deferred"
+                                  binding="#{pageFlowScope.SeguroBackingBean.popupMensajeSeguro}">
+                            <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                <af:dialog id="dialog1" type="none"
+                                           title="#{selSKYBundle['mensaje_Notificacion']}"
+                                           styleClass="alert"
+                                           closeIconVisible="false">
+                                    <div class="text-internal">
+                                        <af:outputText value="#{pageFlowScope.SeguroBackingBean.mensajeSeguro}"
+                                                       id="outputText1"
+                                                       styleClass="font-bolder"/>
+                                    </div>
+                                    <div class="col-12 dialog-background">
+                                        <div class="row top autocenter">
+                                            <af:button id="b3"
+                                                       text="#{selSKYBundle['pago.cb5.text']}"
+                                                       styleClass="btn-pay-dialog"
+                                                       action="#{pageFlowScope.SeguroBackingBean.aceptarSolicitudRobo}"/>
+                                        </div>
+                                    </div>
+                                </af:dialog>
+                            </div>
+                        </af:popup>
+                    </div>
+                
+                    <div class="row top">
+                    
+                        <p class="top bottom">
+                            <af:outputText value="#{selSKYBundle['seguro.pb3.text']}"
+                                           id="pbot2" styleClass="subtitle"/>
+                        </p>
+                        </div>
+                        <div class="row top top-2">
+                            <af:panelCollection id="pc1"
+                                                    styleClass="AFStretchWidth">
+                                                    <f:facet name="menus"/>
+                                        <f:facet name="toolbar">
+                                            <af:toolbar id="t2">
+                                            </af:toolbar>
+                                        </f:facet>
+                                        <f:facet name="statusbar"/>
+                                    <af:table value="#{bindings.DetalleSolicitudServicio.collectionModel}"
+                                              var="row"
+                                              rows="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                              emptyText="#{bindings.DetalleSolicitudServicio.viewable ? selSKYBundle['seguro.sinsolicitudes'] : 'Access Denied.'}"
+                                              fetchSize="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.DetalleSolicitudServicio.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.DetalleSolicitudServicio.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="t1"
+                                              autoHeightRows="10" 
+                                              partialTriggers=":::subform2:cb1"
+                                              inlineStyle="padding-top:10px;"
+                                              width="100%"  scrollPolicy="auto" horizontalGridVisible="false"
+                                              verticalGridVisible="false"
+                                              styleClass="tbl-Class">
+                                        <af:column sortProperty="numeroSolicitud"
+                                                
+                                                   headerText="#{selSKYBundle['seguro.c4.headertext']}"
+                                                   id="c4" width="150"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.numeroSolicitud}"
+                                                           id="ot8"/>
+                                        </af:column>
+                                        <af:column sortProperty="area"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['seguro.c1.headertext']}"
+                                                   id="c1" width="150"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.area}"
+                                                           id="ot6"/>
+                                        </af:column>
+                                        <af:column sortProperty="subAarea"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['seguro.c2.headertext']}"
+                                                   id="c2" width="150"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.subAarea}"
+                                                           id="ot5"/>
+                                        </af:column>
+                                        <af:column sortProperty="comentario"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['seguro.c5.headertext']}"
+                                                   id="c5" width="150"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.comentario}"
+                                                           id="ot9"/>
+                                        </af:column>
+                                        <af:column sortProperty="fechaCreacion"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['seguro.c3.headertext']}"
+                                                   id="c3" width="150"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.fechaCreacion}"
+                                                           id="ot7"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                        </div>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

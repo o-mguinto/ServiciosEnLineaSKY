@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#compraPaqueteDatos').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+        div.channel-compra table tr td {
+                width: 33%;
+                vertical-align: top
+            }
+            /*para las dimensiones del dialog pan*/
+            .x1do, .x1dp {
+                height: 450px !important;
+                width: 650px !important;
+            }
+            /*.x1do, .x1dp {
+                min-height: 300px !important;
+                max-height: 350px !important;
+                width: 650px !important;
+            }*/
+        </af:resource>
+        <!--af:resource type="css" source="/css/consumo_internet.css"/-->
+        <af:resource type="css" source="/css/bolsas/bolsas.css"/>
+        <div id="compraPaqueteDatos">
+        <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+		<div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+            <af:group id="g2">
+                <af:panelGroupLayout id="pgl3"
+                                     rendered="#{!pageFlowScope.CompraDatosBackingBean.sinPaquetes}">
+                    <af:panelBox id="pb1" showDisclosure="false" showMaximize="never" background="medium" inlineStyle="border: 0px;" rendered="true">
+                        <div class="row">
+                            <div class="channel-compra">
+                                <div class="autocenter">
+                                            <span class="icon-faq"></span>
+                                            <af:outputText id="ot3" value="#{selSKYBundle['txt_compraDatos_seleccion']}" styleClass="check-internal-bold"
+                                                           rendered="#{sesion.CON_RECARGA or !sesion.userVeTV}"/>
+                                            <af:outputText value="#{selSKYBundle['txt_compraDatos_sinRecarga']}"
+                                               id="ot_datosSinRecarga"
+                                               styleClass="check-internal-bold top-channel"
+                                               rendered="#{sesion.userVeTV and ! sesion.CON_RECARGA}"/>
+                                        </div>
+                                <div class="row top">
+                                <div class="col-12">
+                                    <af:panelGroupLayout id="pgl2" styleClass="autocenter" halign="center">
+                                        <af:forEach items="#{pageFlowScope.CompraDatosBackingBean.mosaicoPaquetesDatos}" var="paquete" varStatus="status">
+                                            <div class="col-3 sm-top" style="padding: 10px;">
+                                                <af:link action="#{pageFlowScope.CompraDatosBackingBean.showPopupPaquete}"
+                                                         useWindow="true"
+                                                         windowWidth="800"
+                                                         windowHeight="530"
+                                                         id="cl1"
+                                                         styleClass="bolderPaquete color_#{status.index}"
+                                                         disabled="#{sesion.userVeTV and ! sesion.CON_RECARGA}">
+                                                    <div class="col-12">
+                                                        <div class="row top-sm autocenter">
+                                                            <h:outputText id="nomPaquete"
+                                                                          value="#{paquete.nombre}"
+                                                                          styleClass="titulo-paquete"
+                                                                          />
+                                                        </div>
+                                                        <div class="row top">
+                                                            <div class="col-6">          
+                                                                <h:outputText id="costoPaq"
+                                                                              value="$ #{paquete.costo}"
+                                                                              styleClass="lbl-costoPaq"/>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <af:outputText id="descPaq" 
+                                                                               value="#{paquete.nombre_display}"
+                                                                               styleClass="lbl-nombrePaq"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row top-sm">
+                                                            <div class="col-12">
+                                                                <!--af:outputText id="ot2" value="$ #{paquete.costo} #{sesion.moneda}" styleClass="channel-text1" rendered="#{!paquete.costo eq '15' or !paquete.costo eq '30' or !paquete.costo eq '55' or paquete.costo eq '25' or paquete.costo eq '45' or paquete.costo eq '99' or paquete.costo eq '149'}"/-->   
+                                                                <!--af:outputText id="otPn" styleClass="channel-text1"
+                                                                               inlineStyle="text-decoration: line-through; font-size: 12px;" value="Precio normal: " rendered="#{paquete.costo eq '15' or paquete.costo eq '30' or paquete.costo eq '75'}"/-->
+                                                                <af:outputText id="ot7" styleClass="channel-text1" inlineStyle="text-decoration: line-through;" value="Precio normal: $25 #{sesion.moneda}" rendered="#{paquete.costo eq '15'}"/>
+                                                                <af:outputText id="ot9" styleClass="channel-text1" inlineStyle="text-decoration: line-through;" value="Precio normal: $45 #{sesion.moneda}" rendered="#{paquete.costo eq '30'}"/>                        
+                                                                <af:outputText id="ot11" styleClass="channel-text1" inlineStyle="text-decoration: line-through;" value="Precio normal: $99 #{sesion.moneda}" rendered="#{paquete.costo eq '75'}"/>
+                                                            </div>
+                                                            <!--div class="col-11 col-tb-7 col-sm-8 row">
+                                                                <af:outputText id="otPp" value="Precio promocion: " rendered="#{paquete.costo eq '15' or paquete.costo eq '30' or paquete.costo eq '75'}" styleClass="channel-text1" inlineStyle="font-size: 12px;"/>
+                                                                <af:outputText id="ot8" value="$ #{paquete.costo} #{sesion.moneda}" rendered="#{paquete.costo eq '15'}" styleClass="channel-text1"/>
+                                                                <af:outputText id="ot10" value="$ #{paquete.costo} #{sesion.moneda}" rendered="#{paquete.costo eq '30'}" styleClass="channel-text1"/>
+                                                                <af:outputText id="ot13" value="$ #{paquete.costo} #{sesion.moneda}" rendered="#{paquete.costo eq '75'}" styleClass="channel-text1"/>                        
+                                                            </div-->  
+                                                        </div>
+                                                    </div>
+                                                    <f:setPropertyActionListener target="#{pageFlowScope.CompraDatosBackingBean.paqueteActiva}"
+                                                                                 value="#{paquete}"/>
+                                                    <f:setPropertyActionListener target="#{pageFlowScope.CompraDatosBackingBean.idPaquete}"
+                                                                                 value="#{paquete.nombre}"/>
+                                                </af:link>
+                                            </div>  
+                                        </af:forEach>
+                                     </af:panelGroupLayout>                   
+                                </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </af:panelBox>
+                    <div class="row label-internal">
+                            
+                        <!--div class="col-12">
+                            <af:outputText id="ot1" value="#{selSKYBundle['txt_compraDatos_maximo']}" styleClass="channel-text2" rendered="#{!sesion.userVeTV}"/>
+                            <af:outputText id="ot14" value="#{selSKYBundle['txt_compraDatos_maximo_vetv']}" styleClass="channel-text2" rendered="#{sesion.userVeTV}"/>
+                        </div-->
+                            
+                        <div class="col-12">
+                            <h:outputText id="ot12" value="#{selSKYBundle['txt_compraDatos_recordamos']}"/>
+                            <h:outputText id="ot5" value="#{pageFlowScope.CompraDatosBackingBean.fecha_corte}"
+                            styleClass="font-bolder"/>
+                        </div>
+                        <div class="col-12">
+                            <h:outputText id="ot6" value="#{selSKYBundle['txt_compraDatos_contratar']}"/>
+                        </div>
+                    </div>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl4" rendered="#{pageFlowScope.CompraDatosBackingBean.sinPaquetes}">
+                    <af:panelBox id="pb2" showDisclosure="false" showMaximize="never" inlineStyle="border: 0px;" background="medium">
+                    <af:panelGroupLayout id="pgl5" layout="horizontal">
+                    <af:outputText id="ot4" value="#{selSKYBundle['txt_compraDatos_sinPaquete']}" styleClass="channel-bloqueo"/>
+                    </af:panelGroupLayout>
+                </af:panelBox>
+                </af:panelGroupLayout>
+            </af:group>
+			</div>
+			</div>
+			</div>
+		</div>
+    </af:group>
+</ui:composition>

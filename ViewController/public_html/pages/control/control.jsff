@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#control').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            
+            .x1do, .x1dp {
+                max-height: 500px !important;
+                width: 700px !important;
+            }
+        
+        </af:resource>
+        <div id="control">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-sm-8 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <!--Para cada fila una div-->
+                    <div class="row">
+                        <!--Aqui va TODO el contenido-->
+                        <!---->
+                        <div class="col-12">
+                            <af:panelGroupLayout id="pgl" halign="center"
+                                                 inlineStyle="text-align: justify;"
+                                                 layout="vertical"
+                                                 rendered="#{not pageFlowScope.ControlBackingBean.controlDisponible}">
+                                <af:outputText value="No tenemos en existencia control remoto disponible para su equipo. Para más información por favor llame a Atención a Clientes y mencione el código CTR001."
+                                               styleClass="check-internal-bold top-channel"
+                                               id="ot75"></af:outputText>
+                                <div class="top"/>
+                            </af:panelGroupLayout>
+                        </div>
+                        <div class="row">
+                            <af:group rendered="#{pageFlowScope.ControlBackingBean.controlDisponible}"
+                                      id="g2">
+                                <div class="bottom">
+                                    <af:outputText id="ot40"
+                                                   styleClass="check-internal-bold top-channel"
+                                                   value="Dar clic sobre el control remoto a desear para realizar la compra"/>
+                                </div>
+                                <div class="row">
+                                    <div class="autocenter">
+                                        <af:outputText id="ot4"
+                                                       styleClass="check-internal-bold top-channel"
+                                                       value="#{selSKYBundle['control.ot1.value']}"/>
+                                    </div>
+                                </div>
+                                <div class="row top">
+                                    <div class="col-12 col-sm-8 col-tb-8">
+                                    <af:panelGroupLayout id="pgl2"
+                                                         styleClass="autocenter"
+                                                         halign="center">
+                                    <af:forEach items="#{pageFlowScope.ControlBackingBean.controls}"
+                                                    var="control"
+                                                    varStatus="idx">
+                                            <div class="top col-4 col-sm-4 col-tb-4 autocenter sm-cancel-align">
+                                                <!--div class="top">
+                                                    <div class="col-12"!-->
+                                                    <af:panelGroupLayout id="pgl1"
+                                                             halign="center"
+                                                             valign="middle"
+                                                                         styleClass="autocenter"
+                                                                         inlineStyle="padding: 10px;">
+                                                       <div class="row" >
+                                                        <af:image source="/imagenes/controlremoto/nombre#{control.imgNombre}"
+                                                                  id="i9" inlineStyle="float: none;"/>
+                                                    </div>
+                                                    <div class="row" >
+                                                        <af:link id="cil1"
+                                                                 icon="/imagenes/controlremoto/#{control.pathIcon}"
+                                                                 shortDesc="#{control.etiquetaProducto}"
+                                                                 partialSubmit="true"
+                                                                 useWindow="true"
+                                                                 windowEmbedStyle="inlineDocument"
+                                                                 windowModalityType="applicationModal"
+                                                                 windowWidth="650"
+                                                                 action="confirmar"
+                                                                 windowHeight="500"
+                                                                 returnListener="#{pageFlowScope.ControlBackingBean.contrataReturn}">
+                                                            <f:setPropertyActionListener target="#{pageFlowScope.ControlBackingBean.idxControl}"
+                                                                                         value="#{idx.index}"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:link>
+                                                          
+                                                    </div>
+                                                    <div class="row" >
+                                                        <div class="top">
+                                                            <h:outputLink id="ol1"
+                                                                          value="#{control.manual}"
+                                                                          styleClass="btn-internal"
+                                                                          target="_blank"
+                                                                          title="Descargar">
+                                                                <h:outputText value="Descargar"
+                                                                              id="ot14"/>
+                                                            </h:outputLink>
+                                                        </div>
+                                                    </div>
+                                                <!--/div>
+                                            </div-->
+                                            </af:panelGroupLayout>
+                                            </div>
+                                            
+                                        </af:forEach>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                              
+                                
+                            </af:group>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 content-internal">
+                        <p class="bottom">
+                            <h:outputText styleClass="title"
+                                          value="#{selSKYBundle['control.pb2.text']}"
+                                          id="ot6"/>
+                        </p>
+                        <div class="row">
+                            <af:panelBox id="pb2" background="medium"
+                                         showHeader="never"
+                                         showDisclosure="false"
+                                         inlineStyle="border: 0px;">
+                                <f:facet name="toolbar"/>
+                                <af:panelCollection id="pc1" 
+                                                    defaultToolbarItemDisplay="icon"
+                                                    styleClass="AFStretchWidth">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="t2"></af:toolbar>
+                                    </f:facet>
+                                    <f:facet name="statusbar"/>
+                                    
+                                    <af:table value="#{bindings.DetalleSolicitudServicio.collectionModel}"
+                                              var="row"
+                                              rows="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                              emptyText="#{bindings.DetalleSolicitudServicio.viewable ? selSKYBundle['control.sinsolicitudes'] : 'Access Denied.'}"
+                                              fetchSize="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.DetalleSolicitudServicio.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.DetalleSolicitudServicio.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="t1"
+                                              autoHeightRows="10"
+                                              partialTriggers=":::ctb1 :::cil1"
+                                              width="100%" scrollPolicy="auto"
+                                              horizontalGridVisible="false"
+                                              verticalGridVisible="false"
+                                              styleClass="tbl-Class">
+                                        <af:column sortProperty="numeroSolicitud"
+                                                   sortable="false" id="c2"
+                                                   width="100"
+                                                   headerText="#{selSKYBundle['control.c2.headertext']}"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.numeroSolicitud}"
+                                                           id="ot9"/>
+                                        </af:column>
+                                        <af:column sortProperty="fechaCreacion"
+                                                   sortable="false" id="c1"
+                                                   width="150"
+                                                   headerText="#{selSKYBundle['control.c1.headertext']}"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.fechaCreacion}"
+                                                           id="ot3"/>
+                                        </af:column>
+                                        <af:column sortProperty="comentario"
+                                                   sortable="false" id="c3"
+                                                   width="200"
+                                                   headerText="#{selSKYBundle['control.c3.headertext']}"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.comentario}"
+                                                           id="ot5"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                                <div class="row top">
+                                    <div class="col-3 col-sm-8  col-tb-4 right"
+                                         style="float:right;">
+                                        <af:button id="ctb1" targetFrame="_self"
+                                                   action="#{pageFlowScope.ControlBackingBean.actualizarTabla}"
+                                                   styleClass="btn-internal"
+                                                   text="Actualizar">
+                                            <af:clientListener method="enforcePreventUserInput"
+                                                               type="action"/>
+                                        </af:button>
+                                    </div>
+                                </div>
+                            </af:panelBox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

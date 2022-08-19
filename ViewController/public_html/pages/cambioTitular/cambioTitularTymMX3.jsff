@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <af:group id="gpCambioTitularTyMx3">
+        <af:resource type="javascript">
+          $('#cambioTitularTyMx3').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            input[type="radio"] {
+                vertical-align: inherit;
+            }
+            /*para quitar el borde en el focus del radio*/
+            input[type="radio"]:focus {
+                outline: none !important;
+            }
+            /*checkbox*/
+            input[type=checkbox], input[type=radio] {
+                width: 20px !important;
+                height: 20px !important;
+                vertical-align: top;
+            }
+            /*para la seleccion del radio*/
+            /*input[type="radio"]:checked {
+           width: 23px !important;
+            height: 23px !important;
+            background: transparent url(../../imagenes/aplicacion/radio_on_light.svg) 0% 0% no-repeat padding-box !important;
+            opacity: 1 !important;
+            appearance: inherit;
+            border: 0px !important;
+        }*/
+            /*for  +2 radio*/
+            .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                width: 480px;
+            }
+            /* For mobile phones: */
+@media only screen and (min-device-width:320px) and (max-device-width:767px) {
+                /*checkbox*/
+                input[type=checkbox], input[type=radio] {
+                    width: 24px !important;
+                    height: 24px !important;
+                }
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 250px;
+                }
+                .solectOne-flex-2 td.xth > div[role="radiogroup"] div, .solectOne-flex-2 td.xvo > div[role="radiogroup"] div, .solectOne-flex-2 > div[role="radiogroup"] div {
+                    line-height: 40px;
+                }
+            }
+
+            /* For mobile phones: */
+@media only screen and (min-device-width:320px) and (max-device-width:767px) and (orientation:landscape) {
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 480px;
+                }
+            }
+
+            /* For tablets: */
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth {
+                    width: 300px;
+                }
+                .solectOne-flex-2 td.xth > div[role="radiogroup"] div, .solectOne-flex-2 td.xvo > div[role="radiogroup"] div, .solectOne-flex-2 > div[role="radiogroup"] div {
+                    line-height: 30px;
+                }
+            }
+
+            /* For tablets */
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) and (orientation:landscape) {
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 480px;
+                }
+            }
+
+        </af:resource>
+        <div id="cambioTitularTyMx3">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelGroupLayout id="pgl1" styleClass="dialog-background" inlineStyle="border: none;">
+                            <h:outputText styleClass="title" value="LLENAR DOCUMENTOS" id="otTitulo"/>
+                            <div class="row top">
+                                <h:outputText styleClass="title" value="Referencias personales del nuevo suscriptor"
+                                          id="ot14"/>
+                            </div>
+                            <div class="row">
+                                <af:panelBox text="" id="pb1" maximized="true" showDisclosure="false"
+                                             showMaximize="never" background="medium"
+                                             inlineStyle="margin:0.0%; padding:0.0%; border:none;" showHeader="never">
+                                    <f:facet name="toolbar"/>
+                                    <div class="row top">
+                                        <h:outputText styleClass="title" value="Referencia 1" id="ot1"/>
+                                         
+                                        <af:panelFormLayout id="pfl1" labelAlignment="top" fieldWidth="100%"
+                                                            labelWidth="35%" maxColumns="3"
+                                                            rows="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? '1': '3'}">
+                                            <af:inputText label="NOMBRE: (1)" id="itParNombreNS" maximumLength="30"
+                                                          columns="30" required="true"
+                                                          value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.nombreRef}"
+                                                          styleClass="input-internal"/>
+                                            <af:inputText label="TELEFONO (1)" id="itParTelNS" columns="12"
+                                                          maximumLength="12" required="true"
+                                                          value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.telRef}"
+                                                          styleClass="input-internal"/>
+                                            <af:inputText label="PARENTESCO (1)" id="itParenNS"
+                                                          value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.parentesco1}"
+                                                          required="true" maximumLength="15"
+                                                          styleClass="input-internal"/>
+                                        </af:panelFormLayout>
+                                    </div>
+                                    <div class="row top">
+                                        <h:outputText styleClass="title" value="Referencia 2" id="ot2"/>
+                                         
+                                        <af:panelFormLayout id="pfl2" labelAlignment="top" fieldWidth="100%"
+                                                            labelWidth="35%" maxColumns="3"
+                                                            rows="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? '1': '3'}">
+                                            <af:inputText label="NOMBRE: (2)" id="itNombre2Ref" columns="30"
+                                                          maximumLength="30" required="true"
+                                                          value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.nombre2Ref}"
+                                                          styleClass="input-internal"/>
+                                            <af:inputText label="TELEFONO (2)" id="itTel2Ref" maximumLength="12"
+                                                          columns="12" required="true"
+                                                          value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.tel2Ref}"
+                                                          styleClass="input-internal"/>
+                                            <af:inputText label="PARENTESCO (2)" id="itParentezco2"
+                                                          value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.parentesco2}"
+                                                          required="true" maximumLength="15"
+                                                          styleClass="input-internal"/>
+                                        </af:panelFormLayout>
+                                    </div>
+                                    <div class="row top">
+                                        <div class="col-12 col-tb-8 col-sm-8">
+                                            <h:outputText styleClass="title" value="Forma de Pago para Nuevo Titular"
+                                                          id="ot15"/>
+                                             
+                                            <af:selectOneRadio label="Forma de Pago"
+                                                               value="#{pageFlowScope.PFCambioTitularForm.formaPagoSelected}"
+                                                               id="sor1" required="true"
+                                                               styleClass="solectOne-flex-2 top">
+                                                <f:selectItems value="#{pageFlowScope.PFCambioTitularForm.formasPagoMap}"
+                                                               id="si1"/>
+                                            </af:selectOneRadio>
+                                        </div>
+                                    </div>
+                                </af:panelBox>
+                            </div>
+                        </af:panelGroupLayout>
+                         
+                        <af:panelGroupLayout id="panelGroupLayout1">
+                            <div class="top top-2 col-3 col-sm-8  col-tb-2 right" style="float:right;">
+                                <af:button text="Cancelar" id="cb2" action="cancelar" immediate="true"
+                                           styleClass="btn-internal"/>
+                            </div>
+                            <div class="top top-2 col-3 col-sm-8  col-tb-2 right" style="float:right;">
+                                <af:button text="Siguiente" id="cb1"
+                                           action="#{pageFlowScope.PFCambioTitularForm.cbSiguienteFormaPago_action}"
+                                           styleClass="btn-internal"/>
+                            </div>
+                            <div class="top top-2 col-3 col-sm-8  col-tb-2 right" style="float:right;">
+                                <af:button text="Atrás" id="cb3" action="atras" immediate="true"
+                                           styleClass="btn-internal"/>
+                            </div>
+                        </af:panelGroupLayout>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

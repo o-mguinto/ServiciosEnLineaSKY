@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+    <af:document title="Reenviar Correo de Confirmación" id="d1">
+        <af:form id="f1">
+            <af:resource type="javascript">
+                  function enforcePreventUserInput(evt) {
+                      var popup = AdfPage.PAGE.findComponentByAbsoluteId('p1');
+                      if (popup != null) {
+                          AdfPage.PAGE.addBusyStateListener(popup, handleBusyState);
+                          evt.preventUserInput();
+                      }
+                  }
+        
+                  function handleBusyState(evt) {
+                      var popup = AdfPage.PAGE.findComponentByAbsoluteId('p1');
+                      if (popup != null) {
+                          if (evt.isBusy()) {
+                              popup.show();
+                          }
+                          else if (popup.isPopupVisible()) {
+                              popup.hide();
+                              AdfPage.PAGE.removeBusyStateListener(popup, handleBusyState);
+                          }
+                      }
+                  }
+            </af:resource>
+        
+            <af:panelBox titleHalign="center" text="Reenviar confirmación" id="pb2" background="medium"
+                     showDisclosure="false"            
+                           inlineStyle="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? 'width:100.0%;' : 'width:95.0%; margin:0.0%; padding:0.0%;' }"
+                           showMaximize="never">
+          <af:panelGroupLayout id="pgl2" layout="vertical" valign="middle" halign="end">
+            <af:panelGroupLayout id="pgl3" layout="horizontal" halign="end">
+              <af:commandButton text="#{selSKYBundle['nuevot.cb2.text']}" id="cb2"
+                                action="#{pageFlowScope.PFNuevoUsuario.reenviarConfirmacion}"
+                                icon="/imagenes/16X16/nav_16x16/activa.png">
+                <af:clientListener method="enforcePreventUserInput" type="action"/>
+              </af:commandButton>
+              <af:commandButton text="#{selSKYBundle['nuevot.cb1.text']}" id="cb1"
+                                action="index" icon="/imagenes/16X16/nav_16x16/button_cancel.png"
+                                immediate="true"/>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+          
+          <af:panelFormLayout id="pfl1" rows="6">
+            <!--<af:image source="/captchaservlet" id="i1" inlineStyle="width:251px; height:76.0px;"/>
+            <af:commandButton text="#{viewcontrollerBundle['nuevot.cb4.text']}" id="cb4"
+                              partialSubmit="false" immediate="true"/>
+            <af:inputText id="it1" value="#{requestScope.bestGuess}" required="true"
+                          label="#{viewcontrollerBundle['nuevot.it1.label']}"/>
+            -->
+            <af:inputText label="Tu correo" id="it2"
+                          value="#{pageFlowScope.PFNuevoUsuario.usuario.email}" required="true">
+              <af:validateRegExp pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"
+                                 messageDetailNoMatch="Ingrese una dirección válida"/>
+            </af:inputText>
+            <af:inputText label="Confirma tu correo" id="it3"
+                          value="#{pageFlowScope.PFNuevoUsuario.confemail}" required="true">
+              <af:validateRegExp pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"
+                                 messageDetailNoMatch="Ingrese una dirección válida"/>
+            </af:inputText>
+          </af:panelFormLayout>
+          
+          </af:panelBox>
+        </af:form>
+        
+        <af:popup id="p1" contentDelivery="immediate">
+        <af:dialog id="d2" type="none" title="#{viewcontrollerBundle['nuevot.d2.title']}"
+                   closeIconVisible="false">
+          <af:panelGroupLayout id="pgEspera" layout="vertical" halign="center" valign="middle">
+            <af:image source="/imagenes/aplicacion/loading.gif" id="i2"/>
+            <af:outputText value="#{viewcontrollerBundle['nuevot.ot11.value']}" id="ot11"/>
+          </af:panelGroupLayout>
+        </af:dialog>
+      </af:popup>
+        
+    </af:document>
+</f:view>

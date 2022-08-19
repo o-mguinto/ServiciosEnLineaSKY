@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#consultaEstatusPpe').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+        /*para ampliar el espacio para el no de registros de la tabla, statusbar*/
+          td.x17r , td.x17r > div{
+                width: 100% !important;
+            }
+            /*para poner a la derecha la etiqueta del no de registros en la tabla, statusbar*/
+             td.x17r > div div.xq1{
+                 float: right;
+             }
+        </af:resource>
+        <div id="consultaEstatusPpe">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <!--Para cada fila una div-->
+                        <p>
+                            <h:outputText styleClass="title"
+                                          value="Consulta Estatus Solicitudes de PPE"
+                                          id="ot14"/>
+                        </p>
+                        <div class="row top">
+                            <!--Aqui va TODO el contenido-->
+                            <af:panelBox id="pb1" showDisclosure="false"
+                                         background="medium" showHeader="never"
+                                         inlineStyle="border: 0px;">
+                                <f:facet name="toolbar"/>
+                                <af:panelCollection id="pc1"
+                                                    defaultToolbarItemDisplay="icon"
+                                                    styleClass="AFStretchWidth"
+                                                    inlineStyle="border:none;">
+                                    <f:facet name="statusbar">
+                                        <af:toolbar id="t_2">
+                                            <af:outputText value="#{bindings.Batch.estimatedRowCount} Registros"
+                                                           id="ot15"
+                                                           partialTriggers="::ctb1 ::ctb2"
+                                                           styleClass="check-internal-bold"/>
+                                        </af:toolbar>
+                                    </f:facet>
+                                    <af:table value="#{bindings.Batch.collectionModel}"
+                                              var="row"
+                                              rows="#{bindings.Batch.rangeSize}"
+                                              emptyText="#{bindings.Batch.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              fetchSize="#{bindings.Batch.rangeSize}"
+                                              rowBandingInterval="0"
+                                              filterModel="#{bindings.BatchQuery.queryDescriptor}"
+                                              queryListener="#{bindings.BatchQuery.processQuery}"
+                                              filterVisible="true"
+                                              varStatus="vs"
+                                              selectedRowKeys="#{bindings.Batch.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.Batch.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="t1"
+                                              partialTriggers=":::ctb2 :::ctb1"
+                                              width="100%" scrollPolicy="auto"
+                                              horizontalGridVisible="false"
+                                              verticalGridVisible="false"
+                                              autoHeightRows="10"
+                                              styleClass="tbl-Class">
+                                        <af:column sortProperty="bpelId"
+                                                   sortable="true"
+                                                   headerText="ID" id="c3"
+                                                   align="end" width="60"
+                                                   displayIndex="-1"
+                                                   filterable="true"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.bpelId}"
+                                                           id="ot4"/>
+                                        </af:column>
+                                        <af:column sortProperty="nombreEvento"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Nombre Evento"
+                                                   id="c8"
+                                                   headerClass="content-text"
+                                                   width="320">
+                                            <af:outputText value="#{row.nombreEvento}"
+                                                           id="ot2"/>
+                                        </af:column>
+                                        <af:column sortProperty="status"
+                                                   sortable="true"
+                                                   headerText="Estatus" id="c14"
+                                                   width="80" displayIndex="-1"
+                                                   filterable="true"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.status}"
+                                                           id="ot3"/>
+                                        </af:column>
+                                        <af:column sortProperty="noSolicitud"
+                                                   sortable="true"
+                                                   headerText="No Solicitud"
+                                                   id="c1" filterable="true"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.noSolicitud}"
+                                                           id="ot13"/>
+                                        </af:column>
+                                        <af:column sortProperty="llaveOperacion"
+                                                   sortable="true"
+                                                   headerText="Tarjeta inteligente"
+                                                   id="c2" filterable="true"
+                                                   headerClass="content-text"
+                                                   width="120">
+                                            <af:outputText value="#{row.llaveOperacion}"
+                                                           id="ot7"/>
+                                        </af:column>
+                                        <af:column sortProperty="tipoEvento"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Tipo Evento"
+                                                   id="c5"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.tipoEvento}"
+                                                           id="ot10"/>
+                                        </af:column>
+                                        <af:column sortProperty="canalDisplay"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Canal" id="c12"
+                                                   width="50" align="center"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.canalDisplay}"
+                                                           id="ot6"/>
+                                        </af:column>
+                                        <af:column sortProperty="fechaInicio"
+                                                   sortable="false"
+                                                   headerText="Fecha Inicio PPE"
+                                                   id="c6" filterable="true"
+                                                   width="120" align="center"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.fechaInicio}"
+                                                           id="ot5"/>
+                                        </af:column>
+                                        <af:column sortProperty="fechaCreacionString"
+                                                   sortable="true"
+                                                   headerText="Fecha de Solicitud"
+                                                   id="c4" filterable="true"
+                                                   width="120" displayIndex="-1"
+                                                   align="center"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.fechaCreacionString}"
+                                                           id="ot9"></af:outputText>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                            </af:panelBox>
+                            <div class="row">
+                                    <div class="top-2 col-2 col-sm-8  col-tb-2 right" style="float:right;">
+                                        <af:button text="Actualizar"
+                                                           disabled="#{!bindings.consultarEstadoSolicitud.enabled}"
+                                                           id="ctb2"
+                                                           styleClass="btn-internal"
+                                                           actionListener="#{bindings.consultarEstadoSolicitud.execute}">
+                                                    <af:clientListener method="enforcePreventUserInput"
+                                                                       type="action"/>
+                                                </af:button>
+                                    </div>
+                                    <div class="top-2 col-2 col-sm-8  col-tb-2 right" style="float:right;">
+                                        <af:button text="Reintentar" id="ctb1"
+                                                           actionListener="#{bindings.reintentarConError.execute}"
+                                                           disabled="#{bindings.Batch.estimatedRowCount le 0}"
+                                                           partialTriggers="ctb2"
+                                                           styleClass="btn-internal">
+                                                    <af:clientListener method="enforcePreventUserInput"
+                                                                       type="action"/>
+                                        </af:button>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

@@ -1,0 +1,336 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:trh="http://myfaces.apache.org/trinidad/html" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:tr="http://myfaces.apache.org/trinidad">
+    <af:group id="g1">
+        <f:subview id="head">
+            <af:resource type="css" source="https://use.fontawesome.com/releases/v5.5.0/css/all.css"/>
+            <af:resource type="javascript">
+              $(document).ready(function () {
+                  console.log("Consola");
+
+                  var password1 = $('#r1\\:0\\:password\\:\\:content');//id of first password field
+                  var password2 = $('#r1\\:0\\:confirmPassword\\:\\:content');//id of second password field
+                  passwordStrengthCheck(password1, password2);//call password check function
+              });
+
+              function passwordStrengthCheck(password1, password2) {
+                  //Must contain 7 characters or more
+                  var WeakPass = /(?=.{1,7}).*/;
+                  //Must contain lower case letters and at least one digit.
+                  var MediumPass = /^(?=\S*?[a-z])(?=\S*?[0-9])\S{3,20}$/;
+                  //Must contain at least one upper case letter, one lower case letter and one digit.
+                  var StrongPass = /^(?=\S*?[a-z])(?=\S*?[0-9])\S{8,20}$/;
+                  //Must contain at least one upper case letter, one lower case letter and one digit.
+                  var VryStrongPass = /^(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[^\w\*])\S{8,20}$/;
+
+                  //
+                  if (password1.val() !== password2.val()) {
+                      $("#r1\\:0\\:checkConfPass").css("color", "red");
+                      $("#r1\\:0\\:checkPass").css("color", "red");
+                  }
+                  else {
+                      //Match
+                      if (password1.val() == "" || password2.val() == "") {
+                          $("#r1\\:0\\:checkConfPass").css("color", "gray");
+                          $("#r1\\:0\\:checkPass").css("color", "gray");
+                      }
+                      else {
+                          $("#r1\\:0\\:checkConfPass").css("color", "green");
+                          $("#r1\\:0\\:checkPass").css("color", "green");
+                          $("#passwordStrength").addClass("strength4");
+                      }
+                  }
+                  //
+                  $(password1).on('keyup', function (e) {
+                      if (password1.val() !== password2.val()) {
+                          $("#r1\\:0\\:checkConfPass").css("color", "red");
+                      }
+                      else {
+                          //Match
+                          if (password1.val() == "" || password2.val() == "") {
+                              $("#r1\\:0\\:checkConfPass").css("color", "gray");
+                          }
+                          else {
+                              $("#r1\\:0\\:checkConfPass").css("color", "green");
+                          }
+                      }
+                      if (VryStrongPass.test(password1.val())) {
+                          $("#r1\\:0\\:checkPass").css("color", "green");
+                          $("#passwordStrength").addClass("strength4");
+
+                      }
+                      else if (StrongPass.test(password1.val())) {
+                          $("#r1\\:0\\:checkPass").css("color", "yellowgreen");
+                          $("#passwordStrength").removeClass("strength4").addClass("strength3");
+
+                      }
+                      else if (MediumPass.test(password1.val())) {
+                          $("#r1\\:0\\:checkPass").css("color", "yellow");
+                          $("#passwordStrength").removeClass("strength4 strength3").addClass("strength2");
+
+                      }
+                      else if (WeakPass.test(password1.val())) {
+                          $("#r1\\:0\\:checkPass").css("color", "orange");
+                          $("#passwordStrength").removeClass("strength4 strength3 strength2").addClass("strength1");
+
+                      }
+                      else {
+                          $("#r1\\:0\\:checkPass").css("color", "red");
+                          $("#passwordStrength").removeClass("strength4 strength3 strength2 strength1").addClass("strength0");
+
+                      }
+                  });
+
+                  $(password2).on('keyup', function (e) {
+
+                      if (password1.val() !== password2.val()) {
+                          $("#r1\\:0\\:checkConfPass").css("color", "red");
+                      }
+                      else {
+                          //Match
+                          if (password1.val() == "" || password2.val() == "") {
+                              $("#r1\\:0\\:checkConfPass").css("color", "gray");
+                          }
+                          else {
+                              $("#r1\\:0\\:checkConfPass").css("color", "green");
+                          }
+                      }
+
+                  });
+              }
+
+              function mostrarContrasenia() {
+                  var contraseniaElem = $('#r1\\:0\\:password\\:\\:content');
+                  var contraseniaIconElem = $('#contraseniaIcon');
+
+                  if (contraseniaElem.attr("type") == "password") {
+                      contraseniaElem.attr("type", "text");
+                      contraseniaIconElem.attr("class", "far fa-eye");
+                  }
+                  else {
+                      contraseniaElem.attr("type", "password");
+                      contraseniaIconElem.attr("class", "fas fa-eye-slash");
+                  }
+              };
+
+              function mostrarConfirmarContrasenia() {
+                  var contraseniaElem = $('#r1\\:0\\:confirmPassword\\:\\:content');
+                  var contraseniaIconElem = $('#confirmarcontraseniaIcon');
+
+                  if (contraseniaElem.attr("type") == "password") {
+                      contraseniaElem.attr("type", "text");
+                      contraseniaIconElem.attr("class", "far fa-eye");
+                  }
+                  else {
+                      contraseniaElem.attr("type", "password");
+                      contraseniaIconElem.attr("class", "fas fa-eye-slash");
+                  }
+              };
+            </af:resource>
+            <style type="text/css">
+                .xu {
+                    font-family: Arial;
+                    font-size: large;
+                    text-align: right;
+                    padding: 0px 6px 0px 0px;
+                    font-weight: normal;
+                    color: rgba(247, 0, 157, 0.63);
+                }
+            </style>
+            <style type="text/css" media="screen">
+                #passwordStrength {
+                    width: 25px;
+                    display: block;
+                    float: left;
+                    position: relative;
+                }
+
+                .strength0 {
+                    height: 35px;
+                    background: #cccccc;
+                }
+
+                .strength1 {
+                    height: 5px;
+                    background: #ff0000;
+                    top: 10px;
+                }
+
+                .strength2 {
+                    height: 15px;
+                    background: #ff5f5f;
+                    top: 10px;
+                }
+
+                .strength3 {
+                    height: 25px;
+                    background: #56e500;
+                    top: 5px;
+                }
+
+                .strength4 {
+                    background: #399800;
+                    height: 35px;
+                    top: 0px;
+                }
+
+                .label-registro label {
+                    color: rgba(247, 0, 157, 0.63);
+                    font-size: large;
+                    font-weight: normal;
+                }
+
+                .input-registro input {
+                    border-bottom: 1px solid rgba(247, 0, 157, 0.63) !important;
+                    background-color: white;
+                    border: 1px solid #fafdff;
+                    color: Black;
+                    font-weight: bold;
+                    font-size: large;
+                }
+
+                div#j_id7\:\:popup-container .x1e5 {
+                    color: black;
+                }
+            </style>
+        </f:subview>
+        <div id="registroLinkOK">
+            <div class="col-12">
+                <!--Para cada fila una div-->
+                <div class="row"
+                     style="display: flex;     align-items: center;     justify-content: center;     flex-direction: column;">
+                    <div class="col-9 col-tb-8 col-sm-8">
+                        <div class="content-internal">
+                            <div class="row autocenter">
+                                <af:image source="/imagenes/pc/dos/header.jpg" id="header" shortDesc="SKY"
+                                          styleClass="AFStretchWidth"></af:image>
+                                 
+                                <af:spacer width="100%" height="10" id="s2"/>
+                            </div>
+                            <p class="bottom">
+                                <h:outputText value="Para terminar, ingresa y confirma tu contraseña"
+                                              id="PCTextHeaderReg"
+                                              style="font-size: x-large; color: rgba(247, 0, 157, 0.63);z-index: 2;font-family: Arial; text-align: center;"/>
+                            </p>
+                            <p class="top buttom">
+                                <h:outputText value="Elige una contraseña segura. Utiliza entre 8 y 20 caracteres, incluyendo por lo menos una mayúscula, una minúscula, un caracter especial y un número. La contraseña distingue entre mayúsculas y minúsculas."
+                                              id="ot1"
+                                              style="color: black;     z-index: 2;     font-family: Arial;     font-size: large;"/>
+                            </p>
+                            <af:panelGroupLayout id="PCRow1">
+                                <!--Password meter  -->
+                                <div class="col-10">
+                                    <div class="row top">
+                                        <div class="col-8 col-sm-5">
+                                            <af:outputLabel id="olpassword" value="Contraseña: " for="password"
+                                                            styleClass="label-registro label-internal"></af:outputLabel>
+                                             
+                                            <!--contentStyle="border-bottom: 1px solid rgba(247, 0, 157, 0.63) !important;background-color: white;border: 1px solid #fafdff;width:300px;font-weight:bold;"
+                                                              inlineStyle="color:rgba(247,0,157,0.63) ;font-size:medium !important;font-weight:bold;"-->
+                                             
+                                            <af:inputText required="true" label="" secret="true" autoSubmit="true"
+                                                          id="password" maximumLength="20"
+                                                          styleClass="input-registro input-internal"
+                                                          binding="#{backingBeanScope.BBRegistroUsuario.contrasena}">
+                                                <f:validator validatorId="validadorEstructuraContrasenia"/>
+                                                <af:validateRegExp messageDetailNoMatch="Le recordamos que debe utilizar entre 8 y 20 caracteres."
+                                                                   pattern=".{8,20}"
+                                                                   hint="Le recordamos que debe utilizar entre 8 y 20 caracteres."
+                                                                   id="valcontra"/>
+                                            </af:inputText>
+                                        </div>
+                                        <div class="col-1 col-sm-1 top" style="padding-left:10px;">
+                                            <i id="contraseniaIcon" class="fas fa-eye-slash"
+                                               style="font-size: 18px;line-height:2; color: #f7009da1;"
+                                               onclick="mostrarContrasenia()"></i>
+                                        </div>
+                                        <div class="col-1 col-sm-1 top" style="float: right;">
+                                            <tr:outputText id="checkPass" value="✓"
+                                                           inlineStyle="color: gray;z-index: 3;font-size: 25px;"/>
+                                        </div>
+                                        <div class="col-1 col-sm-1 top" style="float: right">
+                                            <div id="passwordStrength" class="strength0" style="border-radius: 5px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row top">
+                                        <!--Password meter  -->
+                                        <div class="col-8 col-sm-5">
+                                            <af:outputLabel id="olconfirmPassword" value="Confirmar contraseña: "
+                                                            for="confirmPassword"
+                                                            styleClass="label-registro label-internal"></af:outputLabel>
+                                             
+                                            <af:inputText id="confirmPassword" label="" maximumLength="20"
+                                                          required="true" secret="true" autoSubmit="true"
+                                                          styleClass="input-registro input-internal"
+                                                          binding="#{backingBeanScope.BBRegistroUsuario.confContrasena}">
+                                                <f:validator validatorId="validadorEstructuraContrasenia"/>
+                                                <af:validateRegExp messageDetailNoMatch="Le recordamos que debe utilizar entre 8 y 20 caracteres."
+                                                                   pattern=".{8,20}"
+                                                                   hint="Le recordamos que debe utilizar entre 8 y 20 caracteres."
+                                                                   id="vre2"/>
+                                            </af:inputText>
+                                        </div>
+                                        <div class="col-1 col-sm-1 top" style="padding-left:10px;">
+                                            <i id="confirmarcontraseniaIcon" class="fas fa-eye-slash"
+                                               style="font-size: 18px;line-height:2; color: #f7009da1;"
+                                               onclick="mostrarConfirmarContrasenia()"></i>
+                                        </div>
+                                        <div class="col-1 col-sm-1 top">
+                                            <tr:outputText id="checkConfPass" value="✓"
+                                                           inlineStyle="color: gray;z-index: 3;font-size: 25px;"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                             
+                            <af:panelGroupLayout id="PCRow4">
+                                <div class="col-12">
+                                    <div class="row autocenter">
+                                        <div class="col-6 col-sm-8 top">
+                                            <img src="/sky/imagenes/pc/dos/dispositivos.png" alt="dispositivos"
+                                                 style="width: 80%"/>
+                                        </div>
+                                        <div class="col-6 col-sm-8 top">
+                                            <af:commandLink id="cl1" inlineStyle="border-color: transparent;width:80%;"
+                                                            action="#{backingBeanScope.BBRegistroUsuario.completarPreRegistro}">
+                                                <img src="/sky/imagenes/pc/dos/boton_completar_registro.png"
+                                                     style="border-color: transparent;"/>
+                                                <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                            </af:commandLink>
+                                        </div>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <af:popup id="popupRegistrarUsuario" contentDelivery="immediate" childCreation="deferred" autoCancel="disabled"
+                  binding="#{backingBeanScope.BBRegistroUsuario.popupRegistrarUsuario}">
+            <af:dialog id="crearUsrRegDia" type="none" styleClass="alert" closeIconVisible="false"
+                       title="Registro exitoso">
+                <div class="text-internal">
+                    <div class="col-12">
+                        <img src="/sky/imagenes/pc/dos/logo_popup.png" id="popup_confirm_icon"
+                             style="vertical-align: middle;"/>
+                         
+                        <h:outputText value="Listo" styleClass="font-bolder azul-internal" id="ot18"
+                                      style="vertical-align: sub;"/>
+                    </div>
+                    <div class="col-12">
+                        <h:outputText value="Has creado tu cuenta, ingresa desde el login con tu nuevo usuario y contraseña"
+                                      id="ot9" styleClass="azul-internal"/>
+                    </div>
+                </div>
+                <div class="col-12 dialog-background">
+                    <div class="row top autocenter">
+                        <af:button text="Aceptar" id="cb3" action="cerrar_pc_ok" styleClass="btn-pay-dialog"></af:button>
+                    </div>
+                </div>
+            </af:dialog>
+        </af:popup>
+    </af:group>
+</ui:composition>

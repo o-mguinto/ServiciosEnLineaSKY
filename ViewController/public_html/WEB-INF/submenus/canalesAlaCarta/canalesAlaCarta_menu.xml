@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu"
+resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_canalesAlaCartaIndex" label="#{lbl.menu_CANAL_A_LA_CARTA}" action="irRouterCanales"
+            focusViewId="/canalesAlaCartaIndex" immediate="true" rendered="#{sesion.CANAL_A_LA_CARTA}"
+            icon="/imagenes/menu/ic_canalesCarta.svg">
+    <itemNode id="itemNode_canalesAlaCartaDeportes" label="#{lbl.smenu_CAC_DEPORTES}"
+              action="smenu_canalesAlaCartaDeportes" focusViewId="/canalesAlaCartaDeportes" immediate="true"
+              rendered="#{sesion.CACDEPORTES}"/>
+    <itemNode id="itemNode_canalesAlaCartaPeliculas" label="#{lbl.smenu_CAC_PELICULAS}"
+              action="smenu_canalesAlaCartaPeliculas" focusViewId="/canalesAlaCartaPeliculas" immediate="true"
+              rendered="#{sesion.CACPELICULAS}"/>
+    <itemNode id="itemNode_canalesAlaCartaPStreaming" label="#{lbl.smenu_CAC_STREAMING}"
+              action="smenu_canalesAlaCartaStreaming" focusViewId="/canalesAlaCartaStreaming" immediate="true"
+              rendered="#{sesion.CACSTREAMING}"/>
+    <itemNode id="itemNode_canalesAlaCartaAdultos" label="#{lbl.smenu_CAC_ADULTOS}"
+              action="smenu_canalesAlaCartaAdultos" focusViewId="/canalesAlaCartaAdultos" immediate="true"
+              rendered="#{sesion.CACADULTOS}"/>
+  </itemNode>
+</menu>

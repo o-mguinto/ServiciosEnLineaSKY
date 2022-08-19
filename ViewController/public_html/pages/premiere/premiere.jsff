@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#premiere').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+              
+        <div id="premiere">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal" >
+                        <div class="row">
+                        <af:panelBox id="pb3" showDisclosure="false" rendered="#{!sesion.contratarPPV}"
+                                     background="medium" showHeader="never" inlineStyle="border: 0px;">
+                            <af:outputText value="Su cuenta no tiene la capacidad de contratar, por favor comuníquese a Servicio a Clientes y mencione el código PPV001."
+                                           id="ot7" styleClass="check-internal-bold top-channel autocenter"/>
+                            <div class="row top"></div>
+                            <af:separator id="s4" rendered="#{sesion.userVeTV}"
+                                          styleClass="separador"/>
+                            <af:outputText value="Verifique que:" id="ot2" rendered="#{sesion.userVeTV}"
+                                           styleClass="check-internal-bold top-channel"/>
+                            <div class="row top"></div>
+                            <af:panelList id="pl1" rendered="#{sesion.userVeTV}">
+                                <af:outputText value="Su cuenta este activa." id="ot3"/>
+                                <af:outputText value="Su recarga este activa y que la fecha de vencimiento de su recarga sea mayor a dos días a partir del día de hoy."
+                                               id="ot4"/>
+                            </af:panelList>
+                        </af:panelBox>
+                            <div class="row rop">
+                                <div class="col-12 autocenter">
+                                    <af:forEach items="#{bindings.Evento.rangeSet}" var="item">
+                                        <div class="col-2 col-tb-2">
+                                            <div class="top">
+                                                <!--  -->
+                                                <af:link id="cl2"
+                                                            disabled="#{(!sesion.SKY_PREMIERE) or (!sesion.contratarPPV)}"
+                                                         action="#{pageFlowScope.PremiereBackingBean.mostrarPopUp}"
+                                                         partialSubmit="true" useWindow="true"
+                                                         windowEmbedStyle="inlineDocument"
+                                                         windowModalityType="applicationModal" windowHeight="580"
+                                                         windowWidth="800" shortDesc="#{item.titulo}"
+                                                         styleClass="divMosaico" partialTriggers="::pc3:t3"
+                                                         icon="#{parametros.urlImgs160X240}#{item.image}">
+                                                    <f:setPropertyActionListener target="#{pageFlowScope.PremiereBackingBean.item}"
+                                                                                 value="#{item}"/>
+                                                                                 <af:clientListener method="enforcePreventUserInput"
+                                                                                   type="action"/>
+                                                </af:link>
+                                            </div>
+                                        </div>
+                                    </af:forEach>
+                                </div>
+                            </div>
+                    </div>
+					</div>
+					<div class="top"></div>
+                    <div class="row">
+                        <div class="col-12 content-internal">
+                            <af:table value="#{bindings.Evento.collectionModel}" var="row"
+                                rows="#{bindings.Evento.rangeSize}"
+                                emptyText="#{bindings.Evento.viewable ? 'Eventos no Disponibles.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Evento.rangeSize}" rowBandingInterval="0"
+                                filterModel="#{bindings.EventoQuery.queryDescriptor}"
+                                queryListener="#{bindings.EventoQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.Evento.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.Evento.collectionModel.makeCurrent}"
+                                id="t3" autoHeightRows="10" rowSelection="single"
+                                editingMode="clickToEdit" width="100%" scrollPolicy="auto"
+                                horizontalGridVisible="false"
+                                verticalGridVisible="false" styleClass="tbl-Class">
+                                <af:column sortProperty="NoEvento" sortable="false"
+                                           headerText="#{selSKYBundle['premiere.c16.headertext']}" id="c16"
+                                           width="5%" align="center" headerClass="content-text">
+                                    <af:outputText value="#{vs.index+1}" id="ot16"/>
+                                </af:column>
+                                <af:column sortProperty="titulo" filterable="true" sortable="false"
+                                           headerText="#{selSKYBundle['premiere.c15.headertext']}" id="c15"
+                                           width="40%" inlineStyle="height:30.0px;"
+                                           headerClass="content-text">
+                                    <af:link text="#{row.titulo}" id="cl3"
+                                             action="#{pageFlowScope.PremiereBackingBean.mostrarPopUp}"
+                                             partialSubmit="true" useWindow="true"
+                                             windowEmbedStyle="inlineDocument"
+                                             disabled="#{(!sesion.SKY_PREMIERE) or (!sesion.contratarPPV)}"
+                                             windowModalityType="applicationModal" windowHeight="580"
+                                             windowWidth="800">
+                                        <f:setPropertyActionListener target="#{pageFlowScope.PremiereBackingBean.item2}"
+                                                                     value="#{row}"/>
+                                                                     <af:clientListener method="enforcePreventUserInput"
+                                                                       type="action"/>
+                                    </af:link>
+                                </af:column>
+                                <af:column sortProperty="modalidad" sortable="false"
+                                           headerText="#{selSKYBundle['premiere.c13.headertext']}" id="c13"
+                                           width="10%" align="center" headerClass="content-text">
+                                    <af:outputText value="#{row.modalidad}" id="ot14"/>
+                                </af:column>
+                                <af:column sortProperty="canalDisplay" sortable="false"
+                                           headerText="#{selSKYBundle['premiere.c2.headertext']}" id="c2"
+                                           align="center" width="5%" headerClass="content-text">
+                                    <af:outputText value="#{row.canalDisplay}" id="ot8"/>
+                                </af:column>
+                                <af:column sortProperty="idioma" sortable="false" headerText="Idioma" id="c1"
+                                           align="center" width="15%" headerClass="content-text">
+                                    <af:outputText value="#{row.idioma}" id="ot5"/>
+                                </af:column>
+                                <af:column sortProperty="subtitulos" sortable="false" headerText="Subtitulos"
+                                           id="c3" align="center" width="15%" headerClass="content-text">
+                                    <af:outputText value="#{row.subtitulos}" id="ot6"/>
+                                </af:column>
+                                <af:column sortProperty="precio" sortable="false"
+                                           headerText="#{selSKYBundle['premiere.c14.headertext']}" id="c14"
+                                           width="10%" align="center" headerClass="content-text">
+                                    <af:outputText value="#{row.precio}" id="ot13"/>
+                                </af:column>
+                            </af:table>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

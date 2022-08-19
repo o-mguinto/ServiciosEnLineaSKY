@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:trh="http://myfaces.apache.org/trinidad/html">
+    <meta http-equiv="X-UA-Compatible" content="IE=11.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0, user-scalable = no"/>
+    <af:document title="SKY | Confirmación de registro SEL" id="d1" styleClass="form-register">
+        <f:facet name="metaContainer">
+            <trh:meta charset="utf-8"/>
+            <trh:meta name="viewport"
+                      content="width=device-width,initial-scale=1.0,maximum-scale=3.0,user-scalable=no"/>
+            <trh:meta http-equiv="X-UA-Compatible" content="IE=11"/>
+            <trh:meta name="apple-mobile-web-app-capable" content="yes"/>
+            <f:subview id="head">
+                <meta name="description" content="SKY | Servicios en Línea"/>
+                <meta name="keywords" content="servicios en linea sky"/>
+                <af:outputText value="&lt;link rel='SHORTCUT ICON' href='#{facesContext.externalContext.requestContextPath}/imagenes/aplicacion/favicon.ico' type='image/x-icon'/>"
+                               id="ot1" escape="false"/>
+                <af:resource type="css" source="/css/custom/pagPublicas_template.css"/>
+                
+                <af:resource type="javascript" source="/js/jquery-3.5.1.min.js"/>
+                <af:resource type="javascript" source="/js/pixelSEL.js"/>
+                <af:resource type="css">
+                    .loginStyle {
+                        background-color: #004B8D;
+                        background-repeat: repeat-x;
+                        background-image: url(/sky/imagenes/pc/patron_BannerPrincipal2.png);
+                        margin: 0 !important;
+                        -moz-border-radius: 7px;
+                        -webkit-border-radius: 7px;
+                        border-radius: 7px;
+                        width: 950px;
+                        color: White;
+                    }
+                    body{
+                        font: normal normal 18px 'Roboto', sans-serif !important
+                    }
+                </af:resource>
+            </f:subview>
+        </f:facet>
+        <af:form id="f1">
+            <!-- Google Tag Manager (noscript) -->
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZQXB5N"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+            <!-- End Google Tag Manager (noscript) -->
+            <af:group id="g1">
+                <div class="row">
+                    <div class="col-12" align="center">
+                        <af:image id="img1" source="/imagenes/aplicacion/cabeza_tx.png" styleClass="loginStyle"/>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-2"/>
+                    <div class="col-8" align="center">
+                        <af:image source="/imagenes/35X35/nav_35x35/#{backingBeanScope.BBRegistroUsuarioCorp.icono}"
+                                  id="img2"/>
+                    </div>
+                    <div class="col-2"/>
+                </div>
+                
+                <div class="row">
+                    <div class="col-2"/>
+                    <div class="col-8" align="center">
+                        <af:outputText value="#{backingBeanScope.BBRegistroUsuarioCorp.mensajeUsuario}"
+                                 id="ot2" styleClass="text-register"/>
+                    </div>
+                    <div class="col-2"/>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-2"/>
+                    <div class="col-8" align="center">
+                        <af:outputText value="“serviciosenlinea@sky.com.mx” – suscriptores de México" id="ot3"
+                                       rendered="#{backingBeanScope.BBRegistroUsuarioCorp.mostrarOKRegistro}"
+                                       styleClass="text-register"/>
+                    </div>
+                    <div class="col-2"/>
+                </div>
+                
+                <div class="row">
+                    <div class="col-2"/>
+                    <div class="col-8" align="center">
+                        <af:outputText value="“serviciosenlineaca@sky.com.mx” – suscriptores de Centroamérica y República Dominicana"
+                                       id="ot4" rendered="#{backingBeanScope.BBRegistroUsuarioCorp.mostrarOKRegistro}"
+                                       styleClass="text-register"/>
+                    </div>
+                    <div class="col-2"/>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-2"/>
+                    <div class="col-8" align="center">
+                        <af:outputText value="Por favor revise en la bandeja de spam o correo no deseado si no llega el correo a su bandeja de entrada."
+                                 id="ot5" rendered="#{backingBeanScope.BBRegistroUsuarioCorp.mostrarOKRegistro}"
+                                 styleClass="text-register"/>
+                    </div>
+                    <div class="col-2"/>
+                </div>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col-2"/>
+                    <div class="col-8" align="center">
+                        <af:goButton text="Regresar a inicio" id="gb1" destination="/faces/bienvenido" styleClass="btn-md"/>
+                    </div>
+                    <div class="col-2"/>
+                </div>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col-3"/>
+                    <div class="col-6">
+                        <div class="col-12" align="center">
+                            <af:image source="/imagenes/aplicacion/logosExploradores_estadar.png" id="i6"
+                                      shortDesc="Navegadores"/>
+                        </div>
+                        <div class="col-12" align="center">
+                            <af:outputText value="Exploradores soportados son Internet Explorer Versión 10 o superior, Google Chrome 50 o superior, Mozilla Firefox 42 o superior. Para MAC Safari 7  o superior."
+                           id="ot6" inlineStyle="color:black; font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                        </div>
+                        
+                        <div class="col-12" align="center">
+                            <af:outputText value=" SESION_ID : #{Foliador.folio}" id="pt_ot1" 
+                                           inlineStyle="color:black; font-weight:bold; text-align:center;font-size:9px; font-family:Arial, Helvetica, sans-serif;"/>
+                        </div>
+                    </div>
+                    <div class="col-3"/>
+                </div>
+            </af:group>
+        </af:form>
+    </af:document>
+</f:view>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_consultaSaldoyPagoIndex" label="#{lbl.menu_PAGO_LINEA}"
+            action="irRouterConsultaSalgoPago" focusViewId="/consultaSaldoyPagoIndex" rendered="#{sesion.PAGO_LINEA}"
+            immediate="true" icon="/imagenes/menu/ic_saldoyPagoEnLinea.svg">
+    <itemNode id="itemNode_estadoCuenta" label="#{sesion.cuentaHotelMenu}" action="smenu_estadoCuenta"
+              focusViewId="/estadoCuenta" immediate="true"
+              rendered="#{sesion.ESTADO_CUENTA}"/>
+    <itemNode id="itemNode_saldoActualVeTv" label="#{lbl.smenu_CSyPL_SALDO}" action="smenu_saldoActualVeTv"
+              focusViewId="/saldoActualVeTv" rendered="#{sesion.SALDO_ACTUALVeTV}" immediate="true"/>
+    <itemNode id="itemNode_realizarPago" label="#{lbl.smenu_CSyPL_PAGO}" action="smenu_realizarPago"
+              focusViewId="/realizarPago" immediate="true"
+              rendered="#{sesion.REALIZAR_PAGO}"/>
+    <itemNode id="itemNode_recargaVeTv" label="#{lbl.smenu_CSyPL_RECARGA}" action="smenu_recargaVeTv"
+              focusViewId="/recargaVeTv" rendered="#{sesion.RECARGA_VETV}" immediate="true"/>
+    <itemNode id="itemNode_misTarjetas" label="#{lbl.smenu_CSyPL_TARJETAS}" action="smenu_misTarjetas"
+              focusViewId="/misTarjetas" rendered="#{sesion.MIS_TARJETAS}" immediate="true"/>
+    <itemNode id="itemNode_cambioFormaPago" label="#{lbl.smenu_CSyPL_REGISTRAR_CARGO}" action="smenu_cambioFormaPago"
+              focusViewId="/cambioFormaPago" rendered="#{sesion.CAMBIO_FORMA_PAGO}" readOnly="true" immediate="true"/>
+    <itemNode id="itemNode_promesaPago" label="#{lbl.smenu_CSyPL_REPORTAR_PAGO}" action="smenu_promesaPago"
+              focusViewId="/promesaPago" immediate="true"
+              rendered="#{sesion.REPORTAR_UN_PAGO_REALIZADO}"/>
+  </itemNode>
+</menu>

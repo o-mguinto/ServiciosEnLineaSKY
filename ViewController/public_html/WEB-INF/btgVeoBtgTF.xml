@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="btgVeoBtgTF">
+    <default-activity>btgveoBtgIndex</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>PFBlueToGo</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.btgew.PFBlueToGoEveryWhere</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="btgveoBtgIndex">
+      <page>/pages/btgVeoBtg/btgveoBtgIndex.jsff</page>
+    </view>
+    <task-flow-call id="blueToGoOTTActivarTF">
+      <task-flow-reference>
+        <document>/WEB-INF/blueToGoOTTActivarTF.xml</document>
+        <id>blueToGoOTTActivarTF</id>
+      </task-flow-reference>
+      <run-as-dialog>
+        <display-type>
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    </task-flow-call>
+    <task-flow-call id="blueToGoTcOTTTF">
+      <task-flow-reference>
+        <document>/WEB-INF/blueToGoTcOTTTF.xml</document>
+        <id>blueToGoTcOTTTF</id>
+      </task-flow-reference>
+      <run-as-dialog>
+        <display-type>
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    </task-flow-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>btgveoBtgIndex</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>activarOTT</from-outcome>
+        <to-activity-id>blueToGoOTTActivarTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__4">
+        <from-outcome>tc_ott</from-outcome>
+        <to-activity-id>blueToGoTcOTTTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

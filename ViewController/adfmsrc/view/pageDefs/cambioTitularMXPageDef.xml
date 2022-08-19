@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="cambioTitularMXPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="obtenerSolicitudCambioTitular.result" DataControl="DCCambioTitular" RangeSize="10"
+                    BeanClass="mx.com.sky.sel.services.beans.solicitudcambiotitular.DetalleSolicitudCambioTitular"
+                    id="obtenerSolicitudCambioTitularIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerSolicitudCambioTitular" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerSolicitudCambioTitular" IsViewObjectMethod="false" DataControl="DCCambioTitular"
+                  InstanceName="bindings.obtenerSolicitudCambioTitular.dataControl.dataProvider"
+                  ReturnName="data.DCCambioTitular.methodResults.obtenerSolicitudCambioTitular_obtenerSolicitudCambioTitular_dataControl_dataProvider_obtenerSolicitudCambioTitular_result">
+      <NamedData NDName="rowID" NDValue="#{sesion.cuentaSKY}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="obtenerSolicitudCambioTitularIterator" id="DetalleSolicitudCambioTitular">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.solicitudcambiotitular.DetalleSolicitudCambioTitular"
+                      Name="DetalleSolicitudCambioTitular0">
+        <AttrNames>
+          <Item Value="cuenta"/>
+          <Item Value="numSolicitud"/>
+          <Item Value="fechaSolicitud"/>
+          <Item Value="estatus"/>
+          <Item Value="subEstatus"/>
+          <Item Value="comentarios"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="obtenerSolicitudCambioTitularIterator" id="actualizarTabla" InstanceName="DCCambioTitular.dataProvider"
+            DataControl="DCCambioTitular" RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

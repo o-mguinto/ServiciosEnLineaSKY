@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:consultarcambiopaqueteprincipalselebm="http://www.sky.com.mx/EnterpriseMessages/Sel/ConsultarCambioPaquetePrincipal" xmlns:Meta="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" xmlns:selconsultarcambiopaqueteprincipal="http://www.sky.com.mx/EnterpriseObjects/Sel/ConsultarCambioPaquetePrincipal" targetNamespace="http://www.sky.com.mx/EnterpriseMessages/Sel/ConsultarCambioPaquetePrincipal" elementFormDefault="qualified">
+  <xsd:import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/ConsultarCambioPaquetePrincipal" schemaLocation="ConsultarCambioPaquetePrincipalSelEBO.xsd"/>
+  <xsd:import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" schemaLocation="Meta.xsd"/>
+  <xsd:element name="ConsultarCambioPaquetePrincipalRequestEBM" type="consultarcambiopaqueteprincipalselebm:ConsultarCambioPaquetePrincipalRequestEBMType"/>
+  <xsd:element name="ConsultarCambioPaquetePrincipalResponseEBM" type="consultarcambiopaqueteprincipalselebm:ConsultarCambioPaquetePrincipalResponseEBMType"/>
+  <xsd:complexType name="ConsultarCambioPaquetePrincipalRequestEBMType">
+    <xsd:sequence>
+      <xsd:element ref="Meta:EBMHeaderRequest"/>
+      <xsd:element name="ConsultarCambioPaquetePrincipalRequest" type="consultarcambiopaqueteprincipalselebm:ConsultarCambioPaquetePrincipalRequestType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ConsultarCambioPaquetePrincipalRequestType">
+    <xsd:sequence>
+      <xsd:element name="Proceso" type="xsd:string" minOccurs="1"/>
+      <xsd:element name="Categoria" type="xsd:string" minOccurs="1"/>
+      <xsd:element name="Cuenta" type="xsd:string" minOccurs="1"/>
+      <xsd:element name="AssetNumber" type="xsd:string" minOccurs="1"/>
+      <xsd:element name="SecondAssetNumber" type="xsd:string" minOccurs="1"/>
+      <xsd:element name="Pais" type="xsd:string" minOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ConsultarCambioPaquetePrincipalResponseEBMType">
+    <xsd:sequence>
+      <xsd:element ref="Meta:EBMHeaderResponse"/>
+      <xsd:element name="ConsultarCambioPaquetePrincipal" type="selconsultarcambiopaqueteprincipal:ConsultarCambioPaquetePrincipalListType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

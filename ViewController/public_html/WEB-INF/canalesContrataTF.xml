@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="canalesContrataTF">
+    <default-activity>canalesIndex</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__2">
+      <name>nombreCanal</name>
+      <value>#{pageFlowScope.PFCanalesContrata.canal.nombre}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__3">
+      <name>imagenCanal</name>
+      <value>#{pageFlowScope.PFCanalesContrata.canal.imagen}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__4">
+      <name>idCanal</name>
+      <value>#{pageFlowScope.PFCanalesContrata.canal.id}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__5">
+      <name>precioDisplay</name>
+      <value>#{pageFlowScope.PFCanalesContrata.canal.precio_display}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__6">
+      <name>sinopsis</name>
+      <value>#{pageFlowScope.PFCanalesContrata.canal.sinopsis}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__7">
+      <name>nombreDisplayCanal</name>
+      <value>#{pageFlowScope.PFCanalesContrata.canal.nombre_display}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__8">
+      <name>canal</name>
+      <value>#{pageFlowScope.PFCanalesContrata.canal.canal}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__9">
+      <name>canal_display</name>
+      <value>#{pageFlowScope.PFCanalesContrata.canal.canal_display}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__10">
+      <name>precioPO_display</name>
+      <value>#{pageFlowScope.PFCanalesContrata.canal.precioPO_display}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>PFCanalesContrata</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.canal.PFCanalesContrata</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="canalesIndex">
+      <page>/pages/canales/canalesIndex.jsf</page>
+    </view>
+    <task-flow-return id="closeTaskFlow">
+      <outcome>
+        <name>closeTaskFlow</name>
+      </outcome>
+    </task-flow-return>
+    <view id="canalesConfirmar">
+      <page>/pages/canales/canalesConfirmar.jsf</page>
+    </view>
+    <view id="canalesResumen">
+      <page>/pages/canales/canalesResumen.jsf</page>
+    </view>
+    <router id="siguiente">
+      <case id="__18">
+        <expression>#{sesion.userVeTV}</expression>
+        <outcome>siguienteVeTV</outcome>
+      </case>
+      <default-outcome>siguienteSKY</default-outcome>
+    </router>
+    <view id="canalesPago">
+      <page>/pages/canales/canalesPago.jsf</page>
+    </view>
+    <view id="canalesNuevaTDC">
+      <page>/pages/canales/canalesNuevaTDC.jsf</page>
+    </view>
+    <view id="canalesNuevaTDCConfirmar">
+      <page>/pages/canales/canalesNuevaTDCConfirmar.jsf</page>
+    </view>
+    <view id="canalesNuevaTDCResumen">
+      <page>/pages/canales/canalesNuevaTDCResumen.jsf</page>
+    </view>
+    <view id="canalesPagoConfirmar">
+      <page>/pages/canales/canalesPagoConfirmar.jsf</page>
+    </view>
+    <view id="canalesVeTVResumen">
+      <page>/pages/canales/canalesVeTVResumen.jsf</page>
+    </view>
+    <control-flow-rule id="__11">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome>closeTaskFlow</from-outcome>
+        <to-activity-id>closeTaskFlow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id>canalesIndex</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>siguiente</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__15">
+      <from-activity-id>siguiente</from-activity-id>
+      <control-flow-case id="__16">
+        <from-outcome>siguienteSKY</from-outcome>
+        <to-activity-id>canalesConfirmar</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__17">
+        <from-outcome>siguienteVeTV</from-outcome>
+        <to-activity-id>canalesPago</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__19">
+      <from-activity-id>canalesConfirmar</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>canalesResumen</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__21">
+      <from-activity-id>canalesPago</from-activity-id>
+      <control-flow-case id="__22">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>canalesPagoConfirmar</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome>nuevaTDC</from-outcome>
+        <to-activity-id>canalesNuevaTDC</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id>canalesPagoConfirmar</from-activity-id>
+      <control-flow-case id="__24">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>canalesPago</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__25">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>canalesVeTVResumen</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id>canalesNuevaTDC</from-activity-id>
+      <control-flow-case id="__28">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>canalesPago</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__29">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>canalesNuevaTDCConfirmar</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__30">
+      <from-activity-id>canalesNuevaTDCConfirmar</from-activity-id>
+      <control-flow-case id="__31">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>canalesNuevaTDC</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__32">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>canalesNuevaTDCResumen</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__35">
+      <from-activity-id>canalesNuevaTDCResumen</from-activity-id>
+      <control-flow-case id="__36">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>canalesPago</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

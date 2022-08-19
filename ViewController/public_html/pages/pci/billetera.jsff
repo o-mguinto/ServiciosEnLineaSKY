@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#billetera').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            .card-billetera {
+                padding: 5% 0px;
+                height: 110px;
+                background: #D6D5D2 0% 0% no-repeat padding-box;
+                border-radius: 5px;
+                opacity: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .card-billetera-seleccion {
+                padding: 5% 0px;
+                height: 110px;
+                background: transparent url('imagenes/pc/interno/pci/b_selected.png')0% 0% round padding-box;
+                opacity: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .card-billetera img, .card-billetera-seleccion img {
+                width: 68px;
+                height: 50px;
+                display: inline;
+            }
+
+            img.agregar-tarjeta {
+                width: 40px !important;
+                height: 40px !important;
+                display: inline !important;
+            }
+
+            .subtitulo-agr-tarjeta {
+                text-align: center;
+                font: normal normal bold 14px/16px Roboto;
+                letter-spacing: 0px;
+                color: #025597;
+                opacity: 1;
+                display: inherit;
+                margin-top: 3%;
+            }
+            /*textos del card billetera*/
+            .tipo-tarjeta {
+                text-align: left;
+                font: normal normal bold 14px/16px Roboto;
+                letter-spacing: 0px;
+                display: block;
+                margin-bottom: 10%;
+            }
+
+            .tipo-tarjeta-seleccion {
+                text-align: left;
+                font: normal normal bold 14px/16px Roboto;
+                letter-spacing: 0px;
+                color: #FFFFFF;
+                display: block;
+                margin-bottom: 10%;
+            }
+
+            .txt-tarjeta-seleccion {
+                text-align: left;
+                font: normal normal 12px/16px Roboto;
+                letter-spacing: 0px;
+                color: #FFFFFF;
+                display: block;
+            }
+
+            .txt-tarjeta {
+                text-align: left;
+                font: normal normal 12px/16px Roboto;
+                letter-spacing: 0px;
+                display: block;
+            }
+
+            .card-color {
+                color: #004B8D;
+            }
+            /*para dejarle un minwidth al boton*/
+            .minWh {
+                min-width: 173px;
+            }
+
+            .d-flex {
+                display: -ms-flexbox !important;
+                display: -moz-box !important;
+                display: -webkit-box !important;
+                display: -webkit-flex !important;
+            }
+
+            .align-items-center {
+                -moz-box-align: center !important;
+                -webkit-box-align: center !important;
+                -ms-flex-align: center !important;
+                -webkit-align-items: center !important;
+            }
+        </af:resource>
+        <div id="billetera">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelGroupLayout id="pgl7">
+                            <p class="bottom">
+                                <h:outputText styleClass="title" value="Mis Tarjetas" id="ot12"/>
+                            </p>
+                            <p>
+                                <h:outputText styleClass="subtitle" value="Seleccione su método de pago predeterminado"
+                                              id="ot1"/>
+                            </p>
+                            <div class="col-12 col-tb-8 col-sm-8">
+                                <div class="row top autocenter">
+                                    <af:panelGroupLayout id="pgl12t" partialTriggers="bEliminar">
+                                        <af:forEach items="#{pageFlowScope.BilleteraBB.tarjetasBilletera}" var="tarjeta"
+                                                    varStatus="vsTarjeta">
+                                            <div class="autocenter" style="width:33%;display: inline-block;">
+                                                <af:link id="lnkTarjetas" rendered="#{tarjeta.recurrente}">
+                                                    <div class="top" style="padding: 0% 5%;">
+                                                        <div class="card-billetera-seleccion autocenter">
+                                                            <div class="col-5">
+                                                                <af:image source="imagenes/pc/interno/pci/lg_visab2x.png"
+                                                                          id="i5" rendered="#{tarjeta.visa}"/>
+                                                                 
+                                                                <af:image source="imagenes/pc/interno/pci/lg_mastercard2x.png"
+                                                                          id="i1" rendered="#{tarjeta.masterCard}"/>
+                                                            </div>
+                                                            <div class="col-7">
+                                                                <h:outputLabel id="ol14"
+                                                                               value="#{tarjeta.redFinanciera}"
+                                                                               styleClass="tipo-tarjeta-seleccion"/>
+                                                                 
+                                                                <h:outputLabel id="ol15"
+                                                                               value="Tarjeta de #{tarjeta.tipoTarjetaParaMostrar}"
+                                                                               styleClass="txt-tarjeta-seleccion"/>
+                                                                 
+                                                                <h:outputLabel id="ol16" value="con terminación"
+                                                                               styleClass="txt-tarjeta-seleccion"/>
+                                                                 
+                                                                <h:outputLabel id="ol17"
+                                                                               value="#{tarjeta.numeroTarjetaOculta}"
+                                                                               styleClass="txt-tarjeta-seleccion"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </af:link>
+                                                 
+                                                <af:link id="lnkTarjetasNR" rendered="#{!tarjeta.recurrente}">
+                                                    <div class="top" style="padding: 0% 5%;">
+                                                        <div class="card-billetera autocenter">
+                                                            <div class="col-5">
+                                                                <af:image source="imagenes/pc/interno/pci/lg_visab2x.png"
+                                                                          id="i4" rendered="#{tarjeta.visa}"/>
+                                                                 
+                                                                <af:image source="imagenes/pc/interno/pci/lg_mastercard2x.png"
+                                                                          id="i3" rendered="#{tarjeta.masterCard}"/>
+                                                            </div>
+                                                            <div class="col-7">
+                                                                <h:outputLabel id="ol1" value="#{tarjeta.redFinanciera}"
+                                                                               styleClass="card-color tipo-tarjeta"/>
+                                                                 
+                                                                <h:outputLabel id="ol2"
+                                                                               value="Tarjeta de #{tarjeta.tipoTarjetaParaMostrar}"
+                                                                               styleClass="card-color txt-tarjeta"/>
+                                                                 
+                                                                <h:outputLabel id="ol3" value="con terminación"
+                                                                               styleClass="card-color txt-tarjeta"/>
+                                                                 
+                                                                <h:outputLabel id="ol4"
+                                                                               value="#{tarjeta.numeroTarjetaOculta}"
+                                                                               styleClass="card-color txt-tarjeta"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </af:link>
+                                                <div class="autocenter" style="margin-top: 10px;">
+                                                    <af:link text="Eliminar tarjeta" id="l1" styleClass="card-color"
+                                                             action="#{pageFlowScope.BilleteraBB.popupEliminar}"
+                                                             rendered="#{!tarjeta.recurrente}">
+                                                        <f:setPropertyActionListener target="#{pageFlowScope.BilleteraBB.tarjetaBilleteraEliminar}"
+                                                                                     value="#{tarjeta}"/>
+                                                    </af:link>
+                                                     
+                                                    <af:link text="Eliminar tarjeta" id="l2" styleClass="card-color"
+                                                             inlineStyle="visibility: hidden;"
+                                                             rendered="#{tarjeta.recurrente}"/>
+                                                </div>
+                                            </div>
+                                        </af:forEach>
+                                    </af:panelGroupLayout>
+                                    <div class="autocenter" style="width:33%;display: inline-block;">
+                                        <af:link id="lnkAgMetPago"
+                                                 action="#{pageFlowScope.BilleteraBB.agregarMetodoPago}">
+                                            <div class="top" style="padding: 0% 5%;">
+                                                <div class="card-billetera autocenter">
+                                                    <div class="col-12">
+                                                        <af:image styleClass="agregar-tarjeta"
+                                                                  source="imagenes/pc/interno/pci/ic_mas2x.png"
+                                                                  id="i2"/>
+                                                         
+                                                        <h:outputLabel id="ol5" styleClass="subtitulo-agr-tarjeta"
+                                                                       value="Agregar método de pago"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </af:link>
+                                        <div class="autocenter" style="margin-top: 10px;">
+                                            <af:link text="Eliminar tarjeta" id="l3" styleClass="card-color"
+                                                     inlineStyle="visibility: hidden;"></af:link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="top col-12 col-tb-8 col-sm-8">
+                                <div class="top top-2 col-1 col-tb-2 col-sm-8 center sm-cancel-align"
+                                     style="float: left;">
+                                    <af:button text="Regresar" id="cbRegresarEdoCta" styleClass="minWh btn-internal"></af:button>
+                                </div>
+                                <div class="top top-2 col-4 col-tb-5 col-sm-8 sm-cancel-align center"
+                                     style="float: right;">
+                                    <af:button text="Seleccionar tarjeta" id="cbSelectTarjeta"
+                                               styleClass="minWh btn-internal"></af:button>
+                                </div>
+                            </div>
+                        </af:panelGroupLayout>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <af:popup id="popupEliminarMP" binding="#{pageFlowScope.BilleteraBB.popupEliminarMetodoPago}"
+                  contentDelivery="lazyUncached" autoCancel="disabled" childCreation="deferred">
+            <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                <af:dialog id="d1" title="Confirmar Operación" type="none" closeIconVisible="false" styleClass="alert">
+                    <div class="text-internal">
+                        <div class="col-12 autocenter">
+                            <h:outputText value="¿Esta seguro que desea eliminar el método de pago: #{pageFlowScope.BilleteraBB.tarjetaBilleteraEliminar.numeroTarjetaOculta} ?" id="ot2"
+                                          styleClass="font-bolder"/>
+                        </div>
+                    </div>
+                    <div class="col-12 dialog-background">
+                        <div class="row autocenter">
+                            <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align" style="float: right">
+                                <af:button id="bCancelar" text="Cancelar" styleClass="btn-pay-dialog"
+                                           action="#{pageFlowScope.BilleteraBB.cancelarEliminacionMetodoPago}"/>
+                            </div>
+                            <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align" style="float: right">
+                                <af:button id="bEliminar" immediate="true" text="Eliminar" styleClass="btn-pay-dialog"
+                                           action="#{pageFlowScope.BilleteraBB.eliminarMetodoPago}"/>
+                            </div>
+                        </div>
+                    </div>
+                </af:dialog>
+            </div>
+        </af:popup>
+        
+        
+    </af:group>
+</ui:composition>

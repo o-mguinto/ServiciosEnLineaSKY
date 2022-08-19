@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">reenvioSenalIndex</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">550.0</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>reenvioSenalIndex&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">436.5459</property>
+      <property
+         name="page">/pages/reenvioSenal/reenvioSenalIndex.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+</SDM>

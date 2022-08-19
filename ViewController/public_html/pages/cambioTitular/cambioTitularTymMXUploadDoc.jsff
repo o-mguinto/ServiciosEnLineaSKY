@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <af:group id="gpCambioTitularTyMxUploadDoc">
+        <af:resource type="javascript">
+          $('#cambioTitularTyMxUploadDoc').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            /*solo boton*/
+            .btn-internal {
+                min-width: 50%;
+            }
+        </af:resource>
+        <div id="cambioTitularTyMxUploadDoc">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelGroupLayout id="pgl1" styleClass="dialog-background" inlineStyle="border: none;">
+                            <h:outputText styleClass="title" value="#{selSKYBundle['cambiotitular.tymmxupload.title']}" id="otTitulo"
+                                          style="text-transform: uppercase;"/>
+                            <div class="row top">
+                                <h:outputText value="#{selSKYBundle['cambiotitular.tymmxuploaddoc.instrucciones']}"
+                                              id="ot1" styleClass="subtitle"/>
+                            </div>
+                            <af:panelBox text="" id="pb1" maximized="true" showDisclosure="false" showMaximize="never"
+                                         background="medium" showHeader="never" inlineStyle="border:none;   margin-right: 5px;">
+                                <div class="row">
+                                    <af:panelList id="pl2" listStyle="list-style-type:circle">
+                                        <af:outputText value="#{selSKYBundle['cambiotitular.tymmxuploaddoc.instrucciones1']}"
+                                                       id="ot4"/>
+                                        <af:outputText value="#{selSKYBundle['cambiotitular.tymmxuploaddoc.instrucciones2']}"
+                                                       id="ot3"/>
+                                        <af:outputText value="#{selSKYBundle['cambiotitular.tymmxuploaddoc.instrucciones3']}"
+                                                       id="ot_6"/>
+                                    </af:panelList>
+                                </div>
+                                <div class="row">
+                                    <h:outputText value="#{selSKYBundle['cambiotitular.tymmxuploaddoc.documentos']}"
+                                                  id="ot2" styleClass="subtitle"/>
+                                     
+                                    <af:panelFormLayout id="pfl1" labelAlignment="top" rows="11">
+                                        <af:inputFile label="#{selSKYBundle['cambiotitular.tymmxuploaddoc.documentos.cartaresponsiva']}"
+                                                      id="if1" required="true"
+                                                      value="#{backingBeanScope.BBCambioTitularUpload.cartaResponsiva}"/>
+                                        <af:separator id="s3" inlineStyle="height: 10px;"/>
+                                        <af:inputFile label="#{selSKYBundle['cambiotitular.tymmxuploaddoc.documentos.identoficialcedente']}"
+                                                      id="if2"
+                                                      value="#{backingBeanScope.BBCambioTitularUpload.identificacionCedente}"
+                                                      required="true"/>
+                                        <af:separator id="s2" inlineStyle="height: 10px;"/>
+                                        <af:inputFile label="#{selSKYBundle['cambiotitular.tymmxuploaddoc.documentos.identoficialcesionario']}"
+                                                      id="if3"
+                                                      value="#{backingBeanScope.BBCambioTitularUpload.identificacionCesionario}"
+                                                      required="true"/>
+                                        <af:separator id="s4" inlineStyle="height: 10px;"/>
+                                        <af:inputFile label="#{selSKYBundle['cambiotitular.tymmxuploaddoc.documentos.compdomicilio']}"
+                                                      id="if4"
+                                                      value="#{backingBeanScope.BBCambioTitularUpload.comprobanteDomicilio}"
+                                                      required="true"/>
+                                        <af:separator id="s5" inlineStyle="height: 10px;"/>
+                                        <af:inputFile label="#{selSKYBundle['cambiotitular.tymmxuploaddoc.documentos.podernotarial']}"
+                                                      id="if5"
+                                                      value="#{backingBeanScope.BBCambioTitularUpload.poderNotarial}"
+                                                      required="#{pageFlowScope.PFCambioTitularForm.subrrogacion.tipoPersonaSHCP=='PM'}"
+                                                      visible="#{pageFlowScope.PFCambioTitularForm.subrrogacion.tipoPersonaSHCP=='PM'}"/>
+                                        <af:outputFormatted value="#{selSKYBundle['cambiotitular.tymmxuploaddoc.documentos.podernotarialdetalle']}"
+                                                            id="of1" styleUsage="instruction"
+                                                            visible="#{pageFlowScope.PFCambioTitularForm.subrrogacion.tipoPersonaSHCP=='PM'}"/>
+                                    </af:panelFormLayout>
+                                </div>
+                            </af:panelBox>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="panelGroupLayout1">
+                            <div class="top top-2 col-3 col-sm-8  col-tb-2 center" style="float:right;">
+                                <af:button text="#{selSKYBundle['cambiotitular.tymmxuploaddoc.btn.cancelar']}" id="cb2"
+                                           immediate="true" action="closeTaskFlow" styleClass="btn-internal"/>
+                            </div>
+                            <div class="top top-2 col-3 col-sm-8  col-tb-2 center" style="float:right;">
+                                <af:button text="#{selSKYBundle['cambiotitular.tymmxuploaddoc.btn.enviar']}" id="cb1"
+                                           action="#{backingBeanScope.BBCambioTitularUpload.cbEnviarDocumentos_action}"
+                                           styleClass="btn-internal">
+                                    <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                </af:button>
+                            </div>
+                        </af:panelGroupLayout>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

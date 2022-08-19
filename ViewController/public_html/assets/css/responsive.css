@@ -1,0 +1,148 @@
+
+@media screen and (min-width:768px) and ( max-width:1024px) {
+ 
+    
+}
+
+@media screen and (max-width:767px) {
+ .custom{
+    width: 90%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto ;
+}
+.dispImage {
+    width: 100%;
+    padding: 20px;
+    display: inline-flex;
+    -webkit-box-shadow: 6px 5px 11px 0px rgba(219,219,219,1);
+    -moz-box-shadow: 6px 5px 11px 0px rgba(219,219,219,1);
+    box-shadow: 6px 5px 11px 0px rgba(219,219,219,1);
+    margin-left: auto;
+    margin-right: auto ;
+    
+}
+.planeLogo {
+    width: auto;
+    height: auto;
+    margin:10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.custom02{
+    width: auto;
+    background-color: rgb(1,204,219);
+    display: block;
+    margin-left: auto;
+    margin-right: auto ;
+    border-radius: 5px;
+    margin: 1%;
+}
+.custom01_internal{
+    padding-bottom: 30px;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto ;   
+}
+.insideBox{
+    margin:0px;
+}
+.normalWhiteFont{
+    font-family:  Arial, Helvetica, sans-serif;
+    font-size: small;
+    color: White;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.normalFont{
+    font-family:  Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: Black;
+    text-align: justify;
+}
+.normalFontCustom1{
+    font-family:  Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: Black;
+    display: block;
+    text-align: center;
+}
+}
+
+@media screen and (max-width:480px) {
+ .custom{
+    width: 90%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto ;
+}
+.dispImage {
+width: 100%;
+padding: 20px;
+    display: inline-flex;
+    -webkit-box-shadow: 6px 5px 11px 0px rgba(219,219,219,1);
+    -moz-box-shadow: 6px 5px 11px 0px rgba(219,219,219,1);
+    box-shadow: 6px 5px 11px 0px rgba(219,219,219,1);
+    margin-left: auto;
+    margin-right: auto ;
+}
+.planeLogo {
+    width: auto;
+    height: auto;
+    margin:10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.custom02{
+    width: auto;
+    background-color: rgb(1,204,219);
+    display: block;
+    margin-left: auto;
+    margin-right: auto ;
+    border-radius: 5px;
+    margin: 1%;
+}
+.custom01_internal{
+    padding-bottom: 30px;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto ;   
+}
+.custom02_internal{
+    padding-bottom: 30px;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto ;
+    display: inline-flex;
+    text-align: left;
+}
+.insideBox{
+    margin:0px;
+}
+.normalWhiteFont{
+    font-family:  Arial, Helvetica, sans-serif;
+    font-size: small;
+    color: White;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.normalFont{
+    font-family:  Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: Black;
+    text-align: justify;
+}
+.normalFontCustom1{
+    font-family:  Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: Black;
+    display: block;
+    text-align: center;
+}
+}

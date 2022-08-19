@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <af:group id="gpCambioTitularTyMx2">
+        <af:resource type="javascript">
+          $('#cambioTitularTyMx2').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            /*solo boton*/
+            .btn-internal {
+                min-width: 50%;
+            }
+        </af:resource>
+        <div id="cambioTitularTyMx2">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelGroupLayout id="pgl1" styleClass="dialog-background" inlineStyle="border: none;">
+                            <h:outputText styleClass="title" value="LLENAR DOCUMENTOS" id="otTitulo"/>
+                            <div class="row top">
+                                <h:outputText styleClass="title" value="Domicilio particular del nuevo suscriptor"
+                                              id="ot14"/>
+                            </div>
+                            <div class="row ">
+                                <af:panelBox text="" id="pb1" maximized="true" showDisclosure="false"
+                                             showMaximize="never" background="medium"
+                                             inlineStyle="border:none;   margin-right: 5px;" showHeader="never">
+                                    <f:facet name="toolbar"/>
+                                    <af:panelFormLayout id="pfl1" labelAlignment="top" fieldWidth="100%"
+                                                        labelWidth="35%" maxColumns="2"
+                                                        rows="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? '1': '19'}">
+                                        <af:inputText label="VIALIDAD (CALLE)" id="itCalleNS" maximumLength="40"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.calle}"
+                                                      required="true" styleClass="input-internal"/>
+                                        <af:inputText label="No. EXTERIOR" id="itNoExtNS" columns="5" maximumLength="5"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.noExt}"
+                                                      required="true" styleClass="input-internal"/>
+                                        <af:inputText label="No. INTERIOR" id="itNoIntNS" columns="5" maximumLength="5"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.noInt}"
+                                                      styleClass="input-internal"/>
+                                        <af:inputText label="ENTRE CALLE" id="itECalleNS" maximumLength="40"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.entreCalle}"
+                                                      styleClass="input-internal"/>
+                                        <af:inputText label="Y CALLE" id="itYCalleNS" maximumLength="40"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.YCalle}"
+                                                      styleClass="input-internal"/>
+                                        <af:inputText label="ASENTAMIENTO (COLONIA)" id="itColNS" maximumLength="40"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.colonia}"
+                                                      required="true" styleClass="input-internal"/>
+                                        <af:inputText label="POBLACIÓN" id="itPobNS" maximumLength="40"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.poblacion}"
+                                                      required="true" styleClass="input-internal"/>
+                                        <af:inputText label="MUNICIPIO" id="itMncpNS" maximumLength="40"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.municipio}"
+                                                      required="true" styleClass="input-internal"/>
+                                        <af:inputText label="ENTIDAD FEDERATIVA" id="itEFNS" maximumLength="40"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.entidadFederativa}"
+                                                      required="true" styleClass="input-internal"/>
+                                        <af:inputText label="CÓDIGO POSTAL" id="itCPNS" columns="5" maximumLength="8"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.codigoPostal}"
+                                                      required="true" styleClass="input-internal"/>
+                                        <af:inputText label="OTRAS  REFERENCIAS" id="itOtRefNS" maximumLength="40"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.otrasReferencias}"
+                                                      styleClass="input-internal"/>
+                                        <af:inputText label="CLAVE LADA (01)" id="itClaveNS" columns="5"
+                                                      maximumLength="5"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.claveLada}"
+                                                      required="true" styleClass="input-internal"/>
+                                        <af:inputText label="TELEFONO CASA" id="itTelCasaNS" maximumLength="10"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.telCasa}"
+                                                      required="true" styleClass="input-internal"/>
+                                        <af:inputText label="TELEFONO OFICINA" id="itTelOfcNS" maximumLength="14"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.telOficina}"
+                                                      styleClass="input-internal"/>
+                                        <af:inputText label="CEL" id="itCelNS" maximumLength="10"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.cel}"
+                                                      required="true" styleClass="input-internal"/>
+                                        <af:inputText label="CASETA" id="itCaseNS" maximumLength="10"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.caseta}"
+                                                      styleClass="input-internal"/>
+                                        <af:inputText label="OTRO TELEFONO" id="itOtTelNS" maximumLength="12"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.otroTel}"
+                                                      styleClass="input-internal"/>
+                                        <af:inputText label="RFC" id="itRFCNS" maximumLength="14"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.RFC}"
+                                                      required="true" columns="14" styleClass="input-internal">
+                                            <af:validateRegExp pattern="(([a-zA-Z&amp;]{4}[0-9]{6}[a-zA-Z0-9]{3})|[a-zA-Z&amp;]{3}[0-9]{6}[a-zA-Z0-9]{3})"
+                                                               messageDetailNoMatch="Ingrese un RFC válido XXXX860902XXX ó XXX860903XXX"/>
+                                        </af:inputText>
+                                        <af:inputText label="Correo electrónico" id="itmailNS" maximumLength="50"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.correo}"
+                                                      required="true" styleClass="input-internal">
+                                            <af:validateRegExp messageDetailNoMatch="Ingrese una dirección válida"
+                                                               pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                                        </af:inputText>
+                                    </af:panelFormLayout>
+                                </af:panelBox>
+                            </div>
+                        </af:panelGroupLayout>
+                         
+                        <af:panelGroupLayout id="panelGroupLayout1">
+                            <div class="top top-2 col-3 col-sm-8  col-tb-2 right" style="float:right;">
+                                <af:button text="Cancelar" id="cb2" action="cancelar" immediate="true"
+                                           styleClass="btn-internal"/>
+                            </div>
+                            <div class="top top-2 col-3 col-sm-8  col-tb-2 right" style="float:right;">
+                                <af:button text="Siguiente" id="cb1" action="siguiente" styleClass="btn-internal"/>
+                            </div>
+                            <div class="top top-2 col-3 col-sm-8  col-tb-2 right" style="float:right;">
+                                <af:button text="Atrás" id="cb3" action="atras" immediate="true"
+                                           styleClass="btn-internal"/>
+                            </div>
+                        </af:panelGroupLayout>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_estInternetIndex" label="#{lbl.smenu_ESTATUSINTERNET}" action="irEstInternetRouter"
+            focusViewId="/estInternetIndex" immediate="true" rendered="#{sesion.CONSUMO_INTERNET}"
+            icon="/imagenes/menu/ic_internet.svg">
+    <itemNode id="itemNode_estatusInternet" label="#{lbl.smenu_ESTATUSINTERNET_CONSUMOINTERNET}" action="irEstatusInternet"
+              focusViewId="/estatusInternet" rendered
+              ="#{sesion.CONSUMO_INTERNET}"/>
+  </itemNode>
+</menu>

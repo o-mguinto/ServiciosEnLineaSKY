@@ -1,0 +1,176 @@
+@charset "UTF-8";
+
+/*Borde del paquete*/
+.bolderPaquete{
+    border-radius: 20px; 
+    border: 2px solid;
+    min-height: 130px;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column
+}
+
+.bolderPaquete > span{
+    width: 100%;
+}
+
+/*para los botones de ofertas*/
+/*oferta no seleccionada*/
+.btn-opacity {
+    background: rgb(0 75 141/85%) 0% 0% no-repeat padding-box !important;
+}
+/*oferta seleccionada*/
+.btn-opacity-1 {
+    background: rgb(0 75 141/180%) 0% 0% no-repeat padding-box !important;
+}
+/*bonotes ofertas*/
+a.btn-internal {
+    display: flex;
+    align-items: center;
+    min-height: 45px;
+    max-width: 100%;
+    margin: 0px;
+}
+/*etiqueta del boton de la oferta*/
+a.btn-internal > span {
+    font: bold 9px/14px Roboto;
+    color: white;
+    flex: 50%;
+    white-space: break-spaces;
+    opacity: 1;
+}
+/*--------------FIN etiquetas de los botones de oferta----------------*/
+/*etiquetas de contenidos de los paquetes*/
+.channel-text1 {
+    font: bold 12px/12px Roboto;
+    text-transform:uppercase; 
+    display:block;
+}
+.channel-text2 {
+    font: Medium Roboto;
+    font-size:12px;
+    display:inline-block;
+}
+.lbl-datosDisponibles{
+    width: 50%;
+    white-space: break-spaces;
+}
+
+.lbl-costoPaq{
+    font: bold 20px/20px Roboto;
+}
+
+.lbl-nombrePaq{
+    white-space: normal;
+    word-break: break-word;
+}
+/*-----FIN etiquetas de contenidos de los paquetes------*/
+
+.word-break-text{
+    word-break: break-word;
+    white-space: normal;
+}
+
+.titulo-paquete{
+        text-transform: uppercase;
+        font: bold 12px/12px Roboto;
+        display: block;
+        word-break: break-word;
+        white-space: normal;
+    }
+.titulo-paquete:hover{
+    text-decoration: none;
+}
+
+.color_0{ 
+    border-color: #a05202;
+    color: #a05202 !important;
+}
+.color_1{ border-color: #e3c802;
+    color: #e3c802 !important;
+}
+.color_2{ border-color: #d80074;
+    color: #d80074 !important;
+}
+.color_3{ border-color: #647687;
+    color: #647687 !important;
+}
+.color_4{ border-color: #3ea9e0;
+    color: #3ea9e0 !important;
+}
+.color_5{ border-color: #56871C;
+    color: #56871C !important;
+}
+.color_6{ border-color: #72465D;
+color: #72465D !important;}
+.color_7{ border-color: #7A5B0A;
+color: #7A5B0A !important;}
+.color_8{ border-color: #8BBAE2;
+color: #8BBAE2 !important;}
+.color_9{ border-color: #DC7D16;
+color: #DC7D16 !important;}
+.color_10{ border-color: #273B9C;
+color: #273B9C!important;}
+.color_11{ border-color: #747E5C;
+color: #747E5C!important;}
+.color_12{ border-color: #C34304;
+color: #C34304!important;}
+.color_13{ border-color: #294A0E;}
+.color_14{ border-color: #807F81;}
+.color_15{ border-color: #1C3A45;}
+.color_16{ border-color: #0B777A;}
+.color_17{ border-color: #670782;}
+.color_18{ border-color: #E9042D;}
+.color_19{ border-color: #98839B;}
+.color_20{ border-color: #5181FB;}
+.color_21{ border-color: #A24013;}
+.color_22{ border-color: #48A17E;}
+.color_23{ border-color: #2126DC;}
+.color_24{ border-color: #E47B71;}
+.color_25{ border-color: #76AAE2;}
+.color_26{ border-color: #5C432F;}
+.color_27{ border-color: #811E71;}
+.color_28{ border-color: #E19C63;}
+.color_29{ border-color: #6A9371;}
+
+.text_color_0{ 
+    color: #a05202 !important;
+}
+.text_color_1{ 
+    color: #e3c802 !important;
+}
+.text_color_2{ 
+    color: #d80074 !important;
+}
+.text_color_3{ 
+    color: #647687 !important;
+}
+.text_color_4{ 
+    color: #3ea9e0 !important;
+}
+.text_color_5{ 
+    color: #56871C !important;
+}
+.text_color_6{ 
+    color: #72465D !important;
+}
+.text_color_7{ 
+    color: #7A5B0A !important;
+}
+.text_color_8{ 
+    color: #8BBAE2 !important;
+}
+.text_color_9{ 
+    color: #DC7D16 !important;
+}
+.text_color_10{ 
+    color: #273B9C!important;
+}
+.text_color_11{ 
+    color: #747E5C!important;
+}
+.text_color_12{
+    color: #C34304!important;
+}

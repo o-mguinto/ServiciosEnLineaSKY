@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="streamingContrataTF">
+    <default-activity>streamingIndex</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__7">
+      <name>nombreServicio</name>
+      <value>#{pageFlowScope.PFStreamingContrata.canal.nombre}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__9">
+      <name>imagenServicio</name>
+      <value>#{pageFlowScope.PFStreamingContrata.canal.imagen}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__10">
+      <name>idServicio</name>
+      <value>#{pageFlowScope.PFStreamingContrata.canal.id}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__11">
+      <name>precio</name>
+      <value>#{pageFlowScope.PFStreamingContrata.canal.precio_display}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__12">
+      <name>sinopsis</name>
+      <value>#{pageFlowScope.PFStreamingContrata.canal.sinopsis}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <managed-bean id="__8">
+      <managed-bean-name>PFStreamingContrata</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.canal.PFStreamingContrata</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <task-flow-return id="closeTaskFlow">
+      <outcome>
+        <name>closeTaskFlow</name>
+      </outcome>
+    </task-flow-return>
+    <view id="streamingIndex">
+      <page>/pages/canales/streamingIndex.jsf</page>
+    </view>
+    <view id="streamingConfirmar">
+      <page>/pages/canales/streamingConfirmar.jsf</page>
+    </view>
+    <view id="streamingResumen">
+      <page>/pages/canales/streamingResumen.jsf</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>closeTaskFlow</from-outcome>
+        <to-activity-id>closeTaskFlow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>streamingIndex</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>streamingConfirmar</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>streamingConfirmar</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>streamingResumen</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

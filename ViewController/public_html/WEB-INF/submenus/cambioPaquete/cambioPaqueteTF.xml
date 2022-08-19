@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="cambioPaqueteIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <view id="cambioModulo">
+    <page>/WEB-INF/submenus/cambioPaquete/cambioModulo.jsf</page>
+    <input-page-parameter id="__10">
+      <from-value>/WEB-INF/modulosMiSkyTF.xml#modulosMiSkyTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="cambioPaquete">
+    <page>/WEB-INF/submenus/cambioPaquete/cambioPaquete.jsf</page>
+    <input-page-parameter id="__12">
+      <from-value>/WEB-INF/cambioPaqueteTF.xml#cambioPaqueteTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <router id="routerCambioPaquete">
+    <case id="__5">
+      <expression>#{sesion.CAMBIO_DE_MODULO}</expression>
+      <outcome>irCambioModulo</outcome>
+    </case>
+    <case id="__6">
+      <expression>#{sesion.CAMBIO_PAQUETE}</expression>
+      <outcome>irCambioPaquete</outcome>
+    </case>
+    <default-outcome>irCambioPaqueteIndex</default-outcome>
+  </router>
+  <control-flow-rule id="__1">
+    <from-activity-id>routerCambioPaquete</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>irCambioPaqueteIndex</from-outcome>
+      <to-activity-id>cambioPaqueteIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__3">
+      <from-outcome>irCambioModulo</from-outcome>
+      <to-activity-id>cambioModulo</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__4">
+      <from-outcome>irCambioPaquete</from-outcome>
+      <to-activity-id>cambioPaquete</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__7">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__8">
+      <from-outcome>irRouterCambioPaquete</from-outcome>
+      <to-activity-id>routerCambioPaquete</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__14">
+      <from-outcome>smenu_cambioModulo</from-outcome>
+      <to-activity-id>cambioModulo</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__15">
+      <from-outcome>smenu_cambioPaquete</from-outcome>
+      <to-activity-id>cambioPaquete</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__13">
+      <from-outcome>irRouterCambioPaquete_0</from-outcome>
+      <to-activity-id>cambioPaqueteIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__16">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>cambioPaquete_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__17">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__18">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/cambioPaquete/cambioPaquete_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

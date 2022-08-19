@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <meta name="viewport"
+            content="width=device-width,initial-scale=1.0,maximum-scale=3.0,user-scalable=yes"/>
+    <meta name="keywords" content="servicios en linea sky"/>
+    <title>Sky | Servicios en Linea</title>
+    <link rel="stylesheet" href="/sky/css/custom/pagInternas_template.css"/>
+    
+  </head>
+  <body>
+    <div id="contenedor">
+    <div id="encabezado">
+        <img src="../imagenes/aplicacion/cabeza_tx.png"/>
+      </div>
+      <div id="cuerpo">
+        <p id="titulo">Ha ocurrido un error de navegación.</p>
+        <p id="mensaje">Cierre su navegador y vuelva a ingresar a la
+                        aplicación.</p>
+      </div>
+      <af:panelGroupLayout styleClass="pieLogin" id="pgl11"
+                                         halign="center">
+                        <div class="row">
+                            <div class="col-12 center">
+                                <af:image source="/imagenes/aplicacion/logosExploradores_estadar.png"
+                                          id="i6" styleClass="img-exploradores"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 center">
+                                <af:outputText value="Exploradores soportados son Internet Explorer 7, 8, 9 y 10, Google Chrome 1.0 y superiores, Firefox 2.0.0.2 y superiores o Safari 3.1.2 y superiores."
+                                           id="ot3"
+                                           styleClass="pie-sky"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 center">
+                                <af:outputText value=" SESION_ID : #{Foliador.folio}"
+                                       id="pt_ot1"
+                                       styleClass="pie-sky"/>
+                            </div>
+                        </div>
+                    </af:panelGroupLayout>
+    </div>
+  </body>
+</html>

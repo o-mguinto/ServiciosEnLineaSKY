@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="facturaElectronicaIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <view id="informacionFiscal">
+    <page>/WEB-INF/submenus/facturaElectronica/informacionFiscal.jsf</page>
+    <input-page-parameter id="__11">
+      <from-value>/WEB-INF/informacionFiscalTF.xml#informacionFiscalTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="consultaEstatusDF">
+    <page>/WEB-INF/submenus/facturaElectronica/consultaEstatusDF.jsf</page>
+    <input-page-parameter id="__13">
+      <from-value>/WEB-INF/consultaEstatusDFTF.xml#consultaEstatusDFTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="facturaElectronica">
+    <page>/WEB-INF/submenus/facturaElectronica/facturaElectronica.jsf</page>
+    <input-page-parameter id="__9">
+      <from-value>/WEB-INF/facturaElectronicaTF.xml#facturaElectronicaTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <router id="routerFacturaElectronica">
+    <case id="__6">
+      <expression>#{sesion.FACTURAS_ELECTRONICAS}</expression>
+      <outcome>irFacturaElectronica</outcome>
+    </case>
+    <case id="__7">
+      <expression>#{sesion.REG_ACTU_DATOS_FISCALES}</expression>
+      <outcome>irInformacionFiscal</outcome>
+    </case>
+    <case id="__8">
+      <expression>#{sesion.REG_ACTU_DATOS_FISCALES and sesion.cuentaCV}</expression>
+      <outcome>irConsultaEstatusDF</outcome>
+    </case>
+    <default-outcome>irFacturaElectronicaIndex</default-outcome>
+  </router>
+  <control-flow-rule id="__1">
+    <from-activity-id>routerFacturaElectronica</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>irFacturaElectronicaIndex</from-outcome>
+      <to-activity-id>facturaElectronicaIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__3">
+      <from-outcome>irInformacionFiscal</from-outcome>
+      <to-activity-id>informacionFiscal</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__5">
+      <from-outcome>irFacturaElectronica</from-outcome>
+      <to-activity-id>facturaElectronica</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__10">
+      <from-outcome>irConsultaEstatusDF</from-outcome>
+      <to-activity-id>consultaEstatusDF</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__14">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__15">
+      <from-outcome>irRouterFacturaElectronica</from-outcome>
+      <to-activity-id>routerFacturaElectronica</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__17">
+      <from-outcome>smenu_informacionFiscal</from-outcome>
+      <to-activity-id>informacionFiscal</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__18">
+      <from-outcome>smenu_consultaEstatusDF</from-outcome>
+      <to-activity-id>consultaEstatusDF</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__19">
+      <from-outcome>smenu_facturaElectronica</from-outcome>
+      <to-activity-id>facturaElectronica</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__4">
+      <from-outcome>irRouterFacturaElectronica_0</from-outcome>
+      <to-activity-id>facturaElectronicaIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__12">
+      <from-outcome>irRouterFacturaElectronica_0</from-outcome>
+      <to-activity-id>facturaElectronicaIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__20">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>facturaElectronica_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__21">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__22">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/facturaElectronica/facturaElectronica_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

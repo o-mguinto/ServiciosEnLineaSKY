@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="hotGoActivar">
+    <default-activity>hotgoIndex</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>PFHotGoContrata</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.canal.PFHotGoContrata</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="hotgoIndex">
+      <page>/pages/canales/hotgoIndex.jsf</page>
+    </view>
+    <task-flow-return id="closeTaskFlow">
+      <outcome>
+        <name>closeTaskFlow</name>
+      </outcome>
+    </task-flow-return>
+    <view id="hotGoConfirmar">
+      <page>/pages/canales/hotGoConfirmar.jsf</page>
+    </view>
+    <view id="hotGoResumen">
+      <page>/pages/canales/hotGoResumen.jsf</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>closeTaskFlow</from-outcome>
+        <to-activity-id>closeTaskFlow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>hotgoIndex</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>hotGoConfirmar</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>hotGoConfirmar</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>hotGoResumen</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

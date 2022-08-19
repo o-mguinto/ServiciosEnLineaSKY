@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="btgvewIndexPageDef"
+                Package="pages.blueToGoVideoEverywhere">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="consultarActivasParametros.result" DataControl="DCBTGEW" RangeSize="10"
+                    BeanClass="mx.com.sky.sel.services.beans.btgew.BTGEWElement" id="consultarActivasParametrosIter"/>
+  </executables>
+  <bindings>
+    <methodAction id="consultarActivasParametros" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="consultarActivasParametros" IsViewObjectMethod="false" DataControl="DCBTGEW"
+                  InstanceName="bindings.consultarActivasParametros.dataControl.dataProvider"
+                  ReturnName="data.DCBTGEW.methodResults.consultarActivasParametros_consultarActivasParametros_dataControl_dataProvider_consultarActivasParametros_result">
+      <NamedData NDName="paisISO" NDValue="#{sesion.suscriptor.paisISO}" NDType="java.lang.String"/>
+      <NamedData NDName="tipoCuenta" NDValue="#{sesion.tipoCuentaBanner}" NDType="java.lang.String"/>
+      <NamedData NDName="paquete" NDValue="#{sesion.suscriptor.paquete}" NDType="java.lang.String"/>
+      <NamedData NDName="vetv" NDValue="#{sesion.userVeTV}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="consultarActivasParametrosIter" id="EventosBTGEW">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.btgew.BTGEWElement" Name="result0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="carruselLogin"/>
+          <Item Value="carruselLoginB"/>
+          <Item Value="descripcion"/>
+          <Item Value="fechaActualizacion"/>
+          <Item Value="fechaCreacion"/>
+          <Item Value="fechaFin"/>
+          <Item Value="fechaInicio"/>
+          <Item Value="habilitada"/>
+          <Item Value="habilitadaB"/>
+          <Item Value="idPais"/>
+          <Item Value="imagen"/>
+          <Item Value="link"/>
+          <Item Value="linkActivo"/>
+          <Item Value="linkActivoB"/>
+          <Item Value="nombre"/>
+          <Item Value="paquete"/>
+          <Item Value="tipoCuenta"/>
+          <Item Value="usernameCreador"/>
+          <Item Value="usernameModificador"/>
+          <Item Value="vetv"/>
+          <Item Value="vetvB"/>
+          <Item Value="linkHttp"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

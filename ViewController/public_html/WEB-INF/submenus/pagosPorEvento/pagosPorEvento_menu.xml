@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu"
+      resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_pagosPorEventoIndex" label="#{lbl.menu_PAGOS_POR_EVENTO}" action="irRouterPPE"
+            focusViewId="/pagosPorEventoIndex" immediate="true" rendered="#{sesion.PAGOS_POR_EVENTO}"
+            icon="/imagenes/menu/ic_pagoporevento.svg">
+    <itemNode id="itemNode_peliculasPremiere" label="#{lbl.smenu_PPE_PELICULAS}" action="irPeliculasPremiere"
+              focusViewId="/peliculasPremiere" immediate="true"
+              rendered="#{sesion.SKY_PREMIERE}"/>
+    <itemNode id="itemNode_eventosEspeciales" focusViewId="/eventosEspeciales" action="irSkyEvent" immediate="true"
+               label="#{lbl.smenu_PPE_EVENTOS}" rendered="#{sesion.SKY_EVENT}"/>
+    <itemNode id="itemNode_Adultos" focusViewId="/Adultos" action="irAdultosAllDay" immediate="true" label="#{lbl.smenu_PPE_ADULTOS}"
+              rendered="#{sesion.ADULTOS}">
+      <itemNode id="itemNode_AllDay" focusViewId="/allDay" action="irAdultosAllDay"
+                rendered="#{sesion.ADULTOS_ALLDAY}" label="#{lbl.smenu_PPE_ALL}" immediate="true"/>
+    </itemNode>
+    <itemNode id="itemNode_statusEventosPPE" focusViewId="/statusEventosPPE" label="#{lbl.smenu_PPE_STATUS_EVENTOS}"
+               immediate="true" action="irStatusEventosPPE"
+              rendered="#{sesion.cuentaCV}"/>
+    <itemNode id="itemNode_historicoEventosC" label="#{lbl.smenu_PPE_HISTORICO_EVENTOS}" action="irHistoricoEventosC"
+              focusViewId="/historicoEventosC" immediate="true" rendered="#{sesion.HISTORICO_DE_EVENTOS_CONTRATADOS}"/>
+  </itemNode>
+</menu>

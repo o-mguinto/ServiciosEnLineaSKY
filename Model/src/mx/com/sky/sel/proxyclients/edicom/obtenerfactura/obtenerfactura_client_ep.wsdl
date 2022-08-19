@@ -1,0 +1,56 @@
+<wsdl:definitions
+     name="ObtenerFactura"
+     targetNamespace="http://xmlns.oracle.com/AppFacturaEdicom/FacturaEdicom/ObtenerFactura"
+     xmlns:ns2="http://msg.factura.edicom.sky.com.mx"
+     xmlns:ns1="http://factura.edicom.factura.sky.com.mx"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://xmlns.oracle.com/AppFacturaEdicom/FacturaEdicom/ObtenerFactura"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <wsdl:documentation>
+        <abstractWSDL>https://sapsoa.sky.com.mx:443/soa-infra/services/facturacion/FacturaEdicom!20190219-1239/WSDLs/ObtenerFactura.wsdl</abstractWSDL>
+    </wsdl:documentation>
+    <plnk:partnerLinkType name="ObtenerFactura">
+        <plnk:role name="ObtenerFacturaProvider">
+            <plnk:portType name="client:ObtenerFactura"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://factura.edicom.factura.sky.com.mx" schemaLocation="facturaSKY.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://msg.factura.edicom.sky.com.mx" schemaLocation="MSG_EDICOM_IN.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="ObtenerFacturaRequestMessage">
+        <wsdl:part name="payload" element="ns1:ObtenerFacturaIN"/>
+    </wsdl:message>
+    <wsdl:message name="ObtenerFacturaResponseMessage">
+        <wsdl:part name="payload" element="ns1:ObtenerFacturaOUT"/>
+    </wsdl:message>
+    <wsdl:portType name="ObtenerFactura">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:ObtenerFacturaRequestMessage"/>
+            <wsdl:output message="client:ObtenerFacturaResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ObtenerFacturaBinding" type="client:ObtenerFactura">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="obtenerfactura_client_ep">
+        <wsdl:port name="ObtenerFactura_pt" binding="client:ObtenerFacturaBinding">
+            <soap:address location="https://sapsoa.sky.com.mx:443/soa-infra/services/facturacion/FacturaEdicom/obtenerfactura_client_ep"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

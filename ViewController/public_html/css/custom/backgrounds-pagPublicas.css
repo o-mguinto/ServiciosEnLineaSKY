@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+@media only screen and (min-device-width:320px) and (max-device-width:767px) {
+    .backgroundBienvenido {
+        background: #00ACDC url('/sky/imagenes/moviles/registro/bienvenido/Fondo_Registro_ver_1.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundRegistro {
+        background: #00ACDC url('/sky/imagenes/moviles/registro/registro/Fondo_Registro_ver_2.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundConfirmacion {
+        background: #00ACDC url('/sky/imagenes/moviles/registro/registro/Fondo_Registro_ver_3.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundCapturaContrasenia {
+        background: #00ACDC url('/sky/imagenes/moviles/registro/registro/Fondo_Registro_ver_4.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundCapturaDatos {
+        background: #00ACDC url('/sky/imagenes/moviles/registro/registro/Fondo_Registro_ver_5.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundLogin {
+        background: #00ACDC url('/sky/imagenes/moviles/registro/login/Fondo_Registro_ver_6.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+}
+
+@media only screen and (min-device-width:768px) {
+    .backgroundBienvenido {
+        background: #00ACDC url('/sky/imagenes/pc/registro/bienvenido/Fondo_registro_1.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundRegistro {
+        background: #00ACDC url('/sky/imagenes/pc/registro/registro/Fondo_registro_2.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundConfirmacion {
+        background: #00ACDC url('/sky/imagenes/pc/registro/registro/Fondo_registro_3.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundCapturaContrasenia {
+        background: #00ACDC url('/sky/imagenes/pc/registro/registro/Fondo_registro_4.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundCapturaDatos {
+        background: #00ACDC url('/sky/imagenes/pc/registro/registro/Fondo_registro_5.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundLogin {
+        background: #00ACDC url('/sky/imagenes/pc/registro/login/Fondo_registro_6.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+}

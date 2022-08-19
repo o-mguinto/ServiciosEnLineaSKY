@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="estadoCuentaTF">
+    <default-activity>estadoCuenta</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>PagosBackingBean</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.pagos.BBPago</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__2">
+      <managed-bean-name>BBEstadoCuenta</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.estadocuenta.BBEstadoCuenta</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="estadoCuenta">
+      <page>/pages/estadoCuenta/estadoCuenta.jsff</page>
+    </view>
+    <task-flow-call id="pagoTF">
+      <task-flow-reference>
+        <document>/WEB-INF/pagoTF.xml</document>
+        <id>pagoTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <control-flow-rule id="__7">
+      <from-activity-id>estadoCuenta</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>irRealizarPago</from-outcome>
+        <to-activity-id>pagoTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>pagoTF</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>pagar</from-outcome>
+        <to-activity-id>estadoCuenta</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

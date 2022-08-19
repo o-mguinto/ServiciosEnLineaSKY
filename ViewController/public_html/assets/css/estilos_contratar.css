@@ -1,0 +1,70 @@
+.datos{
+    width:50%;
+    display: block;
+    z-index: 3;
+    position: relative;
+    float: right;
+}
+
+.poster{
+    position:absolute;
+    width: 100%;
+    float: left;
+    z-index: -2;
+}
+
+.contratar_canales{
+    font-size: 28px;
+}
+
+.contrar_datos{
+    width: 80%;
+    text-align: justify;
+}
+
+.nombreCanal{
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 45px;
+}
+
+.contrar_datos span{
+    line-height: 45px;
+    font-size: .9em;
+}
+
+.btn-secrets{
+    margin: 20px 10px !important;
+}
+
+.etiqueta_gris{
+    color: #969696;
+}
+
+.texto_sinopsis{
+    position: relative;
+    max-width: 50%;
+    line-height: .9em !important;
+}
+
+@media (max-width: 768px) and (orientation: portrait){
+
+    .contrar_datos{
+        width: 90%;
+    }
+
+    .contratar_canales{
+        font-size: 18px;
+    }
+    
+    .contrar_datos span{
+        line-height: 25px;
+        font-size: .7em;
+    }
+    
+    .btn-secrets {
+        margin: 20px 5px !important;
+        padding:0;
+    }
+
+}

@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.1
+Created-By: 19.1-b02 (Sun Microsystems Inc.)
+Built-Date: 2019-10-21 11:31:48
+Weblogic-Application-Version: 20191018-1649
+Environment-Application: ddd
+

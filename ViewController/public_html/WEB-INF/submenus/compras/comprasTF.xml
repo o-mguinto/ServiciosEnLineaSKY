@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="comprasIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <view id="revistaSkyView">
+    <page>/WEB-INF/submenus/compras/revistaSkyView.jsf</page>
+    <input-page-parameter id="__12">
+      <from-value>/WEB-INF/revistaTF.xml#revistaTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="controlRemoto">
+    <page>/WEB-INF/submenus/compras/controlRemoto.jsf</page>
+    <input-page-parameter id="__14">
+      <from-value>/WEB-INF/controlTF.xml#controlTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="controlRemotoVeTv">
+    <page>/WEB-INF/submenus/compras/controlRemoto.jsf</page>
+    <input-page-parameter id="__17">
+      <from-value>/WEB-INF/controlTF.xml#controlTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__18">
+      <from-value>CONTROL_REMOTO</from-value>
+      <to-value>#{ParametrosPago.tipoPago}</to-value>
+    </input-page-parameter>
+  </view>
+  <router id="routerMenuCompras">
+    <case id="__6">
+      <expression>#{sesion.REVISTA_SKY_VIEW}</expression>
+      <outcome>irComprarRevista</outcome>
+    </case>
+    <case id="__7">
+      <expression>#{sesion.CONTROL_REMOTO}</expression>
+      <outcome>irComprarControl</outcome>
+    </case>
+    <case id="__8">
+      <expression>#{sesion.CONTROL_REMOTOVeTV}</expression>
+      <outcome>irControlRemotoVeTv</outcome>
+    </case>
+    <default-outcome>irComprasIndex</default-outcome>
+  </router>
+  <control-flow-rule id="__1">
+    <from-activity-id>routerMenuCompras</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>irComprasIndex</from-outcome>
+      <to-activity-id>comprasIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__3">
+      <from-outcome>irComprarRevista</from-outcome>
+      <to-activity-id>revistaSkyView</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__4">
+      <from-outcome>irComprarControl</from-outcome>
+      <to-activity-id>controlRemoto</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__5">
+      <from-outcome>irControlRemotoVeTv</from-outcome>
+      <to-activity-id>controlRemotoVeTv</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__9">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__20">
+      <from-outcome>smenu_revistaSkyView</from-outcome>
+      <to-activity-id>revistaSkyView</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__21">
+      <from-outcome>smenu_controlRemoto</from-outcome>
+      <to-activity-id>controlRemoto</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__22">
+      <from-outcome>smenu_controlRemotoVeTv</from-outcome>
+      <to-activity-id>controlRemotoVeTv</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__19">
+      <from-outcome>irRouterMenuCompras</from-outcome>
+      <to-activity-id>routerMenuCompras</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__23">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>compras_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__24">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__25">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/compras/compras_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

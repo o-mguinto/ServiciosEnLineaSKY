@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        
+        <af:resource type="javascript">
+          $('#adultos').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+
+              fncSlider(".example-slider", 
+              {
+                  autoSlidingDelay : 6000
+              });
+          });
+        </af:resource>
+        <af:resource type="css">
+            .scale {
+                position: absolute;
+                top: -20px;
+                bottom: -20px;
+                left: 5%;
+                width: 800px;
+                height: 480px;
+                max-width: none;
+            }
+
+            .slide_ {
+                height: 50vh !important;
+            }
+
+            .otSinopsis {
+                padding-right: 3% !important;
+                line-height: 20px !important;
+                font-weight: bold !important;
+                display: contents;
+            }
+
+            .otNombre {
+                padding-right: 8px !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: rgb(0, 164, 228) !important;
+    word-spacing: 0px !important;
+            }
+
+            .slide_header_content {
+                top: 0px !important;
+                text-align: right !important;
+                height: auto !important;
+                width: 320px !important;
+                opacity: 0.5 !important;
+                left: 65% !important;
+                background-color: #000;
+                border: 1px solid #000;
+            }
+
+            .slide_header_link {
+                padding-right: 10px !important;
+                padding-top: 0px !important;
+                text-align: right !important;
+                padding-bottom: 0px !important;
+                line-height: 12px !important;
+                margin-top: 0px !important;
+                margin-bottom: 0px !important;
+            }
+        </af:resource>
+        <af:resource type="css">
+            .x1do, .x1dp {
+                height: 500px !important;
+                width: 700px !important;
+            }
+        </af:resource>
+        <div id="adultos">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <!--Para cada fila una div-->
+                    <div class="row">
+                        <!--Aqui va TODO el contenido-->
+                        <af:panelBox id="pb3" showDisclosure="false"
+                                     rendered="#{pageFlowScope.AdultosBackingBean.sizeMosaicoEventos le 0}"
+                                     background="medium" showHeader="never"
+                                     inlineStyle="border: 0px;"
+                                     contentStyle="border: 0px;">
+                            <af:outputText value="Por el momento no tenemos eventos de adultos disponibles para contratar. Por favor intente más tarde."
+                                           id="ot8"
+                                           styleClass="check-internal-bold top-channel"/>
+                            <div class="row top"></div>
+                        </af:panelBox>
+                        <div>
+                            <af:panelBox id="pb1" showDisclosure="false"
+                                         rendered="#{!sesion.contratarPPV}"
+                                         background="medium" showHeader="never"
+                                         inlineStyle="border: 0px;"
+                                         contentStyle="border: 0px;">
+                                <af:outputText value="Su cuenta no tiene la capacidad de contratar, por favor comuniquese al centro de atención telefónica y mencione el código PPV001."
+                                               id="ot7"
+                                               styleClass="check-internal-bold top-channel"/>
+                                <div class="row top"></div>
+                                <af:separator id="s4"
+                                              rendered="#{sesion.userVeTV}"
+                                              styleClass="separador"/>
+                                <af:outputText value="Verifique que:" id="ot2"
+                                               rendered="#{sesion.userVeTV}"
+                                               styleClass="check-internal-bold top-channel"/>
+                                <div class="row top"></div>
+                                <af:panelList id="pl1"
+                                              rendered="#{sesion.userVeTV}">
+                                    <af:outputText value="Su cuenta este activa."
+                                                   id="ot3"/>
+                                    <af:outputText value="Su recarga este activa y que la fecha de vencimiento de su recarga sea mayor a dos días a partir del día de hoy."
+                                                   id="ot4"/>
+                                </af:panelList>
+                                <div class="row top"></div>
+                            </af:panelBox>
+                        </div>
+                        <div class="top row">
+                            <af:subform id="s7"
+                                        rendered="#{pageFlowScope.AdultosBackingBean.sizeMosaicoEventos gt 0}">
+                                <af:resource type="javascript" source="/js/slider/INLINE_PEN_JS.js"></af:resource>
+                                <af:resource type="css"
+                                             source="/css/slider/INLINE_PEN_STYLESHEET.css"></af:resource>
+                                <div>
+                                    <div class="demo-cont slide_">
+                                        <div class="fnc-slider example-slider m--with-autosliding slide_">
+                                            <div class="fnc-slider__slides">
+                                                <af:forEach items="#{pageFlowScope.AdultosBackingBean.mosaicoEventos}"
+                                                            var="item"
+                                                            varStatus="idx">
+                                                    <div class="fnc-slide m--blend-sky #{(idx.index eq 0?'m--active-slide':'no')}"
+                                                         style="background-color: white;">
+                                                        <div class="fnc-slide__inner"
+                                                             style="background: url('/sky#{parametros.urlImgs825X300}#{item.image}') center center no-repeat;
+                                                             background-size: contain;">
+                                                            <!--div class="fnc-slide__mask"
+     style="background: url('/sky#{parametros.urlImgs160X240}#{item.image}') center no-repeat;">
+<div class="fnc-slide__mask-inner"
+     style="background: url('/sky#{parametros.urlImgs160X240}#{item.image}') center no-repeat;"></div>
+</div-->
+                                                            <div class="fnc-slide__content slide_header_content">
+                                                                <h2 class="fnc-slide__heading  slide_header_link">
+                                                                    <af:link id="cl1"
+                                                                             disabled="#{!sesion.ADULTOS or !sesion.contratarPPV}"
+                                                                             immediate="true"
+                                                                             action="#{pageFlowScope.AdultosBackingBean.showPopupEvento}"
+                                                                             partialSubmit="true"
+                                                                             useWindow="true"
+                                                                             windowEmbedStyle="inlineDocument"
+                                                                             windowModalityType="applicationModal"
+                                                                             windowHeight="580"
+                                                                             windowWidth="800">
+                                                                        <af:outputText value="#{item.titulo}"
+                                                                                       id="cb1"
+                                                                                       styleClass="fnc-slide__heading-line otNombre"
+                                                                                       truncateAt="35"/>
+                                                                        <f:setPropertyActionListener target="#{pageFlowScope.AdultosBackingBean.evento}"
+                                                                                                     value="#{item}"/>
+                                                                        <af:clientListener method="enforcePreventUserInput"
+                                                                                           type="action"/>
+                                                                    </af:link>
+                                                                </h2>
+                                                                 
+                                                                <h2 class="fnc-slide__action-btn-sin">
+                                                                    <h:outputLabel value="#{item.sinopsis}"
+                                                                                   id="oplSinop2"
+                                                                                   styleClass="otSinopsis"/>
+                                                                </h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </af:forEach>
+                                            </div>
+                                            
+                                            <nav class="fnc-nav">
+                                                <div class="fnc-nav__bgs">
+                                                    <af:forEach items="#{pageFlowScope.AdultosBackingBean.mosaicoEventos}"
+                                                                var="itemNav"
+                                                                varStatus="idx3">
+                                                        <div class="fnc-nav__bg m--navbg-green fnc-nav__bg-#{idx3.index +1} #{(idx3.index eq 0?'m--active-nav-bg':'no')}"></div>
+                                                    </af:forEach>
+                                                </div>
+                                                <div class="fnc-nav__controls">
+                                                    <af:forEach items="#{pageFlowScope.AdultosBackingBean.mosaicoEventos}"
+                                                                var="item2"
+                                                                varStatus="idx2">
+                                                        <button type="button"
+                                                                class="fnc-nav__control fnc-nav__control-#{idx2.index +1} #{(idx2.index eq 0?'m--active-control':'no')}"
+                                                                data-slide="#{idx2.index +1}">
+                                                            <h:outputLabel value="#{idx2.index +1}"
+                                                                           id="ol2"/>
+                                                            <span class="fnc-nav__control-progress"
+                                                                  style="transition: transform 5.66667s ease 0s;"></span>
+                                                        </button>
+                                                    </af:forEach>
+                                                </div>
+                                            </nav>
+                                                                              </div>
+
+                                    </div>
+                                </div>
+                            </af:subform>
+                        </div>
+                        <div class="row top">
+                            <af:subform id="s2">
+                                <div class="divpremiere autocenter">
+                                    <af:forEach items="#{pageFlowScope.AdultosBackingBean.mosaicoEventos}"
+                                                var="item">
+                                        <div class="col-2 col-tb-2">
+                                            <div class="top">
+                                                <af:link disabled="#{(!sesion.ADULTOS) or (!sesion.contratarPPV)}"
+                                                         action="#{pageFlowScope.AdultosBackingBean.showPopupEvento}"
+                                                         partialSubmit="true"
+                                                         useWindow="true"
+                                                         windowEmbedStyle="inlineDocument"
+                                                         windowModalityType="applicationModal"
+                                                         windowHeight="580"
+                                                         windowWidth="800"
+                                                         id="l1"
+                                                         icon="#{parametros.urlImgs160X240}#{item.image}"
+                                                         styleClass="divMosaico">
+                                                    <f:setPropertyActionListener target="#{pageFlowScope.AdultosBackingBean.evento}"
+                                                                                 value="#{item}"/>
+                                                    <af:clientListener method="enforcePreventUserInput"
+                                                                       type="action"/>
+                                                </af:link>
+                                            </div>
+                                        </div>
+                                    </af:forEach>
+                                </div>
+                            </af:subform>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

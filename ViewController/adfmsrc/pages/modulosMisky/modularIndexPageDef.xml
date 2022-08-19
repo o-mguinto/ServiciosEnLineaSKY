@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="modularIndexPageDef"
+                Package="pages.modulosMisky">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="consultarModulosAsociadosPs.result" DataControl="DCModulo" RangeSize="10"
+                    BeanClass="mx.com.sky.sel.services.beans.modulares.Modulo" id="consultarModulosAsociadosIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="consultarModulosAsociadosPs" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="consultarModulosAsociados" IsViewObjectMethod="false" DataControl="DCModulo"
+                  InstanceName="bindings.consultarModulosAsociadosPs.dataControl.dataProvider"
+                  ReturnName="data.DCModulo.methodResults.consultarModulosAsociados_consultarModulosAsociados_dataControl_dataProvider_consultarModulosAsociados_result">
+      <NamedData NDName="cuentaSKY" NDValue="#{sesion.cuentaSKY}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="consultarModulosAsociadosIterator" id="Modulo1">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.modulares.Modulo" Name="result0">
+        <AttrNames>
+          <Item Value="nombre"/>
+          <Item Value="imagen"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="consultarPermisoPs" RequiresUpdateModel="true" Action="invokeMethod" MethodName="consultarPermiso"
+                  IsViewObjectMethod="false" DataControl="DCModulo"
+                  InstanceName="bindings.consultarPermisoPs.dataControl.dataProvider"
+                  ReturnName="data.DCModulo.methodResults.consultarPermiso_consultarPermiso_dataControl_dataProvider_consultarPermiso_result">
+      <NamedData NDName="tarjetaInteligente" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="consultarModulosNoAsociadosPs" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="consultarModulosNoAsociados" IsViewObjectMethod="false" DataControl="DCModulo"
+                  InstanceName="bindings.consultarModulosNoAsociadosPs.dataControl.dataProvider"
+                  ReturnName="data.DCModulo.methodResults.consultarModulosNoAsociados_consultarModulosNoAsociados_dataControl_dataProvider_consultarModulosNoAsociados_result">
+      <NamedData NDName="cuentaSKY" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="agregarModuloPs" RequiresUpdateModel="true" Action="invokeMethod" MethodName="agregarModulo"
+                  IsViewObjectMethod="false" DataControl="DCModulo"
+                  InstanceName="bindings.agregarModuloPs.dataControl.dataProvider"
+                  ReturnName="data.DCModulo.methodResults.agregarModulo_agregarModulo_dataControl_dataProvider_agregarModulo_result">
+      <NamedData NDName="modulo" NDType="mx.com.sky.sel.services.beans.modulares.Modulo"/>
+      <NamedData NDName="cuentaSKY" NDType="java.lang.String"/>
+      <NamedData NDName="tarjetaInteligente" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="cambiarModuloPs" RequiresUpdateModel="true" Action="invokeMethod" MethodName="cambiarModulo"
+                  IsViewObjectMethod="false" DataControl="DCModulo"
+                  InstanceName="bindings.cambiarModuloPs.dataControl.dataProvider"
+                  ReturnName="data.DCModulo.methodResults.cambiarModulo_cambiarModulo_dataControl_dataProvider_cambiarModulo_result">
+      <NamedData NDName="moduloNuevo" NDType="mx.com.sky.sel.services.beans.modulares.Modulo"/>
+      <NamedData NDName="moduloActual" NDType="mx.com.sky.sel.services.beans.modulares.Modulo"/>
+      <NamedData NDName="cuentaSKY" NDType="java.lang.String"/>
+      <NamedData NDName="tarjetaInteligente" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="desconectarModuloPs" RequiresUpdateModel="true" Action="invokeMethod" MethodName="desconectarModulo"
+                  IsViewObjectMethod="false" DataControl="DCModulo"
+                  InstanceName="bindings.desconectarModuloPs.dataControl.dataProvider"
+                  ReturnName="data.DCModulo.methodResults.desconectarModulo_desconectarModulo_dataControl_dataProvider_desconectarModulo_result">
+      <NamedData NDName="modulo" NDType="mx.com.sky.sel.services.beans.modulares.Modulo"/>
+      <NamedData NDName="cuentaSKY" NDType="java.lang.String"/>
+      <NamedData NDName="tarjetaInteligente" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

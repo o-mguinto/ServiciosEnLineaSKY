@@ -1,0 +1,39 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<weblogic-web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://xmlns.oracle.com/weblogic/weblogic-web-app http://xmlns.oracle.com/weblogic/weblogic-web-app/1.5/weblogic-web-app.xsd"
+                  xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app">
+  <weblogic-version>12.2.1.2</weblogic-version>
+  <security-role-assignment>
+    <role-name>valid-users</role-name>
+    <principal-name>users</principal-name>
+  </security-role-assignment>
+  <session-descriptor>
+    <timeout-secs>1200</timeout-secs>
+    <cookie-name>U0tZX1NFTF9US06</cookie-name>
+    <cookie-secure>true</cookie-secure>
+    <cookie-max-age-secs>1200</cookie-max-age-secs>
+    <cookie-http-only>true</cookie-http-only>        
+    <persistent-store-type>REPLICATED_IF_CLUSTERED</persistent-store-type>
+    <url-rewriting-enabled>false</url-rewriting-enabled>
+  </session-descriptor>
+  <virtual-directory-mapping>
+  <!--REFERENCIA PRODUCTIVA-->
+        <local-path>/u01/oracle/apps_data/pagWeb</local-path>
+        <url-pattern>/imagenes/*</url-pattern>
+        <url-pattern>/documentos/*</url-pattern>
+        <url-pattern>/logs/*</url-pattern>
+    <url-pattern>/deeplinkios/*</url-pattern>
+  </virtual-directory-mapping>
+  <jsp-descriptor>
+    <precompile>true</precompile>
+  </jsp-descriptor>
+  <container-descriptor>
+    <prefer-web-inf-classes>true</prefer-web-inf-classes>
+    <fail-deploy-on-filter-init-error>false</fail-deploy-on-filter-init-error>
+  </container-descriptor>
+  <context-root>sky</context-root>
+  <session-descriptor>
+    <timeout-secs>1200</timeout-secs>
+    <persistent-store-type>REPLICATED_IF_CLUSTERED</persistent-store-type>
+  </session-descriptor>
+</weblogic-web-app>

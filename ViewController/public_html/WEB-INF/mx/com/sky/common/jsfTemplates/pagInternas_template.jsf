@@ -1,0 +1,1417 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:h="http://java.sun.com/jsf/html"
+                    xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component" xmlns:f="http://java.sun.com/jsf/core">
+    <af:xmlContent>
+        <afc:component>
+            <afc:description>Template para los flujos internos</afc:description>
+            <afc:display-name>pagInternas_template</afc:display-name>
+            <afc:facet>
+                <afc:description>Contenido de página</afc:description>
+                <afc:facet-name>contenido_facet</afc:facet-name>
+            </afc:facet>
+        </afc:component>
+    </af:xmlContent>
+    <af:group id="grp1">
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0, user-scalable = no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=11.0"/>
+        <c:set var="skySELBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+        <!-- EXTERNAL FONTS -->
+        <af:resource type="css" source="https://fonts.googleapis.com/css?family=Roboto"/>
+        <!-- CSS CUSTOM BLUE TELECOMM -->
+        <af:resource type="css" source="/css/custom/pagInternas_template.css"/>
+        <af:resource type="css" source="/css/custom/backgrounds-pagInternas.css"/>
+        <!-- CSS CUSTOM SEL -->
+        <af:resource type="css" source="/css/skin_escritorio.css"/>
+        <!--efecto animado del dialogo de espera-->
+        <af:resource type="css" source="/css/spinner-sel-sky.css"/>
+        <!-- JAVASCRIPT CUSTOM BLUE TELECOMM -->
+        <af:resource type="javascript" source="/js/jquery-3.5.1.min.js"/>
+        <af:resource type="javascript" source="/js/bt-scripts.js"/>
+        <af:resource type="javascript" source="/js/pixelSEL.js"/>
+        <af:resource type="javascript">
+          $(document).ready(function () {
+            $('.menuPrincipal').click(handleClickMenu);
+            function handleClickMenu(e) {
+                var dropdownContent = this.nextElementSibling;
+                var firstChild = this.firstChild;
+                var hijos = firstChild.children;
+                if (dropdownContent.style.display === "block") {
+                //se le asigna la clase de abrir flecha al segundo hijo
+                    hijos[1].className = "flecha-abrir titulo-paquetes";
+                    dropdownContent.style.display = "none";
+                } else {
+                //se le asigna la clase de cerrar flecha al segundo hijo
+                    hijos[1].className = "flecha-cerrar titulo-paquetes";
+                    dropdownContent.style.display = "block";
+                }
+            };
+
+              $('#show-menu').click(function () {
+                  $('#blue-menu').addClass('sm-blue-info');
+                  $('#blue-menu').slideDown('slow');
+                  $('#show-menu').hide();
+                  $('#hide-menu').show();
+              });
+
+              $('#hide-menu').click(function () {
+                  $('#blue-menu').removeClass('sm-blue-info');
+                  $('#blue-menu').slideUp('slow');
+                  $('#hide-menu').hide();
+                  $('#show-menu').show();
+              });
+
+              var elmntRight = document.getElementById("div-panel-right-frame");
+              $('#blue-menu').css("min-height", (elmntRight.offsetHeight+30) + "px");
+          });
+        </af:resource>
+
+        <af:resource type="css">
+            /*fin af:tree*/
+            .menuPrincipal{
+                padding: 5% 2% 5% 5%;
+                min-height: 40px;
+                
+            }
+            .menuPrincipal:hover{
+                background-color: rgba(255, 255, 255, 0.5);
+                cursor: pointer;
+            }
+            .flecha-abrir:after {
+                            content: '\2228';
+                            color: white;
+                            font-weight: bold;
+                            float: right;
+                            margin-right: 5px;
+                        }
+            .flecha-cerrar:after {
+                            content: '\2227';
+                            color: white;
+                            font-weight: bold;
+                            float: right;
+                            margin-right: 5px;
+                        }
+            .titulo-paquetes{
+                color: white;
+                text-transform: uppercase;
+                margin-left: 4px;
+                font-size: 0.9em;
+            }
+            .submenu{
+                display: none;
+            }
+            /*para quitar el color del borde del menu seleccionado*/
+            .xkm.p_AFSelected{
+                border-left: 3px solid transparent;
+            }
+        </af:resource>
+
+        <af:group id="g2" rendered="#{sesion.paginaFallo}">
+            <af:panelGroupLayout id="pgl11" layout="vertical" halign="center" inlineStyle="background-color:White;">
+                <af:panelGroupLayout id="pgl23" halign="center" layout="vertical">
+                    <af:panelGroupLayout id="pgl5" layout="horizontal" styleClass="AFStretchWidth">
+                        <af:panelHeader text=" " id="pt_ph1" size="-1"
+                                        inlineStyle="background-image: url(/sky/imagenes/aplicacion/bg4@2x.png);     background-repeat: repeat;     margin: 0 !important;     color: Black;   width: 100% !important;">
+                            <f:facet name="context">
+                                <af:panelGroupLayout id="pgl8" layout="horizontal" valign="middle"
+                                                     inlineStyle="height:55.0px;">
+                                    <af:spacer width="0px" height="10" id="s4"/>
+                                    <af:image shortDesc="" source="/imagenes/aplicacion/img_sel2020_h@2x.png" id="pt_i1"
+                                              inlineStyle="height:70.0px;"/>
+                                    <af:spacer width="0px" height="10" id="s8"/>
+                                </af:panelGroupLayout>
+                            </f:facet>
+                        </af:panelHeader>
+                    </af:panelGroupLayout>
+                    <af:spacer width="10" height="30" id="s9"/>
+                </af:panelGroupLayout>
+                <af:panelBox id="pb3" icon="imagenes/35X35/nav_35x35/alerta.png" showDisclosure="false"
+                             titleHalign="center" inlineStyle="text-align:center;overflow-x: scroll;">
+                    <af:outputText value="#{sesion.mantenimientoHijump}" id="pt_ot3" styleClass="check-internal-bold"></af:outputText>
+                    <br/>
+                    <br/>
+                    <af:button text="Regresar al inicio" id="cb2" action="#{backingBeanScope.login.performLogout}"
+                               styleClass="btn-internal"/>
+                </af:panelBox>
+            </af:panelGroupLayout>
+        </af:group>
+        <af:group id="g1" rendered="#{not sesion.paginaFallo}">
+        	<!--f:event listener="#{sesion.listenerComboHbbMostrar}"
+                     type="postAddToView"/-->
+            <div id="blue-main">
+                <div class="row">
+                    <!-- Panel Izquierdo -->
+                    <div class="col-3 left-panel" id="div-panel-left">
+                        <div class="row backgroundMenu" id="div-background">
+                            <div id="blue-logo" class="autocenter">
+                                <a href="#{request.contextPath}">
+                                    <img src="#{request.contextPath}/imagenes/aplicacion/img_sel2020_h@2x.png"
+                                         class="logo" alt="Servicios En Línea"/></a>
+                            </div>
+                            <div id="blue-info">
+                                <div class="row line-divisor">
+                                    <div class="row col-atention col-sm-8 left">
+                                        <h:outputText id="pt_ot13"
+                                                      value="#{skySELBundle.mensaje_contacto_atencionClientes}"/>
+                                         
+                                        <!--MX-->
+                                         
+                                        <af:group id="pt_g20" rendered="#{sesion.MEX}">
+                                            <!--VeTV-->
+                                            <af:group id="pt_g21" rendered="#{sesion.userVeTV}">
+                                                <a href="tel:#{skySELBundle['perfil.ot2M3.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot42"
+                                                                  value="#{skySELBundle['perfil.ot2M3.value']}"/></a>
+                                            </af:group>
+                                            <!--tradicional-->
+                                            <af:group id="pt_g22" rendered="#{!sesion.userVeTV}">
+                                                <a href="tel:#{skySELBundle.perfil.ot2M1.value}" class="decorated-link"
+                                                   title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot43"
+                                                                  value="#{skySELBundle['perfil.ot2M1.value']}"/></a>
+                                            </af:group>
+                                        </af:group>
+                                         
+                                        <!--otros-->
+                                         
+                                        <af:group id="pt_g7" rendered="#{!sesion.MEX}">
+                                            <!--costarica-->
+                                            <af:group id="pt_g8" rendered="#{sesion.CRI}">
+                                                <a href="tel:#{skySELBundle['contacto.telsCR1.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot7"
+                                                                  value="#{skySELBundle['contacto.telsCR1.value']} (sin costo), "/></a>
+                                                <a href="tel:#{skySELBundle['contacto.telsCR2.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}"> 
+                                                    <h:outputText id="pt_ot30"
+                                                                  value="#{skySELBundle['contacto.telsCR2.value']} o "/>
+                                                     </a>
+                                                <a href="tel:#{skySELBundle['contacto.telsCR3.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot17"
+                                                                  value="#{skySELBundle['contacto.telsCR3.value']}"/></a>
+                                            </af:group>
+                                            <!--dominicana-->
+                                            <af:group id="pt_g12" rendered="#{sesion.DOM}">
+                                                <a href="tel:#{skySELBundle['contacto.telsDO1.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot25"
+                                                                  value="#{skySELBundle['contacto.telsDO1.value']} o "/></a>
+                                                <a href="tel:#{skySELBundle['contacto.telsDO2.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot26"
+                                                                  value="#{skySELBundle['contacto.telsDO2.value']}"/></a>
+                                            </af:group>
+                                            <!--guatemala-->
+                                            <af:group id="pt_g10" rendered="#{sesion.GTM}">
+                                                <a href="tel:#{skySELBundle['contacto.telsGT.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot29"
+                                                                  value="#{skySELBundle['contacto.telsGT.value']}"/></a>
+                                            </af:group>
+                                            <!--nicaragua-->
+                                            <af:group id="pt_g14" rendered="#{sesion.NIC}">
+                                                <a href="tel:#{skySELBundle['contacto.telsNI1.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot31"
+                                                                  value="#{skySELBundle['contacto.telsNI1.value']} o "/></a>
+                                                <a href="tel:#{skySELBundle['contacto.telsNI2.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot32"
+                                                                  value="#{skySELBundle['contacto.telsNI2.value']}"/></a>
+                                            </af:group>
+                                            <!--SALVADOR-->
+                                            <af:group id="pt_g15" rendered="#{sesion.SLV}">
+                                                <a href="tel:#{skySELBundle['contacto.telsSV.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot33"
+                                                                  value="#{skySELBundle['contacto.telsSV.value']}"/></a>
+                                            </af:group>
+                                            <!--HONDURAS-->
+                                            <af:group id="pt_g17" rendered="#{sesion.HND}">
+                                                <a href="tel:#{skySELBundle['contacto.telsHN1.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot35"
+                                                                  value="#{skySELBundle['contacto.telsHN1.value']} o "/></a>
+                                                <a href="tel:#{skySELBundle['contacto.telsHN2.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot36"
+                                                                  value="#{skySELBundle['contacto.telsHN2.value']}"/></a>
+                                            </af:group>
+                                            <!--PANAMA-->
+                                            <af:group id="pt_g18" rendered="#{sesion.PAN}">
+                                                <a href="tel:#{skySELBundle['contacto.telsPA1.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot37"
+                                                                  value="#{skySELBundle['contacto.telsPA1.value']}, "/></a>
+                                                <a href="tel:#{skySELBundle['contacto.telsPA2.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}"> 
+                                                    <h:outputText id="pt_ot38"
+                                                                  value="#{skySELBundle['contacto.telsPA2.value']}, "/>
+                                                     </a>
+                                                <a href="tel:#{skySELBundle['contacto.telsPA3.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}"> 
+                                                    <h:outputText id="pt_ot39"
+                                                                  value="#{skySELBundle['contacto.telsPA3.value']} o "/>
+                                                     </a>
+                                                <a href="tel:#{skySELBundle['contacto.telsPA4.value']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot40"
+                                                                  value="#{skySELBundle['contacto.telsPA4.value']}"/></a>
+                                            </af:group>
+                                            <!--del interior-->
+                                            <af:group id="pt_g13"
+                                                      rendered="#{sesion.DOM || sesion.GTM || sesion.SLV || sesion.PAN}">
+                                                <br/>
+                                                <h:outputText id="pt_ot22" value="y desde el interior: "/>
+                                            </af:group>
+                                            <!--dominicana-->
+                                            <af:group id="pt_g9" rendered="#{sesion.DOM}">
+                                                <a href="tel:#{skySELBundle['contacto.telsDO1.valueInt']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot23"
+                                                                  value="#{skySELBundle['contacto.telsDO1.valueInt']} o "/></a>
+                                                <a href="tel:#{skySELBundle['contacto.telsDO2.valueInt']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot24"
+                                                                  value="#{skySELBundle['contacto.telsDO2.valueInt']}"/></a>
+                                            </af:group>
+                                            <!--GUATEMALA-->
+                                            <af:group id="pt_g11" rendered="#{sesion.GTM}">
+                                                <a href="tel:#{skySELBundle['contacto.telsGT.valueInt']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot28"
+                                                                  value="#{skySELBundle['contacto.telsGT.valueInt']}"/></a>
+                                            </af:group>
+                                            <!--SALVADOR-->
+                                            <af:group id="pt_g16" rendered="#{sesion.SLV}">
+                                                <a href="tel:#{skySELBundle['contacto.telsSV.valueInt']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot34"
+                                                                  value="#{skySELBundle['contacto.telsSV.valueInt']}"/></a>
+                                            </af:group>
+                                            <!--PANAMA-->
+                                            <af:group id="pt_g19" rendered="#{sesion.PAN}">
+                                                <a href="tel:#{skySELBundle['contacto.telsPA.valueInt']}"
+                                                   class="decorated-link" title="#{skySELBundle.mensaje_llamar_tel}">
+                                                    <h:outputText id="pt_ot41"
+                                                                  value="#{skySELBundle['contacto.telsPA.valueInt']}"/></a>
+                                            </af:group>
+                                        </af:group>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    <div class="row col-atention col-sm-8 left">
+                                        <af:link id="pt_cl2sp" text="Contrato"
+                                                 rendered="#{sesion.contratoTya}"
+                                                 inlineStyle="border-right:  1px solid #8AD5F2; opacity: 1; color: #8AD5F2;"
+                                                 immediate="true" styleClass="link-top"
+                                                 destination="/documentos/Contrato#{sesion.suscriptor.paisISO}#{sesion.tipoCuentaRCB}.pdf"
+                                                 targetFrame="_blank"/>
+                                                     
+                                        <af:link id="pt_l1sp" text="Contrato"
+                                                 rendered="#{sesion.contratoVetv}"
+                                                 inlineStyle="border-right:  1px solid #8AD5F2; opacity: 1; color: #8AD5F2;"
+                                                 immediate="true" styleClass="link-top"
+                                                 destination="/documentos/Contrato#{sesion.suscriptor.paisISO}VeTV.pdf"
+                                                 targetFrame="_blank"/>
+                                         
+                                        <af:link id="pt_l2sp" text="Adendum" rendered="#{sesion.adendum}"
+                                                 inlineStyle="border-right:  1px solid #8AD5F2; opacity: 1; color: #8AD5F2;"
+                                                 immediate="true" styleClass="link-top"
+                                                 destination="/documentos/Adendum-SKY#{sesion.suscriptor.paisISO}.pdf"
+                                                 targetFrame="_blank"/>
+                                         
+                                        <af:link id="pt_l3sp" text="Manual Bienvenidos"
+                                                 inlineStyle="border-right:  1px solid #8AD5F2; opacity: 1; color: #8AD5F2;"
+                                                 rendered="#{sesion.CUENTA_HOTEL}" immediate="true"
+                                                 styleClass="link-top"
+                                                 destination="/documentos/Welcome-Kit.pdf"
+                                                 targetFrame="_blank"/>
+                                                 
+                                        <af:link id="pt_cl3sp" text="Contáctenos" styleClass="link-top"
+                                                 inlineStyle="color: #8AD5F2;"
+                                                 action="contacto" targetFrame="_self" partialSubmit="true"
+                                                 immediate="true">
+                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                         value="Contáctenos"/>
+                                            <f:setPropertyActionListener target="#{Menu.taskFlowId}"
+                                                                         value="/WEB-INF/contactoTF.xml#contactoTF"/>
+                                        </af:link>
+                                         
+                                        
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        
+                                    <div class="row">
+                                        <div class="col-sm-2 col-tb-4 col-menu left">
+                                            <a id="show-menu" href="#" class="sm-icon-menu">
+                                                <img src="#{request.contextPath}/imagenes/movil/generales/Ico_Desplegar_Menu.png"
+                                                     alt="Muestra menu"/></a>
+                                             
+                                            <a id="hide-menu" href="#" class="sm-icon-close">
+                                                <img src="#{request.contextPath}/imagenes/movil/generales/Ico_cerrar.png"
+                                                     alt="Cierra menu"/></a>
+                                        </div>
+                                        
+                                        <div class="col-atention col-sm-6 right">
+                                            <af:link id="pt_l4sp" action="#{backingBeanScope.login.performLogout}"
+                                                     inlineStyle="color: #8AD5F2;"
+                                                     text="#{skySELBundle.pagInternas_template_cerrarSesion}"
+                                                     immediate="true" styleClass="link-top"/>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <!-- Informacion -->
+                                <section class="information line-divisor">
+                                    <div class="row sm-cancel-align">
+                                        <div class="col-12 col-sm-8 col-tb-8">
+                                            <h:outputText id="pt_ot1" styleClass="welcome"
+                                                          value="#{skySELBundle.pagInternas_template_bienvenido}"/>
+                                        </div>
+                                        <div class="col-12 col-sm-8 col-tb-8">     
+                                            <h:outputText id="pt_ot8" styleClass="user-name uppercase"
+                                                          rendered="#{securityContext.authenticated}"
+                                                          value="#{sesion.usuario.nombreCompleto}"/>
+                                        </div>
+                                        <div class="col-12">
+                                            <h:outputText id="pt_ot9" styleClass="acc-num-txt uppercase no-show"
+                                                          value="#{skySELBundle.pagInternas_template_noCuenta}"/>
+                                        </div>
+                                        <div class="col-12 col-sm-8 col-tb-8">     
+                                            <h:outputText id="pt_ot16" styleClass="sm-acc-num-txt uppercase"
+                                                          value="#{skySELBundle.pagInternas_template_noCuentaCorto}"/>
+                                        </div>
+                                        <div class="col-12 col-sm-8 col-tb-8">     
+                                            <af:inputText id="pt_ot10" partialTriggers="soc1" label=""
+                                                          styleClass="account-number" simple="true" autoSubmit="true"
+                                                          rendered="#{securityContext.authenticated}"
+                                                          value="#{sesion.cuentaSKY}" readOnly="true"/>
+                                        </div>
+                                        <div class="col-12">
+                                            <h:outputText id="pt_ot12" value="#{sesion.paquete}"
+                                                          styleClass="pack uppercase"/>
+                                        </div>
+                                        <af:panelGroupLayout id="pgl9" rendered="#{sesion.cuentaCV}">
+                                            <af:panelLabelAndMessage label="Cuenta" id="plam1"
+                                                                     rendered="#{sesion.cuentaCV}"
+                                                                     styleClass="acc-num-txt" partialTriggers="soc1">
+                                                <!--af:inputText id="it1" required="true" value="#{sesion.cuentaSKY}"
+                                                                  simple="true" columns="12" partialTriggers="soc1"
+                                                                  autoSubmit="true" maximumLength="12"
+                                                                  editable="onAccess"
+                                                                  valueChangeListener="#{backingBeanScope.BBIndex.itCuenta_ValueChange}"
+                                                                  label=" "/-->
+                                                <af:selectOneChoice label="Cuenta" id="soc1" value="#{sesion.cuentaSKY}"
+                                                                    autoSubmit="true" simple="true"
+                                                                    valueChangeListener="#{backingBeanScope.BBIndex.socCuenta_ValueChange}"
+                                                                    styleClass="select-internal">
+                                                    <af:forEach var="item" items="#{bindings.tablaCuentas.rangeSet}">
+                                                        <f:selectItem id="si1" itemLabel="#{item.cuentaSKY}"
+                                                                      itemValue="#{item.cuentaSKY}"/>
+                                                    </af:forEach>
+                                                    <af:clientListener method="enforcePreventUserInput"
+                                                                       type="valueChange"/>
+                                                </af:selectOneChoice>
+                                            </af:panelLabelAndMessage>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </section><!-- Menu -->
+                                 
+                                <af:panelGroupLayout id="pt_pglMenu" partialTriggers="soc1">
+                                    <div id="blue-menu">
+                                        <nav class="sm-menu">
+                                            <!--af:navigationPane id="pt_np1" hint="list" var="item" value="#{root_menu}"
+                                                               styleClass="menu">
+                                                <f:facet name="nodeStamp">
+                                                    <af:commandNavigationItem id="pt_cni1" text="#{item.label}"
+                                                                              partialSubmit="true"
+                                                                              action="#{item.doAction}"
+                                                                              rendered="#{item.rendered}"
+                                                                              immediate="true" icon="#{item.icon}"
+                                                                              targetFrame="_self">
+                                                        <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                     value="#{item.label}"/>
+                                                        <af:clientListener method="enforcePreventUserInput"
+                                                                           type="action"/>
+                                                    </af:commandNavigationItem>
+                                                </f:facet>
+                                            </af:navigationPane-->
+                                            <div class="menuPrincipal"
+                                                id="menuAdmin">
+                                                <af:panelGroupLayout id="pt_pglMCuenta">
+                                                    <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/miCuentaIcon.svg"
+                                                         alt="Perfil" style="width: 30px;vertical-align: middle;"/>
+                                                    <af:outputText value="mi cuenta"
+                                                                   styleClass="#{Menu.idxDiscloused eq '0' ?' flecha-cerrar' : 'flecha-abrir'} titulo-paquetes"
+                                                                   id="otMenuP"/>
+                                                </af:panelGroupLayout>
+                                            </div>
+                                            <af:panelGroupLayout id="pt_pglAdminCta" styleClass="submenu" inlineStyle="#{Menu.idxDiscloused eq '0' ? 'display:block;padding-left: 10px;': 'display:none;padding-left: 10px;'}">
+                                                <af:navigationPane id="pt_np1" hint="list" var="item"
+                                                                   value="#{miCuenta_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cni2" text="#{item.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{item.doAction}"
+                                                                                  rendered="#{item.rendered}"
+                                                                                  immediate="true">
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npCambioPaq" hint="list" var="itemCP"
+                                                                   value="#{cambioPaquete_menu}"
+                                                                   styleClass="submenuItem menu" level="0">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniCP" text="#{itemCP.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemCP.doAction}"
+                                                                                  rendered="#{itemCP.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemCP.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="0"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npAddEq" hint="list" var="itemAEq"
+                                                                   value="#{adquiereEquiposAd_menu}"
+                                                                   styleClass="submenuItem menu" level="0">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniAEq" text="#{itemAEq.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemAEq.doAction}"
+                                                                                  rendered="#{itemAEq.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemAEq.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="0"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npServT" hint="list" var="itemSTC"
+                                                                   value="#{servTecyCambio_menu}"
+                                                                   styleClass="submenuItem menu" level="0">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniSTC" text="#{itemSTC.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemSTC.doAction}"
+                                                                                  rendered="#{itemSTC.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemSTC.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="0"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npFactE" hint="list" var="itemFE"
+                                                                   value="#{facturaElectronica_menu}"
+                                                                   styleClass="submenuItem menu" level="0">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniFE" text="#{itemFE.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemFE.doAction}"
+                                                                                  rendered="#{itemFE.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemFE.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="0"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npCTit" hint="list" var="itemCT"
+                                                                   value="#{cambioTitular_menu}"
+                                                                   styleClass="submenuItem menu" level="0">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniCT" text="#{itemCT.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemCT.doAction}"
+                                                                                  rendered="#{itemCT.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemCT.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="0"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npRdRe" hint="list" var="itemRdRe"
+                                                                   value="#{reporteDanoRoboExtravio_menu}"
+                                                                   styleClass="submenuItem menu" level="0">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniRdRe"
+                                                                                  text="#{itemRdRe.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemRdRe.doAction}"
+                                                                                  rendered="#{itemRdRe.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemRdRe.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="0"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npAclar" hint="list" var="itemAclara"
+                                                                   value="#{aclaraciones_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniAclara" text="#{itemAclara.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemAclara.doAction}"
+                                                                                  rendered="#{itemAclara.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemAclara.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="0"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npMan" hint="list" var="itemMan"
+                                                                   value="#{manuales_menu}"
+                                                                   styleClass="submenuItem menu" level="0">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniMan" text="#{itemMan.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemMan.doAction}"
+                                                                                  rendered="#{itemMan.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemMan.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="0"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                            </af:panelGroupLayout>
+                                        
+                                        <div class="menuPrincipal" id="menuSKY"
+                                                style="#{(sesion.ADELANTA_RECARGAS or sesion.PAGO_LINEA or sessionScope.sesion.MBLUE_TO_GO or sesion.PAGOS_POR_EVENTO
+                                                or sesion.CANAL_A_LA_CARTA or sesion.PROGRAMACION_TV or sesion.COMPRAS) ? 'display:block;' : 'display:none;'}">
+                                                <af:panelGroupLayout id="pt_pglMSky">
+                                                    <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/videoIcon.svg"
+                                                         alt="SKY Video" style="width: 30px;vertical-align: middle; padding:2px;"/>
+                                                    <af:outputText value="Sky Televisión" styleClass="#{Menu.idxDiscloused eq '1' ?' flecha-cerrar' : 'flecha-abrir'} titulo-paquetes" id="pt_ot14"/>
+                                                </af:panelGroupLayout>
+                                            </div>
+                                            <af:panelGroupLayout id="pt_pglSKY" styleClass="submenu" inlineStyle="#{Menu.idxDiscloused eq '1' ? 'display:block;padding-left: 10px;': 'display:none;padding-left: 10px;'}">
+                                                <af:navigationPane id="npRecarga" hint="list" var="itemRecarga"
+                                                                   value="#{adelantaRecargas_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniRecarga" text="#{itemRecarga.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemRecarga.doAction}"
+                                                                                  rendered="#{itemRecarga.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemRecarga.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="1"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npCsPl" hint="list" var="itemCsPl"
+                                                                   value="#{consultaSalgoyPago_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniCsPl" text="#{itemCsPl.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemCsPl.doAction}"
+                                                                                  rendered="#{itemCsPl.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemCsPl.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="1"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npBtgve" hint="list" var="itemBtg"
+                                                                   value="#{btgVideoEverywhere_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniBtg" text="#{itemBtg.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemBtg.doAction}"
+                                                                                  rendered="#{itemBtg.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemBtg.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="1"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npPPv" hint="list" var="itemPpv"
+                                                                   value="#{pagosPorEvento_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniPpv" text="#{itemPpv.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemPpv.doAction}"
+                                                                                  rendered="#{itemPpv.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemPpv.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="1"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npCac" hint="list" var="itemCac"
+                                                                   value="#{canalesAlaCarta_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniCac" text="#{itemCac.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemCac.doAction}"
+                                                                                  rendered="#{itemCac.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemCac.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="1"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npGuiaP" hint="list" var="itemGuiP"
+                                                                   value="#{guiaProgTv_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniGuia" text="#{itemGuiP.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemGuiP.doAction}"
+                                                                                  rendered="#{itemGuiP.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemGuiP.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="1"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npRevCtrl" hint="list" var="itemRevCtrl"
+                                                                   value="#{compras_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniRevCtrl" text="#{itemRevCtrl.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemRevCtrl.doAction}"
+                                                                                  rendered="#{itemRevCtrl.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemRevCtrl.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="1"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                            </af:panelGroupLayout>
+                                        <div class="menuPrincipal" id="menuInternet" 
+                                                style="#{(sesion.CONSUMO_INTERNET or sesion.COMPRA_DATOS) ? 'display:block;' : 'display:none;'}">
+                                            <af:panelGroupLayout id="pt_pglMBti">
+                                                <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/btiIcon.svg"
+                                                         alt="BTI SKY" style="width: 30px;vertical-align: middle;"/>
+                                                <af:outputText value="blue telecomm inalámbrico" styleClass="#{Menu.idxDiscloused eq '2' ?' flecha-cerrar' : 'flecha-abrir'} titulo-paquetes" id="pt_ot20"/>
+                                            </af:panelGroupLayout>
+                                        </div>
+                                            <af:panelGroupLayout id="pt_pglInternet" inlineStyle="#{Menu.idxDiscloused eq '2' ? 'display:block;padding-left: 10px;': 'display:none;padding-left: 10px;'}"
+                                                                 styleClass="submenu">
+                                                <af:navigationPane id="npEsInt" hint="list" var="itemEsInt"
+                                                                   value="#{estatusInternet_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniEstInt" text="#{itemEsInt.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemEsInt.doAction}"
+                                                                                  rendered="#{itemEsInt.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemEsInt.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="2"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npComPD" hint="list" var="itemCompraPD"
+                                                                   value="#{compraPaqueteDatos_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniComPD" text="#{itemCompraPD.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemCompraPD.doAction}"
+                                                                                  rendered="#{itemCompraPD.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemCompraPD.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="2"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                            </af:panelGroupLayout>
+                                        <div class="menuPrincipal"
+                                                id="menuCelular" style="#{(sesion.CONSUMO_CELULAR or sesion.CAMBIO_PAQUETE_CELULAR or sesion.COMPRA_SERVICIO_SUPLEMENTARIO_CELULAR) ? 'display:block;' : 'display:none;'}">
+                                            <af:panelGroupLayout id="pt_pglMBtcel">
+                                                <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/btCelIcon.svg"
+                                                         alt="BTCel SKY" style="width: 30px;vertical-align: middle;"/>
+                                                <af:outputText value="blue telecomm celular" styleClass="#{Menu.idxDiscloused eq '3' ?' flecha-cerrar' : 'flecha-abrir'} titulo-paquetes" id="pt_ot21"/>
+                                            </af:panelGroupLayout>
+                                        </div>
+                                            <af:panelGroupLayout id="pt_pglCelular" inlineStyle="#{Menu.idxDiscloused eq '3' ? 'display:block;padding-left: 10px;': 'display:none;padding-left: 10px;'}"
+                                                                styleClass="submenu">
+                                                <af:navigationPane id="npCel" hint="list" var="itemCel"
+                                                                   value="#{estatusCelular_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniCel" text="#{itemCel.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemCel.doAction}"
+                                                                                  rendered="#{itemCel.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemCel.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="3"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npCPlan" hint="list" var="itemCambiaplan"
+                                                                   value="#{cambioPaqueteCelular_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniCambiaPlan" text="#{itemCambiaplan.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemCambiaplan.doAction}"
+                                                                                  rendered="#{itemCambiaplan.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemCambiaplan.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="3"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npServC" hint="list" var="itemServComparte"
+                                                                   value="#{servicioComparteCelular_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniServComparte" text="#{itemServComparte.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemServComparte.doAction}"
+                                                                                  rendered="#{itemServComparte.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemServComparte.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="3"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npServS" hint="list" var="itemServSup"
+                                                                   value="#{compraServicioSuplementarioCelular_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniServS" text="#{itemServSup.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemServSup.doAction}"
+                                                                                  rendered="#{itemServSup.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemServSup.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="3"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npPortabCel" hint="list" var="itemPortabCel"
+                                                                   value="#{portabilidadCelular_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniP" text="#{itemPortabCel.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemPortabCel.doAction}"
+                                                                                  rendered="#{itemPortabCel.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemPortabCel.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="3"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                            </af:panelGroupLayout>
+                                        <div class="menuPrincipal" id="menuOtros" 
+                                                style="#{(sesion.SU_OPINION_NOS_INTERESA or sesion.REQUIERE_OTRA_INFORMACION) ? 'display:block;' : 'display:none;'}">
+                                            <af:panelGroupLayout id="pt_pglMOtros">
+                                                <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/comentariosIcon.svg"
+                                                         alt="Otros" style="width: 30px;vertical-align: middle;"/>
+                                                <af:outputText value="Otros" styleClass="#{Menu.idxDiscloused eq '4' ?' flecha-cerrar' : 'flecha-abrir'} titulo-paquetes" id="pt_ot62"/>
+                                            </af:panelGroupLayout>
+                                        </div>
+                                            <af:panelGroupLayout id="pt_pglOtros" inlineStyle="#{Menu.idxDiscloused eq '4' ? 'display:block;padding-left: 10px;': 'display:none;padding-left: 10px;'}"
+                                                                styleClass="submenu">
+                                                <af:navigationPane id="npOpini" hint="list" var="itemOpinion"
+                                                                   value="#{suOpinionNosInteresa_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniOpin" text="#{itemOpinion.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemOpinion.doAction}"
+                                                                                  rendered="#{itemOpinion.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemOpinion.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="4"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                                <af:navigationPane id="npOtraI" hint="list" var="itemOtraInf"
+                                                                   value="#{requiereOtraInfo_menu}" level="0"
+                                                                   styleClass="menu menuItem">
+                                                    <f:facet name="nodeStamp">
+                                                        <af:commandNavigationItem id="pt_cniOtraInf" text="#{itemOtraInf.label}"
+                                                                                  partialSubmit="true"
+                                                                                  action="#{itemOtraInf.doAction}"
+                                                                                  rendered="#{itemOtraInf.rendered}"
+                                                                                  immediate="true">
+                                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                         value="#{itemOtraInf.label}"/>
+                                                            <f:setPropertyActionListener target="#{Menu.idxDiscloused}"
+                                                                                         value="4"/>
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:commandNavigationItem>
+                                                    </f:facet>
+                                                </af:navigationPane>
+                                            </af:panelGroupLayout>
+                                            <af:link id="pt_cl1" action="#{backingBeanScope.login.performLogout}"
+                                                     immediate="true"
+                                                     text="#{skySELBundle.pagInternas_template_cerrarSesion}"
+                                                     styleClass="sm-close-session"/>
+                                        </nav>
+                                    </div>
+                                </af:panelGroupLayout>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- Contenido -->
+                    <af:panelGroupLayout id="pt_pgl1" partialTriggers="soc1">
+                        <div class="col-9 col-tb-6 content-panel-right" id="div-panel-right"
+                             xmlns="http://www.w3.org/1999/xhtml">
+                            <div class="row header">
+                                <header>
+                                    <div class="col-5">
+                                        <div class="sel-bt col-3 col-tb-2 col-sm-3-2 left">
+                                            <af:link text="" id="cil1" styleClass="links-header" action="btgveContrata"
+                                                     rendered="#{sessionScope.sesion.MBLUE_TO_GO}" targetFrame="_self"
+                                                     partialSubmit="true" immediate="true">
+                                                <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                             value="Blue To Go Video Everywhere"/>
+                                                <f:setPropertyActionListener target="#{Menu.taskFlowId}"
+                                                                             value="/WEB-INF/btgVeoBtgTF.xml#btgVeoBtgTF"/>
+                                                <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                                <div>
+                                                    <af:image shortDesc="Blue To Go Video Everywhere" id="i17"
+                                                              rendered="#{backingBeanScope.login.renderiPad}"
+                                                              source="#{parametros.btgew}encabezado/btgew_ipad_btg.png"
+                                                              styleClass="links-icon-header"/>
+                                                     
+                                                    <af:image shortDesc="Blue To Go Video Everywhere" id="i18"
+                                                              rendered="#{!backingBeanScope.login.renderiPad}"
+                                                              source="#{parametros.btgew}encabezado/btgew_btg.png"
+                                                              styleClass="links-icon-header"/>
+                                                </div>
+                                            </af:link>
+                                        </div>
+                                        <div class="sel-bt col-3 col-tb-2 col-sm-3-2 left">
+                                            <af:link text="" id="cl59" styleClass="links-header"
+                                                     action="btgveSoloNetwork"
+                                                     rendered="#{sessionScope.sesion.MBLUE_TO_GO}" targetFrame="_self"
+                                                     partialSubmit="true" immediate="true">
+                                                <f:setPropertyActionListener target="#{Menu.titulo}" value="BTG"/>
+                                                <f:setPropertyActionListener target="#{Menu.taskFlowId}"
+                                                                             value="/WEB-INF/btgNetworkTF.xml#btgNetworkTF"/>
+                                                <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                                <div>
+                                                    <af:image shortDesc="BTG" id="i19"
+                                                              rendered="#{backingBeanScope.login.renderiPad}"
+                                                              source="#{parametros.btgew}encabezado/btgew_networks.png"
+                                                              styleClass="icon-chat-header"/>
+                                                     
+                                                    <af:image shortDesc="Blue To Go Video Everywhere sólo networks"
+                                                              id="i20" rendered="#{!backingBeanScope.login.renderiPad}"
+                                                              source="#{parametros.btgew}encabezado/btgew_networks.png"
+                                                              styleClass="links-icon-header"/>
+                                                </div>
+                                            </af:link>
+                                        </div>
+                                        <div class="sel-bt col-3 col-tb-2 col-sm-3-2 left">
+                                            <af:group id="pt2_g2" rendered="#{sesion.CONTACTO_CHAT}">
+                                                <a href="#{sesion.urlChatTemplate}" title="Chatea con nosotros"
+                                                   target="_blank" class="link-chat">
+                                                    <h:outputText id="pt2_ot14" value="CHAT"/><img src="#{request.contextPath}/imagenes/aplicacion/chat01.png"
+                                                                                                  class="icon-chat-header"/></a>
+                                            </af:group>
+                                            
+                                            
+                                             
+                                            <h:outputText id="pt2_ot21" escape="false" value="&amp;nbsp;"
+                                                          rendered="#{!sesion.CONTACTO_CHAT}"/>
+                                        </div>
+                                        
+                                        <!--WA JAM-->
+                                        <div class="sel-bt col-3 col-tb-2 col-sm-3-2 left">
+                                            <af:group id="waicon" rendered="#{sesion.enableWhatsAppLink}">
+                                                <a href="#{sesion.urlWhatsApp}" title="WhatsApp"
+                                                   target="_blank">
+                                                    <img src="#{request.contextPath}/imagenes/aplicacion/iconoWhatsApp.png"
+                                                                                                  class="icon-chat-header"/>
+                                                </a>
+                                            </af:group>
+                                        </div>
+                                        <!--WA JAM-->
+                                    </div>
+                                    <div class="col-7" style="padding: 2px;">
+                                        <div class="links">
+                                            <div class="row">
+                                                <div class="col-12 col-tb-8 col-sm-8">
+                                                    <h:outputText id="pt_ot4"
+                                                                  value="#{skySELBundle.mensaje_contacto_atencionClientes}"
+                                                                  styleClass="uppercase"/>
+                                                     
+                                                    <!--MX-->
+                                                     
+                                                    <af:group id="pt_g4" rendered="#{sesion.MEX}">
+                                                        <!--VeTV-->
+                                                        <af:group id="pt_g5" rendered="#{sesion.userVeTV}">
+                                                            <a href="tel:#{skySELBundle['perfil.ot2M3.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}">
+                                                                <h:outputText id="pt_ot15"
+                                                                              value="#{skySELBundle['perfil.ot2M3.value']}"/></a>
+                                                        </af:group>
+                                                        <!--tradicional-->
+                                                        <af:group id="pt_g6" rendered="#{!sesion.userVeTV}">
+                                                            <a href="tel:#{skySELBundle.perfil.ot2M1.value}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}">
+                                                                <h:outputText id="pt_ot5"
+                                                                              value="#{skySELBundle['perfil.ot2M1.value']}"/></a>
+                                                        </af:group>
+                                                    </af:group>
+                                                </div>
+                                                <div class="col-12 col-tb-8 col-sm-8">
+                                                    <!--otros-->
+                                                    <af:group id="pt_g23" rendered="#{!sesion.MEX}">
+                                                        <!--costarica-->
+                                                        <af:group id="pt_g24" rendered="#{sesion.CRI}">
+                                                            <a href="tel:#{skySELBundle['contacto.telsCR1.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}">
+                                                                <h:outputText id="pt_ot6"
+                                                                              value="#{skySELBundle['contacto.telsCR1.value']} (sin costo), "/></a>
+                                                            <a href="tel:#{skySELBundle['contacto.telsCR2.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}"> 
+                                                                <h:outputText id="pt_ot18"
+                                                                              value="#{skySELBundle['contacto.telsCR2.value']} o "/>
+                                                                 </a>
+                                                            <a href="tel:#{skySELBundle['contacto.telsCR3.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}">
+                                                                <h:outputText id="pt_ot19"
+                                                                              value="#{skySELBundle['contacto.telsCR3.value']}"/></a>
+                                                        </af:group>
+                                                        <!--dominicana-->
+                                                        <af:group id="pt_g25" rendered="#{sesion.DOM}">
+                                                            <a href="tel:#{skySELBundle['contacto.telsDO1.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}">
+                                                                <h:outputText id="pt_ot27"
+                                                                              value="#{skySELBundle['contacto.telsDO1.value']} o "/></a>
+                                                            <a href="tel:#{skySELBundle['contacto.telsDO2.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}">
+                                                                <h:outputText id="pt_ot44"
+                                                                              value="#{skySELBundle['contacto.telsDO2.value']}"/></a>
+                                                        </af:group>
+                                                        <!--guatemala-->
+                                                        <af:group id="pt_g26" rendered="#{sesion.GTM}">
+                                                            <a href="tel:#{skySELBundle['contacto.telsGT.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}">
+                                                                <h:outputText id="pt_ot45"
+                                                                              value="#{skySELBundle['contacto.telsGT.value']}"/></a>
+                                                        </af:group>
+                                                        <!--nicaragua-->
+                                                        <af:group id="pt_g27" rendered="#{sesion.NIC}">
+                                                            <a href="tel:#{skySELBundle['contacto.telsNI1.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}">
+                                                                <h:outputText id="pt_ot46"
+                                                                              value="#{skySELBundle['contacto.telsNI1.value']} o "/></a>
+                                                            <a href="tel:#{skySELBundle['contacto.telsNI2.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}">
+                                                                <h:outputText id="pt_ot47"
+                                                                              value="#{skySELBundle['contacto.telsNI2.value']}"/></a>
+                                                        </af:group>
+                                                        <!--SALVADOR-->
+                                                        <af:group id="pt_g28" rendered="#{sesion.SLV}">
+                                                            <a href="tel:#{skySELBundle['contacto.telsSV.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}">
+                                                                <h:outputText id="pt_ot48"
+                                                                              value="#{skySELBundle['contacto.telsSV.value']}"/></a>
+                                                        </af:group>
+                                                        <!--HONDURAS-->
+                                                        <af:group id="pt_g29" rendered="#{sesion.HND}">
+                                                            <a href="tel:#{skySELBundle['contacto.telsHN1.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}">
+                                                                <h:outputText id="pt_ot49"
+                                                                              value="#{skySELBundle['contacto.telsHN1.value']} o "/></a>
+                                                            <a href="tel:#{skySELBundle['contacto.telsHN2.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}">
+                                                                <h:outputText id="pt_ot50"
+                                                                              value="#{skySELBundle['contacto.telsHN2.value']}"/></a>
+                                                        </af:group>
+                                                        <!--PANAMA-->
+                                                        <af:group id="pt_g30" rendered="#{sesion.PAN}">
+                                                            <a href="tel:#{skySELBundle['contacto.telsPA1.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}">
+                                                                <h:outputText id="pt_ot51"
+                                                                              value="#{skySELBundle['contacto.telsPA1.value']}, "/></a>
+                                                            <a href="tel:#{skySELBundle['contacto.telsPA2.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}"> 
+                                                                <h:outputText id="pt_ot52"
+                                                                              value="#{skySELBundle['contacto.telsPA2.value']}, "/>
+                                                                 </a>
+                                                            <a href="tel:#{skySELBundle['contacto.telsPA3.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}"> 
+                                                                <h:outputText id="pt_ot53"
+                                                                              value="#{skySELBundle['contacto.telsPA3.value']} o "/>
+                                                                 </a>
+                                                            <a href="tel:#{skySELBundle['contacto.telsPA4.value']}"
+                                                               class="decorated-link"
+                                                               title="#{skySELBundle.mensaje_llamar_tel}">
+                                                                <h:outputText id="pt_ot54"
+                                                                              value="#{skySELBundle['contacto.telsPA4.value']}"/></a>
+                                                        </af:group>
+                                                    </af:group>
+                                                     
+                                                    <!--del interior-->
+                                                     
+                                                    <af:group id="pt_g31"
+                                                              rendered="#{sesion.DOM || sesion.GTM || sesion.SLV || sesion.PAN}">
+                                                        <h:outputText id="pt_ot55" value="  y desde el interior: "/>
+                                                    </af:group>
+                                                     
+                                                    <!--dominicana-->
+                                                     
+                                                    <af:group id="pt_g32" rendered="#{sesion.DOM}">
+                                                        <a href="tel:#{skySELBundle['contacto.telsDO1.valueInt']}"
+                                                           class="decorated-link"
+                                                           title="#{skySELBundle.mensaje_llamar_tel}">
+                                                            <h:outputText id="pt_ot56"
+                                                                          value="#{skySELBundle['contacto.telsDO1.valueInt']} o "/></a>
+                                                        <a href="tel:#{skySELBundle['contacto.telsDO2.valueInt']}"
+                                                           class="decorated-link"
+                                                           title="#{skySELBundle.mensaje_llamar_tel}">
+                                                            <h:outputText id="pt_ot57"
+                                                                          value="#{skySELBundle['contacto.telsDO2.valueInt']}"/></a>
+                                                    </af:group>
+                                                     
+                                                    <!--GUATEMALA-->
+                                                     
+                                                    <af:group id="pt_g33" rendered="#{sesion.GTM}">
+                                                        <a href="tel:#{skySELBundle['contacto.telsGT.valueInt']}"
+                                                           class="decorated-link"
+                                                           title="#{skySELBundle.mensaje_llamar_tel}">
+                                                            <h:outputText id="pt_ot58"
+                                                                          value="#{skySELBundle['contacto.telsGT.valueInt']}"/></a>
+                                                    </af:group>
+                                                     
+                                                    <!--SALVADOR-->
+                                                     
+                                                    <af:group id="pt_g34" rendered="#{sesion.SLV}">
+                                                        <a href="tel:#{skySELBundle['contacto.telsSV.valueInt']}"
+                                                           class="decorated-link"
+                                                           title="#{skySELBundle.mensaje_llamar_tel}">
+                                                            <h:outputText id="pt_ot59"
+                                                                          value="#{skySELBundle['contacto.telsSV.valueInt']}"/></a>
+                                                    </af:group>
+                                                     
+                                                    <!--PANAMA-->
+                                                     
+                                                    <af:group id="pt_g35" rendered="#{sesion.PAN}">
+                                                        <a href="tel:#{skySELBundle['contacto.telsPA.valueInt']}"
+                                                           class="decorated-link"
+                                                           title="#{skySELBundle.mensaje_llamar_tel}">
+                                                            <h:outputText id="pt_ot61"
+                                                                          value="#{skySELBundle['contacto.telsPA.valueInt']}"/></a>
+                                                    </af:group>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-8 col-tb-8">
+                                                    <af:link id="pt_clPromo" text="Promociones" styleClass="link-top"
+                                                             inlineStyle="border-right:  1px solid #004B8D; opacity: 1;"
+                                                             action="promociones" targetFrame="_self" partialSubmit="true"
+                                                             immediate="true"
+                                                             rendered="#{pageFlowScope.anunciosMB.mostrarPromociones}">
+                                                        <f:setPropertyActionListener target="#{Menu.taskFlowId}"
+                                                                                     value="/WEB-INF/promocionesTF.xml#promocionesTF"/>
+                                                    </af:link>
+                                                    <af:link id="pt_cl2" text="Contrato"
+                                                             rendered="#{sesion.contratoTya}"
+                                                             inlineStyle="border-right:  1px solid #004B8D; opacity: 1;"
+                                                             immediate="true"
+                                                             destination="/documentos/Contrato#{sesion.suscriptor.paisISO}#{sesion.tipoCuentaRCB}.pdf"
+                                                             targetFrame="_blank" styleClass="link-top"/>
+                                                     
+                                                    <af:link id="pt_l1" text="Contrato"
+                                                             rendered="#{sesion.contratoVetv}"
+                                                             inlineStyle="border-right:  1px solid #004B8D; opacity: 1;"
+                                                             immediate="true" styleClass="link-top"
+                                                             destination="/documentos/Contrato#{sesion.suscriptor.paisISO}VeTV.pdf"
+                                                             targetFrame="_blank"/>
+                                                     
+                                                    <af:link id="pt_l2" text="Adendum" rendered="#{sesion.adendum}"
+                                                             inlineStyle="border-right:  1px solid #004B8D; opacity: 1;"
+                                                             immediate="true" styleClass="link-top"
+                                                             destination="/documentos/Adendum-SKY#{sesion.suscriptor.paisISO}.pdf"
+                                                             targetFrame="_blank"/>
+                                                     
+                                                    <af:link id="pt_l3" text="Manual Bienvenidos"
+                                                             inlineStyle="border-right:  1px solid #004B8D; opacity: 1;"
+                                                             rendered="#{sesion.CUENTA_HOTEL}" immediate="true"
+                                                             styleClass="link-top"
+                                                             destination="/documentos/Welcome-Kit.pdf"
+                                                             targetFrame="_blank"/>
+                                                     
+                                                    <af:link id="pt_cl3" text="Contáctenos" styleClass="link-top"
+                                                             inlineStyle="border-right:  1px solid #004B8D; opacity: 1;"
+                                                             action="contacto" targetFrame="_self" partialSubmit="true"
+                                                             immediate="true">
+                                                        <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                     value="Contáctenos"/>
+                                                        <f:setPropertyActionListener target="#{Menu.taskFlowId}"
+                                                                                     value="/WEB-INF/contactoTF.xml#contactoTF"/>
+                                                    </af:link>
+                                                     
+                                                    <af:link id="pt_l4" action="#{backingBeanScope.login.performLogout}"
+                                                             text="#{skySELBundle.pagInternas_template_cerrarSesion}"
+                                                             immediate="true" styleClass="link-top"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </header>
+                            </div>
+                            <div class="content" id="idContent">
+                                <div class="row">
+                                    <div class="col-12 col-sm-8 col-tb-8">
+                                        <div class="content-internal backgroundTitulo" id="div-backgroundTitulo">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h:outputText id="otMenu" value="#{Menu.titulo}"
+                                                                  styleClass="titleh1 uppercase"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 right">
+                                                    <af:navigationPane id="pt_np2" hint="buttons" level="1"
+                                                                       var="submenu1" value="#{root_menu}"
+                                                                       styleClass="submenu-2">
+                                                        <f:facet name="nodeStamp">
+                                                            <af:commandNavigationItem id="pt_cni1"
+                                                                                      text="#{submenu1.label}"
+                                                                                      partialSubmit="true"
+                                                                                      action="#{submenu1.doAction}"
+                                                                                      rendered="#{submenu1.rendered}"
+                                                                                      immediate="true"
+                                                                                      targetFrame="_self">
+                                                                <af:clientListener method="enforcePreventUserInput"
+                                                                                   type="action"/>
+                                                            </af:commandNavigationItem>
+                                                        </f:facet>
+                                                    </af:navigationPane><!--af:navigationPane id="pt_np3" hint="bar" level="2" var="item"
+                                                           value="#{root_menu}"
+                                                           styleClass="stroke">
+                                            <f:facet name="nodeStamp">
+                                                <af:commandNavigationItem id="pt_cni3" text="#{item.label}"
+                                                                          partialSubmit="true" action="#{item.doAction}"
+                                                                          destination="#{item.destination}"
+                                                                          rendered="#{item.rendered}" immediate="true"
+                                                                          inlineStyle="display: inline-block;">
+                                                                          <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                                             value="#{item.label}"/>
+                                                    <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                                </af:commandNavigationItem>
+                                            </f:facet>
+                                        </af:navigationPane-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-8 col-tb-8">
+                                        <af:subform id="pt_s1">
+                                            <af:facetRef facetName="contenido_facet"/>
+                                        </af:subform>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row top" id="div-subform">
+                                <!-- Pie -->
+                                <div id="blue-foot" class="col-12">
+                                    <footer class="footer">
+                                        <h:outputText id="pt_ot2"
+                                                      value="#{skySELBundle.pagInternas_template_copyRight} #{skySELBundle.pagInternas_template_derechosReservados}"/>
+                                        <br/>
+                                        <h:outputText value="SESION_ID:#{sessionScope.Foliador.folio}"
+                                                      id="outputText2"/>
+                                    </footer>
+                                </div>
+                                <div id="sm-blue-foot">
+                                    <footer class="footer sm-cancel-align">
+                                        <h:outputText id="pt_ot60"
+                                                      value="#{skySELBundle.pagInternas_template_copyRight}"/>
+                                        <br/>
+                                        <h:outputText id="pt_ot11"
+                                                      value="#{skySELBundle.pagInternas_template_atencionClientes}"/>
+                                    </footer>
+                                </div>
+                            </div>
+                        </div>
+                    </af:panelGroupLayout>
+                </div>
+            </div>
+            
+            
+            
+            
+            <af:group id="pt_g3">
+            	<!---   Pupup de anuncio baja de precio bolsa datos combo -->
+                <!--af:showPopupBehavior triggerType="#{sesion.loadBeneficioComboHbb}"
+                                      popupId="paqCombo"/-->
+                <!--af:popup id="paqCombo" contentDelivery="immediate"
+                          binding="#{sesion.popUp_beneficioComboHbb}">
+                    <af:dialog id="paqComboDi" type="none" title=""
+                               closeIconVisible="false"
+                               styleClass="alert">
+                        <af:panelGroupLayout id="paqComboPa" layout="vertical"
+                                             halign="center">
+                            <af:panelGroupLayout id="pgl30" layout="vertical"
+                                                 rendered="true">
+                                <af:panelGroupLayout id="pgl31"
+                                                     layout="vertical">
+                                    <img src="/sky/imagenes/825X300/PromoComboHbb.png"
+                                         />
+                                    <af:spacer id="s19" width="5" height="5"/>
+                                    <af:button text="Cerrar" id="cb5" styleClass="btn-pay-dialog">
+                                        <f:setPropertyActionListener target="#{sesion.popupBeneficioComboHbb}"
+                                                                     value="false"/>
+                                    </af:button>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:dialog>
+                </af:popup-->
+            
+                <af:popup id="waitPopup" contentDelivery="immediate" clientComponent="true">
+                    <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                        <af:dialog id="dlgWait" type="none" closeIconVisible="false" modal="true" clientComponent="true"
+                                   styleClass="waitpopup">
+                            <div class="text-internal">
+                                <div class="col-12 autocenter">
+                                    <span class="spinner" style="top: 40px;position: absolute;"></span>
+                                </div>
+                                <div class="col-12 autocenter" style="padding-top:40px;">
+                                    <div class="row top">
+                                        <h:outputText value="#{skySELBundle['admoneditar.ot7.value']}" id="ot1"
+                                                      style="font: normal 1em 'Roboto', sans-serif;"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </af:dialog>
+                    </div>
+                </af:popup>
+            </af:group>
+        </af:group>
+    </af:group>
+</af:pageTemplateDef>

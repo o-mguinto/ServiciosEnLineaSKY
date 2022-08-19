@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <af:group id="gpCambioTitularTyMx4">
+        <af:resource type="javascript">
+          $('#cambioTitularTyMx4').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="cambioTitularTyMx4">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelGroupLayout id="pgl1" styleClass="dialog-background" inlineStyle="border: none;">
+                            <h:outputText styleClass="title" value="LLENAR DOCUMENTOS" id="otTitulo"/>
+                            <div class="row top">
+                                <h:outputText styleClass="title" value="Descargue los documentos" id="ot14"/>
+                            </div>
+                            <div class="row bottom">
+                                <af:panelBox text="" id="pb1" maximized="true" showDisclosure="false" 
+                                             showMaximize="never" background="medium" showHeader="never"
+                                             inlineStyle="border:none;   margin-right: 5px;">
+                                    <f:facet name="toolbar"/>
+                                    <div class="top col-3 col-tb-3 col-sm-8">
+                                    <af:panelGroupLayout id="pgl2"
+                                                         visible="#{pageFlowScope.PFCambioTitularForm.firmacedente=='NO'}">
+                                        <h:outputText id="inputText6" styleClass="output-internal"
+                                                      style="    margin-right: 15px;" value="Carta Responsiva"/>
+                                        <af:button text="Descargar" id="cb4" styleClass="btn-internal">
+                                            <af:fileDownloadActionListener contentType="application/pdf"
+                                                                           filename="CartaResponsiva.pdf"
+                                                                           method="#{pageFlowScope.PFCambioTitularForm.download_cartaReponsiva}"/>
+                                        </af:button>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pgl3"
+                                                         visible="#{pageFlowScope.PFCambioTitularForm.firmacedente=='SI'}">
+                                        <h:outputText id="ot1" value="Cesión de Derechos" styleClass="output-internal"
+                                                      style="    margin-right: 15px;"/>
+                                        <af:button text="Descargar" id="cb5" styleClass="btn-internal">
+                                            <af:fileDownloadActionListener contentType="application/pdf"
+                                                                           filename="CesionDerechos.pdf"
+                                                                           method="#{pageFlowScope.PFCambioTitularForm.download_cesionDerechos}"/>
+                                        </af:button>
+                                    </af:panelGroupLayout>
+                                    </div>
+                                </af:panelBox>
+                            </div>
+                        </af:panelGroupLayout>
+                         
+                        <af:panelGroupLayout id="panelGroupLayout1">
+                            <div class="top top-2 col-2 col-sm-8  col-tb-2 right" style="float:right;">
+                                <af:button text="Finalizar" id="cb1" action="cancelar" styleClass="btn-internal"/>
+                            </div>
+                            <div class="top top-2 col-2 col-sm-8  col-tb-2 right" style="float:right;">
+                                <af:button text="Atrás" id="cb3"
+                                           action="#{pageFlowScope.PFCambioTitularForm.cbAtrasFormaPago_action}"
+                                           immediate="true" styleClass="btn-internal"/>
+                            </div>
+                        </af:panelGroupLayout>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

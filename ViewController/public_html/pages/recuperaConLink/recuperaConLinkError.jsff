@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+xmlns:f="http://java.sun.com/jsf/core">
+<af:group id="g2">
+ <f:subview id="head">
+                    <meta name="description"
+                          content="SKY | Servicios en Línea"/>
+                    <meta name="keywords" content="servicios en linea sky"/>
+                    <af:outputText value="&lt;link rel='SHORTCUT ICON' href='#{facesContext.externalContext.requestContextPath}/imagenes/aplicacion/favicon.ico' type='image/x-icon'/>"
+                                   id="ot6" escape="false"/>
+                    <jsp:include page="/templateHead_principal.jspx">
+                        <?audit suppress oracle.jdeveloper.jsp.no-naming-container-include?>
+                    </jsp:include>
+                    <!-- Estilos y Scripts Especificos de la pagina -->
+                    <af:resource type="css"
+                                 source="/assets/css/estilos_canales.css"/>
+                    <af:resource type="javascript"
+                                 source="/assets/js/smoothScroll.js"/>
+                    <af:resource type="javascript"
+                                 source="https://www.google.com/recaptcha/api.js?hl=es-419"/>
+        </f:subview>
+        <f:subview id="s4">
+            <!-- Mosaico de canales para adultos -->
+                <div class="container-fluid">
+                    <div class="col-12">
+                        <af:panelGroupLayout id="pgl1">
+                            <table id="login_header">
+                                <td>
+                                    <a>
+                                        <img alt="hotgo.jpg"
+                                             src="/sky/imagenes/pc/cuatro/header.jpg" style="width:100%;"/></a>
+                                        
+                                </td>
+                            </table>
+                        </af:panelGroupLayout>
+                    </div>
+                    <!--/.col principal -->
+                </div>
+                <!--/.container-->
+                <!-- /Mosaico de canales para adultos -->
+                <div class="container-fluid">
+                    <div class="col-12">
+                        <table id="tb1" class="login_acciones">
+                            <tr>
+                                <td>
+                                    <div class="container-fluid"
+                                         style="display:block; flex-align:center;">
+                                        <af:panelGroupLayout id="pgl8">
+                                            <div class="col-12">
+                                                <table class="botones_login">
+                                                    <tr>
+                                                        <td>
+                                                            <af:outputText value="Aviso"
+                                                                           id="ot1"
+                                                                           inlineStyle="font-size: xx-large;top: -549px; left: 4%; color: #f81a81;"/>
+                                                             
+                                                            <af:spacer width="100%"
+                                                                       height="50"
+                                                                       id="s2"/>
+                                                             
+                                                            <af:panelGroupLayout id="pgl2"
+                                                                                 styleClass="textoRegistro"
+                                                                                 layout="horizontal"
+                                                                                 halign="center">
+                                                                <af:outputText 
+                                                                               id="ot2"
+                                                                               inlineStyle="font-size: medium;top: -549px; left: 4%; color: black; text-align:justify"
+                                                                               binding="#{backingBeanScope.BBRecuperaCon.mensajeUsuarioError}"/>
+                                                            </af:panelGroupLayout>
+                                                             
+                                                            <af:spacer width="100%"
+                                                                       height="50"
+                                                                       id="s8"/>
+                                                        </td>
+                                                    </tr>
+                                                     
+                                                    <tr>
+                                                        <td>
+                                                            <af:panelGroupLayout id="pgl3"
+                                                                                 styleClass="textoRegistro"
+                                                                                 layout="horizontal"
+                                                                                 halign="center">
+                                                                <img src="/sky/imagenes/pc/tres/dispositivos.png"
+                                                                     alt="dispositivos"/>
+                                                                <af:commandLink id="cl5" inlineStyle="border-color: transparent;"
+                                                                                action="cerrar_pc_error">
+                                                                    <img src="/sky/imagenes/pc/tres/boton_close.png" style="border-color: transparent;"
+                                                                         alt="boton_close"/>
+                                                                </af:commandLink>
+                                                            </af:panelGroupLayout>
+                                                             
+                                                            <af:spacer width="100%"
+                                                                       height="30"
+                                                                       id="s1"/>
+                                                        </td>
+                                                    </tr>
+                                                     
+                                                    <tr>
+                                                        <td>
+                                                            <af:panelGroupLayout id="pgl4"
+                                                                                 layout="vertical"
+                                                                                 halign="end">
+                                                                <af:spacer width="800"
+                                                                           height="10"
+                                                                           id="s7"/>
+                                                                <af:outputText value='&lt;script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=serviciosenlinea.sky.com.mx&amp;size=L&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=es">&lt;/script>&lt;map name="sealmap_large" id="sealmap_large">&lt;area alt="Click to Verify - This site has chosen an SSL Certificate to improve Web site security" title="" href="javascript:vrsn_splash()" shape="rect" coords="0,0,130,65" tabindex="-1" style="outline:none;">&lt;area alt="Click to Verify - This site has chosen an SSL Certificate to improve Web site security" title="" href="javascript:vrsn_splash()" shape="rect" coords="0,65,71,88" tabindex="-1" style="outline:none;">&lt;area alt="" title="" href="javascript:symcBuySSL()" shape="rect" coords="71,65,130,88" style="outline:none;">&lt;/map>&lt;br>
+&lt;a href="https://www.symantec.com/es/es/ssl-certificates" target="_blank" style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;">ACERCA DE LOS CERTIFICADOS SSL&lt;/a>'
+                                                                               id="footerPC"
+                                                                               escape="false"/>
+                                                                <af:spacer width="100%"
+                                                                           height="60"
+                                                                           id="s5"/>
+                                                            </af:panelGroupLayout>
+                                                            <af:panelGroupLayout id="pgl11" layout="horizontal" halign="center">
+                                                <af:panelGroupLayout id="pgl5"
+                                                                     inlineStyle="position: relative; top: 19px; left: 0%; color: black;"
+                                                                     layout="vertical"
+                                                                     halign="center">
+                                                        <af:outputText id="ot20"
+                                                                       value="“Sky” y las marcas relacionadas, nombres y logotipos, son propiedad de “Sky International AG” y otras empresas del grupo."
+                                                                       inlineStyle="font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                                                        <af:outputText id="ot21"
+                                                                       value="Corporación Novavisión S. de R.L. de C.V. 2020. Prohibida su reproducción total o parcial."
+                                                                       inlineStyle="font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                                                        <af:spacer width="100"
+                                                                   height="20"
+                                                                   id="s6"/>
+                                                </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </af:panelGroupLayout>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </div>
+        </f:subview>
+</af:group>
+</ui:composition>

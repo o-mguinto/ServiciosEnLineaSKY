@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#promocionesIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            img.anuncios {
+                max-height: 152px;
+            }
+
+            img.anuncios:hover {
+                border: solid 2px #2846AA;
+            }
+        </af:resource>
+        <div id="promocionesIndex">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal" style="background: rgb(10 10 10 / 40%);">
+                    <div class="row" style="background: transparent;">
+                        <!---->
+                        <!--af:group id="gpUniversal" rendered="#{viewScope.AnunciosMB.triggerTypePopupUniversal eq 'load'}">
+                            <div class="col-6 center" style="padding: 10px;">
+                                <img src="/sky/imagenes/825X300/universal.png" alt="promo"
+                                     class="anuncios col-12 col-tb-8 col-sm-8"/>
+                            </div>
+                        </af:group-->
+                        <!-- Anuncio de nuevos canales abril 2022-->
+                         <!--af:group id="gpNuevosCanales"
+                                  rendered="#{viewScope.AnunciosMB.mostrarAnuncioNuevosCanales}">
+                            <div class="col-6 col-sm-8 col-tb-8 center" style="padding: 10px;">
+                                <img src="/sky/imagenes/825X300/#{viewScope.AnunciosMB.imgAnuncioNuevosCanales}" alt="Promo Canales"
+                                     class="anuncios col-12 col-tb-8 col-sm-8"/>
+                            </div>
+                        </af:group-->
+                        
+                        <af:group id="gpControlUniversal"
+                                  rendered="#{viewScope.AnunciosMB.mostrarAnuncioControlUniversal}">
+                            <div class="col-6 col-sm-8 col-tb-8 center" style="padding: 10px;">
+                                <img src="/sky/imagenes/825X300/PopUpControlRemoto.png" alt="promo"
+                                     class="anuncios col-12 col-tb-8 col-sm-8"/>
+                            </div>
+                        </af:group>
+                        
+                        <af:group id="gpIncrementoVETV"
+                                  rendered="#{viewScope.AnunciosMB.mostrarAnuncioVETV}">
+                            <div class="col-6 col-sm-8 col-tb-8 center" style="padding: 10px;">
+                                <af:link id="lnkIncrementoVETV" destination="https://www.vetv.com.mx/" immediate="true"
+                                         targetFrame="_blank" styleClass="linkSinBorde">
+                                    <img src="/sky/imagenes/825X300/IncrementoVETV.png" alt="promo"
+                                         class="anuncios col-12 col-tb-8 col-sm-8"/>
+                                </af:link>
+                            </div>
+                        </af:group>
+                         
+                        <af:group id="gpBajaDePrecioVetv"
+                                  rendered="#{viewScope.AnunciosMB.mostrarAnuncioVETVPLUSHD}">
+                            <div class="col-6 col-sm-8 col-tb-8 center" style="padding: 10px;">
+                                <af:link id="lnkBajaDePrecioVetv" destination="https://www.vetv.com.mx/"
+                                         immediate="true" targetFrame="_blank" styleClass="linkSinBorde">
+                                    <img src="/sky/imagenes/825X300/BajaDePrecio.png" alt="promo"
+                                         class="anuncios col-12 col-tb-8 col-sm-8"/>
+                                </af:link>
+                            </div>
+                        </af:group>
+                         
+                        <af:group id="gpSDtoHD" rendered="#{viewScope.AnunciosMB.mostrarAnuncioSDtoHD}">
+                            <div class="col-6 col-sm-8 col-tb-8 center" style="padding: 10px;">
+                                <img src="/sky/imagenes/825X300/AnuncioSDtoHD.png" alt="promo"
+                                     class="anuncios col-12 col-tb-8 col-sm-8"/>
+                            </div>
+                        </af:group>
+                         
+                        <!---anuncio baja de precio bolsa datos combo -->
+                         
+                        <!--af:showPopupBehavior triggerType="#{sesion.loadBeneficioComboHbb}"-->
+                         
+                        <af:group id="gpPromoComboHBB" rendered="#{viewScope.AnunciosMB.mostrarAnuncioComboHBB}">
+                            <div class="col-6 col-sm-8 col-tb-8 center" style="padding: 10px;">
+                                <img src="/sky/imagenes/825X300/PromoComboHbb.png" alt="Promoción Combo HBB"
+                                     class="anuncios col-12 col-tb-8 col-sm-8"/>
+                            </div>
+                        </af:group>
+                         
+                         <!-- Incentivar cambio a SKY HD PLATINUM para el Salvador-->
+                         <af:group id="gpSKYHDPSalvador" rendered="#{viewScope.AnunciosMB.mostrarAnuncioSKYHDPSalvador}">
+                            <div class="col-6 col-sm-8 col-tb-8 center" style="padding: 10px;">
+                                <img src="/sky/imagenes/825X300/CambioPlanElSalvador.png" alt="Promo SKYHD Salvador"
+                                     class="anuncios col-12 col-tb-8 col-sm-8"/>
+                            </div>
+                        </af:group>
+                        <!---->
+                         
+                        <!--af:group id="gpIncrementoBTI"
+                                  rendered="#{viewScope.AnunciosMB.mostrarAnuncioIncrementoBTI}">
+                            <div class="col-6 col-sm-8 col-tb-8 center" style="padding: 10px;">
+                                <af:link id="link8" destination="https://www.bluetelecomm.mx/" immediate="true"
+                                         targetFrame="_blank" styleClass="linkSinBorde">
+                                    <img src="/sky/imagenes/825X300/IncrementoBTI.png" alt="promo"
+                                         class="anuncios col-12 col-tb-8 col-sm-8"/>
+                                </af:link>
+                            </div>
+                        </af:group-->
+                         
+                        <!---->
+                         
+                        <!--af:group id="gpIncrementoBTCel"
+                                  rendered="#{viewScope.AnunciosMB.mostrarAnuncioIncrementoBTCEL}">
+                            <div class="col-6 col-sm-8 col-tb-8 center" style="padding: 10px;">
+                                <af:link id="link7" destination="https://www.bluetelecomm.mx/cel/" immediate="true"
+                                         targetFrame="_blank" styleClass="linkSinBorde">
+                                    <img src="/sky/imagenes/825X300/IncrementoBTCEL.png" alt="promo"
+                                         class="anuncios col-12 col-tb-8 col-sm-8"/>
+                                </af:link>
+                            </div>
+                        </af:group-->
+                         
+                        <!---->
+                         
+                        <af:group id="gpBtcel" rendered="#{viewScope.AnunciosMB.mostrarAnuncioBTCEL}">
+                            <div class="col-6 col-sm-8 col-tb-8 center" style="padding: 10px;">
+                                <af:link id="link1" destination="https://www.bluetelecomm.mx/cel/" immediate="true"
+                                         targetFrame="_blank" styleClass="linkSinBorde">
+                                    <img src="/sky/imagenes/825X300/BTCEL_PREP.png" alt="promo"
+                                         class="anuncios col-12 col-tb-8 col-sm-8"/>
+                                </af:link>
+                            </div>
+                        </af:group>
+                         
+                        <!---->
+                         
+                        <af:group id="gpBTCELSkySports"
+                                  rendered="#{viewScope.AnunciosMB.mostrarAnuncioBTCELSkySports}">
+                            <div class="col-6 col-sm-8 col-tb-8 center" style="padding: 10px;">
+                                <af:link id="lnkBTCELSkySports" destination="https://www.bluetelecomm.mx/cel/"
+                                         immediate="true" targetFrame="_blank" styleClass="linkSinBorde">
+                                    <img src="/sky/imagenes/825X300/BTCEL_PREP.png" alt="promo"
+                                         class="anuncios col-12 col-tb-8 col-sm-8"/>
+                                </af:link>
+                            </div>
+                        </af:group>
+                         
+                        <!---->
+                         
+                        <af:group id="gpBtcelSkyNE"
+                                  rendered="#{viewScope.AnunciosMB.mostrarAnuncioBTCELSkyNE}">
+                            <div class="col-6 col-sm-8 col-tb-8 center" style="padding: 10px;">
+                                <af:link id="link3" destination="https://www.bluetelecomm.mx/cel/" immediate="true"
+                                         targetFrame="_blank" styleClass="linkSinBorde">
+                                    <img src="/sky/imagenes/825X300/BTCEL_POSP.png" alt="promo"
+                                         class="anuncios col-12 col-tb-8 col-sm-8"/>
+                                </af:link>
+                            </div>
+                        </af:group>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

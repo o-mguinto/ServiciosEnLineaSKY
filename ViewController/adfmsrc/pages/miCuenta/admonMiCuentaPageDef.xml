@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="admonMiCuentaPageDef"
+                Package="pages.miCuenta">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator id="obtenerMiCuentaIterator" Binds="obtenerMiCuenta.result" DataControl="DCUsuario" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.beans.utils.usuario.UsuarioRegistro"/>
+    <methodIterator Binds="obtenerLadas.result" DataControl="DCCofetel"
+                    RangeSize="-1" BeanClass="java.lang.String"
+                    id="consultarLadasIter"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerMiCuenta" RequiresUpdateModel="true" Action="invokeMethod" MethodName="obtenerMiCuenta"
+                  IsViewObjectMethod="false" DataControl="DCUsuario"
+                  InstanceName="bindings.obtenerMiCuenta.dataControl.dataProvider"
+                  ReturnName="data.DCUsuario.methodResults.obtenerMiCuenta_obtenerMiCuenta_dataControl_dataProvider_obtenerMiCuenta_result"/>
+    <attributeValues IterBinding="obtenerMiCuentaIterator" id="uid">
+      <AttrNames>
+        <Item Value="uid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerMiCuentaIterator" id="userName">
+      <AttrNames>
+        <Item Value="userName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerMiCuentaIterator" id="nombre">
+      <AttrNames>
+        <Item Value="nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerMiCuentaIterator" id="apellidoPaterno">
+      <AttrNames>
+        <Item Value="apellidoPaterno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerMiCuentaIterator" id="apellidoMaterno">
+      <AttrNames>
+        <Item Value="apellidoMaterno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerMiCuentaIterator" id="email">
+      <AttrNames>
+        <Item Value="email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerMiCuentaIterator" id="telefonoLada">
+      <AttrNames>
+        <Item Value="telefonoLada"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerMiCuentaIterator" id="telefonoCasa">
+      <AttrNames>
+        <Item Value="telefonoCasa"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerMiCuentaIterator" id="telefonoTrabajoLada">
+      <AttrNames>
+        <Item Value="telefonoTrabajoLada"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerMiCuentaIterator" id="telefonoTrabajo">
+      <AttrNames>
+        <Item Value="telefonoTrabajo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerMiCuentaIterator" id="telefonoTrabajoExt">
+      <AttrNames>
+        <Item Value="telefonoTrabajoExt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerMiCuentaIterator" id="telefonoMovil">
+      <AttrNames>
+        <Item Value="telefonoMovil"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerMiCuentaIterator" id="telefonoMovilLada">
+      <AttrNames>
+        <Item Value="telefonoMovilLada"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="consultarLadasIter" id="element">
+      <AttrNames>
+        <Item Value="element"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="obtenerLadas" RequiresUpdateModel="true" Action="invokeMethod" MethodName="obtenerLadas"
+                  IsViewObjectMethod="false" DataControl="DCCofetel"
+                  InstanceName="bindings.obtenerLadas.dataControl.dataProvider"
+                  ReturnName="data.DCCofetel.methodResults.obtenerLadas_obtenerLadas_dataControl_dataProvider_obtenerLadas_result"/>
+    <table IterBinding="consultarLadasIter" id="tablaLadas">
+      <AttrNames>
+        <Item Value="element"/>
+      </AttrNames>
+    </table>
+  </bindings>
+</pageDefinition>

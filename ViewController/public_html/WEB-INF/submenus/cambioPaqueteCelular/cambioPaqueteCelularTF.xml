@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <router id="cambioPaqCelularSelectPagDefault">
+    <case id="__8">
+      <expression>#{sesion.CAMBIO_PAQUETE_CELULAR}</expression>
+      <outcome>smenu_cambioPaqCelular</outcome>
+    </case>
+    <default-outcome>smenu_cambioPaqCelularIndex</default-outcome>
+  </router>
+  <view id="cambioPaqCelularIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <view id="cambioPaqCelular">
+    <page>/WEB-INF/submenus/cambioPaqueteCelular/cambioPaqCelular.jsf</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>irCambioPaqCelularRouter</from-outcome>
+      <to-activity-id>cambioPaqCelularSelectPagDefault</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__3">
+      <from-outcome>adfMenu_cambioPaqCelularIndex</from-outcome>
+      <to-activity-id>cambioPaqCelularIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__6">
+      <from-outcome>irCambioPaqCelular</from-outcome>
+      <to-activity-id>cambioPaqCelular</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__4">
+    <from-activity-id>cambioPaqCelularSelectPagDefault</from-activity-id>
+    <control-flow-case id="__5">
+      <from-outcome>smenu_cambioPaqCelularIndex</from-outcome>
+      <to-activity-id>cambioPaqCelularIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__7">
+      <from-outcome>smenu_cambioPaqCelular</from-outcome>
+      <to-activity-id>cambioPaqCelular</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__9">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>cambioPaqueteCelular_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__10">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__11">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/cambioPaqueteCelular/cambioPaqueteCelular_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

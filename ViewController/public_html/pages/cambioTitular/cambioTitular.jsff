@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g0">
+        <af:resource type="javascript">
+          $('#cambioTitular').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            /*solo boton*/
+            .btn-internal {
+                min-width: 50%;
+            }
+            /*ancho del titulo popup*/
+            div.alert > table tr td.x1db, div.alert > table tr td.x1d9, div.alert > table tr td.x1dd, div.alert > table tr td.x1dm div.x1e5 {
+                height: auto;
+            }
+        </af:resource>
+        <div id="cambioTitular">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <!--Para cada fila una div-->
+                <af:group id="g1">
+                    <div class="content-internal">
+                        <div class="row">
+                            <h:outputText value="#{selSKYBundle['cambiotitular.ot10.value']}"
+                                          id="ot10" styleClass="subtitle"/>
+                            <div class="row top">
+                                <af:outputText value="#{selSKYBundle['cambiotitular.ph1.text']}"
+                                               id="ot14"
+                                               styleClass="check-internal-bold"/>
+                                <div class="row">
+                                    <af:panelList id="pl3"
+                                                  listStyle="list-style-type:circle">
+                                        <af:link text="#{selSKYBundle['cambiotitular.gl3.text']}"
+                                                 id="gl3"
+                                                 rendered="#{!sesion.userVeTV}"
+                                                 destination="/documentos/CartaResponsiva#{sesion.suscriptor.paisISO}.pdf"
+                                                 targetFrame="_blank"
+                                                 styleClass="terminos"/>
+                                        <af:link text="#{selSKYBundle['cambiotitular.gl3.text']}"
+                                                 id="gl1" styleClass="terminos"
+                                                 rendered="#{sesion.pais=='MEX' and sesion.userVeTV}"
+                                                 destination="/documentos/CartaResponsiva#{sesion.suscriptor.paisISO}VETV.pdf"
+                                                 targetFrame="_blank"/>
+                                    </af:panelList>
+                                </div>
+                            </div>
+                            <div class="row top">
+                                <af:outputText value="#{selSKYBundle['cambiotitular.ot11.value']}"
+                                               id="ot11"
+                                               styleClass="check-internal-bold"/>
+                                <div class="row">
+                                    <af:panelList id="pl1"
+                                                  listStyle="list-style-type:circle">
+                                        <af:link id="gl4" styleClass="terminos"
+                                                 destination="/documentos/CesionDerechos#{sesion.suscriptor.paisISO}.pdf"
+                                                 text="#{selSKYBundle['cambiotitular.gl4.text']}"
+                                                 rendered="#{!sesion.userVeTV}"
+                                                 targetFrame="_blank"/>
+                                        <af:link id="gl2" styleClass="terminos"
+                                                 destination="/documentos/CesionDerechos#{sesion.suscriptor.paisISO}VETV.pdf"
+                                                 text="#{selSKYBundle['cambiotitular.gl4.text']}"
+                                                 rendered="#{sesion.userVeTV}"
+                                                 targetFrame="_blank"/>
+                                    </af:panelList>
+                                </div>
+                            </div>
+                            <div class="row top">
+                                <af:outputText id="ot1"
+                                               rendered="#{!sesion.PAN}"
+                                               value="#{selSKYBundle['cambiotitular.ph2.text']} #{sesion.telefonoFax} #{selSKYBundle['cambiotitular.ph2a.text']} #{sesion.emailCAC}"
+                                               styleClass="check-internal-bold"/>
+                                 
+                                <af:outputText id="ot12"
+                                               rendered="#{sesion.PAN}"
+                                               value="#{selSKYBundle['cambiotitular.instrucciones1']}"
+                                               styleClass="check-internal-bold"/>
+                            </div>
+                            <div class="row top">
+                                <af:outputText value="#{selSKYBundle['cambiotitular.ph3.text']}"
+                                               id="ot15"
+                                               styleClass="check-internal-bold"/>
+                                <div class="row">
+                                    <af:panelList id="pl2"
+                                                  listStyle="list-style-type:circle">
+                                        <af:outputText value="#{selSKYBundle['cambiotitular.ot2.value']}"
+                                                       id="ot2"/>
+                                        <af:outputText value="#{selSKYBundle['cambiotitular.ot3.value']}"
+                                                       id="ot3"/>
+                                        <af:outputText value="#{selSKYBundle['cambiotitular.ot4.value']}"
+                                                       id="ot4"/>
+                                    </af:panelList>
+                                </div>
+                            </div>
+                            <div class="row top">
+                                <div class="col-3 col-sm-8  col-tb-4 center"
+                                         style="float:right;">
+                                    <af:button text="#{selSKYBundle['cambiotitular.cb1.text']}"
+                                               id="cb1"
+                                               styleClass="btn-internal"
+                                               >
+                                        <af:showPopupBehavior popupId="confirmacion"
+                                                              triggerType="click"/>
+                                                              
+                                    </af:button>
+                                </div>
+                            </div>
+                             
+                            <af:popup id="confirmacion" childCreation="deferred"
+                                      contentDelivery="lazyUncached"
+                                      autoCancel="disabled"
+                                      binding="#{pageFlowScope.CambioTitularBackingBean.popupGenerarSolicitud}">
+                                <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                    <af:dialog id="d1" type="none"
+                                               styleClass="alert"
+                                               closeIconVisible="false"
+                                               title="#{selSKYBundle['cambiotitular.d1.title']}">
+                                        <div class="col-12 dialog-background">
+                                            <div class="row top autocenter">
+                                                <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-right sm-no-padd-right">
+                                                    <af:button id="b5"
+                                                               text="#{selSKYBundle['pago.cb5.text']}"
+                                                               styleClass="btn-pay-dialog"
+                                                               action="#{pageFlowScope.CambioTitularBackingBean.Solicitud}">
+                                                        <af:clientListener method="enforcePreventUserInput"
+                                                   type="action"/>
+                                                    </af:button>
+                                                </div>
+                                                <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-left sm-no-padd-left" >
+                                                    <af:button id="b6"
+                                                               text="#{selSKYBundle['pago.cb6.text']}"
+                                                               styleClass="btn-pay-dialog"
+                                                               action="#{pageFlowScope.CambioTitularBackingBean.cancelarSolicitud}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </af:dialog>
+                                </div>
+                            </af:popup>
+                             
+                            <af:popup id="mensaje"
+                                      contentDelivery="lazyUncached"
+                                      autoCancel="disabled"
+                                      childCreation="deferred"
+                                      binding="#{pageFlowScope.CambioTitularBackingBean.popupMensaje}">
+                                <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                    <af:dialog id="dialog1" type="none"
+                                               title="#{selSKYBundle['mensaje_Notificacion']}"
+                                               styleClass="alert"
+                                               closeIconVisible="false">
+                                        <div class="text-internal">
+                                            <af:outputText value="#{pageFlowScope.CambioTitularBackingBean.mensaje}"
+                                                           id="outputText1"
+                                                           styleClass="font-bolder"/>
+                                        </div>
+                                        <div class="col-12 dialog-background">
+                                            <div class="row top autocenter">
+                                                <af:button id="b3"
+                                                           text="#{selSKYBundle['pago.cb5.text']}"
+                                                           styleClass="btn-pay-dialog"
+                                                           action="#{pageFlowScope.CambioTitularBackingBean.aceptarCambioTitular}"/>
+                                            </div>
+                                        </div>
+                                    </af:dialog>
+                                </div>
+                            </af:popup>
+                        
+                        </div>
+                    </div>
+                    <div class="row top">
+                        <div class="col-12 content-internal">
+                            <p >
+                                <h:outputText styleClass="title"
+                                              value="#{selSKYBundle['cambiotitular.pb2.text']}"
+                                              id="ot13"/>
+                            </p>
+                            <div class="row top">
+                                <af:panelBox id="pb1" background="medium"
+                                             showHeader="ifNeeded"
+                                             showDisclosure="false"
+                                             inlineStyle="border: 0px;">
+                                    <af:panelCollection id="pc1"
+                                                        defaultToolbarItemDisplay="icon"
+                                                        styleClass="AFStretchWidth">
+                                        <f:facet name="menus"/>
+                                        <f:facet name="toolbar"/>
+                                        <f:facet name="statusbar"/>
+                                        <af:table value="#{bindings.DetalleSolicitudServicio.collectionModel}"
+                                                  var="row"
+                                                  rows="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                                  emptyText="#{bindings.DetalleSolicitudServicio.viewable ? selSKYBundle['cambiotitular.sinsolicitudes'] : 'Access Denied.'}"
+                                                  fetchSize="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                                  rowBandingInterval="0" id="t1"
+                                                  autoHeightRows="10"
+                                                  partialTriggers=":::d1"
+                                                  width="100%"
+                                                  scrollPolicy="auto"
+                                                  horizontalGridVisible="false"
+                                                  verticalGridVisible="false"
+                                                  styleClass="tbl-Class">
+                                            <af:column sortProperty="numeroSolicitud"
+                                                       sortable="false"
+                                                       headerText="#{selSKYBundle['cambiotitular.c5.headertext']}"
+                                                       id="c5" width="150"
+                                                       headerClass="content-text">
+                                                <af:outputText value="#{row.numeroSolicitud}"
+                                                               id="ot5"/>
+                                            </af:column>
+                                            <af:column sortProperty="area"
+                                                       sortable="false"
+                                                       headerText="#{selSKYBundle['cambiotitular.c4.headertext']}"
+                                                       id="c4" width="150"
+                                                       headerClass="content-text">
+                                                <af:outputText value="#{row.area}"
+                                                               id="ot7"/>
+                                            </af:column>
+                                            <af:column sortProperty="subAarea"
+                                                       sortable="false"
+                                                       headerText="#{selSKYBundle['cambiotitular.c3.headertext']}"
+                                                       id="c3" width="150"
+                                                       headerClass="content-text">
+                                                <af:outputText value="#{row.subAarea}"
+                                                               id="ot8"/>
+                                            </af:column>
+                                            <af:column sortProperty="comentario"
+                                                       sortable="false"
+                                                       headerText="#{selSKYBundle['cambiotitular.c2.headertext']}"
+                                                       id="c2" width="300"
+                                                       headerClass="content-text">
+                                                <af:outputText value="#{row.comentario}"
+                                                               id="ot9"/>
+                                            </af:column>
+                                            <af:column sortProperty="fechaCreacion"
+                                                       sortable="false"
+                                                       headerText="#{selSKYBundle['cambiotitular.c1.headertext']}"
+                                                       id="c1" width="150"
+                                                       headerClass="content-text">
+                                                <af:outputText value="#{row.fechaCreacion}"
+                                                               id="ot6"/>
+                                            </af:column>
+                                        </af:table>
+                                    </af:panelCollection>
+                                </af:panelBox>
+                            </div>
+                        </div>
+                    </div>
+                </af:group>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

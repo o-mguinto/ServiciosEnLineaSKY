@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="registroLinkTF">
+    <default-activity>handleRequestMethod</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>BBRegistroUsuario</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.utils.usuario.BBRegistroUsuario</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <method-call id="handleRequestMethod">
+      <method>#{backingBeanScope.BBRegistroUsuario.handleRequestMethod}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <router id="routerErrorOKPc">
+      <case id="__7">
+        <expression>#{backingBeanScope.BBRegistroUsuario.linkOk}</expression>
+        <outcome>ok</outcome>
+      </case>
+      <default-outcome>error</default-outcome>
+    </router>
+    <view id="pc_registrolink_ok">
+      <page>/pages/registroLink/registroLinkOK.jsff</page>
+    </view>
+    <view id="pc_regisrolink_error">
+      <page>/pages/registroLink/registroLinkError.jsff</page>
+    </view>
+    <view id="pc_registrolink_corporativo">
+      <page>/pages/registroLink/registroLinkCorporativo.jsff</page>
+    </view>
+    <url-view id="acceso">
+      <url>/sky/faces/bienvenido</url>
+    </url-view>
+    <task-flow-return id="bienvenido">
+      <outcome>
+        <name>bienvenido</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__2">
+      <from-activity-id>handleRequestMethod</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>routerErrorOKPc</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>routerErrorOKPc</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>error</from-outcome>
+        <to-activity-id>pc_regisrolink_error</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>ok</from-outcome>
+        <to-activity-id>pc_registrolink_ok</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>pc_registrolink_ok</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>pc_corporativo</from-outcome>
+        <to-activity-id>pc_registrolink_corporativo</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__10">
+        <from-outcome>cerrar_pc_ok</from-outcome>
+        <to-activity-id>acceso</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id>pc_registrolink_corporativo</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome>ok_corporativo</from-outcome>
+        <to-activity-id>acceso</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome>bienvenido</from-outcome>
+        <to-activity-id>bienvenido</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__15">
+      <from-activity-id>pc_regisrolink_error</from-activity-id>
+      <control-flow-case id="__16">
+        <from-outcome>cerrar_pc_error</from-outcome>
+        <to-activity-id>acceso</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

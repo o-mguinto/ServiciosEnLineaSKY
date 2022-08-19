@@ -1,0 +1,146 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jdevws:WebServiceProxy xmlns:jdevws="http://xmlns.oracle.com/jdeveloper/10130/webserviceproxy">
+   <list n="CHILD_NODES">
+      <url path="ConsultaPaqAdicionalDatosSelABCS_ep.xml"/>
+      <url path="ConsultaPaqAdicionalDatosSelABCS.java"/>
+      <url path="../../../../enterprisemessages/sel/paqadicionaldatos/ObjectFactory.java"/>
+      <url path="../../../../../../../org/example/ObjectFactory.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/SeguridadListType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ParametroListType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/RuntimeFaultMessageType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ParametroItemType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/EBMHeaderResponseType.java"/>
+      <url path="ConsultaPaqAdicionalDatosSelABCSEp.java"/>
+      <url path="../../../../enterprisemessages/sel/paqadicionaldatos/package-info.java"/>
+      <url path="../../../../enterpriseobjects/sel/paqadicionaldatos/ObjectFactory.java"/>
+      <url path="../../../../enterpriseobjects/sel/paqadicionaldatos/PaqAdicionalDatosEBOType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ErrorNegocioType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ErrorTecnicoType.java"/>
+      <url path="../../../../enterprisemessages/sel/paqadicionaldatos/ConsultarPaqAdicionalDatosResponseEBMType.java"/>
+      <url path="../../../../enterpriseobjects/sel/paqadicionaldatos/package-info.java"/>
+      <url path="../../../../enterprisemessages/sel/paqadicionaldatos/ConsultarPaqAdicionalDatosRequestType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/SeguridadItemType.java"/>
+      <url path="ConsultaPaqAdicionalDatosSelABCS_ptClient.java"/>
+      <url path="../../../../enterpriseobjects/sel/paqadicionaldatos/PaquetesAdicionalesDatosListType.java"/>
+      <url path="../../../../../../../org/example/package-info.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ObjectFactory.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/package-info.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/EBMType.java"/>
+      <url path="../../../../enterprisemessages/sel/paqadicionaldatos/ConsultarPaqAdicionalDatosRequestEBMType.java"/>
+      <url path="../../../../enterpriseobjects/sel/paqadicionaldatos/ListProductFacturacionType.java"/>
+      <url path="../../../../../../../org/example/ProductoPrecio.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/EBMHeaderRequestType.java"/>
+   </list>
+   <hash n="DATA_MODEL">
+      <value n="ATTACHMENT_ENCODING" v="MIME"/>
+      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy"/>
+      <url n="ORACLE_WEBSERVICES_XML" path="ConsultaPaqAdicionalDatosSelABCS_ep.xml"/>
+      <hash n="PROPERTY_GROUPS">
+         <hash n="WSDL_TO_JAVA_PROPERTIES">
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+            <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.selabcs.consultapaqadicionaldatos"/>
+         </hash>
+      </hash>
+      <value n="PROXY_ASYNC_METHODS" v="FOR_ENABLED"/>
+      <list n="PROXY_CLIENTS">
+         <url path="ConsultaPaqAdicionalDatosSelABCS_ptClient.java"/>
+      </list>
+      <value n="PROXY_MAPPING_URL"/>
+      <hash n="PROXY_PORTS">
+         <hash n="ConsultaPaqAdicionalDatosSelABCS_pt">
+            <value n="ACCESSES_DOC_WRAPPPED" v="true"/>
+            <value n="ACCESSES_RPC_ENCODED" v="false"/>
+            <value n="CLASS_NAME" v="mx.com.sky.sel.proxyclients.selabcs.consultapaqadicionaldatos.ConsultaPaqAdicionalDatosSelABCS"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
+            <value n="NAME" v="ConsultaPaqAdicionalDatosSelABCS_pt"/>
+            <hash n="OPERATIONS">
+               <hash n="consultarPaqAdicionalDatos">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </hash>
+            <hash n="PROPERTY_GROUPS">
+               <hash n="WS_POLICY">
+                  <value n="addressing"/>
+                  <hash n="GLOBAL_CONFIG_PROPERTIES"/>
+                  <list n="management"/>
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.policy.PolicyClientModel"/>
+                  <value n="mtom"/>
+                  <hash n="POLICY_OVERRIDE_PROPERTIES"/>
+                  <list n="security"/>
+                  <list n="wsconfig"/>
+                  <value n="wsrm"/>
+               </hash>
+            </hash>
+            <url n="PROXY_ORIGINAL_PORT_ENDPOINT" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/SEL_ABCS/ConsultaPaqAdicionalDatosSelABCS/ConsultaPaqAdicionalDatosSelABCS_ep"/>
+         </hash>
+      </hash>
+      <value n="PROXY_SERVICE_NAME" v="ConsultaPaqAdicionalDatosSelABCS_ep"/>
+      <value n="PROXY_SERVICE_NAMESPACE" v="http://xmlns.sky.com.mx/ABCSImpl/Sel/ConsultarPaqAdicionalDatos"/>
+      <url n="PROXY_TARGET_PROJECT" path="../../../../../../../../Model.jpr"/>
+      <url n="PROXY_WSDL_URL" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/SEL_ABCS/ConsultaPaqAdicionalDatosSelABCS/ConsultaPaqAdicionalDatosSelABCS_ep" query="WSDL"/>
+      <hash n="REFERENCED_WEBSERVICE">
+         <list n="BD_">
+            <hash>
+               <value n="BOUND_PORT_TYPE" v="{http://xmlns.sky.com.mx/ABCSImpl/Sel/ConsultarPaqAdicionalDatos}ConsultaPaqAdicionalDatosSelABCS"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+               <value n="NAME" v="{http://xmlns.sky.com.mx/ABCSImpl/Sel/ConsultarPaqAdicionalDatos}ConsultaPaqAdicionalDatosSelABCSBinding"/>
+               <list n="OP_BINDINGS">
+                  <hash>
+                     <value n="BOUND_OPERATION" v="mx.com.sky.enterprisemessages.sel.paqadicionaldatos.ConsultarPaqAdicionalDatosResponseEBMType.consultarPaqAdicionalDatos.mx.com.sky.enterprisemessages.sel.paqadicionaldatos.ConsultarPaqAdicionalDatosRequestEBMType"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+            </hash>
+         </list>
+         <list n="BINDING_FILES"/>
+         <value n="GUID" v="d3e1233b-0179-1000-8002-0afd09580bc3"/>
+         <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
+         <list n="PO_">
+            <hash>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+               <value n="NAME" v="ConsultaPaqAdicionalDatosSelABCS_pt"/>
+               <value n="PORT_BINDING_NAME" v="{http://xmlns.sky.com.mx/ABCSImpl/Sel/ConsultarPaqAdicionalDatos}ConsultaPaqAdicionalDatosSelABCSBinding"/>
+               <list n="PORT_OPS">
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="mx.com.sky.enterprisemessages.sel.paqadicionaldatos.ConsultarPaqAdicionalDatosResponseEBMType.consultarPaqAdicionalDatos.mx.com.sky.enterprisemessages.sel.paqadicionaldatos.ConsultarPaqAdicionalDatosRequestEBMType"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+               <url n="URL" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/SEL_ABCS/ConsultaPaqAdicionalDatosSelABCS/ConsultaPaqAdicionalDatosSelABCS_ep"/>
+            </hash>
+         </list>
+         <hash n="PROPERTY_GROUPS">
+            <hash n="WSDL_TO_JAVA_PROPERTIES">
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+               <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.selabcs.consultapaqadicionaldatos"/>
+            </hash>
+         </hash>
+         <list n="PT_">
+            <hash>
+               <value n="AUTO_SERVICE_INTERFACE"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaPortType"/>
+               <value n="NAME" v="{http://xmlns.sky.com.mx/ABCSImpl/Sel/ConsultarPaqAdicionalDatos}ConsultaPaqAdicionalDatosSelABCS"/>
+               <hash n="PROPERTY_GROUPS"/>
+               <value n="PT_CLASS" v="mx.com.sky.sel.proxyclients.selabcs.consultapaqadicionaldatos.ConsultaPaqAdicionalDatosSelABCSImpl"/>
+               <value n="PT_SERVICE_INTERFACE" v="mx.com.sky.sel.proxyclients.selabcs.consultapaqadicionaldatos.ConsultaPaqAdicionalDatosSelABCS"/>
+               <value n="PT_TOP_DOWN_GENERATED_SEI_NAME" v="mx.com.sky.sel.proxyclients.selabcs.consultapaqadicionaldatos.ConsultaPaqAdicionalDatosSelABCS"/>
+            </hash>
+         </list>
+         <url n="TARGET_PROJECT" path="../../../../../../../../Model.jpr"/>
+         <value n="WS_ORIG_GEN_DIRECTION" v="TOP_DOWN"/>
+         <value n="WS_TARGET_NAMESPACE" v="http://xmlns.sky.com.mx/ABCSImpl/Sel/ConsultarPaqAdicionalDatos"/>
+         <value n="WS_URI" v="ConsultaPaqAdicionalDatosSelABCS_ep"/>
+         <url n="WS_WSDL_FILE" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/SEL_ABCS/ConsultaPaqAdicionalDatosSelABCS/ConsultaPaqAdicionalDatosSelABCS_ep" query="WSDL"/>
+      </hash>
+      <value n="SERVICE_ASYNC" v="false"/>
+      <value n="WSDL_IS_LOCAL_COPY" v="false"/>
+   </hash>
+</jdevws:WebServiceProxy>

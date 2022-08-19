@@ -1,0 +1,265 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <af:group id="g1">
+        <af:resource type="css" source="/css/btg_networks.css"/>
+        <af:resource type="javascript">
+          $('#btgNetworksIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="btgNetworksIndex">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="content-internal-border spacing">
+                        <div class="row">
+                            <div class="col-12 col-sm-8 col-tb-8">
+                                <af:panelGroupLayout id="pgl2" layout="vertical" halign="center">
+                                    <af:image shortDesc="BTG" id="i3"
+                                              source="#{parametros.btgew}activar/btgnetwork-txt-logo.png"
+                                              styleClass="img-sm"/>
+                                    <af:spacer width="10" height="10" id="s4"/>
+                                    <af:subform id="sl5"/>
+                                    <af:image shortDesc="BTG" id="i2" source="#{parametros.btgew}activar/btg-txt-3.png"
+                                              styleClass="img-sm"/>
+                                    <af:outputText value="Ingresa al network con un sólo click sobre la imagen"
+                                 id="ot3" styleClass="textofox" inlineStyle="text-transform:none; font-size:12px;"/>
+                                </af:panelGroupLayout>
+                            </div>
+                        </div>
+                        
+                        
+                                
+                         <div class="row">
+                            <div class="col-12 col-sm-8">
+                            
+                                <div class="row">
+                                    <div class="col-3 col-sm-2">
+                                        <af:panelGroupLayout id="pgl3" layout="vertical" halign="center">
+                                            <af:spacer width="10" height="50" id="s12"/>
+                                            <af:subform id="s5"></af:subform>
+                                            <h:outputLink value="https://www.blim.com/inicio" id="ol27" styleClass="links_btg"
+                                                          target="_blank">
+                                                <af:image source="#{parametros.btgew}activar/btg-txt-network-blim.png" id="i6"
+                                                          shortDesc="Blim" styleClass="img-sm"/>
+                                            </h:outputLink>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                    <div class="col-3 col-sm-2">
+                                        <af:panelGroupLayout id="pgl4" layout="vertical" halign="center">
+                                            <af:spacer width="10" height="50" id="s17"/>
+                                            <af:subform id="s18"></af:subform>
+                                            <h:outputLink value="https://www.historyplay.tv/mx/" id="ol2" styleClass="links_btg"
+                                                          target="_blank">
+                                                <af:image source="#{parametros.btgew}activar/btg-txt-network-historyplay.png"
+                                                          id="i8"
+                                                          shortDesc="History" styleClass="img-sm"/>
+                                            </h:outputLink>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                    <div class="col-3 col-sm-2">
+                                        <af:panelGroupLayout id="pgl9" layout="vertical" halign="center">
+                                            <af:spacer width="10" height="50" id="s42"/>
+                                            <af:subform id="s43"></af:subform>
+                                            <h:outputLink value="https://www.historyplay.tv/mx/" id="ol3" styleClass="links_btg"
+                                                          target="_blank">
+                                                <af:image source="#{parametros.btgew}activar/btg-txt-network-ae.png"
+                                                          id="i7"
+                                                          shortDesc="AE" styleClass="img-sm"/>
+                                            </h:outputLink>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                    <div class="col-3 col-sm-2">
+                                        <af:panelGroupLayout id="pgl8" layout="vertical" halign="center">
+                                            <af:spacer width="10" height="50" id="s37"/>
+                                            <af:subform id="s38"></af:subform>
+                                            <h:outputLink value="https://www.historyplay.tv/mx/" id="ol4" styleClass="links_btg"
+                                                          target="_blank">
+                                                <af:image source="#{parametros.btgew}activar/btg-txt-network-lifetimeplay.png"
+                                                          id="i5"
+                                                          shortDesc="LifeTime" styleClass="img-sm"/>
+                                            </h:outputLink>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </div>
+                            
+                                
+                                
+                                <div class="row">
+                                    <div class="col-3 col-sm-2">
+                                        <af:panelGroupLayout id="pgl1" layout="vertical" halign="center">
+                                            <af:spacer width="10" height="50" id="s1"/>
+                                            <af:subform id="s2"></af:subform>
+                                            <h:outputLink value="https://www.universalplus.com/" id="ol1" styleClass="links_btg"
+                                                          target="_blank">
+                                                <af:image source="#{parametros.btgew}activar/btg-txt-network-universalplusplay.png"
+                                                          id="i4"
+                                                          shortDesc="Universal" styleClass="img-sm"/>
+                                            </h:outputLink>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                    <div class="col-3 col-sm-2">
+                                        <af:panelGroupLayout id="pgl10" layout="vertical" halign="center">
+                                            <af:spacer width="10" height="50" id="s6"/>
+                                            <af:subform id="s7"></af:subform>
+                                            <h:outputLink value="https://www.nogginla.com/mx/" id="ol5" styleClass="links_btg"
+                                                          target="_blank">
+                                                <af:image source="#{parametros.btgew}activar/btg-txt-network-nogginplay.png"
+                                                          id="i9"
+                                                          shortDesc="Noggin" styleClass="img-sm"/>
+                                            </h:outputLink>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                    <div class="col-3 col-sm-2">
+                                        <af:panelGroupLayout id="pgl5" layout="vertical" halign="center">
+                                            <af:spacer width="10" height="50" id="s22"/>
+                                            <af:subform id="s24"></af:subform>
+                                            <h:outputLink value="https://www.discoverykidsplus.com/" id="ol6" styleClass="links_btg"
+                                                          target="_blank">
+                                                <af:image source="#{parametros.btgew}activar/btg-txt-network04-kidschoice.png"
+                                                          id="i10"
+                                                          shortDesc="DiscoveryKids" styleClass="img-sm"/>
+                                            </h:outputLink>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                    <div class="col-3 col-sm-2">
+                                        <af:panelGroupLayout id="pgl11" layout="vertical" halign="center">
+                                            <af:spacer width="10" height="50" id="s9"/>
+                                            <af:subform id="s10"></af:subform>
+                                            <h:outputLink value="https://www.hbomax.com/mx/es" id="ol7" styleClass="links_btg"
+                                                          target="_blank">
+                                                <af:image source="#{parametros.btgew}activar/btg-txt-network-hbomaxplay.png"
+                                                          id="i11"
+                                                          shortDesc="HBOMax" styleClass="img-sm"/>
+                                            </h:outputLink>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                 </div>
+                                 
+                                 
+                                
+                                <div class="row">
+                                    <div class="col-3 col-sm-2">
+                                        <af:panelGroupLayout id="pgl7" layout="vertical" halign="center">
+                                            <af:spacer width="10" height="50" id="s32"/>
+                                            <af:subform id="s33"></af:subform>
+                                            <h:outputLink value="https://www.tntgo.tv/" id="ol8" styleClass="links_btg"
+                                                          target="_blank">
+                                                <af:image source="#{parametros.btgew}activar/btg-txt-network07-spacego.png"
+                                                          id="i1"
+                                                          shortDesc="SpaceGo" styleClass="img-sm"/>
+                                            </h:outputLink>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                    <div class="col-3 col-sm-2">
+                                        <af:panelGroupLayout id="pgl6" layout="vertical" halign="center">
+                                            <af:spacer width="10" height="50" id="s27"/>
+                                            <af:subform id="s28"></af:subform>
+                                            <h:outputLink value="https://www.tntgo.tv/" id="ol9" styleClass="links_btg"
+                                                          target="_blank">
+                                                <af:image source="#{parametros.btgew}activar/btg-txt-network06-tntgo.png"
+                                                          id="i12"
+                                                          shortDesc="TNTGo" styleClass="img-sm"/>
+                                            </h:outputLink>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                    <div class="col-3 col-sm-2">
+                                        <af:panelGroupLayout id="pgl12" layout="vertical" halign="center">
+                                            <af:spacer width="10" height="50" id="s13"/>
+                                            <af:subform id="s15"></af:subform>
+                                            <h:outputLink value="https://la.sonychannel.com/" id="ol10" styleClass="links_btg"
+                                                          target="_blank">
+                                                <af:image source="#{parametros.btgew}activar/btg-txt-network-sony.png"
+                                                          id="i13"
+                                                          shortDesc="Sony" styleClass="img-sm"/>
+                                            </h:outputLink>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                    <div class="col-3 col-sm-2">
+                                        <af:panelGroupLayout id="pgl13" layout="vertical" halign="center">
+                                            <af:spacer width="10" height="50" id="s19"/>
+                                            <af:subform id="s20"></af:subform>
+                                            <h:outputLink value="https://la.axn.com/" id="ol11" styleClass="links_btg"
+                                                          target="_blank">
+                                                <af:image source="#{parametros.btgew}activar/btg-txt-network-axn.png"
+                                                          id="i14"
+                                                          shortDesc="AXN" styleClass="img-sm"/>
+                                            </h:outputLink>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                 </div>
+                                
+                                 
+                                <div class="row">
+                                    <div class="col-3 col-sm-2">
+                                        <af:panelGroupLayout id="pgl14" layout="vertical" halign="center">
+                                            <af:spacer width="10" height="50" id="s25"/>
+                                            <af:subform id="s29"></af:subform>
+                                            <h:outputLink value="https://www.espn.com.mx/watch/?redirected=true" id="ol12" styleClass="links_btg"
+                                                          target="_blank">
+                                                <af:image source="#{parametros.btgew}activar/btg-txt-network-espn.png"
+                                                          id="i15"
+                                                          shortDesc="ESPN" styleClass="img-sm"/>
+                                            </h:outputLink>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                    <div class="col-3 col-sm-2">
+                                    </div>
+                                    <div class="col-3 col-sm-2">
+                                    </div>
+                                    <div class="col-3 col-sm-2">
+                                    </div>
+                                 </div>
+                                
+                                
+                                 
+                                
+                                
+                                
+                                 
+                                
+                                
+                                
+                                 
+                                
+                                
+                                
+                                 
+                                
+                                
+                                
+                                 
+                                
+                                
+                                
+                                 
+                                
+                                
+                                
+                                 
+                                
+                                 
+                                 
+                                 
+                                
+                                
+                                
+                                 
+                                
+                                
+                                
+                                 
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-content-text"> </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

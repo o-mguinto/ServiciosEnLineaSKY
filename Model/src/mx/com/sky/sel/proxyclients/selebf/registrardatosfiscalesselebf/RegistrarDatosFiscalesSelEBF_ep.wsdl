@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="RegistrarDatosFiscalesSelEBF" targetNamespace="http://xmlns.oracle.com/InterfaceServices/Sel/RegistrarDatosFiscales" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:client="http://xmlns.oracle.com/InterfaceServices/Sel/RegistrarDatosFiscales" xmlns:ns1="http://www.sky.com.mx/EnterpriseFlowMessage/Sel/RegistrarDatosFiscales" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.oracle.com/bpel/extension" xmlns:ns3="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1">
+  <wsdl:documentation>
+    <abstractWSDL>https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/RegistrarDatosFiscalesSelEBF!20220310-1424/WSDLs/RegistrarDatosFiscalesSelEBF.wsdl</abstractWSDL>
+  </wsdl:documentation>
+  <plnk:partnerLinkType name="RegistrarDatosFiscalesSelEBF">
+    <plnk:role name="RegistrarDatosFiscalesSelEBFProvider" portType="client:RegistrarDatosFiscalesSelEBF"/>
+  </plnk:partnerLinkType>
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://www.sky.com.mx/EnterpriseFlowMessage/Sel/RegistrarDatosFiscales" schemaLocation="RegistrarDatosFiscalesSelEBM.xsd"/>
+    </schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" schemaLocation="RuntimeFaultMessage.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="RegistrarDatosFiscalesSelEBFRequestMessage">
+    <wsdl:part name="payload" element="ns1:RegistrarDatosFiscalesRequest"/>
+  </wsdl:message>
+  <wsdl:message name="RegistrarDatosFiscalesSelEBFResponseMessage">
+    <wsdl:part name="payload" element="ns1:RegistrarDatosFiscalesResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="RegistrarDatosFiscalesSelEBF">
+    <wsdl:operation name="RegistrarDatosFiscalesSelEBF">
+      <wsdl:input message="client:RegistrarDatosFiscalesSelEBFRequestMessage"/>
+      <wsdl:output message="client:RegistrarDatosFiscalesSelEBFResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RegistrarDatosFiscalesSelEBFBinding" type="client:RegistrarDatosFiscalesSelEBF">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="RegistrarDatosFiscalesSelEBF">
+      <soap:operation style="document" soapAction="http://xmlns.oracle.com/InterfaceServices/Sel/RegistrarDatosFiscales/RegistrarDatosFiscalesSelEBF"/>
+      <wsdl:input>
+        <soap:body use="literal" parts="payload"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="payload"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RegistrarDatosFiscalesSelEBF_ep">
+    <wsdl:port name="RegistrarDatosFiscalesSelEBF_pt" binding="client:RegistrarDatosFiscalesSelEBFBinding">
+      <soap:address location="https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/RegistrarDatosFiscalesSelEBF/RegistrarDatosFiscalesSelEBF_ep"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

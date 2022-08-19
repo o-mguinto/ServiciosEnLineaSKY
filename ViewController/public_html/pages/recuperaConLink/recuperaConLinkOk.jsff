@@ -1,0 +1,326 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:tr="http://myfaces.apache.org/trinidad">
+    <af:resource type="javascript">
+      $(document).ready(function () {
+          console.log("Consola");
+
+          var password1 = $('#r1\\:0\\:password\\:\\:content');//id of first password field
+          var password2 = $('#r1\\:0\\:confirmPassword\\:\\:content');//id of second password field
+          
+          console.log(password1);
+          passwordStrengthCheck(password1, password2);//call password check function
+      });
+
+      function passwordStrengthCheck(password1, password2) {
+           //Must contain 7 characters or more
+              var WeakPass = /(?=.{1,7}).*/;
+              //Must contain lower case letters and at least one digit.
+              var MediumPass = /^(?=\S*?[a-z])(?=\S*?[0-9])\S{3,20}$/;
+              //Must contain at least one upper case letter, one lower case letter and one digit.
+              var StrongPass = /^(?=\S*?[a-z])(?=\S*?[0-9])\S{8,20}$/;
+              //Must contain at least one upper case letter, one lower case letter and one digit.
+              var VryStrongPass = /^(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[^\w\*])\S{8,20}$/;
+
+             //
+          if (password1.val() !== password2.val()) {
+              $("#r1\\:0\\:checkConfPass").css("color", "red");
+              $("#r1\\:0\\:checkPass").css("color", "red");
+          }
+          else {
+              //Match
+              if (password1.val() == "" || password2.val() == "") {
+                  $("#r1\\:0\\:checkConfPass").css("color", "gray");
+                  $("#r1\\:0\\:checkPass").css("color", "gray");
+              }
+              else {
+                  $("#r1\\:0\\:checkConfPass").css("color", "#20ab45");
+                  $("#r1\\:0\\:checkPass").css("color", "#20ab45");
+                  $("#passwordStrength").addClass("strength4");
+              }
+          }
+          //
+          $(password1).on('keyup', function (e) {
+              if (password1.val() !== password2.val()) {
+                  $("#r1\\:0\\:checkConfPass").css("color", "red");
+              }
+              else {
+                  //Match
+                  if (password1.val() == "" || password2.val() == "") {
+                      $("#r1\\:0\\:checkConfPass").css("color", "gray");
+                  }
+                  else {
+                      $("#r1\\:0\\:checkConfPass").css("color", "#20ab45");
+                  }
+              }
+              if (VryStrongPass.test(password1.val())) {
+                  $("#r1\\:0\\:checkPass").css("color", "#20ab45");
+                  $("#passwordStrength").addClass("strength4");
+
+              }
+              else if (StrongPass.test(password1.val())) {
+                  $("#r1\\:0\\:checkPass").css("color", "yellowgreen");
+                  $("#passwordStrength").removeClass("strength4").addClass("strength3");
+
+              }
+              else if (MediumPass.test(password1.val())) {
+                  $("#r1\\:0\\:checkPass").css("color", "yellow");
+                  $("#passwordStrength").removeClass("strength4 strength3").addClass("strength2");
+
+              }
+              else if (WeakPass.test(password1.val())) {
+                  $("#r1\\:0\\:checkPass").css("color", "orange");
+                  $("#passwordStrength").removeClass("strength4 strength3 strength2").addClass("strength1");
+
+              }
+              else {
+                  $("#r1\\:0\\:checkPass").css("color", "red");
+                  $("#passwordStrength").removeClass("strength4 strength3 strength2 strength1").addClass("strength0");
+
+              }
+              var lengthpassword1 = password1.val();
+              
+                         
+              if (lengthpassword1.length == 5 || lengthpassword1.length == 6 || lengthpassword1.length ==7 ) {
+              $("#popUpPassword").show()
+                  
+              }
+              else{
+              
+              $("#popUpPassword").hide()
+                      
+              }
+          });
+          //$('#r1\\:0\\:btn_mostrar_pass').on('click', 
+          $('#btn_mostrar_pass').on('click', function (evt) {
+              console.log("Mostrar PASS");
+              var input = $('#r1\\:0\\:password\\:\\:content');
+              if (input.prop('type') == 'text') {
+                  input.prop('type', 'password');
+              }
+              else if (input.prop('type') == 'password') {
+                  input.prop('type', 'text');
+              }
+          });
+          //$('#r1\\:0\\:btn_mostrar_conf_pass').on('click',
+          $('#btn_mostrar_conf_pass').on('click', function (evt) {
+              var input = $('#r1\\:0\\:confirmPassword\\:\\:content');
+              console.log(input);
+              if (input.prop('type') == 'text') {
+                  input.prop('type', 'password');
+              }
+              else if (input.prop('type') == 'password') {
+                  input.prop('type', 'text');
+              }
+          });
+
+          $(password2).on('keyup', function (e) {
+
+            
+             if (password1.val() !== password2.val()) {
+                      $("#r1\\:0\\:checkConfPass").css("color", "red");
+                  }
+                  else {
+                      //Match
+                      if (password1.val() == "" || password2.val() == "") {
+                          $("#r1\\:0\\:checkConfPass").css("color", "gray");
+                      }
+                      else {
+                          $("#r1\\:0\\:checkConfPass").css("color", "#20ab45");
+                      }
+                  }
+               
+              var lengthpassword2 = password2.val();
+
+              if (lengthpassword2.length == 5|| lengthpassword2.length == 6||lengthpassword2.length == 7) {
+              
+                                        
+                    $("#popUpPassword2").show()
+                 
+                      
+                        
+                      
+                  }
+                   else{
+              
+              $("#popUpPassword2").hide()
+                      
+              }
+          }
+          );
+      }
+    </af:resource>
+    <style type="text/css" media="screen">
+        #passwordStrength {
+            width: 25px;
+            display: block;
+            float: left;
+            position: relative;
+        }
+
+        .strength0 {
+            height: 35px;
+            background: #cccccc;
+        }
+
+        .strength1 {
+            height: 5px;
+            background: #ff0000;
+            top: 10px;
+        }
+
+        .strength2 {
+            height: 15px;
+            background: #ff5f5f;
+            top: 10px;
+        }
+
+        .strength3 {
+            height: 25px;
+            background: #56e500;
+            top: 5px;
+        }
+
+        .strength4 {
+            background: #399800;
+            height: 35px;
+            top: 0px;
+        }
+    </style>
+    <style type="text/css">
+        .xu {
+            font-family: Arial;
+            font-size: large;
+            text-align: right;
+            padding: 0px 6px 0px 0px;
+            font-weight: normal;
+            color: rgba(247, 0, 157, 0.63);
+        }
+        
+    </style>
+    <af:group id="gpcel">
+        <div class="container-fluid" style="display:block;">
+            <div class="row">
+                <div class="col-3 col-tb-1"></div>
+                <div class="col-6 col-tb-8">
+                    <div class="col-12 col-tb-8 col-sm-8">
+                        <div class="row">
+                            <div class="col-12 col-tb-8">
+                                <af:outputText value="Restablecer contraseña" id="ot1"
+                                               inlineStyle="font-size: x-large; color: black;"/>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <br/>
+                             
+                            <br/>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 col-tb-1"></div>
+                            <div class="col-sm-8 col-3">
+                                <af:outputLabel value="Contraseña: " id="ol1" for="password"
+                                                inlineStyle="color:#fa5ec1 !important; font-size:medium; font-weight:bold;"/>
+                            </div>
+                            <div class="col-sm-6">
+                                <af:inputText required="false" secret="true"
+                                              autoSubmit="true"
+                                              immediate="true"
+                                              contentStyle="border-bottom: 1px solid rgba(247, 0, 157, 0.63) !important;background-color: white;border: 1px solid #fafdff; width:250px;"
+                                              id="password" maximumLength="20"
+                                              value="#{backingBeanScope.BBRecuperaCon.contrasena}">
+                                    <!--f:validator validatorId="validadorEstructuraContrasenia" /-->
+                                    <!--<af:validateRegExp messageDetailNoMatch="Le recordamos que debe utilizar entre 8 y 20 caracteres."
+                                                       pattern=".{8,20}" id="vre2"/>-->
+                                </af:inputText>
+                                
+                            </div>
+                                                        
+                            <div class="col-sm-2">
+                                <tr:outputText id="checkPass" value="✓"
+                                               inlineStyle="color: gray; font-size: 25px; font-weight:bold; margin-left:10px; margin-right:10px; vertical-align:top;"/>
+                                <button id="btn_mostrar_pass"
+                                        style="border-color: transparent; border: 0px; outline:0px; background-color: transparent; cursor:pointer;"
+                                        type="button">
+                                    <img src="/sky/imagenes/pc/dos/boton_contrasena.png"/>
+                                </button>
+                            </div>
+                    
+                        </div>
+                        <div class="row">
+                            <af:message for="password" id="m3"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 col-tb-1"></div>
+                            <div class="col-sm-8 col-3">
+                                <af:outputLabel value="Confirmar contraseña: " id="o12" for="password"
+                                                inlineStyle="color:#fa5ec1 !important; font-size:medium; font-weight:bold;"/>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                            
+                                <af:inputText id="confirmPassword" maximumLength="20" required="false" secret="true"
+                                              autoSubmit="true"
+                                              immediate="true"
+                                              contentStyle="border-bottom: 1px solid rgba(247, 0, 157, 0.63) !important;background-color: white;border: 1px solid #fafdff; width:250px;"
+                                              inlineStyle="color:#fa5ec1 !important; font-size:medium; font-weight:bold;"
+                                              value="#{backingBeanScope.BBRecuperaCon.confContrasena}">
+                                    <!--<f:validator validatorId="validadorEstructuraContrasenia"/>-->
+                                    <!--<af:validateRegExp messageDetailNoMatch="Le recordamos que debe utilizar entre 8 y 20 caracteres."
+                                                       pattern=".{8,20}" id="vre2"/>-->
+                                </af:inputText>
+                            </div>
+                            
+                            <div class="col-sm-2">
+                                <tr:outputText id="checkConfPass" value="✓"
+                                               inlineStyle="color: gray; font-size: 25px; font-weight:bold; margin-left:10px; margin-right:10px; vertical-align:top;"/>
+                                 
+                                <button id="btn_mostrar_conf_pass"
+                                        style="border-color: transparent; border: none; outline:0px; background-color: transparent; cursor:pointer;"
+                                        type="button">
+                                    <img src="/sky/imagenes/pc/dos/boton_contrasena.png"/>
+                                </button>
+                            </div>
+                        </div>
+                        
+                       
+                        
+                        <div class="row">
+                            <div class="col-6 col-tb-4 col-sm-12">
+                                <af:button id="cl1"
+                                           action="#{backingBeanScope.BBRecuperaCon.completarReestablecerCon}"
+                                           inlineStyle="border: none!important; background-image: none!important;"
+                                           icon="/imagenes/pc/uno/btn_aceptar.png">
+                                    <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                </af:button>
+                            </div>
+                            <div class="col-6 col-tb-4 col-sm-12">
+                                <af:button id="cl2" immediate="true" action="cancelar"
+                                           inlineStyle="border: none!important; background-image: none!important;"
+                                           icon="/imagenes/pc/uno/btn_cancelar.png">
+                                    
+                                </af:button>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <br/>
+                             
+                            <br/>
+                             
+                            <br/>
+                        </div>
+                        <div class="col-12">
+                            <af:image source="/imagenes/pc/uno/dispositivos.png"/>
+                        </div>
+                        <div class="col-12">
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3"></div>
+               
+            </div>
+            
+        </div>
+    </af:group>
+</ui:composition>

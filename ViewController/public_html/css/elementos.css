@@ -1,0 +1,125 @@
+html,
+body{width:100%;height:100%;}
+
+.fondo_sombra{
+	position: relative;
+	width: 100%;
+    top: -100px;
+    z-index: 0 !important;
+}
+
+.fondo_sombra2{
+	position: relative;
+    width: 88%;
+    top: 5px;
+    left: 0%;
+    z-index: 0 !important;
+}
+.botonReenvia{
+    width: 80%;
+    height: auto;
+    position: relative;
+    top: 100px;
+    left: 10%;
+    z-index: 1;
+}
+.botonPC{
+    width: 80%;
+    height: auto;
+    position: relative;
+    top: 100px;
+    left: 10%;
+    z-index: 1;
+}
+.dispositivosPC{
+	width: 60%;
+    position: relative;
+	top: 185px;
+    left: 35%;
+    z-index: 1;
+}
+.mensajePC{
+	position: relative;
+    color: black;
+    top: -390px;
+    z-index: 2;
+    font-family: monospace;
+    font-size: xx-large;
+    left: 5%;
+}
+.mensajePC2_txtRose{
+	position: relative;
+    color: rgba(247, 0, 157, 0.63);
+    top: -170px;
+    z-index: 2;
+    font-family: Arial;;
+    font-size: x-large;
+    left: -35%;
+}
+.mensajePC2_txtSDBlack{
+    position: relative;
+    color: black;
+    z-index: 2;
+    font-family: Arial;
+    font-size: large;
+    left: -13%;
+    top: -160px;
+}
+
+.mensajePC_txtGray{
+    top: -165px;
+    left: 5%;
+    color: gray;
+    font-size: small;
+    position: relative;
+    z-index: 2;
+    font-family: Arial;
+}
+
+.mensajePC_txtWhite{
+	top: -130px;
+    left: 2%;
+    position: relative;
+    font-family: Arial;
+    font-size: large;
+
+}
+.xu{
+	font-family: Arial;
+    font-size: large;
+    text-align: right;
+    padding: 0px 6px 0px 0px;
+    font-weight: normal;
+    color: rgba(247,0,157,0.63);
+}
+
+.inputTextRose{
+	border-bottom: 1px solid rgba(247, 0, 157, 0.63) !important;
+    background-color: white;
+    position: relative;
+    border: 1px solid #fafdff;
+}
+
+
+#div-bottom{width:200px;height:200px;background:yellow;position:absolute;top:20px;left:20px;z-index:2;
+opacity:0.5;
+}
+
+#password {
+    padding: 10px;
+    border: 1px solid #000;
+    margin: 0 0 10px;
+}
+
+div.pass-container {
+    height: 30px;
+}
+
+div.pass-bar {
+    height: 11px;
+    margin-top: 2px;
+}
+div.pass-hint {
+    font-family: arial;
+    font-size: 11px;
+}

@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <af:group id="gpCambioTitularTyMxUpload">
+        <af:resource type="javascript">
+          $('#cambioTitularTyMxUpload').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            .output-internal, .output-internal label {
+                width: 100%;
+            }
+
+            input[type="radio"] {
+                vertical-align: inherit;
+            }
+            /*para quitar el borde en el focus del radio*/
+            input[type="radio"]:focus {
+                outline: none !important;
+            }
+            /*checkbox*/
+            input[type=checkbox], input[type=radio] {
+                width: 20px !important;
+                height: 20px !important;
+                vertical-align: top;
+            }
+            /*para la seleccion del radio*/
+            /*input[type="radio"]:checked {
+           width: 23px !important;
+            height: 23px !important;
+            background: transparent url(../../imagenes/aplicacion/radio_on_light.svg) 0% 0% no-repeat padding-box !important;
+            opacity: 1 !important;
+            appearance: inherit;
+            border: 0px !important;
+        }*/
+            /*for  +2 radio*/
+            .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                width: 480px;
+            }
+            /* For mobile phones: */
+@media only screen and (min-device-width:320px) and (max-device-width:767px) {
+                /*checkbox*/
+                input[type=checkbox], input[type=radio] {
+                    width: 24px !important;
+                    height: 24px !important;
+                }
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 250px;
+                }
+                .solectOne-flex-2 td.xth > div[role="radiogroup"] div, .solectOne-flex-2 td.xvo > div[role="radiogroup"] div, .solectOne-flex-2 > div[role="radiogroup"] div {
+                    line-height: 40px;
+                }
+            }
+
+            /* For mobile phones: */
+@media only screen and (min-device-width:320px) and (max-device-width:767px) and (orientation:landscape) {
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 480px;
+                }
+            }
+
+            /* For tablets: */
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 300px;
+                }
+                .solectOne-flex-2 td.xth > div[role="radiogroup"] div, .solectOne-flex-2 td.xvo > div[role="radiogroup"] div, .solectOne-flex-2 > div[role="radiogroup"] div {
+                    line-height: 30px;
+                }
+            }
+
+            /* For tablets */
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) and (orientation:landscape) {
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 480px;
+                }
+            }
+
+        </af:resource>
+        <div id="cambioTitularTyMxUpload">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelGroupLayout id="pgl1" styleClass="dialog-background" inlineStyle="border: none;">
+                            <h:outputText styleClass="title" value="#{selSKYBundle['cambiotitular.tymmxupload.title']}" id="otTitulo"
+                                          style="text-transform: uppercase;"/>
+                            <div class="row top">
+                                <h:outputText styleClass="title"
+                                          value="#{selSKYBundle['cambiotitular.tymmxupload.datosnuevosuscriptor']}"
+                                          id="ot14"/>
+                            </div>
+                            <div class="row">
+                                <af:panelBox text="" id="pb1" maximized="true" showDisclosure="false"
+                                             showMaximize="never" background="medium" showHeader="never"
+                                             inlineStyle="border:none;   margin-right: 5px;">
+                                    <div class="row top">
+                                        <div class="col-12 col-tb-8 col-sm-8">
+                                            <span class="xf">* </span>
+                                             
+                                            <af:outputLabel for="sor1"
+                                                            value="#{selSKYBundle['cambiotitular.tymmxupload.tipopersona']}"
+                                                            styleClass="label-internal" id="ol1"/>
+                                             
+                                            <af:selectOneRadio label="" id="sor1"
+                                                               binding="#{pageFlowScope.PFCambioTitularForm.sorPFM}"
+                                                               value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.tipoPersonaSHCP}"
+                                                               required="true"
+                                                               styleClass="output-internal solectOne-flex-2 top"
+                                                               showRequired="false" simple="true">
+                                                <af:selectItem label="#{selSKYBundle['cambiotitular.tymmxupload.tipopersona.pf']}"
+                                                               value="PF" id="si3"/>
+                                                <af:selectItem label="#{selSKYBundle['cambiotitular.tymmxupload.tipopersona.pfe']}"
+                                                               value="PF" id="si1"/>
+                                                <af:selectItem label="#{selSKYBundle['cambiotitular.tymmxupload.tipopersona.pm']}"
+                                                               value="PM" id="si2"/>
+                                            </af:selectOneRadio>
+                                        </div>
+                                    </div>
+                                </af:panelBox>
+                            </div>
+                        </af:panelGroupLayout>
+                         
+                        <af:panelGroupLayout id="panelGroupLayout1">
+                            <div class="top top-2 col-2 col-sm-8  col-tb-2 center" style="float:right;">
+                                <af:button text="#{selSKYBundle['nuevo.cb1.text']}" id="cb2" immediate="true"
+                                           action="closeTaskFlow" styleClass="btn-internal"/>
+                            </div>
+                            <div class="top top-2 col-2 col-sm-8  col-tb-2 center" style="float:right;">
+                                <af:button text="#{selSKYBundle['nuevo.cb2.text']}" id="cb1" action="siguiente"
+                                           styleClass="btn-internal"/>
+                            </div>
+                        </af:panelGroupLayout>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

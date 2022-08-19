@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="controlTF">
+    <default-activity>index</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>PagosBackingBean</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.pagos.BBPago</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__2">
+      <managed-bean-name>ControlBackingBean</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.control.BBControl</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="control">
+      <page>/pages/control/control.jsff</page>
+    </view>
+    <router id="index">
+      <case id="__6">
+        <expression>#{sesion.CONTROL_REMOTONoCompra}</expression>
+        <outcome>consulta</outcome>
+      </case>
+      <default-outcome>compra</default-outcome>
+    </router>
+    <view id="controlConsulta">
+      <page>/pages/control/controlConsulta.jsff</page>
+    </view>
+    <task-flow-call id="Control_Nuevo_Flujo">
+      <task-flow-reference>
+        <document>/WEB-INF/Control_Nuevo_Flujo.xml</document>
+        <id>Control_Nuevo_Flujo</id>
+      </task-flow-reference>
+      <input-parameter id="__23">
+        <name>control</name>
+        <value>#{pageFlowScope.ControlBackingBean.control}</value>
+      </input-parameter>
+    
+    </task-flow-call>
+    <control-flow-rule id="__3">
+      <from-activity-id>index</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>compra</from-outcome>
+        <to-activity-id>control</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>consulta</from-outcome>
+        <to-activity-id>controlConsulta</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>terminar_control</from-outcome>
+        <to-activity-id>control</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id>control</from-activity-id>
+      <control-flow-case id="__12">
+      <description id="__22">Actualmente se ejecuta esta accion al dar clic en un control, la propiedad puede verse en el "action" del commandLink del control </description>
+        <from-outcome>confirmar</from-outcome>
+        <to-activity-id>Control_Nuevo_Flujo</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

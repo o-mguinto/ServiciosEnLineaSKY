@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.1.59.23" id="pc_sugerenciasPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="agregarSugerencias_Return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.agregarSugerencias.result}"/>
+      <variable Type="java.lang.String" Name="agregarSugerencias_uid" IsQueriable="false"/>
+      <variable Type="java.lang.String" Name="agregarSugerencias_sugerencia" IsQueriable="false"/>
+    </variableIterator>
+    <methodIterator Binds="consultarSugerencias.result" DataControl="DCSugerencias" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.solicitudservicio.Sugerencia" id="consultarSugerenciasIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="consultarSugerencias" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="consultarSugerencias" IsViewObjectMethod="false" DataControl="DCSugerencias"
+                  InstanceName="DCSugerencias.dataProvider"
+                  ReturnName="data.DCSugerencias.methodResults.consultarSugerencias_DCSugerencias_dataProvider_consultarSugerencias_result">
+      <NamedData NDName="uid" NDValue="#{sesion.usuario.uid}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="consultarSugerenciasIterator" id="Sugerencia">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.solicitudservicio.Sugerencia" Name="Sugerencia0">
+        <AttrNames>
+          <Item Value="sugerencia"/>
+          <Item Value="fechaRegistroString"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="agregarSugerencias" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="agregarSugerencias" IsViewObjectMethod="false" DataControl="DCSugerencias"
+                  InstanceName="DCSugerencias.dataProvider"
+                  ReturnName="data.DCSugerencias.methodResults.agregarSugerencias_DCSugerencias_dataProvider_agregarSugerencias_result">
+      <NamedData NDName="uid" NDValue="#{bindings.agregarSugerencias_uid}" NDType="java.lang.String"/>
+      <NamedData NDName="sugerencia" NDValue="#{bindings.agregarSugerencias_sugerencia}" NDType="java.lang.String"/>
+      
+    </methodAction>
+    <attributeValues IterBinding="variables" id="uid">
+      <AttrNames>
+        <Item Value="agregarSugerencias_uid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="sugerencia">
+      <AttrNames>
+        <Item Value="agregarSugerencias_sugerencia"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="consultarSugerenciasIterator" id="actualizarTabla" InstanceName="DCSugerencias.dataProvider"
+            DataControl="DCSugerencias" RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

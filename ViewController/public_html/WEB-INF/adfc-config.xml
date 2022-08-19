@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <icon>
+    <small-icon>/imagenes/aplicacion/favicon.png</small-icon>
+  </icon>
+  <metadata-resource id="__28">/WEB-INF/submenus/pagosPorEvento/pagosPorEventoTF.xml</metadata-resource>
+  <metadata-resource id="__29">/WEB-INF/submenus/adelantaRecargas/adelantaRecargasTF.xml</metadata-resource>
+  <metadata-resource id="__30">/WEB-INF/submenus/btgVideoEverywhere/btgVideoEverywhereTF.xml</metadata-resource>
+  <metadata-resource id="__31">/WEB-INF/submenus/canalesAlaCarta/canalesAlaCartaTF.xml</metadata-resource>
+  <metadata-resource id="__32">/WEB-INF/submenus/guiaProgramacionTv/guiaProgramacionTvTF.xml</metadata-resource>
+  <metadata-resource id="__33">/WEB-INF/submenus/cambioPaquete/cambioPaqueteTF.xml</metadata-resource>
+  <metadata-resource id="__34">/WEB-INF/submenus/adquiereEquiposAdicionales/adquiereEquiposAdicionalesTF.xml</metadata-resource>
+  <metadata-resource id="__35">/WEB-INF/submenus/manuales/manualesTF.xml</metadata-resource>
+  <metadata-resource id="__36">/WEB-INF/submenus/consultaSaldoyPagoEnLinea/consultaSaldoyPagoEnLineaTF.xml</metadata-resource>
+  <metadata-resource id="__38">/WEB-INF/submenus/buscarLugaresPago/buscarLugaresPagoTF.xml</metadata-resource>
+  <metadata-resource id="__39">/WEB-INF/submenus/servTecnicoyCambioDomicilio/servTecnicoyCambioDomicilioTF.xml</metadata-resource>
+  <metadata-resource id="__40">/WEB-INF/submenus/facturaElectronica/facturaElectronicaTF.xml</metadata-resource>
+  <metadata-resource id="__27">/WEB-INF/submenus/compras/comprasTF.xml</metadata-resource>
+  <metadata-resource id="__37">/WEB-INF/submenus/miCuenta/miCuentaTF.xml</metadata-resource>
+  <metadata-resource id="__41">/WEB-INF/submenus/cambioTitular/cambioTitularTF.xml</metadata-resource>
+  <metadata-resource id="__42">/WEB-INF/submenus/reporteDanoRoboExtravio/reporteDanoRoboExtravioTF.xml</metadata-resource>
+  <metadata-resource id="__43">/WEB-INF/submenus/suOpinionNosInteresa/suOpinionNosInteresaTF.xml</metadata-resource>
+  <metadata-resource id="__44">/WEB-INF/submenus/aclaraciones/aclaracionesTF.xml</metadata-resource>
+  <metadata-resource id="__45">/WEB-INF/submenus/requiereOtraInfo/requiereOtraInfoTF.xml</metadata-resource>
+  <metadata-resource id="__47">/WEB-INF/submenus/estatusInternet/estatusInternetTF.xml</metadata-resource>
+  <metadata-resource id="__48">/WEB-INF/submenus/compraPaqueteDatos/compraPaqueteDatosTF.xml</metadata-resource>
+  <metadata-resource id="__46">/WEB-INF/submenus/estatusCelular/estatusCelularTF.xml</metadata-resource>
+  <metadata-resource id="__64">/WEB-INF/submenus/compraServicioSuplementarioCelular/compraServicioSuplementarioCelularTF.xml</metadata-resource>
+  <metadata-resource id="__65">/WEB-INF/submenus/cambioPaqueteCelular/cambioPaqueteCelularTF.xml</metadata-resource>
+  <metadata-resource id="__66">/WEB-INF/submenus/servicioComparteCelular/servicioComparteCelularTF.xml</metadata-resource>
+  <metadata-resource id="__67">/WEB-INF/submenus/portabilidad/portabilidadCelularTF.xml</metadata-resource>
+  <exception-handler>handlerExceptionFront</exception-handler>
+  <view id="bienvenido">
+    <page>/bienvenido.jsf</page>
+  </view>
+  <view id="login">
+    <page>/login.jsf</page>
+  </view>
+  <view id="registro">
+    <page>/pages/registro.jsf</page>
+  </view>
+  <view id="error">
+    <page>/paginaError.xhtml</page>
+  </view>
+  <view id="registroindex">
+    <page>/registroindex.jsf</page>
+  </view>
+  <view id="contacto">
+    <page>/pages/contacto/contacto.jsf</page>
+  </view>
+  <view id="reestablecercon">
+    <page>/reestablecercon.jsf</page>
+  </view>
+  <task-flow-call id="reenviarCorreoConf">
+    <task-flow-reference>
+      <document>/WEB-INF/reenviarCorreoConfTF.xml</document>
+      <id>reenviarCorreoConfTF</id>
+    </task-flow-reference>
+    <run-as-dialog>
+      <display-type>
+        <inline-popup/>
+      </display-type>
+    </run-as-dialog>
+  </task-flow-call>
+  <task-flow-call id="recuperarContrasenia">
+    <task-flow-reference>
+      <document>/WEB-INF/recuperarContraseniaTF.xml</document>
+      <id>recuperarContraseniaTF</id>
+    </task-flow-reference>
+    <run-as-dialog>
+      <display-type>
+        <inline-popup/>
+      </display-type>
+    </run-as-dialog>
+  </task-flow-call>
+  <method-call id="handlerExceptionFront">
+    <method>#{handlerExceptionFront.handlerExceptionFront}</method>
+    <outcome>
+      <fixed-outcome>error</fixed-outcome>
+    </outcome>
+  </method-call>
+  <view id="registroindexcorp">
+    <page>/registroindexcorp.jsf</page>
+    <bookmark>
+      <method>#{backingBeanScope.BBRegistroUsuarioCorp.handleRequestMethod}</method>
+    </bookmark>
+  </view>
+  <view id="skyudc">
+    <page>/skyudc.jspx</page>
+    <bookmark>
+      <method>#{backingBeanScope.BBUserDataChange.handleRequestMethod}</method>
+    </bookmark>
+  </view>
+  <view id="recuperarContraseniaMovil">
+    <page>/pages/recuperarContrasenia/recuperarContraseniaMovil.jsf</page>
+  </view>
+  <view id="recuperarContraseniaMovilResumen">
+    <page>/pages/recuperarContrasenia/recuperarContraseniaMovilResumen.jsf</page>
+  </view>
+  <task-flow-call id="registroPopup">
+    <task-flow-reference>
+      <document>/WEB-INF/registroTF.xml</document>
+      <id>registroTF</id>
+    </task-flow-reference>
+    <run-as-dialog>
+      <display-type>
+        <inline-popup/>
+      </display-type>
+    </run-as-dialog>
+  </task-flow-call>
+  <view id="promociones">
+    <page>/pages/promociones/promociones.jsf</page>
+  </view>
+  <control-flow-rule id="__2">
+    <from-activity-id>bienvenido</from-activity-id>
+    <control-flow-case id="__3">
+      <from-outcome>irLogin</from-outcome>
+      <to-activity-id>login</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__1">
+      <from-outcome>irRegistro</from-outcome>
+      <to-activity-id>registro</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__50">
+      <from-outcome>irReenviarCorreo</from-outcome>
+      <to-activity-id>reenviarCorreoConf</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__62">
+      <from-outcome>irRecuperarContraseniaMovil</from-outcome>
+      <to-activity-id>recuperarContraseniaMovil</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__9">
+    <from-activity-id>login</from-activity-id>
+    <control-flow-case id="__10">
+      <from-outcome>regresarLoginBienvenido</from-outcome>
+      <to-activity-id>bienvenido</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__52">
+      <from-outcome>irRecuperarContrasenia</from-outcome>
+      <to-activity-id>recuperarContrasenia</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__63">
+      <from-outcome>registro</from-outcome>
+      <to-activity-id>registroPopup</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__4">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__49">
+      <from-outcome>contacto</from-outcome>
+      <to-activity-id>contactanos</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__51">
+      <from-outcome>contacto</from-outcome>
+      <to-activity-id>contacto</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__68">
+      <from-outcome>promociones</from-outcome>
+      <to-activity-id>promociones</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__8">
+    <from-activity-id>registro</from-activity-id>
+    <control-flow-case id="__12">
+      <from-outcome>regresarBienvenido</from-outcome>
+      <to-activity-id>bienvenido</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__6">
+    <from-activity-id>error</from-activity-id>
+    <control-flow-case id="__11">
+      <from-outcome>irBienvenido</from-outcome>
+      <to-activity-id>bienvenido</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__55">
+    <from-activity-id>handlerExceptionFront</from-activity-id>
+    <control-flow-case id="__56">
+      <from-outcome>error</from-outcome>
+      <to-activity-id>error</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__57">
+    <from-activity-id>recuperarContraseniaMovil</from-activity-id>
+    <control-flow-case id="__58">
+      <from-outcome>regresarBienvenido</from-outcome>
+      <to-activity-id>bienvenido</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__59">
+      <from-outcome>siguiente</from-outcome>
+      <to-activity-id>recuperarContraseniaMovilResumen</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__60">
+    <from-activity-id>recuperarContraseniaMovilResumen</from-activity-id>
+    <control-flow-case id="__61">
+      <from-outcome>regresarBienvenido</from-outcome>
+      <to-activity-id>bienvenido</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__5">
+    <managed-bean-name>login</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.managedbeans.login.LoginMB</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__7">
+    <managed-bean-name>sesion</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.managedbeans.sesion.ConfigMenu</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__15">
+    <managed-bean-name>Menu</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.sesion.menu.Menu</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__14">
+    <managed-bean-name>parametros</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.utils.Parametros</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__16">
+    <managed-bean-name>ParametrosPago</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.beans.utils.ParametrosPago</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__17">
+    <managed-bean-name>Foliador</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.utils.Foliador</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__18">
+    <managed-bean-name>BBIndex</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.managedbeans.BBIndex</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__20">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>root_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__21">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__22">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/root_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+  <managed-bean id="__19">
+    <managed-bean-name>RegistroLink</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.managedbeans.utils.usuario.RegistroLink</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__23">
+    <managed-bean-name>BBRegistroUsuario</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.managedbeans.utils.usuario.BBRegistroUsuario</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__25">
+    <managed-bean-name>PFBlueToGo</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.managedbeans.btgew.PFBlueToGoEveryWhere</managed-bean-class>
+    <managed-bean-scope>pageFlow</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__26">
+    <managed-bean-name>DatosGeneralesBackingBean</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.managedbeans.datosgenerales.BBDatosGenerales</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__53">
+    <managed-bean-name>BBContrasenia</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.managedbeans.recuperarcontrasenia.BBContrasenia</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__54">
+    <managed-bean-name>handlerExceptionFront</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.exceptions.ExceptionHandlerFront</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__13">
+    <managed-bean-name>BBRegistroUsuarioCorp</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.managedbeans.utils.usuario.BBRegistroUsuarioCorp</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__24">
+    <managed-bean-name>BBUserDataChange</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.managedbeans.utils.usuario.BBUserDataChange</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

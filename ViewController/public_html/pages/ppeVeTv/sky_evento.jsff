@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:trh="http://myfaces.apache.org/trinidad/html" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <meta http-equiv="X-UA-Compatible" content="IE=11.0" charset="utf-8" xmlns="http://www.w3.org/1999/xhtml"/>
+  <trh:html id="h2">
+    <trh:head title="Importante" id="h1">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" xmlns="http://www.w3.org/1999/xhtml"/>
+    </trh:head>
+    <trh:body id="b1">
+      <h:form id="f1">
+        <af:panelGroupLayout id="pgl1" layout="vertical">
+          <af:panelHeader text="SKY" id="ph1" messageType="warning">
+            <f:facet name="context"/>
+            <f:facet name="menuBar"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="legend"/>
+            <f:facet name="info"/>
+            <af:outputText value="Comuniquese a atención a clientes e indique la operación que trato de realizar."
+                           id="ot1"/>
+            <af:commandButton text="Terminar" id="cb1" action="closeTaskFlow"/>
+          </af:panelHeader>
+        </af:panelGroupLayout>
+      </h:form>
+    </trh:body>
+  </trh:html>
+</ui:composition>

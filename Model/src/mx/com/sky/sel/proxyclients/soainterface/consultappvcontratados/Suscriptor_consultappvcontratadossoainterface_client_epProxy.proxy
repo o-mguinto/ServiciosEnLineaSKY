@@ -1,0 +1,163 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jdevws:WebServiceProxy xmlns:jdevws="http://xmlns.oracle.com/jdeveloper/10130/webserviceproxy">
+   <list n="CHILD_NODES">
+      <url path="Suscriptor_consultappvcontratadossoainterface_client_ep.xml"/>
+      <url path="suscriptor_consultappvcontratadossoainterface_client_ep.wsdl"/>
+      <url path="Cabecera_consultaPPVContratados.xsd"/>
+      <url path="RuntimeFaultMessage.xsd"/>
+      <url path="Meta.xsd"/>
+      <url path="Suscriptor_consultaPPVContratadosEBM.xsd"/>
+      <url path="Suscriptor_consultaPPVContratadosEBO.xsd"/>
+      <url path="types/SuscriptorConsultaPPVContratadosEBMResponseTYPESalida.java"/>
+      <url path="types/ParametroItemType.java"/>
+      <url path="types/SuscriptorConsultaPPVContratadosSalidaFiltrosTYPE.java"/>
+      <url path="types/SuscriptorConsultaPPVContratadosSalidaTYPE.java"/>
+      <url path="types/package-info.java"/>
+      <url path="types/CabeceraSalidaTYPE.java"/>
+      <url path="types/SuscriptorConsultaPPVContratadosEntradaTYPE.java"/>
+      <url path="types/ErrorTecnicoType.java"/>
+      <url path="types/RuntimeFaultMessageType.java"/>
+      <url path="types/ResultadosConsultaPPVContratadosSalidaTYPE.java"/>
+      <url path="types/SeguridadListType.java"/>
+      <url path="Suscriptor_consultappvcontratadossoainterface_client_ep.java"/>
+      <url path="types/EBMHeaderRequestType.java"/>
+      <url path="types/ParametroListType.java"/>
+      <url path="types/EBMHeaderResponseType.java"/>
+      <url path="Suscriptor_consultaPPVContratadosSOAInterface.java"/>
+      <url path="types/SeguridadItemType.java"/>
+      <url path="types/ErrorNegocioType.java"/>
+      <url path="types/SuscriptorConsultaPPVContratadosEBMRequestTYPE.java"/>
+      <url path="types/EBMType.java"/>
+      <url path="types/CabeceraEntradaTYPE.java"/>
+      <url path="Suscriptor_consultaPPVContratadosSOAInterface_ptClient.java"/>
+      <url path="types/ObjectFactory.java"/>
+      <url path="types/SuscriptorConsultaPPVContratadosEBMResponseTYPESalidaFiltro.java"/>
+   </list>
+   <hash n="DATA_MODEL">
+      <value n="ATTACHMENT_ENCODING" v="MTOM"/>
+      <list n="LOCAL_FILES"/>
+      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy"/>
+      <url n="ORACLE_WEBSERVICES_XML" path="Suscriptor_consultappvcontratadossoainterface_client_ep.xml"/>
+      <hash n="PROPERTY_GROUPS">
+         <hash n="WSDL_TO_JAVA_PROPERTIES">
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+            <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.soainterface.consultappvcontratados"/>
+            <value n="WSDL2JAVA_ROOT_VALUE_PACKAGE" v="mx.com.sky.sel.proxyclients.soainterface.consultappvcontratados.types"/>
+            <value n="WSDL2JAVA_UNWRAP_PARAMETERS" v="false"/>
+         </hash>
+      </hash>
+      <value n="PROXY_ASYNC_METHODS" v="FOR_NONE"/>
+      <list n="PROXY_CLIENTS">
+         <url path="Suscriptor_consultaPPVContratadosSOAInterface_ptClient.java"/>
+      </list>
+      <value n="PROXY_MAPPING_URL"/>
+      <url n="PROXY_ORIGINAL_WSDL_URL" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/SOA_Interface/Suscriptor_consultaPPVContratadosSOAInterface/suscriptor_consultappvcontratadossoainterface_client_ep" query="WSDL"/>
+      <hash n="PROXY_PORTS">
+         <hash n="Suscriptor_consultaPPVContratadosSOAInterface_pt">
+            <value n="ACCESSES_DOC_WRAPPPED" v="false"/>
+            <value n="ACCESSES_RPC_ENCODED" v="false"/>
+            <value n="CLASS_NAME" v="mx.com.sky.sel.proxyclients.soainterface.consultappvcontratados.Suscriptor_consultaPPVContratadosSOAInterface"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
+            <value n="NAME" v="Suscriptor_consultaPPVContratadosSOAInterface_pt"/>
+            <hash n="OPERATIONS">
+               <hash n="suscriptorConsultaPPVContratados">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </hash>
+            <hash n="PROPERTY_GROUPS">
+               <hash n="WS_CLIENT_POLICY">
+                  <value n="addressing"/>
+                  <list n="management"/>
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.policy.PolicyClientModel"/>
+                  <value n="mtom"/>
+                  <hash n="POLICY_OVERRIDE_PROPERTIES"/>
+                  <list n="security"/>
+                  <value n="wsrm"/>
+               </hash>
+            </hash>
+            <url n="PROXY_ORIGINAL_PORT_ENDPOINT" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/SOA_Interface/Suscriptor_consultaPPVContratadosSOAInterface/suscriptor_consultappvcontratadossoainterface_client_ep"/>
+         </hash>
+      </hash>
+      <value n="PROXY_SERVICE_NAME" v="suscriptor_consultappvcontratadossoainterface_client_ep"/>
+      <value n="PROXY_SERVICE_NAMESPACE" v="http://xmlns.sky.com.mx/InterfaceServices/SOA/Suscriptor_consultaPPVContratadosSOAInterface"/>
+      <url n="PROXY_TARGET_PROJECT" path="../../../../../../../../Model.jpr"/>
+      <list n="PROXY_WSDL_IMPORT_LIST">
+         <url path="Cabecera_consultaPPVContratados.xsd"/>
+         <url path="RuntimeFaultMessage.xsd"/>
+         <url path="Meta.xsd"/>
+         <url path="Suscriptor_consultaPPVContratadosEBM.xsd"/>
+         <url path="Suscriptor_consultaPPVContratadosEBO.xsd"/>
+      </list>
+      <url n="PROXY_WSDL_URL" path="suscriptor_consultappvcontratadossoainterface_client_ep.wsdl"/>
+      <hash n="REFERENCED_WEBSERVICE">
+         <list n="BD_">
+            <hash>
+               <value n="BD_DEFAULT_DOCUMENT_WRAPPED" v="false"/>
+               <value n="BOUND_PORT_TYPE" v="{http://xmlns.sky.com.mx/InterfaceServices/SOA/Suscriptor_consultaPPVContratadosSOAInterface}Suscriptor_consultaPPVContratadosSOAInterface"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+               <value n="NAME" v="{http://xmlns.sky.com.mx/InterfaceServices/SOA/Suscriptor_consultaPPVContratadosSOAInterface}Suscriptor_consultaPPVContratadosSOAInterfaceBinding"/>
+               <list n="OP_BINDINGS">
+                  <hash>
+                     <value n="BD_SOAP_ACTION" v="http://xmlns.sky.com.mx/InterfaceServices/SOA/Suscriptor_consultaPPVContratadosSOAInterface/suscriptorConsultaPPVContratados"/>
+                     <value n="BD_SOAP_INPUT_USE" v="1"/>
+                     <value n="BD_SOAP_OUTPUT_USE" v="1"/>
+                     <value n="BD_SOAP_STYLE" v="1"/>
+                     <value n="BOUND_OPERATION" v="mx.com.sky.sel.proxyclients.soainterface.consultappvcontratados.types.SuscriptorConsultaPPVContratadosEBMResponseTYPESalida.suscriptorConsultaPPVContratados.mx.com.sky.sel.proxyclients.soainterface.consultappvcontratados.types.SuscriptorConsultaPPVContratadosEBMRequestTYPE"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+            </hash>
+         </list>
+         <list n="BINDING_FILES"/>
+         <value n="GUID" v="d3f72e67-016b-1000-8004-0afd094aeef3"/>
+         <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
+         <list n="PO_">
+            <hash>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+               <value n="NAME" v="Suscriptor_consultaPPVContratadosSOAInterface_pt"/>
+               <value n="PORT_BINDING_NAME" v="{http://xmlns.sky.com.mx/InterfaceServices/SOA/Suscriptor_consultaPPVContratadosSOAInterface}Suscriptor_consultaPPVContratadosSOAInterfaceBinding"/>
+               <list n="PORT_OPS">
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="mx.com.sky.sel.proxyclients.soainterface.consultappvcontratados.types.SuscriptorConsultaPPVContratadosEBMResponseTYPESalida.suscriptorConsultaPPVContratados.mx.com.sky.sel.proxyclients.soainterface.consultappvcontratados.types.SuscriptorConsultaPPVContratadosEBMRequestTYPE"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+               <url n="URL" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/SOA_Interface/Suscriptor_consultaPPVContratadosSOAInterface/suscriptor_consultappvcontratadossoainterface_client_ep"/>
+            </hash>
+         </list>
+         <hash n="PROPERTY_GROUPS">
+            <hash n="WSDL_TO_JAVA_PROPERTIES">
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+               <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.soainterface.consultappvcontratados"/>
+               <value n="WSDL2JAVA_ROOT_VALUE_PACKAGE" v="mx.com.sky.sel.proxyclients.soainterface.consultappvcontratados.types"/>
+               <value n="WSDL2JAVA_UNWRAP_PARAMETERS" v="false"/>
+            </hash>
+         </hash>
+         <list n="PT_">
+            <hash>
+               <value n="AUTO_SERVICE_INTERFACE"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaPortType"/>
+               <value n="NAME" v="{http://xmlns.sky.com.mx/InterfaceServices/SOA/Suscriptor_consultaPPVContratadosSOAInterface}Suscriptor_consultaPPVContratadosSOAInterface"/>
+               <hash n="PROPERTY_GROUPS"/>
+               <value n="PT_CLASS" v="mx.com.sky.sel.proxyclients.soainterface.consultappvcontratados.Suscriptor_consultaPPVContratadosSOAInterfaceImpl"/>
+               <value n="PT_SERVICE_INTERFACE" v="mx.com.sky.sel.proxyclients.soainterface.consultappvcontratados.Suscriptor_consultaPPVContratadosSOAInterface"/>
+            </hash>
+         </list>
+         <url n="TARGET_PROJECT" path="../../../../../../../../Model.jpr"/>
+         <value n="WS_ORIG_GEN_DIRECTION" v="TOP_DOWN"/>
+         <value n="WS_TARGET_NAMESPACE" v="http://xmlns.sky.com.mx/InterfaceServices/SOA/Suscriptor_consultaPPVContratadosSOAInterface"/>
+         <value n="WS_URI" v="suscriptor_consultappvcontratadossoainterface_client_ep"/>
+         <url n="WS_WSDL_FILE" path="suscriptor_consultappvcontratadossoainterface_client_ep.wsdl"/>
+      </hash>
+      <value n="SERVICE_ASYNC" v="false"/>
+      <value n="USE_WSDL_LOCATION" v="true"/>
+   </hash>
+</jdevws:WebServiceProxy>

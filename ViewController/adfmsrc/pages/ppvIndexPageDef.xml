@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="ppvIndexPageDef"
+                Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="obtenerTarjetaInteligente.result" DataControl="DCTarjetaInteligente" RangeSize="10"
+                    BeanClass="mx.com.sky.sel.services.beans.utils.TarjetaInteligente"
+                    id="obtenerTarjetaInteligenteIter"/>
+    <methodIterator Binds="obtenerHorariosPPE.result" DataControl="DCEventos"
+                    BeanClass="mx.com.sky.sel.services.beans.eventos.Horario" id="obtenerHorariosPPEIter"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerTarjetaInteligente" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerTarjetaInteligente" IsViewObjectMethod="false" DataControl="DCTarjetaInteligente"
+                  InstanceName="bindings.obtenerTarjetaInteligente.dataControl.dataProvider"
+                  ReturnName="data.DCTarjetaInteligente.methodResults.obtenerTarjetaInteligente_obtenerTarjetaInteligente_dataControl_dataProvider_obtenerTarjetaInteligente_result">
+      <NamedData NDName="rowID" NDValue="#{sesion.suscriptor.rowId}" NDType="java.lang.String"/>
+    </methodAction>
+    <table IterBinding="obtenerTarjetaInteligenteIter" id="tablaTarjetaInteligente">
+      <AttrNames>
+        <Item Value="tarjetaInteligente"/>
+        <Item Value="ubicacion"/>
+      </AttrNames>
+    </table>
+    <attributeValues IterBinding="obtenerTarjetaInteligenteIter" id="tarjetaInteligente">
+      <AttrNames>
+        <Item Value="tarjetaInteligente"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="obtenerHorariosPPE" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerHorariosPPE" IsViewObjectMethod="false" DataControl="DCEventos"
+                  InstanceName="DCEventos.dataProvider"
+                  ReturnName="data.DCEventos.methodResults.obtenerHorariosPPE_obtenerHorariosPPE_dataControl_dataProvider_obtenerHorariosPPE_result">
+      <NamedData NDName="canal" NDValue="#{pageFlowScope.PFPPEVeTV.evento.canal}" NDType="java.lang.String"/>
+      <NamedData NDName="tituloEvento" NDValue="#{pageFlowScope.PFPPEVeTV.evento.titulo}" NDType="java.lang.String"/>
+      <NamedData NDName="diferenciaGMT" NDValue="#{sesion.suscriptor.diferenciaHoraria}" NDType="java.lang.String"/>
+      <NamedData NDName="pais" NDValue="#{sesion.suscriptor.pais}" NDType="java.lang.String"/>
+      <NamedData NDName="tipoEvento" NDValue="#{pageFlowScope.PFPPEVeTV.evento.modalidad}" NDType="java.lang.String"/>
+    </methodAction>
+    <table IterBinding="obtenerHorariosPPEIter" id="tablaHorarios">
+      <AttrNames>
+        <Item Value="fechaInicio"/>
+        <Item Value="duration"/>
+        <Item Value="fechaExpiracion"/>
+        <Item Value="fechaExpiracionTS"/>
+        <Item Value="fechaFin"/>
+        <Item Value="fechaFinTS"/>
+        <Item Value="fechaInicioTS"/>
+        <Item Value="fecharegistro"/>
+        <Item Value="fecharegistroTS"/>
+        <Item Value="modalidad"/>
+        <Item Value="ppveventid"/>
+        <Item Value="token"/>
+        <Item Value="eventoLibre"/>
+        <Item Value="fechaUltimaOrden"/>
+        <Item Value="fechaUltimaOrdenTS"/>
+        <Item Value="isPackage"/>
+        <Item Value="minutosLibres"/>
+        <Item Value="minutosPrevios"/>
+        <Item Value="ppvClass"/>
+        <Item Value="ppvGenreId"/>
+        <Item Value="providerEventId"/>
+        <Item Value="skyTrackingId"/>
+        <Item Value="subjectMaterRating"/>
+        <Item Value="tipoOrden"/>
+        <Item Value="tituloCanal"/>
+        <Item Value="tokenPSC"/>
+      </AttrNames>
+    </table>
+  </bindings>
+</pageDefinition>

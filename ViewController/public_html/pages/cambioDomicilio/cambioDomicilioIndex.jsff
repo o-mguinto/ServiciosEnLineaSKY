@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#cambioDomicilioIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            /*solo boton*/
+            .btn-internal {
+                min-width: 50%;
+            }
+            /*ancho del titulo popup*/
+            div.alert > table tr td.x1db, div.alert > table tr td.x1d9, div.alert > table tr td.x1dd, div.alert > table tr td.x1dm div.x1e5 {
+                height: auto;
+            }
+        </af:resource>
+        <div id="cambioDomicilioIndex">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <!--Aqui va TODO el contenido-->
+                    <div class="row">
+                        <p class="top bottom">
+                            <h:outputText styleClass="title" value="#{selSKYBundle['cambiodomicilio.pb1.text']}"
+                                          id="ot6"/>
+                        </p>
+                        <div class="row top">
+                            <af:panelBox id="pb1" background="medium" showHeader="never" showDisclosure="false"
+                                         inlineStyle="border: 0px;">
+                                <f:facet name="toolbar"/>
+                                <af:panelFormLayout id="pfl1" styleClass="input-internal" inlineStyle="padding:1.0%;"
+                                                    maxColumns="4" rows="2">
+                                    <af:inputText id="it1" columns="80" rows="5" showRequired="true" required="true"
+                                                  label="#{selSKYBundle['cambiodomicilio.it1.label']}"
+                                                  value="#{pageFlowScope.CambioDomiciloBackingBean.comentarios}"
+                                                  partialTriggers=":::b2" maximumLength="600"
+                                                  contentStyle="width: 100%;"/>
+                                </af:panelFormLayout>
+                                <af:group id="g2">
+                                    <span class="xf" style="margin-left:20px;">* </span>
+                                    <af:outputText value="#{selSKYBundle['general.obligatorio']}" id="outputText2"
+                                                   styleClass="cursiv"/>
+                                </af:group>
+                                <div class="row top">
+                                    <div class="col-4 col-tb-4 col-sm-8 center sm-cancel-align" style="float: right;">
+                                        <af:button text="#{selSKYBundle['cambiodomicilio.cb1.text']}" id="cb1"
+                                                   action="#{pageFlowScope.CambioDomiciloBackingBean.confirmarSolicitudCambio}"
+                                                   styleClass="btn-internal"/>
+                                    </div>
+                                </div>
+                            </af:panelBox>
+                             
+                            <af:popup id="confirmacion"
+                                      binding="#{pageFlowScope.CambioDomiciloBackingBean.popupConfirmacion}"
+                                      contentDelivery="lazyUncached" autoCancel="disabled" childCreation="deferred">
+                                <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                    <af:dialog id="d1" title="#{selSKYBundle['cambiodomicilio.d1.title']}" type="none"
+                                               styleClass="alert" closeIconVisible="false">
+                                        <div class="col-12 dialog-background">
+                                            <div class="row autocenter">
+                                                <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-right sm-no-padd-right">
+                                                    <af:button id="b2" text="Aceptar" styleClass="btn-pay-dialog"
+                                                               returnListener="#{pageFlowScope.CambioDomiciloBackingBean.cambioDomReturn}"
+                                                               action="#{pageFlowScope.CambioDomiciloBackingBean.enviarSolicitudCambio}">
+                                                        <af:clientListener method="enforcePreventUserInput"
+                                                                           type="action"/>
+                                                    </af:button>
+                                                </div>
+                                                <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-left sm-no-padd-left">
+                                                    <af:button id="b1" text="#{selSKYBundle['pago.cb6.text']}"
+                                                               styleClass="btn-pay-dialog"
+                                                               action="#{pageFlowScope.CambioDomiciloBackingBean.cancelarSolicitudCambio}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </af:dialog>
+                                </div>
+                            </af:popup>
+                        </div>
+                        <div class="row">
+                            <p>
+                                <h:outputText styleClass="title" value="#{selSKYBundle['cambiodomicilio.pb2.text']}"
+                                              id="ot14"/>
+                            </p>
+                            <div class="col-12">
+                                <af:panelBox id="pb2" background="medium" showHeader="never" showDisclosure="false"
+                                             inlineStyle="border: 0px;">
+                                    <f:facet name="toolbar"/>
+                                    <af:panelCollection id="pc1" partialTriggers=":::d1" styleClass="AFStretchWidth">
+                                        <f:facet name="menus"/>
+                                        <f:facet name="toolbar"/>
+                                        <f:facet name="statusbar"/>
+                                        <af:table value="#{bindings.DetalleSolicitudServicio.collectionModel}" var="row"
+                                                  rows="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                                  emptyText="#{bindings.DetalleSolicitudServicio.viewable ? selSKYBundle['cambiodomicilio.sinsolicitudes'] : 'Access Denied.'}"
+                                                  fetchSize="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                                  rowBandingInterval="0" id="t1" partialTriggers=":::d1 :::b2"
+                                                  autoHeightRows="10" width="100%" scrollPolicy="auto"
+                                                  horizontalGridVisible="false" verticalGridVisible="false"
+                                                  styleClass="tbl-Class" contentDelivery="immediate">
+                                            <af:column sortProperty="numeroSolicitud" sortable="false"
+                                                       headerText="#{selSKYBundle['cambiodomicilio.c3.headertext']}"
+                                                       id="c3" headerClass="content-text" width="150">
+                                                <af:outputText value="#{row.numeroSolicitud}" id="ot3"/>
+                                            </af:column>
+                                            <af:column sortProperty="comentario" sortable="false"
+                                                       headerText="#{selSKYBundle['cambiodomicilio.c1.headertext']}"
+                                                       id="c1" width="280" minimumWidth="100"
+                                                       headerClass="content-text">
+                                                <af:outputText value="#{row.comentario}" id="ot4"/>
+                                            </af:column>
+                                            <af:column sortProperty="fechaCreacion" sortable="false"
+                                                       headerText="#{selSKYBundle['cambiodomicilio.c2.headertext']}"
+                                                       id="c2" width="200" headerClass="content-text">
+                                                <af:outputText value="#{row.fechaCreacion}" id="ot2"/>
+                                            </af:column>
+                                        </af:table>
+                                    </af:panelCollection>
+                                </af:panelBox>
+                                 
+                                <af:popup id="mensaje" childCreation="deferred" contentDelivery="lazyUncached"
+                                          binding="#{pageFlowScope.CambioDomiciloBackingBean.popupMensajeRespuesta}">
+                                    <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                        <af:dialog id="dialog1" type="none"
+                                                   title="#{selSKYBundle['mensaje_Notificacion']}" styleClass="alert"
+                                                   closeIconVisible="false">
+                                            <div class="text-internal">
+                                                <h:outputText value="#{pageFlowScope.CambioDomiciloBackingBean.mensajeRespuesta}"
+                                                              id="outputText1" styleClass="font-bolder"/>
+                                            </div>
+                                            <div class="col-12 dialog-background">
+                                                <div class="row top autocenter">
+                                                    <af:button id="b3" text="#{selSKYBundle['pago.cb5.text']}"
+                                                               styleClass="btn-pay-dialog"
+                                                               action="#{pageFlowScope.CambioDomiciloBackingBean.aceptarSolicitudCambio}"/>
+                                                </div>
+                                            </div>
+                                        </af:dialog>
+                                    </div>
+                                </af:popup>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_manuales" label="#{sesion.menuManuales}" action="irRouterManuales"
+            focusViewId="/manualesIndex" immediate="true" rendered="#{sesion.MANUALES}"
+            icon="/imagenes/menu/ic_manuales.svg">
+    <itemNode id="itemNode_descargarManuales" focusViewId="/descargarManuales" action="smenu_descargarManuales"
+               immediate="true" label="#{lbl.smenu_MANUALES_DESCARGAR}" rendered="#{sesion.MANUALES}"/>
+  </itemNode>
+</menu>

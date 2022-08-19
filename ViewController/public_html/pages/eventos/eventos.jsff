@@ -1,0 +1,330 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#eventos').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+
+              fncSlider(".example-slider", 
+              {
+                  autoSlidingDelay : 6000
+              });
+
+          });
+        </af:resource>
+        <af:resource type="css">
+            .slide_ {
+                height: 50vh !important;
+            }
+
+            .otSinopsis {
+                text-align: right !important;
+                padding-right: 3% !important;
+                line-height: 20px !important;
+                font-weight: bold !important;
+                display: contents;
+            }
+
+            .otNombre {
+                padding-right: 8px !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: rgb(0, 164, 228) !important;
+    word-spacing: 0px !important;
+            }
+
+            .slide_header_content {
+                top: 0px !important;
+                text-align: right !important;
+                height: auto !important;
+                width: 320px !important;
+                opacity: 0.5 !important;
+                left: 65% !important;
+                background-color: #000;
+                border: 1px solid #000;
+            }
+
+            .slide_header_link {
+                padding-right: 10px !important;
+                padding-top: 0px !important;
+                text-align: right !important;
+                padding-bottom: 0px !important;
+                line-height: 12px !important;
+                margin-top: 0px !important;
+                margin-bottom: 0px !important;
+            }
+        </af:resource>
+        <div id="eventos">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelBox id="pb3" showDisclosure="false"
+                                     background="medium" showHeader="never"
+                                     rendered="#{!sesion.contratarPPV}"
+                                     styleClass="autocenter"
+                                     inlineStyle="border: 0px;">
+                            <af:outputText value="Su cuenta no tiene la capacidad de contratar, por favor comuníquese a Servicio a Clientes y mencione el código PPV001."
+                                           id="ot7"
+                                           styleClass="check-internal-bold top-channel"/>
+                            <div class="row top"></div>
+                        </af:panelBox>
+                         
+                        <af:panelBox id="pb2" styleClass="autocenter"
+                                     rendered="#{bindings.Evento.estimatedRowCount le 0}"
+                                     showDisclosure="false" background="medium"
+                                     showHeader="never"
+                                     inlineStyle="border: 0px;">
+                            <af:outputText value="Por el momento no tenemos eventos especiales disponibles para contratar. Por favor intente más tarde."
+                                           id="ot4"
+                                           styleClass="check-internal-bold top-channel"/>
+                            <div class="row top"></div>
+                        </af:panelBox>
+                        <div class="row">
+                            <af:subform id="s7"
+                                        rendered="#{bindings.Evento.estimatedRowCount>0}">
+                                <div class="divpremiere" align="center">
+                                    <!--af:resource type="css"
+                                                 source="/css/banner-rotator.css"></af:resource>
+                                     
+                                    <af:resource type="javascript"
+                                                 source="/js/jquery-3.5.1.min.js"></af:resource>
+                                     
+                                    <af:resource type="javascript"
+                                                 source="/jsslide/jquery.easing.1.3.min.js"></af:resource>
+                                     
+                                    <af:resource type="javascript"
+                                                 source="/jsslide/jquery.banner-rotator.min.js"></af:resource>
+                                     
+                                    <af:resource type="javascript"
+                                                 source="/jsslide/rotator-config_v2_ppe.js"></af:resource-->
+                                            <af:resource type="javascript" source="/js/slider/INLINE_PEN_JS.js"></af:resource>
+                                    <af:resource type="css"
+                                                 source="/css/slider/INLINE_PEN_STYLESHEET.css"></af:resource>
+                                    <div class="demo-cont slide_">
+                                        <div class="fnc-slider example-slider m--with-autosliding slide_">
+                                            <div class="fnc-slider__slides">
+                                                <af:forEach items="#{bindings.Evento.rangeSet}"
+                                                            var="item"
+                                                            varStatus="idx">
+                                                    <div class="fnc-slide m--blend-sky #{(idx.index eq 0?'m--active-slide':'no')}"
+                                                         style="background-color: white;">
+                                                        <div class="fnc-slide__inner"
+                                                             style="background: url('/sky#{parametros.urlImgs825X300}#{item.image}') center center no-repeat;
+                                                             background-size: contain;">
+                                                            <!--div class="fnc-slide__mask" 
+     style="background: url('/sky#{parametros.urlImgs825X464}#{item.imagen}') center no-repeat;">
+<div class="fnc-slide__mask-inner"
+     style="background: url('/sky#{parametros.urlImgs825X464}#{item.imagen}') center no-repeat;"></div>
+</div-->
+                                                            <div class="fnc-slide__content slide_header_content">
+                                                                <h2 class="fnc-slide__heading slide_header_link">
+                                                                    <af:link id="cl1"
+                                                                             disabled="#{!sesion.SKY_EVENT or !sesion.contratarPPV}"
+                                                                             immediate="true"
+                                                                             action="#{pageFlowScope.PremiereBackingBean.mostrarPopUp}"
+                                                                             partialSubmit="true"
+                                                                             useWindow="true"
+                                                                             windowEmbedStyle="inlineDocument"
+                                                                             windowModalityType="applicationModal"
+                                                                             windowHeight="580"
+                                                                             windowWidth="800">
+                                                                        <af:outputText value="#{item.titulo}"
+                                                                                       id="cb1"
+                                                                                       styleClass="fnc-slide__heading-line otNombre"
+                                                                                       truncateAt="35"/>
+                                                                        <f:setPropertyActionListener target="#{pageFlowScope.PremiereBackingBean.item}"
+                                                                                                     value="#{item}"/>
+                                                                    </af:link>
+                                                                </h2>
+                                                                 
+                                                                <h2 class="fnc-slide__action-btn-sin">
+                                                                    <h:outputLabel value="#{item.sinopsis}"
+                                                                                   id="oplSinop2"
+                                                                                   styleClass="otSinopsis"/>
+                                                                </h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </af:forEach>
+                                            </div>
+                                            <nav class="fnc-nav">
+                                                <div class="fnc-nav__bgs">
+                                                    <af:forEach items="#{bindings.Evento.rangeSet}"
+                                                                var="itemNav"
+                                                                varStatus="idx3">
+                                                        <div class="fnc-nav__bg m--navbg-green fnc-nav__bg-#{idx3.index +1} #{(idx3.index eq 0?'m--active-nav-bg':'no')}"></div>
+                                                    </af:forEach>
+                                                </div>
+                                                <div class="fnc-nav__controls">
+                                                    <af:forEach items="#{bindings.Evento.rangeSet}"
+                                                                var="item2"
+                                                                varStatus="idx2">
+                                                        <button type="button"
+                                                                class="fnc-nav__control fnc-nav__control-#{idx2.index +1} #{(idx2.index eq 0?'m--active-control':'no')}"
+                                                                data-slide="#{idx2.index +1}">
+                                                            <h:outputLabel value="#{idx2.index +1}"
+                                                                           id="ol2"
+                                                                           style="font-weight"/>
+                                                            <span class="fnc-nav__control-progress"
+                                                                  style="transition: transform 5.66667s ease 0s;"></span>
+                                                        </button>
+                                                    </af:forEach>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </af:subform>
+                        </div>
+                        <div class="row top">
+                            <af:subform id="sfrm1">
+                                <af:subform id="s2">
+                                    <div class="divpremiere">
+                                        <div class="col-12 autocenter">
+                                            <af:forEach items="#{bindings.Evento.rangeSet}"
+                                                        var="item">
+                                                <div class="col-2 col-tb-2">
+                                                    <div class="top">
+                                                        <af:link id="myLink"
+                                                                 disabled="#{!sesion.SKY_EVENT and !sesion.contratarPPV}"
+                                                                 action="#{pageFlowScope.PremiereBackingBean.mostrarPopUp}"
+                                                                 partialSubmit="true"
+                                                                 useWindow="true"
+                                                                 windowEmbedStyle="inlineDocument"
+                                                                 windowModalityType="applicationModal"
+                                                                 windowHeight="580"
+                                                                 windowWidth="800"
+                                                                 icon="#{parametros.urlImgs160X240}#{item.image}"
+                                                                 shortDesc="#{item.titulo}"
+                                                                 styleClass="divMosaico">
+                                                            <f:setPropertyActionListener target="#{pageFlowScope.PremiereBackingBean.item}"
+                                                                                         value="#{item}"/>
+                                                        </af:link>
+                                                    </div>
+                                                </div>
+                                            </af:forEach>
+                                        </div>
+                                    </div>
+                                </af:subform>
+                            </af:subform>
+                        </div>
+                    </div>
+                </div>
+                <div class="top"></div>
+                <div class="row">
+                    <div class="col-12 content-internal">
+                        <af:panelBox id="pb1" showDisclosure="false"
+                                     showHeader="never" background="medium"
+                                     inlineStyle="border: 0px;">
+                            <f:facet name="toolbar"/>
+                            <af:panelCollection id="pc3"
+                                                defaultToolbarItemDisplay="icon"
+                                                styleClass="AFStretchWidth"
+                                                inlineStyle="border:none;">
+                                <f:facet name="menus"/>
+                                <f:facet name="toolbar"/>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.Evento.collectionModel}"
+                                          var="row"
+                                          rows="#{bindings.Evento.rangeSize}"
+                                          emptyText="#{bindings.Evento.viewable ? 'Por el momento no hay eventos especiales.' : 'Acceso denegado por favor llama a los teléfonos de SKY.'}"
+                                          fetchSize="#{bindings.Evento.rangeSize}"
+                                          rowBandingInterval="0"
+                                          filterModel="#{bindings.EventoQuery.queryDescriptor}"
+                                          queryListener="#{bindings.EventoQuery.processQuery}"
+                                          filterVisible="true" varStatus="vs"
+                                          selectedRowKeys="#{bindings.Evento.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.Evento.collectionModel.makeCurrent}"
+                                          id="t3" autoHeightRows="10"
+                                          rowSelection="single"
+                                          editingMode="clickToEdit" width="100%"
+                                          scrollPolicy="auto"
+                                          horizontalGridVisible="false"
+                                          verticalGridVisible="false"
+                                          styleClass="tbl-Class">
+                                    <af:column sortProperty="NoEvento"
+                                               sortable="false"
+                                               headerText="#{selSKYBundle['premiere.c16.headertext']}"
+                                               id="c16" width="70"
+                                               align="center"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{vs.index+1}"
+                                                       id="ot16"/>
+                                    </af:column>
+                                    <af:column sortProperty="titulo"
+                                               headerText="#{selSKYBundle['premiere.c15.headertext']}"
+                                               id="c15" width="320"
+                                               inlineStyle="height:30.0px;"
+                                               headerClass="content-text">
+                                        <af:link id="l1"
+                                                 disabled="#{!sesion.SKY_EVENT and !sesion.contratarPPV}"
+                                                 action="#{pageFlowScope.PremiereBackingBean.mostrarPopUp}"
+                                                 partialSubmit="true"
+                                                 useWindow="true"
+                                                 windowEmbedStyle="inlineDocument"
+                                                 windowModalityType="applicationModal"
+                                                 windowHeight="580"
+                                                 windowWidth="800"
+                                                 text="#{row.titulo}"
+                                                 styleClass="divMosaico">
+                                            <f:setPropertyActionListener target="#{pageFlowScope.PremiereBackingBean.item2}"
+                                                                         value="#{row}"/>
+                                            <af:clientListener method="enforcePreventUserInput"
+                                                               type="action"/>
+                                        </af:link>
+                                    </af:column>
+                                    <af:column sortProperty="modalidad"
+                                               headerText="#{selSKYBundle['premiere.c13.headertext']}"
+                                               id="c13" width="70"
+                                               align="center"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.modalidad}"
+                                                       id="ot14"/>
+                                    </af:column>
+                                    <af:column sortProperty="canalDisplay"
+                                               headerText="#{selSKYBundle['premiere.c2.headertext']}"
+                                               id="c2" align="center" width="45"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.canalDisplay}"
+                                                       id="ot3"/>
+                                    </af:column>
+                                    <af:column sortProperty="idioma"
+                                               sortable="true"
+                                               headerText="Idioma" id="c1"
+                                               align="center" width="75"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.idioma}"
+                                                       id="ot5"/>
+                                    </af:column>
+                                    <af:column sortProperty="subtitulos"
+                                               sortable="true"
+                                               headerText="Subtitulos" id="c3"
+                                               align="center" width="65"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.subtitulos}"
+                                                       id="ot6"/>
+                                    </af:column>
+                                    <af:column sortProperty="precio"
+                                               headerText="#{selSKYBundle['premiere.c14.headertext']}"
+                                               id="c14" width="65"
+                                               align="center"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.precio}"
+                                                       id="ot13"/>
+                                    </af:column>
+                                </af:table>
+                            </af:panelCollection>
+                        </af:panelBox>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

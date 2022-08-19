@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+    
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#ppvPago').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        
+        <div id="ppvPago">
+            <af:messages id="m1"/>
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8 col-sm-8">
+                <div class="content-internal">
+                    <h:outputText styleClass="title padd-bottom-dialog padd-top-dialog" value="Seleccione forma de pago" id="ot2"/>
+                    <div class="row">
+                        <div class="col-12">
+                                <af:panelStretchLayout id="psl1" endWidth="160px;vertical-align: middle;"
+                                                       styleClass="AFStretchWidth">
+                                    <f:facet name="center">
+                                        <af:panelGroupLayout layout="scroll" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                             id="pgl8">
+                                                <af:panelGroupLayout id="pfl1" partialTriggers="cbActualizar">
+                                                    <div style="max-height: 180px; min-height: 70px; overflow:auto;">
+                                                        <div class="row">
+                                                            <div class="col-12 col-tb-8 col-sm-8">
+                                                                <af:outputLabel for="sor1" value="* Tarjeta"
+                                                                                styleClass="label-internal" id="ol1"/>
+                                                                 
+                                                                <af:selectOneRadio id="sor1" showRequired="false" simple="true"
+                                                                                   value="#{pageFlowScope.PFPPEVeTV.tarjetaObject}"
+                                                                                   required="true" styleClass="output-internal"
+                                                                                   autoSubmit="true">
+                                                                    <af:forEach var="tdc" items="#{bindings.tblTDC.rangeSet}">
+                                                                        <f:selectItem id="si1" itemValue="#{tdc}"
+                                                                                      itemLabel="#{tdc.numeroTarjeta}"/>
+                                                                    </af:forEach>
+                                                                </af:selectOneRadio>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </af:panelGroupLayout>
+                                                <div class="row top">
+                                                    <div class="col-12 col-tb-8 col-sm-8">
+                                                         
+                                                        <af:outputLabel for="codigoSeguridad"
+                                                                        value="* #{selSKYBundle['lbl_codigoSeguridad']}" id="ol6"
+                                                                        styleClass="label-internal"/>
+                                                         
+                                                        <af:inputText label="CVV(Código de Seguridad)" secret="true"
+                                                                      value="#{pageFlowScope.PFPPEVeTV.tarjeta.codigo}"
+                                                                      styleClass="input-internal"
+                                                                      placeholder="#{selSKYBundle['placeholder_cvv']}"
+                                                                      showRequired="false" simple="true" id="codigoSeguridad"
+                                                                      required="true">
+                                                            <af:validateRegExp id="codSegValidator" pattern="[0-9]{3,4}"
+                                                                               messageDetailNoMatch="Ingresa el código de seguridad de 3 números de tu tarjeta o 4 si es AMEX."/>
+                                                        </af:inputText>
+                                                    </div>
+                                                </div>
+                                            <af:panelGroupLayout id="pgl2">
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <af:group id="g2">
+                                                            <span class="xf">* </span>
+                                                            <af:outputText value="#{selSKYBundle['general.obligatorio']}" id="ot1"
+                                                                           styleClass="cursiv"/>
+                                                        </af:group>
+                                                    </div>
+                                                </div>
+                                            </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                    <f:facet name="end">
+                                        <af:panelGroupLayout id="pgl4">
+                                            <div class="autocenter">
+                                                <af:image source="#{parametros.urlImgs160X240}#{pageFlowScope.PFPPEVeTV.evento.image}"
+                                                          id="i6" inlineStyle="width: 60%;     height: auto;"/>
+                                            </div>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                </af:panelStretchLayout>
+                                <af:panelGroupLayout id="pgl6">
+                                    <div class="row top dialog-descrip">
+                                        <!---->
+                                        <h:outputText id="inputText6" value="#{pageFlowScope.PFPPEVeTV.evento.sinopsis}"/>
+                                    </div>
+                                </af:panelGroupLayout>
+                        </div>
+                    </div>
+                        
+                    <div class="row">
+                        <div class="col-12">    
+                            <af:panelGroupLayout id="pgl3">
+                                <div class="col-12 col-sm-8 dialog-background">
+                                    <div class="row autocenter">
+                                        <div class="col-3 col-sm-4">
+                                            <af:button text="Agregar tarjeta" id="cb1" immediate="true"
+                                                       action="#{pageFlowScope.PFPPEVeTV.cbSiguienteNTDC_action}"
+                                                       rendered="#{sesion.MIS_TARJETAS}" styleClass="btn-pay-dialog"/>
+                                        </div>
+                                        <div class="col-3 col-sm-4">
+                                            <af:button text="Actualizar tarjetas" id="cbActualizar"
+                                                       action="#{pageFlowScope.PFPPEVeTV.cbActualizar_action}" immediate="true"
+                                                       styleClass="btn-pay-dialog"/>
+                                        </div>
+                                        <div class="col-3 col-sm-4">
+                                            <af:button text="Siguiente" id="cbSiguientePago"
+                                                       action="#{pageFlowScope.PFPPEVeTV.cbSiguientePago_action}"
+                                                       disabled="#{bindings.consultarTarjetasIterator.estimatedRowCount&lt;=0}"
+                                                       styleClass="btn-pay-dialog" partialTriggers="sor1"/>
+                                        </div>
+                                        <div class="col-3 col-sm-4">
+                                            <af:button text="Cancelar" id="cbCancelar" action="#{pageFlowScope.PFPPEVeTV.cbCancelar_action}"
+                                                       immediate="true" styleClass="btn-pay-dialog"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

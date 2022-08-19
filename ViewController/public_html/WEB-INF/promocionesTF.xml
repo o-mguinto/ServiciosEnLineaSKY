@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="promocionesTF">
+    <default-activity>routerPromos</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__8">
+      <managed-bean-name>AnunciosMB</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.anuncios.AnunciosMB</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <view id="promocionesIndex">
+      <page>/pages/promociones/promocionesIndex.jsff</page>
+      <input-page-parameter id="__1">
+        <from-value>Promociones</from-value>
+        <to-value>#{Menu.titulo}</to-value>
+      </input-page-parameter>
+      <input-page-parameter id="__2">
+        <from-value>/WEB-INF/promocionesTF.xml#promocionesTF</from-value>
+        <to-value>#{Menu.taskFlowId}</to-value>
+      </input-page-parameter>
+      <input-page-parameter id="__3">
+        <from-value>-1</from-value>
+        <to-value>#{Menu.idxDiscloused}</to-value>
+      </input-page-parameter>
+    </view>
+    <url-view id="miCuenta">
+      <url>/sky/faces/cuenta</url>
+    </url-view>
+    <router id="routerPromos">
+      <case id="__4">
+        <expression>#{viewScope.AnunciosMB.mostrarPromociones}</expression>
+        <outcome>irPromociones</outcome>
+      </case>
+      <default-outcome>irCuenta</default-outcome>
+    </router>
+    <control-flow-rule id="__5">
+      <from-activity-id>routerPromos</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>irPromociones</from-outcome>
+        <to-activity-id>promocionesIndex</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>irCuenta</from-outcome>
+        <to-activity-id>miCuenta</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

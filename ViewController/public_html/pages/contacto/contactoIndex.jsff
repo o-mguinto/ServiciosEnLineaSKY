@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#contactoIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+
+          function adfFacesMessageToJS(evt) {
+              componenteADF = evt.getSource();
+              AdfCustomEvent.queue(componenteADF, "regresaAdfFaces", null, true);
+          }
+        </af:resource>
+        <af:resource type="css" source="/css/contacto.css"/>
+        <div id="contactoIndex">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <!--Para cada fila una div-->
+                            <!--Aqui va TODO el contenido-->
+                            <div class="col-12 autocenter">
+                        <af:outputText id="ot13" value="Comunícate con Nosotros" styleClass="channel-header"/>
+                             
+                            <af:link id="gl4" destination="#{viewScope.contacto.urlAnswer}" targetFrame="_blank"
+                                       rendered="#{sesion.CONTACTO_ANSWER}">
+                                <af:clientListener method="adfFacesMessageToJS" type="click"/>
+                                <af:serverListener type="regresaAdfFaces"
+                                                   method="#{viewScope.contacto.abrirContactoCentroAyuda}"/>
+                                <div class="channel-box center">
+                                    <div class="icon-faq"></div>
+                                    <af:outputText id="ot35" value="Centro de Ayuda" styleClass="channel-text1"/>
+                                    <div style="margin-top:1px;"></div>
+                                    <div class="row">
+                                    <af:outputText id="ot6"
+                                                   value="Revisa el listado completo de las preguntas frecuentes."
+                                                   styleClass="channel-text2"
+                                                   inlineStyle="white-space: normal;"/>
+                                                   </div>
+                                </div>
+                            </af:link>
+                             
+                            <af:link id="gl1" destination="#{viewScope.contacto.urlChat}" targetFrame="_blank"
+                                       rendered="#{sesion.CONTACTO_CHAT}">
+                                <af:clientListener method="adfFacesMessageToJS" type="click"/>
+                                <af:serverListener type="regresaAdfFaces"
+                                                   method="#{viewScope.contacto.abrirContactoChat}"/>
+                                <div class="channel-box center">
+                                    <div class="icon-chat"></div>
+                                    <af:outputText id="ot2" value="Chat" styleClass="channel-text1"/>
+                                    <div style="margin-top:1px;"></div>
+                                    <af:outputText id="ot7" value="Inicia una conversación en línea con un ejecutivo."
+                                                   styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                </div>
+                            </af:link>
+                             
+                            <af:link id="gl2" destination="#{viewScope.contacto.urlAsk}" targetFrame="_blank"
+                                       rendered="#{sesion.CONTACTO_ASK}">
+                                <af:clientListener method="adfFacesMessageToJS" type="click"/>
+                                <af:serverListener type="regresaAdfFaces"
+                                                   method="#{viewScope.contacto.abrirContactoDejarDato}"/>
+                                <div class="channel-box center">
+                                    <div class="icon-message"></div>
+                                    <af:outputText id="ot3" value="Déjanos tus datos" styleClass="channel-text1"/>
+                                    <div style="margin-top:1px;"></div>
+                                    <af:outputText id="ot8" value="Y te contactamos." styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                </div>
+                            </af:link>
+                             
+                            <af:link id="gl44" destination="mailto:#{viewScope.contacto.urlMail}"
+                                       rendered="#{sesion.CONTACTO_MAIL}">
+                                <af:clientListener method="adfFacesMessageToJS" type="click"/>
+                                <af:serverListener type="regresaAdfFaces"
+                                                   method="#{viewScope.contacto.abrirContactoEmail}"/>
+                                <div class="channel-box">
+                                    <div class="icon-mail"></div>
+                                    <af:outputText id="ot5" value="Envíanos" styleClass="channel-text1"/>
+                                    <div style="margin-top:1px;"></div>
+                                    <af:outputText id="ot10" value="Un mail." styleClass="channel-text2"/>
+                                </div>
+                            </af:link>
+                            <div class="channel-box"
+                                 style="vertical-align: top;">
+                                <div class="icon-phone"></div>
+                                <af:outputText id="ot4" value="Llamar" styleClass="channel-text1"/>
+                                <div style="margin-top:1px;"></div>
+                                <af:image id="i1" source="/imagenes/banderas/Mexico.png" rendered="#{sesion.MEX}"/>
+                                 
+                                <af:outputText id="ot11" value="#{selSKYBundle['contacto.mex.value']}"
+                                               rendered="#{sesion.MEX}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:image id="i2" source="/imagenes/banderas/Costa-Rica.png" rendered="#{sesion.CRI}"/>
+                                 
+                                <af:outputText id="ot14" value="#{selSKYBundle['contacto.cri.value']}"
+                                               rendered="#{sesion.CRI}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:image id="i3" source="/imagenes/banderas/Guatemala.png" rendered="#{sesion.GTM}"/>
+                                 
+                                <af:outputText id="ot15" value="#{selSKYBundle['contacto.gua.value']}"
+                                               rendered="#{sesion.GTM}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:image id="i4" source="/imagenes/banderas/Nicaragua.png" rendered="#{sesion.NIC}"/>
+                                 
+                                <af:outputText id="ot16" value="#{selSKYBundle['contacto.nic.value']}"
+                                               rendered="#{sesion.NIC}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:image id="i5" source="/imagenes/banderas/El-Salvador.png" rendered="#{sesion.SLV}"/>
+                                 
+                                <af:outputText id="ot17" value="#{selSKYBundle['contacto.sal.value']}"
+                                               rendered="#{sesion.SLV}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:image id="i6" source="/imagenes/banderas/Honduras.png" rendered="#{sesion.HND}"/>
+                                 
+                                <af:outputText id="ot18" value="#{selSKYBundle['contacto.hon.value']}"
+                                               rendered="#{sesion.HND}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:image id="i7" source="/imagenes/banderas/Dominican-Republic.png"
+                                          rendered="#{sesion.DOM}"/>
+                                 
+                                <af:outputText id="ot19" value="#{selSKYBundle['contacto.dom.value']}"
+                                               rendered="#{sesion.DOM}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:image id="i8" source="/imagenes/banderas/Panama.png" rendered="#{sesion.PAN}"/>
+                                 
+                                <af:outputText id="ot20" value="#{selSKYBundle['contacto.pan.value']}"
+                                               rendered="#{sesion.PAN}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                <div style="margin-top:.1px;"></div>
+                                <!-- VeTV -->
+                                <af:group id="g7" rendered="#{sesion.userVeTV and sesion.MEX}">
+                                    <af:goLink id="gl5" destination="tel:#{selSKYBundle['perfil.ot2M3.value']}"
+                                               text="Llamar" styleClass="btn-phone channel-text3"/>
+                                    <div style="margin-top:.1px;"></div>
+                                    <af:outputText id="ot22" value="Marcar al: #{selSKYBundle['perfil.ot2M3.value']}"
+                                                   styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                </af:group>
+                                 
+                                <!-- Tradicional -->
+                                 
+                                <af:group id="g6" rendered="#{!sesion.userVeTV and sesion.MEX}">
+                                    <af:goLink id="gl7" destination="tel:#{selSKYBundle['perfil.ot2M1.value']}"
+                                               text="Llamar" styleClass="btn-phone channel-text3"/>
+                                    <div style="margin-top:.1px;"></div>
+                                    <af:outputText id="ot21" value="O marca al: #{selSKYBundle['perfil.ot2M1.value']}"
+                                                   styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                </af:group>
+                                <div style="margin-top:.1px;"></div>
+                                <af:group id="g2" rendered="#{!sesion.MEX}">
+                                <af:outputText id="ot9" value="#{selSKYBundle['perfil.telsCR1.value']}"
+                                               rendered="#{sesion.CRI}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:outputText id="ot12" value="#{selSKYBundle['perfil.telsGT1.value']}"
+                                               rendered="#{sesion.GTM}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:outputText id="ot25" value="#{selSKYBundle['perfil.telsGT1.value']}"
+                                               rendered="#{sesion.NIC}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:outputText id="ot26" value="#{selSKYBundle['perfil.telsSV1.value']}"
+                                               rendered="#{sesion.SLV}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:outputText id="ot28" value="#{selSKYBundle['perfil.telsHN1.value']}"
+                                               rendered="#{sesion.HND}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:outputText id="ot29" value="#{selSKYBundle['perfil.telsDO1.value']}"
+                                               rendered="#{sesion.DOM}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:outputText id="ot31" value="#{selSKYBundle['perfil.telsPA1.value']}"
+                                               rendered="#{sesion.PAN}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                <div style="margin-top:.1px;"></div>
+                                <af:outputText id="ot24" value="#{selSKYBundle['perfil.telsGT1.value2']}"
+                                               rendered="#{sesion.GTM}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:outputText id="ot27" value="#{selSKYBundle['perfil.telsSV1.value2']}"
+                                               rendered="#{sesion.SLV}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:outputText id="ot30" value="#{selSKYBundle['perfil.telsDO1.value2']}"
+                                               rendered="#{sesion.DOM}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                 
+                                <af:outputText id="ot32" value="#{selSKYBundle['perfil.telsPA2.value']}"
+                                               rendered="#{sesion.PAN}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                <div style="margin-top:.1px;"></div>
+                                <af:outputText id="ot33" value="#{selSKYBundle['perfil.telsPA3.value']}"
+                                               rendered="#{sesion.PAN}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                <div style="margin-top:.1px;"></div>
+                                <af:outputText id="ot34" value="#{selSKYBundle['perfil.telsPA4.value']}"
+                                               rendered="#{sesion.PAN}" styleClass="channel-text2" inlineStyle="white-space: normal;"/>
+                                </af:group>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

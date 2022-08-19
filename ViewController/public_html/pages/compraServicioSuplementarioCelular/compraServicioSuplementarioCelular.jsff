@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <style type="text/css" media="screen">     
+        div.channel-compra table tr td {
+                width: 33%;
+                vertical-align: top
+            }
+        .separador-categoria{
+            background-color: #2846AA;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+            padding: 8px 20px;
+            margin-bottom: 15px;
+        }
+        
+        
+
+
+.ficha-paquete-cel{
+    padding:4px !important;
+    /*box-shadow: 1px 2px 5px 1px #b0b0b0;*/
+    max-width: 80%;
+    height: 80px;
+    padding: 15px 15px;
+    white-space: normal;
+    color: white !important;
+    border-radius: 10px;
+    margin-right: auto;
+    FONT-WEIGHT: BOLDER;
+    margin-left: auto;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -webkit-align-content: center;
+    -moz-align-content: center;
+    -ms-align-content: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    flex-direction: column;
+    /*FONT-SIZE: 15px;*/
+}
+.ficha-paquete-cel:hover{
+    cursor:pointer;
+    /*box-shadow:1px 2px 20px 1px black;*/
+    max-width: 80%;
+    /*height: 100px;*/
+    text-decoration: none;
+    padding: 15px 15px;
+    white-space: normal;
+    color: white !important;
+    border-radius:10px;
+    margin-right: auto;
+    margin-left: auto;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -webkit-align-content: center;
+    -moz-align-content: center;
+    -ms-align-content: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    flex-direction: column;
+  
+}
+
+.ficha-paquete-cel span{
+    text-decoration:none !important;
+    text-wrap:normal !important;
+    text-align:center;
+    text-shadow: 1px 1px 2px black;
+    background:none;
+    border:solid 2px white;
+    z-index:10;
+    width: 96%;
+    min-height: 85%;
+    border-radius:10px;
+    margin-right: auto;
+    margin-left: auto;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -webkit-align-content: center;
+    -moz-align-content: center;
+    -ms-align-content: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    flex-direction: column;
+}
+
+    </style>
+    
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#compraPaqueteDatos').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            /*para las dimensiones del dialog pan*/
+            .x1do, .x1dp {
+                height: 450px !important;
+                width: 650px !important;
+            }
+            /*.x1do, .x1dp {
+                min-height: 300px !important;
+                max-height: 350px !important;
+                width: 650px !important;
+            }*/
+        </af:resource>
+        <af:resource type="css" source="/css/bolsas/bolsas.css"/>
+        <!--af:resource type="css" source="/css/consumo_internet.css"/-->
+        <div id="compraPaqueteDatos">
+        <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:outputText id="otInfoNumLin" 
+                                   value="Su cuenta tiene #{pageFlowScope.CompraServicioSuplementarioBackingBean.numLineasCelular} líneas de celular, seleccione una para mostrar los servicios suplementarios disponibles"
+                                   styleClass="check-internal-bold"/>
+                                   <br/>
+                                   <br/>
+                        <div class="row">
+                            <af:selectOneChoice value="#{pageFlowScope.CompraServicioSuplementarioBackingBean.assetNumberLineaSeleccionada}"
+                                                label="Líneas celulares de la cuenta:"
+                                                id="socLineasCelulares"
+                                                unselectedLabel="Selecciona una línea"
+                                                styleClass="select-internal"
+                                                valueChangeListener="#{pageFlowScope.CompraServicioSuplementarioBackingBean.actualizarServicios}"
+                                                autoSubmit="true" immediate="true">
+                                <f:selectItems value="#{pageFlowScope.CompraServicioSuplementarioBackingBean.lineasCelulares}" id="si1"/>
+                            </af:selectOneChoice>
+                        </div>
+                        <br/>
+                        <af:panelGroupLayout id="pgl3"
+                                     rendered="#{pageFlowScope.CompraServicioSuplementarioBackingBean.numLineasCelular gt 0}"
+                                     partialTriggers="socLineasCelulares">
+                            <div class="autocenter" style="margin-bottom:25px;">
+                                <span class="icon-faq"></span>
+                                <af:outputText value="#{selSKYBundle['txt_compraServSupl_sinRecarga']}"
+                                   id="ot_datosSinRecarga"
+                                   styleClass="check-internal-bold top-channel"
+                                   rendered="#{sesion.userVeTV and ! sesion.CON_RECARGA and pageFlowScope.CompraServicioSuplementarioBackingBean.mosaicoServicios.size() > 0}"/>
+                            </div>
+                            <c:set var="indexColor" value="0" />
+                            <af:panelGroupLayout id="pgl12" visible="#{pageFlowScope.CompraServicioSuplementarioBackingBean.mosaicoServicios.size() > 0}">
+                                <af:forEach items="#{pageFlowScope.CompraServicioSuplementarioBackingBean.mosaicoServicios}"
+                                            var="ofertas" varStatus="vsOf">
+                                    <div class="col-3" style="    padding: 0px 10px;">
+                                        <af:link text="#{ofertas.key}" id="lnkOfertas"
+                                                 action="#{pageFlowScope.CompraServicioSuplementarioBackingBean.mostrarPaquetes}"
+                                                 targetFrame="_self" immediate="true"
+                                                 styleClass="btn-internal #{pageFlowScope.CompraServicioSuplementarioBackingBean.ofertaSeleccionada eq ofertas.key ? 'btn-opacity-1' : 'btn-opacity'}">
+                                            <af:setPropertyListener type="action" from="#{ofertas.key}"
+                                                                    to="#{pageFlowScope.CompraServicioSuplementarioBackingBean.ofertaSeleccionada}"/>
+                                            <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                        </af:link>
+                                    </div>
+                                </af:forEach>
+                                
+                                <div class="row top">
+                                    <af:forEach items="#{pageFlowScope.CompraServicioSuplementarioBackingBean.paquetesDeOferta}"
+                                                var="paquete" varStatus="status">
+                                        <div class="col-3 sm-top" style="padding: 10px;">
+                                            <af:link action="#{pageFlowScope.CompraServicioSuplementarioBackingBean.showPopupPaquete}"
+                                                         useWindow="true"
+                                                         windowWidth="800"
+                                                         windowHeight="530"
+                                                         id="cl1"
+                                                         disabled="#{sesion.userVeTV and ! sesion.CON_RECARGA}"
+                                                         styleClass="bolderPaquete color_#{status.index}">
+                                                <div class="col-12">
+                                                    <div class="row top-sm autocenter">
+                                                        <h:outputText id="nomPaquete"
+                                                                      value="#{paquete.nombre_display}"
+                                                                      styleClass="titulo-paquete"
+                                                                      />
+                                                    </div>
+                                                    <div class="col-6 top">
+                                                        <div class="row" style="text-align: center;">                                                       
+                                                            <h:outputText id="costoPaq"
+                                                                          value="$ #{paquete.costo}"
+                                                                          styleClass="lbl-costoPaq"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 top">
+                                                        <div class="row autocenter" style="#{empty paquete.datos? 'display:none;' : ''}">
+                                                            <af:outputText id="descPaq" value="#{paquete.datos}"
+                                                                           styleClass="channel-text2"/>
+                                                        </div>
+                                                        <div class="row autocenter" style="#{empty paquete.mins? 'display:none;' : ''}">
+                                                            <af:outputText id="descPaq2" value="#{paquete.mins}"
+                                                                           styleClass="channel-text2"/>
+                                                        </div>
+                                                        <div class="row autocenter" style="#{empty paquete.sms? 'display:none;' : ''}">
+                                                            <af:outputText id="descPaq3" value="#{paquete.sms}"
+                                                                           styleClass="channel-text2"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <f:setPropertyActionListener target="#{pageFlowScope.CompraServicioSuplementarioBackingBean.paqueteActiva}"
+                                                                                 value="#{paquete}"/>
+                                                <f:setPropertyActionListener target="#{pageFlowScope.CompraServicioSuplementarioBackingBean.idPaquete}"
+                                                                             value="#{paquete.nombre}"/>
+                                                                             <span />
+                                                <f:setPropertyActionListener target="#{pageFlowScope.CompraServicioSuplementarioBackingBean.indexColor}"
+                                                                             value="#{status.index}"/>
+                                            </af:link>
+                                        </div>
+                                    </af:forEach>
+                                </div>
+                            </af:panelGroupLayout>
+                            <div class="col-12 top">
+                                <af:outputText value="Las recargas tienen una vigencia de 3, 7 y 15 días naturales a partir del momento de la contratación. Para contratarlos es necesario que tu cuenta se encuentre activa o con recarga."
+                                   id="ot_recargas"
+                                   inlineStyle="color: #004B8D;"
+                                   rendered="#{sesion.userVeTV and pageFlowScope.CompraServicioSuplementarioBackingBean.paquetesDeOferta.size() > 0}"/>
+                            </div>
+                            <div class="col-12">
+                                <af:outputText value="#{selSKYBundle['txt_compraServSupl_paquete_adicional']}"
+                                   id="ot_paq_adicional"
+                                   inlineStyle="color: #004B8D;"
+                                   rendered="#{pageFlowScope.CompraServicioSuplementarioBackingBean.paquetesDeOferta.size() > 0}"/>
+                            </div>
+                            <div class="col-12">
+                                <af:outputText value="#{selSKYBundle['txt_compraServSupl_roaming_internacional']}"
+                                   id="ot_roaming_internacional"
+                                   inlineStyle="color: #004B8D;"
+                                   rendered="#{pageFlowScope.CompraServicioSuplementarioBackingBean.paquetesDeOferta.size() > 0}"/>
+                            </div>
+                            <div class="col-12">
+                                <af:outputText value="#{selSKYBundle['txt_compraServSupl_larga_distancia_internacional']}"
+                                   id="ot_ld_internacional"
+                                   inlineStyle="color: #004B8D;"
+                                   rendered="#{pageFlowScope.CompraServicioSuplementarioBackingBean.paquetesDeOferta.size() > 0}"/>
+                            </div>
+                        </af:panelGroupLayout>
+                        <!--af:panelGroupLayout id="pgl4" rendered="#{pageFlowScope.CompraServicioSuplementarioBackingBean.sinPaquetes}">
+                            <af:panelBox id="pb2" showDisclosure="false" showMaximize="never" inlineStyle="border: 0px;" background="medium">
+                            <af:panelGroupLayout id="pgl5" layout="horizontal">
+                            <af:outputText id="ot4" value="Estimado suscriptor, por el momento no podemos consultar los servicios suplementarios que puedes contratar, por favor comunicarse a atenciÃ³n a clientes por cualquiera de nuestros medios de contacto." styleClass="channel-bloqueo"/>
+                            </af:panelGroupLayout>
+                        </af:panelBox>
+                        </af:panelGroupLayout-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

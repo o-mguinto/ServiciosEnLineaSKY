@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="pagoTF">
+    <default-activity>pago</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>PagosBackingBean</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.pagos.BBPago</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__5">
+      <managed-bean-name>pagosNuevaTarjetaMB</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.pagos.PagosNuevaTarjetaMB</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <view id="pago">
+      <page>/pages/adelantaRecargas/pago.jsff</page>
+    </view>
+    <task-flow-call id="tarjetaTF">
+      <task-flow-reference>
+        <document>/WEB-INF/tarjetaTF.xml</document>
+        <id>tarjetaTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <view id="pagarNuevaTarjeta">
+      <page>/pages/adelantaRecargas/pagarNuevaTarjeta.jsff</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id>pago</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>misTarjetas</from-outcome>
+        <to-activity-id>tarjetaTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__4">
+        <from-outcome>irNuevaTarjeta</from-outcome>
+        <to-activity-id>pagarNuevaTarjeta</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>pagarNuevaTarjeta</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>regresarPago</from-outcome>
+        <to-activity-id>pago</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

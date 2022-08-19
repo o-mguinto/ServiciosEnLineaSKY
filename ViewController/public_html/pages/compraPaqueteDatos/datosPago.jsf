@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:h="http://java.sun.com/jsf/html" locale="es">
+    <af:document id="d1"
+                 title="#{pageFlowScope.CompraDatosBackingBean.isSuplementario? 'Contratar Servicio Suplementario' : 'Contratar ' += pageFlowScope.CompraDatosBackingBean.paqueteActiva.nombre_display}">
+        <af:messages id="m1"/>
+        <af:resource type="css" source="/css/custom/pagInternas_template.css"/>
+        <!--efecto animado del dialogo de espera-->
+        <af:resource type="css" source="/css/spinner-sel-sky.css"/>
+        <c:set var="selSKYBundle"
+               value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+        <af:form id="f1">
+            <af:resource type="javascript">
+              function enforcePreventUserInput(evt) {
+                  var popup = AdfPage.PAGE.findComponentByAbsoluteId('popUpBusy');
+                  if (popup != null) {
+                      AdfPage.PAGE.addBusyStateListener(popup, handleBusyState);
+                      evt.preventUserInput();
+                  }
+              }
+
+              function handleBusyState(evt) {
+                  var popup = AdfPage.PAGE.findComponentByAbsoluteId('popUpBusy');
+                  if (popup != null) {
+                      if (evt.isBusy()) {
+                          popup.show();
+                      }
+                      else if (popup.isPopupVisible()) {
+                          popup.hide();
+                          AdfPage.PAGE.removeBusyStateListener(popup, handleBusyState);
+                      }
+                  }
+              }
+            </af:resource>
+            <af:panelGroupLayout id="pgl1" layout="scroll"
+                                 styleClass="dialog-background"
+                                 inlineStyle="border: none;">
+                <h:outputText styleClass="title padd-top-dialog padd-bottom-dialog"
+                              value="Seleccione forma de pago" id="ot14"/>
+                <af:panelBox id="panelBox1" maximized="true"
+                             showDisclosure="false" showMaximize="never"
+                             background="medium"
+                             inlineStyle="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? 'width:100.0%; border:none;' : 'width:95.0%; margin:0.0%; padding:0.0%; border:none;' }"
+                             contentStyle="min-height: 350px;max-height: 360px;"
+                             showHeader="never">
+                    <af:panelStretchLayout id="psl1"
+                                           endWidth="100px;vertical-align: middle;"
+                                           styleClass="AFStretchWidth">
+                        <f:facet name="center">
+                            <af:panelGroupLayout layout="scroll"
+                                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                 id="pgl8">
+                                <af:panelBox showDisclosure="false"
+                                             showMaximize="never"
+                                             background="medium"
+                                             showHeader="never" id="pb2"
+                                             contentStyle="min-height:200px; max-height: 300px;"
+                                             inlineStyle="border:none;">
+                                    <f:facet name="toolbar"/>
+                                    <af:panelGroupLayout id="pfl1"
+                                                         partialTriggers="cbActualizar">
+                                        <div style="max-height: 180px; min-height: 70px; overflow:auto;">
+                                            <div class="row">
+                                                <div class="col-12 col-tb-8 col-sm-8">
+                                                    <span class="xf">* </span>
+                                                     
+                                                    <af:outputLabel for="sor1"
+                                                                    value="Tarjeta"
+                                                                    styleClass="label-internal"
+                                                                    id="ol1"/>
+                                                     
+                                                    <af:selectOneRadio id="sor1"
+                                                                       showRequired="false"
+                                                                       simple="true"
+                                                                       value="#{pageFlowScope.CompraDatosBackingBean.tarjetaObject}"
+                                                                       required="true"
+                                                                       autoSubmit="true"
+                                                                       styleClass="output-internal">
+                                                        <af:forEach var="tdc"
+                                                                    items="#{bindings.tblTDC.rangeSet}">
+                                                            <f:selectItem id="si1"
+                                                                          itemValue="#{tdc}"
+                                                                          itemLabel="#{tdc.numeroTarjeta}"/>
+                                                        </af:forEach>
+                                                    </af:selectOneRadio>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </af:panelGroupLayout>
+                                    <div class="row top">
+                                        <div class="col-12 col-tb-8 col-sm-8">
+                                            <span class="xf">* </span>
+                                             
+                                            <af:outputLabel for="codigoSeguridad"
+                                                            value="#{selSKYBundle['lbl_codigoSeguridad']}"
+                                                            id="ol6"
+                                                            styleClass="label-internal"/>
+                                             
+                                            <af:inputText label="CVV(Código de Seguridad)"
+                                                          secret="true"
+                                                          value="#{pageFlowScope.CompraDatosBackingBean.tarjeta.codigo}"
+                                                          styleClass="input-internal"
+                                                          placeholder="#{selSKYBundle['placeholder_cvv']}"
+                                                          showRequired="false"
+                                                          simple="true"
+                                                          id="codigoSeguridad"
+                                                          required="true">
+                                                <af:validateRegExp id="codSegValidator"
+                                                                   pattern="[0-9]{3,4}"
+                                                                   messageDetailNoMatch="Ingresa el código de seguridad de 3 ó 4 números de tu tarjeta."/>
+                                            </af:inputText>
+                                        </div>
+                                    </div>
+                                    <div class="row top">
+                                        <af:panelFormLayout id="panelFormLayout1"
+                                                            fieldWidth="65%"
+                                                            labelWidth="35%">
+                                            <af:inputText label="Monto a cobrar:"
+                                                          id="it2"
+                                                          readOnly="true"
+                                                          required="true"
+                                                          value="$ #{pageFlowScope.CompraDatosBackingBean.paqueteActiva.montoDiferencia} #{sesion.moneda}"
+                                                          rendered="#{sesion.userVeTV}"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder;"/>
+                                        </af:panelFormLayout>
+                                    </div>
+                                </af:panelBox>
+                                <af:panelGroupLayout id="pgl2">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <af:group id="g1">
+                                                <span class="xf">* </span>
+                                                <af:outputText value="#{selSKYBundle['general.obligatorio']}"
+                                                               id="ot1"
+                                                               styleClass="cursiv"/>
+                                            </af:group>
+                                        </div>
+                                    </div>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                        <!--f:facet name="end">
+                            <af:panelGroupLayout id="pgl4">
+                                <div class="text-internal"
+                                     style="padding: 0px;">
+                                    <div class="autocenter">
+                                        <af:image id="i6"
+                                                  source="/imagenes/#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.imagen}"
+                                                  inlineStyle="width: 60%;     height: auto;"/>
+                                    </div>
+                                    <div class="row autocenter paquetes-capacitad">
+                                        <h:outputText id="it13"
+                                                      value="#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.nombre_display}"
+                                                      styleClass="font-bolder"/>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                        </f:facet-->
+                    </af:panelStretchLayout>
+                </af:panelBox>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl3">
+                <div class="col-12 dialog-background">
+                    <div class="row autocenter">
+                        <div class="col-3">
+                            <af:button text="Agregar tarjeta" id="cb1"
+                                       immediate="true"
+                                       styleClass="btn-pay-dialog"
+                                       action="#{pageFlowScope.CompraDatosBackingBean.cbSiguienteNTDC_action}"/>
+                        </div>
+                        <div class="col-4">
+                            <af:button text="Actuailzar tarjetas"
+                                       id="cbActualizar"
+                                       styleClass="btn-pay-dialog"
+                                       action="#{pageFlowScope.CompraDatosBackingBean.cbActualizar_action}"
+                                       immediate="true"/>
+                        </div>
+                        <div class="col-3-1 padd-right">
+                            <af:button text="Comprar" id="cbSiguientePago"
+                                       styleClass="btn-pay-dialog"
+                                       action="#{pageFlowScope.CompraDatosBackingBean.cbContrataDatosVeTV_action}">
+                                <af:clientListener method="enforcePreventUserInput"
+                                                   type="action"/>
+                            </af:button>
+                        </div>
+                        <div class="col-3-1 padd-left">
+                            <af:button text="Cancelar" id="cbCancelar"
+                                       styleClass="btn-pay-dialog"
+                                       action="#{pageFlowScope.CompraDatosBackingBean.cbCancelar_action}"
+                                       immediate="true"/>
+                        </div>
+                    </div>
+                </div>
+            </af:panelGroupLayout>
+        </af:form>
+        <af:popup id="contrataVetV" contentDelivery="lazyUncached"
+                  childCreation="deferred" autoCancel="disabled"
+                  binding="#{pageFlowScope.CompraDatosBackingBean.popupResultadoCompraVeTV}">
+            <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                <af:dialog id="contrataVetVDia" type="none"
+                           title="Resumen de la compra" styleClass="alert"
+                           closeIconVisible="false">
+                    <div id="contrataVetVPa" class="text-internal">
+                        <af:outputText id="ot4"
+                                       value="La solicitud ha sido enviada correctamente."
+                                       styleClass="font-bolder"
+                                       inlineStyle="text-align:justify;"/>
+                    </div>
+                    <div class="col-12 dialog-background">
+                        <div class="row top autocenter">
+                            <af:button text="Aceptar" id="cb3"
+                                       action="closeTaskFlow"
+                                       styleClass="btn-pay-dialog"/>
+                        </div>
+                    </div>
+                </af:dialog>
+            </div>
+        </af:popup>
+        <af:popup id="contrataVetVKo" contentDelivery="lazyUncached"
+                  childCreation="deferred" autoCancel="disabled"
+                  binding="#{pageFlowScope.CompraDatosBackingBean.popupResultadoCompraVeTVKo}">
+            <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                <af:dialog id="contrataVetVDiaKo" type="none"
+                           title="Resumen de la compra" styleClass="alert"
+                           closeIconVisible="false">
+                    <div id="contrataVetVPaKo" class="text-internal">
+                        <af:outputText id="ot3"
+                                       value="No es posible procesar tu solicitud de compra, para mayor información comuníquese a la línea de atención a clientes."
+                                       styleClass="font-bolder"
+                                       inlineStyle="text-align:justify;"/>
+                    </div>
+                    <div class="col-12 dialog-background">
+                        <div class="row top autocenter">
+                            <af:button text="Aceptar" id="cb2"
+                                       action="closeTaskFlow"
+                                       styleClass="btn-pay-dialog"/>
+                        </div>
+                    </div>
+                </af:dialog>
+            </div>
+        </af:popup>
+        <af:group id="pt_g3">
+            <af:popup id="popUpBusy" contentDelivery="immediate"
+                      clientComponent="true">
+                <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                    <af:dialog id="dlgWait" type="none" closeIconVisible="false"
+                               modal="true" clientComponent="true"
+                               styleClass="waitpopup">
+                        <div class="text-internal">
+                            <div class="col-12 autocenter">
+                                <span class="spinner"
+                                      style="top: 40px;position: absolute;"></span>
+                            </div>
+                            <div class="col-12 autocenter"
+                                 style="padding-top:40px;">
+                                <div class="row top">
+                                    <h:outputText value="#{selSKYBundle['admoneditar.ot7.value']}"
+                                                  id="ot2"
+                                                  styleClass="font-bolder"
+                                                  style="font: normal 1em 'Roboto', sans-serif;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </af:dialog>
+                </div>
+            </af:popup>
+        </af:group>
+    </af:document>
+</f:view>

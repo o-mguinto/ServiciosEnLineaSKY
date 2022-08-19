@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="SolicitudOtrosServiciosPageDef"
+                Package="pages.solicitudOtrosServicios">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="obtenerSolicitudServicio.result" DataControl="DCSolicitudOtrosServicios" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.solicitudservicio.DetalleSolicitudServicio"
+                    id="obtenerSolicitudServicioIterator"/>
+    <methodIterator Binds="obtenerSolicitudServicio.result"
+                    DataControl="DCSolicitudOtrosServicios" RangeSize="10"
+                    BeanClass="mx.com.sky.sel.services.beans.solicitudservicio.Sugerencia"
+                    id="obtenerSolicitudServicioIter"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerSolicitudServicio" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerSolicitudServicio" IsViewObjectMethod="false" DataControl="DCSolicitudOtrosServicios"
+                  InstanceName="DCSolicitudOtrosServicios.dataProvider"
+                  ReturnName="data.DCSolicitudOtrosServicios.methodResults.obtenerSolicitudServicio_DCOtrosServicios_dataProvider_obtenerSolicitudServicio_result">
+      <NamedData NDName="uid" NDValue="#{sessionScope.sesion.usuario.uid}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="obtenerSolicitudServicioIter" id="sugerencia">
+      <AttrNames>
+        <Item Value="sugerencia"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="obtenerSolicitudServicioIterator" id="actualizarTabla"
+            InstanceName="DCSolicitudOtrosServicios.dataProvider"
+            DataControl="DCSolicitudOtrosServicios" RequiresUpdateModel="true"
+            Action="iteratorExecute"/>
+    <attributeValues IterBinding="obtenerSolicitudServicioIterator"
+                     id="numero_ss">
+      <AttrNames>
+        <Item Value="numero_ss"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="obtenerSolicitudServicioIterator" id="Sugerencia">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.solicitudservicio.Sugerencia"
+                      Name="Sugerencia20">
+        <AttrNames>
+          <Item Value="numero_ss"/>
+          <Item Value="sugerencia"/>
+          <Item Value="fechaRegistroString"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

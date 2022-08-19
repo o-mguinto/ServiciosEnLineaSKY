@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <style type="text/css" media="screen">
+        .btn-adqcan {
+            font: normal bolder 1em 'Roboto', sans-serif;
+            border: 1px solid rgb(0, 75, 141);
+            background-image: none;
+            background-color: #2860ded4;
+            color: White;
+            min-width: 45px;
+            max-width: 170px;
+            margin-top: 10px;
+            padding: 0px 15px;
+            text-transform: uppercase;
+            text-align: center;
+            border-radius: 10px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+        .btn-adqcan:hover {
+            font: normal bolder 1em 'Roboto', sans-serif;
+            border: 1px solid rgb(0, 75, 141);
+            background-image: none;
+            background-color: #2860ded4;
+            color: White;
+            width: 100%;
+            margin-top: 10px;
+            padding: 0px 15px;
+            text-transform: uppercase;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.24), 0 3px 3px 0 rgba(0, 0, 0, 0.19);
+        }
+    </style>
+
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#servicioComparteCelular').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <!--af:resource type="css" source="/css/consumo_internet.css"/-->
+        <af:resource type="css" source="/css/bolsas/bolsas.css"/>
+        <div id="servicioComparteCelular">
+            <af:messages id="m1"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelGroupLayout id="pglineasCel"
+                                             rendered="#{pageFlowScope.BBServicioComparteCelular.lineasCelDisponibles}">
+                            <div class="row">
+                                <af:outputText id="otInfoNumLin" 
+                                               value="Su cuenta Blue Telecomm Cel tiene #{pageFlowScope.BBServicioComparteCelular.numLineasCelular} línea(s) activa(s), seleccione la línea en la que desea activar el Servicio Comparte"
+                                               styleClass="check-internal-bold"/>
+                            </div>
+                            
+                            <br/>
+                            
+                            <div class="row">
+                                <af:selectOneChoice value="#{pageFlowScope.BBServicioComparteCelular.lineaCelularSeleccionada}"
+                                                label="Línea celular a consultar:"
+                                                id="socLineasCelulares"
+                                                unselectedLabel="Selecciona una línea"
+                                                styleClass="select-internal"
+                                                valueChangeListener="#{pageFlowScope.BBServicioComparteCelular.actualizaServiciosComparte}"
+                                                autoSubmit="true" immediate="true">
+                                    <f:selectItems value="#{pageFlowScope.BBServicioComparteCelular.lineasCelularesComboBox}" id="si1"/>
+                                </af:selectOneChoice>
+                            </div>
+                            
+                            <br/>
+                            <br/>
+                            
+                            <div class="row">
+                                <af:panelGroupLayout id="pgl12t" partialTriggers="socLineasCelulares">
+                                    <af:panelGroupLayout id="pglActSer"
+                                                         rendered="#{pageFlowScope.BBServicioComparteCelular.consultaServiciosComparteValida and pageFlowScope.BBServicioComparteCelular.existenServiciosComparte}">
+                                        <div class="row col-12 content-internal">
+                                            <af:forEach items="#{pageFlowScope.BBServicioComparteCelular.serviciosComparteConsultados}" var="servicioComparte" varStatus="status">
+                                                <div class="col-5 col-sm-6 col-tb-6">
+                                                    <af:panelGroupLayout id="pgl8" layout="vertical"  styleClass="autocenter" inlineStyle="text-align:left;">
+                                                        <af:panelGroupLayout id="pglLink">
+                                                            <af:link action="#{pageFlowScope.BBServicioComparteCelular.showPopupActivarServicioComparte}" 
+                                                                     id="linkActSerCom" styleClass="bolderPaquete color_#{status.index}">
+                                                                <span />
+                                                                <f:setPropertyActionListener target="#{pageFlowScope.BBServicioComparteCelular.servicioComparteSeleccionado}" value="#{servicioComparte}"/>
+                                                                <div style="font-weight:bolder; text-align:center;" class="col-12 word-break-text">
+                                                                    <af:outputText id="otNomSerCom" value="#{servicioComparte.nombreProducto}" styleClass="titulo-paquete"/>
+                                                                </div>
+                                                                <br/>
+                                                                <br/>
+                                                                <div style="font-weight:bold;">
+                                                                    <af:outputText id="otCostoSerCom" value="Precio #{servicioComparte.precio} #{sesion.moneda}"/>
+                                                                </div>
+                                                                <br/>
+                                                                <br/>
+                                                                <div style="font-weight:normal;" class="col-12 word-break-text">
+                                                                    <af:outputText id="otDescBas1" value="Incluye:"/>
+                                                                    <br/>
+                                                                    <af:outputText id="otDescBas2" value="#{servicioComparte.descripcion}"/>
+                                                                </div>
+                                                                <br/>
+                                                                <br/>
+                                                                <!--div style="font-weight:normal; font-size: x-small;">
+                                                                    <af:outputText id="otDescBas3" value="El Servicio Comparte tiene vigencia independiente del plan Blue Telecomm Cel y se renueva automáticamente."/>
+                                                                </div-->
+                                                                <br/>
+                                                                <br/>
+                                                                <div class="btn-adqcan">
+                                                                    <af:outputText id="otAdquirir" value="ADQUIRIR SERVICIO"/>
+                                                                </div>
+                                                            </af:link>
+                                                        </af:panelGroupLayout>
+                                                        <div class="top"></div>
+                                                    </af:panelGroupLayout>
+                                                </div>
+                                            </af:forEach>
+                                        </div>
+                                    </af:panelGroupLayout>
+                                    
+                                    
+                                    <af:panelGroupLayout id="pglCanSer"
+                                                         rendered="#{pageFlowScope.BBServicioComparteCelular.consultaServiciosComparteValida and !pageFlowScope.BBServicioComparteCelular.existenServiciosComparte}">
+                                        <div class="row col-12 content-internal">
+                                            <div class="col-5 col-sm-6 col-tb-6">
+                                                    <af:panelGroupLayout id="pgl2" layout="vertical"  styleClass="autocenter" inlineStyle="text-align:left;">
+                                                        <af:panelGroupLayout id="pgl1">
+                                                            <af:link action="#{pageFlowScope.BBServicioComparteCelular.showPopupCancelarServicioComparte}" 
+                                                                     id="linkCanSerCom" styleClass="bolderPaquete color_0">
+                                                                <span />
+                                                                <div style="font-weight:bolder; text-align:center;">
+                                                                    <af:outputText id="otNomSerComC" value="Servicio Comparte" styleClass="titulo-paquete"/>
+                                                                </div>
+                                                                <br/>
+                                                                <br/>
+                                                                <div style="font-weight:normal;" class="col-12 word-break-text">
+                                                                    <af:outputText id="otDescCan1" value="Incluye:"/>
+                                                                    <br/>
+                                                                    <af:outputText id="otDescCan2" value="Funcionalidad para compartir la bolsa de datos del plan Blue Telecomm Cel mediante la modalidad de Hotspot."/>
+                                                                </div>
+                                                                <br/>
+                                                                <br/>
+                                                                <!--div style="font-weight:normal; font-size: x-small;">
+                                                                    <af:outputText id="otDescCan3" value="El Servicio Comparte tiene vigencia independiente del plan Blue Telecomm Cel y se renueva automáticamente."/>
+                                                                </div-->
+                                                                <br/>
+                                                                <br/>
+                                                                <div class="btn-adqcan">
+                                                                    <af:outputText id="otCancelar" value="CANCELAR SERVICIO"/>
+                                                                </div>
+                                                            </af:link>
+                                                        </af:panelGroupLayout>
+                                                    </af:panelGroupLayout>
+                                            </div>
+                                        </div>
+                                    </af:panelGroupLayout>
+                                    
+                                </af:panelGroupLayout>
+                            </div>
+                            
+                        </af:panelGroupLayout>
+                    </div>
+                    
+                    
+                    <af:popup id="confActServCom" childCreation="deferred"
+                              contentDelivery="lazyUncached"
+                              autoCancel="disabled"
+                              binding="#{pageFlowScope.BBServicioComparteCelular.popupConfActServComparte}">
+                        <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                            <af:dialog id="dialActComPopup" type="none"
+                                       styleClass="alert"
+                                       closeIconVisible="false"
+                                       title="Activar Servicio Comparte">
+                                <div class="text-internal">
+                                    <af:outputText id="otInst" value="Confirme que desea adquirir el siguiente servicio:"
+                                                   styleClass="font-bolder"/>
+                                    <br/>
+                                    <br/>
+                                    <af:outputText id="otNom" value="#{pageFlowScope.BBServicioComparteCelular.servicioComparteSeleccionado.nombreProducto}" styleClass="font-bolder"/>
+                                    <br/>
+                                    <af:outputText id="otPre" value="Precio: $#{pageFlowScope.BBServicioComparteCelular.servicioComparteSeleccionado.precio}"/>
+                                    <br/>
+                                    <af:outputText id="otLin" value="Para la línea celular: #{pageFlowScope.BBServicioComparteCelular.lineaCelularSeleccionada}"/>
+                                </div>
+                                <div class="col-12 dialog-background">
+                                    <div class="row top autocenter">
+                                        <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-left sm-no-padd-left" style="float: right">
+                                            <af:button id="bActSer"
+                                                       text="Confirmar"
+                                                       styleClass="btn-pay-dialog"
+                                                       action="#{pageFlowScope.BBServicioComparteCelular.activarServicioComparte}">
+                                                <af:clientListener method="enforcePreventUserInput"
+                                                                   type="action"/>
+                                            </af:button>
+                                        </div>
+                                        <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-right sm-no-padd-right" style="float: right">
+                                            <af:button id="b6" text="Cancelar"
+                                                       styleClass="btn-pay-dialog"
+                                                       action="#{pageFlowScope.BBServicioComparteCelular.cancelarActivarServicioComparte}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </af:dialog>
+                        </div>
+                    </af:popup>
+                    
+                    <af:popup id="confCanServCom" childCreation="deferred"
+                              contentDelivery="lazyUncached"
+                              autoCancel="disabled"
+                              binding="#{pageFlowScope.BBServicioComparteCelular.popupConfCanServComparte}">
+                        <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                            <af:dialog id="dialCanComPopup" type="none"
+                                       styleClass="alert"
+                                       closeIconVisible="false"
+                                       title="Cancelar Servicio Comparte">
+                                <div class="text-internal">
+                                    <af:outputText id="otCInst" value="Confirme que desea cancelar el servicio comparte para la línea celular: #{pageFlowScope.BBServicioComparteCelular.lineaCelularSeleccionada}"
+                                                   styleClass="font-bolder"/>
+                                    <br/>
+                                    <br/>
+                                </div>
+                                <div class="col-12 dialog-background">
+                                    <div class="row top autocenter">
+                                        <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-left sm-no-padd-left" style="float: right">
+                                            <af:button id="bCanSer"
+                                                       text="Confirmar"
+                                                       styleClass="btn-pay-dialog"
+                                                       action="#{pageFlowScope.BBServicioComparteCelular.cancelarServicioComparte}">
+                                                <af:clientListener method="enforcePreventUserInput"
+                                                                   type="action"/>
+                                            </af:button>
+                                        </div>
+                                        <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-right sm-no-padd-right" style="float: right">
+                                            <af:button id="b1" text="Cancelar"
+                                                       styleClass="btn-pay-dialog"
+                                                       action="#{pageFlowScope.BBServicioComparteCelular.cancelarCancelarServicioComparte}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </af:dialog>
+                        </div>
+                    </af:popup>
+                    
+                </div>
+            </div>
+        </div>
+    </af:group>
+
+</ui:composition>

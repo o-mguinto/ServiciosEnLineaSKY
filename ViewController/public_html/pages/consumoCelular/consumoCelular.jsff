@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <style type="text/css" media="screen">
+        
+    </style>
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#consumoCelular').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css" source="/css/consumos/consumoCel.css"/>
+        <af:resource type="css">
+            div[role="progressbar"]::before {
+                counter-reset: percentage var(--value);
+            }
+            @keyframes growProgressBar {
+                0%, 33% {--pgPercentage: 0;
+                }
+                100% {--pgPercentage: var(--value);
+                }
+            }
+
+
+        </af:resource>
+        <div id="consumoCelular">
+            <div class="row top">
+                <af:panelGroupLayout id="pglineasCel" rendered="#{viewScope.BBConsumoCelular.lineasCelDisponibles}">
+                    <div class="col-12 content-internal">
+                        <div class="row">
+                            <af:outputText id="otInfoNumLin"
+                                           value="Su cuenta tiene #{viewScope.BBConsumoCelular.numLineasCelular} líneas de celular, seleccione una para consultar su consumo"
+                                           styleClass="check-internal-bold"/>
+                        </div>
+                        <div class="row top">
+                            <af:selectOneChoice value="#{viewScope.BBConsumoCelular.lineaCelularSeleccionada}"
+                                                label="Líneas celulares de la cuenta:" id="socLineasCelulares"
+                                                unselectedLabel="Selecciona una línea" styleClass="select-internal"
+                                                valueChangeListener="#{viewScope.BBConsumoCelular.actualizarConsumoLineaCel}"
+                                                autoSubmit="true" immediate="true">
+                                <f:selectItems value="#{viewScope.BBConsumoCelular.lineasCelulares}" id="si1"/>
+                                <af:clientListener method="enforcePreventUserInput" type="valueChange"/>
+                            </af:selectOneChoice>
+                        </div>
+                        <div class="row">
+                            <af:panelGroupLayout id="pgl12t" partialTriggers="socLineasCelulares">
+                                <af:panelGroupLayout id="pgl12"
+                                                     visible="#{viewScope.BBConsumoCelular.consultaConsumoCelularValida}">
+                                    <af:forEach items="#{viewScope.BBConsumoCelular.consumosCelularAMostrar}"
+                                                var="ofertas" varStatus="vsOf">
+                                        <div class="col-3 top" style="    padding: 0px 10px;">
+                                            <af:link text="#{ofertas.key}" id="lnkOfertas"
+                                                     action="#{viewScope.BBConsumoCelular.obtenerPaquetes}"
+                                                     targetFrame="_self" immediate="true"
+                                                     styleClass="btn-internal #{viewScope.BBConsumoCelular.ofertaSeleccionada eq ofertas.key ? 'btn-opacity-1' : 'btn-opacity'}">
+                                                <af:setPropertyListener type="action" from="#{ofertas.key}"
+                                                                        to="#{viewScope.BBConsumoCelular.ofertaSeleccionada}"/>
+                                                <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                            </af:link>
+                                        </div>
+                                    </af:forEach>
+                                    <div class="row top">
+                                        <af:forEach items="#{viewScope.BBConsumoCelular.paquetesDeOferta}"
+                                                    var="bolsaConsumoCel">
+                                            <div class="col-3 sm-top" style="padding: 10px;">
+                                                <div class="col-12 bolderPaquete">
+                                                    <div class="row top-sm autocenter">
+                                                        <h:outputText id="nomBolsa"
+                                                                      value="#{bolsaConsumoCel.nombreBolsaDescripcion}"
+                                                                      styleClass="channel-text1"
+                                                                      style="line-height: 0.9em; padding-left: 5px; text-transform: capitalize;"/>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="row top">
+                                                            <div class="autocenter" role="progressbar" aria-valuemin="0"
+                                                                 aria-valuemax="100"
+                                                                 style="--value:#{bolsaConsumoCel.disponiblesPorcentaje}">
+                                                                <h:outputText id="datosDispLnCelVal"
+                                                                              value="#{bolsaConsumoCel.disponibles}"
+                                                                              styleClass="lbl-datosDisponibles"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="row top-sm autocenter ">
+                                                                <h:outputText id="dispon" value="Disponibles"
+                                                                              styleClass="channel-text2"
+                                                                              style="opacity: 0.8;"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="row top-sm autocenter">
+                                                            <af:outputText id="datosTotLnCelLbl" value="Incluidos: "
+                                                                           styleClass="channel-text2"/>
+                                                             
+                                                            <h:outputText id="datosTotLnCelVal"
+                                                                          value="#{bolsaConsumoCel.total}"
+                                                                          styleClass="channel-text1"/>
+                                                        </div>
+                                                        <div class="row top-sm autocenter">
+                                                            <af:outputText id="datosConsLnCelLbl" value="Consumidos: "
+                                                                           styleClass="channel-text2"/>
+                                                             
+                                                            <h:outputText id="datosConsLnCelVal"
+                                                                          value="#{bolsaConsumoCel.consumidos}"
+                                                                          styleClass="channel-text1"/>
+                                                        </div>
+                                                        <div class="row top-sm autocenter">
+                                                            <af:outputText id="vigenciaDatosLnCelLbl"
+                                                                           value="Vigente hasta: "
+                                                                           styleClass="channel-text2"/>
+                                                             
+                                                            <h:outputText id="vigenciaDatosLnCelVal"
+                                                                          value="#{bolsaConsumoCel.vigencia}"
+                                                                          styleClass="channel-text1"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="row top-sm autocenter ">
+                                                            <h:outputText id="leyenda"
+                                                                          rendered="#{bolsaConsumoCel.leyendaNoConsumos}"
+                                                                          value="Los #{bolsaConsumoCel.unidad} no consumidos en EUA y Canadá podrán ser usados en Todo México"
+                                                                          styleClass="channel-text2"
+                                                                          style="opacity: 0.8;font-size: 10px;"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </af:forEach>
+                                        <div class="col-12" style="text-align:center;">
+                                            <af:link id="btn_paises" text="Consulta los destinos incluidos" rendered="#{viewScope.BBConsumoCelular.mostrarPaisesIncluidos}">
+                                                <af:showPopupBehavior popupId="p1"/>
+                                            </af:link>
+                                        </div>
+                                        <af:popup id="p1">
+                                            <af:dialog id="d2" type="cancel" cancelTextAndAccessKey="Cerrar" >
+                                                <iframe src="#{request.contextPath}/deeplinkios/DestinosIncluidos/#{viewScope.BBConsumoCelular.nombreArchivoPaises}.html"
+                                                        height="400" width="350"></iframe>
+                                            </af:dialog>
+                                        </af:popup>
+                                    </div>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </af:panelGroupLayout>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

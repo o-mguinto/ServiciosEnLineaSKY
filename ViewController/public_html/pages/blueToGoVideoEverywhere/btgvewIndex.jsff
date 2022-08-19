@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#btgvewIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+
+              fncSlider(".example-slider", 
+              {
+                  autoSlidingDelay : 5000
+              });
+
+              var $demoCont = document.querySelector(".demo-cont");
+
+              /*[].slice.call(document.querySelectorAll(".fnc-slide__action-btn")).forEach(function ($btn) {
+  $btn.addEventListener("click", function () {
+    $demoCont.classList.toggle("credits-active");
+  });
+});
+ document.querySelector(".demo-cont__credits-close").addEventListener("click", function () {
+  $demoCont.classList.remove("credits-active");
+});
+
+document.querySelector(".js-activate-global-blending").addEventListener("click", function () {
+  document.querySelector(".example-slider").classList.toggle("m--global-blending-active");
+});*/
+          });
+        </af:resource>
+        <af:resource type="css">
+            .slide_ {
+                height: 70vh !important;
+            }
+
+            .otSinopsis {
+                padding-right: 3% !important;
+                line-height: 20px !important;
+                font-weight: bold !important;
+                display: contents;
+            }
+
+            .otNombre {
+                padding-right: 8px !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: rgb(0, 164, 228) !important;
+    word-spacing: 0px !important;
+            }
+
+            .slide_header_content {
+                top: 0px !important;
+                text-align: right !important;
+                height: auto !important;
+                width: 320px !important;
+                opacity: 0.5 !important;
+                left: 65% !important;
+                background-color: #000;
+                border: 1px solid #000;
+            }
+
+            .slide_header_link {
+                padding-right: 0px !important;
+                padding-top: 0px !important;
+                text-align: right !important;
+                padding-bottom: 0px !important;
+                line-height: 12px !important;
+                margin-top: 0px !important;
+                margin-bottom: 0px !important;
+            }
+        </af:resource>
+        <div id="btgvewIndex">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelBox text="Aviso" id="pb3"
+                                     showDisclosure="false" background="medium"
+                                     rendered="#{bindings.EventosBTGEW.estimatedRowCount le 0}"
+                                     inlineStyle="border: 0px;">
+                            <af:outputText value="Por el momento no hay eventos disponibles para Blue To Go Video Everywhere."
+                                           id="ot7"
+                                           styleClass="check-internal-bold top-channel"/>
+                            <div class="top"></div>
+                        </af:panelBox>
+                    </div>
+                    <div class="row top">
+                        <af:subform id="s7"
+                                    rendered="#{bindings.EventosBTGEW.estimatedRowCount>0}">
+                            <af:resource type="javascript" source="/js/slider/INLINE_PEN_JS.js"></af:resource>
+                            <af:resource type="css"
+                                         source="/css/slider/INLINE_PEN_STYLESHEET.css"></af:resource>
+                            <div class="demo-cont slide_">
+                                <div class="fnc-slider example-slider m--with-autosliding slide_">
+                                    <div class="fnc-slider__slides">
+                                        <af:forEach items="#{bindings.EventosBTGEW.rangeSet}"
+                                                    var="item" varStatus="idx">
+                                            <div class="fnc-slide m--blend-sky #{(idx.index eq 0?'m--active-slide':'no')}"
+                                                 style="background-color: white;">
+                                                <div class="fnc-slide__inner"
+                                                     style="background: url('/sky#{parametros.urlImgs825X464}#{item.imagen}') center center no-repeat; background-size: contain;">
+                                                    <!--div class="fnc-slide__mask" 
+     style="background: url('/sky#{parametros.urlImgs825X464}#{item.imagen}') center no-repeat;">
+<div class="fnc-slide__mask-inner"
+     style="background: url('/sky#{parametros.urlImgs825X464}#{item.imagen}') center no-repeat;"></div>
+</div-->
+                                                    <div class="fnc-slide__content slide_header_content">
+                                                        <h2 class="fnc-slide__heading slide_header_link">
+                                                            <af:link id="cl1"
+                                                                     disabled="#{!item.linkActivoB}"
+                                                                     destination="#{item.linkHttp}"
+                                                                     targetFrame="_blank">
+                                                                <af:outputText value="#{item.nombre}"
+                                                                               id="cb1"
+                                                                               styleClass="fnc-slide__heading-line otNombre"
+                                                                               truncateAt="35"/>
+                                                            </af:link>
+                                                        </h2>
+                                                         
+                                                        <h2 class="fnc-slide__action-btn-sin">
+                                                            <h:outputLabel value="#{item.descripcion}"
+                                                                           id="oplSinop2"
+                                                                           styleClass="otSinopsis"/>
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </af:forEach>
+                                    </div>
+                                    <nav class="fnc-nav">
+                                        <div class="fnc-nav__bgs">
+                                            <af:forEach items="#{bindings.EventosBTGEW.rangeSet}"
+                                                        var="itemNav"
+                                                        varStatus="idx3">
+                                                <div class="fnc-nav__bg m--navbg-green fnc-nav__bg-#{idx3.index +1} #{(idx3.index eq 0?'m--active-nav-bg':'no')}"></div>
+                                            </af:forEach>
+                                        </div>
+                                        <div class="fnc-nav__controls">
+                                            <af:forEach items="#{bindings.EventosBTGEW.rangeSet}"
+                                                        var="item2"
+                                                        varStatus="idx2">
+                                                <button type="button"
+                                                        class="fnc-nav__control fnc-nav__control-#{idx2.index +1} #{(idx2.index eq 0?'m--active-control':'no')}"
+                                                        data-slide="#{idx2.index +1}">
+                                                    <h:outputLabel value="#{idx2.index +1}"
+                                                                   id="ol2"
+                                                                   style="font-weight"/>
+                                                    <span class="fnc-nav__control-progress"
+                                                          style="transition: transform 5.66667s ease 0s;"></span>
+                                                </button>
+                                            </af:forEach>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </af:subform>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

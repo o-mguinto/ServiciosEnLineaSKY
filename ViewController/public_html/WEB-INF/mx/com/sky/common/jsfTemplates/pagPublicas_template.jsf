@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:h="http://java.sun.com/jsf/html"
+                    xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component">
+    <af:xmlContent>
+        <afc:component>
+            <afc:description>Template para páginas públicas</afc:description>
+            <afc:display-name>pagPublicas_template</afc:display-name>
+            <afc:facet>
+                <afc:description>Contenido de página</afc:description>
+                <afc:facet-name>contenido_facet</afc:facet-name>
+            </afc:facet>
+        </afc:component>
+    </af:xmlContent>
+    <af:group id="grp1">
+        <c:set var="selBlueTelecommBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+        <!-- EXTERNAL FONTS -->
+        <af:resource type="css" source="https://fonts.googleapis.com/css?family=Roboto"/>
+        <!-- CSS CUSTOM BLUE TELECOMM -->
+        <af:resource type="css" source="/css/custom/pagPublicas_template.css"/>
+        <af:resource type="css" source="/css/custom/backgrounds-pagPublicas.css"/>
+        <!-- JAVASCRIPT CUSTOM BLUE TELECOMM -->
+        <af:resource type="javascript" source="/js/jquery-3.5.1.min.js"/>
+        <af:resource type="javascript" source="/js/bt-scripts.js"/>
+        <af:resource type="javascript" source="/js/pixelSEL.js"/>
+        
+        
+        <div id="blue-main">
+            <div class="row center">
+                <div class="col-3"></div>
+                <div class="col-6 top">
+                    <a href="#{request.contextPath}">
+                        <img src="#{request.contextPath}/imagenes/pc/generales/Logo_BlueT_Hor.svg" class="logo"
+                             alt="Logo BlueTelecomm"/>
+                    </a>
+                </div>
+                <div class="col-3"></div>
+            </div>
+            <div class="row center">
+                <div class="col-12">
+                    <af:facetRef facetName="contenido_facet"/>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="center top">
+                        <h:outputText value="#{selBlueTelecommBundle.mensaje_pie_pagina}" id="ot4"/>
+                        <img src="#{request.contextPath}/imagenes/pc/registro/generales/Ico_dispositivos.png"
+                             class="icons" alt="Dispositivos"/>
+                        <div class="col-12">
+                           <h:outputText value="#{selBlueTelecommBundle.mensaje_navegadores_soportados}" styleClass="navegadores-soportados" id="pt_ot1"/>      
+                        </div>
+                        <table class="norton-security bottom" title="Haga clic para verificar: este sitio elige SSL de Symantec para las comunicaciones confidenciales y el comercio electrónico seguro">
+                            <tr>
+                                <td class="center" valign="top">
+                                    <script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=serviciosenlinea.bluetelecomm.mx&amp;size=M&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=es"></script>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="center" valign="top">
+                                    <a href="https://www.symantec.com/es/es/ssl-certificates" target="_blank">ACERCA DE LOS CERTIFICADOS SSL</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+        <af:popup id="waitPopup" contentDelivery="immediate">
+            <af:dialog id="d3" type="none" title="Procesando tu solicitud ..." closeIconVisible="false">
+                <div class="wait-popup center">
+                    <img src="#{request.contextPath}/imagenes/pc/generales/loading.gif" alt="Espera" width="200px"
+                         height="200px"/>
+                </div>
+            </af:dialog>
+        </af:popup>
+    </af:group>
+</af:pageTemplateDef>

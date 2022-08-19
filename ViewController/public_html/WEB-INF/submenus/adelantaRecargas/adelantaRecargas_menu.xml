@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_adelantaRecargas" label="#{lbl.menu_ADELANTA_RECARGAS}" action="routRecargas" focusViewId="/adelantaRecargasIndex"
+            rendered="#{sesion.ADELANTA_RECARGAS}" immediate="true" icon="/imagenes/menu/ic_adelantaRecargas.svg" targetFrame="_self">
+    <itemNode id="itemNode_recargas" label="#{lbl.menu_ADELANTA_RECARGAS}"
+              action="smenu_recargas" focusViewId="/recargas" rendered="#{sesion.RECARGA_VETV}" targetFrame="_self" immediate="true"/>
+  </itemNode>
+</menu>

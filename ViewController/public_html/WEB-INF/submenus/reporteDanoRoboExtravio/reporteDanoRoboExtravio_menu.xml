@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_reporteDREIndex" focusViewId="/reporteDREIndex" action="irSeleccionarPagDefault"
+            label="#{lbl.menu_REPORTE_DANO_ROBO_EXTRAVIO}" immediate="true"
+            rendered="#{sesion.REPORTE_DANO_ROBO_EXTRAVIO}"
+            icon="/imagenes/menu/ic_reportedrye.svg">
+    <itemNode id="itemNode_equipoIRD" label="#{lbl.smenu_REPORTE_DRE_EQUIPO_IRD}" action="smenu_equipoIRD" focusViewId="/equipoIRD"
+              immediate="true" rendered="#{sesion.IRD}"/>
+    <itemNode id="itemNode_tarjetaInteligente" label="#{lbl.smenu_REPORTE_DRE_TARJETA_INTELIGENTE}" action="smenu_tarjetaInteligente"
+              focusViewId="/tarjetaInteligente" immediate="true" rendered="#{sesion.SMARTCARD}"/>
+  </itemNode>
+</menu>

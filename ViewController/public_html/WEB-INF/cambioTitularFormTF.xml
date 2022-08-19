@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="cambioTitularFormTF">
+    <default-activity>cambioTitularTymMX1</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>PFCambioTitularForm</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.cambiotitular.PFCambioTitularForm</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="cambioTitularTymMX1">
+      <page>/pages/cambioTitular/cambioTitularTymMX1.jsff</page>
+    </view>
+    <task-flow-return id="closeTaskFlow">
+      <outcome>
+        <name>closeTaskFlow</name>
+      </outcome>
+    </task-flow-return>
+    <view id="cambioTitularTymMX2">
+      <page>/pages/cambioTitular/cambioTitularTymMX2.jsff</page>
+    </view>
+    <view id="cambioTitularTymMX3">
+      <page>/pages/cambioTitular/cambioTitularTymMX3.jsff</page>
+    </view>
+    <view id="cambioTitularTymMX3a">
+      <page>/pages/cambioTitular/cambioTitularTymMX3a.jsff</page>
+    </view>
+    <view id="cambioTitularTymMX4">
+      <page>/pages/cambioTitular/cambioTitularTymMX4.jsff</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>cancelar</from-outcome>
+        <to-activity-id>closeTaskFlow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>cambioTitularTymMX1</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>cambioTitularTymMX2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>cambioTitularTymMX2</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>atras</from-outcome>
+        <to-activity-id>cambioTitularTymMX1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>cambioTitularTymMX3</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>cambioTitularTymMX3</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>atras</from-outcome>
+        <to-activity-id>cambioTitularTymMX2</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__14">
+        <from-outcome>TDC</from-outcome>
+        <to-activity-id>cambioTitularTymMX3a</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__15">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>cambioTitularTymMX4</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>cambioTitularTymMX3a</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>atras</from-outcome>
+        <to-activity-id>cambioTitularTymMX3</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__19">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>cambioTitularTymMX4</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id>cambioTitularTymMX4</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome>atras</from-outcome>
+        <to-activity-id>cambioTitularTymMX3</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__18">
+        <from-outcome>atrasTDC</from-outcome>
+        <to-activity-id>cambioTitularTymMX3a</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#satisfaccion').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="satisfaccion">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <!--Para cada fila una div-->
+                            <h:outputText value="#{selSKYBundle['suOpinionNosInteresa_encuesta_camposObligatorios']}"
+                                            id="of1"  styleClass="output-internal" />
+                         <div class="top"></div>
+                        <af:subform id="s1">
+                            <af:panelFormLayout id="pfl1" labelAlignment="top"
+                                                rows="6" maxColumns="2">
+                                <f:facet name="footer">
+                                  
+                                </f:facet>
+                                <af:selectOneChoice label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta1']}"
+                                                    id="soc1"
+                                                    styleClass="select-internal"
+                                                    value="#{backingBeanScope.BBSatisfaccion.encuestaSatisfaccion.preg1.respuesta}"
+                                                    required="true">
+                                    <af:selectItem label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta1_opcion1']}"
+                                                   value="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta1_opcion1']}"
+                                                   id="si2"/>
+                                    <af:selectItem label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta1_opcion2']}"
+                                                   value="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta1_opcion2']}"
+                                                   id="si3"/>
+                                    <af:selectItem label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta1_opcion3']}"
+                                                   value="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta1_opcion3']}"
+                                                   id="si5"/>
+                                    <af:selectItem label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta1_opcion4']}"
+                                                   value="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta1_opcion4']}"
+                                                   id="si6"
+                                                   rendered="#{sesion.suscriptor.paisISO eq 'MX'}"/>
+                                    <af:selectItem label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta1_opcion5']}"
+                                                   value="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta1_opcion5']}"
+                                                   id="si1"/>
+                                    <af:selectItem label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta1_opcion6']}"
+                                                   value="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta1_opcion6']}"
+                                                   id="si4"/>
+                                </af:selectOneChoice>
+                                <div class="top"/>
+                                <af:selectOneRadio label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta2']}"
+                                                   id="sor1"
+                                                   value="#{backingBeanScope.BBSatisfaccion.encuestaSatisfaccion.preg2.respuesta}"
+                                                   required="true">
+                                    <af:selectItem label="SI" value="SI"
+                                                   id="si7"/>
+                                    <af:selectItem label="NO" value="NO"
+                                                   id="si8"/>
+                                </af:selectOneRadio>
+                                <div class="top"/>
+                                <af:selectOneRadio label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta3']}"
+                                                   id="sor2"
+                                                   value="#{backingBeanScope.BBSatisfaccion.encuestaSatisfaccion.preg3.respuesta}"
+                                                   required="true">
+                                    <af:selectItem label="SI" value="SI"
+                                                   id="si10"/>
+                                    <af:selectItem label="NO" value="NO"
+                                                   id="si9"/>
+                                </af:selectOneRadio>
+                                <div class="top"/>
+                                <af:selectOneRadio label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta4']}"
+                                                   id="sor3"
+                                                   value="#{backingBeanScope.BBSatisfaccion.encuestaSatisfaccion.preg4.respuesta}"
+                                                   required="true">
+                                    <af:selectItem label="SI" value="SI"
+                                                   id="si11"/>
+                                    <af:selectItem label="NO" value="NO"
+                                                   id="si12"/>
+                                </af:selectOneRadio>
+                                
+                                <af:selectOneRadio label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta5']}"
+                                                   id="sor4"
+                                                   value="#{backingBeanScope.BBSatisfaccion.encuestaSatisfaccion.preg5.respuesta}"
+                                                   required="true">
+                                    <af:selectItem label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta5_opcion1']}"
+                                                   value="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta5_opcion1']}"
+                                                   id="si17"/>
+                                    <af:selectItem label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta5_opcion2']}"
+                                                   value="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta5_opcion2']}"
+                                                   id="si16"/>
+                                    <af:selectItem label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta5_opcion3']}"
+                                                   value="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta5_opcion3']}"
+                                                   id="si15"/>
+                                    <af:selectItem label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta5_opcion4']}"
+                                                   value="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta5_opcion4']}"
+                                                   id="si13"/>
+                                    <af:selectItem label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta5_opcion5']}"
+                                                   value="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta5_opcion5']}"
+                                                   id="si14"/>
+                                </af:selectOneRadio>
+                                <div class="top"/>
+                                <af:selectOneRadio label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta6']}"
+                                                   id="sor5"
+                                                   value="#{backingBeanScope.BBSatisfaccion.encuestaSatisfaccion.preg6.respuesta}"
+                                                   required="true">
+                                    <af:selectItem label="SI" value="SI"
+                                                   id="si18"/>
+                                    <af:selectItem label="NO" value="NO"
+                                                   id="si19"/>
+                                </af:selectOneRadio>
+                                <div class="top"/>
+                                    <af:inputText label="#{selSKYBundle['suOpinionNosInteresa_encuesta_pregunta7']}"
+                                              id="it1" columns="50" rows="5"
+                                              value="#{backingBeanScope.BBSatisfaccion.encuestaSatisfaccion.preg6.comentario}"
+                                              required="true"
+                                              contentStyle="width:100%; border: 1px solid #8AD5F2;"/>
+                            
+                            </af:panelFormLayout>
+                            <div class="row top">
+                                <div class="col-3 col-sm-8  col-tb-4 right"
+                                         style="float:right;">
+                                    <af:button text="Enviar" id="cb1"
+                                               styleClass="btn-internal"
+                                               action="#{backingBeanScope.BBSatisfaccion.guargarEncuesta}">
+                                        <af:clientListener method="enforcePreventUserInput"
+                                                           type="action"/>
+                                    </af:button>
+                                </div>
+                            </div>
+                        </af:subform>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

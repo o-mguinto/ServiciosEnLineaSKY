@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#facturaElectronicaIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="facturaElectronicaIndex">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <!--Para cada fila una div-->
+                    <div class="row">
+                        <!--Aqui va TODO el contenido-->
+                        <p class="top bottom">
+                            <h:outputText styleClass="subtitle"
+                                          value="Facturas Disponibles"
+                                          id="ot6"/>
+                        </p>
+                        <af:panelBox id="pb1" background="medium"
+                                     showHeader="never" showDisclosure="false"
+                                     inlineStyle="border: 0px;">
+                            <af:table value="#{bindings.Factura.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.Factura.rangeSize}"
+                                      emptyText="#{bindings.Factura.viewable ? 'No hay facturas disponibles.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.Factura.rangeSize}"
+                                      rowBandingInterval="0"
+                                      selectedRowKeys="#{bindings.Factura.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.Factura.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t1" width="100%"
+                                      scrollPolicy="auto"
+                                      horizontalGridVisible="false"
+                                      verticalGridVisible="false"
+                                      autoHeightRows="10"
+                                      styleClass="tbl-Class">
+                                <af:column sortProperty="No. Factura"
+                                           sortable="false" width="270"
+                                           align="center"
+                                           headerText="No. Factura" id="c1"
+                                           headerClass="content-text">
+                                    <af:link text="#{row.uuid}" id="cl1">
+                                        <f:setPropertyActionListener target="#{backingBeanScope.BBFacturaElectronica.uuid}"
+                                                                     value="#{row.uuid}"/>
+                                        <af:fileDownloadActionListener filename="factura_sky.pdf"
+                                                                       method="#{backingBeanScope.BBFacturaElectronica.descargarFactura}"
+                                                                       contentType="application/pdf}"/>
+                                    </af:link>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.Factura.hints.fechacorte.name}"
+                                           sortable="false" align="center"
+                                           headerClass="content-text"
+                                           headerText="#{bindings.Factura.hints.fechacorte.label}"
+                                           id="c2" width="120">
+                                    <af:outputText value="#{row.fechacorte}"
+                                                   id="ot2">
+                                        <af:convertDateTime pattern="#{bindings.Factura.hints.fechacorte.format}"/>
+                                    </af:outputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.Factura.hints.tipoArchivo.name}"
+                                           sortable="false" align="center"
+                                           headerClass="content-text"
+                                           headerText="#{bindings.Factura.hints.tipoArchivo.label}"
+                                           id="c3">
+                                    <af:outputText value="#{row.tipoArchivo}"
+                                                   id="ot4"/>
+                                </af:column>  
+                            </af:table>
+                        </af:panelBox>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

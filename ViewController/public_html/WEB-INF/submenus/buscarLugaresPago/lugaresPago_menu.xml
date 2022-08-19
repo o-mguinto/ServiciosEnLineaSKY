@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_lugaresPago" label="#{lbl.menu_LUGARES_PAGO}" action="irRouterLugaresPago"
+            focusViewId="/buscarLugaresIndex" immediate="true" rendered="#{sesion.LUGARES_PAGO}"
+            icon="/imagenes/menu/ic_lugaresPago.svg">
+    <itemNode id="itemNode_buscarlugaresPago" focusViewId="/lugaresPago" action="smenu_buscarLugaresPago"
+              immediate="true" label="#{lbl.smenu_LUGARES_PAGO}"/>
+  </itemNode>
+</menu>

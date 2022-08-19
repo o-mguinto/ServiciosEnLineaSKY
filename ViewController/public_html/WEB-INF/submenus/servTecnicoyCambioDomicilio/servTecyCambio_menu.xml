@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_servTecnicoyCambioIndex" label="#{lbl.menu_SERVICIOS_TECNICOS_Y_CAMBIO_DE_DOMICILIO}"
+            action="irRouterServTecyCambio" focusViewId="/servTecnicoyCambioIndex"
+             immediate="true"
+            icon="/imagenes/menu/ic_sky_servicio_tecnico.svg"
+            rendered="#{sesion.SERVICIOS_TECNICOS_Y_CAMBIO_DE_DOMICILIO}">
+    <itemNode id="itemNode_reenvioSenal" label="#{lbl.smenu_STyCD_REENVIO}" action="smenu_reenvioSenal"
+              focusViewId="/reenvioSenal"  immediate="true" rendered="#{sesion.REENVIO_SENAL}"/>
+    <itemNode id="itemNode_reparaciones" label="#{lbl.smenu_STyCD_REPARACIONES}" action="smenu_reparaciones"
+              focusViewId="/reparaciones"  immediate="true" rendered="#{sesion.REPARACIONES}"/>
+    <itemNode id="itemNode_cambioDomicilio" label="#{lbl.smenu_STyCD_CAMBIO_DOM}" action="smenu_cambioDomicilio"
+              focusViewId="/cambioDomicilio"  immediate="true" rendered="#{sesion.CAMBIO_DOMICILIO}"/>
+  </itemNode>
+</menu>

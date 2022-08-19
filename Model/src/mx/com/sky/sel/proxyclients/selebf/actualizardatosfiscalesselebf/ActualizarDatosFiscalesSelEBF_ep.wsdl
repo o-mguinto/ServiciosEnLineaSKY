@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="ActualizarDatosFiscalesSelEBF" targetNamespace="http://xmlns.sky.com.mx/InterfaceServices/Sel/ActualizarDatosFiscales" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:client="http://xmlns.sky.com.mx/InterfaceServices/Sel/ActualizarDatosFiscales" xmlns:ns1="http://www.sky.com.mx/EnterpriseFlowMessage/Sel/ActualizarDatosFiscales" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" xmlns:ns3="http://schemas.oracle.com/bpel/extension">
+  <wsdl:documentation>
+    <abstractWSDL>https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/ActualizarDatosFiscalesSelEBF!20220310-1422/WSDLs/ActualizarDatosFiscalesSelEBF.wsdl</abstractWSDL>
+  </wsdl:documentation>
+  <plnk:partnerLinkType name="ActualizarDatosFiscalesSelEBF">
+    <plnk:role name="ActualizarDatosFiscalesSelEBFProvider" portType="client:ActualizarDatosFiscalesSelEBF"/>
+  </plnk:partnerLinkType>
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://www.sky.com.mx/EnterpriseFlowMessage/Sel/ActualizarDatosFiscales" schemaLocation="ActualizarDatosFiscalesSelEBM.xsd"/>
+    </schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" schemaLocation="RuntimeFaultMessage.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ActualizarDatosFiscalesSelEBFRequestMessage">
+    <wsdl:part name="payload" element="ns1:ActualizarDatosFiscalesRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ActualizarDatosFiscalesSelEBFResponseMessage">
+    <wsdl:part name="payload" element="ns1:ActualizarDatosFiscalesResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ActualizarDatosFiscalesSelEBF">
+    <wsdl:operation name="ActualizarDatosFiscalesSelEBF">
+      <wsdl:input message="client:ActualizarDatosFiscalesSelEBFRequestMessage"/>
+      <wsdl:output message="client:ActualizarDatosFiscalesSelEBFResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ActualizarDatosFiscalesSelEBFBinding" type="client:ActualizarDatosFiscalesSelEBF">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ActualizarDatosFiscalesSelEBF">
+      <soap:operation style="document" soapAction="http://xmlns.sky.com.mx/InterfaceServices/Sel/ActualizarDatosFiscales/ActualizarDatosFiscalesSelEBF"/>
+      <wsdl:input>
+        <soap:body use="literal" parts="payload"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="payload"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ActualizarDatosFiscalesSelEBF_ep">
+    <wsdl:port name="ActualizarDatosFiscalesSelEBF_pt" binding="client:ActualizarDatosFiscalesSelEBFBinding">
+      <soap:address location="https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/ActualizarDatosFiscalesSelEBF/ActualizarDatosFiscalesSelEBF_ep"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

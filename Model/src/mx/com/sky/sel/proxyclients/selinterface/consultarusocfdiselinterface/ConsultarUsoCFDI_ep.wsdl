@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="ConsultarUsoCFDI" targetNamespace="http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarUsoCFDI" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:client="http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarUsoCFDI" xmlns:ns1="http://www.sky.com.mx/EnterpriseObjects/Sel/ConsultarUsoCFDI" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>
+    <abstractWSDL>https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/ConsultarUsoCFDISelInterface!20220322-2009/WSDLs/ConsultarUsoCFDI.wsdl</abstractWSDL>
+  </wsdl:documentation>
+  <plnk:partnerLinkType name="ConsultarUsoCFDI">
+    <plnk:role name="ConsultarUsoCFDIProvider" portType="client:ConsultarUsoCFDI"/>
+  </plnk:partnerLinkType>
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/ConsultarUsoCFDI" schemaLocation="ConsultarUsoCFDISelEBM.xsd"/>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultarUsoCFDIRequestMessage">
+    <wsdl:part name="payload" element="ns1:ConsultarUsoCFDIRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultarUsoCFDIResponseMessage">
+    <wsdl:part name="payload" element="ns1:ConsultarUsoCFDIResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ConsultarUsoCFDI">
+    <wsdl:operation name="ConsultarUsoCFDI">
+      <wsdl:input message="client:ConsultarUsoCFDIRequestMessage"/>
+      <wsdl:output message="client:ConsultarUsoCFDIResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConsultarUsoCFDIBinding" type="client:ConsultarUsoCFDI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ConsultarUsoCFDI">
+      <soap:operation style="document" soapAction="http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarUsoCFDI/ConsultarUsoCFDI"/>
+      <wsdl:input>
+        <soap:body use="literal" parts="payload"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="payload"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConsultarUsoCFDI_ep">
+    <wsdl:port name="ConsultarUsoCFDI_pt" binding="client:ConsultarUsoCFDIBinding">
+      <soap:address location="https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/ConsultarUsoCFDISelInterface/ConsultarUsoCFDI_ep"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="programacionTvIndexPageDef"
+                Package="pages.programacionTv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerTarjetaInteligente" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerTarjetaInteligente" IsViewObjectMethod="false" DataControl="DCTarjetaInteligente"
+                  InstanceName="bindings.obtenerTarjetaInteligente.dataControl.dataProvider"
+                  ReturnName="data.DCTarjetaInteligente.methodResults.obtenerTarjetaInteligente_obtenerTarjetaInteligente_dataControl_dataProvider_obtenerTarjetaInteligente_result">
+      <NamedData NDName="rowID" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

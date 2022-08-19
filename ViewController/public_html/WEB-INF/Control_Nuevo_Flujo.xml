@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Control_Nuevo_Flujo">
+    <default-activity>confirmacion</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__2">
+      <name>control</name>
+      <value>#{pageFlowScope.ControlBackingBean.control}</value>
+      <class>mx.com.sky.sel.services.beans.controlremoto.ControlRemotoBean</class>
+      <required/>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>ControlBackingBean</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.control.BBControl</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="confirmacion_ctrl_mex">
+      <page>/pages/compras/confirmacion_ctrl_mex.jsff</page>
+    </view>
+     <router id="confirmacion">
+     <case>
+        <expression>#{sesion.CONTROL_REMOTOEnviaDireccionAlterna}</expression>
+        <outcome id="__23">confirmar_cr</outcome>
+     </case>
+      <default-outcome>confirmar_m</default-outcome>
+    </router>     
+    <view id="confirmacion_ctrl_cr">
+      <page>/pages/compras/confirmacion_ctrl_cr.jsff</page>
+    </view>
+    <view id="detalle_ctrl_enviado">
+      <page>/pages/compras/detalle_ctrl_enviado.jsff</page>
+    </view>
+    <task-flow-return id="terminar_control">
+      <outcome id="__9">
+        <name>terminar_control</name>
+      </outcome>
+    </task-flow-return>
+    <method-call id="envio_solicitud">
+      <method>#{pageFlowScope.ControlBackingBean.enviarControl}</method>
+      <outcome id="__36">
+        <to-string/>
+      </outcome>
+    </method-call>
+    <method-call id="enviar_solicitud_cr">
+      <method>#{pageFlowScope.ControlBackingBean.enviarControlCostaRica}</method>
+      <outcome id="__62">
+        <to-string/>
+      </outcome>
+    </method-call>    
+     <router id="siguiente">
+      <case>
+        <expression>#{sesion.CONTROL_REMOTOVeTV}</expression>
+        <outcome id="__59">pago</outcome>
+      </case>
+      <default-outcome>enviar_control</default-outcome>
+    </router>
+    <view id="control_pago">
+      <page>/pages/compras/control_pago.jsff</page>
+    </view>
+    <view id="control_pagoConfirmar">
+      <page>/pages/compras/control_pagoConfirmar.jsff</page>
+    </view>
+    <view id="control_Resumen">
+      <page>/pages/compras/control_Resumen.jsff</page>
+    </view>
+    
+        <control-flow-rule id="__15">
+      <from-activity-id id="__16">confirmacion</from-activity-id>
+      <control-flow-case id="__18">
+        <description id="__28">Confirma para usuarios de mexico o que no sean de costa rica</description>
+        <from-outcome id="__21">confirmar_m</from-outcome>
+        <to-activity-id id="__17">confirmacion_ctrl_mex</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__20">
+        <from-outcome id="__22">confirmar_cr</from-outcome>
+        <to-activity-id id="__19">confirmacion_ctrl_cr</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id id="__7">*</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome id="__12">terminar_control</from-outcome>
+        <to-activity-id id="__11">terminar_control</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id id="__14">confirmacion_ctrl_cr</from-activity-id>
+      <control-flow-case id="__30">
+        <from-outcome id="__31">enviar</from-outcome>
+        <to-activity-id id="__29">enviar_solicitud_cr</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__54">
+      <from-activity-id id="__55">confirmacion_ctrl_mex</from-activity-id>
+      <control-flow-case id="__42">
+        <from-outcome id="__44">siguiente</from-outcome>
+        <to-activity-id id="__43">siguiente</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id id="__6">envio_solicitud</from-activity-id>
+      <control-flow-case id="__34">
+        <from-outcome id="__60">ir_detalle</from-outcome>
+        <to-activity-id id="__35">detalle_ctrl_enviado</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__50">
+      <from-activity-id id="__51">enviar_solicitud_cr</from-activity-id>
+      <control-flow-case id="__52">
+        <from-outcome id="__61">ir_detalle</from-outcome>
+        <to-activity-id id="__53">detalle_ctrl_enviado</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__45">
+      <from-activity-id id="__46">siguiente</from-activity-id>
+      <control-flow-case id="__47">
+        <from-outcome id="__48">pago</from-outcome>
+        <to-activity-id id="__49">control_pago</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__56">
+        <from-outcome id="__57">enviar_control</from-outcome>
+        <to-activity-id id="__58">envio_solicitud</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__63">
+      <from-activity-id id="__64">control_pago</from-activity-id>
+      <control-flow-case id="__65">
+        <from-outcome id="__67">siguiente</from-outcome>
+        <to-activity-id id="__66">control_pagoConfirmar</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__74">
+        <from-outcome id="__75">regresar</from-outcome>
+        <to-activity-id id="__73">confirmacion_ctrl_mex</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__68">
+      <from-activity-id id="__69">control_pagoConfirmar</from-activity-id>
+      <control-flow-case id="__71">
+        <from-outcome id="__72">regresar</from-outcome>
+        <to-activity-id id="__70">control_pago</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__80">
+        <from-outcome id="__81">compra_exitoso</from-outcome>
+        <to-activity-id id="__79">control_Resumen</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__83">
+      <from-activity-id id="__82">*</from-activity-id>
+      <control-flow-case id="__85">
+        <from-outcome id="__86">closeTaskFlow</from-outcome>
+        <to-activity-id id="__84">terminar_control</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

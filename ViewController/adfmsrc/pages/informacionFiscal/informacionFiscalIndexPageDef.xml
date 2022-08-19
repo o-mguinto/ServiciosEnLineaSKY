@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="informacionFiscalIndexPageDef"
+                Package="pages.informacionFiscal">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="obtenerSolicitudServicio.result" DataControl="DCInformacionFiscal" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.solicitudservicio.DetalleSolicitudServicio"
+                    id="obtenerSolicitudServicioIterator"/>
+    <methodIterator Binds="datosFiscales.result" DataControl="DCInformacionFiscal" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.informacionfiscal.DatosFiscales"
+                    id="getDatosFiscalesIterator"/>
+    <accessorIterator MasterBinding="getDatosFiscalesIterator" Binds="direccion" RangeSize="10"
+                      DataControl="DCInformacionFiscal" BeanClass="mx.com.sky.sel.services.beans.utils.Direccion"
+                      id="direccionIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="consultarCuentasAsociadas" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="consultarCuentasAsociadas" IsViewObjectMethod="false" DataControl="DCCorporativos"
+                  InstanceName="bindings.consultarCuentasAsociadas.dataControl.dataProvider"
+                  ReturnName="data.DCCorporativos.methodResults.consultarCuentasAsociadas_consultarCuentasAsociadas_dataControl_dataProvider_consultarCuentasAsociadas_result">
+      <NamedData NDName="cuentaSKY" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="crearSolicitudInfoFiscal" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="crearSolicitudInfoFiscal" IsViewObjectMethod="false" DataControl="DCCorporativos"
+                  InstanceName="bindings.crearSolicitudInfoFiscal.dataControl.dataProvider"
+                  ReturnName="data.DCCorporativos.methodResults.crearSolicitudInfoFiscal_crearSolicitudInfoFiscal_dataControl_dataProvider_crearSolicitudInfoFiscal_result">
+      <NamedData NDName="solicitudServicio"
+                 NDType="mx.com.sky.sel.services.beans.solicitudservicio.SolicitudServicioBean"/>
+      <NamedData NDName="cuentasCV" NDType="java.util.List"/>
+      <NamedData NDName="nombreCorporativo" NDType="java.lang.String"/>
+      <NamedData NDName="sistema" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="obtenerSolicitudServicio" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerSolicitudServicio" IsViewObjectMethod="false" DataControl="DCInformacionFiscal"
+                  InstanceName="bindings.obtenerSolicitudServicio.dataControl.dataProvider"
+                  ReturnName="data.DCInformacionFiscal.methodResults.obtenerSolicitudServicio_obtenerSolicitudServicio_dataControl_dataProvider_obtenerSolicitudServicio_result">
+      <NamedData NDName="rowID" NDValue="#{sesion.suscriptor.rowId}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="obtenerSolicitudServicioIterator" id="DetalleSolicitudServicio">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.solicitudservicio.DetalleSolicitudServicio" Name="result0">
+        <AttrNames>
+          <Item Value="numeroSolicitud"/>
+          <Item Value="fechaCreacion"/>
+          <Item Value="apellidoDeContrato"/>
+          <Item Value="comentario"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="datosFiscales" RequiresUpdateModel="true" Action="invokeMethod" MethodName="datosFiscales"
+                  IsViewObjectMethod="false" DataControl="DCInformacionFiscal"
+                  InstanceName="bindings.datosFiscales.dataControl.dataProvider"
+                  ReturnName="data.DCInformacionFiscal.methodResults.datosFiscales_datosFiscales_dataControl_dataProvider_datosFiscales_result">
+      <NamedData NDName="cuentaSKY" NDValue="#{sesion.suscriptor.cuentaSKY}" NDType="java.lang.String"/>
+      <NamedData NDName="nombreCompletoSuscriptor" NDValue="#{sesion.suscriptor.nombreSuscriptor}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="getDatosFiscalesIterator" id="razonSocial">
+      <AttrNames>
+        <Item Value="razonSocial"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDatosFiscalesIterator" id="rfc">
+      <AttrNames>
+        <Item Value="rfc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="direccionIterator" id="colonia">
+      <AttrNames>
+        <Item Value="colonia"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="direccionIterator" id="calleNumero">
+      <AttrNames>
+        <Item Value="calleNumero"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="direccionIterator" id="numeroExt">
+      <AttrNames>
+        <Item Value="numeroExt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="direccionIterator" id="numeroInt">
+      <AttrNames>
+        <Item Value="numeroInt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="direccionIterator" id="poblacion">
+      <AttrNames>
+        <Item Value="poblacion"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="direccionIterator" id="estado">
+      <AttrNames>
+        <Item Value="estado"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="direccionIterator" id="delMun">
+      <AttrNames>
+        <Item Value="delMun"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="direccionIterator" id="cp">
+      <AttrNames>
+        <Item Value="cp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDatosFiscalesIterator" id="contacto">
+      <AttrNames>
+        <Item Value="contacto"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDatosFiscalesIterator" id="metodoEnvio">
+      <AttrNames>
+        <Item Value="metodoEnvio"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDatosFiscalesIterator" id="email">
+      <AttrNames>
+        <Item Value="email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDatosFiscalesIterator" id="tipoFactura">
+      <AttrNames>
+        <Item Value="tipoFactura"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDatosFiscalesIterator" id="tipoPersona">
+      <AttrNames>
+        <Item Value="tipoPersona"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="direccionIterator" id="lada">
+      <AttrNames>
+        <Item Value="lada"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="direccionIterator" id="telefono">
+      <AttrNames>
+        <Item Value="telefono"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="direccionIterator" id="ciudad">
+      <AttrNames>
+        <Item Value="ciudad"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="crearSolicitud" RequiresUpdateModel="true" Action="invokeMethod" MethodName="crearSolicitud"
+                  IsViewObjectMethod="false" DataControl="DCInformacionFiscal"
+                  InstanceName="bindings.crearSolicitud.dataControl.dataProvider"
+                  ReturnName="data.DCInformacionFiscal.methodResults.crearSolicitud_crearSolicitud_dataControl_dataProvider_crearSolicitud_result">
+      <NamedData NDName="solicitudServicio"
+                 NDType="mx.com.sky.sel.services.beans.solicitudservicio.SolicitudServicioBean"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

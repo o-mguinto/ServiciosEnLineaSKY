@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="servTecnicoyCambioIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <view id="reenvioSenal">
+    <page>/WEB-INF/submenus/servTecnicoyCambioDomicilio/reenvioSenal.jsf</page>
+    <input-page-parameter id="__2">
+      <from-value>/WEB-INF/reenvioSenalTF.xml#reenvioSenalTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="reparaciones">
+    <page>/WEB-INF/submenus/servTecnicoyCambioDomicilio/reparaciones.jsf</page>
+    <input-page-parameter id="__4">
+      <from-value>/WEB-INF/reparacionesTF.xml#reparacionesTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="cambioDomicilio">
+    <page>/WEB-INF/submenus/servTecnicoyCambioDomicilio/cambioDomicilio.jsf</page>
+    <input-page-parameter id="__7">
+      <from-value>/WEB-INF/cambioDomicilioTF.xml#cambioDomicilioTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <router id="routerServTecyCambio">
+    <case id="__13">
+      <expression>#{sesion.REENVIO_SENAL}</expression>
+      <outcome>irReenvioSenal</outcome>
+    </case>
+    <case id="__14">
+      <expression>#{sesion.REPARACIONES}</expression>
+      <outcome>irReparaciones</outcome>
+    </case>
+    <case id="__15">
+      <expression>#{sesion.CAMBIO_DOMICILIO}</expression>
+      <outcome>irCambioDomicilio</outcome>
+    </case>
+    <default-outcome>irServTecyCambioIndex</default-outcome>
+  </router>
+  <control-flow-rule id="__8">
+    <from-activity-id>routerServTecyCambio</from-activity-id>
+    <control-flow-case id="__9">
+      <from-outcome>irServTecyCambioIndex</from-outcome>
+      <to-activity-id>servTecnicoyCambioIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__10">
+      <from-outcome>irReenvioSenal</from-outcome>
+      <to-activity-id>reenvioSenal</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__11">
+      <from-outcome>irReparaciones</from-outcome>
+      <to-activity-id>reparaciones</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__12">
+      <from-outcome>irCambioDomicilio</from-outcome>
+      <to-activity-id>cambioDomicilio</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__16">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__17">
+      <from-outcome>irRouterServTecyCambio</from-outcome>
+      <to-activity-id>routerServTecyCambio</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__19">
+      <from-outcome>smenu_reenvioSenal</from-outcome>
+      <to-activity-id>reenvioSenal</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__20">
+      <from-outcome>smenu_reparaciones</from-outcome>
+      <to-activity-id>reparaciones</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__21">
+      <from-outcome>smenu_cambioDomicilio</from-outcome>
+      <to-activity-id>cambioDomicilio</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__22">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>servTecyCambio_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__23">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__24">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/servTecnicoyCambioDomicilio/servTecyCambio_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

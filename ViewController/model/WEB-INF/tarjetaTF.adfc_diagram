@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View3">
+      <property
+         name="activityId">tarjeta</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">465.5</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>tarjeta&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">418.89062</property>
+      <property
+         name="page">/pages/adelantaRecargas/tarjeta.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <TaskFlowCall
+      id="TaskFlowCall4">
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>pagoTF&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="activityId">pagoTF</property>
+      <property
+         name="x">790.5</property>
+      <property
+         name="y">434.1494</property>
+      <property
+         name="documentReference">/WEB-INF/pagoTF.xml</property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="taskFlowId">pagoTF</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View3"
+      to="TaskFlowCall4">
+      <property
+         name="fromOutcome">realizarPago</property>
+      <property
+         name="sdm:polyPoints">R50,506.5,418.54004,749.5,433.79883,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View5">
+      <property
+         name="activityId">billetera</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">665.5</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>billetera&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">578.7988</property>
+      <property
+         name="page">/pages/pci/billetera.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+</SDM>

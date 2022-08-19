@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#consultaEstatusDfIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+        /*para ampliar el espacio para el no de registros de la tabla, statusbar*/
+          td.x17r , td.x17r > div{
+                width: 100% !important;
+            }
+            /*para poner a la derecha la etiqueta del no de registros en la tabla, statusbar*/
+             td.x17r > div div.xq1{
+                 float: right;
+             }
+        </af:resource>
+        <div id="consultaEstatusDfIndex">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <!--Para cada fila una div-->
+                    <div class="row">
+                        <!--Aqui va TODO el contenido-->
+                        <p class="bottom">
+                            <h:outputText styleClass="subtitle"
+                                          value="Consulta Estatus Solicitudes de Registro y Actualización de Datos Fiscales"
+                                          id="ot6"/>
+                        </p>
+                        <div class="row top">
+                            <af:panelBox id="pb1" background="medium"
+                                         showHeader="never"
+                                         showDisclosure="false"
+                                         inlineStyle="border: 0px;">
+                                <f:facet name="toolbar"/>
+                                <af:panelCollection id="pc1"
+                                                    styleClass="AFStretchWidth">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="t2">
+                                        </af:toolbar>
+                                    </f:facet>
+                                    <f:facet name="statusbar">
+                                        <af:toolbar id="t_2">
+                                            <af:outputText value="#{bindings.BatchDF.estimatedRowCount} Registros"
+                                                           id="ot15" styleClass="check-internal-bold"
+                                                           partialTriggers="::ctbReintentar ::ctbActualizar"/>
+                                        </af:toolbar>
+                                    </f:facet>
+                                    <af:table value="#{bindings.BatchDF.collectionModel}"
+                                              var="row"
+                                              rows="#{bindings.BatchDF.rangeSize}"
+                                              emptyText="#{bindings.BatchDF.viewable ? 'No hay solicitudes de datos fiscales.' : 'Access Denied.'}"
+                                              fetchSize="#{bindings.BatchDF.rangeSize}"
+                                              rowBandingInterval="0"
+                                              filterModel="#{bindings.BatchDFQuery.queryDescriptor}"
+                                              queryListener="#{bindings.BatchDFQuery.processQuery}"
+                                              filterVisible="true"
+                                              varStatus="vs" id="t1"
+                                              partialTriggers=":::ctbReintentar :::ctbActualizar"
+                                              width="100%" scrollPolicy="auto"
+                                              horizontalGridVisible="false"
+                                              verticalGridVisible="false"
+                                              autoHeightRows="10"
+                                              styleClass="tbl-Class">
+                                        <af:column sortProperty="bpelId"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="ID" id="c1"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.bpelId}"
+                                                           id="ot14"/>
+                                        </af:column>
+                                        <af:column sortProperty="status"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Estatus" id="c13"
+                                                   width="90"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.status}"
+                                                           id="ot19"/>
+                                        </af:column>
+                                        <af:column sortProperty="fechaCreacion"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Fecha de solicitud"
+                                                   id="c10"
+                                                   headerClass="content-text">
+                                            <f:facet name="filter">
+                                                <af:inputDate value="#{vs.filterCriteria.fechaCreacion}"
+                                                              id="id1"/>
+                                            </f:facet>
+                                            <af:outputText value="#{row.fechaCreacion}"
+                                                           id="ot8">
+                                                <af:convertDateTime pattern="#{bindings.BatchDF.hints.fechaCreacion.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column sortProperty="noSolicitud"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="No Solicitud"
+                                                   id="c11"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.noSolicitud}"
+                                                           id="ot12"/>
+                                        </af:column>
+                                        <af:column sortProperty="noCuentaSKY"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Cuenta SKY"
+                                                   id="c14"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.noCuentaSKY}"
+                                                           id="ot21"/>
+                                        </af:column>
+                                        <af:column sortProperty="rfc"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="RFC" id="c18"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.rfc}"
+                                                           id="ot5"/>
+                                        </af:column>
+                                        <af:column sortProperty="razonSocial"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Razón Social"
+                                                   id="c3"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.razonSocial}"
+                                                           id="ot20"/>
+                                        </af:column>
+                                        <af:column sortProperty="compania"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Compañia" id="c9"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.compania}"
+                                                           id="ot7"/>
+                                        </af:column>
+                                        <af:column sortProperty="tipoFactura"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Tipo Factura"
+                                                   id="c17"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.tipoFactura}"
+                                                           id="ot17"/>
+                                        </af:column>
+                                        <af:column sortProperty="metodoEnvio"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Método Envio"
+                                                   id="c4"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.metodoEnvio}"
+                                                           id="ot2"/>
+                                        </af:column>
+                                        <af:column sortProperty="calle"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Calle" id="c15"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.calle}"
+                                                           id="ot18"/>
+                                        </af:column>
+                                        <af:column sortProperty="noExterior"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="No Exterior"
+                                                   id="c6"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.noExterior}"
+                                                           id="ot13"/>
+                                        </af:column>
+                                        <af:column sortProperty="noInterior"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="No Interior"
+                                                   id="c12"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.noInterior}"
+                                                           id="ot16"/>
+                                        </af:column>
+                                        <af:column sortProperty="colonia"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Colonia" id="c7"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.colonia}"
+                                                           id="ot10"/>
+                                        </af:column>
+                                        <af:column sortProperty="delMunicipio"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Del/Mncp" id="c2"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.delMunicipio}"
+                                                           id="ot4"/>
+                                        </af:column>
+                                        <af:column sortProperty="codigoPostal"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="CP" id="c8"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.codigoPostal}"
+                                                           id="ot9"/>
+                                        </af:column>
+                                        <af:column sortProperty="poblacion"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Población"
+                                                   id="c16"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.poblacion}"
+                                                           id="ot11"/>
+                                        </af:column>
+                                        <af:column sortProperty="estado"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Estado" id="c5"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.estado}"
+                                                           id="ot3"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                                <div class="row">
+                                        <div class="top top-2 col-2 col-sm-8  col-tb-3 right" style="float:right;">
+                                            <af:button id="ctbActualizar"
+                                                           disabled="#{!bindings.consultarEstadoSolicitudDF.enabled}"
+                                                           actionListener="#{bindings.consultarEstadoSolicitudDF.execute}"
+                                                           styleClass="btn-internal"
+                                                           targetFrame="_self"
+                                                           text="Actualizar">
+                                                    <af:clientListener method="enforcePreventUserInput"
+                                                                       type="action"/>
+                                                </af:button>
+                                        </div>
+                                        <div class="top top-2 col-2 col-sm-8  col-tb-3 right" style="float:right;">
+                                            <af:button id="ctbReintentar"
+                                                           actionListener="#{bindings.reintentarConErrorDF.execute}"
+                                                           disabled="#{bindings.BatchDF.estimatedRowCount le 0}"
+                                                           partialTriggers="ctbActualizar"
+                                                           styleClass="btn-internal"
+                                                           targetFrame="_self"
+                                                            text="Reintentar">
+                                                    <af:clientListener method="enforcePreventUserInput"
+                                                                       type="action"/>
+                                            </af:button>
+                                        </div>
+                                </div>
+                            </af:panelBox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

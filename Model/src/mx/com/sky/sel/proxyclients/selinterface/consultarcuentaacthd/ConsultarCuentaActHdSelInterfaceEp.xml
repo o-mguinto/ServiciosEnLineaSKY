@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle-webservice-clients xmlns:ns0="http://java.sun.com/xml/ns/javaee">
+   <webservice-client>
+      <service-qname namespaceURI="http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarCuentaActHd"
+                     localpart="ConsultarCuentaActHdSelInterface_ep"/>
+      <port-info>
+         <wsdl-port namespaceURI="http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarCuentaActHd"
+                    localpart="ConsultarCuentaActHdSelInterface_pt"/>
+         <runtime/>
+         <operations>
+            <operation name="consultarPromoActCuentaHd"/>
+         </operations>
+      </port-info>
+   </webservice-client>
+</oracle-webservice-clients>

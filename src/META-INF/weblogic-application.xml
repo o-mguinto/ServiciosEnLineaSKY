@@ -1,0 +1,37 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<weblogic-application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="http://xmlns.oracle.com/weblogic/weblogic-application http://xmlns.oracle.com/weblogic/weblogic-application/1.6/weblogic-application.xsd"
+                      xmlns="http://xmlns.oracle.com/weblogic/weblogic-application">
+  <application-param>
+        <param-name>jps.credstore.migration</param-name>
+        <param-value>OVERWRITE</param-value>
+    </application-param>
+    <application-param>
+        <param-name>jps.policystore.migration</param-name>
+        <param-value>OVERWRITE</param-value>
+    </application-param>
+  <listener>
+    <listener-class>oracle.adf.share.weblogic.listeners.ADFApplicationLifecycleListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>oracle.mds.lcm.weblogic.WLLifecycleListener</listener-class>
+  </listener>
+    <listener>
+        <listener-class>oracle.security.jps.wls.listeners.JpsApplicationLifecycleListener</listener-class>
+    </listener>
+  <library-ref>
+    <library-name>adf.oracle.domain</library-name>
+  </library-ref>
+    <library-ref>
+        <library-name>oracle.jsp.next</library-name>
+    </library-ref>
+  <session-descriptor>
+    <timeout-secs>1200</timeout-secs>
+    <cookie-name>U0tZX1NFTF9US06</cookie-name>
+    <cookie-secure>true</cookie-secure>
+    <cookie-max-age-secs>1200</cookie-max-age-secs>
+    <cookie-http-only>true</cookie-http-only>        
+    <persistent-store-type>REPLICATED_IF_CLUSTERED</persistent-store-type>
+    <url-rewriting-enabled>false</url-rewriting-enabled>
+  </session-descriptor>
+</weblogic-application>

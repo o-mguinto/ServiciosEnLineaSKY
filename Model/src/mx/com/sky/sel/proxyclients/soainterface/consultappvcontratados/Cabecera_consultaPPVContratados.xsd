@@ -1,0 +1,49 @@
+<xsd:schema targetNamespace="http://www.sky.com.mx/soasky" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns="http://www.sky.com.mx/soasky">
+    <xsd:complexType name="Cabecera_Entrada_TYPE">
+        <xsd:sequence>
+            <xsd:element name="OPERACION" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Nombre de la operacion a ejecutar en el servicio</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="APLICATIVO" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Siglas del aplicativo que invoca</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="PARAMETRO" maxOccurs="unbounded" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Nodo de parametro a configurar</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence minOccurs="1">
+                        <xsd:element name="NOMBRE" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>Indica el nombre el parametro a configurar</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="VALOR" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Cabecera_Salida_TYPE">
+        <xsd:sequence>
+            <xsd:element name="COD_ERROR" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Codigo del error que se puede presentar en la
+                             ejecucion del servicio, de acuerdo a la plataforma
+                             que lo presente.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="MSG_ERROR" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Mensaje de error en caso de excepciones en la
+                             ejecucion del servicio.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

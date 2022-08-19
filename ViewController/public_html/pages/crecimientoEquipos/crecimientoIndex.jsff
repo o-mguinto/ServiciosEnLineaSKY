@@ -1,0 +1,432 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript" source="/js/bowser.min.js"/>
+        <af:resource type="javascript">
+          $('#crecimientoIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+              
+              console.log(bowser.name, bowser.version);
+              
+                  var s=document.createElement('style');
+                  s.type='text/css';
+                if (bowser.name === 'Internet Explorer'){
+                    console.log('Asignando estilos de clase para: Internet Explorer');
+                  s.appendChild(document.createTextNode('div.x193[role="dialog"]{width: 20% !important;}'));
+                  document.body.appendChild(s);
+                  
+                  console.log('Estilos de clase para Internet Explorer Agregados ');
+              }else {
+                    console.log('Asignando estilos de clase para: edge, safari, chrome y mozilla');
+                  s.appendChild(document.createTextNode('div.x193[role="dialog"]{width: 20% !important;position: fixed !important;}'));
+                  document.body.appendChild(s);
+                  console.log('Estilos de clase para Otros Agregados ');
+              }
+          });
+        </af:resource>
+        <af:resource type="css">
+            /*para ocultar el sombreado del calendario en Edge*/
+            div.AFZOrderLayer > div > div{background:none !important;}
+        </af:resource>
+        <meta http-equiv="X-UA-Compatible" content="IE=11.0"/>
+        <div id="crecimientoIndex">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <!--Para cada fila una div-->
+                    <div class="row">
+                        <!--Aqui va TODO el contenido-->
+                        <af:panelGroupLayout id="pgl1" layout="vertical"
+                                             halign="center">
+                            <af:image source="/imagenes/crecimientos/293X172/crecimiento.png"
+                                      id="i21" shortDesc=" "/>
+                            <af:panelBox id="pb1" showDisclosure="false"
+                                         showHeader="never" background="medium"
+                                         inlineStyle="border: 0px;">
+                                <af:subform id="s2">
+                                    <div class="row">
+                                        <af:outputText value="Datos de tu cuenta:"
+                                                       id="outputText4"
+                                                       styleClass="subtitle"/>
+                                    </div>
+                                    <div class="top"></div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <af:panelGroupLayout halign="start"
+                                                                 id="pgl4">
+                                                <af:panelLabelAndMessage label="Nombre:"
+                                                                         id="plam7"
+                                                                         styleClass="output-internal"
+                                                                         for="ot9">
+                                                    <h:outputText value="#{viewScope.BBCrecimientoEquipos.nombreSuscriptor}"
+                                                                  id="ot9"
+                                                                  styleClass="font-bolder"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:panelLabelAndMessage label=" Cuenta:"
+                                                                         id="plam3"
+                                                                         styleClass="output-internal">
+                                                    <h:outputText id="it1"
+                                                                  value="#{viewScope.BBCrecimientoEquipos.cuentaSky}"
+                                                                  styleClass="font-bolder"/>
+                                                </af:panelLabelAndMessage>
+                                                <div class="top"></div>
+                                                <div class="row">
+                                                    <div class="col-12 right sm-cancel-align">
+                                                        <af:button text="Consultar"
+                                                                   id="cb2"
+                                                                   action="#{viewScope.BBCrecimientoEquipos.validaCrecimientos}"
+                                                                   styleClass="btn-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="top"></div>
+                                                <af:panelGroupLayout id="pgl2" partialTriggers="cb2">
+                                                    <af:panelLabelAndMessage id="plam4"
+                                                                         styleClass="check-internal-bold"
+                                                                         >
+                                                    <!---->
+                                                    <h:outputText rendered="#{not viewScope.BBCrecimientoEquipos.cuentaValida and not viewScope.BBCrecimientoEquipos.tipoCuentaVeTv}"
+                                                                  value="#{viewScope.BBCrecimientoEquipos.mensajeTya}"
+                                                                  id="ot6"/>
+                                                    <h:outputText value="#{viewScope.BBCrecimientoEquipos.mensajeVeTv}"
+                                                                  id="ot7"
+                                                                  rendered="#{not viewScope.BBCrecimientoEquipos.cuentaValidaVeTv and viewScope.BBCrecimientoEquipos.tipoCuentaVeTv}"/>
+                                                    <h:outputText value="#{viewScope.BBCrecimientoEquipos.validaVeTV}"
+                                                                  id="ot2"
+                                                                  rendered="#{viewScope.BBCrecimientoEquipos.cuentaValidaVeTv and viewScope.BBCrecimientoEquipos.tipoCuentaVeTv}"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:panelLabelAndMessage label="Equipos actuales:"
+                                                                         id="plam2"
+                                                                         styleClass="output-internal"
+                                                                         rendered="#{viewScope.BBCrecimientoEquipos.cuentaValida and not viewScope.BBCrecimientoEquipos.tipoCuentaVeTv}">
+                                                    <h:outputText id="ot3"
+                                                                  value="#{viewScope.BBCrecimientoEquipos.numEquipos}"
+                                                                  styleClass="font-bolder"/>
+                                                </af:panelLabelAndMessage>
+                                                <!---->
+                                                <af:panelLabelAndMessage label="Válida: "
+                                                                         id="plam1"
+                                                                         styleClass="output-internal "
+                                                                         rendered="#{viewScope.BBCrecimientoEquipos.cuentaValida and not viewScope.BBCrecimientoEquipos.tipoCuentaVeTv}">
+                                                    <h:outputText value="#{viewScope.BBCrecimientoEquipos.valida}"
+                                                                  id="ot4"
+                                                                  styleClass="font-bolder"/>
+                                                </af:panelLabelAndMessage>
+                                                <!---->
+                                                <af:panelLabelAndMessage label="Precio:"
+                                                                         id="plam9"
+                                                                         styleClass="output-internal"
+                                                                         rendered="#{viewScope.BBCrecimientoEquipos.cuentaValidaVeTv and viewScope.BBCrecimientoEquipos.tipoCuentaVeTv}">
+                                                    <h:outputText value="$"
+                                                                  styleClass="font-bolder"
+                                                                  id="ot16"/>
+                                                    <h:outputText value=" #{viewScope.BBCrecimientoEquipos.precioValida}"
+                                                                  styleClass="font-bolder"
+                                                                  id="ot14"/>
+                                                    <h:outputText value=" #{sessionScope.sesion.moneda}"
+                                                                  styleClass="font-bolder"
+                                                                  id="ot15"/>
+                                                </af:panelLabelAndMessage>
+                                                </af:panelGroupLayout>
+                                            </af:panelGroupLayout>
+                                        </div>
+                                    </div>
+                                </af:subform>
+                            </af:panelBox>
+                            <div class="row top">
+                                <af:panelGroupLayout id="pgl5"
+                                                     partialTriggers="s2:cb2">
+                                    <af:panelBox id="pb2" showDisclosure="false"
+                                             titleHalign="start"
+                                             showHeader="never"
+                                             inlineStyle="border: 0px;"
+                                             background="medium"
+                                             rendered="#{(viewScope.BBCrecimientoEquipos.cuentaValida and (not viewScope.BBCrecimientoEquipos.tipoCuentaVeTv)) or (viewScope.BBCrecimientoEquipos.cuentaValidaVeTv and viewScope.BBCrecimientoEquipos.tipoCuentaVeTv)}"
+                                             >
+                                    <af:subform id="s1">
+                                        <div class="row">
+                                            <af:outputText value="Equipos adicionales:"
+                                                           id="outputText3"
+                                                           styleClass="subtitle"/>
+                                        </div>
+                                        <div class="top"></div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <af:panelGroupLayout id="pgl9"
+                                                                     rendered="#{viewScope.BBCrecimientoEquipos.cuentaValida and not viewScope.BBCrecimientoEquipos.tipoCuentaVeTv}">
+                                                    <label>
+                                                        <af:outputText value="¿Cuántos equipos adicionales deseas agregar a tu cuenta?"
+                                                                       id="ot13"/>
+                                                    </label>
+                                                    <div class="top"></div>
+                                                    <div class="row">
+                                                        <div class="col-4 col-tb-4">
+                                                            <af:outputLabel id="ol1"
+                                                                            for="ins1"
+                                                                            styleClass="label-internal"
+                                                                            value="Equipos SD:"/>
+                                                             
+                                                            <af:inputNumberSpinbox id="ins1"
+                                                                                   styleClass="input-internal"
+                                                                                   value="#{viewScope.BBCrecimientoEquipos.sd}"
+                                                                                   minimum="0"
+                                                                                   maximum="4"
+                                                                                   simple="true"/>
+                                                        </div>
+                                                        <div class="col-4 col-tb-4">
+                                                            <af:outputLabel id="ol2"
+                                                                            for="ins2"
+                                                                            styleClass="label-internal"
+                                                                            value="Equipos HD:"/>
+                                                             
+                                                            <af:inputNumberSpinbox id="ins2"
+                                                                                   styleClass="input-internal"
+                                                                                   value="#{viewScope.BBCrecimientoEquipos.hd}"
+                                                                                   minimum="0"
+                                                                                   maximum="4"
+                                                                                   simple="true"/>
+                                                        </div>
+                                                        <div class="col-4 col-tb-4">
+                                                            <af:outputLabel id="ol3"
+                                                                            for="ins3"
+                                                                            styleClass="label-internal"
+                                                                            value="Equipos +HD:"/>
+                                                             
+                                                            <af:inputNumberSpinbox id="ins3"
+                                                                                   styleClass="input-internal"
+                                                                                   value="#{viewScope.BBCrecimientoEquipos.phd}"
+                                                                                   minimum="0"
+                                                                                   maximum="4"
+                                                                                   simple="true"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row top">
+                                                        <label>
+                                                            <af:outputText value="El pago de estos equipos se realizará en la visita del técnico de Sky"
+                                                                           id="ot10"/>
+                                                        </label>
+                                                    </div>
+                                                </af:panelGroupLayout><!-- <af:outputText value="Equipos adicionales solicitados:" id="ot9"
+                                 truncateAt="0"/> -->
+                                                <div class="row top">
+                                                    <af:outputText value="Fecha para visita del técnico de Sky:"
+                                                                   id="ot8"
+                                                                   styleClass="subtitle"
+                                                                   truncateAt="0"/>
+                                                </div>
+                                                <af:panelGroupLayout id="pgl7">
+                                                    <!-- <af:selectOneChoice id="soc3" required="true"
+                                        label="hora">
+                      <af:selectItem label="Por la mañana" id="si11" value="A.M."/>
+                      <af:selectItem label="Por la tarde" id="si10" value="P.M."/>
+                      <af:selectItem label="Abierto" id="si1" value="Abierto"/>
+                    </af:selectOneChoice> -->
+                                                    <div class="row top">
+                                                        <div class="col-4 col-tb-4">
+                                                            <span class="xf">* </span>
+                                                             
+                                                            <af:outputLabel id="ol4"
+                                                                            for="id1"
+                                                                            styleClass="label-internal"
+                                                                            value="Fecha de visita:"/>
+                                                             
+                                                            <af:inputDate id="id1"
+                                                                          required="true"
+                                                                          minValue="#{viewScope.BBCrecimientoEquipos.fechaActual}"
+                                                                          value="#{viewScope.BBCrecimientoEquipos.fechaAtencion}"
+                                                                          styleClass="input-internal"
+                                                                          simple="true"
+                                                                          showRequired="false"/>
+                                                        </div>
+                                                        <div class="col-4 col-tb-4">
+                                                            <af:group id="g3" rendered="#{!viewScope.BBCrecimientoEquipos.procesoOFCS}">
+                                                                <span class="xf">* </span>
+                                                                 
+                                                                <af:outputLabel id="ol5"
+                                                                                for="ins4"
+                                                                                styleClass="label-internal"
+                                                                                value="hora:"/>
+                                                                 
+                                                                <af:inputNumberSpinbox id="ins4"
+                                                                                       styleClass="input-internal"
+                                                                                       value="#{viewScope.BBCrecimientoEquipos.horaAtencionFormato}"
+                                                                                       required="true"
+                                                                                       rendered="#{!viewScope.BBCrecimientoEquipos.procesoOFCS}"
+                                                                                       minimum="1"
+                                                                                       maximum="3"
+                                                                                       stepSize="1"
+                                                                                       converter="HorarioConverter"
+                                                                                       columns="13"
+                                                                                       simple="true"
+                                                                                       showRequired="false"></af:inputNumberSpinbox>
+                                                            </af:group>
+                                                        </div>
+                                                        <div class="col-4 col-tb-4">
+                                                            <af:group id="g2" rendered="#{viewScope.BBCrecimientoEquipos.procesoOFCS}">
+                                                                <span class="xf">* </span>
+                                                             
+                                                            <af:outputLabel for="soc1"
+                                                                            value="Horario disponible:"
+                                                                            styleClass="label-internal"
+                                                                            id="ol6"/>
+                                                             
+                                                            <af:selectOneChoice id="soc1"
+                                                                                styleClass="select-internal"
+                                                                                unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                                                                value="#{viewScope.BBCrecimientoEquipos.numeroCodigo}"
+                                                                                required="false"
+                                                                                showRequired="false"
+                                                                                binding="#{viewScope.BBCrecimientoEquipos.listHorDispon}"
+                                                                                simple="true">
+                                                                <f:selectItems value="#{viewScope.BBCrecimientoEquipos.listCapacidad}"
+                                                                               id="si2"/>
+                                                            </af:selectOneChoice>
+                                                            </af:group>
+                                                        </div>
+                                                    </div>
+                                                </af:panelGroupLayout>
+                                                 
+                                                <af:panelGroupLayout id="pgl3">
+                                                    <div class="top"></div>
+                                                    <div class="row">
+                                                        <div class="col-3 col-tb-2 right"
+                                                             style="float:right">
+                                                            <af:button text="Validar disponibilidad"
+                                                                       id="cb444"
+                                                                       actionListener="#{viewScope.BBCrecimientoEquipos.consultaHorarioInstalacion}"
+                                                                       partialSubmit="true"
+                                                                       rendered="#{viewScope.BBCrecimientoEquipos.procesoOFCS}"
+                                                                       styleClass="btn-internal">
+                                                                <af:clientListener method="enforcePreventUserInput"
+                                                                                   type="action"/>
+                                                            </af:button>
+                                                        </div>
+                                                        <div class="col-3 right"
+                                                             style="float:right">
+                                                            <af:button text="Enviar Solicitud VeTv"
+                                                                       id="b2"
+                                                                       binding="#{viewScope.BBCrecimientoEquipos.enviarSolicutudVeTV}"
+                                                                       actionListener="#{viewScope.BBCrecimientoEquipos.calculaCrecimientoEquipos}"
+                                                                       rendered="#{viewScope.BBCrecimientoEquipos.tipoCuentaVeTv}"
+                                                                       styleClass="btn-internal"
+                                                                       partialSubmit="true">
+                                                                <af:clientListener method="enforcePreventUserInput"
+                                                                                   type="action"/>
+                                                            </af:button>
+                                                        </div>
+                                                        <div class="col-2 right"
+                                                             style="float:right">
+                                                            <af:button id="cb111"
+                                                                       text="Enviar Solicitud"
+                                                                       binding="#{viewScope.BBCrecimientoEquipos.enviarSolicitudTyA}"
+                                                                       rendered="#{not viewScope.BBCrecimientoEquipos.tipoCuentaVeTv}"
+                                                                       actionListener="#{viewScope.BBCrecimientoEquipos.ventaCrecimientoEquipos}"
+                                                                       styleClass="btn-internal"
+                                                                       partialSubmit="true">
+                                                                <af:clientListener method="enforcePreventUserInput"
+                                                                                   type="action"/>
+                                                            </af:button>
+                                                        </div>
+                                                    </div>
+                                                </af:panelGroupLayout>
+                                                 
+                                                <af:panelGroupLayout id="pgl10">
+                                                    <div class="row top">
+                                                        <af:outputText value="* La venta del crecimiento generará un Cargo por el costo de instalación a la cuenta del suscriptor"
+                                                                       rendered="#{viewScope.BBCrecimientoEquipos.cuentaValida and not sesion.userVeTV}"
+                                                                       id="ot18"
+                                                                       styleClass="check-internal-bold"/>
+                                                    </div>
+                                                    <div class="row top">
+                                                        <af:outputText value="* El costo de la instalación deberá ser entregado en efectivo al técnico de SKY al momento de la instalación"
+                                                                       rendered="#{viewScope.BBCrecimientoEquipos.cuentaValidaVeTv and sesion.userVeTV}"
+                                                                       id="ot17"
+                                                                       styleClass="check-internal-bold"/>
+                                                    </div>
+                                                </af:panelGroupLayout>
+                                            </div>
+                                        </div>
+                                        <af:popup id="popupTYA"
+                                                  binding="#{viewScope.BBCrecimientoEquipos.popupTYA}"
+                                                  contentDelivery="lazyUncached"
+                                                  autoCancel="disabled"
+                                                  childCreation="deferred">
+                                            <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                                <af:dialog id="dialog1"
+                                                           type="none"
+                                                           title="Notificación de crecimiento equipo"
+                                                           styleClass="alert"
+                                                           closeIconVisible="false">
+                                                    <div class="text-internal">
+                                                        <af:outputText value="No. SS: "
+                                                                       id="otNo"/>
+                                                         
+                                                        <h:outputText value="#{viewScope.BBCrecimientoEquipos.SSTransaccion}"
+                                                                      id="outputText2"
+                                                                      styleClass="font-bolder"/>
+                                                        <div class="row">
+                                                            <af:outputText value="Necesaria para seguimiento"
+                                                                           id="outputText1"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 dialog-background">
+                                                        <div class="row top autocenter">
+                                                            <af:button text="Aceptar"
+                                                                       id="b6"
+                                                                       action="#{viewScope.BBCrecimientoEquipos.nuevoCrecimiento}"
+                                                                       styleClass="btn-pay-dialog"/>
+                                                        </div>
+                                                    </div>
+                                                </af:dialog>
+                                            </div>
+                                        </af:popup>
+                                        <af:popup id="popupVETV"
+                                                  binding="#{viewScope.BBCrecimientoEquipos.popupVETV}"
+                                                  autoCancel="disabled"
+                                                  contentDelivery="lazyUncached"
+                                                  childCreation="deferred">
+                                            <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                                <af:dialog id="dialog2"
+                                                           type="none"
+                                                           title="Notificación de crecimiento equipo"
+                                                           styleClass="alert"
+                                                           closeIconVisible="false">
+                                                    <div class="text-internal">
+                                                        <af:outputText value="No. SR: "
+                                                                       id="otNo2"/>
+                                                         
+                                                        <af:outputText value="#{viewScope.BBCrecimientoEquipos.SR}"
+                                                                       id="ot11"
+                                                                       styleClass="font-bolder"/>
+                                                        <div class="row">
+                                                            <af:outputText value="Necesaria para seguimiento"
+                                                                           id="ot12"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 dialog-background">
+                                                        <div class="row top autocenter">
+                                                            <af:button id="b1"
+                                                                       text="Aceptar"
+                                                                       styleClass="btn-pay-dialog"
+                                                                       action="#{viewScope.BBCrecimientoEquipos.nuevoCrecimiento}"/>
+                                                        </div>
+                                                    </div>
+                                                </af:dialog>
+                                            </div>
+                                        </af:popup>
+                                    </af:subform>
+                                </af:panelBox>
+                                </af:panelGroupLayout>
+                            </div>
+                        </af:panelGroupLayout>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

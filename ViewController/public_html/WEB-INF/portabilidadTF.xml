@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="portabilidadTF">
+    <default-activity>registroBAM</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__7">
+      <managed-bean-name>PortabilidadMB</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.portabilidad.PortabilidadMB</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="portabilidadIndex">
+      <page>/pages/portabilidad/indexPortabilidad.jsff</page>
+    </view>
+    <view id="solicitaPortabilidad">
+      <page>/pages/portabilidad/solicitaPortabilidad.jsff</page>
+    </view>
+    <task-flow-return id="taskFlowReturn">
+      <outcome>
+        <name>taskFlowReturn</name>
+      </outcome>
+    </task-flow-return>
+    <method-call id="registroBAM">
+      <method>#{pageFlowScope.PortabilidadMB.registrarOperacionBAM}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>portabilidadIndex</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>irPortar</from-outcome>
+        <to-activity-id>solicitaPortabilidad</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>solicitaPortabilidad</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>portabilidadIndex</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>terminar</from-outcome>
+        <to-activity-id>taskFlowReturn</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>registroBAM</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>irIndex</from-outcome>
+        <to-activity-id>portabilidadIndex</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

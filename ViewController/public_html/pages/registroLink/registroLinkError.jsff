@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <af:group id="g2">
+        <af:resource type="css">
+            div#j_id7\:\:popup-container .x1e5 {
+                color: black;
+            }
+        </af:resource>
+        <div id="registroLinkError">
+            <div class="col-12">
+                <!--Para cada fila una div-->
+                <div class="row"
+                     style="display: flex;     align-items: center;     justify-content: center;     flex-direction: column;">
+                    <div class="col-9 col-tb-8 col-sm-8">
+                        <div class="content-internal">
+                            <div class="row autocenter">
+                                <af:image source="/imagenes/pc/cuatro/header.jpg" id="header" shortDesc="SKY"
+                                          styleClass="AFStretchWidth"></af:image>
+                                 
+                                <af:spacer width="100%" height="10" id="s2"/>
+                            </div>
+                            <p class="bottom">
+                                <h:outputText value="Aviso" id="PCTextHeaderReg"
+                                              style="font-size: x-large; color: rgba(247, 0, 157, 0.63);z-index: 2;font-family: Arial; text-align: center;"/>
+                            </p>
+                            <div class="col-12">
+                                <div class="row autocenter">
+                                    <af:outputText id="ot2"
+                                                   inlineStyle="font-size: medium;color: black; text-align:justify"
+                                                   binding="#{backingBeanScope.BBRegistroUsuario.mensajeUsuarioError}"/>
+                                </div>
+                            </div>
+                            <af:panelGroupLayout id="PCRow4">
+                                <div class="col-12">
+                                    <div class="row top autocenter">
+                                        <div class="col-6 col-sm-8 top">
+                                            <img src="/sky/imagenes/pc/tres/dispositivos.png" alt="dispositivos"
+                                                 style="width: 80%"/>
+                                        </div>
+                                        <div class="col-6 col-sm-8 top">
+                                            <af:commandLink id="cl5" inlineStyle="border-color: transparent;width:80%;"
+                                                            action="cerrar_pc_error">
+                                                <img src="/sky/imagenes/pc/tres/boton_close.png"
+                                                     style="border-color: transparent;" alt="boton_close"/>
+                                                <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                            </af:commandLink>
+                                        </div>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

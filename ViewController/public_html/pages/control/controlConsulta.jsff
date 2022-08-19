@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#controlConsulta').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="controlConsulta">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                        <div class="row">
+                            <!--Para cada fila una div-->
+                            <p class="top bottom">
+                                <h:outputText styleClass="title" value="Compra de Control Remoto" id="ot14"/>
+                            </p>
+                            <div class="row top">
+                                <div class="col-12 col-sm-8 col-tb-8">
+                                    <!--Aqui va TODO el contenido-->
+                                    <af:panelBox showHeader="never" showDisclosure="false" id="pb1" background="medium" inlineStyle="border: 0px;">
+                                        <f:facet name="toolbar"/>
+                                        <af:panelGroupLayout id="pgl2">
+                                            <af:outputText value="Estimado suscriptor para realizar la compra de su Control Remoto, acuda a alguna de las oficinas de nuestros distribuidores, el costo del Control Remoto es de 650 pesos dominicanos."
+                                                           id="ot2" styleClass="check-internal-bold top-channel"/>
+                                        </af:panelGroupLayout>
+                                        <div class="row top">
+                                            <af:forEach items="#{bindings.direcciones.rangeSet}" var="dir">
+                                                <p class="top">
+                                                    <h:outputText styleClass="title" value="Contacto #{dir.nombre}"
+                                                                  id="ot3"/>
+                                                </p>
+                                                <div class="row">
+                                                     <div class="col-12 col-sm-8 col-tb-8">
+                                                        <af:panelBox id="pb2" background="medium" showHeader="never"
+                                                                     showDisclosure="false" inlineStyle="border: 0px;">
+                                                            <f:facet name="toolbar"/>
+                                                            <af:panelFormLayout id="pfl1"
+                                                                                labelAlignment="start"
+                                                                                styleClass="padd-left-2">
+                                                                <f:facet name="footer"/>
+                                                                <af:inputText label="Nombre" id="it1"
+                                                                              value="#{dir.nombre}" readOnly="true"
+                                                                              disabled="true" styleClass="input-internal"
+                                                                              contentStyle="vertical-align: super"/>
+                                                                <af:inputText label="Tipo" id="inputText1"
+                                                                              value="#{dir.tipo}" readOnly="true"
+                                                                              disabled="true" styleClass="input-internal"
+                                                                              contentStyle="vertical-align: super"/>
+                                                                <af:inputText label="C.P." id="inputText2"
+                                                                              value="#{dir.codigoPostal}"
+                                                                              readOnly="true" disabled="true" styleClass="input-internal"
+                                                                              contentStyle="vertical-align: super"/>
+                                                                <af:inputText label="Dirección" id="inputText3"
+                                                                              value="#{dir.direccion}" readOnly="true"
+                                                                              disabled="true" styleClass="input-internal"
+                                                                              contentStyle="vertical-align: super"/>
+                                                                <af:inputText label="Teléfono" id="inputText4"
+                                                                              value="#{dir.telefono}" readOnly="true"
+                                                                              disabled="true" styleClass="input-internal"
+                                                                              contentStyle="vertical-align: super"/>
+                                                                <af:inputText label="Fax" id="inputText5"
+                                                                              value="#{dir.fax}" readOnly="true"
+                                                                              disabled="true" styleClass="input-internal"
+                                                                              contentStyle="vertical-align: super"/>
+                                                            </af:panelFormLayout>
+                                                        </af:panelBox>
+                                                    </div>
+                                                </div>
+                                            </af:forEach>
+                                        </div>
+                                    </af:panelBox>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

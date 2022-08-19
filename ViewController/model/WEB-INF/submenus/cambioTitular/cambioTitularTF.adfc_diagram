@@ -1,0 +1,39 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">cambioTitular</property>
+      <property
+         name="x">228.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>cambioTitular&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">153.59766</property>
+      <property
+         name="page">/WEB-INF/submenus/cambioTitular/cambioTitular.jsf</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule3">
+      <property
+         name="activityId">*</property>
+      <property
+         name="x">73.0</property>
+      <property
+         name="y">65.29883</property>
+   </WildcardControlFlowRule>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="WildcardControlFlowRule3"
+      to="View2">
+      <property
+         name="fromOutcome">smenu_cambioTitular</property>
+      <property
+         name="sdm:polyPoints">R50,109.0,65.44824,187.0,153.24707,L50</property>
+   </ControlFlowCase>
+</SDM>

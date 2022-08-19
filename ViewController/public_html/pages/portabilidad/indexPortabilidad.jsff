@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#portabilidadIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="portabilidadIndex">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                   <div class="row">
+                   <div class="row top">
+                            <div class="col-12">
+                                <af:panelBox id="pb1" background="medium"
+                                             showHeader="never"
+                                             showDisclosure="false"
+                                             inlineStyle="border: 0px;">
+                                    <f:facet name="toolbar"/>
+                                    <af:panelCollection id="pc1"
+                                                        defaultToolbarItemDisplay="icon"
+                                                        styleClass="AFStretchWidth"
+                                                        inlineStyle="border:none;">
+                                        <f:facet name="menus"/>
+                                        <f:facet name="toolbar"/>
+                                        <f:facet name="statusbar"/>
+                                        <af:table value="#{bindings.DetalleSolicitudServicio.collectionModel}" var="row"
+                                                  rows="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                                  emptyText="#{bindings.DetalleSolicitudServicio.viewable ? 'Aún no tienes iniciado un proceso de portabilidad.' : 'Access Denied.'}"
+                                                  rowBandingInterval="0"
+                                                  selectedRowKeys="#{bindings.DetalleSolicitudServicio.collectionModel.selectedRow}"
+                                                  selectionListener="#{bindings.DetalleSolicitudServicio.collectionModel.makeCurrent}"
+                                                  rowSelection="single"
+                                                  fetchSize="#{bindings.DetalleSolicitudServicio.rangeSize}" 
+                                                  varStatus="vs" id="t1"
+                                                  width="100%" scrollPolicy="auto" horizontalGridVisible="false"
+                                                  verticalGridVisible="false" styleClass="tbl-Class">
+                                            <af:column sortProperty="#{bindings.DetalleSolicitudServicio.hints.numeroSolicitud.name}"
+                                                       sortable="true" width="120"
+                                                       headerText="No. de Solicitud" headerClass="content-text"
+                                                       id="c1">
+                                                <af:outputText value="#{row.numeroSolicitud}"
+                                                               shortDesc="#{bindings.DetalleSolicitudServicio.hints.numeroSolicitud.tooltip}"
+                                                               id="ot1"/>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.DetalleSolicitudServicio.hints.fechaCreacion.name}"
+                                                       sortable="true" headerText="Fecha de Solicitud" width="150" id="c2" headerClass="content-text">
+                                                <af:outputText value="#{row.fechaCreacion}"
+                                                               shortDesc="#{bindings.DetalleSolicitudServicio.hints.fechaCreacion.tooltip}"
+                                                               id="ot2"/>
+                                            </af:column>
+                                        </af:table>
+                                    </af:panelCollection>
+                                    <div class="row top">
+                                        <div class="col-12 right sm-cancel-align top-2">
+                                            <af:button id="irPortab"
+                                                       styleClass="btn-internal"
+                                                       targetFrame="_self" action="irPortar"
+                                                       text="INICIAR PORTABILIDAD">
+                                            </af:button>
+                                        </div>
+                                    </div>
+                                    </af:panelBox>
+                                    </div>
+                                </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

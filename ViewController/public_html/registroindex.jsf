@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:trh="http://myfaces.apache.org/trinidad/html">
+<meta http-equiv="X-UA-Compatible" content="IE=11.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0, user-scalable = no"/>
+   <af:document id="d1" inlineStyle="    background: white;"
+                 title="SKY | Confirmación de registro SEL">
+      <f:facet name="metaContainer">
+            <trh:meta charset="utf-8"/>
+            <trh:meta name="viewport"
+                      content="width=device-width,initial-scale=1.0,maximum-scale=3.0,user-scalable=no"/>
+            <trh:meta http-equiv="X-UA-Compatible" content="IE=11"/>
+            <trh:meta name="apple-mobile-web-app-capable" content="yes"/>
+            <f:subview id="head">
+                <meta name="description" content="SKY | Servicios en Línea"/>
+                <meta name="keywords" content="servicios en linea sky"/>
+                <af:outputText value="&lt;link rel='SHORTCUT ICON' href='#{facesContext.externalContext.requestContextPath}/imagenes/aplicacion/favicon.ico' type='image/x-icon'/>"
+                               id="ot1" escape="false"/>
+                <af:resource type="javascript" source="/js/jquery-3.5.1.min.js"/>
+                <af:resource type="javascript" source="/js/pixelSEL.js"/>
+            </f:subview>
+        </f:facet>
+        <af:form id="f1" inlineStyle="background: white;">
+            <af:resource type="css" source="/css/custom/pagInternas_template.css"/>
+            <af:resource type="css" source="https://use.fontawesome.com/releases/v5.5.0/css/all.css"/>
+            <!-- Google Tag Manager (noscript) -->
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZQXB5N"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+            <!-- End Google Tag Manager (noscript) -->
+            <af:resource type="javascript">
+              function enforcePreventUserInput(evt) {
+                  var popup = AdfPage.PAGE.findComponentByAbsoluteId('popUpBusy');
+                  if (popup != null) {
+                      AdfPage.PAGE.addBusyStateListener(popup, handleBusyState);
+                      evt.preventUserInput();
+                  }
+              }
+
+              function handleBusyState(evt) {
+                  var popup = AdfPage.PAGE.findComponentByAbsoluteId('popUpBusy');
+                  if (popup != null) {
+                      if (evt.isBusy()) {
+                          popup.show();
+                      }
+                      else if (popup.isPopupVisible()) {
+                          popup.hide();
+                          AdfPage.PAGE.removeBusyStateListener(popup, handleBusyState);
+                      }
+                  }
+              }
+            </af:resource>
+      <af:region value="#{bindings.registroLinkTF1.regionModel}" id="r1"/>
+        <af:popup id="popUpBusy" contentDelivery="immediate">
+                        <af:dialog id="d2" type="none" title="Procesando información" closeIconVisible="false"
+                            styleClass="alert">
+                            <af:panelGroupLayout id="pgEspera" layout="vertical" halign="center">
+                                <af:image source="../imagenes/aplicacion/loading.gif" id="i7" shortDesc=" "/>
+                            </af:panelGroupLayout>
+                        </af:dialog>
+                    </af:popup>
+          <af:panelGroupLayout id="pgl1">
+                            <div class="col-11 col-tb-8 col-sm-8">
+                                <div class="row top" style="text-align: right;">
+                                    <af:outputText value='&lt;script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=serviciosenlinea.sky.com.mx&amp;size=L&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=es">&lt;/script>&lt;map name="sealmap_large" id="sealmap_large">&lt;area alt="Click to Verify - This site has chosen an SSL Certificate to improve Web site security" title="" href="javascript:vrsn_splash()" shape="rect" coords="0,0,130,65" tabindex="-1" style="outline:none;">&lt;area alt="Click to Verify - This site has chosen an SSL Certificate to improve Web site security" title="" href="javascript:vrsn_splash()" shape="rect" coords="0,65,71,88" tabindex="-1" style="outline:none;">&lt;area alt="" title="" href="javascript:symcBuySSL()" shape="rect" coords="71,65,130,88" style="outline:none;">&lt;/map>
+&lt;a href="https://www.symantec.com/es/es/ssl-certificates" target="_blank" style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;">ACERCA DE LOS CERTIFICADOS SSL&lt;/a>'
+                                       id="footerPC" escape="false"/>
+                                </div>
+                            </div>
+                    </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl11" >
+            <div class="col-11 col-tb-8 col-sm-8">
+                <div class="row top" style="text-align: center;">
+                    <af:panelGroupLayout id="pgl2"
+                                             inlineStyle="color: black;"
+                                             layout="vertical" halign="center">
+                        <af:outputText id="ot20"
+                                           value="“Sky” y las marcas relacionadas, nombres y logotipos, son propiedad de “Sky International AG” y otras empresas del grupo."
+                                           inlineStyle="font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                        <af:outputText id="ot21"
+                                           value="Corporación Novavisión S. de R.L. de C.V. 2022. Prohibida su reproducción total o parcial."
+                                           inlineStyle="font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                        <af:spacer width="100" height="20" id="s1"/>
+                    </af:panelGroupLayout>
+                </div>
+            </div>
+        </af:panelGroupLayout>
+    </af:form>
+        </af:document>
+</f:view>

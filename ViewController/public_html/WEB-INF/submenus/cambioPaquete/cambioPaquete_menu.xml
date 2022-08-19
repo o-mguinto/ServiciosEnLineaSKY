@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu"
+resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_cambioPaqueteIndex" label="#{lbl.menu_CAMBIO_PAQUETES_PROGRAMACION}" action="irRouterCambioPaquete"
+            focusViewId="/cambioPaqueteIndex" immediate="true" rendered="#{sesion.CAMBIO_PAQUETES_PROGRAMACION}"
+            icon="/imagenes/menu/ic_cambioPaquete.svg">
+    <itemNode id="itemNode_cambioPaquete" label="#{lbl.smenu_CAMBIO_PAQUETE}" action="smenu_cambioPaquete"
+              focusViewId="/cambioPaquete" immediate="true"
+              rendered="#{sesion.CAMBIO_PAQUETE}"/>
+  </itemNode>
+</menu>

@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="BatchAltaSolicitudesDeServicioWeb" targetNamespace="http://xmlns.oracle.com/BatchAltaSolicitudesDeServicioWeb" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://xmlns.oracle.com/BatchAltaSolicitudesDeServicioWeb" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <documentation>
+    <abstractWSDL>https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebss/BatchAltaSolicitudesDeServicioWeb!20220309-1927/BatchAltaSolicitudesDeServicioWeb.wsdl</abstractWSDL>
+  </documentation>
+  <plnk:partnerLinkType name="BatchAltaSolicitudesDeServicioWeb">
+    <plnk:role name="BatchAltaSolicitudesDeServicioWebProvider">
+      <plnk:portType name="client:BatchAltaSolicitudesDeServicioWeb"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://xmlns.oracle.com/BatchAltaSolicitudesDeServicioWeb" schemaLocation="clientBatchAltaSolicitudesDeServicioWeb.xsd"/>
+    </schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:include schemaLocation="datosAuxiliares.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="BatchAltaSolicitudesDeServicioWebRequestMessage">
+    <part name="payload" element="client:BatchAltaSolicitudesDeServicioWebProcessRequest"/>
+  </message>
+  <message name="BatchAltaSolicitudesDeServicioWebResponseMessage">
+    <part name="payload" element="client:BatchAltaSolicitudesDeServicioWebProcessResponse"/>
+  </message>
+  <portType name="BatchAltaSolicitudesDeServicioWeb">
+    <operation name="process">
+      <input message="client:BatchAltaSolicitudesDeServicioWebRequestMessage"/>
+      <output message="client:BatchAltaSolicitudesDeServicioWebResponseMessage"/>
+    </operation>
+  </portType>
+  <binding name="BatchAltaSolicitudesDeServicioWebBinding" type="client:BatchAltaSolicitudesDeServicioWeb">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="process">
+      <soap:operation style="document" soapAction="process"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="BatchAltaSolicitudesDeServicioWeb">
+    <port name="BatchAltaSolicitudesDeServicioWeb" binding="client:BatchAltaSolicitudesDeServicioWebBinding">
+      <soap:address location="https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebss/BatchAltaSolicitudesDeServicioWeb/client"/>
+    </port>
+  </service>
+</definitions>

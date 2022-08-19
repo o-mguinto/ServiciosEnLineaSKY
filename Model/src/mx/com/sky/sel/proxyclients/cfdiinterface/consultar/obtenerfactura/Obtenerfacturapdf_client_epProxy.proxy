@@ -1,0 +1,140 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jdevws:WebServiceProxy xmlns:jdevws="http://xmlns.oracle.com/jdeveloper/10130/webserviceproxy">
+   <list n="CHILD_NODES">
+      <url path="ObtenerfacturapdfClientEp.xml"/>
+      <url path="../../../../../enterpriseflowmessage/soasap/obtenerfacturapdf/ObtenerFacturaPDFRequestType.java"/>
+      <url path="../../../../../enterpriseflowmessage/soasap/obtenerfacturapdf/package-info.java"/>
+      <url path="../../../../../enterpriseflowmessage/soasap/obtenerfacturapdf/ObtenerFacturaPDFResType.java"/>
+      <url path="ObtenerFacturaPDF_ptClient.java"/>
+      <url path="../../../../../enterpriseobjects/sap/common/v3/SeguridadListType.java"/>
+      <url path="../../../../../enterpriseobjects/sap/common/v3/RuntimeFaultMessageType.java"/>
+      <url path="../../../../../enterpriseflowmessage/soasap/obtenerfacturapdf/ModelType.java"/>
+      <url path="../../../../../enterpriseobjects/sap/common/v3/SeguridadItemType.java"/>
+      <url path="ObtenerFacturaPDF.java"/>
+      <url path="../../../../../enterpriseflowmessage/soasap/obtenerfacturapdf/ObtenerFacturaPDFReqType.java"/>
+      <url path="../../../../../enterpriseobjects/sap/common/v3/ObjectFactory.java"/>
+      <url path="../../../../../enterpriseobjects/sap/common/v3/package-info.java"/>
+      <url path="../../../../../enterpriseobjects/sap/common/v3/EBMType.java"/>
+      <url path="../../../../../enterpriseobjects/sap/common/v3/ErrorNegocioType.java"/>
+      <url path="../../../../../enterpriseflowmessage/soasap/obtenerfacturapdf/ObtenerFacturaPDFResponseType.java"/>
+      <url path="ObtenerfacturapdfClientEp.java"/>
+      <url path="../../../../../enterpriseobjects/sap/common/v3/ParametroListType.java"/>
+      <url path="../../../../../enterpriseobjects/sap/common/v3/EBMHeaderResponseType.java"/>
+      <url path="../../../../../enterpriseobjects/sap/common/v3/ParametroItemType.java"/>
+      <url path="../../../../../enterpriseobjects/sap/common/v3/EBMHeaderRequestType.java"/>
+      <url path="../../../../../enterpriseflowmessage/soasap/obtenerfacturapdf/ObjectFactory.java"/>
+      <url path="../../../../../enterpriseobjects/sap/common/v3/ErrorTecnicoType.java"/>
+   </list>
+   <hash n="DATA_MODEL">
+      <value n="ATTACHMENT_ENCODING" v="MIME"/>
+      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy"/>
+      <url n="ORACLE_WEBSERVICES_XML" path="ObtenerfacturapdfClientEp.xml"/>
+      <hash n="PROPERTY_GROUPS">
+         <hash n="WSDL_TO_JAVA_PROPERTIES">
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+            <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.cfdiinterface.consultar.obtenerfactura"/>
+         </hash>
+      </hash>
+      <value n="PROXY_ASYNC_METHODS" v="FOR_NONE"/>
+      <list n="PROXY_CLIENTS">
+         <url path="ObtenerFacturaPDF_ptClient.java"/>
+      </list>
+      <value n="PROXY_MAPPING_URL"/>
+      <hash n="PROXY_PORTS">
+         <hash n="ObtenerFacturaPDF_pt">
+            <value n="ACCESSES_DOC_WRAPPPED" v="true"/>
+            <value n="ACCESSES_RPC_ENCODED" v="false"/>
+            <value n="CLASS_NAME" v="mx.com.sky.sel.proxyclients.cfdiinterface.consultar.obtenerfactura.ObtenerFacturaPDF"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
+            <value n="NAME" v="ObtenerFacturaPDF_pt"/>
+            <hash n="OPERATIONS">
+               <hash n="obtenerfacturapdf">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </hash>
+            <hash n="PROPERTY_GROUPS">
+               <hash n="WS_POLICY">
+                  <value n="addressing"/>
+                  <hash n="GLOBAL_CONFIG_PROPERTIES"/>
+                  <list n="management"/>
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.policy.PolicyClientModel"/>
+                  <value n="mtom"/>
+                  <hash n="POLICY_OVERRIDE_PROPERTIES"/>
+                  <list n="security"/>
+                  <list n="wsconfig"/>
+                  <value n="wsrm"/>
+               </hash>
+            </hash>
+            <url n="PROXY_ORIGINAL_PORT_ENDPOINT" protocol="https" host="presapsoa.sky.com.mx" port="443" path="/soa-infra/services/CFDI_EBF/ObtenerFacturaPDFSoaSapEBF/obtenerfacturapdf_client_ep"/>
+         </hash>
+      </hash>
+      <value n="PROXY_SERVICE_NAME" v="obtenerfacturapdf_client_ep"/>
+      <value n="PROXY_SERVICE_NAMESPACE" v="http://xmlns.sky.com.mx/EnterpriseFlows/Sap/ObtenerFacturaPDF"/>
+      <url n="PROXY_TARGET_PROJECT" path="../../../../../../../../../Model.jpr"/>
+      <url n="PROXY_WSDL_URL" protocol="https" host="presapsoa.sky.com.mx" path="/soa-infra/services/CFDI_EBF/ObtenerFacturaPDFSoaSapEBF/obtenerfacturapdf_client_ep" query="WSDL"/>
+      <hash n="REFERENCED_WEBSERVICE">
+         <list n="BD_">
+            <hash>
+               <value n="BOUND_PORT_TYPE" v="{http://xmlns.sky.com.mx/EnterpriseFlows/Sap/ObtenerFacturaPDF}ObtenerFacturaPDF"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+               <value n="NAME" v="{http://xmlns.sky.com.mx/EnterpriseFlows/Sap/ObtenerFacturaPDF}ObtenerFacturaPDFBinding"/>
+               <list n="OP_BINDINGS">
+                  <hash>
+                     <value n="BOUND_OPERATION" v="mx.com.sky.enterpriseflowmessage.soasap.obtenerfacturapdf.ObtenerFacturaPDFResponseType.obtenerfacturapdf.mx.com.sky.enterpriseflowmessage.soasap.obtenerfacturapdf.ObtenerFacturaPDFRequestType"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+            </hash>
+         </list>
+         <list n="BINDING_FILES"/>
+         <value n="GUID" v="f2fcc048-017c-1000-8002-0afd0988b13a"/>
+         <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
+         <list n="PO_">
+            <hash>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+               <value n="NAME" v="ObtenerFacturaPDF_pt"/>
+               <value n="PORT_BINDING_NAME" v="{http://xmlns.sky.com.mx/EnterpriseFlows/Sap/ObtenerFacturaPDF}ObtenerFacturaPDFBinding"/>
+               <list n="PORT_OPS">
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="mx.com.sky.enterpriseflowmessage.soasap.obtenerfacturapdf.ObtenerFacturaPDFResponseType.obtenerfacturapdf.mx.com.sky.enterpriseflowmessage.soasap.obtenerfacturapdf.ObtenerFacturaPDFRequestType"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+               <url n="URL" protocol="https" host="presapsoa.sky.com.mx" port="443" path="/soa-infra/services/CFDI_EBF/ObtenerFacturaPDFSoaSapEBF/obtenerfacturapdf_client_ep"/>
+            </hash>
+         </list>
+         <hash n="PROPERTY_GROUPS">
+            <hash n="WSDL_TO_JAVA_PROPERTIES">
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+               <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.cfdiinterface.consultar.obtenerfactura"/>
+            </hash>
+         </hash>
+         <list n="PT_">
+            <hash>
+               <value n="AUTO_SERVICE_INTERFACE"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaPortType"/>
+               <value n="NAME" v="{http://xmlns.sky.com.mx/EnterpriseFlows/Sap/ObtenerFacturaPDF}ObtenerFacturaPDF"/>
+               <hash n="PROPERTY_GROUPS"/>
+               <value n="PT_CLASS" v="mx.com.sky.sel.proxyclients.cfdiinterface.consultar.obtenerfactura.ObtenerFacturaPDFImpl"/>
+               <value n="PT_SERVICE_INTERFACE" v="mx.com.sky.sel.proxyclients.cfdiinterface.consultar.obtenerfactura.ObtenerFacturaPDF"/>
+               <value n="PT_TOP_DOWN_GENERATED_SEI_NAME" v="mx.com.sky.sel.proxyclients.cfdiinterface.consultar.obtenerfactura.ObtenerFacturaPDF"/>
+            </hash>
+         </list>
+         <url n="TARGET_PROJECT" path="../../../../../../../../../Model.jpr"/>
+         <value n="WS_ORIG_GEN_DIRECTION" v="TOP_DOWN"/>
+         <value n="WS_TARGET_NAMESPACE" v="http://xmlns.sky.com.mx/EnterpriseFlows/Sap/ObtenerFacturaPDF"/>
+         <value n="WS_URI" v="obtenerfacturapdf_client_ep"/>
+         <url n="WS_WSDL_FILE" protocol="https" host="presapsoa.sky.com.mx" path="/soa-infra/services/CFDI_EBF/ObtenerFacturaPDFSoaSapEBF/obtenerfacturapdf_client_ep" query="WSDL"/>
+      </hash>
+      <value n="SERVICE_ASYNC" v="false"/>
+      <value n="WSDL_IS_LOCAL_COPY" v="false"/>
+   </hash>
+</jdevws:WebServiceProxy>

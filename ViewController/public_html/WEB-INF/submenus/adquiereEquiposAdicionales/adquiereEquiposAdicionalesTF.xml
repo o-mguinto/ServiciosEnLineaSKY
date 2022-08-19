@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="adquiereEquiposAdIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <view id="equipoAdicional">
+    <page>/WEB-INF/submenus/adquiereEquiposAdicionales/equipoAdicional.jsf</page>
+    <input-page-parameter id="__8">
+      <from-value>/WEB-INF/crecimientoEquiposTF.xml#crecimientoEquiposTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="internetAdicional">
+    <page>/WEB-INF/submenus/adquiereEquiposAdicionales/internetAdicional.jsf</page>
+    <input-page-parameter id="__10">
+      <from-value>/WEB-INF/crecimientoInternetTF.xml#crecimientoInternetTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <router id="routerAdquiereEquiposAd">
+    <case id="__5">
+      <expression>#{sesion.EQUIPO_ADICIONAL}</expression>
+      <outcome>irEquiposAdicional</outcome>
+    </case>
+    <case id="__6">
+      <expression>#{sesion.INTERNET_ADICIONAL}</expression>
+      <outcome>irInternetAdicional</outcome>
+    </case>
+    <default-outcome>irAdquiereEquiposAdIndex</default-outcome>
+  </router>
+  <control-flow-rule id="__1">
+    <from-activity-id>routerAdquiereEquiposAd</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>irAdquiereEquiposAdIndex</from-outcome>
+      <to-activity-id>adquiereEquiposAdIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__3">
+      <from-outcome>irEquiposAdicional</from-outcome>
+      <to-activity-id>equipoAdicional</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__4">
+      <from-outcome>irInternetAdicional</from-outcome>
+      <to-activity-id>internetAdicional</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__11">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__12">
+      <from-outcome>irRouterAdquiereEquiposAd</from-outcome>
+      <to-activity-id>routerAdquiereEquiposAd</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__20">
+      <from-outcome>smenu_equipoAdicional</from-outcome>
+      <to-activity-id>equipoAdicional</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__21">
+      <from-outcome>smenu_internetAdicional</from-outcome>
+      <to-activity-id>internetAdicional</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__16">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>adquiereEquiposAd_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__17">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__18">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/adquiereEquiposAdicionales/adquiereEquiposAd_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

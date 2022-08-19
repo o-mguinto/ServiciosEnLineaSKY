@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:c="http://java.sun.com/jsp/jstl/core" locale="es">
+    <meta http-equiv="X-UA-Compatible" content="IE=11.0" charset="utf-8"/>
+    <af:document id="d1"
+                 title="Contratar Servicio de Streaming">
+        <af:messages id="m1"/>
+        <c:set var="selSKYBundle"
+               value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+        <af:resource type="css" source="/css/custom/pagInternas_template.css"/>
+        <af:form id="f1">
+            <af:panelGroupLayout id="pgl1" layout="scroll"
+                                 styleClass="dialog-background"
+                                 inlineStyle="border: none;">
+                <h:outputText styleClass="title padd-bottom-dialog padd-top-dialog"
+                              value="Información del servicio" id="ot14"/>
+                <div class="row ">
+                    <div class="col-12">
+                        <af:panelBox id="panelBox1" maximized="true"
+                                     showDisclosure="false" showMaximize="never"
+                                     background="medium"
+                                     inlineStyle="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? 'width:100.0%; border:none;' : 'width:95.0%; margin:0.0%; padding:0.0%; border:none;' }"
+                                     contentStyle="min-height: 418px; padding-left:0px; padding-right:0px;"
+                                     showHeader="never">
+                            <f:facet name="toolbar"/>
+                            <af:panelStretchLayout id="psl1"
+                                                   endWidth="160px;vertical-align: middle;"
+                                                   styleClass="AFStretchWidth">
+                                <f:facet name="center">
+                                    <af:panelGroupLayout layout="scroll"
+                                                         id="pgl8">
+                                        <af:panelBox showDisclosure="false"
+                                                     showMaximize="never"
+                                                     background="medium"
+                                                     showHeader="never" id="pb2"
+                                                     contentStyle="min-height:380px; max-height:400px; padding-left:0px;"
+                                                     inlineStyle="border:none;    border-right: solid 1px #D6DFE6;     margin-right: 5px;">
+                                            <f:facet name="toolbar"/>
+                                            <af:panelFormLayout id="panelFormLayout1"
+                                                                fieldWidth="100%"
+                                                                labelWidth="35%">
+                                                <af:inputText label="Nombre"
+                                                              id="inputText1"
+                                                              readOnly="true"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder; opacity:1;"
+                                                              value="#{pageFlowScope.PFStreamingContrata.canal.nombre}"/>
+                                                <af:inputText label="Precio"
+                                                              id="it1"
+                                                              readOnly="true"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder; opacity:1;"
+                                                              rendered="#{!sesion.userVeTV}"
+                                                              value="$ #{pageFlowScope.PFStreamingContrata.canal.precio_display} #{sesion.moneda}"/>
+                                                <af:inputText label="Descripción"
+                                                              id="inputText5"
+                                                              readOnly="true"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder; opacity:1; text-align:justify;"
+                                                              value="#{pageFlowScope.PFStreamingContrata.canal.sinopsis}"
+                                                              inlineStyle="text-align:justify;"/>
+                                                              
+                                                <af:outputText
+                                                              id="inputText6"
+                                                              readOnly="true"
+                                                              styleClass="output-internal"
+                                                              inlineStyle="text-align:justify; margin-top: 10px;"
+                                                              contentStyle="font-weight: bolder; opacity:1; text-align:justify;"
+                                                              value="&#169;Disney #{sessionScope.sesion.year}"
+                                                              rendered="#{pageFlowScope.PFStreamingContrata.disneyPlus}"/>
+                                                <!--af:panelLabelAndMessage label="Tarjeta Inteligente"
+                                                                         id="plam1"
+                                                                         styleClass="output-internal"
+                                                                         rendered="#{bindings.obtenerTarjetaInteligenteIter.estimatedRowCount&lt;=1}">
+                                                    <af:outputFormatted value="#{bindings.tarjetaInteligente.inputValue}"
+                                                                        id="of1"
+                                                                        styleClass="font-bolder"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:panelGroupLayout id="pg5"
+                                                                     rendered="#{bindings.obtenerTarjetaInteligenteIter.estimatedRowCount>1}">
+                                                    <div class="row top">
+                                                        <div class="col-12 col-tb-8 col-sm-8">
+                                                            <span class="xf">* </span>
+                                                             
+                                                            <af:outputLabel for="soc1"
+                                                                            value="Tarjeta inteligente"
+                                                                            styleClass="output-internal"
+                                                                            id="ol1"/>
+                                                             
+                                                            <af:selectOneChoice id="soc1"
+                                                                                label=""
+                                                                                showRequired="false"
+                                                                                required="true"
+                                                                                simple="true"
+                                                                                value="#{pageFlowScope.PFStreamingContrata.tarjetaInteligente}"
+                                                                                unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                                                                autoSubmit="true"
+                                                                                styleClass="select-internal">
+                                                                <af:forEach var="item"
+                                                                            items="#{bindings.tablaTarjetaInteligente.rangeSet}">
+                                                                    <f:selectItem id="si1"
+                                                                                  itemLabel="#{item.tarjetaInteligente}"
+                                                                                  itemValue="#{item.tarjetaInteligente}"/>
+                                                                </af:forEach>
+                                                            </af:selectOneChoice>
+                                                        </div>
+                                                    </div>
+                                                </af:panelGroupLayout-->
+                                            </af:panelFormLayout>
+                                        </af:panelBox>
+                                        <!--af:group id="g1"
+                                                  rendered="#{bindings.obtenerTarjetaInteligenteIter.estimatedRowCount>1}">
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <span class="xf"
+                                                          style="margin-left:30px;">* </span>
+                                                     
+                                                    <af:outputText value="#{selSKYBundle['general.obligatorio']}"
+                                                                   id="ot1"
+                                                                   styleClass="cursiv"/>
+                                                </div>
+                                            </div>
+                                        </af:group-->
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                                <f:facet name="end">
+                                    <af:panelGroupLayout id="pgl4">
+                                        <div class="autocenter">
+                                            <af:image id="i6"
+                                                      source="#{parametros.urlImgsCanalMovil}#{pageFlowScope.PFStreamingContrata.canal.imagen}"
+                                                      inlineStyle="width: 60%;     height: auto;"/>
+                                        </div>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                            </af:panelStretchLayout>
+                            <af:panelGroupLayout id="pgl2">
+                                <div class="col-12">
+                                    <div class="row top">
+                                        <label>
+                                            <h:outputText value="Su cuenta no puede contratar el servicio de Streaming, contactar a Atención a Clientes."
+                                                          rendered="#{!sessionScope.sesion.masterVideoActivo}"
+                                                          id="ot6"
+                                                          style="text-align:justify;"/>
+                                        </label>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                        </af:panelBox>
+                    </div>
+                </div>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl3">
+                <div class="col-12 dialog-background">
+                    <div class="row autocenter">
+                        <div class="col-6">
+                            <af:button text="Cancelar" id="cbCancelar"
+                                       styleClass="btn-pay-dialog"
+                                       action="#{pageFlowScope.PFStreamingContrata.cbCancelar_action}"
+                                       immediate="true"></af:button>
+                        </div>
+                        <div class="col-6">
+                            <af:button text="Siguiente" id="cb2"
+                                       partialSubmit="true"
+                                       disabled="#{!sessionScope.sesion.masterVideoActivo}"
+                                       action="#{pageFlowScope.PFStreamingContrata.cbSiguiente_action}"
+                                       styleClass="btn-pay-dialog"></af:button>
+                        </div>
+                    </div>
+                </div>
+            </af:panelGroupLayout>
+        </af:form>
+    </af:document>
+</f:view>

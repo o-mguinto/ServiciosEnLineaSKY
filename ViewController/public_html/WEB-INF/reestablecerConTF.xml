@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="reestablecerConTF">
+    <default-activity>handleRequestMethod</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>BBRecuperaCon</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.recuperarcontrasenia.BBRecuperaCon</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <method-call id="handleRequestMethod">
+      <method>#{backingBeanScope.BBRecuperaCon.handleRequestMethod}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <router id="routerErrorOKPc">
+      <case id="__4">
+        <expression>#{backingBeanScope.BBRecuperaCon.accionOk}</expression>
+        <outcome>pc_ok</outcome>
+      </case>
+      <default-outcome>pc_error</default-outcome>
+    </router>
+    <view id="pc_recuperaconlink_error">
+      <page>/pages/recuperaConLink/recuperaConLinkError.jsff</page>
+    </view>
+    <view id="pc_recuperaconlink_ok">
+      <page>/pages/recuperaConLink/recuperaConLinkOk.jsff</page>
+    </view>
+    <url-view id="acceso">
+      <url>/sky/faces/bienvenido</url>
+    </url-view>
+    <view id="recuperaConLinkOkExito">
+      <page>/pages/recuperaConLink/recuperaConLinkOkExito.jsff</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id>handleRequestMethod</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>routerErrorOKPc</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>routerErrorOKPc</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>pc_error</from-outcome>
+        <to-activity-id>pc_recuperaconlink_error</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>pc_ok</from-outcome>
+        <to-activity-id>pc_recuperaconlink_ok</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>pc_recuperaconlink_error</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>cerrar_pc_error</from-outcome>
+        <to-activity-id>acceso</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id>pc_recuperaconlink_ok</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome>cancelar</from-outcome>
+        <to-activity-id>acceso</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__15">
+        <from-outcome>OK</from-outcome>
+        <to-activity-id>recuperaConLinkOkExito</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id>recuperaConLinkOkExito</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome>salir</from-outcome>
+        <to-activity-id>acceso</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

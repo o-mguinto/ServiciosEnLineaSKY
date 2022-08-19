@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="cuenta">
+    <page>/WEB-INF/submenus/miCuenta/perfil.jsf</page>
+    <input-page-parameter id="__2">
+      <from-value>/WEB-INF/perfilTF.xml#perfilTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__1">
+      <from-value>Mi Cuenta</from-value>
+      <to-value>#{Menu.titulo}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__4">
+      <from-value>0</from-value>
+      <to-value>#{Menu.idxDiscloused}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="admonMiCuenta">
+    <page>/WEB-INF/submenus/miCuenta/admonMiCuenta.jsf</page>
+  </view>
+  <control-flow-rule id="__9">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__10">
+      <from-outcome>smenu_perfil</from-outcome>
+      <to-activity-id>cuenta</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__11">
+      <from-outcome>smenu_admonMiCuenta</from-outcome>
+      <to-activity-id>admonMiCuenta</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__16">
+      <from-outcome>smenu_perfil_0</from-outcome>
+      <to-activity-id>cuenta</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__13">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>miCuenta_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__14">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__15">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/miCuenta/miCuenta_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+  <managed-bean id="__3">
+    <managed-bean-name>anunciosMB</managed-bean-name>
+    <managed-bean-class>mx.com.sky.sel.managedbeans.anuncios.AnunciosMB</managed-bean-class>
+    <managed-bean-scope>pageFlow</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

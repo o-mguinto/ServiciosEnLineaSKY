@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ConsultarRegimenFiscalSelEBM="http://www.sky.com.mx/EnterpriseObjects/Sel/ConsultarRegimenFiscal" targetNamespace="http://www.sky.com.mx/EnterpriseObjects/Sel/ConsultarRegimenFiscal" xmlns:Meta="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" xmlns:consultaregimenfiscal="http://xmlns.oracle.com/pcbpel/adapter/db/DBUnificadoregimenfiscal" elementFormDefault="qualified">
+  <xsd:import schemaLocation="DBUnificadoregimenfiscal.xsd" namespace="http://xmlns.oracle.com/pcbpel/adapter/db/DBUnificadoregimenfiscal"/>
+  <xsd:import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" schemaLocation="Meta.xsd"/>
+  <xsd:element name="ConsultarRegimenFiscalRequest" type="ConsultarRegimenFiscalSelEBM:ConsultarRegimenFiscalRequestType"/>
+  <xsd:element name="ConsultarRegimenFiscalResponse" type="ConsultarRegimenFiscalSelEBM:ConsultarRegimenFiscalResponseType"/>
+  <xsd:complexType name="ConsultarRegimenFiscalRequestType">
+    <xsd:sequence>
+      <xsd:element ref="Meta:EBMHeaderRequest"/>
+      <xsd:element name="TipoPersona" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ConsultarRegimenFiscalResponseType">
+    <xsd:sequence>
+      <xsd:element ref="Meta:EBMHeaderResponse"/>
+      <xsd:element ref="consultaregimenfiscal:DBUnificadoregimenfiscalOutputCollection"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

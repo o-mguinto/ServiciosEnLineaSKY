@@ -1,0 +1,402 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#cambioFormaPagoIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+        input[type="radio"] {
+            vertical-align: inherit;
+        }
+        /*para quitar el borde en el focus del radio*/
+        input[type="radio"]:focus {
+            outline: none !important ;
+        }
+        /*checkbox*/
+        input[type=checkbox], input[type=radio] {
+            width: 20px !important;
+            height: 20px !important;
+            vertical-align: top;
+        }
+        /*para la seleccion del radio*/
+        /*input[type="radio"]:checked {
+           width: 23px !important;
+            height: 23px !important;
+            background: transparent url(../../imagenes/aplicacion/radio_on_light.svg) 0% 0% no-repeat padding-box !important;
+            opacity: 1 !important;
+            appearance: inherit;
+            border: 0px !important;
+        }*/
+        /*for selectOneradio*/
+            .solectOne-flex {
+                display: inline-block;
+                vertical-align: text-top;
+            }
+            /*for  +2 radio*/
+            .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 480px;
+                }
+            /* For tablets: */
+            @media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 300px;
+                }
+                .solectOne-flex-2 td.xth > div[role="radiogroup"] div, .solectOne-flex-2 td.xvo > div[role="radiogroup"] div
+                ,.solectOne-flex-2 > div[role="radiogroup"] div{
+                    line-height: 30px;
+                }
+            }
+            /* For tablets */
+            @media only screen and (min-device-width:768px) and (max-device-width:1024px) and (orientation:landscape) {
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 480px;
+                }
+            }
+            /* For mobile phones: */
+            @media only screen and (min-device-width:320px) and (max-device-width:767px) {
+                /*checkbox*/
+                input[type=checkbox], input[type=radio] {
+                    width: 24px !important;
+                    height: 24px !important;
+                }
+                /*for  +2 radio*/
+                .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 250px;
+                }
+                .solectOne-flex-2 td.xth > div[role="radiogroup"] div, .solectOne-flex-2 td.xvo > div[role="radiogroup"] div
+                ,.solectOne-flex-2 > div[role="radiogroup"] div{
+                    line-height: 40px;
+                }
+            }
+                /* For mobile phones: */
+            @media only screen and (min-device-width:320px) and (max-device-width:767px) and (orientation:landscape) {
+                 .solectOne-flex-2 td.xth, .solectOne-flex-2 td.x14 {
+                    width: 480px;
+                }
+            }
+        </af:resource>
+        <div id="cambioFormaPagoIndex">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-sm-8 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:subform id="sb1">
+                            <af:panelLabelAndMessage label="Aviso" id="plam2"
+                                                     styleClass="panelLabelM autocenter"
+                                                     rendered="#{!pageFlowScope.PFCambioFormaPago.isTimeOut}">
+                                <af:outputText value="#{pageFlowScope.PFCambioFormaPago.mensajeConsultaBeneficio}"
+                                               styleClass="check-internal-bold"
+                                               id="ot75"/>
+                            </af:panelLabelAndMessage>
+                            <af:panelGroupLayout id="pgl1"
+                                                 rendered="#{pageFlowScope.PFCambioFormaPago.isTimeOut}"
+                                                 styleClass="text-align: justify;">
+                                <div class="row">
+                                    <af:outputText value="Aproveche descuentos por pago oportuno registrando su tarjeta de crédito como forma de pago mensual"
+                                                   styleClass="check-internal-bold"
+                                                   id="ot3"/>
+                                </div>
+                                <div class="row">
+                                    <af:outputText value="Si realizas el cambio de forma de pago obtienes el beneficio de: #{pageFlowScope.PFCambioFormaPago.errorMessageSel}"
+                                                   styleClass="check-internal-bold"
+                                                   id="ot2"
+                                                   rendered="#{!pageFlowScope.PFCambioFormaPago.isBasicoAHBO_UNIVERSE}"/>
+                                </div>
+                                <div class="row">
+                                    <p class="top">
+                                        <h:outputText styleClass="title"
+                                                      value="Registrar Tarjeta de Crédito"
+                                                      id="ot6"/>
+                                    </p>
+                                </div>
+                                <div class="row top"></div>
+                                <af:panelBox text="Registrar Tarjeta de Crédito"
+                                             id="pb2" showHeader="never"
+                                             showDisclosure="false"
+                                             background="medium"
+                                             inlineStyle="border: 0px;">
+                                    <f:facet name="toolbar"/>
+                                    <div class="col-6 col-tb-7">
+                                        <span class="xf">* </span>
+                                         
+                                        <af:outputLabel for="itdcname2"
+                                                        value="#{selSKYBundle['pago.it1.label']}"
+                                                        id="ol1"
+                                                        styleClass="label-internal"/>
+                                    </div>
+                                    <div class="row"></div>
+                                    <div class="col-7 col-tb-7">
+                                        <af:inputText id="itdcname2"
+                                                      value="#{pageFlowScope.PFCambioFormaPago.formaPago.nombreTarjetabiente}"
+                                                      autoComplete="off"
+                                                      required="true"
+                                                      maximumLength="30"
+                                                      styleClass="input-internal"
+                                                      placeholder="#{selSKYBundle['placeHolder_ingresarNombreTarjeta']}"
+                                                      simple="true">
+                                            <af:validateRegExp pattern="^[a-zA-Z  a-zA-Z]+$"
+                                                               messageDetailNoMatch="Solo letras y espacios son permitidos"
+                                                               hint="Sólo letras y espacios son permitidos"/>
+                                        </af:inputText>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 col-tb-7">
+                                            <span class="xf">* </span>
+                                             
+                                            <af:outputLabel for="itdcnum2"
+                                                            value="#{selSKYBundle['pago.it2.label']}"
+                                                            id="ol2"
+                                                            styleClass="label-internal"/>
+                                        </div>
+                                        <div class="row"></div>
+                                        <div class="col-7 col-tb-7">
+                                            <af:inputText id="itdcnum2"
+                                                          secret="true"
+                                                          value="#{pageFlowScope.PFCambioFormaPago.formaPago.numeroTarjeta}"
+                                                          required="true"
+                                                          showRequired="true"
+                                                          maximumLength="16"
+                                                          styleClass="input-internal"
+                                                          placeholder="#{selSKYBundle['placeHolder_ingresaNumeroTarjeta']}"
+                                                          simple="true">
+                                                <af:validateRegExp messageDetailNoMatch="#{selSKYBundle.msg_estructuraTarjetaCredito}"
+                                                                   pattern="^[0-9]{15,16}$"/>
+                                            </af:inputText>
+                                        </div>
+                                    </div>
+                                    <div class="row top">
+                                        <div class="col-3 col-tb-3">
+                                            <span class="xf">* </span>
+                                             
+                                            <af:outputLabel for="soc22"
+                                                            styleClass="label-internal"
+                                                            id="ol4"
+                                                            value="#{selSKYBundle['pago.soc2.label']}"/>
+                                        </div>
+                                        <div class="col-4 col-tb-4">
+                                            <af:selectOneChoice styleClass="select-internal"
+                                                                id="soc22"
+                                                                simple="true"
+                                                                autoSubmit="true"
+                                                                showRequired="false"
+                                                                required="true"
+                                                                unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                                                value="#{pageFlowScope.PFCambioFormaPago.formaPago.mes}">
+                                                <f:selectItems value="#{pageFlowScope.PFCambioFormaPago.meses}"
+                                                               id="si22"/>
+                                            </af:selectOneChoice>
+                                        </div>
+                                    </div>
+                                    <div class="row top">
+                                        <div class="col-3 col-tb-3">
+                                            <span class="xf">* </span>
+                                             
+                                            <af:outputLabel for="soc32"
+                                                            styleClass="label-internal"
+                                                            id="ol3"
+                                                            value="#{selSKYBundle['pago.soc3.label']}"/>
+                                        </div>
+                                        <div class="col-4 col-tb-4">
+                                            <af:selectOneChoice styleClass="select-internal"
+                                                                id="soc32"
+                                                                simple="true"
+                                                                autoSubmit="true"
+                                                                showRequired="false"
+                                                                required="true"
+                                                                unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                                                value="#{pageFlowScope.PFCambioFormaPago.formaPago.anio}">
+                                                <f:selectItems value="#{pageFlowScope.PFCambioFormaPago.anios}"
+                                                               id="si32"/>
+                                            </af:selectOneChoice>
+                                        </div>
+                                    </div>
+                                    <div class="row top">
+                                        <div class="col-12 col-tb-8 col-sm-8" style="line-height: 30px;">
+                                            
+                                                <af:selectOneRadio label=""
+                                                                   id="sor12"
+                                                                   required="true"
+                                                                   partialTriggers="d1"
+                                                                   showRequired="true"
+                                                                   autoSubmit="true" styleClass="solectOne-flex">
+                                                    <f:selectItems id="si12"
+                                                                   value="#{pageFlowScope.PFCambioFormaPago.terminos}"/>
+                                                </af:selectOneRadio>
+                                                <h:outputLink id="ol8"
+                                                              value="#{parametros.urlAvisoPrivacidad}"
+                                                              target="_blank"
+                                                              styleClass="terminos">
+                                                    <h:outputText id="ot8"
+                                                                  value="#{selSKYBundle.mensaje_terminos2}"/>
+                                                </h:outputLink>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="row top">
+                                        <af:panelGroupLayout id="pgl02">
+                                            <f:verbatim> <span class="xf">*</span>                                                                                  </f:verbatim>
+                                            <af:outputText value="#{selSKYBundle['general.obligatorio']}"
+                                                           id="outputText22"
+                                                           styleClass="cursiv"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </af:panelBox>
+                                <af:popup id="popup"
+                                          binding="#{pageFlowScope.PFCambioFormaPago.popup}"
+                                          childCreation="deferred"
+                                          contentDelivery="lazyUncached"
+                                          autoCancel="disabled">
+                                    <div class="col-10 col-tb-8 col-sm-8 center-popup">
+                                        <af:dialog id="d1" type="none"
+                                                   styleClass="alert"
+                                                   closeIconVisible="false"
+                                                   title="Confirmar Operación">
+                                            <div class="text-internal">
+                                                <div class="col-12 autocenter">
+                                                    <h:outputText value="#{selSKYBundle['bbpago.agregartarjeta']}"
+                                                                  id="ot4"
+                                                                  styleClass="font-bolder"/>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['pago.it4.label']}"
+                                                                      id="ot7"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.PFCambioFormaPago.formaPago.nombreTarjetabiente}"
+                                                                      id="ot5"
+                                                                      styleClass="azul-internal"
+                                                                      style="text-transform:uppercase;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['pago.it5.label']}"
+                                                                      id="ot9"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.PFCambioFormaPago.formaPago.noCodificado}"
+                                                                      id="ot10"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['pago.it9.label']}"
+                                                                      id="ot11"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.PFCambioFormaPago.formaPago.tipoTarjeta}"
+                                                                      id="ot12"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['pago.it12.label']}"
+                                                                      id="ot13"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.PFCambioFormaPago.formaPago.creditoDebitoTexto}"
+                                                                      id="ot14"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['pago.it10.label']}"
+                                                                      id="ot15"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.PFCambioFormaPago.formaPago.mes}"
+                                                                      id="ot16"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row top">
+                                                        <h:outputText value="#{selSKYBundle['pago.it11.label']}"
+                                                                      id="ot17"/>
+                                                    </div>
+                                                    <div class="border-bottom">
+                                                        <h:outputText value="#{pageFlowScope.PFCambioFormaPago.formaPago.anio}"
+                                                                      id="ot18"
+                                                                      styleClass="azul-internal"/>
+                                                    </div>
+                                                </div>
+                                                <af:group id="gpoBeneficio"
+                                                          rendered="#{!pageFlowScope.PFCambioFormaPago.isBasicoAHBO_UNIVERSE}">
+                                                    <div class="col-12">
+                                                        <div class="row top">
+                                                            <h:outputText value="Acepto beneficio de:"
+                                                                      id="ot1"/>
+                                                        </div>           
+                                                        <div class="row">
+                                                            <af:selectOneRadio label=""
+                                                                               id="sor3" styleClass="solectOne-flex-2"
+                                                                               value="#{pageFlowScope.PFCambioFormaPago.beneficioSelect}"
+                                                                               >
+                                                                <af:selectItem label="#{pageFlowScope.PFCambioFormaPago.productoSel1}"
+                                                                               value="Beneficio1"
+                                                                               rendered="#{!pageFlowScope.PFCambioFormaPago.isBasicoAHBO_UNIVERSE}"
+                                                                               id="si5"/>
+                                                                <af:selectItem label="#{pageFlowScope.PFCambioFormaPago.productoSel2}"
+                                                                               value="Beneficio2"
+                                                                               rendered="#{!pageFlowScope.PFCambioFormaPago.isUniverseBeneficio2}"
+                                                                               id="si6"/>
+                                                            </af:selectOneRadio>
+                                                        </div>
+                                                    </div>
+                                                </af:group>
+                                            </div>
+                                            <div class="col-12 dialog-background">
+                                                <div class="row top autocenter">
+                                                    <div class="col-6 col-tb-4 col-sm-8">
+                                                        <af:button id="b2"
+                                                                   text="Aceptar"
+                                                                   styleClass="btn-pay-dialog"
+                                                                   action="#{pageFlowScope.PFCambioFormaPago.aceptaGuardartarjeta}">
+                                                            <af:clientListener method="enforcePreventUserInput"
+                                                                               type="action"/>
+                                                        </af:button>
+                                                    </div>
+                                                    <div class="col-6 col-tb-4 col-sm-8 top-btn">
+                                                        <af:button id="b1"
+                                                                   text="Cancelar"
+                                                                   styleClass="btn-pay-dialog"
+                                                                   action="#{pageFlowScope.PFCambioFormaPago.cancelaGuardarTarjeta}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </af:dialog>
+                                    </div>
+                                </af:popup>
+                            </af:panelGroupLayout>
+                            <div class="row top">
+                                <div class="col-12 right sm-cancel-align">
+                                    <af:button id="b3"
+                                               text="#{selSKYBundle['pago.cb1.text']}"
+                                               styleClass="btn-internal"
+                                               action="#{pageFlowScope.PFCambioFormaPago.popupAgregar}"
+                                               rendered="#{pageFlowScope.PFCambioFormaPago.isTimeOut}"/>
+                                </div>
+                            </div>
+                        </af:subform>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

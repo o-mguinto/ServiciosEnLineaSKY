@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#ppvResumen').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        
+        <div id="ppvResumen">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8 col-sm-8">
+                <div class="content-internal">
+                    <h:outputText styleClass="subtitle padd-top-dialog padd-left"
+                                  value="Se ha contratado #{pageFlowScope.PFPPEVeTV.evento.titulo} exitosamente" id="ot14"/>
+                    <div class="row">
+                        <div class="col-12">
+                            <af:panelStretchLayout id="psl1" endWidth="160px;vertical-align: middle;"
+                                                   styleClass="AFStretchWidth">
+                                <f:facet name="center">
+                                    <af:panelGroupLayout layout="scroll" id="pgl8">
+                                            <af:panelFormLayout id="panelFormLayout1" fieldWidth="50%" labelWidth="50%">
+                                                <af:inputText label="Número de referencia del evento" id="it4"
+                                                              value="#{pageFlowScope.PFPPEVeTV.numeroSolicitud}" readOnly="true"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder; opacity:1;"/>
+                                                <af:inputText label="Título" id="inputText1" readOnly="true"
+                                                              value="#{pageFlowScope.PFPPEVeTV.evento.titulo}"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder; opacity:1;"/>
+                                                <af:inputText label="Modalidad" id="inputText2" readOnly="true"
+                                                              value="#{pageFlowScope.PFPPEVeTV.evento.modalidad}"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder; opacity:1;"/>
+                                                <af:inputText label="Precio" id="inputText3" readOnly="true"
+                                                              value="$ #{pageFlowScope.PFPPEVeTV.evento.precio}"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder; opacity:1;"/>
+                                                <af:inputText label="Canal" id="inputText4" readOnly="true"
+                                                              value="#{pageFlowScope.PFPPEVeTV.evento.canalDisplay}"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder; opacity:1;"/>
+                                                <af:inputText label="Tarjeta inteligente" id="it1" readOnly="true"
+                                                              inlineStyle="text-align:justify;"
+                                                              value="#{pageFlowScope.PFPPEVeTV.tarjetaInteligente}"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder; opacity:1;"/>
+                                                <af:inputText label="Horario" id="it2" readOnly="true"
+                                                              inlineStyle="text-align:justify;"
+                                                              value="#{pageFlowScope.PFPPEVeTV.horarioString}"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder; opacity:1;"/>
+                                            </af:panelFormLayout>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                                <f:facet name="end">
+                                    <af:panelGroupLayout id="pgl4">
+                                        <div class="autocenter">
+                                            <af:image source="#{parametros.urlImgs160X240}#{pageFlowScope.PFPPEVeTV.evento.image}"
+                                                      id="i6" inlineStyle="width: 60%;     height: auto;"/>
+                                        </div>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                            </af:panelStretchLayout>
+                            <af:panelGroupLayout id="pgl6">
+                                <div class="row top dialog-descrip">
+                                    <!---->
+                                    <h:outputText id="inputText6" value="#{pageFlowScope.PFPPEVeTV.evento.sinopsis}"/>
+                                </div>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-12">
+                            <af:panelGroupLayout id="pgl2">
+                                <div class="col-12 dialog-background" xmlns="http://www.w3.org/1999/xhtml">
+                                    <div class="row autocenter">
+                                        <af:button text="Terminar" id="cb2" partialSubmit="true"
+                                                   action="#{pageFlowScope.PFPPEVeTV.cbCancelar_action}" styleClass="btn-pay-dialog"/>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

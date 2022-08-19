@@ -1,0 +1,208 @@
+/* Curso CSS estilos aprenderaprogramar.com*/
+/*tablas conoce*/
+.tablaconoce{
+    border-color: #F37143 !important;
+    background-color: #F37143;
+    color: White;
+    border: solid ;
+    font-size: 12px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    font-family: “Trebuchet MS”, Arial;
+    text-transform: uppercase;
+}
+.tablath{
+    border-color: #F37143 !important;
+    border: solid ;
+    font-size: 12px;
+    border-width: 1.0px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    width: 160px;
+}
+
+.tablaconoce1{
+    border-color: #404040 !important;
+    background-color: #404040;
+    color: #e60000;
+    border: solid ;
+    font-size: 12px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    font-family: “Trebuchet MS”, Arial;
+    text-transform: uppercase;
+}
+.tablath1{
+    border-color: #404040 !important;
+    border: solid;
+    font-size: 12px;
+    border-width: 1.0px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    width: 160px;
+}
+.tablaconoce2{
+    border-color: #00cccc !important;
+    background-color: #00cccc;
+    color: White;
+    border: solid ;
+    font-size: 12px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    font-family: “Trebuchet MS”, Arial;
+    text-transform: uppercase;
+}
+.tablath2{
+    border-color: #00cccc !important;
+    border: solid;
+    font-size: 12px;
+    border-width: 1.0px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    width: 160px;
+}
+
+.tablaconoce3{
+    border-color: #ff99cc !important;
+    background-color: #ff99cc;
+    color: White;
+    border: solid ;
+    font-size: 12px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    font-family: “Trebuchet MS”, Arial;
+    text-transform: uppercase;
+}
+.tablath3{
+    border-color: #ff99cc !important;
+    border: solid;
+    font-size: 12px;
+    border-width: 1.0px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    width: 160px;
+}
+
+.tablaconoce4{
+    border-color: #ffe066 !important;
+    background-color: #ffe066;
+    color: #5cd65c;
+    border: solid ;
+    font-size: 12px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    font-family: “Trebuchet MS”, Arial;
+    text-transform: uppercase;
+}
+.tablath4{
+    border-color: #ffe066 !important;
+    border: solid;
+    font-size: 12px;
+    border-width: 1.0px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    width: 160px;
+}
+
+.tablaconoce5{
+    border-color: #333333 !important;
+    background-color: #333333;
+    color: #00cccc;
+    border: solid ;
+    font-size: 12px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    font-family: “Trebuchet MS”, Arial;
+    text-transform: uppercase;
+}
+.tablath5{
+    border-color: #333333 !important;
+    border: solid;
+    font-size: 12px;
+    border-width: 1.0px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    width: 160px;
+}
+.tablaconoce6{
+    border-color: #333333 !important;
+    background-color: #333333;
+    color: #ffcc00;
+    border: solid ;
+    font-size: 12px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    font-family: “Trebuchet MS”, Arial;
+    text-transform: uppercase;
+}
+.tablath6{
+    border-color: #333333 !important;
+    border: solid;
+    font-size: 12px;
+    border-width: 1.0px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    width: 160px;
+}
+.tablaconoce7{
+    border-color: #000000 !important;
+    background-color: #000000;
+    color: White;
+    border: solid ;
+    font-size: 12px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    font-family: “Trebuchet MS”, Arial;
+    text-transform: uppercase;
+}
+.tablath7{
+    border-color: #000000 !important;
+    border: solid;
+    font-size: 12px;
+    border-width: 1.0px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    width: 160px;
+}
+.tablaconoce8{
+    border-color: #ff6600 !important;
+    background-color: #ff6600;
+    color: White;
+    border: solid ;
+    font-size: 12px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    font-family: “Trebuchet MS”, Arial;
+    text-transform: uppercase;
+}
+.tablath8{
+    border-color: #ff6600 !important;
+    border: solid;
+    font-size: 12px;
+    border-width: 1.0px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    width: 160px;
+}
+/**/
+.btn-ingresa{
+    color:#fff !important;
+    background: #0076B6 !important;
+    height:20px;
+}
+.textofox{
+    color: #8C8D8F;
+    font-size: 10px;
+    font-family: “Trebuchet MS”, Arial;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.links_btg {
+    color:#145c9e;
+    font-weight: normal;
+}
+
+.links_btg:visited {
+    color:#72007c;
+}

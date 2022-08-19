@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#canales').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            /*para las dimensiones del dialog pan*/
+            .x1do, .x1dp {
+                height: 500px !important;
+                width: 650px !important;
+            }
+            a.cacImgStreaming > img {
+                max-width: 50%;
+                padding: 0%;
+                
+            }
+        </af:resource>
+        <div id="canales">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <!--Para cada fila una div-->
+                        <af:panelGroupLayout id="pgl1" layout="horizontal"
+                                             halign="center"
+                                             rendered="#{empty backingBeanScope.CanalesBackingBean.mosaicoCanales}">
+                            <af:outputText value="#{selSKYBundle['canales.ot8.value']}"
+                                           id="ot8"
+                                           styleClass="check-internal-bold"/>
+                        </af:panelGroupLayout>
+                        <div class="row top">
+                            <af:forEach items="#{backingBeanScope.CanalesBackingBean.mosaicoCanales}"
+                                        var="rowCanal">
+                                <!--div class="col-12"-->
+                                <af:panelGroupLayout id="pb1" layout="horizontal" halign="center"
+                                                                 valign="middle" styleClass=" autocenter">
+                                    <af:forEach items="#{rowCanal}" var="canal">
+                                        
+                                        <!--div class="col-4 col-tb-2 col-sm-3 autocenter"-->
+                                            <!--div class="top"-->
+                                                <af:link action="#{backingBeanScope.CanalesBackingBean.showPopupCanal}"
+                                                         useWindow="true"
+                                                         windowEmbedStyle="inlineDocument"
+                                                         windowModalityType="applicationModal"
+                                                         windowHeight="580"
+                                                         windowWidth="800"
+                                                         disabled="#{!canal.habilitado}"
+                                                         inlineStyle="opacity:1;"
+                                                         returnListener="#{backingBeanScope.CanalesBackingBean.returnCompraCAC}"
+                                                         id="l1"
+                                                         icon="#{parametros.urlImgsCanal}#{canal.imagen}"
+                                                         styleClass="cacImg">
+                                                    <f:setPropertyActionListener target="#{backingBeanScope.CanalesBackingBean.canal}"
+                                                                                 value="#{canal}"/>
+                                                                                 <af:clientListener method="enforcePreventUserInput"
+                                                                   type="action"/>
+                                                </af:link>
+                                            <!--/div-->
+                                        <!--/div-->
+                                    </af:forEach>
+                                    </af:panelGroupLayout>
+                                <!--/div-->
+                            </af:forEach>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <!---->
+                                <af:link action="#{backingBeanScope.CanalesBackingBean.showPopupHotGo}"
+                                     rendered="#{backingBeanScope.CanalesBackingBean.mostrarHotGo}"
+                                    visible="#{!pageFlowScope.PFBlueToGo.servicioHotGo}"
+                                     useWindow="true"
+                                     windowEmbedStyle="inlineDocument"
+                                     windowModalityType="applicationModal"
+                                     windowHeight="400" windowWidth="500"
+                                     id="l2" 
+                                     icon="/imagenes/CAC/hotgo/1680x152/hotgo.jpg"
+                                     styleClass="cacImgHotgo">
+                                     <af:clientListener method="enforcePreventUserInput"
+                                                                   type="action"/>
+                                     </af:link>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <af:panelGroupLayout id="pgl2" halign="center"
+                                                 rendered="#{backingBeanScope.CanalesBackingBean.sizeMosaico le 0}">
+                                <af:panelBox id="pb3" showDisclosure="false"
+                                             showHeader="never"
+                                             background="medium"
+                                             inlineStyle="border: 0px;"
+                                             styleClass="autocenter">
+                                    <af:outputText value="Por el momento no tenemos #{sesion.categoriaCAC eq 'STREAMING' ? 'Servicios' : 'Canales'} de #{sesion.categoriaCAC} para contratar."
+                                                   id="ot7"
+                                                   styleClass="check-internal-bold top-channel"/>
+                                    <div class="row top"></div>
+                                </af:panelBox>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+                <div class="top"></div>
+                <div class="row">
+                    <div class="col-12 content-internal">
+                        <p class="top bottom">
+                            <h:outputText styleClass="title"
+                                          value="#{selSKYBundle['canales.pb2.text']}"
+                                          id="ot14"/>
+                        </p>
+                        <div class="row top">
+                            <af:panelBox id="pb2" background="medium"
+                                         showHeader="never"
+                                         showDisclosure="false"
+                                         styleClass="autocenter"
+                                         inlineStyle="border: 0px;">
+                                <f:facet name="toolbar"/>
+                                <af:panelCollection id="pc1"
+                                                    defaultToolbarItemDisplay="icon"
+                                                    styleClass="AFStretchWidth">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="statusbar"/>
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="t2">
+                                        </af:toolbar>
+                                    </f:facet>
+                                    <af:table value="#{bindings.DetalleSolicitudServicio.collectionModel}"
+                                              var="row"
+                                              rows="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                              emptyText="#{bindings.DetalleSolicitudServicio.viewable ? selSKYBundle['canales.nodisponibles'] : 'Access Denied.'}"
+                                              fetchSize="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                              selectedRowKeys="#{bindings.DetalleSolicitudServicio.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.DetalleSolicitudServicio.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="tCAC" 
+                                              autoHeightRows="10"
+                                              binding="#{backingBeanScope.CanalesBackingBean.tcAC}"
+                                              width="100%" scrollPolicy="auto"
+                                              rowBandingInterval="0"
+                                              horizontalGridVisible="false"
+                                              verticalGridVisible="false"
+                                              styleClass="tbl-Class">
+                                        <af:column sortable="false" id="c3"
+                                                   width="150"
+                                                   headerText="#{selSKYBundle['canales.c3.headertext']}"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.numeroSolicitud}"
+                                                           id="ot4"/>
+                                        </af:column>
+                                        <af:column sortProperty="tarjetaInteligente"
+                                                   sortable="false" id="c5"
+                                                   width="150"
+                                                   rendered="#{!backingBeanScope.CanalesBackingBean.streaming}"
+                                                   headerText="#{selSKYBundle['canales.c5.headertext']}"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.tarjetaInteligente}"
+                                                           id="ot5"/>
+                                        </af:column>
+                                        <af:column sortProperty="comentario"
+                                                   sortable="false" id="c4"
+                                                   width="150"
+                                                   headerText="#{selSKYBundle['canales.c4.headertext']}"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.comentario}"
+                                                           id="ot6"/>
+                                        </af:column>
+                                        <af:column sortProperty="fechaCreacion"
+                                                   sortable="false" id="c1"
+                                                   width="190"
+                                                   headerText="#{selSKYBundle['canales.c1.headertext']}"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.fechaCreacion}"
+                                                           id="ot3"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                            </af:panelBox>
+                            <div class="row">
+                                        <div class="col-3 right" style="float:right;">
+                                            <af:button id="ctb1"
+                                                       targetFrame="_self"
+                                                       action="#{backingBeanScope.CanalesBackingBean.actualizarTabla}"
+                                                       styleClass="btn-internal"
+                                                       text="Actualizar">
+                                                <af:clientListener method="enforcePreventUserInput"
+                                                                   type="action"/>
+                                            </af:button>
+                                        </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

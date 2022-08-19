@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="servicioComparteCelularIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <view id="servicioComparteCelular">
+    <page>/WEB-INF/submenus/servicioComparteCelular/servicioComparteCelular.jsf</page>
+  </view>
+  <router id="servicioComparteCelularSelectPagDefault">
+    <case id="__7">
+      <expression>#{sesion.SERVICIO_COMPARTE_CELULAR}</expression>
+      <outcome>smenu_servicioComparteCelular</outcome>
+    </case>
+    <default-outcome>smenu_servicioComparteCelularIndex</default-outcome>
+  </router>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>adfMenu_servicioComparteCelularIndex</from-outcome>
+      <to-activity-id>servicioComparteCelularIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__3">
+      <from-outcome>irServicioComparteCelular</from-outcome>
+      <to-activity-id>servicioComparteCelular</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__11">
+      <from-outcome>irServicioComparteCelularRouter</from-outcome>
+      <to-activity-id>servicioComparteCelularSelectPagDefault</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__4">
+    <from-activity-id>servicioComparteCelularSelectPagDefault</from-activity-id>
+    <control-flow-case id="__5">
+      <from-outcome>smenu_servicioComparteCelular</from-outcome>
+      <to-activity-id>servicioComparteCelular</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__6">
+      <from-outcome>smenu_servicioComparteCelularIndex</from-outcome>
+      <to-activity-id>servicioComparteCelularIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__8">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>servicioComparteCelular_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__9">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__10">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/servicioComparteCelular/servicioComparteCelular_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

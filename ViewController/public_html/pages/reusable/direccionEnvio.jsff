@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+    <p class="top bottom">
+        <h:outputText styleClass="subtitle" value="#{selSKYBundle['direccionenvio.pb22.text']}" id="ot14"/>
+    </p>
+    <af:panelBox id="pb22" background="medium" showHeader="never" inlineStyle="border: 0px;">
+        <f:facet name="toolbar"/>
+        <af:panelFormLayout id="pfl1" maxColumns="2" rows="6" fieldWidth="70%" labelAlignment="top"
+                            labelWidth="30%">
+            <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam4.label']}" id="plam4" styleClass="output-internal">
+                <h:outputText value="#{DatosGeneralesBackingBean.direccion.calleNumero}" styleClass="font-bolder" id="ot94"/>
+            </af:panelLabelAndMessage>
+            <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam1.label']}" id="plam1" styleClass="output-internal">
+                <h:outputText id="ot95" value="#{DatosGeneralesBackingBean.direccion.numeroExt}" styleClass="font-bolder"/>
+            </af:panelLabelAndMessage>
+            <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam7.label']}" id="plam7" styleClass="output-internal">
+                <h:outputText id="ot99" value="#{DatosGeneralesBackingBean.direccion.numeroInt}" styleClass="font-bolder"/>
+            </af:panelLabelAndMessage>
+            <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam8.label']}" id="plam8" styleClass="output-internal">
+                <h:outputText value="#{DatosGeneralesBackingBean.direccion.colonia}" id="ot96" styleClass="font-bolder"/>
+            </af:panelLabelAndMessage>
+            <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam2.label']}" id="plam2" styleClass="output-internal">
+                <h:outputText value="#{DatosGeneralesBackingBean.direccion.poblacion}" id="ot97" styleClass="font-bolder"/>
+            </af:panelLabelAndMessage>
+            <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam11.label']}" id="plam11" styleClass="output-internal">
+                <h:outputText value="#{DatosGeneralesBackingBean.direccion.delMun}" id="ot93" styleClass="font-bolder"/>
+            </af:panelLabelAndMessage>
+            <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam10.label']}" id="plam10" styleClass="output-internal">
+                <h:outputText id="ot92" value="#{DatosGeneralesBackingBean.direccion.ciudad}" styleClass="font-bolder"/>
+            </af:panelLabelAndMessage>
+            <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam9.label']}" id="plam9" styleClass="output-internal">
+                <h:outputText value="#{DatosGeneralesBackingBean.direccion.estado}" id="ot98" styleClass="font-bolder"/>
+            </af:panelLabelAndMessage>
+            <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam6.label']}" id="plam6" styleClass="output-internal">
+                <h:outputText value="#{DatosGeneralesBackingBean.direccion.cp}" id="ot910" styleClass="font-bolder"/>
+            </af:panelLabelAndMessage>
+            <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam3.label']}" id="plam3" styleClass="output-internal">
+                <h:outputText value="#{DatosGeneralesBackingBean.direccion.telefono}" id="ot91" styleClass="font-bolder"/>
+            </af:panelLabelAndMessage>
+            <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam5.label']}" id="plam5" styleClass="output-internal">
+                <h:outputText value="#{DatosGeneralesBackingBean.direccion.lada}" id="ot911" styleClass="font-bolder"/>
+            </af:panelLabelAndMessage>
+        </af:panelFormLayout>
+    </af:panelBox>
+</jsp:root>

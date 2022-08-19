@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#cambioFormaPagoResumen').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="cambioFormaPagoResumen">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-sm-8 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <af:spacer width="10" height="10" id="s8" rendered="#{!sesion.suscriptor.permitePagoTC}"/>
+                                    <div class="row top">
+                                                 <af:panelLabelAndMessage label="Aviso:" id="plam2" styleClass="autocenter output-internal solectOne-flex">
+                                        <af:outputText value="Se ha cambiado su forma de pago actual a Tarjeta de Crédito."
+                                                       styleClass="check-internal-bold" id="ot2"/>
+                                    </af:panelLabelAndMessage>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

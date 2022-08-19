@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="portabilidad">
+    <page>/WEB-INF/submenus/portabilidad/portabilidad.jsf</page>
+  </view>
+  <view id="portabCelIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <router id="portabilidadCelSelectPagDefault">
+    <case id="__5">
+      <expression>#{sesion.CONSUMO_CELULAR}</expression>
+      <outcome>irPortabilidad</outcome>
+    </case>
+    <default-outcome>portabilidadCelIndex</default-outcome>
+  </router>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__6">
+      <from-outcome>irPortabCelRouter</from-outcome>
+      <to-activity-id>portabilidadCelSelectPagDefault</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__7">
+      <from-outcome>adfMenu_portabilidad</from-outcome>
+      <to-activity-id>portabilidad</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__8">
+      <from-outcome>adfMenu_portabCelIndex</from-outcome>
+      <to-activity-id>portabCelIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__2">
+    <from-activity-id>portabilidadCelSelectPagDefault</from-activity-id>
+    <control-flow-case id="__3">
+      <from-outcome>irPortabilidad</from-outcome>
+      <to-activity-id>portabilidad</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__4">
+      <from-outcome>portabilidadCelIndex</from-outcome>
+      <to-activity-id>portabCelIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__9">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>portabilidadCelular_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__10">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__11">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/portabilidad/portabilidadCelular_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

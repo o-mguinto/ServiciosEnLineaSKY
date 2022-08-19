@@ -1,0 +1,22 @@
+.channel-box {border:1px solid #0099FF; border-radius:10px; box-shadow:0px 1px 17px -2px #9B9B9B; width:220px; min-height:210px; margin:5px 10px; padding:5px; text-align:center; display:inline-block;}
+.channel-box:hover {background-color: #d4ebf9;}
+.channel-header {font:normal bolder 20px Helvetica, Arial, sans-serif; color:#0099FF; text-transform:uppercase; text-align:center; display:block; line-height:45px;}
+.channel-text1 {font:normal bolder 16px Helvetica, Arial, sans-serif; color:#0099FF; text-transform:uppercase; display:inline-block; line-height:35px;}
+.channel-text2 {font:normal normal 12px Helvetica, Arial, sans-serif; color:#0099FF; display:inline-block;}
+.channel-text3 {font:normal normal 10px Helvetica, Arial, sans-serif; color:#FFF !important;}
+.center {text-align:center;}
+
+.btn-phone {background-color:#c088e0; border-color:#a167c5; font-weight:bold; text-decoration:none; padding:6px; border-radius:.25em;}
+a .btn-phone:hover {text-decoration:none;}
+
+.icon-phone {background:transparent url('/sky/imagenes/contacto/ico_llamar.png') no-repeat center center; background-size:contain; display:block; width:75px; height:75px; vertical-align:top; margin:5px auto 15px auto;}
+.icon-faq {background:transparent url('/sky/imagenes/contacto/ico_answers.png') no-repeat center center; background-size:contain; display:block; width:75px; height:75px; vertical-align:top; margin:5px auto 15px auto;}
+.icon-faq:hover {cursor:pointer;}
+.icon-chat {background:transparent url('/sky/imagenes/contacto/ico_chat.png') no-repeat center center; background-size:contain; display:block; width:75px; height:75px; vertical-align:top; margin:5px auto 15px auto;}
+.icon-chat:hover {cursor:pointer;}
+.icon-mail {background:transparent url('/sky/imagenes/contacto/ico_recado.png') no-repeat center center; background-size:contain; display:block; width:75px; height:75px; vertical-align:top; margin:5px auto 15px auto;}
+.icon-mail:hover {cursor:pointer;}
+.icon-message {background:transparent url('/sky/imagenes/contacto/ico_contactanos.png') no-repeat center center; background-size:contain; display:block; width:75px; height:75px; vertical-align:top; margin:5px auto 15px auto;}
+.icon-message:hover {cursor:pointer;}
+
+.icon-mobile {width:48px; height:48px;}

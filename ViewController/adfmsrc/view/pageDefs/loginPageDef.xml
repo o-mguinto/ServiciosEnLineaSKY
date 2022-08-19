@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="loginPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="autenticarUsuarioPS" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="autenticarUsuarioPS" IsViewObjectMethod="false" DataControl="DCUsuario"
+                  InstanceName="bindings.autenticarUsuarioPS.dataControl.dataProvider"
+                  ReturnName="data.DCUsuario.methodResults.autenticarUsuarioPS_autenticarUsuarioPS_dataControl_dataProvider_autenticarUsuarioPS_result">
+      <NamedData NDName="request" NDType="mx.com.sky.sel.dto.AutenticarUsuarioRequestDTO"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

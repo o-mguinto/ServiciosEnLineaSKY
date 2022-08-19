@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#historicoEventosContratados').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="historicoEventosContratados">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <!--Para cada fila una div-->
+                        <p class="top bottom">
+                            <h:outputText styleClass="title"
+                                          value="Tarjetas Inteligentes"
+                                          id="ot14"/>
+                        </p>
+                        <div class="row">
+                            <!--Aqui va TODO el contenido-->
+                            <af:panelBox id="pb2" background="medium"
+                                         showDisclosure="false"
+                                         showHeader="never"
+                                         inlineStyle="border: 0px;">
+                                <div class="col-12">
+                                    <af:selectOneChoice value="#{pageFlowScope.ContratacionBackingBean.ti}"
+                                                        label="Tarjeta Inteligente"
+                                                        id="soc1"
+                                                        valueChangeListener="#{pageFlowScope.ContratacionBackingBean.cambiarTarjetaInteligente}"
+                                                        autoSubmit="true"
+                                                        styleClass="select-internal"
+                                                        labelStyle="label-internal">
+                                        <af:forEach items="#{bindings.tablaTI.rangeSet}"
+                                                    var="i">
+                                            <f:selectItem id="si2"
+                                                          itemLabel="#{i.tarjetaInteligente}"
+                                                          itemValue="#{i.tarjetaInteligente}"/>
+                                        </af:forEach>
+                                    </af:selectOneChoice>
+                                </div>
+                            </af:panelBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="row top">
+                    <div class="col-12 content-internal">
+                        <p class="top bottom">
+                            <h:outputText styleClass="title"
+                                          value="#{selSKYBundle['contrataciones.pb1.text']}"
+                                          id="ot3"/>
+                        </p>
+                        <div class="row top">
+                            <div class="col-12">
+                                <af:panelBox background="medium"
+                                             showDisclosure="false" id="pb1"
+                                             showHeader="never"
+                                             inlineStyle="border: 0px;">
+                                    <af:panelCollection id="pc1"
+                                                        defaultToolbarItemDisplay="icon"
+                                                        styleClass="AFStretchWidth">
+                                        <af:table value="#{bindings.Evento.collectionModel}"
+                                                  var="row"
+                                                  rows="#{bindings.Evento.rangeSize}"
+                                                  emptyText="#{bindings.Evento.viewable ? 'No has contratado eventos' : 'Access Denied.'}"
+                                                  fetchSize="#{bindings.Evento.rangeSize}"
+                                                  rowBandingInterval="0" id="t1"
+                                                  partialTriggers=":::soc1"
+                                                  rowSelection="single"
+                                                  width="100%"
+                                                  scrollPolicy="auto"
+                                                  horizontalGridVisible="false"
+                                                  verticalGridVisible="false"
+                                                  autoHeightRows="10"
+                                                  styleClass="tbl-Class">
+                                            <af:column sortProperty="titulo"
+                                                       sortable="false"
+                                                       headerText="#{selSKYBundle['contrataciones.c3.headertext']}"
+                                                       id="c3" width="300"
+                                                       headerClass="content-text">
+                                                <af:inputText value="#{row.bindings.titulo.inputValue}"
+                                                              label="#{bindings.Evento.hints.titulo.label}"
+                                                              required="#{bindings.Evento.hints.titulo.mandatory}"
+                                                              columns="#{bindings.Evento.hints.titulo.displayWidth}"
+                                                              maximumLength="#{bindings.Evento.hints.titulo.precision}"
+                                                              shortDesc="#{bindings.Evento.hints.titulo.tooltip}"
+                                                              id="it4"
+                                                              readOnly="true">
+                                                    <f:validator binding="#{row.bindings.titulo.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column sortProperty="canal"
+                                                       sortable="false"
+                                                       headerText="#{selSKYBundle['contrataciones.c1.headertext']}"
+                                                       id="c4"
+                                                       headerClass="content-text">
+                                                <af:inputText value="#{row.bindings.canal.inputValue}"
+                                                              label="#{bindings.Evento.hints.canal.label}"
+                                                              required="#{bindings.Evento.hints.canal.mandatory}"
+                                                              columns="#{bindings.Evento.hints.canal.displayWidth}"
+                                                              maximumLength="#{bindings.Evento.hints.canal.precision}"
+                                                              shortDesc="#{bindings.Evento.hints.canal.tooltip}"
+                                                              id="it2"
+                                                              readOnly="true">
+                                                    <f:validator binding="#{row.bindings.canal.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column sortProperty="horaEvento"
+                                                       sortable="false"
+                                                       headerText="#{selSKYBundle['contrataciones.c2.headertext']}"
+                                                       id="c1"
+                                                       headerClass="content-text"
+                                                       width="180">
+                                                <af:inputText value="#{row.bindings.horaEvento.inputValue}"
+                                                              label="#{bindings.Evento.hints.horaEvento.label}"
+                                                              required="#{bindings.Evento.hints.horaEvento.mandatory}"
+                                                              columns="#{bindings.Evento.hints.horaEvento.displayWidth}"
+                                                              maximumLength="#{bindings.Evento.hints.horaEvento.precision}"
+                                                              shortDesc="#{bindings.Evento.hints.horaEvento.tooltip}"
+                                                              id="it1"
+                                                              readOnly="true">
+                                                    <f:validator binding="#{row.bindings.horaEvento.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column sortProperty="horaPedido"
+                                                       sortable="false"
+                                                       headerText="#{selSKYBundle['contrataciones.c5.headertext']}"
+                                                       id="c2"
+                                                       headerClass="content-text"
+                                                       width="180">
+                                                <af:inputText value="#{row.bindings.horaPedido.inputValue}"
+                                                              label="#{bindings.Evento.hints.horaPedido.label}"
+                                                              required="#{bindings.Evento.hints.horaPedido.mandatory}"
+                                                              columns="#{bindings.Evento.hints.horaPedido.displayWidth}"
+                                                              maximumLength="#{bindings.Evento.hints.horaPedido.precision}"
+                                                              shortDesc="#{bindings.Evento.hints.horaPedido.tooltip}"
+                                                              id="it3"
+                                                              readOnly="true"
+                                                              converter="javax.faces.DateTime">
+                                                    <f:validator binding="#{row.bindings.horaPedido.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column sortProperty="status"
+                                                       sortable="false"
+                                                       headerText="Estatus Evento"
+                                                       id="c5"
+                                                       headerClass="content-text">
+                                                <af:outputText value="#{row.status}"
+                                                               id="ot2"/>
+                                            </af:column>
+                                        </af:table>
+                                    </af:panelCollection>
+                                </af:panelBox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

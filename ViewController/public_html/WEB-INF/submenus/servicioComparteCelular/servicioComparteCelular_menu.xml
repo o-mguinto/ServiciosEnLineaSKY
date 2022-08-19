@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_servicioComparteCelularIndex" label="#{lbl.smenu_SERVICIOCOMPARTECELULAR}"
+            action="irServicioComparteCelularRouter" focusViewId="/servicioComparteCelularIndex" immediate="true"
+            rendered="#{sesion.SERVICIO_COMPARTE_CELULAR}" icon="/imagenes/menu/ic_celulares.svg">
+    <itemNode id="itemNode_servicioComparteCelular" label="#{lbl.smenu_SERVICIOCOMPARTECELULAR}"
+            action="irServicioComparteCelular" focusViewId="/servicioComparteCelular"
+            rendered="#{sesion.SERVICIO_COMPARTE_CELULAR}"/>
+  </itemNode>
+  
+</menu>

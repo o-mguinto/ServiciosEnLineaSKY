@@ -1,0 +1,710 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<f:view xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:tr="http://myfaces.apache.org/trinidad" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=11.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="viewport"
+          content="width = device-width, initial-scale = 1.0, user-scalable = no"/>
+    <!--version PC-->
+                     <!--rendered="#{backingBeanScope.login.renderADFPC}"-->
+        <af:document id="d1" title="SKY | Servicios en Línea" styleClass="body" rendered="#{backingBeanScope.login.renderADFPC}">
+            <f:facet name="metaContainer">
+                <f:subview id="head">
+                    <meta name="description" content="SKY | Servicios en Línea"/>
+                    <meta name="keywords" content="servicios en linea sky"/>
+                    <af:outputText value="&lt;link rel='SHORTCUT ICON' href='#{facesContext.externalContext.requestContextPath}/imagenes/aplicacion/favicon.ico' type='image/x-icon'/>"
+                                   id="ot6" escape="false"/>
+                    <jsp:include page="/templateHead_principal.jspx">
+                        <?audit suppress oracle.jdeveloper.jsp.no-naming-container-include?>
+                    </jsp:include>
+                    <!-- Estilos y Scripts Especificos de la pagina -->
+                    <af:resource type="css" source="/assets/css/estilos_canales.css"/>
+                    <af:resource type="javascript" source="/js/jquery-3.5.1.min.js"/>
+                    <af:resource type="javascript" source="/js/lgn.js"/>
+                    <af:resource type="javascript" source="/assets/js/smoothScroll.js"/>
+                    <af:resource type="javascript" source="/js/pixelSEL.js"/>
+                    <af:resource type="css">
+                        .xu {
+                            font-family: Arial;
+                            font-size: large;
+                            text-align: right;
+                            padding: 0px 6px 0px 0px;
+                            font-weight: normal;
+                            color: rgba(247, 0, 157, 0.63);
+                        }
+
+                        .sombra {
+                            padding: 10px;
+                            display: inline-flex;
+                            -webkit-box-shadow: 6px 5px 11px 0px rgba(219, 219, 219, 1);
+                            -moz-box-shadow: 6px 5px 11px 0px rgba(219, 219, 219, 1);
+                            box-shadow: 6px 5px 11px 0px rgba(219, 219, 219, 1);
+                            height: 390px;
+                        }
+                    </af:resource>
+                    <af:resource type="css" source="https://use.fontawesome.com/releases/v5.5.0/css/all.css"/>
+                    <af:resource type="javascript">
+                        function mostrarContrasenia() {
+                            var contraseniaElem = $('#it5\\:\\:content');
+                            var contraseniaIconElem = $('#contraseniaIcon');
+                        
+                            if ( contraseniaElem.attr("type") == "password" ) {
+                                contraseniaElem.attr("type", "text");
+                                contraseniaIconElem.attr("class", "far fa-eye");
+                            } else {
+                                contraseniaElem.attr("type", "password");
+                                contraseniaIconElem.attr("class", "fas fa-eye-slash");
+                            }
+                        };
+                    </af:resource>
+                </f:subview>
+            </f:facet>
+            <af:clientListener method="atmtclgn" type="load"/>
+            <af:serverListener type="LaunchLogin" method="#{backingBeanScope.login.launchLogin}"/>
+            <af:form id="f3" defaultCommand="cbIniciaPC">
+                <!-- Google Tag Manager (noscript) -->
+                <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZQXB5N"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+                <!-- End Google Tag Manager (noscript) -->
+                <!-- Mosaico de canales para adultos -->
+                <div class="container-fluid">
+                    <div class="col-12">
+                        <af:panelGroupLayout id="pgl6">
+                            <table id="login_header">
+                                <td>
+                                    <a>
+                                        <img alt="hotgo.jpg" src="/sky/imagenes/pc/cinco/header.jpg"
+                                             style="width:100%;"/></a>
+                                </td>
+                            </table>
+                        </af:panelGroupLayout>
+                    </div>
+                    <!--/.col principal -->
+                </div>
+                <!--/.container-->
+                <!-- /Mosaico de canales para adultos -->
+                <div class="container-fluid">
+                    <div class="col-12" style="height: 390px;">
+                        <table id="tb1" class="login_acciones">
+                            <tr>
+                                <td>
+                                    <af:panelGroupLayout id="pgl16">
+                                        <div class="container-fluid" align="center" style="display:block;">
+                                            <div class="col-12">
+                                                <table class="botones_login">
+                                                    <tr>
+                                                        <td>
+                                                            <af:panelGroupLayout id="pgl14" layout="vertical">
+                                                                <af:outputText value="¡Bienvenido!" id="ot22"
+                                                                               inlineStyle="font-size: xx-large;top: -549px; left: 4%; color: #f81a81;"/>
+                                                                <af:spacer width="10" height="10" id="s2"/>
+                                                                <af:outputText value="Ingrese ahora." id="ot23"
+                                                                               inlineStyle="font-size: medium;top: -549px; left: 4%; color: black;"/>
+                                                                <af:spacer width="100%" height="10" id="s32"/>
+                                                            </af:panelGroupLayout>
+                                                        </td>
+                                                    </tr>
+                                                     
+                                                    <tr>
+                                                        <td>
+                                                            <div class="container-fluid" align="center"
+                                                                 style="display:block;">
+                                                                <div class="col-12">
+                                                                    <table class="botones_login">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <af:spacer width="30" height="30"
+                                                                                           id="s6"/>
+                                                                                 
+                                                                                <af:inputText required="true"
+                                                                                              label="E-mail:" id="it2"
+                                                                                              wrap="soft"
+                                                                                              value="#{backingBeanScope.login.username}"
+                                                                                              maximumLength="50"
+                                                                                              contentStyle="border-bottom: 1px solid rgba(247, 0, 157, 0.63) !important;background-color: white;border: 1px solid #fafdff;width:220px;"
+                                                                                              inlineStyle="color:#fa5ec1 !important; font-size:medium; font-weight:bold;left: 8%;">
+                                                                                    <af:validateRegExp pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"
+                                                                                                       messageDetailNoMatch="Ingrese una dirección válida"/>
+                                                                                </af:inputText>
+                                                                            </td>
+                                                                            <td>
+                                                                                <af:spacer width="30" height="10"
+                                                                                           id="s36"/>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                     
+                                                    <tr>
+                                                        <td>
+                                                            <div class="container-fluid" align="center"
+                                                                 style="display:block;">
+                                                                <div class="col-12">
+                                                                    <table class="botones_login">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <af:inputText required="true"
+                                                                                              label="Contraseña:"
+                                                                                              id="it5"
+                                                                                              value="#{backingBeanScope.login.password}"
+                                                                                              secret="true"
+                                                                                              contentStyle="border-bottom: 1px solid rgba(247, 0, 157, 0.63) !important; background-color: white;border: 1px solid #fafdff;width:220px;"
+                                                                                              inlineStyle="color:rgba(247,0,157,0.63); font-size:medium;     position: relative; left: -21px;"/>
+                                                                            </td>
+                                                                            <td>
+                                                                                <i id="contraseniaIcon" class="fas fa-eye-slash" style="line-height:2; color: #f7009da1;" onclick="mostrarContrasenia()"></i>
+                                                                                <af:spacer width="30" height="10"
+                                                                                           id="s33"/>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                     
+                                                    <tr>
+                                                        <td>
+                                                            <af:commandLink id="cbIniciaPC"
+                                                                            action="#{backingBeanScope.login.performLogin}"
+                                                                            styleClass="border-color: transparent; ">
+                                                                <tr:panelHorizontalLayout id="phl3">
+                                                                    <af:image source="/imagenes/pc/cinco/boton_inicia.png"
+                                                                              styleClass="botonPC"
+                                                                              inlineStyle="width: 90%; border-color: transparent;"
+                                                                              id="i8"></af:image>
+                                                                </tr:panelHorizontalLayout>
+                                                            </af:commandLink>
+                                                             
+                                                            <af:spacer width="100%" height="20" id="s37"/>
+                                                        </td>
+                                                    </tr>
+                                                     
+                                                    <tr>
+                                                        <td>
+                                                            <div class="container-fluid" align="center"
+                                                                 style="display:block;">
+                                                                <div class="col-12">
+                                                                    <table class="botones_login">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <af:selectBooleanCheckbox text="Recordarme."
+                                                                                                          id="rememberme"
+                                                                                                          styleClass="mensajePC2_txtSDBlack"
+                                                                                                          value="#{backingBeanScope.login.rememberme}"
+                                                                                                          contentStyle="font-size: medium;"/>
+                                                                            </td>
+                                                                            <td>
+                                                                                <af:commandImageLink text="Olvidé mi contraseña."
+                                                                                                     id="cil5"
+                                                                                                     action="irRecuperarContrasenia"
+                                                                                                     immediate="true"
+                                                                                                     useWindow="true"
+                                                                                                     windowEmbedStyle="window"
+                                                                                                     windowHeight="350"
+                                                                                                     windowWidth="530"
+                                                                                                     icon="/imagenes/pc/cinco/icono_password.png"
+                                                                                                     shortDesc="Olvidé mi contraseña."
+                                                                                                     inlineStyle="color: black; font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif; "/>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                     
+                                                    <tr>
+                                                        <td>
+                                                            <af:image source="/imagenes/pc/cinco/dispositivos.png" inlineStyle=" position: relative;     
+                                                                                    top: 35px;"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <af:image id="i5" source="/imagenes/pc/uno/fondo_sombra.png"
+                                                          inlineStyle="position: relative;
+                                                                                                                          left: -4%;
+                                                                                                                          top: -396px;
+                                                                                                                          height: 440px;
+                                                                                                                          width: 431px;
+                                                                                                                          z-index: -1;"/>
+                                            </div>
+                                        </div>
+                                    </af:panelGroupLayout>
+                                </td>
+                                <td>
+                                    <af:panelGroupLayout id="pgl15">
+                                        <af:image source="/imagenes/pc/uno/PC_sky_Blim.png"
+                                                  inlineStyle="z-index:4; position: relative; top: -198px;"/>
+                                    </af:panelGroupLayout>
+                                </td>
+                            </tr>
+                             
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <af:image id="i7" source="/imagenes/pc/uno/fondo_sombra.png" inlineStyle="  position: relative;
+                                                                                                    left: 51%;
+                                                                                                    top: -846px;
+                                                                                                    height: 440px;
+                                                                                                    width: 431px;
+                                                                                                    z-index: -1;"/>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="col-12">
+                        <table id="tb3" class="login_acciones">
+                            <tr>
+                                <td>
+                                    <div class="container-fluid" align="center" style="display:block;
+                                                padding-top: 20px;">
+                                        <div class="col-12">
+                                            <table id="tb4">
+                                                <tr>
+                                                    <td>
+                                                        <af:panelGroupLayout id="pgl2" layout="vertical" halign="end">
+                                                            <af:spacer width="100" height="10" id="s7"/>
+                                                            <af:outputText value='&lt;script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=serviciosenlinea.sky.com.mx&amp;size=L&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=es">&lt;/script>&lt;map name="sealmap_large" id="sealmap_large">&lt;area alt="Click to Verify - This site has chosen an SSL Certificate to improve Web site security" title="" href="javascript:vrsn_splash()" shape="rect" coords="0,0,130,65" tabindex="-1" style="outline:none;">&lt;area alt="Click to Verify - This site has chosen an SSL Certificate to improve Web site security" title="" href="javascript:vrsn_splash()" shape="rect" coords="0,65,71,88" tabindex="-1" style="outline:none;">&lt;area alt="" title="" href="javascript:symcBuySSL()" shape="rect" coords="71,65,130,88" style="outline:none;">&lt;/map>&lt;br>
+&lt;a href="https://www.symantec.com/es/es/ssl-certificates" target="_blank" style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;">ACERCA DE LOS CERTIFICADOS SSL&lt;/a>'
+                                                                           id="footerPC" escape="false"/>
+                                                            <af:spacer width="100%" height="60" id="s34"/>
+                                                        </af:panelGroupLayout>
+                                                    </td>
+                                                </tr>
+                                                 
+                                                <tr>
+                                                    <td>
+                                                        <af:panelGroupLayout styleClass="pieLogin" id="pgl11"
+                                                                             halign="center" layout="vertical">
+                                                            <af:spacer width="10" height="15" id="s20"/>
+                                                            <af:image source="/imagenes/aplicacion/logosExploradores_estadar.png"
+                                                                      id="i6" shortDesc="Navegadores"/>
+                                                            <af:outputText value="Dispositivos móviles(BlackBerry®,iPhone,iPad y Android) utilizando navegadores: Internet Explorer, Google Chrome, Firefox y Safari"
+                                                                           id="pt_ot2"
+                                                                           inlineStyle="font-weight:bold; text-align:center; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                                                            <af:spacer width="10" height="10" id="s9"/>
+                                                            <af:outputText value="Navegadores soportados son Internet Explorer Versión 10 o superior, Google Chrome 50 o superior, Mozilla Firefox 42 o superior. Para MAC Safari 7  o superior."
+                                                                           id="ot4"
+                                                                           inlineStyle="font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                                                            <af:spacer width="10" height="10" id="s35"/>
+                                                            <af:outputText value="(1) Factura electrónica únicamente disponible en México. Pago en línea disponible por el momento en México y Centroamérica."
+                                                                           id="ot26"
+                                                                           inlineStyle="font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                                                            <af:outputText value="(2) Disponible en México para equipos SKY+HD y SKY Super Plus HD."
+                                                                           id="ot27"
+                                                                           inlineStyle="font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                                                            <af:outputText value="(3) Disponible en México, excepto para los paquetes VeTV y VeTV Plus."
+                                                                           id="ot10"
+                                                                           inlineStyle="font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                                                            <af:spacer width="10" height="10" id="s19"/>
+                                                            <af:outputText value="“Sky” y las marcas relacionadas, nombres y logotipos, son propiedad de “Sky International AG” y otras empresas del grupo."
+                                                                           id="ot18"
+                                                                           inlineStyle="font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                                                            <af:outputText value="Corporación Novavisión S. de R.L. de C.V. 2022. Prohibida su reproducción total o parcial."
+                                                                           id="ot19"
+                                                                           inlineStyle="font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                                                            <af:outputText value=" SESION_ID : #{Foliador.folio}"
+                                                                           id="pt_ot1"
+                                                                           inlineStyle="font-weight:bold; text-align:center;font-size:9px; font-family:Arial, Helvetica, sans-serif;"/>
+                                                        </af:panelGroupLayout>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </af:form>
+        </af:document>
+    <!-- Version Movil-->
+        <af:document id="dMovil" title="SKY | Servicios en Línea"
+                     styleClass="document"
+                     rendered="#{backingBeanScope.login.renderADFSmartPhone or backingBeanScope.login.renderTablet}">
+            <af:resource type="css" source="assets/css/myCustom.css"/>
+            <af:resource type="css" source="assets/css/font.css"/>
+            <af:resource type="javascript" source="js/jquery-3.5.1.min.js"/>
+            <af:resource type="javascript" source="js/scriptJSMobile.js"/>
+            <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+            <af:resource type="javascript" source="js/PopUp_mobile.js"/>
+            <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+            <style type="text/css" media="screen">
+            @media screen and (min-width:768px) and ( max-width:1024px) {  
+            }
+            
+            @media screen and (max-width:700px) {
+             .custom{
+                width: 90%;
+                display: inline-block;
+                margin-left: auto;
+                margin-right: auto ;
+            }
+            .dispImage {
+                width: 100%;
+                padding: 20px;
+                display: inline-flex;
+                -webkit-box-shadow: 6px 5px 11px 0px rgba(219,219,219,1);
+                -moz-box-shadow: 6px 5px 11px 0px rgba(219,219,219,1);
+                box-shadow: 6px 5px 11px 0px rgba(219,219,219,1);
+                margin-left: auto;
+                margin-right: auto ;
+                
+            }
+            .planeLogo {
+                width: auto;
+                height: auto;
+                margin:10px;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+            .custom02{
+                width: auto;
+                background-color: rgb(1,204,219);
+                display: block;
+                margin-left: auto;
+                margin-right: auto ;
+                border-radius: 5px;
+                margin: 1%;
+            }
+            .custom01_internal{
+                padding-bottom: 30px;
+                padding-top: 30px;
+                margin-left: auto;
+                margin-right: auto ;   
+            }
+            .insideBox{
+                margin:0px;
+            }
+            .normalWhiteFont{
+                font-family:  Arial, Helvetica, sans-serif;
+                font-size: small;
+                color: White;
+                display: block;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            .normalFont{
+                font-family:  Arial, Helvetica, sans-serif;
+                font-size: medium;
+                color: Black;
+                text-align: justify;
+            }
+            .normalFontCustom1{
+                font-family:  Arial, Helvetica, sans-serif;
+                font-size: medium;
+                color: Black;
+                display: block;
+                text-align: center;
+            }
+            }
+            
+            @media screen and (max-width:480px) {
+             .custom{
+                width: 90%;
+                display: inline-block;
+                margin-left: auto;
+                margin-right: auto ;
+            }
+            .dispImage {
+            width: 98%;
+            padding: 20px;
+                display: inline-flex;
+                -webkit-box-shadow: 6px 5px 11px 0px rgba(219,219,219,1);
+                -moz-box-shadow: 6px 5px 11px 0px rgba(219,219,219,1);
+                box-shadow: 6px 5px 11px 0px rgba(219,219,219,1);
+                margin-left: auto;
+                margin-right: auto ;
+            }
+            .planeLogo {
+                width: auto;
+                height: auto;
+                margin:10px;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+            .custom02{
+                width: auto;
+                background-color: rgb(1,204,219);
+                display: block;
+                margin-left: auto;
+                margin-right: auto ;
+                border-radius: 5px;
+                margin: 1%;
+            }
+            .custom01_internal{
+                padding-bottom: 30px;
+                padding-top: 30px;
+                margin-left: auto;
+                margin-right: auto ;   
+            }
+            .custom02_internal{
+                padding-bottom: 30px;
+                padding-top: 30px;
+                margin-left: auto;
+                margin-right: auto ;
+                display: inline-flex;
+                text-align: left;
+            }
+            .insideBox{
+                margin:0px;
+            }
+            .normalWhiteFont{
+                font-family:  Arial, Helvetica, sans-serif;
+                font-size: small;
+                color: White;
+                display: block;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            .normalFont{
+                font-family:  Arial, Helvetica, sans-serif;
+                font-size: medium;
+                color: Black;
+                text-align: justify;
+            }
+            .normalFontCustom1{
+                font-family:  Arial, Helvetica, sans-serif;
+                font-size: medium;
+                color: Black;
+                display: block;
+                text-align: center;
+            }
+        }
+        
+        /*---------------------------------POP UP Stuff------------------------------------------------*/   
+        #container2 { 
+            background: #FFFFFF;
+            margin: 0 auto; 
+            font-size:14px;
+            text-align: left; 
+            top:10px;
+        }
+        
+        #mainContent2 {
+            padding: 0 0px;
+            line-height:25px;
+        }
+
+
+        /*STYLES FOR CSS POPUP*/
+
+
+        #blanket2 {
+            background-color:#ffffff;
+            opacity: 1;
+            *background:none;
+            position:absolute;
+            z-index: 9001;
+            top:0px;
+            left:0px;
+            width:100%;
+            height: 2000px !important;
+            }
+
+        #popUpDiv {
+            position: absolute;
+            backgroun-color: #ffffff;
+            width: 90% !important;
+            /* height: 100px; */
+            top: 0px !important;
+            left: 5% !important;
+            right: 5% !important;
+            z-index: 9002;
+            }
+            
+        #app_1{
+            position:relative;
+            top:0px;
+            color: Fuchsia;
+            font-weight:900
+            }
+        #app_3{
+            position:relative;
+            top:15px;
+            color: Black;
+            text-align: left;
+            font-weight:900
+            } 
+        ul li{
+            font-size:16px;
+            align: left;
+        }
+        /*-----------------------------------------POP UP Stuff---------------------------------------------------*/
+      </style>
+            <af:group id="g2">
+                <div id="container2">
+                    <div id="mainContent2">
+                        <!--POPUP-->
+                        <div id="blanket2" style="display:none;"></div>
+                        <div id="popUpDiv" style="display:none;">
+                            <af:image source="/imagenes/movil/img_promo.png"
+                                      id="i2" styleClass="ImgPromo"/>
+                            <!--imágenes con links a las tiendas-->
+                           
+                            <af:spacer id="s21" width="10" height="10"/>
+                            <a href="https://itunes.apple.com/app/id1268150631">
+                                <af:image source="/imagenes/movil/ic_appStore.png" inlineStyle="width: 40%;
+    padding-right: 5%;
+    padding-left: 2%;"/></a>
+                            <a href="https://play.google.com/store/apps/details?id=sky.com.mx.appsky">
+                                <af:image source="/imagenes/movil/ic_googlePlay.png" inlineStyle="width: 40%;
+    padding-right: 2%;
+    padding-left: 5%;"
+                                          /></a>
+                            <af:spacer id="s1" width="10" height="10"/>
+                            
+                           
+                        </div>
+                        <!-- / POPUP-->
+                        <!-- end #mainContent -->
+                    </div>
+                    <!-- end #container -->
+                </div>
+                <trh:script id="s5">
+                  window.onload = popup('popUpDiv');
+                </trh:script>
+            </af:group>
+            <af:form id="f1" styleClass="document">
+                <div id="f2">
+                    <af:panelGroupLayout id="pgl1" layout="vertical"
+                                         styleClass="mainRootContainer">
+                        <af:image source="/imagenes/pc/uno/header.jpg" id="i1"
+                                  styleClass="principalImage"/>
+                        <af:panelGroupLayout id="pgl4" layout="vertical"
+                                             styleClass="formRootContainer">
+                            <af:panelGroupLayout id="pgl5" layout="default"
+                                                 styleClass="formContainer">
+                                <af:panelGroupLayout id="pg20" layout="default"
+                                                     styleClass="formContainer"
+                                                     shortDesc="mainContainer">
+                                    <af:panelGroupLayout id="pg22"
+                                                         layout="default"
+                                                         styleClass="custom">
+                                        <af:panelGroupLayout id="pg23"
+                                                             layout="default"
+                                                             styleClass="dispImage">
+                                            <af:panelGroupLayout id="pg24"
+                                                                 layout="vertical"
+                                                                 styleClass="dispButtons">
+                                                <af:outputLabel value="¡Bienvenido!"
+                                                                id="ol1"
+                                                                styleClass="titleHuge"/>
+                                                <af:spacer width="10"
+                                                           height="10"
+                                                           id="s14"/>
+                                                <af:commandLink id="cl7"
+                                                                action="m_nuevousuario">
+                                                    <af:image source="/imagenes/pc/uno/boton01.png"
+                                                              id="button1"
+                                                              styleClass="buttonImage"/>
+                                                </af:commandLink>
+                                                <af:spacer width="10"
+                                                           height="10"
+                                                           id="s15"/>
+                                                <af:commandLink id="cl2"
+                                                                action="acceso">
+                                                    <af:image source="/imagenes/pc/uno/boton02.png"
+                                                              id="button2"
+                                                              styleClass="buttonImage"/>
+                                                </af:commandLink>
+                                                <af:spacer width="10"
+                                                           height="10"
+                                                           id="s16"/>
+                                                <af:panelGroupLayout id="pgl9"
+                                                                     layout="horizontal"
+                                                                     inlineStyle="margin-top: 10px; ">
+                                                    <af:commandButton id="cb2"
+                                                                      action="m_reenviar_correo"
+                                                                      immediate="true"
+                                                                      inlineStyle="border:medium none white; padding:0px; margin:0px; background-image:linear-gradient(white, white);"
+                                                                      icon="/imagenes/movil/uno/reenvio-confirmacion.jpg"></af:commandButton>
+                                                    <af:commandLink id="cl4"
+                                                                    text="Reenviar correo de confirmación."
+                                                                    action="m_reenviar_correo"
+                                                                    inlineStyle="font-size: 13px; font-family: Arial; color: Black;     font-weight: bold;"
+                                                                    immediate="true"></af:commandLink>
+                                                </af:panelGroupLayout>
+                                                <af:image source="/imagenes/pc/uno/dispositivos.png"
+                                                          id="dispositivos"
+                                                          styleClass="buttonImage"/>
+                                            </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout id="pg21"
+                                                             layout="default"
+                                                             styleClass="dispImage"
+                                                             shortDesc="left pane for buttons"
+                                                             inlineStyle="display: inline-block;">
+                                            <af:image source="/imagenes/pc/uno/acciones.png"
+                                                      id="buttons"
+                                                      styleClass="principalImage"/>
+                                        </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pgFooter"
+                                                         layout="vertical"
+                                                         styleClass="footerImage"
+                                                         inlineStyle="margin:10px 0 20px 0;">
+                                        <af:panelGroupLayout id="pgl10"
+                                                             layout="vertical"
+                                                             halign="end">
+                                            <af:spacer width="10" height="10"
+                                                       id="s10"/>
+                                            <af:outputText value='&lt;script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=serviciosenlinea.sky.com.mx&amp;size=L&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=es">&lt;/script>&lt;map name="sealmap_large" id="sealmap_large">&lt;area alt="Click to Verify - This site has chosen an SSL Certificate to improve Web site security" title="" href="javascript:vrsn_splash()" shape="rect" coords="0,0,130,65" tabindex="-1" style="outline:none;">&lt;area alt="Click to Verify - This site has chosen an SSL Certificate to improve Web site security" title="" href="javascript:vrsn_splash()" shape="rect" coords="0,65,71,88" tabindex="-1" style="outline:none;">&lt;area alt="" title="" href="javascript:symcBuySSL()" shape="rect" coords="71,65,130,88" style="outline:none;">&lt;/map>&lt;br>
+&lt;a href="https://www.symantec.com/es/es/ssl-certificates" target="_blank" style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;">ACERCA DE LOS CERTIFICADOS SSL&lt;/a>'
+                                                           id="ot2"
+                                                           escape="false"/>
+                                            <af:spacer width="10%" height="20"
+                                                       id="s11"/>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout id="pgl12"
+                                                             layout="vertical"
+                                                             halign="center">
+                                            <af:outputText value="*BlackBerry®, iPhone, iPad y Android"
+                                                           inlineStyle="color: rgb(55,54,54); fontx-weight:bold;"
+                                                           id="ot9"/>
+                                            <af:spacer width="10" height="10"
+                                                       id="s12"/>
+                                            <af:outputText value="(1) Factura electrónica únicamente disponible en México. Pago en línea disponible por el momento en México y Centroamérica."
+                                                           id="ot13"
+                                                           inlineStyle="font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                                            <af:outputText value="(2) Disponible en México para equipos SKY+HD y SKY Super Plus HD."
+                                                           id="ot14"
+                                                           inlineStyle="font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                                            <af:outputText value="(3) Disponible en México, excepto para los paquetes VeTV y VeTV Plus."
+                                                           id="ot15"
+                                                           inlineStyle="font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                                            <af:spacer width="10" height="10"
+                                                       id="s13"/>
+                                            <af:outputText value="“Sky” y las marcas relacionadas, nombres y logotipos, son propiedad de “Sky International AG” 
+                                                                        y otras empresas del grupo.  Corporación Novavisión S. de R.L. de C.V. 2022. Prohibida su reproducción total o parcial. "
+                                                           inlineStyle="position:relative;color: black; top:0px;font-size: 9px;"
+                                                           id="ot56"/>
+                                            <af:outputText value="Corporación Novavisión S. de R.L. de C.V. 2022. Prohibida su reproducción total o parcial. "
+                                                           inlineStyle="position:relative;color: black; top:0px;font-size: 9px;"
+                                                           id="ot12"/>
+                                            <af:outputText value="SESION_ID: #{Foliador.folio}"
+                                                           id="ot1__sid"
+                                                           inlineStyle="color: rgb(55,54,54); font-size:13px; font-weight:lighter;margin-right:20px;"/>
+                                        </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </div>
+            </af:form>
+        </af:document>
+    </f:view>

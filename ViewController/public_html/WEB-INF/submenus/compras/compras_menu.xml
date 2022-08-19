@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_comprasIndex" label="#{sesion.menuCompras}" action="irRouterMenuCompras"
+            focusViewId="/comprasIndex" immediate="true" 
+            icon="/imagenes/menu/ic_compraControlRevista.svg"
+            rendered="#{sesion.COMPRAS}">
+    <itemNode id="itemNode_revistaSkyView" label="#{lbl.smenu_COMPRAS_REVISTA}" action="smenu_revistaSkyView"
+              focusViewId="/revistaSkyView" immediate="true"
+              rendered="#{sesion.REVISTA_SKY_VIEW}"/>
+    <itemNode id="itemNode_controlRemoto" label="#{lbl.smenu_COMPRAS_CONTROL}" action="smenu_controlRemoto"
+              focusViewId="/controlRemoto" immediate="true"
+              rendered="#{sesion.CONTROL_REMOTO}"/>
+    <itemNode id="itemNode_controlRemotoVeTv" label="#{lbl.smenu_COMPRAS_CONTROL_VETV}" action="smenu_controlRemotoVeTv"
+              focusViewId="/controlRemotoVeTv" immediate="true"
+              rendered="#{sesion.CONTROL_REMOTOVeTV}"/>
+  </itemNode>
+</menu>

@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#btgveoBtgIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+    table tr td.x1da > table tr td div.x1e8 > a {
+    background-color: #2846AA;
+    background-image: url(/sky/afr/alta-v1/dialog_close_ena.png);
+}
+  </af:resource>
+        <div id="btgveoBtgIndex">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-sm-8 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelGroupLayout id="pg1" styleClass="autocenter" inlineStyle="float:none;">
+                            <af:panelBox text="Blue To Go Video Everywhere" id="pbOTT" partialTriggers="s2:cb1 s6:cb2"
+                                         showHeader="never" showDisclosure="false" styleClass="autocenter"
+                                         inlineStyle="border: 0px;">
+                                <af:image shortDesc="Blue To Go Video Everywhere" id="i4"
+                                          source="#{parametros.btgew}activar/btg-txt-logo.png"
+                                          inlineStyle="width:250px;"/>
+                                <af:subform id="s2">
+                                    <af:group id="pgl7" rendered="#{!sesion.MUESTRABOTON_CONTRATA_BTGEW}">
+                                        <div class="row">
+                                            <af:outputText value="Para poder contratar Blue To Go Video Everywhere realiza un cambio de paquete en el menú 'Cambio de paquete' por un paquete FUN, FOX+, HBO/MAX o UNIVERSE."
+                                                           id="ot3" rendered="#{!sesion.paqueteHDGOLD and sesion.MEX}"
+                                                           styleClass="label-internal"
+                                                           inlineStyle='font: bold 0.95em "Roboto", sans-serif;'/>
+                                        </div>
+                                        <div class="row">
+                                            <af:outputText value="Para poder contratar Blue To Go Video Everywhere realiza un cambio de paquete en el menú 'Cambio de paquete' por un paquete SKY HD PLATINUM,SKY HD FOX+,SKY HD HBO MAX o SKY HD BLACK."
+                                                           id="ot2" rendered="#{sesion.paqueteHDGOLD and sesion.MEX}"
+                                                           styleClass="label-internal"
+                                                           inlineStyle='font: bold 0.95em "Roboto", sans-serif;'/>
+                                        </div>
+                                    </af:group>
+                                    <div class="row">
+                                        <af:link text="Términos y Condiciones" id="cl2" action="tc_ott" useWindow="true"
+                                                 windowEmbedStyle="inlineDocument" windowModalityType="applicationModal"
+                                                 windowHeight="500" windowWidth="500"/>
+                                    </div>
+                                    <div class="col-11 top">
+                                        <div class="col-12 right sm-cancel-align">
+                                            <af:button text="Contratar" id="cb1"
+                                                       visible="#{!pageFlowScope.PFBlueToGo.servicioOTT}"
+                                                       rendered="#{sesion.MUESTRABOTON_CONTRATA_BTGEW}"
+                                                       disabled="#{pageFlowScope.PFBlueToGo.servicioOTT}"
+                                                       useWindow="true" windowEmbedStyle="inlineDocument"
+                                                       windowModalityType="applicationModal"
+                                                       returnListener="#{pageFlowScope.PFBlueToGo.dialogReturnListener}"
+                                                       windowHeight="390" windowWidth="630" action="activarOTT"
+                                                       styleClass="btn-internal"/>
+                                        </div>
+                                        <div class="col-12 right sm-cancel-align">
+                                            <af:button id="gl1" text="Ingresar"
+                                                       visible="#{pageFlowScope.PFBlueToGo.servicioOTT}"
+                                                       disabled="#{!pageFlowScope.PFBlueToGo.servicioOTT}"
+                                                       destination="https://www.bluetogo.mx/#/login"
+                                                       targetFrame="_blank" styleClass="btn-internal"/>
+                                        </div>
+                                    </div>
+                                </af:subform>
+                                 
+                            </af:panelBox>
+                        </af:panelGroupLayout>
+                    </div>
+                </div>
+                <div class="row top">
+                    <!-- SEGUNDA PARTE -->
+                    <div class="content-internal">
+                        <div class="row">
+                            <af:panelGroupLayout id="pg2" styleClass="autocenter" inlineStyle="float:none;">
+                                <af:panelBox text="Blue To Go Video Everywhere" id="pb1" partialTriggers="s2:cb1 s6:cb2"
+                                             showHeader="never" showDisclosure="false" styleClass="autocenter"
+                                             inlineStyle="border: 0px;">
+                                    <af:image shortDesc="Blue To Go Video Everywhere" id="i1" rendered="#{sesion.MEX}"
+                                              source="#{parametros.btgew}activar/btg-txt-2.png" styleClass="img-sm"/>
+                                    <af:image shortDesc="Blue To Go Video Everywhere" id="i2"
+                                              rendered="#{sesion.CRI or sesion.GTM or sesion.HND or sesion.NIC or sesion.PAN or sesion.SLV}"
+                                              source="#{parametros.btgew}activar/btg-txt-2-ca.png" styleClass="img-sm"/>
+                                    <af:image shortDesc="Blue To Go Video Everywhere" id="i3" rendered="#{sesion.DOM}"
+                                              source="#{parametros.btgew}activar/btg-txt-2-dom.png" styleClass="img-sm"/>
+                                    <div class="row top">
+                                        <af:subform id="s6">
+                                            <af:link text="Términos y Condiciones" id="cl4" action="tc_ott"
+                                                     useWindow="true" windowEmbedStyle="inlineDocument"
+                                                     windowModalityType="applicationModal" windowHeight="500"
+                                                     windowWidth="500"/>
+                                            <af:panelGroupLayout id="pgl5" layout="vertical" halign="end">
+                                                <af:button text="Contratar" id="cb2"
+                                                           visible="#{!pageFlowScope.PFBlueToGo.servicioOTT}"
+                                                           rendered="#{sesion.MUESTRABOTON_CONTRATA_BTGEW}"
+                                                           disabled="#{pageFlowScope.PFBlueToGo.servicioOTT}"
+                                                           useWindow="true" windowEmbedStyle="inlineDocument"
+                                                           windowModalityType="applicationModal"
+                                                           returnListener="#{pageFlowScope.PFBlueToGo.dialogReturnListener}"
+                                                           windowHeight="390" windowWidth="630" action="activarOTT"
+                                                           styleClass="btn-internal"/>
+                                                <af:button id="gb1" text="Ingresar"
+                                                           visible="#{pageFlowScope.PFBlueToGo.servicioOTT}"
+                                                           disabled="#{!pageFlowScope.PFBlueToGo.servicioOTT}"
+                                                           destination="https://www.bluetogo.mx/#/login"
+                                                           targetFrame="_blank" styleClass="btn-internal"/>
+                                            </af:panelGroupLayout>
+                                        </af:subform>
+                                    </div>
+                                     
+                                </af:panelBox>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="admonCuentasPageDef"
+                Package="pages.miCuenta">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="obtenerUsuariosHijas.result" DataControl="DCUsuario" RangeSize="10"
+                    BeanClass="mx.com.sky.sel.beans.utils.usuario.UsuarioRegistro" id="obtenerUsuariosHijasIterator"/>
+    <methodIterator Binds="obtenerMenus.result" DataControl="DCMenu" RangeSize="10"
+                    BeanClass="mx.com.sky.sel.services.beans.utils.Menu" id="obtenerMenusIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerUsuariosHijas" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerUsuariosHijas" IsViewObjectMethod="false" DataControl="DCUsuario"
+                  InstanceName="bindings.obtenerUsuariosHijas.dataControl.dataProvider"
+                  ReturnName="data.DCUsuario.methodResults.obtenerUsuariosHijas_obtenerUsuariosHijas_dataControl_dataProvider_obtenerUsuariosHijas_result"/>
+    <tree IterBinding="obtenerUsuariosHijasIterator" id="UsuarioRegistro">
+      <nodeDefinition DefName="mx.com.sky.sel.beans.utils.usuario.UsuarioRegistro" Name="UsuarioRegistro0">
+        <AttrNames>
+          <Item Value="userName"/>
+          <Item Value="password"/>
+          <Item Value="nombre"/>
+          <Item Value="apellidoPaterno"/>
+          <Item Value="apellidoMaterno"/>
+          <Item Value="email"/>
+          <Item Value="cuentaSKY"/>
+          <Item Value="tarjetaInteligente"/>
+          <Item Value="titularCuentaSKY"/>
+          <Item Value="telefonoLada"/>
+          <Item Value="telefonoCasa"/>
+          <Item Value="telefonoTrabajoLada"/>
+          <Item Value="telefonoTrabajo"/>
+          <Item Value="telefonoTrabajoExt"/>
+          <Item Value="telefonoMovilLada"/>
+          <Item Value="telefonoMovil"/>
+          <Item Value="sblParentesco"/>
+          <Item Value="uid"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="obtenerUsuariosHijasIterator" id="uid">
+      <AttrNames>
+        <Item Value="uid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerUsuariosHijasIterator" id="userName">
+      <AttrNames>
+        <Item Value="userName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerUsuariosHijasIterator" id="nombre">
+      <AttrNames>
+        <Item Value="nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerUsuariosHijasIterator" id="apellidoPaterno">
+      <AttrNames>
+        <Item Value="apellidoPaterno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerUsuariosHijasIterator" id="apellidoMaterno">
+      <AttrNames>
+        <Item Value="apellidoMaterno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerUsuariosHijasIterator" id="email">
+      <AttrNames>
+        <Item Value="email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerUsuariosHijasIterator" id="telefonoLada">
+      <AttrNames>
+        <Item Value="telefonoLada"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerUsuariosHijasIterator" id="telefonoCasa">
+      <AttrNames>
+        <Item Value="telefonoCasa"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerUsuariosHijasIterator" id="telefonoTrabajoLada">
+      <AttrNames>
+        <Item Value="telefonoTrabajoLada"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerUsuariosHijasIterator" id="telefonoTrabajo">
+      <AttrNames>
+        <Item Value="telefonoTrabajo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerUsuariosHijasIterator" id="telefonoTrabajoExt">
+      <AttrNames>
+        <Item Value="telefonoTrabajoExt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerUsuariosHijasIterator" id="telefonoMovil">
+      <AttrNames>
+        <Item Value="telefonoMovil"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="obtenerUsuariosHijasIterator" id="actualizarTabla" InstanceName="DCUsuario.dataProvider"
+            DataControl="DCUsuario" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <methodAction id="obtenerMenus" RequiresUpdateModel="true" Action="invokeMethod" MethodName="obtenerMenus"
+                  IsViewObjectMethod="false" DataControl="DCMenu"
+                  InstanceName="bindings.obtenerMenus.dataControl.dataProvider"
+                  ReturnName="data.DCMenu.methodResults.obtenerMenus_obtenerMenus_dataControl_dataProvider_obtenerMenus_result">
+      <NamedData NDName="uid" NDValue="#{bindings.uid}" NDType="java.lang.String"/>
+      <NamedData NDName="tipoCuenta" NDValue="#{sesion.userRole}" NDType="java.lang.String"/>
+      <NamedData NDName="pais" NDValue="#{sesion.pais}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="obtenerMenusIterator" id="Menu">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.utils.Menu" Name="result0">
+        <AttrNames>
+          <Item Value="pmdescription"/>
+          <Item Value="visible"/>
+          <Item Value="pumid"/>
+          <Item Value="pumvisible"/>
+          <Item Value="pmcode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="obtenerMenusIterator" id="actualizarMenus" InstanceName="DCMenu.dataProvider" DataControl="DCMenu"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <methodAction id="updateMenus" RequiresUpdateModel="true" Action="invokeMethod" MethodName="updateMenus"
+                  IsViewObjectMethod="false" DataControl="DCMenu"
+                  InstanceName="bindings.updateMenus.dataControl.dataProvider">
+      <NamedData NDName="iterator" NDValue="#{bindings.Menu.DCIteratorBinding}"
+                 NDType="oracle.adf.model.binding.DCIteratorBinding"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

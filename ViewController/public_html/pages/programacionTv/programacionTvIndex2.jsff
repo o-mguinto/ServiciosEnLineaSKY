@@ -1,0 +1,527 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#programacionTvIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+    table tr td.x1da > table tr td div.x1e8 > a, table tr td.x1db > table tr td div.x1e9 > a {
+    background-color: #2846AA;
+    background-image: url(/sky/afr/alta-v1/dialog_close_ena.png);
+}
+  </af:resource>
+        <div id="programacionTvIndex">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                        <!--Para cada fila una div-->
+                        <!--af:panelGroupLayout id="pglhorarios">
+                            <af:forEach items="#{pageFlowScope.parrillaBean.horarios}" var="horario" varStatus="vs">
+                                <div class="col-3-1 col-sm-2 col-tb-2">
+                                    <af:panelGroupLayout id="panelGroupLayout1" styleClass="styleCanalesBooking"
+                                                         layout="vertical" valign="middle" halign="center">
+                                        <af:commandLink id="ot4" shortDesc="#{horario.label}"
+                                                        text="#{horario.numPagina+1}"
+                                                        inlineStyle="#{horario.numPagina eq pageFlowScope.parrillaBean.paginaActiva ? 'font-size:2em;' : 'font-size:1em;'} color:Teal; margin:2em; "
+                                                        actionListener="#{pageFlowScope.parrillaBean.consultaProgramacionPorPaginaListener}">
+                                            <af:setPropertyListener from="#{horario.numPagina}"
+                                                                    to="#{pageFlowScope.parrillaBean.paginaActiva}"
+                                                                    type="action"/>
+                                                                    <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                        </af:commandLink>
+                                    </af:panelGroupLayout>
+                                </div>
+                            </af:forEach>
+                        </af:panelGroupLayout-->
+                         <!--partialTriggers="pglhorarios"-->
+                        <af:panelGroupLayout id="panelGridLayout1" inlineStyle="border-color: #FFF;"
+                                              rendered="false">
+                            <af:forEach var="i" varStatus="s" begin="1" step="1"
+                                        end="#{(pageFlowScope.parrillaBean.numIntervalos+1)*( pageFlowScope.parrillaBean.intervaloMinutos/pageFlowScope.parrillaBean.subintervaloMinutos)}">
+                                <div class="col-3-2 col-sm-2 col-tb-2">
+                                    <af:panelGroupLayout id="panelGroupLayout4" layout="vertical" halign="center">
+                                        <af:outputText value="#{''}" id="outputText4"/>
+                                    </af:panelGroupLayout>
+                                </div>
+                            </af:forEach>
+                            <div class="row">
+                                <af:panelGroupLayout id="panelGroupLayout5" layout="vertical"
+                                     halign="center" rendered="false"
+                                     inlineStyle="border: 1px solid #a1a1a1;">
+                  <af:outputText id="outputText5"
+                                 value="#{pageFlowScope.parrillaBean.fecha}"
+                                 inlineStyle="color:Teal;">
+                    <af:convertDateTime type="date" pattern="EEE dd/MMM"/>
+                  </af:outputText>
+                </af:panelGroupLayout>
+                            </div>
+                            <div class="row">
+                                <af:panelGroupLayout id="pgl10" rendered="false">
+                                    <af:forEach var="item" varStatus="status" begin="1" step="1"
+                          end="#{pageFlowScope.parrillaBean.numIntervalos}">
+                            
+                          </af:forEach>
+                                </af:panelGroupLayout>
+                                
+                            </div>
+                        </af:panelGroupLayout>
+                         <!--partialTriggers="pglhorarios"-->
+                         <div class="row top">
+                            <div class="col-12" style="overflow: auto; max-height:55em; border-color: #FFF;">
+                                <!--af:forEach var="i" varStatus="s" begin="1" step="1"
+                                            end="#{(pageFlowScope.parrillaBean.numIntervalos+1)*( pageFlowScope.parrillaBean.intervaloMinutos/pageFlowScope.parrillaBean.subintervaloMinutos)}">
+                                    <div class="col-3-2 col-sm-2 col-tb-2">
+                                        <af:panelGroupLayout id="panelGroupLayout32" layout="vertical" halign="center">
+                                            <af:outputText id="ot7"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </af:forEach>
+                                <div class="col-3-2 col-sm-2 col-tb-2">
+                                    <af:panelGroupLayout id="pgl4" layout="vertical" halign="center">
+                                        <af:outputText id="ot15" value="#{pageFlowScope.parrillaBean.fecha}"
+                                                       inlineStyle="color:Black; font-size:1em; font-weight:bold;">
+                                            <af:convertDateTime type="date" pattern="EEE dd/MMM"/>
+                                        </af:outputText>
+                                    </af:panelGroupLayout>
+                                </div>
+                                <af:forEach var="item" varStatus="status" begin="1" step="1"
+                                            end="#{pageFlowScope.parrillaBean.numIntervalos}">
+                                    <div class="col-3-2 col-sm-2 col-tb-2">
+                                        <af:panelGroupLayout halign="center" layout="vertical"
+                                                             inlineStyle=" background-color:Menu;" id="pgl14">
+                                            <af:outputText value="#{pageFlowScope.parrillaBean.encabezados[status.index-1]}"
+                                                           id="ot9"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                </af:forEach-->
+                                <af:forEach var="programa" items="#{pageFlowScope.parrillaBean.programaciones}">
+                                    <div class="row">
+                                        <div class="col-3-2 col-sm-2">
+                                            <af:panelGroupLayout layout="vertical" halign="center" valign="middle"
+                                                                 id="pg29"
+                                                                 inlineStyle="background-color:Menu; border-top:1px solid #a1a1a1;">
+                                                <!--af:commandLink id="ot5" inlineStyle="color:White; font-size:1em;"
+                                                                actionListener="#{pageFlowScope.parrillaBean.validaGrabarCanal}">
+                                                    <af:setPropertyListener from="#{programa.canal}"
+                                                                            to="#{pageFlowScope.parrillaBean.remoteBooking.canal}"
+                                                                            type="action"/>
+                                                    <af:setPropertyListener from="02"
+                                                                            to="#{pageFlowScope.parrillaBean.remoteBooking.methodType}"
+                                                                            type="action"/>
+                                                    <af:setPropertyListener from="01"
+                                                                            to="#{pageFlowScope.parrillaBean.remoteBooking.recordConfiguration}"
+                                                                            type="action"/>
+                                                    <af:image source="/imagenes/guia/#{programa.canal.idMostrado}_H.png"
+                                                              id="i2" shortDesc="#{programa.canal.canalNombre}"/>
+                                                    <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                                </af:commandLink>
+                                                <af:commandLink id="ot11"
+                                                                inlineStyle="font-size:1.8em; color:ActiveCaption; font-weight:bold;"
+                                                                text="#{programa.canal.idMostrado}"
+                                                                actionListener="#{pageFlowScope.parrillaBean.validaGrabarCanal}">
+                                                    <af:setPropertyListener from="#{programa.canal}"
+                                                                            to="#{pageFlowScope.parrillaBean.remoteBooking.canal}"
+                                                                            type="action"/>
+                                                    <af:setPropertyListener from="02"
+                                                                            to="#{pageFlowScope.parrillaBean.remoteBooking.methodType}"
+                                                                            type="action"/>
+                                                    <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                                </af:commandLink-->
+                                                <af:image source="/imagenes/guia/#{programa.canal.idMostrado}_H.png"
+                                                              id="i2" shortDesc="#{programa.canal.canalNombre}"/>
+                                                <af:outputText id="ot1"
+                                                     value="#{programa.canal.idMostrado}"
+                                                     inlineStyle="font-size:1.8em; color:ActiveCaption; font-weight:bold;"/>
+                                            </af:panelGroupLayout>
+                                        </div>
+                                        <!--div class="col-10-2 col-sm-2 col-tb-2" style="border-top:1px solid #a1a1a1;"-->
+                                        <div class="col-10-2 col-sm-6">
+                                            <af:panelGroupLayout id="pgl2" layout="horizontal" valign="middle"
+                                                                 halign="center"
+                                                                 inlineStyle="border-top-color:#a1a1a1; border-top-width:1px; border-top-style:solid;">
+                                                <af:iterator id="i1" value="#{programa.eventos}" var="evento"
+                                                             rows="200">
+                                                             <!-- rendered="#{evento.numIntervalos>0}"-->
+                                                             <!--div class="col-2 autocenter"
+                                                                  style="min-width: 5%; max-width:15%;"-->
+                                                <af:panelGroupLayout id="pgl1" styleClass="parrilla-eventos autocenter">
+                                                    <div>
+                                                        <af:commandLink id="cl1"
+                                                                    actionListener="#{pageFlowScope.parrillaBean.validaGrabarEvento}"
+                                                                    styleClass="parrilla-titulos">
+                                                        <af:outputText value="#{evento.titulo}"
+                                                                       id="ot15"/>
+                                                        <af:setPropertyListener from="#{programa.canal}"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.canal}"
+                                                                                type="action"/>
+                                                        <af:setPropertyListener from="#{evento}"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.evento}"
+                                                                                type="action"/>
+                                                        <af:setPropertyListener from="01"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.recordConfiguration}"
+                                                                                type="action"/>
+                                                        <af:clientListener method="enforcePreventUserInput"
+                                                                           type="action"/>
+                                                    </af:commandLink>
+                                                    </div>
+                                                    <div>
+                                                        <af:outputText value="#{evento.horario}"
+                                                                   id="ot6"
+                                                                   styleClass="parrilla-horarios"/>
+                                                    </div>
+                                                    
+                                                    
+                                                </af:panelGroupLayout>
+                                                            <div class=" guia-horarios">
+                                                     
+                                                </div>
+                                                             <!--/div-->
+                                                    <!--af:panelGroupLayout layout="vertical" halign="center" id="pgl13"
+                                                                        >
+                                                        
+                                                        
+                                                    </af:panelGroupLayout-->
+                                                </af:iterator>
+                                            </af:panelGroupLayout>
+                                        </div>
+                                            
+                                        <!--/div-->
+                                    </div>
+                                </af:forEach>
+                                <!--div class="col-3-2 col-sm-2 col-tb-2">
+                                    <af:panelGroupLayout id="panelGroupLayout13" layout="vertical" halign="center"
+                                                         valign="middle" inlineStyle="border: 1px solid #a1a1a1;"
+                                                         rendered="false">
+                                        <af:outputText value="1" id="outputText1"
+                                                       inlineStyle="color:#1679f1; font-size:medium;"/>
+                                        <af:outputText value="SKY ONE" id="outputText2"
+                                                       inlineStyle="font-size:medium; color:ActiveCaption;"/>
+                                    </af:panelGroupLayout>
+                                </div>
+                                <div class="col-3-2 col-sm-2 col-tb-2">
+                                    <af:panelGroupLayout id="pgl3" layout="vertical" rendered="false" halign="center"
+                                                         inlineStyle="border: 1px solid #a1a1a1;">
+                                        <af:outputText value="2" id="ot10"
+                                                       inlineStyle="color:#1679f1; font-size:medium;"/>
+                                        <af:outputText value="SKY ONE" id="ot8"
+                                                       inlineStyle="font-size:medium; color:ActiveCaption;"/>
+                                    </af:panelGroupLayout>
+                                     
+                                    <af:panelGroupLayout id="pgl11" layout="vertical" halign="center"
+                                                         inlineStyle="border: 1px solid #a1a1a1;" rendered="false">
+                                        <af:outputText value="Paralelo 23" id="ot12"
+                                                       inlineStyle="font-weight:bold;color:#003D5B;"/>
+                                    </af:panelGroupLayout>
+                                     
+                                    <af:panelGroupLayout id="pgl12" layout="vertical" halign="center" rendered="false"
+                                                         inlineStyle="border: 1px solid #a1a1a1;">
+                                        <af:outputText value="Los locos adams" id="ot13"
+                                                       inlineStyle="font-weight:bold;"/>
+                                    </af:panelGroupLayout>
+                                </div-->
+                            </div>
+                            <af:popup id="popupRemoteBookingPorPrograma" childCreation="deferred" contentDelivery="lazyUncached" autoCancel="disabled"
+                                      binding="#{pageFlowScope.parrillaBean.popupRemoteBookingPorPrograma}">
+                                      <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                  <af:dialog id="dlgGrabarLegacy" title="#{selSKYBundle.GRABAR_A_DISTANCIA_UN_PROGRAMA}"
+                                           type="none" 
+                                           modal="true" styleClass="alert">
+                                           <af:subform id="s1">
+                                               <div class="text-internal">
+                                                    <div class="col-12 autocenter">
+                                                        <af:outputText value="#{pageFlowScope.parrillaBean.remoteBooking.evento.titulo}"
+                                                           id="ot2"
+                                                           description="#{pageFlowScope.parrillaBean.remoteBooking.canal.descripcion}"
+                                                           styleClass="font-bolder"/>            
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="row top">
+                                                        <span class="xf">* </span>
+                                                                     <h:outputText
+                                                                    id="ot8"
+                                                                    value="#{selSKYBundle.SELECCIONE_SU_TARJETA_INTELIGE}"/>
+                                                                    </div>
+                                                        <div class="row">
+                                                              <af:selectOneChoice label=""
+                                                                                 requiredMessageDetail="#{selSKYBundle.LA_TARJETA_INTELIGENTE_ES_UN_D}"
+                                                                                 id="sor1" 
+                                                                                 simple="true"
+                                                                                            autoSubmit="true"
+                                                                                            showRequired="false"
+                                                                                            unselectedLabel="#{selSKYBundle.lbl_selecciona_una_opcion}"
+                                                                                 value="#{pageFlowScope.parrillaBean.remoteBooking.ti}"
+                                                                                 required="true" styleClass="select-internal">
+                                                                <f:selectItems id="si1"
+                                                                        value="#{pageFlowScope.parrillaBean.tarjetasInteligentes}"/>
+                                                              </af:selectOneChoice>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="row padd-top-dialog">
+                                                            <h:outputText value="#{selSKYBundle.CANAL}"
+                                                                          id="ot10"/>
+                                                        </div>
+                                                        <div class="border-bottom">
+                                                            <h:outputText value="#{pageFlowScope.parrillaBean.remoteBooking.canal.canalNombre} #{pageFlowScope.parrillaBean.remoteBooking.canal.idMostrado}"
+                                                                          styleClass="azul-internal"
+                                                                          id="it11"/>
+                                                        
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="row padd-top-dialog">
+                                                            <h:outputText value="#{selSKYBundle.EPISODIO}"
+                                                                      id="ot13"/>
+                                                        </div>
+                                                        <div class="border-bottom">
+                                                            <h:outputText id="it3"
+                                                                      value="#{pageFlowScope.parrillaBean.remoteBooking.evento.episodeId}"
+                                                                      styleClass="azul-internal"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="row padd-top-dialog">
+                                                            <h:outputText value="#{selSKYBundle.SINOPSIS}"
+                                                                      id="ot14"/>
+                                                        </div>
+                                                        <div class="border-bottom dialog-descrip">
+                                                            <h:outputText id="it2"
+                                                                    value="#{pageFlowScope.parrillaBean.remoteBooking.evento.sinopsis}"/>
+                                                        </div>
+                                                    </div>
+                                               </div>
+                                            <div class="col-12 dialog-background">
+                                                <div class="row top autocenter">
+                                                    <div class="col-6 col-tb-4 col-sm-4">
+                                                    <af:link text="#{selSKYBundle.GRABAR_UNA_SOLA_VEZ}"
+                                                             id="cil1"
+                                                             icon="/imagenes/aplicacion/unavez.gif"
+                                                             inlineStyle="margin-right:1.0em;"
+                                                             action="#{pageFlowScope.parrillaBean.grabarRemoteBooking}"
+                                                             partialSubmit="true">
+                                                        <af:setPropertyListener from="Episodio"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.recordingType}"
+                                                                                type="action"/>
+                                                        <af:setPropertyListener from="ContenidoLegacy"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.methodType}"
+                                                                                type="action"/>
+                                                        <af:setPropertyListener from="N"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.recordatorioGrabacion}"
+                                                                                type="action"/>
+                                                    </af:link>
+                                                </div>
+                                                    <div class="col-6 col-tb-4 col-sm-4">
+                                                    <af:link text="#{selSKYBundle.GRABAR_SERIE}"
+                                                             id="cil2"
+                                                             icon="/imagenes/aplicacion/recurrente.gif"
+                                                             disabled="#{!pageFlowScope.parrillaBean.remoteBooking.evento.serie}"
+                                                             action="#{pageFlowScope.parrillaBean.grabarRemoteBooking}"
+                                                             partialSubmit="true">
+                                                        <af:setPropertyListener from="Serie"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.recordingType}"
+                                                                                type="action"/>
+                                                        <af:setPropertyListener from="ContenidoLegacy"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.methodType}"
+                                                                                type="action"/>
+                                                        <af:setPropertyListener from="N"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.recordatorioGrabacion}"
+                                                                                type="action"/>
+                                                    </af:link>
+                                                </div>
+                                                </div>
+                                            </div>
+                                           </af:subform>
+                                        </af:dialog>
+                                    </div>
+                            </af:popup>
+                            <!--af:popup id="popupRemoteBookingPorHorario"
+                                      binding="#{pageFlowScope.parrillaBean.popupRemoteBookingPorHorario}">
+                                <af:panelWindow id="panelWindow1"
+                                                title="#{selSKYBundle.LBL_GRABAR_A_DISTANCIA}">
+                                    <af:subform id="s2">
+                                        <af:panelGroupLayout id="panelGroupLayout2" halign="center" valign="middle"
+                                                             inlineStyle="height:34px;" layout="horizontal">
+                                            <af:outputText value="#{pageFlowScope.parrillaBean.remoteBooking.canal.canalNombre}  "
+                                                           id="outputText3"
+                                                           description="#{pageFlowScope.parrillaBean.remoteBooking.canal.descripcion}"
+                                                           inlineStyle="color:#1679f1; font-size:1.5em;"/>
+                                            <af:outputText value="(#{pageFlowScope.parrillaBean.remoteBooking.canal.idMostrado})"
+                                                           id="ot3"/>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout id="pgl6" layout="horizontal" halign="center">
+                                            <af:selectOneRadio label="#{selSKYBundle.SELECCIONE_SU_TARJETA_INTELIGE}"
+                                                               requiredMessageDetail="#{selSKYBundle.LA_TARJETA_INTELIGENTE_ES_UN_D}"
+                                                               id="sor2"
+                                                               value="#{pageFlowScope.parrillaBean.remoteBooking.ti}"
+                                                               required="true">
+                                                <f:selectItems id="si2"
+                                                               value="#{pageFlowScope.parrillaBean.tarjetasInteligentes}"/>
+                                            </af:selectOneRadio>
+                                        </af:panelGroupLayout>
+                                        <af:inputRangeSlider label="#{selSKYBundle.HORARIO}" id="irs1"
+                                                             maximum="1439" minimumIncrement="30" majorIncrement="360"
+                                                             value="#{pageFlowScope.parrillaBean.remoteBooking.horario}"
+                                                             minorIncrement="60" contentStyle="width: 30em"
+                                                             converter="DayConverter" inlineStyle="margin:2.0em;"/>
+                                        <af:panelGroupLayout id="pgl7" layout="horizontal" halign="center">
+                                            <af:panelFormLayout id="panelFormLayout1" inlineStyle="margin:2.0em;">
+                                                <f:facet name="footer">
+                                                    <af:panelGroupLayout id="panelGroupLayout3" layout="horizontal"
+                                                                         halign="center" inlineStyle="margin:2.0em;"
+                                                                         valign="middle">
+                                                        <af:commandImageLink text="#{selSKYBundle.GRABAR_UNA_SOLA_VEZ}"
+                                                                             id="commandImageLink1"
+                                                                             icon="/imagenes/aplicacion/unavez.gif"
+                                                                             inlineStyle="margin-right:1.0em;"
+                                                                             action="#{pageFlowScope.parrillaBean.grabarRemoteBooking}"
+                                                                             partialSubmit="true">
+                                                            <af:setPropertyListener from="00"
+                                                                                    to="#{pageFlowScope.parrillaBean.remoteBooking.recurringFlags}"
+                                                                                    type="action"/>
+                                                        </af:commandImageLink>
+                                                        <af:commandImageLink text="#{selSKYBundle.GRABAR_RECURRENTE}"
+                                                                             id="commandImageLink2"
+                                                                             icon="/imagenes/aplicacion/recurrente.gif"
+                                                                             action="#{pageFlowScope.parrillaBean.grabarRemoteBooking}"
+                                                                             partialSubmit="true">
+                                                            <af:setPropertyListener from="80"
+                                                                                    to="#{pageFlowScope.parrillaBean.remoteBooking.recurringFlags}"
+                                                                                    type="action"/>
+                                                        </af:commandImageLink>
+                                                    </af:panelGroupLayout>
+                                                </f:facet>
+                                                <af:inputText label="#{selSKYBundle.DESCRIPCI_U00F3N}"
+                                                              id="inputText3"
+                                                              value="#{pageFlowScope.parrillaBean.remoteBooking.canal.descripcion}"
+                                                              disabled="true" rows="5"/>
+                                            </af:panelFormLayout>
+                                        </af:panelGroupLayout>
+                                    </af:subform>
+                                </af:panelWindow>
+                            </af:popup-->
+                            <af:popup id="popupRemoteBookingPorProgramaHMC" childCreation="deferred" contentDelivery="lazyUncached"
+                                  autoCancel="disabled"
+                              binding="#{pageFlowScope.parrillaBean.popupRemoteBookingPorProgramaHMC}">
+                              <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                  <af:dialog id="dlgGrabarHMC" title="#{selSKYBundle.GRABAR_A_DISTANCIA_UN_PROGRAMA}"
+                                           type="none" 
+                                           modal="true" styleClass="alert">
+                                           <af:subform id="s2">
+                                           <div class="text-internal">
+                                                <div class="col-12 autocenter">
+                                                    <af:outputText value="#{pageFlowScope.parrillaBean.remoteBooking.evento.titulo}"
+                                           id="ot3"
+                                           description="#{pageFlowScope.parrillaBean.remoteBooking.canal.descripcion}"
+                                           styleClass="font-bolder"/>
+                                                </div>
+                                                <div class="col-12">
+                                            <div class="row top">
+                                            <span class="xf">* </span>
+                                                     <h:outputText
+                                                    id="ol4"
+                                                    value="#{selSKYBundle.SELECCIONE_SU_TARJETA_INTELIGE}"/>
+                                                    </div>
+                                            <div class="row">
+                          <af:selectOneChoice label=""
+                                             requiredMessageDetail="#{selSKYBundle.LA_TARJETA_INTELIGENTE_ES_UN_D}"
+                                             id="sor2" 
+                                             simple="true"
+                                                        autoSubmit="true"
+                                                        showRequired="false"
+                                                        unselectedLabel="#{selSKYBundle.lbl_selecciona_una_opcion}"
+                                             value="#{pageFlowScope.parrillaBean.remoteBooking.ti}"
+                                             required="true" styleClass="select-internal">
+                            <f:selectItems id="si2"
+                                           value="#{pageFlowScope.parrillaBean.tarjetasInteligentes}"/>
+                          </af:selectOneChoice>
+                          </div>
+                          </div>
+                          <div class="col-12">
+                                            <div class="row padd-top-dialog">
+                                                <h:outputText value="#{selSKYBundle.CANAL}"
+                                                              id="ot5"/>
+                                            </div>
+                                            <div class="border-bottom">
+                                                <h:outputText value="#{pageFlowScope.parrillaBean.remoteBooking.canal.canalNombre} #{pageFlowScope.parrillaBean.remoteBooking.canal.idMostrado}"
+                                                              styleClass="azul-internal"
+                                                              id="ot9"/>
+                                            </div>
+                                        </div>
+                          <div class="col-12">
+                                            <div class="row padd-top-dialog">
+                                                <h:outputText value="#{selSKYBundle.EPISODIO}"
+                                                              id="ot11"/>
+                                            </div>
+                                            <div class="border-bottom">
+                                                <h:outputText value="#{pageFlowScope.parrillaBean.remoteBooking.evento.episodeId}"
+                                                              styleClass="azul-internal"
+                                                              id="ot12"/>
+                                            </div>
+                            </div>
+                            <div class="col-12">
+                                            <div class="row padd-top-dialog">
+                                                <h:outputText value="#{selSKYBundle.SINOPSIS}"
+                                                              id="ot4"/>
+                                            </div>
+                                            <div class="border-bottom dialog-descrip">
+                                                <h:outputText value="#{pageFlowScope.parrillaBean.remoteBooking.evento.sinopsis}"
+                                                              id="ot7"/>
+                                            </div>
+                                        </div>
+                             
+                                            </div>
+                                            <div class="col-12 dialog-background">
+                                        <div class="row top autocenter">
+                                            <div class="col-6 col-tb-4 col-sm-4">
+                                                    <af:link text="#{selSKYBundle.GRABAR_UNA_SOLA_VEZ}"
+                                                             id="cil3"
+                                                             icon="/imagenes/aplicacion/unavez.gif"
+                                                             inlineStyle="margin-right:1.0em;"
+                                                             action="#{pageFlowScope.parrillaBean.grabarRemoteBooking}"
+                                                             partialSubmit="true">
+                                                        <af:setPropertyListener from="Episodio"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.recordingType}"
+                                                                                type="action"/>
+                                                        <af:setPropertyListener from="EventoBasico"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.methodType}"
+                                                                                type="action"/>
+                                                        <af:setPropertyListener from="N"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.recordatorioGrabacion}"
+                                                                                type="action"/>
+                                                    </af:link>
+                                                </div>
+                                            <div class="col-6 col-tb-4 col-sm-4">
+                                                    <af:link text="#{selSKYBundle.GRABAR_SERIE}"
+                                                             id="cil4"
+                                                             icon="/imagenes/aplicacion/recurrente.gif"
+                                                             disabled="#{!pageFlowScope.parrillaBean.remoteBooking.evento.serie}"
+                                                             action="#{pageFlowScope.parrillaBean.grabarRemoteBooking}"
+                                                             partialSubmit="true">
+                                                        <af:setPropertyListener from="Serie"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.recordingType}"
+                                                                                type="action"/>
+                                                        <af:setPropertyListener from="Serie"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.methodType}"
+                                                                                type="action"/>
+                                                        <af:setPropertyListener from="N"
+                                                                                to="#{pageFlowScope.parrillaBean.remoteBooking.recordatorioGrabacion}"
+                                                                                type="action"/>
+                                                    </af:link>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </af:subform>
+                                </af:dialog>
+                                </div>
+                            </af:popup>
+                         </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_facturaElectronicaIndex" label="#{lbl.menu_DATOS_FISCALES}"
+            action="irRouterFacturaElectronica" focusViewId="/facturaElectronicaIndex" immediate="true"
+             icon="/imagenes/menu/ic_facturaE.svg"
+            rendered="#{sesion.DATOS_FISCALES}">
+    <itemNode id="itemNode_facturaElectronica" label="#{lbl.smenu_FE_FACTURAE}" action="smenu_facturaElectronica"
+              focusViewId="/facturaElectronica" immediate="true"
+              rendered="#{sesion.FACTURAS_ELECTRONICAS}"/>
+    <itemNode id="itemNode_informacionFiscal" label="#{lbl.smenu_FE_INFO_FISCAL}" action="smenu_informacionFiscal"
+              focusViewId="/informacionFiscal" immediate="true"
+              rendered="#{sesion.REG_ACTU_DATOS_FISCALES}"/>
+    <itemNode id="itemNode_consultaEstatusDF" label="#{lbl.smenu_FE_CONSULTA_STATUSDF}" action="smenu_consultaEstatusDF"
+              focusViewId="/consultaEstatusDF" 
+              immediate="true"
+              rendered="#{sesion.REG_ACTU_DATOS_FISCALES and sesion.cuentaCV}"/>
+  </itemNode>
+</menu>

@@ -1,0 +1,139 @@
+.body {
+    background-color: White;
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+.login{
+    padding-top: 0px !important;  
+}
+
+.divContenedor, .container{
+background-color: #004B8D;
+    background-repeat: repeat-x;
+    background-image: url("/imagenes/pc/patron_BannerPrincipal2.png");
+    margin: 0 !important;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    width: 950px;
+    color: White;
+    min-width: 350px !important;
+}
+
+h1 {
+    margin-top: 10px !important;
+    color: #ae1329;
+    font-size: 16px;
+    width: 100%;
+}
+
+h3 {
+    color: #525252;
+    font-size: 10px;
+    text-align: center;
+    font-weight: lighter
+}
+
+img{
+    max-width: 100%;
+}
+
+.lineaHorizontal {
+    background-color: #AE1329;
+    height: 2px;
+}
+
+.btn-secrets{
+    color:#fff !important;
+    background: #C80216 !important;
+    -webkit-box-shadow: 5px 7px 8px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 7px 8px -3px rgba(0,0,0,0.75);
+    box-shadow: 5px 7px 8px -3px rgba(0,0,0,0.75);
+}
+
+.btn-secrets a{
+    cursor: pointer;
+}
+
+.btn-secrets:hover{
+    color:#fff !important;
+    background: #C90317 !important ;
+}
+button.btn-secrets{
+    font-size: 12px !important;
+    font-weight: 600;
+    width: 145px;
+}
+
+div.btn a:link,
+div.btn a:visited,
+div.btn a:hover,
+div.btn a:active {
+    color:inherit !important;
+    text-decoration: none !important;
+    font-size: 12px !important;
+    font-weight: 600;
+    width: 145px;
+}
+
+
+.tooltip-arrow{
+    border-top-color: #C80216 !important;
+}
+.tooltip-inner{
+    white-space: normal !important;
+    background-color: #C80216;
+}
+
+.modal-content{
+    background: rgb(69,72,77) !important; /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(69,72,77,1)), color-stop(100%,rgba(0,0,0,1))) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%) !important;/* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%) !important; /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%) !important; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ) !important; /* IE6-9 */
+    
+    border: 0 !important ;
+}
+
+.modal-header, .modal-footer{
+    border: 0 !important ;
+}
+.modal-footer{
+    text-align: center !important;
+}
+
+.modal{
+    color:#F0F0F0 !important;
+}
+
+body {
+  padding-top: -50px !important;
+}
+.navbar-inverse{
+    background: #000;
+    min-width: 265px;
+    font-weight: bold;
+}
+
+.navbar-fixed-top{
+    border-bottom: solid 5px #AE1329;
+}
+
+.navbar-brand{
+    height: 50px !important;
+    padding: 0 15px !important ;
+}
+
+.navbar-brand img{
+    max-width: 170px !important;
+}
+
+.navbar-nav .active a{
+    background: #AE1329 !important;   
+}

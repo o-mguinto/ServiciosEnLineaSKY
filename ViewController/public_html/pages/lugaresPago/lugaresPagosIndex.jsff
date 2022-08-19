@@ -1,0 +1,530 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#lugaresPagosIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="javascript"
+                     source="https://maps.google.com/maps/api/js?key=AIzaSyAOUpdiLKW3nrPCu8z8zBzUU6utEggpdgc&amp;libraries=places"/>
+        <af:resource type="javascript">
+          var map;
+          var infowindow;
+          var markers = [];
+
+          function initialize() {
+              if (navigator.geolocation) {
+                  navigator.geolocation.getCurrentPosition(showPosition, showError);
+              }
+          }
+
+          function find_places(place) {
+              //Function to determine the type of places with names
+              deleteMarkers();
+              var type;
+              if (place == "BANCOMER" || place == "SANTANDER" || place == "BANCO AZTECA" || place == "MULTIVA" || place == "CITIBANAMEX" || place == "HSBC" || place == "SCOTIANBANK" || place == "INBURSA" || place == "BANJERCITO" || place == "BANCOPPEL" || place == "BANORTE" || place == "COMPARTAMOS")
+                  type = "bank";
+              else if (place == "Oxxo" || place == "7 Eleven" || place == "Extra" || place === "7 24 MIX")
+                  type = "convenience_store";
+              else if (place == "Salinas y Rocha" || place == "Bodega de Remates" || place == "Elektra" || place == "Famsa" || place == "Muebles America")
+                  type = "furniture_store";
+              else if (place == "Telecomm" || place == "Gestopago" || place == "Prendamex" || place == "Fundacion Donde" || place == "Antad")
+                  type = "stablishment";
+              else if (place == "Farmapronto" || place == "Farmacias Bazar" || place == "Farmacias Benavides" || place == "Farmacias del ahorro" || place === "Farmacias Nacional" || place === "Farmcias La Original" || place === "Farmacias San Jorge")
+                  type = "pharmacy";
+              else if (place == "SORIANA MERCADO" || place == "SORIANA" || place === "Superama" || place == "Bodega Aurrera" || place == "Sams Club" || place == "SORIANA" || place == "Chedraui" || place == "Lacomer" || place == "Sumesa" || place == "City Market" || place == "Corporacion El Vigilante" || place == "Del Ahorro" || place == "city fresko" || place == "La Mision Supermercados" || place == "Super Fasti" || place == "Waldos")
+                  type = "grocery_or_supermarket";
+              else if (place == "Aeroflash")
+                  type = "Aeroflash";
+              else if (place == "Milano Melody" || place == "Urban 360")
+                  type = "clothing_store";
+              var request = {
+                  location : latlon, radius : 10000, types : [type], // this is where you set the map to get the hospitals and health related places
+                  keyword : [place]
+              };
+              /*******************************************************************************************************/
+              infowindow = new google.maps.InfoWindow();
+              var service = new google.maps.places.PlacesService(map);
+              service.nearbySearch(request, callback);
+          }
+
+          function callback(results, status) {
+              //Function to create all markes near the location of the user
+              if (status == google.maps.places.PlacesServiceStatus.OK) {
+                  for (var i = 0;i &lt; results.length;i++) {
+                      createMarker(results[i]);
+                  }
+              }
+          }
+          /*Functions to remove markers*/
+          function setMapOnAll(map) {
+              for (var i = 0;i &lt; markers.length;i++) {
+                  markers[i].setMap(map);
+              }
+          }
+
+          function clearMarkers() {
+              setMapOnAll(null);
+          }
+          /*Functions to remove markers end*/
+
+          function createMarker(place) {
+              var marker = new google.maps.Marker( {
+                  map : map, icon :  {
+                      path : google.maps.SymbolPath.CIRCLE, strokeColor : "#000099", scale : 7
+                  },
+                  position : place.geometry.location
+              });////User
+              var service2 = new google.maps.places.PlacesService(map);
+              var request = {
+                  reference : place.reference
+              };
+              service2.getDetails(request, function (details, status) {
+                  google.maps.event.addListener(marker, 'click', function () {
+                      if (details != null) {
+                          infowindow.setContent(place.name + " " + details.formatted_address);
+                          infowindow.open(map, this);
+                      }
+                      else {
+                          infowindow.setContent(place.name);
+                          infowindow.open(map, this);
+                      }
+                  });
+              });
+              markers.push(marker);
+          }
+
+          function showPosition(position) {
+              lat = position.coords.latitude;
+              lon = position.coords.longitude;
+              latlon = new google.maps.LatLng(lat, lon)
+              mapholder = document.getElementById('map')
+              /*validar en des, para cambiar los valores al 100 porciento*/
+              mapholder.style.height = '70vh';
+              mapholder.style.width = '100%';
+
+              map = new google.maps.Map(document.getElementById('map'), 
+              {
+                  center : latlon, zoom : 15
+              });
+              ///////////////
+              var myOptions = {
+                  center : latlon, zoom : 16, mapTypeId : google.maps.MapTypeId.ROADMAP, mapTypeControl : false, navigationControlOptions :  {
+                      style : google.maps.NavigationControlStyle.SMALL
+                  }
+              };
+              map = new google.maps.Map(document.getElementById("map"), myOptions);
+              createMarkerUser(latlon);
+          }
+
+          function createMarkerUser(place) {
+              var marker = new google.maps.Marker( {
+                  map : map, position : place
+
+              });////Different places
+              google.maps.event.addListener(marker, 'click', function () {
+                  infowindow.setContent('Usted está aquí');
+                  infowindow.open(map, this);
+              });
+          }
+
+          function showError(error) {
+              switch (error.code) {
+                  case error.PERMISSION_DENIED:
+                      x.innerHTML = "User denied the request for Geolocation.";
+                      break;
+                  case error.POSITION_UNAVAILABLE:
+                      x.innerHTML = "Location information is unavailable.";
+                      break;
+                  case error.TIMEOUT:
+                      x.innerHTML = "The request to get user location timed out.";
+                      break;
+                  case error.UNKNOWN_ERROR:
+                      x.innerHTML = "An unknown error occurred.";
+                      break;
+              }
+          }
+
+          function deleteMarkers() {
+              clearMarkers();
+              markers = [];
+          }
+
+          google.maps.event.addDomListener(window, 'load', initialize);
+        </af:resource>
+        <style type="">
+            .test {
+                list-style-type: upper-roman;
+                margin: 0;
+                padding: 0;
+                width: 243px;
+                background-color: #ffffff;
+                border-radius: 7px;
+            }
+
+            .test3 {
+                display: block;
+                color: #b12dbf;
+                padding: 8px 16px;
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: bold;
+                border-radius: 7px;
+                border: 1.2px solid #d0009f;
+            }
+            /* Change the link color on hover */
+            .test3:hover {
+                background-color: #cc0099;
+                color: white;
+            }
+
+            .absolute {
+                position: relative;
+                top: 0px;
+                right: 0;
+                left: 0;
+                width: 260px;
+                height: 100%;
+                z-index: 99999;
+                overflow: scroll;
+            }
+        </style>
+        <div id="lugaresPagosIndex">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                            <!--Para cada fila una div-->
+                            <div class="row">
+                            <div class="col-3-1">
+                                <!--Aqui va TODO el contenido-->
+                                <div class="absolute">
+                                    <ul class="test">
+                                        <li>
+                                            <a href="#" class="test3" id="BANCOMER" onclick="find_places(this.id)">BBVA
+                                                                                                                   Bancomer</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="7_24_MIX" onclick="find_places(this.id)">7/24
+                                                                                                                   Mix
+                                                                                                                   (Comercializadora
+                                                                                                                   Rapido
+                                                                                                                   S.A.
+                                                                                                                   De
+                                                                                                                   C.V.)</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="7_ELEVEN" onclick="find_places(this.id)">7
+                                                                                                                   Eleven</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="ANTAD" onclick="find_places(this.id)">Antad</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="CITIBANAMEX" onclick="find_places(this.id)">Banamex</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="BANCOPPEL" onclick="find_places(this.id)">Bancoppel</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="BANJERCITO" onclick="find_places(this.id)">Banjercito</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="BANORTE" onclick="find_places(this.id)">Banorte</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="CHEDRAUI" onclick="find_places(this.id)">Chedraui</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="COMPARTAMOS" onclick="find_places(this.id)">Compartamos</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Farmapronto" onclick="find_places(this.id)">Farmapronto</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="HSBC" onclick="find_places(this.id)">HSBC</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="INBURSA" onclick="find_places(this.id)">Inbursa</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="MULTIVA" onclick="find_places(this.id)">Multiva</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="OXXO" onclick="find_places(this.id)">Oxxo</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="SANTANDER" onclick="find_places(this.id)">Santander</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="SCOTIANBANK" onclick="find_places(this.id)">Scotianbank
+                                                                                                                      Inverlat</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="TELECOMM" onclick="find_places(this.id)">Telecomm</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="AEROFLASH" onclick="find_places(this.id)">Aeroflash</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="AIRPACK" onclick="find_places(this.id)">Airpack</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="AKALA" onclick="find_places(this.id)">Akala</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="BANCAMOVIL" onclick="find_places(this.id)">Bancamóvil</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="BANCO_AZTECA" onclick="find_places(this.id)">Banco
+                                                                                                                       Azteca</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="BISOFT" onclick="find_places(this.id)">Bisoft</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="BISON" onclick="find_places(this.id)">Bison</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="BLUE_LABEL" onclick="find_places(this.id)">Blue
+                                                                                                                     Label</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Bodega_Aurrera"
+                                               onclick="find_places(this.id)">Bodega Aurrera</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Bodega_de_Remates"
+                                               onclick="find_places(this.id)">Bodega de remates</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Caja_Solidaria_Tamaulipas"
+                                               onclick="find_places(this.id)">Caja Solidaria Tamaulipas</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="city_fresko" onclick="find_places(this.id)">City
+                                                                                                                      Fresko</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="city_Market" onclick="find_places(this.id)">City
+                                                                                                                      Market</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Corporacion_El_Vigilante"
+                                               onclick="find_places(this.id)">Corporación El Vigilante</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Ahorro_SUPERMERCADOS"
+                                               onclick="find_places(this.id)">Del Ahorro Supermercados</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Diestel" onclick="find_places(this.id)">Diestel</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Elektra" onclick="find_places(this.id)">Elektra</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Extra" onclick="find_places(this.id)">Extra</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Famsa" onclick="find_places(this.id)">Famsa</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Farmachipala" onclick="find_places(this.id)">Farmachipala</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Farmacias_Bazar"
+                                               onclick="find_places(this.id)">Farmacias Bazar</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Benavides" onclick="find_places(this.id)">Benavides</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Farmacias_Del_Ahorro"
+                                               onclick="find_places(this.id)">Farmacias del Ahorro</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Farmacias_La_Original"
+                                               onclick="find_places(this.id)">Farmacias La Original</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Farmacias_Nacional"
+                                               onclick="find_places(this.id)">Farmacias Nacional</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Farmacias_San_Jorge"
+                                               onclick="find_places(this.id)">Farmacias San Jorge</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="FMMCONSUMO" onclick="find_places(this.id)">FMMCONSUMO</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Fundacion Donde"
+                                               onclick="find_places(this.id)">Fundación Dondé</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Gana mas" onclick="find_places(this.id)">Gana
+                                                                                                                   Más</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Gesto Pago" onclick="find_places(this.id)">GestoPago</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Grupo El Asturiano"
+                                               onclick="find_places(this.id)">Grupo El Arturiano</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Guga 21" onclick="find_places(this.id)">Guga 21</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Indigo" onclick="find_places(this.id)">Indigo</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Isend" onclick="find_places(this.id)">Isend</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="La Ferre" onclick="find_places(this.id)">LA
+                                                                                                                   Ferre</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="La Mision Supermercados"
+                                               onclick="find_places(this.id)">La Mision Supermercados</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Lacomer" onclick="find_places(this.id)">Lacomer</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="LDI" onclick="find_places(this.id)">LDI</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Maxilana" onclick="find_places(this.id)">Maxilana</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Chedraui" onclick="find_places(this.id)">Chedraui</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Milano" onclick="find_places(this.id)">Milano</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Mobile Card" onclick="find_places(this.id)">Mobile
+                                                                                                                      Card</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Muebles_America"
+                                               onclick="find_places(this.id)">Muebles América</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Multirecargas Web Pos"
+                                               onclick="find_places(this.id)">Multirecargas Web Pos</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Netpay" onclick="find_places(this.id)">NetPay</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="New Vision" onclick="find_places(this.id)">New
+                                                                                                                     Vision</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Omicron" onclick="find_places(this.id)">Omicron</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Pademobile" onclick="find_places(this.id)">Pademobile</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Pago Rapido" onclick="find_places(this.id)">Pago
+                                                                                                                      Rápido</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Prendamex" onclick="find_places(this.id)">Prendamex</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="PTEl_Tecnologia"
+                                               onclick="find_places(this.id)">PTEL Tecnología</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="QPAGOS (KIWI)" onclick="find_places(this.id)">QPAGOS
+                                                                                                                        (KIWI)</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Quantum_Capital"
+                                               onclick="find_places(this.id)">Quantum Capital</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Red_de_Prepago_de_Mexico_(RPM)"
+                                               onclick="find_places(this.id)">Red de Prepago de México</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Red_Efectiva" onclick="find_places(this.id)">Red
+                                                                                                                       Efectiva</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Salinas_y_Rocha"
+                                               onclick="find_places(this.id)">Salinas y Rocha</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="SORIANA" onclick="find_places(this.id)">Soriana</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="SORIANA_HIPER" onclick="find_places(this.id)">Soriana
+                                                                                                                        Hiper</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="SORIANA_MERCADO"
+                                               onclick="find_places(this.id)">Soriana Mercado</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="sumesa" onclick="find_places(this.id)">Sumesa</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Super_Chedraui"
+                                               onclick="find_places(this.id)">Super Chedraui</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Super_Fasti" onclick="find_places(this.id)">Super
+                                                                                                                      Fasti</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Superama" onclick="find_places(this.id)">Superama</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Supertiendas_Rico"
+                                               onclick="find_places(this.id)">Supertiendas Rico</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Teleconsorcio_Pelican"
+                                               onclick="find_places(this.id)">Teleconsorcio Pelican</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="Telemarketing" onclick="find_places(this.id)">Telemarketing</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="URBAN_360" onclick="find_places(this.id)">Urban
+                                                                                                                    360</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="WALDOS" onclick="find_places(this.id)">Waldos</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="WALMART" onclick="find_places(this.id)">Walmart</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="YASTAS" onclick="find_places(this.id)">Yastas</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="test3" id="YOURBANICE" onclick="find_places(this.id)">Yourbanice</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div id="map"></div>
+                            </div>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

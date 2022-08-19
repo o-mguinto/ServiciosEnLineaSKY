@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="recargas">
+    <page>/WEB-INF/submenus/adelantaRecargas/recargas.jsf</page>
+    <input-page-parameter id="__2">
+      <from-value>#{sesion.codigoRecargaVeTV}</from-value>
+      <to-value>#{ParametrosPago.tipoPago}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__3">
+      <from-value>/WEB-INF/pagoTF.xml#pagoTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__10">
+      <from-value>true</from-value>
+      <to-value>#{Menu.fromPagos}</to-value>
+    </input-page-parameter>
+  </view>
+  <router id="routerRecargas">
+    <case id="__8">
+      <expression>#{sesion.RECARGA_VETV}</expression>
+      <outcome>smenu_recargas</outcome>
+    </case>
+    <default-outcome>recargasIndex</default-outcome>
+  </router>
+  <view id="adelantaRecargasIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <control-flow-rule id="__4">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__15">
+      <from-outcome>smenu_recargas</from-outcome>
+      <to-activity-id>recargas</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__5">
+      <from-outcome>routRecargas</from-outcome>
+      <to-activity-id>routerRecargas</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__6">
+    <from-activity-id>routerRecargas</from-activity-id>
+    <control-flow-case id="__7">
+      <from-outcome>smenu_recargas</from-outcome>
+      <to-activity-id>recargas</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__9">
+      <from-outcome>recargasIndex</from-outcome>
+      <to-activity-id>adelantaRecargasIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__11">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>adelantaRecargas_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__12">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__13">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/adelantaRecargas/adelantaRecargas_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

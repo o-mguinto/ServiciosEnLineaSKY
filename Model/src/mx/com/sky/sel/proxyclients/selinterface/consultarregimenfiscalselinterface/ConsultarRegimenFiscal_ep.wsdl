@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="ConsultarRegimenFiscal" targetNamespace="http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarRegimenFiscal" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:client="http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarRegimenFiscal" xmlns:ns1="http://www.sky.com.mx/EnterpriseObjects/Sel/ConsultarRegimenFiscal" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>
+    <abstractWSDL>https://preselsoa.sky.com.mx/soa-infra/services/SEL_Interface/ConsultarRegimenFiscalSelInterface!1.0/WSDLs/ConsultarRegimenFiscal.wsdl</abstractWSDL>
+  </wsdl:documentation>
+  <plnk:partnerLinkType name="ConsultarRegimenFiscal">
+    <plnk:role name="ConsultarRegimenFiscalProvider" portType="client:ConsultarRegimenFiscal"/>
+  </plnk:partnerLinkType>
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/ConsultarRegimenFiscal" schemaLocation="ConsultarRegimenFiscalSelEBM.xsd"/>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultarRegimenFiscalRequestMessage">
+    <wsdl:part name="payload" element="ns1:ConsultarRegimenFiscalRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRegimenFiscalResponseMessage">
+    <wsdl:part name="payload" element="ns1:ConsultarRegimenFiscalResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ConsultarRegimenFiscal">
+    <wsdl:operation name="process">
+      <wsdl:input message="client:ConsultarRegimenFiscalRequestMessage"/>
+      <wsdl:output message="client:ConsultarRegimenFiscalResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConsultarRegimenFiscalBinding" type="client:ConsultarRegimenFiscal">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="process">
+      <soap:operation style="document" soapAction="http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarRegimenFiscal/process"/>
+      <wsdl:input>
+        <soap:body use="literal" parts="payload"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="payload"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConsultarRegimenFiscal_ep">
+    <wsdl:port name="ConsultarRegimenFiscal_pt" binding="client:ConsultarRegimenFiscalBinding">
+      <soap:address location="https://preselsoa.sky.com.mx/soa-infra/services/SEL_Interface/ConsultarRegimenFiscalSelInterface/ConsultarRegimenFiscal_ep"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

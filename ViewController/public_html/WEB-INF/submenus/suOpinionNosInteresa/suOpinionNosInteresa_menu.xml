@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_suOpinionNosInteresa" focusViewId="/suOpinionNosInteresa" action="irEncuestaSatisfaccion"
+            label="#{lbl.menu_SU_OPINION_NOS_INTERESA}" immediate="true"
+            icon="/imagenes/menu/ic_tuOpinion.svg" rendered="#{sesion.SU_OPINION_NOS_INTERESA}">
+    <itemNode id="itemNode_encuestaSatisfaccion" label="#{lbl.smenu_SU_OPINION_NOS_INTERESA_ENCUESTA_SATISFACCION}" action="irEncuestaSatisfaccion"
+              focusViewId="/encuestaSatisfaccion"/>
+    <itemNode id="itemNode_sugerencias" label="#{lbl.smenu_SU_OPINION_NOS_INTERESA_SUGERENCIAS}" action="irSugerencias" focusViewId="/sugerencias"
+              rendered="#{sesion.SUGERENCIAS}"/>
+    <itemNode id="itemNode_quejas" label="#{lbl.smenu_SU_OPINION_NOS_INTERESA_QUEJAS}" action="irQuejas" focusViewId="/quejas"
+              rendered="#{sesion.QUEJAS}"/>
+  </itemNode>
+</menu>

@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:tr="http://myfaces.apache.org/trinidad" xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="css">
+            .link-chat {
+                margin-left: 14px;
+                margin-right: 14px;
+                padding: 15px;
+                border-radius: 40px;
+                color: #fff;
+                min-width: 120px;
+                background: linear-gradient(141deg, rgba(237, 0, 142, 1) 10%, rgba(162, 0, 237, 1) 90%);
+                text-align: left;
+                font-weight: bolder;
+                font-size: 14px;
+            }
+
+            .link-chat:hover, link-chat:active, .link-chat:visited {
+                text-decoration: none;
+                color: #fff;
+            }
+
+            .chat-icon {
+                width: 35px;
+                height: 35px;
+                vertical-align: middle;
+                top: -195px;
+                left: -24%;
+            }
+        </af:resource>
+        <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+        <af:panelGroupLayout id="PCRow1">
+            <af:panelGroupLayout id="pgl3" layout="vertical" halign="start" inlineStyle="height:550px;">
+                <af:panelGroupLayout id="pgl4">
+                    <img src="/sky/imagenes/pc/dos/fondo_sombra01.png" id="fondo_sombraPC" class="fondo_sombra2"
+                         style="width: 95%;     left: 2%;     top: -6px;" height="550px"/>
+                </af:panelGroupLayout>
+                <h:outputText value="¿Cómo obtener su número de cuenta?" id="PCTextHeader"
+                              styleClass="mensajePC2_txtRose" style="font-size: xx-large; left:1%;top: -515px;"/>
+                <h:outputText value="Si tiene dudas puede Chatear con nosotros en tiempo real" id="ot1"
+                              rendered="#{pageFlowScope.PFNuevoUsuario.chatPublico}" styleClass="mensajePC2_txtSDBlack"
+                              style="top: -500px;     left: 1%"/>
+                <af:goLink id="gl3" destination="https://skyvideo.custhelp.com/app/chat/chat_launch/origen/76/p/63/c/0"
+                           text="CHAT" rendered="#{pageFlowScope.PFNuevoUsuario.chatPublico}" targetFrame="_blank"
+                           styleClass="link-chat" inlineStyle="top: -485px; left: 38%; position:relative;">
+                    <af:image id="i23" source="/imagenes/aplicacion/chat01.png" styleClass="chat-icon"/>
+                </af:goLink>
+                <h:outputText value="Comuníquese con nosotros" id="ot3" styleClass="mensajePC2_txtSDBlack"
+                              style="    top: -450px;     left: 1%"/>
+                <af:panelGroupLayout id="pgl13" layout="horizontal">
+                    <h:outputLabel value="País: " id="labelPais" styleClass="mensajePC2_txtRose"
+                                   style="    top: -440px;     left: 160px; font-size: large"/>
+                    <af:selectOneChoice value="#{pageFlowScope.PFNuevoUsuario.pais}" id="socPaises"
+                                        inlineStyle="top: -440px;     left: 160px" styleClass="mensajePC2_txtRose"
+                                        contentStyle="border-bottom: 1px solid rgba(247, 0, 157, 0.63) !important;background-color: white;border: 1px solid #fafdff;width:220px; font-weight: bold; font-size: large;"
+                                        valueChangeListener="#{pageFlowScope.PFNuevoUsuario.socPaises_valueChange}"
+                                        autoSubmit="true" immediate="true">
+                        <f:selectItems value="#{pageFlowScope.PFNuevoUsuario.paises}" id="si1"/>
+                    </af:selectOneChoice>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl12" layout="horizontal" visible="#{pageFlowScope.PFNuevoUsuario.mx}"
+                                     partialTriggers="socPaises">
+                    <h:outputLabel value="Servicio: " id="labelProductos" styleClass="mensajePC2_txtRose"
+                                   style="    top: -430px;     left: 131px; font-size: large"/>
+                    <af:selectOneChoice value="#{pageFlowScope.PFNuevoUsuario.producto}" id="socProductos"
+                                        inlineStyle="top: -430px;     left: 131px" styleClass="mensajePC2_txtRose"
+                                        contentStyle="border-bottom: 1px solid rgba(247, 0, 157, 0.63) !important;background-color: white;border: 1px solid #fafdff;width:220px; font-weight: bold; font-size: large;"
+                                        valueChangeListener="#{pageFlowScope.PFNuevoUsuario.socProductos_ValueChange}"
+                                        autoSubmit="true" immediate="true">
+                        <f:selectItems value="#{pageFlowScope.PFNuevoUsuario.servicios}" id="si5"/>
+                    </af:selectOneChoice>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pglNumeros" partialTriggers="socPaises socProductos">
+                    <!--VeTV-->
+                    <af:group id="g7" rendered="#{pageFlowScope.PFNuevoUsuario.veTV}">
+                        <af:outputText id="ot22" value="#{selSKYBundle['perfil.ot2M3.value']}"
+                                       styleClass="mensajePC2_txtSDBlack"
+                                       inlineStyle="top: -370px;     left: 10px; font-weight: bold;"/>
+                    </af:group>
+                    <!-- Tradicional -->
+                    <af:group id="g6" rendered="#{pageFlowScope.PFNuevoUsuario.tradicional}">
+                        <af:outputText id="ot21" value="#{selSKYBundle['perfil.ot2M1.value']}"
+                                       styleClass="mensajePC2_txtSDBlack"
+                                       inlineStyle="top: -370px;     left: 10px; font-weight: bold;"/>
+                    </af:group>
+                    <af:group id="g3">
+                        <af:panelGroupLayout id="pgl8" layout="vertical">
+                            <af:outputText value="Marcando al" id="ot11" styleClass="mensajePC2_txtSDBlack"
+                                           inlineStyle="top: -420px; left:10px"
+                                           rendered='#{(not empty pageFlowScope.PFNuevoUsuario.pais and not pageFlowScope.PFNuevoUsuario.MEX) or (not empty pageFlowScope.PFNuevoUsuario.producto)}'/>
+                            <af:outputText id="ot14" value="#{selSKYBundle['preReg.telsCR.value']}"
+                                           rendered="#{pageFlowScope.PFNuevoUsuario.CRI}"
+                                           styleClass="mensajePC2_txtSDBlack"
+                                           inlineStyle="top: -410px;     left: 10px; font-weight: bold;"/>
+                            <af:outputText id="ot28" value="#{selSKYBundle['preReg.telsHN.value']}"
+                                           rendered="#{pageFlowScope.PFNuevoUsuario.HND}"
+                                           styleClass="mensajePC2_txtSDBlack"
+                                           inlineStyle="top: -410px;     left: 10px; font-weight: bold;"/>
+                            <af:outputText id="ot12" value="#{selSKYBundle['preReg.telsGT.value']}"
+                                           rendered="#{pageFlowScope.PFNuevoUsuario.GTM}"
+                                           styleClass="mensajePC2_txtSDBlack"
+                                           inlineStyle="top: -410px;     left: 10px; font-weight: bold;"/>
+                            <af:outputText id="ot25" value="#{selSKYBundle['preReg.telsNI.value']}"
+                                           rendered="#{pageFlowScope.PFNuevoUsuario.NIC}"
+                                           styleClass="mensajePC2_txtSDBlack"
+                                           inlineStyle="top: -410px;     left: 10px; font-weight: bold; "/>
+                            <af:outputText id="ot26" value="#{selSKYBundle['preReg.telsSV.value']}"
+                                           rendered="#{pageFlowScope.PFNuevoUsuario.SLV}"
+                                           styleClass="mensajePC2_txtSDBlack"
+                                           inlineStyle="top: -410px;     left: 10px; font-weight: bold;"/>
+                            <af:outputText id="ot29" value="#{selSKYBundle['preReg.telsDO.value']}"
+                                           rendered="#{pageFlowScope.PFNuevoUsuario.DOM}"
+                                           styleClass="mensajePC2_txtSDBlack"
+                                           inlineStyle="top: -410px;     left: 10px; font-weight: bold;"/>
+                            <af:outputText id="ot31" value="#{selSKYBundle['preReg.telsPA.value']}"
+                                           rendered="#{pageFlowScope.PFNuevoUsuario.PAN}"
+                                           styleClass="mensajePC2_txtSDBlack"
+                                           inlineStyle="top: -410px;     left: 10px; font-weight: bold;"/>
+                        </af:panelGroupLayout>
+                    </af:group>
+                    <af:group id="g2">
+                        <af:panelGroupLayout id="pgl9" layout="vertical">
+                            <af:outputText id="ot9" value="y desde el interior"
+                                           rendered="#{pageFlowScope.PFNuevoUsuario.SLV || pageFlowScope.PFNuevoUsuario.GTM || pageFlowScope.PFNuevoUsuario.DOM || pageFlowScope.PFNuevoUsuario.PAN}"
+                                           styleClass="mensajePC2_txtSDBlack"
+                                           inlineStyle="top: -390px;     left: 10px"/>
+                            <af:outputText id="ot24" value="#{selSKYBundle['preReg.telsGT.valueInt']}"
+                                           rendered="#{pageFlowScope.PFNuevoUsuario.GTM}"
+                                           styleClass="mensajePC2_txtSDBlack"
+                                           inlineStyle="top: -380px;     left: 10px; font-weight: bold;"/>
+                            <af:outputText id="ot27" value="#{selSKYBundle['preReg.telsSV.valueInt']}"
+                                           rendered="#{pageFlowScope.PFNuevoUsuario.SLV}"
+                                           styleClass="mensajePC2_txtSDBlack"
+                                           inlineStyle="top: -380px;     left: 10px; font-weight: bold;"/>
+                            <af:outputText id="ot30" value="#{selSKYBundle['preReg.telsDO.valueInt']}"
+                                           rendered="#{pageFlowScope.PFNuevoUsuario.DOM}"
+                                           styleClass="mensajePC2_txtSDBlack"
+                                           inlineStyle="top: -380px;     left: 10px; font-weight: bold;"/>
+                            <af:outputText id="ot32" value="#{selSKYBundle['preReg.telsPA.valueInt']}"
+                                           rendered="#{pageFlowScope.PFNuevoUsuario.PAN}"
+                                           styleClass="mensajePC2_txtSDBlack"
+                                           inlineStyle="top: -380px;     left: 10px; font-weight: bold;"/>
+                        </af:panelGroupLayout>
+                    </af:group>
+                </af:panelGroupLayout>
+                <h:outputText value="Para obtener su número de cuenta ingrese en el canal 670." id="ot7" styleClass="mensajePC2_txtSDBlack"
+                              style="    top: -360px;     left: 1%"/>
+                <h:outputText value="Si no aparece su número de cuenta, ingrese aquí el NIP que aparecerá en la pantalla."
+                              id="ot8" styleClass="mensajePC2_txtSDBlack" style="    top: -360px;     left: 1%"/>
+                <af:inputText label="NIP: " id="it2" required="true" maximumLength="10"
+                              contentStyle="border-bottom: 1px solid rgba(247, 0, 157, 0.63) !important;background-color: white;border: 1px solid #fafdff;width:220px; font-weight: bold; font-size: large;"
+                              styleClass="mensajePC2_txtRose" inlineStyle="top: -350px;     left: 160px"
+                              value="#{pageFlowScope.PFNuevoUsuario.nip}">
+                    <af:validateRegExp messageDetailNoMatch="#{viewcontrollerBundle['preReg.msgNip.value']}"
+                                       pattern="^[0-9]{9,10}$"/>
+                </af:inputText>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="10" id="s22"/>
+        <af:panelGroupLayout id="PCRow4">
+            <af:panelGroupLayout id="pgl7" layout="vertical" halign="start" inlineStyle="height:70px;">
+                <img src="/sky/imagenes/pc/dos/dispositivos.png" style=" position: relative;     left: 1%;"/>
+                <af:commandLink id="cl1" inlineStyle="border-color: transparent;"
+                                action="#{pageFlowScope.PFNuevoUsuario.obtenerCuentaSKY}">
+                    <img src="/sky/imagenes/pc/dos/boton_comprobar.png"
+                         style="position: relative;     left: 65%; top: -39px; border-color: transparent;"/>
+                    <!--af:clientListener method="enforcePreventUserInput"
+                                                                         type="action"/-->
+                </af:commandLink>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        
+        
+        
+        <af:popup id="popUpBusy" contentDelivery="immediate">
+            <af:dialog id="d2" type="none" title="Procesando información" closeIconVisible="false">
+                <af:panelGroupLayout id="pgEspera" layout="vertical" halign="center">
+                    <af:image source="../imagenes/aplicacion/loading.gif" id="i7" shortDesc=" "/>
+                </af:panelGroupLayout>
+            </af:dialog>
+        </af:popup>
+        <af:popup id="popupObtenerCuentaSKY" contentDelivery="immediate"
+                  binding="#{pageFlowScope.PFNuevoUsuario.popupObtenerCuentaSKY}">
+            <af:dialog id="confirPreRegDia" type="none" closeIconVisible="false"
+                       inlineStyle="height:165px; width:550px;">
+                <af:panelGroupLayout id="confirPreRegPgl" layout="vertical" halign="left">
+                    <af:panelGroupLayout id="pgl29" layout="vertical" rendered="true" halign="left"
+                                         inlineStyle="position:relative; top:-25px;">
+                        <af:panelGroupLayout id="pgl14" layout="horizontal" halign="left">
+                            <img src="/sky/imagenes/pc/dos/logo_popup.png" id="popup_icon"
+                                 style="top:-3px; left:0px; position: static;"/>
+                            <h:outputText value="¡Recuerda tu número de cuenta!" styleClass="mensajePC2_txtSDBlack"
+                                          style="top:-3px; left:0px; color: #18417E; position: static; font-weight: bold;"
+                                          id="ot15"/>
+                        </af:panelGroupLayout>
+                        <af:spacer id="s16" width="5" height="10"/>
+                        <af:panelGroupLayout id="pgl30" layout="horizontal" halign="left">
+                            <h:outputText value="El siguiente es tu número de cuenta: " id="ot2"
+                                          styleClass="mensajePC2_txtSDBlack"
+                                          style="top: 0px; left:0px; position: static;"/>
+                            <h:outputText value="#{pageFlowScope.PFNuevoUsuario.usuario.cuentaSKY}" id="ot4"
+                                          styleClass="mensajePC2_txtRose"
+                                          style="top:-5px; left:3px; color: #B7369E; font-weight: bold; font-size:34px;"/>
+                        </af:panelGroupLayout>
+                        <h:outputText value="Tenlo presente para futuras referencias." id="ot5"
+                                      styleClass="mensajePC2_txtSDBlack" style="top: 0px; left:0px; position: static;"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl5" layout="vertical" rendered="true" halign="right"
+                                         inlineStyle="position:relative; left:-10px; top:-15px;">
+                        <af:commandButton text="Aceptar" id="cb3"
+                                          action="#{pageFlowScope.PFNuevoUsuario.regresarANuevo}"
+                                          inlineStyle="font-size:medium;"></af:commandButton>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:dialog>
+        </af:popup>
+    </af:group>
+</ui:composition>

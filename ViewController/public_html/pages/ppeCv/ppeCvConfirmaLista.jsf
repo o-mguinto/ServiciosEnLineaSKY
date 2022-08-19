@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:h="http://java.sun.com/jsf/html" locale="es">
+    <meta http-equiv="X-UA-Compatible" content="IE=11.0" charset="utf-8"/>
+    <af:document id="d1"
+                 title="Contratar Pago por Evento #{pageFlowScope.PFPPEVeTV.evento.titulo}">
+        <af:messages id="m1"/>
+        <c:set var="selSKYBundle"
+               value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+        <af:resource type="css" source="/css/custom/pagInternas_template.css"/>
+        <!--efecto animado del dialogo de espera-->
+        <af:resource type="css" source="/css/spinner-sel-sky.css"/>
+        <af:resource type="css">
+            /*para el titulo del panelHeader, solo se debe agregar cuando el contenido es mas grandea los 440px*/
+            .xzt, .xzu, .xzv {
+                white-space: pre-line;
+                width: 440px;
+            }
+        </af:resource>
+        <af:form id="f1">
+            <af:resource type="javascript">
+              function enforcePreventUserInput(evt) {
+                  var popup = AdfPage.PAGE.findComponentByAbsoluteId('popUpBusy');
+                  if (popup != null) {
+                      AdfPage.PAGE.addBusyStateListener(popup, handleBusyState);
+                      evt.preventUserInput();
+                  }
+              }
+
+              function handleBusyState(evt) {
+                  var popup = AdfPage.PAGE.findComponentByAbsoluteId('popUpBusy');
+                  if (popup != null) {
+                      if (evt.isBusy()) {
+                          popup.show();
+                      }
+                      else if (popup.isPopupVisible()) {
+                          popup.hide();
+                          AdfPage.PAGE.removeBusyStateListener(popup, handleBusyState);
+                      }
+                  }
+              }
+            </af:resource>
+            <af:panelGroupLayout id="pgl1" layout="scroll"
+                                 styleClass="dialog-background"
+                                 inlineStyle="border: none;">
+                <h:outputText styleClass="title padd-top-dialog"
+                              value="Confirme que los datos solicitados son correctos"
+                              id="ot14"/>
+                <div class="row ">
+                    <div class="col-12">
+                        <af:panelBox id="panelBox1" maximized="true"
+                                     showDisclosure="false" showMaximize="never"
+                                     background="medium"
+                                     inlineStyle="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? 'width:100.0%; border:none;' : 'width:95.0%; margin:0.0%; padding:0.0%; border:none;' }"
+                                     contentStyle="min-height: 400px;max-height: 415px;"
+                                     showHeader="never">
+                            <af:panelStretchLayout id="psl1"
+                                                   endWidth="160px;vertical-align: middle;"
+                                                   styleClass="AFStretchWidth">
+                                <f:facet name="center">
+                                    <af:panelGroupLayout layout="scroll"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                         id="pgl8">
+                                        <af:panelBox showDisclosure="false"
+                                                     showMaximize="never"
+                                                     background="medium"
+                                                     showHeader="never" id="pb1"
+                                                     contentStyle="max-height:330px"
+                                                     inlineStyle="border:none;    border-right: solid 1px #D6DFE6;     margin-right: 5px;">
+                                            <f:facet name="toolbar"/>
+                                            <af:panelFormLayout id="panelFormLayout1"
+                                                                fieldWidth="65%"
+                                                                labelWidth="35%">
+                                                <af:inputText label="Título"
+                                                              id="inputText1"
+                                                              readOnly="true"
+                                                              value="#{pageFlowScope.PFPPEVeTV.evento.titulo}"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText label="Modalidad"
+                                                              id="inputText2"
+                                                              readOnly="true"
+                                                              value="#{pageFlowScope.PFPPEVeTV.evento.modalidad}"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText label="Precio"
+                                                              id="inputText3"
+                                                              readOnly="true"
+                                                              value="$ #{pageFlowScope.PFPPEVeTV.evento.precio}"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText label="Canal"
+                                                              id="inputText4"
+                                                              readOnly="true"
+                                                              value="#{pageFlowScope.PFPPEVeTV.evento.canalDisplay}"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText label="Horario"
+                                                              id="it2"
+                                                              readOnly="true"
+                                                              inlineStyle="text-align:justify;"
+                                                              value="#{pageFlowScope.PFPPEVeTV.horarioString}"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                            </af:panelFormLayout>
+                                        </af:panelBox>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                                <f:facet name="end">
+                                    <af:panelGroupLayout id="pgl4">
+                                        <div class="autocenter">
+                                            <af:image source="#{parametros.urlImgs160X240}#{pageFlowScope.PFPPEVeTV.evento.image}"
+                                                      id="i6"
+                                                      inlineStyle="width: 60%;     height: auto;"/>
+                                        </div>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                            </af:panelStretchLayout>
+                            <af:panelGroupLayout id="pgl6">
+                                <div class="row top dialog-descrip">
+                                    <!---->
+                                    <h:outputText id="inputText6"
+                                                  value="#{pageFlowScope.PFPPEVeTV.evento.sinopsis}"/>
+                                </div>
+                            </af:panelGroupLayout>
+                        </af:panelBox>
+                    </div>
+                </div>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl2">
+                <div class="col-12 dialog-background">
+                    <div class="row autocenter">
+                        <div class="col-6">
+                            <af:button text="Contratar" id="cb2"
+                                       action="#{pageFlowScope.PFPPEVeTV.cbContratarCorporativos_action}"
+                                       partialSubmit="true"
+                                       styleClass="btn-pay-dialog">
+                                <af:clientListener method="enforcePreventUserInput"
+                                                   type="action"/>
+                            </af:button>
+                        </div>
+                        <div class="col-6">
+                            <af:button text="Cancelar" id="cbCancelar"
+                                       action="#{pageFlowScope.PFPPEVeTV.cbCancelar_action}"
+                                       immediate="true"
+                                       styleClass="btn-pay-dialog"/>
+                        </div>
+                    </div>
+                </div>
+            </af:panelGroupLayout>
+        </af:form>
+        <af:group id="pt_g3">
+            <af:popup id="popUpBusy" contentDelivery="immediate"
+                      clientComponent="true">
+                <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                    <af:dialog id="dlgWait" type="none" closeIconVisible="false"
+                               modal="true" clientComponent="true"
+                               styleClass="waitpopup">
+                        <div class="text-internal">
+                            <div class="col-12 autocenter">
+                                <span class="spinner"
+                                      style="top: 40px;position: absolute;"></span>
+                            </div>
+                            <div class="col-12 autocenter"
+                                 style="padding-top:40px;">
+                                <div class="row top">
+                                    <h:outputText value="#{selSKYBundle['admoneditar.ot7.value']}"
+                                                  id="ot2"
+                                                  style="font: normal 1em 'Roboto', sans-serif;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </af:dialog>
+                </div>
+            </af:popup>
+        </af:group>
+    </af:document>
+</f:view>

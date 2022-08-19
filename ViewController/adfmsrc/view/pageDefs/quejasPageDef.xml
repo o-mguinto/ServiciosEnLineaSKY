@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="quejasPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="agregarQueja_Return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.agregarQueja.result}"/>
+      <variable Type="java.lang.String" Name="agregarQueja_uid" IsQueriable="false"/>
+      <variable Type="java.lang.String" Name="agregarQueja_queja" IsQueriable="false"/>
+    </variableIterator>
+    <methodIterator id="consultarQuejasIterator" Binds="consultarQuejas.result" DataControl="DCQuejas" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.solicitudservicio.Queja"/>
+  </executables>
+  <bindings>
+    <methodAction id="consultarQuejas" RequiresUpdateModel="true" Action="invokeMethod" MethodName="consultarQuejas"
+                  IsViewObjectMethod="false" DataControl="DCQuejas"
+                  InstanceName="bindings.consultarQuejas.dataControl.dataProvider"
+                  ReturnName="data.DCQuejas.methodResults.consultarQuejas_consultarQuejas_dataControl_dataProvider_consultarQuejas_result">
+      <NamedData NDName="uid" NDValue="#{sesion.usuario.uid}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="consultarQuejasIterator" id="Queja">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.solicitudservicio.Queja" Name="Queja0">
+        <AttrNames>
+          <Item Value="queja"/>
+          <Item Value="fechaRegistroString"/>
+          <Item Value="fechaRegistro"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="agregarQueja" RequiresUpdateModel="true" Action="invokeMethod" MethodName="agregarQueja"
+                  IsViewObjectMethod="false" DataControl="DCQuejas"
+                  InstanceName="bindings.agregarQueja.dataControl.dataProvider"
+                  ReturnName="data.DCQuejas.methodResults.agregarQueja_agregarQueja_dataControl_dataProvider_agregarQueja_result">
+      <NamedData NDName="uid" NDValue="#{bindings.agregarQueja_uid}" NDType="java.lang.String"/>
+      <NamedData NDName="queja" NDValue="#{bindings.agregarQueja_queja}" NDType="java.lang.String"/>
+      <NamedData NDName="ssBean" NDType="mx.com.sky.sel.services.beans.solicitudservicio.SolicitudServicioBean"/>
+    </methodAction>
+    <attributeValues IterBinding="variables" id="uid">
+      <AttrNames>
+        <Item Value="agregarQueja_uid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="queja">
+      <AttrNames>
+        <Item Value="agregarQueja_queja"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="consultarQuejasIterator" id="ActualizarTabla" InstanceName="DCQuejas.dataProvider"
+            DataControl="DCQuejas" RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

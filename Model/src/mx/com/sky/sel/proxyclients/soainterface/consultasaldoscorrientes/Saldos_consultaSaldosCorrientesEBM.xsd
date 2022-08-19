@@ -1,0 +1,21 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ConsultaSaldosCorriente="http://www.sky.com.mx/EnterpriseObjects/SOA/Saldos_consultaSaldosCorrientesEBM"
+     xmlns:ConsultaSaldosCorrienteOSB="http://www.sky.com.mx/soasky" xmlns:Meta="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1"
+     targetNamespace="http://www.sky.com.mx/EnterpriseObjects/SOA/Saldos_consultaSaldosCorrientesEBM"
+     elementFormDefault="qualified">
+    <xsd:import namespace="http://www.sky.com.mx/soasky" schemaLocation="Saldos_consultaSaldosCorrientesEBO.xsd"/>
+    <xsd:import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" schemaLocation="Meta.xsd"/>
+    <xsd:element name="SaldosConsultaSaldosEBMRequest" type="ConsultaSaldosCorriente:SaldosConsultaSaldosEBMRequest_TYPE"/>
+    <xsd:element name="SaldosConsultaSaldosEBMResponse" type="ConsultaSaldosCorriente:SaldosConsultaSaldosEBMResponse_TYPE"/>
+    <xsd:complexType name="SaldosConsultaSaldosEBMRequest_TYPE">
+        <xsd:sequence>
+            <xsd:element ref="Meta:EBMHeaderRequest"/>
+            <xsd:element ref="ConsultaSaldosCorrienteOSB:Saldos_consultaSaldosCorrientes_Entrada"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SaldosConsultaSaldosEBMResponse_TYPE">
+        <xsd:sequence>
+            <xsd:element ref="Meta:EBMHeaderResponse"/>
+            <xsd:element ref="ConsultaSaldosCorrienteOSB:Saldos_consultaSaldosCorrientes_Salida"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

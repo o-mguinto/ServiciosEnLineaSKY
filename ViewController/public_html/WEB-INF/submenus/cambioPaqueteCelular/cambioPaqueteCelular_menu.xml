@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_cambioPaqCelularIndex" label="#{lbl.smenu_CAMBIOPAQUETECELULAR}"
+            action="irCambioPaqCelularRouter" focusViewId="/cambioPaqCelularIndex" immediate="true" 
+            rendered="#{sesion.CAMBIO_PAQUETE_CELULAR}" icon="/imagenes/menu/ic_celulares.svg">
+    <itemNode id="itemNode_cambioPaqCelular" label="#{lbl.smenu_CAMBIOPAQUETECELULAR}" action="irCambioPaqCelular"
+              focusViewId="/cambioPaqCelular" rendered="#{sesion.CAMBIO_PAQUETE_CELULAR}"/>
+  </itemNode>
+</menu>

@@ -1,0 +1,344 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#promesaPagoIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+        input[type="radio"] {
+            vertical-align: inherit;
+        }
+        /*para quitar el borde en el focus del radio*/
+        input[type="radio"]:focus {
+            outline: none !important ;
+        }
+        /*checkbox*/
+        input[type=checkbox], input[type=radio] {
+            width: 20px !important;
+            height: 20px !important;
+            vertical-align: top;
+        }
+        /*para la seleccion del radio*/
+        /*input[type="radio"]:checked {
+           width: 23px !important;
+            height: 23px !important;
+            background: transparent url(../../imagenes/aplicacion/radio_on_light.svg) 0% 0% no-repeat padding-box !important;
+            opacity: 1 !important;
+            appearance: inherit;
+            border: 0px !important;
+        }*/
+            .solectOne-flex {
+                display: inline-block;
+                vertical-align: text-top;
+            }
+        /* For mobile phones: */
+            @media only screen and (min-device-width:320px) and (max-device-width:767px) {
+            /*checkbox*/
+                input[type=checkbox], input[type=radio] {
+                    width: 24px !important;
+                    height: 24px !important;
+                }
+            }
+        </af:resource>
+        <div id="promesaPagoIndex">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <af:panelGroupLayout id="pgl1">
+                        <p class="top bottom">
+                            <h:outputText styleClass="title"
+                                          value="Registro de pago" id="ot11"/>
+                        </p>
+                        <af:panelBox id="pb1" showDisclosure="false"
+                                     background="medium" showHeader="never"
+                                     inlineStyle="border: 0px;">
+                            <af:outputText value="Registre aquí un pago realizado  en otra institución, recuerde que estos datos serán validados y en caso de no ser correctos se suspenderá su servicio."
+                                           id="ot9"
+                                           styleClass="check-internal-bold"/>
+                            <div class="row top">
+                                <label>
+                                    <h:outputText value="Si usted pagó su VeTV y aún no tiene señal, por favor haga clic en el botón “Reportar un pago” y llene el formulario con los datos del comprobante de pago. Una vez que reportas el pago SKY te habilitara la señal hasta por 5 días en espera de que tu pago se vea reflejado en tu cuenta."
+                                                  id="of1"/>
+                                </label>
+                            </div>
+                        </af:panelBox>
+                    </af:panelGroupLayout>
+                    <div class="row">
+                        <p class="top bottom">
+                            <h:outputText styleClass="title" value="Mis Pagos"
+                                          id="ot10"/>
+                        </p>
+                        <af:panelBox id="pb2" ramp="highlight"
+                                     showDisclosure="false" background="medium"
+                                     showHeader="never"
+                                     inlineStyle="border: 0px;">
+                            <af:panelCollection id="pc1"
+                                                styleClass="AFStretchWidth">
+                                <f:facet name="menus"/>
+                                <f:facet name="toolbar">
+                                    <af:toolbar id="t2"></af:toolbar>
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.PromesaPago.collectionModel}"
+                                          var="row"
+                                          rows="#{bindings.PromesaPago.rangeSize}"
+                                          emptyText="#{bindings.PromesaPago.viewable ? 'No datos para mostrar.' : 'Acceso denegado.'}"
+                                          fetchSize="#{bindings.PromesaPago.rangeSize}"
+                                          rowBandingInterval="0" id="tPP"
+                                          partialTriggers=":::bGuardarReportePago :::cbCancelar"
+                                          binding="#{backingBeanScope.BBPromesaPago.tpP}"
+                                          width="100%" scrollPolicy="auto"
+                                          horizontalGridVisible="false"
+                                          verticalGridVisible="false"
+                                          autoHeightRows="10"
+                                          styleClass="tbl-Class">
+                                    <af:column sortProperty="userID"
+                                               sortable="false"
+                                               headerText="Identificador de usuario"
+                                               id="c4" width="105"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.userID}"
+                                                       id="ot4"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.PromesaPago.hints.noSolicitud.name}"
+                                               sortable="false"
+                                               headerText="Referencia SKY"
+                                               id="c7" width="105"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.noSolicitud}"
+                                                       id="ot8"/>
+                                    </af:column>
+                                    <af:column sortProperty="institucionPago"
+                                               sortable="false"
+                                               headerText="Institución de pago"
+                                               id="c3" width="120"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.institucionPago}"
+                                                       id="ot2"/>
+                                    </af:column>
+                                    <af:column sortProperty="referencia"
+                                               sortable="false"
+                                               headerText="No Referencia"
+                                               id="c1" width="106"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.referencia}"
+                                                       id="ot3"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.PromesaPago.hints.monto.name}"
+                                               sortable="false"
+                                               headerText="Monto pagado" id="c6"
+                                               align="right" width="104"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.monto}"
+                                                       id="ot5"/>
+                                    </af:column>
+                                    <af:column sortProperty="estatus"
+                                               sortable="false"
+                                               headerText="Estatus" id="c8"
+                                               width="48"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.estatus}"
+                                                       id="ot6"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.PromesaPago.hints.descripcion.name}"
+                                               sortable="false"
+                                               headerText="Descripción" id="c9"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.descripcion}"
+                                                       id="ot7"/>
+                                    </af:column>
+                                    <af:column sortProperty="fechaPago"
+                                               sortable="false"
+                                               headerText="Fecha de pago"
+                                               id="c2" width="105"
+                                               headerClass="content-text">
+                                        <af:inputDate value="#{row.bindings.fechaPago.inputValue}"
+                                                      label="#{bindings.PromesaPago.hints.fechaPago.label}"
+                                                      required="#{bindings.PromesaPago.hints.fechaPago.mandatory}"
+                                                      shortDesc="#{bindings.PromesaPago.hints.fechaPago.tooltip}"
+                                                      id="id2" readOnly="true">
+                                            <f:validator binding="#{row.bindings.fechaPago.validator}"/>
+                                            <af:convertDateTime pattern="#{bindings.PromesaPago.hints.fechaPago.format}"/>
+                                        </af:inputDate>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.PromesaPago.hints.fechaRegistro.name}"
+                                               sortable="false"
+                                               headerText="Fecha de registro"
+                                               id="c5" width="115"
+                                               displayIndex="-1"
+                                               headerClass="content-text">
+                                        <af:inputDate value="#{row.bindings.fechaRegistro.inputValue}"
+                                                      label="#{bindings.PromesaPago.hints.fechaRegistro.label}"
+                                                      required="#{bindings.PromesaPago.hints.fechaRegistro.mandatory}"
+                                                      shortDesc="#{bindings.PromesaPago.hints.fechaRegistro.tooltip}"
+                                                      id="id1" readOnly="true">
+                                            <f:validator binding="#{row.bindings.fechaRegistro.validator}"/>
+                                            <af:convertDateTime pattern="#{bindings.PromesaPago.hints.fechaRegistro.format}"/>
+                                        </af:inputDate>
+                                    </af:column>
+                                </af:table>
+                            </af:panelCollection>
+                            <div class="col-12 right row top"
+                                                 style="float:right;">
+                                                <div class="col-2 col-tb-3 col-sm-8 center sm-cancel-align top-2"
+                                                     style="float: right;">
+                                        <af:button id="ctb1"
+                                                   action="#{backingBeanScope.BBPromesaPago.actualizar}"
+                                                   styleClass="btn-internal"
+                                                   targetFrame="_self"
+                                                   text="Actualizar">
+                                            <af:clientListener method="enforcePreventUserInput"
+                                                               type="action"/>
+                                        </af:button>
+                                    </div>
+                                    <div class="col-2 col-tb-5 col-sm-8 center sm-cancel-align top-2"
+                                                     style="float: right;">
+                                        <af:button styleClass="btn-internal"
+                                                   text="Reportar un pago"
+                                                   id="b1"
+                                                   disabled="#{!sesion.promesaPago}">
+                                            <af:showPopupBehavior popupId="::popUpAgregar"
+                                                                  triggerType="action"/>
+                                        </af:button>
+                                    </div>
+                                </div>
+                            <af:popup id="popUpAgregar" autoCancel="disabled"
+                                      childCreation="deferred"
+                                      contentDelivery="lazyUncached"
+                                      binding="#{backingBeanScope.BBPromesaPago.popUpAgregar}">
+                                <div class="col-10 col-tb-8 col-sm-8 center-popup">
+                                    <af:dialog id="d2"
+                                               title="Confirmar reporte de pago"
+                                               type="none" styleClass="alert"
+                                               closeIconVisible="false">
+                                        <div class="text-internal">
+                                            <div class="col-12 autocenter">
+                                                <h:outputText value="Ingrese los datos solicitados"
+                                                              id="ot1"
+                                                              styleClass="font-bolder"/>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row top">
+                                                    <span class="xf">* </span>
+                                                     
+                                                    <af:outputLabel for="it1"
+                                                                    value="Institución de pago"
+                                                                    id="ol6"/>
+                                                </div>
+                                                <div class="border-bottom">
+                                                    <af:inputText id="it1"
+                                                                  maximumLength="150"
+                                                                  value="#{backingBeanScope.BBPromesaPago.promesaPago.institucionPago}"
+                                                                  required="true"
+                                                                  showRequired="false"
+                                                                  simple="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row top">
+                                                    <span class="xf">* </span>
+                                                     
+                                                    <af:outputLabel for="it2"
+                                                                    value="No referencia"
+                                                                    id="ol1"/>
+                                                </div>
+                                                <div class="border-bottom">
+                                                    <af:inputText id="it2"
+                                                                  maximumLength="20"
+                                                                  value="#{backingBeanScope.BBPromesaPago.promesaPago.referencia}"
+                                                                  required="true"
+                                                                  showRequired="false"
+                                                                  simple="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row top">
+                                                    <span class="xf">* </span>
+                                                     
+                                                    <af:outputLabel for="it3"
+                                                                    value="Monto pagado"
+                                                                    id="ol2"/>
+                                                </div>
+                                                <div class="border-bottom">
+                                                    <af:inputText id="it3"
+                                                                  value="#{backingBeanScope.BBPromesaPago.promesaPago.montoPagado}"
+                                                                  required="true"
+                                                                  showRequired="false"
+                                                                  simple="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row top">
+                                                    <span class="xf">* </span>
+                                                     
+                                                    <af:outputLabel for="id3"
+                                                                    value="Fecha de pago"
+                                                                    id="ol3"/>
+                                                </div>
+                                                <div class="border-bottom">
+                                                    <af:inputDate id="id3"
+                                                                  value="#{backingBeanScope.BBPromesaPago.promesaPago.fechaPago}"
+                                                                  required="true"
+                                                                  showRequired="false"
+                                                                  simple="true"/>
+                                                </div>
+                                            </div>
+                                        <div class="col-12 col-tb-8 col-sm-8">
+                                            <div class="row top-btn top" style="line-height: 30px;">
+                                                    <af:selectOneRadio label=""
+                                                                       id="sor2" 
+                                                                       required="true" styleClass="solectOne-flex">
+                                                        <af:selectItem label="He leído y acepto los "
+                                                                       value="He leído y acepto los "
+                                                                       id="si6"/>
+                                                    </af:selectOneRadio>
+                                                     
+                                                    <h:outputLink id="ol8"
+                                                                  value="#{parametros.urlAvisoPrivacidad}"
+                                                                  target="_blank"
+                                                                  styleClass="terminos">
+                                                        <h:outputText id="ot12"
+                                                                      value="#{selSKYBundle.mensaje_terminos2}"/>
+                                                    </h:outputLink>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 dialog-background">
+                                                <div class="row top autocenter">
+                                                    <div class="col-6 col-tb-4 col-sm-8">
+                                                    <af:button text="Guardar"
+                                                               id="bGuardarReportePago"
+                                                               partialSubmit="true"
+                                                               action="#{backingBeanScope.BBPromesaPago.ejecutarPromesaPago}"
+                                                               styleClass="btn-pay-dialog">
+                                                        <af:clientListener method="enforcePreventUserInput"
+                                                                           type="action"/>
+                                                    </af:button>
+                                                </div>
+                                                <div class="col-6 col-tb-4 col-sm-8 top-btn">
+                                                    <af:button text="Cancelar"
+                                                               id="cbCancelar"
+                                                               styleClass="btn-pay-dialog"
+                                                               action="#{backingBeanScope.BBPromesaPago.cancelar}"
+                                                               immediate="true"></af:button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </af:dialog>
+                                </div>
+                            </af:popup>
+                        </af:panelBox>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

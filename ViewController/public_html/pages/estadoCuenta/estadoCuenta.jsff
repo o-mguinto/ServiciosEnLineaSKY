@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#estadoCuenta').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="estadoCuenta">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelGroupLayout id="pgl2"
+                                             rendered="#{(sesion.MEX and (sesion.paqueteUNIVERSE or sesion.paqueteSKYHDBLACK or sesion.paqueteMovieCity or sesion.paqueteHDFOX)) or (sesion.CRI and (sesion.paqueteBasico))}">
+                                <p>
+                                    <af:outputText id="ot11"
+                                                   value="Estimado suscriptor "
+                                                   styleClass="check-internal-bold"/>
+                                     
+                                    <af:outputText id="ot12"
+                                                   value="#{backingBeanScope.BBEstadoCuenta.referenciaTextCosto}"
+                                                   styleClass="check-internal-bold"/>
+                                </p>
+                                <div class="row top">
+                                    <p>
+                                        <af:outputText id="ot16"
+                                                       value="Más información de clic "
+                                                       styleClass="check-internal-bold"/>
+                                         
+                                        <h:outputLink id="otl1"
+                                                      value="https://www.sky.com.mx/suscriptor/notas/cambioprecios.html"
+                                                      target="_blank" styleClass="link-indicacion"
+                                                      rendered="#{sesion.MEX}">
+                                            <h:outputText id="ot17" value="aquí"
+                                                          />
+                                        </h:outputLink>
+                                         
+                                        <h:outputLink id="ol1"
+                                                      value="https://www.skycostarica.com/suscriptor/precios/cambio-de-precios.html"
+                                                      target="_blank" styleClass="link-indicacion"
+                                                      rendered="#{sesion.CRI}">
+                                            <h:outputText id="ot18" value="aquí"
+                                                          />
+                                        </h:outputLink>
+                                    </p>
+                                </div>
+                            
+                        </af:panelGroupLayout>
+                        
+                        <div class="row">
+                            <af:panelBox id="pb8" background="medium"
+                                         showHeader="never" showDisclosure="false"
+                                         titleHalign="center"
+                                         rendered="#{sesion.paqueteTextoLineUp}"
+                                         inlineStyle="border: 0px;">
+                                <af:outputText value="A PARTIR DEL 4 DE OCTUBRE, MÁS Y MEJOR PROGRAMACIÓN EN TU PAQUETE. CONSULTA LOS DETALLES EN  "
+                                               styleClass="check-internal-bold"
+                                               id="ot4"/>
+                                <h:outputLink id="ol2"
+                                              value="https://sky.com.mx/"
+                                              target="_blank" styleClass="link-indicacion"
+                                              rendered="#{(sesion.paqueteBasico || sesion.paqueteHDGOLD) and sesion.MEX}">
+                                    <h:outputText id="ot13" value="SKY.COM.MX"
+                                                  />
+                                </h:outputLink>
+                                <h:outputLink id="ol3"
+                                              value="#{selSKYBundle['lnk.vetv']}"
+                                              target="_blank" styleClass="link-indicacion"
+                                              rendered="#{(sesion.cuentaVETVHD || sesion.cuentaVETVPLUSHD) and sesion.MEX}">
+                                    <h:outputText id="ot19" value="VETV.COM.MX"
+                                                  />
+                                </h:outputLink>
+                                <h:outputLink id="ol4"
+                                              value="https://www.skycostarica.com/"
+                                              target="_blank" styleClass="link-indicacion"
+                                              rendered="#{sesion.CRI}">
+                                    <h:outputText id="ot21"
+                                                  value="SKYCOSTARICA.COM"
+                                                  />
+                                </h:outputLink>
+                                <h:outputLink id="ol5"
+                                              value="https://www.sky.com.pa/"
+                                              target="_blank" styleClass="link-indicacion"
+                                              rendered="#{sesion.PAN}">
+                                    <h:outputText id="ot22" value="SKY.COM.PA"
+                                                  />
+                                </h:outputLink>
+                                <h:outputLink id="ol6"
+                                              value="https://www.skyguatemala.com/"
+                                              target="_blank" styleClass="link-indicacion"
+                                              rendered="#{sesion.GTM}">
+                                    <h:outputText id="ot23"
+                                                  value="SKYGUATEMALA.COM"
+                                                  />
+                                </h:outputLink>
+                                <h:outputLink id="ol7"
+                                              value="https://www.skydominicana.com/"
+                                              target="_blank" styleClass="link-indicacion"
+                                              rendered="#{sesion.DOM}">
+                                    <h:outputText id="ot24"
+                                                  value="SKYDOMINICANA.COM"
+                                                  />
+                                </h:outputLink>
+                            </af:panelBox>
+                        </div>
+                        <div class="row top">
+                            <af:panelGroupLayout id="pgl3" partialTriggers="pc1:t1:ot3">
+                                    <p class="bottom">
+                                        <h:outputText styleClass="title"
+                                                      value="Saldo Actual"
+                                                      id="ot6"/>
+                                    </p>
+                            <div class="col-10 col-tb-8 col-sm-8">
+                                
+                                    <af:panelGroupLayout id="pgl1" 
+                                                         >
+                                        <div class="col-4 col-tb-4 col-sm-4">
+                                        
+                                            <h:outputText 
+                                                            value="Saldo"
+                                                            id="ol8" styleClass="output-internal"/>
+                                        </div>
+                                        
+                                        <div class="col-8 col-tb-4 col-sm-4">
+                                        
+                                            <h:outputText id="otSaldo" 
+                                                          value="$ #{bindings.saldoTotal.inputValue} #{sessionScope.sesion.moneda}"
+                                                          styleClass="perfil-input-internal"/>
+                                        </div>
+                                    </af:panelGroupLayout>
+                                     
+                                    <af:group rendered="#{sesion.CUENTA_HOTEL}"
+                                              id="g2">
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-4 col-tb-4 col-sm-4">
+                                                    <h:outputText id="plam3" styleClass="output-internal"
+                                                                  value="#{selSKYBundle['estadocuenta.plam3.label']}"/>
+                                                </div>
+                                                <div class="col-8 col-tb-4 col-sm-4">
+                                                    <h:outputText id="ot8"
+                                                                  value="$ #{bindings.totConPop.inputValue} #{sessionScope.sesion.moneda}"
+                                                                  styleClass="perfil-input-internal"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4 col-tb-4 col-sm-4">
+                                                    <h:outputText id="plam2" styleClass="output-internal"
+                                                                  value="#{selSKYBundle['estadocuenta.plam2.label']}"/>
+                                                </div>
+                                                <div class="col-8 col-tb-4 col-sm-4">
+                                                    <h:outputText id="ot9"
+                                                                  value="#{bindings.fechaPagoOportuno.inputValue}"
+                                                                  styleClass="perfil-input-internal"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </af:group>
+                                
+                                <div class="row top">
+                                <div class="col-12 right sm-cancel-align top-2">
+                                    
+                                        <af:button id="b3"
+                                                   text="#{selSKYBundle['estadocuenta.cb2.text']}"
+                                                   styleClass="btn-internal"
+                                                   action="irRealizarPago"
+                                                   rendered="#{sesion.REALIZAR_PAGO}">
+                                                   
+                                            <f:setPropertyActionListener target="#{ParametrosPago.tipoPago}"
+                                                                         value="PAGO"/>
+                                            <f:setPropertyActionListener target="#{Menu.titulo}"
+                                                                         value="Realizar Pago"/>
+                                            <f:setPropertyActionListener target="#{Menu.taskFlowId}"
+                                                                         value="/WEB-INF/pagoTF.xml#pagoTF"/>
+                                        </af:button>
+                                    </div>
+                                </div>
+                            </div>
+                            </af:panelGroupLayout>
+						</div>
+						</div>
+                </div>
+				<div class="row top">
+					<div class="col-12 content-internal">
+                                <p class="top bottom">
+                                        <h:outputText styleClass="title"
+                                                      value="#{selSKYBundle['estadocuenta.pb1.text']}"
+                                                      id="ot2"/>
+                                    </p>
+                                                <div class="col-12">
+                                                    <af:panelBox id="pb1"
+                                                                 rendered="#{sesion.CUENTA_HOTEL}"
+                                                                 background="medium"
+                                                                 showHeader="never"
+                                                                 showDisclosure="false"
+																 inlineStyle="border: 0px;">
+                                                        <f:facet name="toolbar"/>
+                                                        <af:panelCollection id="pc1"
+                                                                            styleClass="AFStretchWidth">
+                                                            <f:facet name="menus"/>
+                                                            <f:facet name="toolbar">
+                                                                <af:toolbar id="t2"/>
+                                                            </f:facet>
+                                                            <f:facet name="statusbar"/>
+                                                            <af:table value="#{bindings.EstadosCuenta.collectionModel}"
+                                                                      var="row"
+                                                                      rows="#{bindings.EstadosCuenta.rangeSize}"
+                                                                      emptyText="#{bindings.EstadosCuenta.viewable ? 'Sin información disponible' : 'Acceso Denegado'}"
+                                                                      fetchSize="#{bindings.EstadosCuenta.rangeSize}"
+                                                                      rowBandingInterval="1"
+                                                                      selectedRowKeys="#{bindings.EstadosCuenta.collectionModel.selectedRow}"
+                                                                      selectionListener="#{bindings.EstadosCuenta.collectionModel.makeCurrent}"
+                                                                      rowSelection="single"
+                                                                      id="t1"
+                                                                      first="1"
+                                                                      width="100%"
+                                                                      scrollPolicy="auto"
+                                                                      contentDelivery="whenAvailable"
+																	  horizontalGridVisible="false"
+																	  verticalGridVisible="false"
+                                                                                                                                          autoHeightRows="10"
+																	  styleClass="tbl-Class">
+                                                                <af:column sortProperty="numCuenta"
+                                                                           sortable="false"
+                                                                           headerText="#{selSKYBundle['estadocuenta.c4.headertext']}"
+                                                                           id="c4"
+                                                                           headerClass="content-text">
+                                                                    <af:outputText value="#{row.numCuenta}"
+                                                                                   id="ot3"/>
+                                                                </af:column>
+                                                                <af:column sortProperty="referenciaEdoCta"
+                                                                           sortable="false"
+                                                                           rendered="#{sesion.cuentaHijump}"
+                                                                           headerText="#{selSKYBundle['estadocuenta.c5.headertext']}"
+                                                                           id="c8"
+                                                                           headerClass="content-text"
+                                                                           width="120">
+                                                                    <af:button text="#{row.referenciaEdoCta}"
+                                                                               id="cl1">
+                                                                        <f:setPropertyActionListener target="#{backingBeanScope.BBEstadoCuenta.referenciaEdoCuenta}"
+                                                                                                     value="#{row.referenciaEdoCta}"/>
+                                                                        <af:fileDownloadActionListener filename="estado_cuenta_sky.pdf"
+                                                                                                       method="#{backingBeanScope.BBEstadoCuenta.download_estadoCuentaHijump}"
+                                                                                                       contentType="text/plain"/>
+                                                                    </af:button>
+                                                                </af:column>
+                                                                <af:column sortProperty="cargos"
+                                                                           sortable="false"
+                                                                           headerText="#{selSKYBundle['estadocuenta.c1.headertext']}"
+                                                                           id="c1"
+                                                                           width="70"
+                                                                           headerClass="content-text">
+                                                                    <af:outputText value="#{row.cargos}"
+                                                                                   id="ot5"/>
+                                                                </af:column>
+                                                                <af:column sortProperty="porPagar"
+                                                                           sortable="false"
+                                                                           headerText="#{selSKYBundle['estadocuenta.c6.headertext']}"
+                                                                           id="c6"
+                                                                           width="70"
+                                                                           headerClass="content-text">
+                                                                    <af:outputText value="#{row.porPagar}"
+                                                                                   id="ot1"/>
+                                                                </af:column>
+                                                                <af:column sortProperty="pagos"
+                                                                           sortable="false"
+                                                                           headerText="#{selSKYBundle['estadocuenta.c7.headertext']}"
+                                                                           id="c7"
+                                                                           width="70"
+                                                                           headerClass="content-text">
+                                                                    <af:outputText value="#{row.pagos}"
+                                                                                   id="ot14"/>
+                                                                </af:column>
+                                                                <af:column sortProperty="ajustes"
+                                                                           sortable="false"
+                                                                           headerText="#{selSKYBundle['estadocuenta.c2.headertext']}"
+                                                                           id="c2"
+                                                                           width="70"
+                                                                           headerClass="content-text">
+                                                                    <af:outputText value="#{row.ajustes}"
+                                                                                   id="ot15"/>
+                                                                </af:column>
+                                                                <af:column sortProperty="fechaEdoCuenta"
+                                                                           sortable="false"
+                                                                           headerText="#{selSKYBundle['estadocuenta.c3.headertext']}"
+                                                                           id="c3"
+                                                                           width="180"
+                                                                           headerClass="content-text">
+                                                                    <af:outputText value="#{row.fechaEdoCuenta}"
+                                                                                   id="ot7">
+                                                                        <af:convertDateTime pattern="#{bindings.EstadosCuenta.hints.fechaEdoCuenta.format}"/>
+                                                                    </af:outputText>
+                                                                </af:column>
+                                                            </af:table>
+                                    
+                                </af:panelCollection>
+                                
+                                
+                            </af:panelBox>
+                                                </div>
+                                            
+                                    
+							</div>
+					</div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

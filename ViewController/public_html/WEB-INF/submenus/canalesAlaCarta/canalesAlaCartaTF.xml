@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="canalesAlaCartaIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <view id="canalesAlaCartaAdultos">
+    <page>/WEB-INF/submenus/canalesAlaCarta/canalesAlaCarta.jsf</page>
+    <input-page-parameter id="__14">
+      <from-value>ADULTOS</from-value>
+      <to-value>#{sesion.categoriaCAC}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__15">
+      <from-value>/WEB-INF/canalesTF.xml#canalesTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <router id="routerCanales">
+    <case id="__7">
+      <expression>#{sesion.CACDEPORTES}</expression>
+      <outcome>irCacDeportes</outcome>
+    </case>
+    <case id="__10">
+      <expression>#{sesion.CACPELICULAS}</expression>
+      <outcome>irCacPeliculas</outcome>
+    </case>
+    <case id="__12">
+      <expression>#{sesion.CACSTREAMING}</expression>
+      <outcome>irCacStreaming</outcome>
+    </case>
+    <case id="__13">
+      <expression>#{sesion.CACADULTOS}</expression>
+      <outcome>irCacAdultos</outcome>
+    </case>
+    <default-outcome>irCacIndex</default-outcome>
+  </router>
+  <view id="canalesAlaCartaDeportes">
+    <page>/WEB-INF/submenus/canalesAlaCarta/canalesAlaCarta.jsf</page>
+    <input-page-parameter id="__17">
+      <from-value>DEPORTES</from-value>
+      <to-value>#{sesion.categoriaCAC}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__18">
+      <from-value>/WEB-INF/canalesTF.xml#canalesTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="canalesAlaCartaPeliculas">
+    <page>/WEB-INF/submenus/canalesAlaCarta/canalesAlaCarta.jsf</page>
+    <input-page-parameter id="__20">
+      <from-value>PELICULAS</from-value>
+      <to-value>#{sesion.categoriaCAC}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__21">
+      <from-value>/WEB-INF/canalesTF.xml#canalesTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="canalesAlaCartaStreaming">
+    <page>/WEB-INF/submenus/canalesAlaCarta/canalesAlaCarta.jsf</page>
+    <input-page-parameter id="__19">
+      <from-value>/WEB-INF/canalesTF.xml#canalesTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__22">
+      <from-value>STREAMING</from-value>
+      <to-value>#{sesion.categoriaCAC}</to-value>
+    </input-page-parameter>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__8">
+      <from-outcome>irRouterCanales</from-outcome>
+      <to-activity-id>routerCanales</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__23">
+      <from-outcome>smenu_canalesAlaCartaAdultos</from-outcome>
+      <to-activity-id>canalesAlaCartaAdultos</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__24">
+      <from-outcome>smenu_canalesAlaCartaDeportes</from-outcome>
+      <to-activity-id>canalesAlaCartaDeportes</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__25">
+      <from-outcome>smenu_canalesAlaCartaPeliculas</from-outcome>
+      <to-activity-id>canalesAlaCartaPeliculas</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__5">
+      <from-outcome>irRouterCanales_0</from-outcome>
+      <to-activity-id>canalesAlaCartaIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__16">
+      <from-outcome>smenu_canalesAlaCartaStreaming</from-outcome>
+      <to-activity-id>canalesAlaCartaStreaming</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__2">
+    <from-activity-id>routerCanales</from-activity-id>
+    <control-flow-case id="__3">
+      <from-outcome>irCacIndex</from-outcome>
+      <to-activity-id>canalesAlaCartaIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__4">
+      <from-outcome>irCacAdultos</from-outcome>
+      <to-activity-id>canalesAlaCartaAdultos</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__9">
+      <from-outcome>irCacDeportes</from-outcome>
+      <to-activity-id>canalesAlaCartaDeportes</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__11">
+      <from-outcome>irCacPeliculas</from-outcome>
+      <to-activity-id>canalesAlaCartaPeliculas</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__6">
+      <from-outcome>irCacStreaming</from-outcome>
+      <to-activity-id>canalesAlaCartaStreaming</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__26">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>canalesAlaCarta_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__27">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__28">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/canalesAlaCarta/canalesAlaCarta_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

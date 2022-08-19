@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="recuperarContraseniaTF">
+    <default-activity>recuperarContrasenia</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <view id="recuperarContrasenia">
+      <page>/pages/recuperarContrasenia/recuperarContrasenia.jsf</page>
+    </view>
+    <view id="recuperarContraseniaResumen">
+      <page>/pages/recuperarContrasenia/recuperarContraseniaResumen.jsf</page>
+    </view>
+    <task-flow-return id="closeTaskFlow">
+      <outcome>
+        <name>closeTaskFlow</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__1">
+      <from-activity-id>recuperarContrasenia</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>recuperarContraseniaResumen</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>recuperarContraseniaResumen</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>index</from-outcome>
+        <to-activity-id>closeTaskFlow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

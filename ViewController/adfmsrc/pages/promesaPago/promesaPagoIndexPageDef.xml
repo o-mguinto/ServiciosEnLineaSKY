@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="promesaPagoIndexPageDef"
+                Package="pages.promesaPago">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="consultarPromesasPago.result" DataControl="DCPromesaPago" RangeSize="10"
+                    BeanClass="mx.com.sky.sel.services.beans.promesa.pago.PromesaPago"
+                    id="consultarPromesasPagoIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="consultarPromesasPago" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="consultarPromesasPago" IsViewObjectMethod="false" DataControl="DCPromesaPago"
+                  InstanceName="bindings.consultarPromesasPago.dataControl.dataProvider"
+                  ReturnName="data.DCPromesaPago.methodResults.consultarPromesasPago_consultarPromesasPago_dataControl_dataProvider_consultarPromesasPago_result">
+      <NamedData NDName="cuentaSKY" NDValue="#{sesion.suscriptor.cuentaSKY}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="consultarPromesasPagoIterator" id="PromesaPago">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.promesa.pago.PromesaPago" Name="result0">
+        <AttrNames>
+          <Item Value="userID"/>
+          <Item Value="noSolicitud"/>
+          <Item Value="institucionPago"/>
+          <Item Value="referencia"/>
+          <Item Value="monto"/>
+          <Item Value="estatus"/>
+          <Item Value="fechaPago"/>
+          <Item Value="fechaRegistro"/>
+          <Item Value="descripcion"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="consultarPromesasPagoIterator" id="actualizarTabla" InstanceName="DCPromesaPago.dataProvider"
+            DataControl="DCPromesaPago" RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

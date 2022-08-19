@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#ppvPagoConfirmar').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            .p_AFMedium {
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+        </af:resource>
+        <div id="ppvPagoConfirmar">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8 col-sm-8">
+                <div class="content-internal">
+                    <h:outputText styleClass="title padd-top-dialog"
+                                  value="Confirme que los datos solicitados son correctos" id="ot14"/>
+                    <div class="row">
+                        <div class="col-12">
+                                <af:panelStretchLayout id="psl1" endWidth="160px;vertical-align: middle;"
+                                                       styleClass="AFStretchWidth">
+                                    <f:facet name="center">
+                                        <af:panelGroupLayout layout="scroll"
+                                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                             id="pgl8">
+                                                <h:outputText styleClass="subtitle padd-top-dialog"
+                                                              value="Datos del evento" id="ot15"/>
+                                                <af:panelFormLayout id="panelFormLayout1" fieldWidth="65%"
+                                                                    labelWidth="35%">
+                                                    <af:inputText label="Título" id="inputText1" readOnly="true"
+                                                                  value="#{pageFlowScope.PFPPEVeTV.evento.titulo}"
+                                                                  styleClass="output-internal"
+                                                                  contentStyle="font-weight: bolder;"/>
+                                                    <af:inputText label="Modalidad" id="inputText2" readOnly="true"
+                                                                  value="#{pageFlowScope.PFPPEVeTV.evento.modalidad}"
+                                                                  styleClass="output-internal"
+                                                                  contentStyle="font-weight: bolder;"/>
+                                                    <af:inputText label="Precio" id="inputText3" readOnly="true"
+                                                                  value="$ #{pageFlowScope.PFPPEVeTV.evento.precio}"
+                                                                  styleClass="output-internal"
+                                                                  contentStyle="font-weight: bolder;"/>
+                                                    <af:inputText label="Canal" id="inputText4" readOnly="true"
+                                                                  value="#{pageFlowScope.PFPPEVeTV.evento.canalDisplay}"
+                                                                  styleClass="output-internal"
+                                                                  contentStyle="font-weight: bolder;"/>
+                                                    <af:inputText label="Tarjeta inteligente" id="it1" readOnly="true"
+                                                                  inlineStyle="text-align:justify;"
+                                                                  value="#{pageFlowScope.PFPPEVeTV.tarjetaInteligente}"
+                                                                  styleClass="output-internal"
+                                                                  contentStyle="font-weight: bolder;"/>
+                                                    <af:inputText label="Horario" id="it2" readOnly="true"
+                                                                  inlineStyle="text-align:justify;"
+                                                                  value="#{pageFlowScope.PFPPEVeTV.horarioString}"
+                                                                  styleClass="output-internal"
+                                                                  contentStyle="font-weight: bolder;"/>
+                                                </af:panelFormLayout>
+                                            
+                                                <h:outputText styleClass="subtitle" value="Datos de pago" id="ot16"/>
+                                                <af:panelFormLayout id="pfl1" fieldWidth="50%" labelWidth="50%">
+                                                    <af:inputText id="it3"
+                                                                  value="#{pageFlowScope.PFPPEVeTV.tarjeta.nombre}"
+                                                                  required="true"
+                                                                  label="#{selSKYBundle['pago.it4.label']}"
+                                                                  readOnly="true" styleClass="output-internal"
+                                                                  contentStyle="font-weight: bolder;"/>
+                                                    <af:inputText id="it4"
+                                                                  value="#{pageFlowScope.PFPPEVeTV.tarjeta.numeroTarjeta}"
+                                                                  required="true"
+                                                                  label="#{selSKYBundle['pago.it5.label']}"
+                                                                  readOnly="true" styleClass="output-internal"
+                                                                  contentStyle="font-weight: bolder;"/>
+                                                </af:panelFormLayout>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                    <f:facet name="end">
+                                        <af:panelGroupLayout id="pgl4">
+                                            <div class="autocenter">
+                                                <af:image source="#{parametros.urlImgs160X240}#{pageFlowScope.PFPPEVeTV.evento.image}"
+                                                          id="i6" inlineStyle="width: 60%;     height: auto;"/>
+                                            </div>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                </af:panelStretchLayout>
+                                <af:panelGroupLayout id="pgl6">
+                                    <div class="row top dialog-descrip">
+                                        <!---->
+                                        <h:outputText id="inputText6"
+                                                      value="#{pageFlowScope.PFPPEVeTV.evento.sinopsis}"/>
+                                    </div>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl2">
+                                    <div class="col-12">
+                                        <div class="row top">
+                                            <label>
+                                                <h:outputText value="Recuerde que se cargara a su tarjeta el pago correspondiente al precio del evento"
+                                                              id="ot1"/>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </af:panelGroupLayout>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <af:panelGroupLayout id="pgl1">
+                                <div class="col-12 col-sm-8 dialog-background">
+                                    <div class="row autocenter">
+                                        <div class="col-4 col-sm-2">
+                                            <af:button text="Atrás" id="cb1" immediate="true" action="regresar"
+                                                       styleClass="btn-pay-dialog"/>
+                                        </div>
+                                        <div class="col-4 col-sm-3">
+                                            <af:button text="Contratar" id="cbSiguienteGuardarTDC" partialSubmit="true"
+                                                       action="#{pageFlowScope.PFPPEVeTV.contratarVeTV_action}"
+                                                       styleClass="btn-pay-dialog">
+                                                <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                            </af:button>
+                                        </div>
+                                        <div class="col-4 col-sm-3">
+                                            <af:button text="Cancelar" id="cbCancelar"
+                                                       action="#{pageFlowScope.PFPPEVeTV.cbCancelar_action}"
+                                                       immediate="true" styleClass="btn-pay-dialog"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

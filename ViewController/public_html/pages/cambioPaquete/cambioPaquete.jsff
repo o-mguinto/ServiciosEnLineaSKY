@@ -1,0 +1,503 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#cambioPaquete').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="cambioPaquete">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <!--Para cada fila una div-->
+                    <div class="row">
+                        <!--Aqui va TODO el contenido-->
+                        <af:panelGroupLayout id="pgPaquetes" layout="vertical"
+                                             partialTriggers=":::dialog1">
+                            <af:panelGroupLayout id="pgl1" layout="horizontal"
+                                                 halign="center"
+                                                 styleClass="autocenter"
+                                                 rendered="#{( pageFlowScope.CambioPaqueteBackingBean.mosaicoPaquetesSize le 0) and !sesion.paqueteUNIVERSE and !sesion.paqueteSKYHDBLACK}">
+                                <af:outputText id="ot8"
+                                               styleClass="check-internal-bold top-channel"
+                                               value="#{selSKYBundle['cambiopaquete.ot8.value']}"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl12" layout="horizontal"
+                                                 halign="center"
+                                                 rendered="#{pageFlowScope.CambioPaqueteBackingBean.mosaicoPaquetesSize le 0 and sesion.paqueteUNIVERSE}">
+                                <af:outputText id="ot14"
+                                               styleClass="check-internal-bold top-channel"
+                                               value="Usted ya cuenta con paquete #{sesion.paquete} que incluye todos los canales de los paquetes FUN, FOX+ y HBO/MAX"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl3" layout="horizontal"
+                                                 halign="center"
+                                                 rendered="#{pageFlowScope.CambioPaqueteBackingBean.mosaicoPaquetesSize le 0 and sesion.paqueteSKYHDBLACK}">
+                                <af:outputText id="ot17"
+                                               styleClass="check-internal-bold top-channel"
+                                               value="Usted ya cuenta con el paquete SKY HD BLACK que es nuestro paquete más completo"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl14" layout="horizontal"
+                                                 halign="center"
+                                                 rendered="#{pageFlowScope.CambioPaqueteBackingBean.cambioPaqueteVETV and sesion.userVeTV}">
+                                <af:outputText id="ot29"
+                                               styleClass="check-internal-bold top-channel"
+                                               rendered="!#{sesion.cuentaVETVPLUSHD}"
+                                               value="Estimado suscriptor, para hacer un cambio al paquete VETV deberá haber cubierto 3 recargas con el paquete VETV PLUS"/>
+                                <af:outputText value="Estimado suscriptor, para hacer un cambio al paquete VETV HD deberá haber cubierto 3 recargas con el paquete VETV PLUS HD"
+                                               id="ot38"
+                                               styleClass="check-internal-bold top-channel"
+                                               rendered="#{sesion.cuentaVETVPLUSHD}"/>
+                            </af:panelGroupLayout>
+                            <af:group id="g5"
+                                      rendered="#{pageFlowScope.CambioPaqueteBackingBean.mosaicoPaquetesSize gt 0}">
+                                <div class="row top autocenter">
+                                    <af:outputText id="outputText1"
+                                                   styleClass="check-internal-bold top-channel"
+                                                   value="#{selSKYBundle['cambiopaquete.outputText1.value']}"/>
+                                </div>
+                            </af:group>
+                            <div class="row top">
+                                <af:forEach items="#{pageFlowScope.CambioPaqueteBackingBean.mosaicoPaquetes}"
+                                            var="rowPaquete">
+                                    <af:panelGroupLayout id="pgl11"  halign="center" layout="horizontal"
+                                                                 valign="middle"
+                                                         styleClass="autocenter">
+                                    <!--div class="col-12 center"-->
+                                        <af:forEach items="#{rowPaquete}"
+                                                    var="paquete">
+                                            <!--div class="col-4 col-tb-2 autocenter">
+                                                <div class="row"-->
+                                                    <!---->
+                                                    <af:link action="#{pageFlowScope.CambioPaqueteBackingBean.showPopupPaquete}"
+                                                             disabled="#{pageFlowScope.CambioPaqueteBackingBean.posibleCambioPaquete}"
+                                                             id="cl1"
+                                                             styleClass="styleCanalaCarta"
+                                                             icon="#{parametros.urlImgsPaquetePC}#{paquete.imagen}">
+                                                        <f:setPropertyActionListener target="#{pageFlowScope.CambioPaqueteBackingBean.idPaquete}"
+                                                                                     value="#{paquete.nombre}"/>
+                                                    </af:link>
+                                                <!--/div>
+                                            </div-->
+                                            </af:forEach>
+                                        <!--/div-->
+                                    </af:panelGroupLayout>
+                                </af:forEach>
+                            </div>
+                        </af:panelGroupLayout>
+                    </div>
+                    <div class="row top">
+                        <af:panelBox id="pb3" background="medium"
+                                     showHeader="never" showDisclosure="false"
+                                     rendered="#{sesion.userVeTV}"
+                                     inlineStyle="border: 0px;">
+                            <!--af:panelHeader text="Le recordamos" id="sdh1" messageType="info"
+                          rendered="#{!sesion.userVeTV}">
+            <af:outputText value="La permanencia mínima en el paquete es de 30 días a partir de que haga un cambio de paquete. Si desea hacer un cambio a un paquete menor se generará un cargo administrativo y solo podrá hacerlo en su fecha de corte y llamando a Servicio a Clientes."
+                           id="ot4"/>
+            <af:separator id="s9" inlineStyle="font-size:5.0px;"/>
+            <af:panelHeader text="Cambiar a VETV PLUS" id="ph5"
+                            messageType="info"
+                            rendered="#{sesion.paqueteAccess}">
+              <af:outputText value="Ahora con VETV Plus usted estará disfrutando las ventajas de Prepago."
+                             id="ot24"/>
+              <af:separator id="s10" inlineStyle="font-size:5.0px;"/>
+              <af:outputText value="La permanencia mínima en el paquete es de 12 recargas a partir de que haga su  cambio."
+                             id="ot26"/>
+              <af:separator id="s11" inlineStyle="font-size:5.0px;"/>
+              <af:outputText value="Al cambiar de ACCESS a VETV Plus, está cambiando al sistema de prepago por lo que deberá de realizar su primer recarga antes de los siguientes 5 días."
+                             id="ot27"/>
+            </af:panelHeader>
+          </af:panelHeader-->
+                            <af:group id="g2" rendered="#{sesion.cuentaVetv}">
+                                <p class="bottom">
+                                    <h:outputText styleClass="title"
+                                                  value="Le recordamos"
+                                                  id="ot1"/>
+                                </p>
+                                <div class="row">
+                                    <h:outputLabel value="La permanencia mínima en el paquete es de 3 recargas a partir de que se realice el cambio de paquete. "
+                                                   id="ot20"/>
+                                </div>
+                                <div class="row">
+                                    <h:outputLabel value="Al cambiar de VETV a VETV Plus deberá de realizar la primera recarga de su nuevo paquete dentro de los siguientes 5 días."
+                                                   id="ot21"
+                                                   rendered="#{!sesion.cuentaVETVHD}"/>
+                                     
+                                    <h:outputLabel value="Al cambiar de VETV HD a VETV Plus HD deberá de realizar la primera recarga de su nuevo paquete dentro de los siguientes 5 días."
+                                                   id="ot37"
+                                                   rendered="#{sesion.cuentaVETVHD}"/>
+                                </div>
+                                <div class="row top">
+                                    <h:outputLabel value="Su recarga actual se dará por terminada en el momento de cambiar de paquete."
+                                                   id="ot22"/>
+                                </div>
+                            </af:group>
+                            <af:group id="g3"
+                                      rendered="#{sesion.cuentavetvPlus}">
+                                <p class="bottom">
+                                    <h:outputText styleClass="title"
+                                                  value="Le recordamos"
+                                                  id="ot26"/>
+                                </p>
+                                <div class="row">
+                                    <h:outputLabel value="Al cambiar de VETV Plus a VETV deberá de realizar la primera recarga de su nuevo paquete dentro de los siguientes 5 días."
+                                                   id="ot25"
+                                                   rendered="#{!sesion.cuentaVETVPLUSHD}"/>
+                                     
+                                    <h:outputLabel value="Al cambiar de VETV Plus HD a VETV HD deberá de realizar la primera recarga de su nuevo paquete dentro de los siguientes 5 días."
+                                                   id="ot39"
+                                                   rendered="#{sesion.cuentaVETVPLUSHD}"/>
+                                </div>
+                                <div class="row top">
+                                    <h:outputLabel value="Su recarga actual se dará por terminada en el momento de cambiar de paquete."
+                                                   id="ot23"/>
+                                </div>
+                            </af:group>
+                            <!--Textos para cuentas DUAL PLAY   -->
+                            <af:group id="g4"
+                                      rendered="#{sesion.cuentaDualPlay}">
+                                <div class="row top">
+                                    <h:outputLabel value="Para cambiar la velocidad de su equipo de internet inalámbrico llame a Servicio a clientes."
+                                                   id="ot40"/>
+                                </div>
+                            </af:group>
+                            <!--Textos para cuentas DUAL PLAY   -->
+                        </af:panelBox>
+                    </div>
+                    <af:popup id="confirmacion" childCreation="deferred"
+                              contentDelivery="lazyUncached"
+                              autoCancel="disabled"
+                              binding="#{pageFlowScope.CambioPaqueteBackingBean.popupConfirmacion}">
+                        <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                            <af:dialog id="dialog1" type="none"
+                                       styleClass="alert"
+                                       closeIconVisible="false"
+                                       title="#{selSKYBundle['cambiopaquete.dialog1.title']}">
+                                <af:panelSplitter id="ps1"
+                                                  splitterPosition="100"
+                                                  positionedFromEnd="true"
+                                                  dimensionsFrom="auto">
+                                    <f:facet name="first">
+                                    <af:panelGroupLayout id="pgl2" layout="scroll"
+                                                 styleClass="dialog-background"
+                                                 inlineStyle="border: none;">
+                                            <h:outputText styleClass="title padd-bottom-dialog padd-top-dialog"
+                                          value="#{pageFlowScope.CambioPaqueteBackingBean.paquete.nombre}"
+                                          id="ot27"/>
+                                        
+                                        <af:panelGroupLayout id="pgl13"
+                                                                 layout="vertical"
+                                                                 rendered="#{!pageFlowScope.CambioPaqueteBackingBean.paqueteVETV}"
+                                                                 styleClass="text-internal">
+                                                <af:outputText value="Recarga con un equipo $ #{pageFlowScope.CambioPaqueteBackingBean.costoVetvEquipo} #{sesion.moneda}"
+                                                               id="ot18"/>
+                                                <af:outputText value="Recarga con dos equipos $ #{pageFlowScope.CambioPaqueteBackingBean.costoVetvDosEquipo} #{sesion.moneda}"
+                                                               id="ot19"/>
+                                                <af:outputText value="Al cambiar al paquete VeTV plus, los días restantes de la programación de su paquete actual se perderán, por lo que a partir de que acepte su cambio a VETV Plus, antes de los siguientes  5 días, deberá  hacer su recarga."
+                                                               id="ot28"
+                                                               styleClass="font-bolder"
+                                                               rendered="#{sesion.paqueteAccess and !pageFlowScope.CambioPaqueteBackingBean.paqueteVETV}"/>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl15"
+                                                                 rendered="#{sesion.cuentaVetv}"
+                                                                 inlineStyle="text-align: justify;">
+                                                <div class="row top dialog-descrip">
+                                                <h:outputText id="ot30"
+                                                               value="Le informamos, que si realiza el cambio al paquete #{pageFlowScope.CambioPaqueteBackingBean.paquete.nombre} cuando tenga una recarga vigente, los días restantes de su recarga de VeTV se perderán."
+                                                               />
+                                                <h:outputText id="ot31"
+                                                               value="Una vez que confirme su cambio a #{pageFlowScope.CambioPaqueteBackingBean.paquete.nombre}, le obsequiaremos 5 días de señal de este paquete para que haga su recarga y no pierda señal."
+                                                               />
+                                                <h:outputText id="ot32"
+                                                               value="Con el cambio de paquete de programación acepta el compromiso de realizar 12 recargas con este nuevo paquete."
+                                                               />
+                                                </div>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl16"
+                                                                 layout="vertical"
+                                                                 rendered="#{sesion.cuentavetvPlus}"
+                                                                 inlineStyle="text-align: justify;">
+                                                <div class="row top dialog-descrip">
+                                                <h:outputText id="ot35"
+                                                               value="Le informamos, que si realiza el cambio al paquete #{pageFlowScope.CambioPaqueteBackingBean.paquete.nombre} cuando tenga una recarga vigente, los días restantes de su recarga de VeTV Plus se perderán."
+                                                               />
+                                                <h:outputText id="ot34"
+                                                               value="Una vez que confirme su cambio a #{pageFlowScope.CambioPaqueteBackingBean.paquete.nombre}, le obsequiaremos 5 días de señal de este paquete para que haga su recarga y no pierda señal."
+                                                               />
+                                                <h:outputText id="ot33"
+                                                               value="Con el cambio de paquete de programación acepta el compromiso de realizar 12 recargas con este nuevo paquete."
+                                                               />
+                                                               </div>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl9"
+                                                                 layout="vertical"
+                                                                 rendered="#{!sesion.userVeTV and pageFlowScope.CambioPaqueteBackingBean.paqueteVETV}"
+                                                                 styleClass="text-internal"
+                                                                 inlineStyle="text-align: justify;">
+                                                <div class="top row"></div>
+                                                <af:outputText value="Precio de lista $ #{pageFlowScope.CambioPaqueteBackingBean.paquete.costo} #{sesion.moneda}"
+                                                               id="ot9"/>
+                                                <af:outputText value="Pago Oportuno $ #{pageFlowScope.CambioPaqueteBackingBean.paquete.costoPagoOportuno} #{sesion.moneda}"
+                                                               id="ot10"/>
+                                                <af:spacer width="10"
+                                                           height="10" id="s5"/>
+                                                <af:outputText value="El cálculo de su pago mensual incluye los servicios que tenga contratados al momento del cambio de paquete como programación, renta de todos los equipos, funcionalidades adicionales (HD y/o grabación), Canales a la Carta, Revista SKY View, Cobro por Factura y Blue To Go Video Everywhere."
+                                                               id="outputText3"
+                                                               rendered="#{sesion.MEX}"
+                                                               styleClass="font-bolder"/>
+                                                <af:outputText value="El cálculo de su pago mensual incluye los servicios que tenga contratados al momento del cambio de paquete como programación, renta de todos los equipos, funcionalidad adicional (HD) y Canales a la Carta."
+                                                               id="ot15"
+                                                               styleClass="font-bolder"
+                                                               rendered="#{!sesion.MEX}"/>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl6"
+                                                                 layout="vertical"
+                                                                 rendered="#{sesion.cuentaCV}"
+                                                                 styleClass="text-internal"
+                                                                 inlineStyle="text-align: justify;">
+                                                <div class="top row"></div>
+                                                <af:outputText value="Para la cuenta #{sesion.cuentaSKY}"
+                                                               id="ot5"
+                                                               styleClass="font-bolder"/>
+                                                <af:outputFormatted value="Si desea escoger otra cuenta, por favor seleccionela del lado superior izquierdo. "
+                                                                    id="of1"
+                                                                    styleUsage="pageStamp"/>
+                                            </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                    <f:facet name="second">
+                                        <af:panelGroupLayout id="pgl5"
+                                                             inlineStyle="vertical-align: middle;">
+                                                             <div class="autocenter"
+                                                                  style="margin-top: 100%;">
+                                            <af:image inlineStyle="width: 90%;     height: auto;"
+                                                      source="#{parametros.urlImgsPaqueteMovil}#{pageFlowScope.CambioPaqueteBackingBean.paquete.imagen}"
+                                                      id="i1"/>
+                                                      </div>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                </af:panelSplitter>
+                                <div class="col-12 dialog-background">
+                                    <div class="row top autocenter">
+                                        <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-left sm-no-padd-left" style="float: right">
+                                            <af:button id="bAceptarCambio"
+                                                       text="Aceptar"
+                                                       styleClass="btn-pay-dialog"
+                                                       action="#{pageFlowScope.CambioPaqueteBackingBean.cambioPaquete}">
+                                                <af:clientListener method="enforcePreventUserInput"
+                                                                   type="action"/>
+                                            </af:button>
+                                        </div>
+                                        <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-right sm-no-padd-right" style="float: right">
+                                            <af:button id="b6" text="Cancelar"
+                                                       styleClass="btn-pay-dialog"
+                                                       action="#{pageFlowScope.CambioPaqueteBackingBean.cancelarCambioPopUp}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </af:dialog>
+                        </div>
+                    </af:popup>
+                     
+                    <af:popup id="penalizacion" childCreation="deferred"
+                              contentDelivery="lazyUncached"
+                              autoCancel="disabled"
+                              binding="#{pageFlowScope.CambioPaqueteBackingBean.popupPenalizacion}">
+                        <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                            <af:dialog id="dialog1P"
+                                       title="#{selSKYBundle['cambiopaquete.dialog1.title']}"
+                                       type="none" styleClass="alert"
+                                       closeIconVisible="false">
+                                <af:panelSplitter id="ps2"
+                                                  splitterPosition="100"
+                                                  positionedFromEnd="true"
+                                                  dimensionsFrom="auto">
+                                    <f:facet name="first">
+									<af:panelGroupLayout id="pgl4" layout="scroll"
+                                                 styleClass="dialog-background"
+                                                 inlineStyle="border: none;">
+                                            <h:outputText styleClass="title padd-bottom-dialog padd-top-dialog"
+                                          value="#{pageFlowScope.CambioPaqueteBackingBean.paquete.nombre}"
+                                          id="ot41"/>
+											<af:panelGroupLayout id="pgl10"
+                                                                 layout="vertical"
+                                                                 rendered="#{!sesion.userVeTV}"
+                                                                 styleClass="text-internal">
+                                                <div class="top row"></div>
+                                                <af:outputText value="Precio de lista $ #{pageFlowScope.CambioPaqueteBackingBean.paquete.costo} #{sesion.moneda}"
+                                                               id="ot11"/>
+                                                <af:outputText value="Pago Oportuno $ #{pageFlowScope.CambioPaqueteBackingBean.paquete.costoPagoOportuno} #{sesion.moneda}"
+                                                               id="ot12"/>
+                                                <af:spacer width="10"
+                                                           height="10" id="s6"/>
+                                                <af:outputText value="Precios aproximados calculados con programación y productos asociados a su cuenta"
+                                                               id="ot13"
+                                                               rendered="#{sesion.sistema eq 'HIJUMP'}"
+                                                               styleClass="font-bolder"/>
+                                                <af:outputText value="Precios aproximados calculados con programación y renta de equipo principal"
+                                                               id="ot16"
+                                                               styleClass="font-bolder"
+                                                               rendered="#{sesion.sistema eq 'KENAN'}"/>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl7"
+                                                                 layout="vertical"
+                                                                 inlineStyle="text-align: justify;"
+                                                                 styleClass="text-internal">
+                                                <div class="top row"></div>
+                                                <af:outputText value="El cambio de paquete solicitado, tendrá un costo de $30.00 Dólares Americanos, debido a que aún no han transcurrido los primeros seis meses desde que contrató VETV"
+                                                               id="ot6"
+                                                               styleClass="font-bolder"/>
+                                                <af:outputText value="¿Desea proceder con el cambio de paquete? haga clic en 'SI' para proceder con el cambio."
+                                                               id="ot7"
+                                                               styleClass="font-bolder"/>
+                                            </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+									</f:facet>
+                                    <f:facet name="second">
+                                        <af:panelGroupLayout id="pgl8"
+                                                             inlineStyle="vertical-align: middle;">
+												<div class="autocenter"
+                                                                  style="margin-top: 100%;">
+                                            <af:image inlineStyle="width: 90%;     height: auto;"
+                                                      source="#{parametros.urlImgsPaqueteMovil}#{pageFlowScope.CambioPaqueteBackingBean.paquete.imagen}"
+                                                      id="i2"/>
+												</div>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                </af:panelSplitter>
+                                <div class="col-12 dialog-background">
+                                    <div class="row top autocenter">
+                                        <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-left sm-no-padd-left" style="float: right">
+                                            <af:button id="bSiPenalizacion"
+                                                       text="Si"
+                                                       styleClass="btn-pay-dialog"
+                                                       action="#{pageFlowScope.CambioPaqueteBackingBean.muestraPenalizacion}">
+                                                <af:clientListener method="enforcePreventUserInput"
+                                                                   type="action"/>
+                                            </af:button>
+                                        </div>
+                                        <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-right sm-no-padd-right" style="float: right">
+                                            <af:button id="b2" text="No"
+                                                       styleClass="btn-pay-dialog"
+                                                       action="#{pageFlowScope.CambioPaqueteBackingBean.cancelarCambioPopUp}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </af:dialog>
+                        </div>
+                    </af:popup>
+                     
+                    <af:popup id="mensaje" contentDelivery="lazyUncached"
+                              autoCancel="disabled" childCreation="deferred"
+                              binding="#{pageFlowScope.CambioPaqueteBackingBean.popupMensaje}">
+                        <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                            <af:dialog id="dialog2" type="none"
+                                       title="#{selSKYBundle['mensaje_Notificacion']}"
+                                       styleClass="alert"
+                                       closeIconVisible="false">
+                                <div class="text-internal">
+                                    <af:outputText id="outputText2"
+                                                   value="#{pageFlowScope.CambioPaqueteBackingBean.mensaje}"
+                                                   styleClass="font-bolder"/>
+                                </div>
+                                <div class="col-12 dialog-background">
+                                    <div class="row top autocenter">
+                                        <af:button id="b4" text="Aceptar"
+                                                   styleClass="btn-pay-dialog"
+                                                   action="#{pageFlowScope.CambioPaqueteBackingBean.aceptarMensajePopUp}"/>
+                                    </div>
+                                </div>
+                            </af:dialog>
+                        </div>
+                    </af:popup>
+                </div>
+                <div class="row top">
+                    <div class="col-12 content-internal">
+                        <p class="bottom">
+                            <h:outputText styleClass="title"
+                                          value="#{selSKYBundle['cambiopaquete.pb2.text']}"
+                                          id="ot24"/>
+                        </p>
+                        <div class="row">
+                            <af:panelBox id="pb2" background="medium"
+                                         showHeader="never"
+                                         showDisclosure="false"
+                                         inlineStyle="border: 0px;">
+                                <f:facet name="toolbar"/>
+                                <af:panelCollection id="pc1"
+                                                    defaultToolbarItemDisplay="icon"
+                                                    styleClass="AFStretchWidth">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="t2"></af:toolbar>
+                                    </f:facet>
+                                    <f:facet name="statusbar"/>
+                                    <af:table value="#{bindings.DetalleSolicitudServicio.collectionModel}"
+                                              var="row"
+                                              rows="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                              emptyText="#{bindings.DetalleSolicitudServicio.viewable ? selSKYBundle['cambiopaquete.sinsolicitudes'] : 'Access Denied.'}"
+                                              fetchSize="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                              selectedRowKeys="#{bindings.DetalleSolicitudServicio.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.DetalleSolicitudServicio.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="tSCAC"
+                                              autoHeightRows="10"
+                                              partialTriggers=":::dialog1"
+                                              width="100%" scrollPolicy="auto"
+                                              rowBandingInterval="0"
+                                              horizontalGridVisible="false"
+                                              verticalGridVisible="false"
+                                              styleClass="tbl-Class">
+                                        <af:column sortProperty="numeroSolicitud"
+                                                   sortable="false" id="c3"
+                                                   headerClass="content-text"
+                                                   headerText="#{selSKYBundle['cambiopaquete.c3.headertext']}"
+                                                   width="150">
+                                            <af:outputText value="#{row.numeroSolicitud}"
+                                                           id="ot4"/>
+                                        </af:column>
+                                        <af:column sortProperty="comentario"
+                                                   sortable="false" id="c1"
+                                                   width="200"
+                                                   headerClass="content-text"
+                                                   headerText="#{selSKYBundle['cambiopaquete.c1.headertext']}">
+                                            <af:outputText value="#{row.comentario}"
+                                                           id="ot2"/>
+                                        </af:column>
+                                        <af:column sortProperty="fechaCreacion"
+                                                   sortable="false" id="c2"
+                                                   width="200"
+                                                   headerClass="content-text"
+                                                   headerText="#{selSKYBundle['cambiopaquete.c2.headertext']}">
+                                            <af:outputText value="#{row.fechaCreacion}"
+                                                           id="ot3"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                                <div class="row top">
+                                        <div class="col-5 col-sm-8  col-tb-4 right padd-left"
+                                         style="float:right;">
+                                            <af:button id="ctb1"
+                                                       action="#{pageFlowScope.CambioPaqueteBackingBean.actualizarTabla}"
+                                                       styleClass="btn-internal"
+                                                       targetFrame="_self"
+                                                       text="Actualizar">
+                                                <af:clientListener method="enforcePreventUserInput"
+                                                                   type="action"/>
+                                            </af:button>
+                                        </div>
+                                </div>
+                            </af:panelBox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

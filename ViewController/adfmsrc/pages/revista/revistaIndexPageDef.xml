@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="revistaIndexPageDef"
+                Package="pages.revista">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="obtenerSolicitudServicio.result" DataControl="DCRevista" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.solicitudservicio.DetalleSolicitudServicio"
+                    id="obtenerSolicitudServicioIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerDireccionEnvio" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerDireccionEnvio" IsViewObjectMethod="false" DataControl="DCDatosGenerales"
+                  InstanceName="bindings.obtenerDireccionEnvio.dataControl.dataProvider"
+                  ReturnName="data.DCDatosGenerales.methodResults.obtenerDireccionEnvio_obtenerDireccionEnvio_dataControl_dataProvider_obtenerDireccionEnvio_result">
+      <NamedData NDName="rowID" NDValue="#{sesion.suscriptor.rowId}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="obtenerSolicitudServicio" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerSolicitudServicio" IsViewObjectMethod="false" DataControl="DCRevista"
+                  InstanceName="bindings.obtenerSolicitudServicio.dataControl.dataProvider"
+                  ReturnName="data.DCRevista.methodResults.obtenerSolicitudServicio_obtenerSolicitudServicio_dataControl_dataProvider_obtenerSolicitudServicio_result">
+      <NamedData NDName="rowID" NDValue="#{sesion.suscriptor.rowId}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="obtenerSolicitudServicioIterator" id="DetalleSolicitudServicio">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.solicitudservicio.DetalleSolicitudServicio" Name="result0">
+        <AttrNames>
+          <Item Value="numeroSolicitud"/>
+          <Item Value="comentario"/>
+          <Item Value="fechaCreacion"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="revistaContratadaPs" RequiresUpdateModel="true" Action="invokeMethod" MethodName="revistaContratada"
+                  IsViewObjectMethod="false" DataControl="DCRevista"
+                  InstanceName="bindings.revistaContratadaPs.dataControl.dataProvider"
+                  ReturnName="data.DCRevista.methodResults.revistaContratada_revistaContratada_dataControl_dataProvider_revistaContratada_result">
+      <NamedData NDName="cuenta" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="crearSolicitudPs" RequiresUpdateModel="true" Action="invokeMethod" MethodName="crearSolicitud"
+                  IsViewObjectMethod="false" DataControl="DCRevista"
+                  InstanceName="bindings.crearSolicitudPs.dataControl.dataProvider"
+                  ReturnName="data.DCRevista.methodResults.crearSolicitud_crearSolicitud_dataControl_dataProvider_crearSolicitud_result">
+      <NamedData NDName="solicitudServicio"
+                 NDType="mx.com.sky.sel.services.beans.solicitudservicio.SolicitudServicioBean"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:trh="http://myfaces.apache.org/trinidad/html">
+    
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=11.0"/>
+    <meta name="viewport"
+                      content="width=device-width,initial-scale=1.0,maximum-scale=3.0,user-scalable=yes"/>
+                      <meta name="keywords" content="servicios en linea sky"/>
+    <f:view>
+        <af:document title="SKY | Servicios en Línea" id="d1">
+    <f:facet name="metaContainer">
+            
+            <f:subview id="head">
+                    <meta name="description"
+                          content="SKY | Servicios en Línea"/>
+                    <meta name="keywords" content="servicios en linea sky"/>
+                    <af:outputText value="&lt;link rel='SHORTCUT ICON' href='#{facesContext.externalContext.requestContextPath}/imagenes/aplicacion/favicon.ico' type='image/x-icon'/>"
+                                   id="ot6" escape="false"/>
+                    <af:resource type="javascript" source="/js/jquery-3.5.1.min.js"/>
+                <af:resource type="javascript" source="/js/pixelSEL.js"/>
+            </f:subview>
+        </f:facet>
+            <af:form id="f1PC">
+                <!-- Google Tag Manager (noscript) -->
+                <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZQXB5N"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+                <!-- End Google Tag Manager (noscript) -->
+                <af:resource type="css" source="/css/skin_escritorio.css"/>
+                <af:resource type="css"
+                             source="/css/custom/pagInternas_template.css"/>
+                <af:resource type="css">
+                    .registro {
+                        background-color: white;
+                        top: 10px !important;
+                    }
+                    
+                    .padd-5{
+                            padding: 0px 13%
+                        }
+                        
+                    @media only screen and (min-device-width:320px) and (max-device-width:767px) {
+                        
+                        .padd-5{
+                            padding: 0px 5%
+                        }
+                    }
+                </af:resource>
+                <div class="col-11 col-tb-8">
+                <div class="content-internal">
+                    <div class="row">
+                <af:panelGroupLayout id="pgl7" layout="vertical"
+                                     styleClass="registro" halign="center">
+                    <af:subform id="s2">
+                        <af:panelGroupLayout id="pgl6" layout="vertical"
+                                             styleClass="loginStyle">
+                            
+                                <af:image source="/imagenes/aplicacion/cabeza_tx.png"
+                                          id="i3" styleClass="img-cabeza_tx"/>
+                            
+                        </af:panelGroupLayout>
+                    <div class="col-12 left padd-5" >
+                        
+                        <div class="row top">    
+                        <af:outputText value="AVISO"
+                                                   id="otAv"
+                                                   styleClass="output-internal"
+                                               inlineStyle="font-size: 16px;
+                            font-weight: bolder;"/>
+                            </div>
+                            <div class="row" >
+                                <af:image source="/imagenes/35X35/nav_35x35/#{backingBeanScope.BBUserDataChange.icono}"
+                                              id="i2" styleClass="img-alerta"/>
+                                </div>
+                            <div class="row">    
+                                <af:outputText value="#{backingBeanScope.BBUserDataChange.mensajeUsuario}"
+                                                   id="ot2"
+                                                   styleClass="output-internal" />
+                                              </div>
+                            <div class="row top" >
+                                <af:panelGroupLayout id="pgl1" rendered="#{backingBeanScope.BBUserDataChange.mostrarOKRegistro}">
+                                    <af:outputText value='"serviciosenlinea@sky.com.mx" – suscriptores de M&#233;xico'
+                                                   id="ot1"
+                                                   styleClass="output-internal"/>
+                                    <div class="col-12">
+                                        <af:outputText value='"serviciosenlineaca@sky.com.mx" – suscriptores de Centroam&#233;rica y  Rep&#250;blica Dominicana'
+                                                   id="ot4"
+                                                   styleClass="output-internal"/>
+                                    </div>
+                                    <div class="col-12">
+                                    <div class="row top" >
+                                        <af:outputText value="Por favor revise en la bandeja de spam o correo no deseado si no llega el correo a su bandeja de entrada."
+                                                   id="ot5"
+                                                   styleClass="output-internal"/>
+                                    </div>
+                                    </div>
+                                </af:panelGroupLayout>
+                            </div>
+                            <div class="row top " >
+                            <div class="col-12 right">
+                                    
+                                    <af:button text="Regresar a inicio" id="gb1"
+                                               styleClass="btn-internal "
+                                               destination="/faces/bienvenido"/>
+                                               </div>
+                                               </div>
+                        
+                        </div>
+                    </af:subform>
+                    <af:panelGroupLayout styleClass="pieLogin" id="pgl11"
+                                         halign="center" inlineStyle="margin: 0px 20px;">
+                        <af:spacer width="10" height="20" id="s8"/>
+                        <div class="row top">
+                            <div class="col-12">
+                                <af:image source="/imagenes/aplicacion/logosExploradores_estadar.png"
+                                          id="i6" styleClass="img-exploradores"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <af:outputText value="Exploradores soportados son Internet Explorer 7, 8, 9 y 10, Google Chrome 1.0 y superiores, Firefox 2.0.0.2 y superiores o Safari 3.1.2 y superiores."
+                                           id="ot3"
+                                           styleClass="pie-sky"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <af:outputText value=" SESION_ID : #{Foliador.folio}"
+                                       id="pt_ot1"
+                                       styleClass="pie-sky"/>
+                            </div>
+                        </div>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </div>
+            </div>
+            </div>
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

@@ -1,0 +1,144 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jdevws:WebServiceProxy xmlns:jdevws="http://xmlns.oracle.com/jdeveloper/10130/webserviceproxy">
+   <list n="CHILD_NODES">
+      <url path="ConsultaPrecioRecargaSoaInterfaceEp.xml"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/SeguridadListType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ErrorTecnicoType.java"/>
+      <url path="ConsultaPrecioRecargaSoaInterface_ptClient.java"/>
+      <url path="../../../../enterpriseobjects/soa/consultapreciorecargainterface/ConsultaPrecioRecargaEBMType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/EBMHeaderResponseType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/RuntimeFaultMessageType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ParametroItemType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/package-info.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/EBMType.java"/>
+      <url path="../../../../soasky/RecargaConsultaPrecioRecargaEntradaTYPE.java"/>
+      <url path="../../../../soasky/CabeceraEntradaTYPE.java"/>
+      <url path="ConsultaPrecioRecargaSoaInterfaceEp.java"/>
+      <url path="../../../../enterpriseobjects/soa/consultapreciorecargainterface/package-info.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/EBMHeaderRequestType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ObjectFactory.java"/>
+      <url path="../../../../enterpriseobjects/soa/consultapreciorecargainterface/ObjectFactory.java"/>
+      <url path="ConsultaPrecioRecargaSoaInterface.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/SeguridadItemType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ErrorNegocioType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ParametroListType.java"/>
+      <url path="../../../../enterpriseobjects/soa/consultapreciorecargainterface/ConsultaPrecioRecargaResponseEBMType.java"/>
+      <url path="../../../../soasky/CabeceraSalidaTYPE.java"/>
+      <url path="../../../../soasky/ObjectFactory.java"/>
+      <url path="../../../../soasky/package-info.java"/>
+      <url path="../../../../soasky/RecargaConsultaPrecioRecargaSalidaTYPE.java"/>
+   </list>
+   <hash n="DATA_MODEL">
+      <value n="ATTACHMENT_ENCODING" v="MIME"/>
+      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy"/>
+      <url n="ORACLE_WEBSERVICES_XML" path="ConsultaPrecioRecargaSoaInterfaceEp.xml"/>
+      <hash n="PROPERTY_GROUPS">
+         <hash n="WSDL_TO_JAVA_PROPERTIES">
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+            <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.soainterface.consultapreciorecargasoainterface"/>
+         </hash>
+      </hash>
+      <value n="PROXY_ASYNC_METHODS" v="FOR_NONE"/>
+      <list n="PROXY_CLIENTS">
+         <url path="ConsultaPrecioRecargaSoaInterface_ptClient.java"/>
+      </list>
+      <value n="PROXY_MAPPING_URL"/>
+      <hash n="PROXY_PORTS">
+         <hash n="ConsultaPrecioRecargaSoaInterface_pt">
+            <value n="ACCESSES_DOC_WRAPPPED" v="true"/>
+            <value n="ACCESSES_RPC_ENCODED" v="false"/>
+            <value n="CLASS_NAME" v="mx.com.sky.sel.proxyclients.soainterface.consultapreciorecargasoainterface.ConsultaPrecioRecargaSoaInterface"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
+            <value n="NAME" v="ConsultaPrecioRecargaSoaInterface_pt"/>
+            <hash n="OPERATIONS">
+               <hash n="consultaPrecioRecarga">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </hash>
+            <hash n="PROPERTY_GROUPS">
+               <hash n="WS_POLICY">
+                  <value n="addressing"/>
+                  <hash n="GLOBAL_CONFIG_PROPERTIES"/>
+                  <list n="management"/>
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.policy.PolicyClientModel"/>
+                  <value n="mtom"/>
+                  <hash n="POLICY_OVERRIDE_PROPERTIES"/>
+                  <list n="security"/>
+                  <list n="wsconfig"/>
+                  <value n="wsrm"/>
+               </hash>
+            </hash>
+            <url n="PROXY_ORIGINAL_PORT_ENDPOINT" protocol="http" host="10.249.5.99" port="5007" path="/soa-infra/services/SOA_Interface/ConsultaPrecioRecargaSoaInterface/ConsultaPrecioRecargaSoaInterface_ep"/>
+            <url n="PROXY_PORT_ENDPOINT" protocol="http" host="10.249.5.99" port="5007" path="/soa-infra/services/SOA_Interface/ConsultaPrecioRecargaSoaInterface/ConsultaPrecioRecargaSoaInterface_ep"/>
+         </hash>
+      </hash>
+      <value n="PROXY_SERVICE_NAME" v="ConsultaPrecioRecargaSoaInterface_ep"/>
+      <value n="PROXY_SERVICE_NAMESPACE" v="http://xmlns.sky.com.mx/InterfaceServices/Soa/ConsultaPrecioRecarga"/>
+      <url n="PROXY_TARGET_PROJECT" path="../../../../../../../../Model.jpr"/>
+      <url n="PROXY_WSDL_URL" protocol="http" host="10.249.1.65" port="5007" path="/soa-infra/services/SOA_Interface/ConsultaPrecioRecargaSoaInterface/ConsultaPrecioRecargaSoaInterface_ep" query="WSDL"/>
+      <hash n="REFERENCED_WEBSERVICE">
+         <list n="BD_">
+            <hash>
+               <value n="BOUND_PORT_TYPE" v="{http://xmlns.sky.com.mx/InterfaceServices/Soa/ConsultaPrecioRecarga}ConsultaPrecioRecargaSoaInterface"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+               <value n="NAME" v="{http://xmlns.sky.com.mx/InterfaceServices/Soa/ConsultaPrecioRecarga}ConsultaPrecioRecargaSoaInterfaceBinding"/>
+               <list n="OP_BINDINGS">
+                  <hash>
+                     <value n="BOUND_OPERATION" v="mx.com.sky.enterpriseobjects.soa.consultapreciorecargainterface.ConsultaPrecioRecargaResponseEBMType.consultaPrecioRecarga.mx.com.sky.enterpriseobjects.soa.consultapreciorecargainterface.ConsultaPrecioRecargaEBMType"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+            </hash>
+         </list>
+         <list n="BINDING_FILES"/>
+         <value n="GUID" v="975509ec-0173-1000-8094-0afd094a038c"/>
+         <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
+         <list n="PO_">
+            <hash>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+               <value n="NAME" v="ConsultaPrecioRecargaSoaInterface_pt"/>
+               <value n="PORT_BINDING_NAME" v="{http://xmlns.sky.com.mx/InterfaceServices/Soa/ConsultaPrecioRecarga}ConsultaPrecioRecargaSoaInterfaceBinding"/>
+               <list n="PORT_OPS">
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="mx.com.sky.enterpriseobjects.soa.consultapreciorecargainterface.ConsultaPrecioRecargaResponseEBMType.consultaPrecioRecarga.mx.com.sky.enterpriseobjects.soa.consultapreciorecargainterface.ConsultaPrecioRecargaEBMType"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+               <url n="URL" protocol="http" host="10.249.5.99" port="5007" path="/soa-infra/services/SOA_Interface/ConsultaPrecioRecargaSoaInterface/ConsultaPrecioRecargaSoaInterface_ep"/>
+            </hash>
+         </list>
+         <hash n="PROPERTY_GROUPS">
+            <hash n="WSDL_TO_JAVA_PROPERTIES">
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+               <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.soainterface.consultapreciorecargasoainterface"/>
+            </hash>
+         </hash>
+         <list n="PT_">
+            <hash>
+               <value n="AUTO_SERVICE_INTERFACE"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaPortType"/>
+               <value n="NAME" v="{http://xmlns.sky.com.mx/InterfaceServices/Soa/ConsultaPrecioRecarga}ConsultaPrecioRecargaSoaInterface"/>
+               <hash n="PROPERTY_GROUPS"/>
+               <value n="PT_CLASS" v="mx.com.sky.sel.proxyclients.soainterface.consultapreciorecargasoainterface.ConsultaPrecioRecargaSoaInterfaceImpl"/>
+               <value n="PT_SERVICE_INTERFACE" v="mx.com.sky.sel.proxyclients.soainterface.consultapreciorecargasoainterface.ConsultaPrecioRecargaSoaInterface"/>
+               <value n="PT_TOP_DOWN_GENERATED_SEI_NAME" v="mx.com.sky.sel.proxyclients.soainterface.consultapreciorecargasoainterface.ConsultaPrecioRecargaSoaInterface"/>
+            </hash>
+         </list>
+         <url n="TARGET_PROJECT" path="../../../../../../../../Model.jpr"/>
+         <value n="WS_ORIG_GEN_DIRECTION" v="TOP_DOWN"/>
+         <value n="WS_TARGET_NAMESPACE" v="http://xmlns.sky.com.mx/InterfaceServices/Soa/ConsultaPrecioRecarga"/>
+         <value n="WS_URI" v="ConsultaPrecioRecargaSoaInterface_ep"/>
+         <url n="WS_WSDL_FILE" protocol="http" host="10.249.1.65" port="5007" path="/soa-infra/services/SOA_Interface/ConsultaPrecioRecargaSoaInterface/ConsultaPrecioRecargaSoaInterface_ep" query="WSDL"/>
+      </hash>
+      <value n="SERVICE_ASYNC" v="false"/>
+      <value n="WSDL_IS_LOCAL_COPY" v="false"/>
+   </hash>
+</jdevws:WebServiceProxy>

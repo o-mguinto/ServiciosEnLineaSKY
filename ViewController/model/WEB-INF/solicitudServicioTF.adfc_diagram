@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">SolicitudOtrosServicios</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">264.0</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SolicitudOtrosServicios&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">135.89648</property>
+      <property
+         name="page">/pages/solicitudOtrosServicios/SolicitudOtrosServicios.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+</SDM>

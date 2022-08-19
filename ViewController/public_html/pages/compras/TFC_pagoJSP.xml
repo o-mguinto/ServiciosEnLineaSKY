@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="TFC_pagoJSP">
+    <default-activity>pago_general</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>PagoGeneralBackingBean</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.pagos.BBPagoGeneral</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="pago_general">
+      <page>/pages/compras/pago_general.jsf</page>
+    </view>
+    <task-flow-return id="pago_exitoso">
+      <outcome id="__2">
+        <name>pago_exitoso</name>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="pago_fallido">
+      <outcome id="__18">
+        <name>pago_fallido</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__4">
+      <from-activity-id id="__3">*</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome id="__7">pago_exitoso</from-outcome>
+        <to-activity-id id="__5">pago_exitoso</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__20">
+      <from-activity-id id="__19">*</from-activity-id>
+      <control-flow-case id="__21">
+        <from-outcome id="__23">pago_fallido</from-outcome>
+        <to-activity-id id="__22">pago_fallido</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id id="__12">*</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome id="__16">intentar_pago</from-outcome>
+        <to-activity-id id="__15">pago_general</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_estCelularIndex" label="#{lbl.smenu_ESTATUSCELULAR}" action="irEstCelularRouter"
+            focusViewId="/estCelularIndex" immediate="true" rendered="#{sesion.CONSUMO_CELULAR}"
+            icon="/imagenes/menu/ic_celulares.svg">
+    <itemNode id="itemNode_estatusCelular" label="#{lbl.smenu_ESTATUSCELULAR_CONSUMOCELULAR}" action="irEstatusCelular"
+              focusViewId="/estatusCelular" rendered="#{sesion.CONSUMO_CELULAR}"/>
+  </itemNode>
+</menu>

@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+@media only screen and (min-device-width:320px) and (max-device-width:767px) {
+.backgroundPlantilla {
+        background: #F4F4F4 0% 0% no-repeat padding-box;
+        opacity: 1;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundEstadoDeCuenta {
+        background: #01ccdb url('/bt/imagenes/moviles/interno/micuenta/Fondo_Interior_ver_1.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundPagoEnLinea {
+        background: #01ccdb url('/bt/imagenes/moviles/interno/micuenta/Fondo_Interior_ver_2.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundPagarNuevaTarjeta {
+        background: #E7E614 url('/sky/imagenes/moviles/interno/micuenta/Fondo_Interior_ver_3.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundDetalleLlamadas {
+        background: #E7E614 url('/sky/imagenes/moviles/interno/micuenta/Fondo_Interior_ver_4.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundPerfil {
+        background: #5B2178 url('/sky/imagenes/moviles/interno/miperfil/Fondo_Interior_ver_5.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundActualizarDatos {
+        background: #5B2178 url('/sky/imagenes/moviles/interno/miperfil/Fondo_Interior_ver_6.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundCambiarContrasenia {
+        background: #5B2178 url('/sky/imagenes/moviles/interno/miperfil/Fondo_Interior_ver_7.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundFacturaelectronica {
+        background: #E7E614 url('/sky/imagenes/moviles/interno/facturaelectronica/Fondo_Interior_ver_8.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundRegistrarDatos {
+        background: #E7E614 url('/sky/imagenes/moviles/interno/facturaelectronica/Fondo_Interior_ver_9.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundDescargarFacturas {
+        background: #E7E614 url('/sky/imagenes/moviles/interno/facturaelectronica/Fondo_Interior_ver_10.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundContactanos {
+        background: #00ACDC url('/sky/imagenes/moviles/interno/contactanos/Fondo_Interior_ver_11.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundConsumoDatos {
+        background: #E7E614 url('/sky/imagenes/moviles/interno/micuenta/Fondo_Interior_ver_1.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundRecargas {
+        background: #E7E614 url('/sky/imagenes/moviles/interno/recargas/Fondo_Interior_ver_1.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+}
+
+
+@media only screen and (min-device-width:768px) {
+.backgroundPlantilla {
+        background: #F4F4F4 0% 0% no-repeat padding-box;
+        opacity: 1;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundEstadoDeCuenta {
+        background: #01ccdb url('/sky/imagenes/pc/interno/micuenta/Fondo_interior_1.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundPagoEnLinea {
+        background: #01ccdb url('/sky/imagenes/pc/interno/micuenta/Fondo_interior_2.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundPagarNuevaTarjeta {
+        background: #E7E614 url('/sky/imagenes/pc/interno/micuenta/Fondo_interior_3.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundDetalleLlamadas {
+        background: #E7E614 url('/sky/imagenes/pc/interno/micuenta/Fondo_interior_4.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundPerfil {
+        background: #5B2178 url('/sky/imagenes/pc/interno/miperfil/Fondo_interior_5.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundActualizarDatos {
+        background: #5B2178 url('/sky/imagenes/pc/interno/miperfil/Fondo_interior_6.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundCambiarContrasenia {
+        background: #5B2178 url('/sky/imagenes/pc/interno/miperfil/Fondo_interior_7.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundFacturaelectronica {
+        background: #E7E614 url('/sky/imagenes/pc/interno/facturaelectronica/Fondo_interior_8.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundRegistrarDatos {
+        background: #E7E614 url('/sky/imagenes/pc/interno/facturaelectronica/Fondo_interior_9.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundDescargarFacturas {
+        background: #E7E614 url('/sky/imagenes/pc/interno/facturaelectronica/Fondo_interior_10.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundContactanos {
+        background: #00ACDC url('/sky/imagenes/pc/interno/contactanos/Fondo_interior_11.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundConsumoDatos {
+        background: #E7E614 url('/sky/imagenes/pc/interno/micuenta/Fondo_interior_1.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .backgroundRecargas {
+        background: url('/sky/imagenes/pc/interno/recargas/Fondo_interior_1.jpg')no-repeat right top;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+}

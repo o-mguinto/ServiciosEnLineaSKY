@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48"
+                id="reporteTarjetaInteligentePageDef" Package="pages.reporteDanoRoboExtravio">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator id="obtenerSolicitudServicioIterator" Binds="obtenerSolicitudServicio.result"
+                    DataControl="DCTarjetaInteligente" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.solicitudservicio.DetalleSolicitudServicio"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerSolicitudServicio" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerSolicitudServicio" IsViewObjectMethod="false" DataControl="DCTarjetaInteligente"
+                  InstanceName="bindings.obtenerSolicitudServicio.dataControl.dataProvider"
+                  ReturnName="data.DCTarjetaInteligente.methodResults.obtenerSolicitudServicio_obtenerSolicitudServicio_dataControl_dataProvider_obtenerSolicitudServicio_result">
+      <NamedData NDName="rowID" NDValue="#{sesion.suscriptor.rowId}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="obtenerSolicitudServicioIterator" id="DetalleSolicitudServicio">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.solicitudservicio.DetalleSolicitudServicio" Name="DetalleSolicitudServicio0">
+        <AttrNames>
+          <Item Value="numeroSolicitud"/>
+          <Item Value="area"/>
+          <Item Value="subAarea"/>
+          <Item Value="comentario"/>
+          <Item Value="fechaCreacion"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="obtenerSolicitudServicioIterator" id="ActualizarTabla" InstanceName="DCTarjetaInteligente.dataProvider"
+            DataControl="DCTarjetaInteligente" RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

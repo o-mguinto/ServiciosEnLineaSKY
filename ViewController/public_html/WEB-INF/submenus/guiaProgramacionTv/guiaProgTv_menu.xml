@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_guiaProgramacionTv" label="#{lbl.menu_PROGRAMACION_TV}" action="irRouterGuiaProg"
+            focusViewId="/guiaProgramacionIndex" rendered="#{sesion.PROGRAMACION_TV}" immediate="true"
+            icon="/imagenes/menu/ic_guiaProgra.svg">
+    <itemNode id="itemNode_smGuiaProgTv" action="smenu_guiaProgTv" focusViewId="/guiaProgramacionTv"
+              rendered="#{sesion.PROGRAMACION_TV}" immediate="true" label="#{lbl.menu_PROGRAMACION_TV}"/>
+  </itemNode>
+</menu>

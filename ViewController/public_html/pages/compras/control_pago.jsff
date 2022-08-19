@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <!--Aqui va TODO el contenido-->
+    <af:group id="gpControl_pago">
+        <af:resource type="javascript">
+          $('#Control_pago').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            /*solo boton*/
+            .btn-internal {
+                min-width: 50%;
+            }
+
+            input[type="radio"] {
+                vertical-align: inherit;
+            }
+            /*para quitar el borde en el focus del radio*/
+            input[type="radio"]:focus {
+                outline: none !important;
+            }
+            /*checkbox*/
+            input[type=checkbox], input[type=radio] {
+                width: 20px !important;
+                height: 20px !important;
+                vertical-align: top;
+            }
+            /*para la seleccion del radio*/
+            /*input[type="radio"]:checked {
+           width: 23px !important;
+            height: 23px !important;
+            background: transparent url(../../imagenes/aplicacion/radio_on_light.svg) 0% 0% no-repeat padding-box !important;
+            opacity: 1 !important;
+            appearance: inherit;
+            border: 0px !important;
+        }*/
+            .solectOne-flex {
+                display: inline-block;
+                vertical-align: text-top;
+            }
+
+            .solectOne-flex >div {
+                margin-top: 10px;
+            }
+            /* For mobile phones: */
+@media only screen and (min-device-width:320px) and (max-device-width:767px) {
+                /*checkbox*/
+                input[type=checkbox], input[type=radio] {
+                    width: 24px !important;
+                    height: 24px !important;
+                }
+            }
+
+        </af:resource>
+        <div id="Control_pago">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <h:outputText styleClass="title" value="#{selSKYBundle['control.d3.title']}" id="otTitulo"
+                                      style="text-transform: uppercase;"/>
+                        <div class="row top">
+                            <af:panelGroupLayout id="pgl4" styleClass="col-3 col-sm-8  col-tb-3 right"
+                                                 inlineStyle="float:right;">
+                                <div class="top">
+                                    <div class="autocenter padd-top-dialog">
+                                        <af:image source="/imagenes/controlremoto/#{pageFlowScope.ControlBackingBean.control.pathIcon}"
+                                                  id="i2"/>
+                                    </div>
+                                    <div class="row autocenter">
+                                        <h:outputText id="it13"
+                                                      value="Precio: $ #{pageFlowScope.ControlBackingBean.control.precioDisplay}"
+                                                      styleClass="text-internal font-bolder"/>
+                                    </div>
+                                    <div class="row top dialog-descrip" style="max-height: 220px;">
+                                        <h:outputText id="it1"
+                                                      value="#{pageFlowScope.ControlBackingBean.control.descripcion}"/>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                             
+                            <af:panelGroupLayout id="pgl1" styleClass="col-9 col-sm-8  col-tb-5 right"
+                                                 inlineStyle="float:right;">
+                                <h:outputText styleClass="title" value="Seleccione forma de pago" id="ot2"/>
+                                <div class="row">
+                                    <af:panelBox id="panelBox1" maximized="true" showDisclosure="false"
+                                                 showMaximize="never" background="medium" showHeader="never"
+                                                 inlineStyle="border:none;    border-right: solid 1px #D6DFE6;     margin-right: 5px;">
+                                        <af:panelGroupLayout id="pfl1" partialTriggers="cbActualizar">
+                                            <div style="max-height: 300px; min-height: 70px; overflow:auto;">
+                                                <div class="row">
+                                                    <div class="col-12 col-tb-8 col-sm-8">
+                                                        <span class="xf">* </span>
+                                                         
+                                                        <af:outputLabel for="sor1" value="Tarjeta"
+                                                                        styleClass="label-internal" id="ol1"/>
+                                                         
+                                                        <af:selectOneRadio id="sor1"
+                                                                           styleClass="output-internal solectOne-flex"
+                                                                           value="#{pageFlowScope.ControlBackingBean.tarjetaObject}"
+                                                                           required="true" autoSubmit="true"
+                                                                           simple="true">
+                                                            <af:forEach var="tdc" items="#{bindings.tblTDC.rangeSet}">
+                                                                <f:selectItem id="si1" itemValue="#{tdc}"
+                                                                              itemLabel="#{tdc.numeroTarjeta}"/>
+                                                            </af:forEach>
+                                                        </af:selectOneRadio>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </af:panelGroupLayout>
+                                        <div class="row top">
+                                            <div class="col-12 col-tb-8 col-sm-8">
+                                                <span class="xf">* </span>
+                                                 
+                                                <af:outputLabel for="codigoSeguridad"
+                                                                value="#{selSKYBundle['lbl_codigoSeguridad']}" id="ol6"
+                                                                styleClass="label-internal"/>
+                                                 
+                                                <af:inputText secret="true"
+                                                              value="#{pageFlowScope.ControlBackingBean.tarjeta.codigo}"
+                                                              id="codigoSeguridad" required="true"
+                                                              styleClass="input-internal" maximumLength="4"
+                                                              placeholder="#{selSKYBundle['placeholder_cvv']}"
+                                                              showRequired="false" simple="true">
+                                                    <af:validateRegExp id="codSegValidator" pattern="[0-9]{3,4}"
+                                                                       messageDetailNoMatch="Ingresa el código de seguridad de 3 números de tu tarjeta o 4 si es AMEX."/>
+                                                </af:inputText>
+                                            </div>
+                                        </div>
+                                    </af:panelBox>
+                                </div>
+                            </af:panelGroupLayout>
+                             
+                            <af:panelGroupLayout id="pgl2">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <af:group id="g1">
+                                            <span class="xf">* </span>
+                                            <af:outputText value="#{selSKYBundle['general.obligatorio']}" id="ot1"
+                                                           styleClass="cursiv"/>
+                                        </af:group>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                             
+                            <af:panelGroupLayout id="pgl3">
+                                <div class="top top-2 col-2 col-sm-8  col-tb-2 right" style="float:right;">
+                                    <af:button text="Cancelar" id="cbCancelar"
+                                               action="#{pageFlowScope.ControlBackingBean.cbCancelar_action}"
+                                               immediate="true" styleClass="btn-internal"/>
+                                </div>
+                                <div class="top top-2 col-2 col-sm-8  col-tb-2 right" style="float:right;">
+                                    <af:button text="Siguiente" id="cbSiguientePago"
+                                               action="#{pageFlowScope.ControlBackingBean.cbSiguientePago_action}"
+                                               disabled="#{bindings.consultarTarjetasIterator.estimatedRowCount&lt;=0}"
+                                               styleClass="btn-internal"/>
+                                </div>
+                                <div class="top top-2 col-2 col-sm-8  col-tb-2 right" style="float:right;">
+                                    <af:button text="Atrás" id="cb1" immediate="true" action="regresar"
+                                               styleClass="btn-internal"/>
+                                </div>
+                                <div class="top top-2 col-4 col-sm-8  col-tb-4 right" style="float:right;">
+                                    <af:button text="Actualizar tarjetas" id="cbActualizar"
+                                               action="#{pageFlowScope.ControlBackingBean.cbActualizar_action}"
+                                               immediate="true" styleClass="btn-internal"/>
+                                </div>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

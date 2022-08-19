@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <style type="text/css" media="screen">
+        .color_0{ background: #a05202;}
+        .color_1{ background: #e3c802;}
+        .color_2{ background: #d80074;}
+        .color_3{ background: #647687;}
+        .color_4{ background: #3ea9e0;}
+        .color_5{ background: #56871C;}
+        .color_6{ background: #72465D;}
+        .color_7{ background: #7A5B0A;}
+        .color_8{ background: #8BBAE2;}
+        .color_9{ background: #DC7D16;}
+        .color_10{ background: #273B9C;}
+        .color_11{ background: #747E5C;}
+        .color_12{ background: #C34304;}
+        .color_13{ background: #294A0E;}
+        .color_14{ background: #807F81;}
+        .color_15{ background: #1C3A45;}
+        .color_16{ background: #0B777A;}
+        .color_17{ background: #670782;}
+        .color_18{ background: #E9042D;}
+        .color_19{ background: #98839B;}
+        .color_20{ background: #5181FB;}
+        .color_21{ background: #A24013;}
+        .color_22{ background: #48A17E;}
+        .color_23{ background: #2126DC;}
+        .color_24{ background: #E47B71;}
+        .color_25{ background: #76AAE2;}
+        .color_26{ background: #5C432F;}
+        .color_27{ background: #811E71;}
+        .color_28{ background: #E19C63;}
+        .color_29{ background: #6A9371;}
+
+
+        .ficha-paquete-cel{
+            padding:4px !important;
+            /*box-shadow: 1px 2px 5px 1px #b0b0b0;*/
+            max-width: 80%;
+            /*height: 80px;*/
+            padding: 15px 15px;
+            white-space: normal;
+            color: white !important;
+            border-radius: 10px;
+            margin-right: auto;
+            FONT-WEIGHT: BOLDER;
+            margin-left: auto;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            -webkit-justify-content: center;
+            -moz-justify-content: center;
+            -ms-justify-content: center;
+            -webkit-align-content: center;
+            -moz-align-content: center;
+            -ms-align-content: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-align-items: center;
+            flex-direction: column;
+            /*FONT-SIZE: 15px;*/
+        }
+        .ficha-paquete-cel:hover{
+            cursor:pointer;
+            /*box-shadow:1px 2px 20px 1px black;*/
+            max-width: 80%;
+            /*height: 100px;*/
+            text-decoration: none;
+            padding: 15px 15px;
+            white-space: normal;
+            color: white !important;
+            border-radius:10px;
+            margin-right: auto;
+            margin-left: auto;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            -webkit-justify-content: center;
+            -moz-justify-content: center;
+            -ms-justify-content: center;
+            -webkit-align-content: center;
+            -moz-align-content: center;
+            -ms-align-content: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-align-items: center;
+            flex-direction: column;
+          
+        }
+        
+        .ficha-paquete-cel span{
+            text-decoration:none !important;
+            text-wrap:normal !important;
+            text-align:center;
+            text-shadow: 1px 1px 2px black;
+            background:none;
+            border:solid 2px white;
+            z-index:10;
+            width: 96%;
+            min-height: 85%;
+            border-radius:10px;
+            margin-right: auto;
+            margin-left: auto;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            -webkit-justify-content: center;
+            -moz-justify-content: center;
+            -ms-justify-content: center;
+            -webkit-align-content: center;
+            -moz-align-content: center;
+            -ms-align-content: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-align-items: center;
+            flex-direction: column;
+        }
+    </style>
+    
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#cambioPaqCelular').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css" source="/css/consumo_internet.css"/>
+        <div id="cambioPaqCelular">
+            <af:messages id="m1"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelGroupLayout id="pgl1" rendered="#{!pageFlowScope.BBCambioPaqueteCelular.cambioPaquetePosible}">
+                            <div class="col-12 content-internal">
+                                <div class="row">
+                                    <af:outputText id="otCambioNoPosible" 
+                                                   value="Esta cuenta no es candidata a realizar el cambio de paquete, llamar a atención a clientes mara mayor información."
+                                                   styleClass="check-internal-bold"/>
+                                </div>
+                            </div>
+                        </af:panelGroupLayout>
+                    
+                        <af:panelGroupLayout id="pgl2" rendered="#{pageFlowScope.BBCambioPaqueteCelular.cambioPaquetePosible}">
+                            <div class="col-12 content-internal">
+                                <div class="row">
+                                    <af:outputText id="otInstrucciones" 
+                                                   value="Seleccione el paquete celular al que se desea cambiar:"
+                                                   styleClass="check-internal-bold"/>
+                                </div>
+                                
+                                <br/>
+                                <br/>
+                                
+                                <div class="row">
+                                    <af:forEach items="#{pageFlowScope.BBCambioPaqueteCelular.paquetesCelulares}" var="paqCelular"
+                                                varStatus="paqIndx">
+                                        <div class="col-6 col-sm-6 col-tb-6">
+                                            <af:panelGroupLayout id="pgl8" layout="vertical"  styleClass="autocenter">
+                                                <af:panelGroupLayout id="pglLink">
+                                                    <af:link action="#{pageFlowScope.BBCambioPaqueteCelular.showPopupPaqueteCelular}" 
+                                                             id="linkPaqCelBas" text="#{paqCelular.nombreProducto}" 
+                                                             styleClass="ficha-paquete-cel color_#{paqIndx.index}">
+                                                        <span />
+                                                        <f:setPropertyActionListener target="#{pageFlowScope.BBCambioPaqueteCelular.paqueteCelularSeleccionado}" value="#{paqCelular}"/>
+                                                        <br/>
+                                                        <div>
+                                                            <af:outputText id="otDescBas1" value="Incluye:"/>
+                                                            <br/>
+                                                            <af:outputText id="otDescBas2" value="#{paqCelular.minutos} Minutos"/>
+                                                            <br/>
+                                                            <af:outputText id="otDescBas3" value="#{paqCelular.sms} SMS"/>
+                                                            <br/>
+                                                            <af:outputText id="otDescBas4" value="#{paqCelular.datos} MB"/>
+                                                            <br/>
+                                                            <af:outputText id="otDescBas5" value="Vigencia de #{paqCelular.vigencia} días"/>
+                                                            <br/>
+                                                            <af:outputText id="otDescBas6" value="#{paqCelular.descripcion}"/>
+                                                        </div>
+                                                    </af:link>
+                                                </af:panelGroupLayout>
+                                                
+                                                <af:outputText id="otCostoPaqCel" value="#{paqCelular.precio} #{sesion.moneda}" styleClass="channel-text1"/>
+                                                <div class="top"></div>
+                                            </af:panelGroupLayout>
+                                        </div>
+                                    </af:forEach>
+                                </div>
+                                
+                                <div class="row">
+                                    <af:outputText id="otNota" 
+                                                   value="El cambio aplica para todas las líneas que tenga contratadas y se verá reflejado en su siguiente recarga"
+                                                   styleClass="text-internal" inlineStyle="padding-left:0"/>
+                                </div>
+                            </div>
+                        </af:panelGroupLayout>
+                    </div>
+                    <af:popup id="confirmacionCambioPaqCel" childCreation="deferred"
+                              contentDelivery="lazyUncached"
+                              autoCancel="disabled"
+                              binding="#{pageFlowScope.BBCambioPaqueteCelular.popupConfirmacion}">
+                        <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                            <af:dialog id="dialogPopup" type="none"
+                                       styleClass="alert"
+                                       closeIconVisible="false"
+                                       title="Confirmar cambio de paquete celular">
+                                <div class="text-internal">
+                                    <af:outputText id="otInst" value="Confirme que desea realizar el cambio de su paquete celular por el siguiente:"
+                                                   styleClass="font-bolder"/>
+                                    <br/>
+                                    <br/>
+                                    
+                                    <af:outputText id="otNom" value="#{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.nombre}" styleClass="font-bolder"/>
+                                    <br/>
+                                    
+                                    <af:outputText id="otDesc" value="#{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.descripcion}"/>
+                                    <br/>
+                                    
+                                    <af:outputText id="otPre" value="Precio por línea: $#{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.precio}"/>
+                                    <br/>
+                                    
+                                    <af:outputText id="otInc" value="Incluye:"/>
+                                    <br/>
+                                    
+                                    <af:panelGroupLayout id="pgIncluye">
+                                        <af:panelGroupLayout id="pgMin" rendered="#{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.minutos != null}">
+                                            <af:outputText id="otMin" value="  - #{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.minutos} Minutos para llamadas"/>
+                                            <br/>
+                                        </af:panelGroupLayout>
+                                        
+                                        <af:panelGroupLayout id="pgSms" rendered="#{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.sms != null}">
+                                            <af:outputText id="otSms" value="  - #{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.sms} SMS"/>
+                                            <br/>
+                                        </af:panelGroupLayout>
+                                        
+                                        <af:panelGroupLayout id="pgDat" rendered="#{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.datos != null}">
+                                            <af:outputText id="otDat" value="  - #{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.datos} MB para navegar"/>
+                                            <br/>
+                                        </af:panelGroupLayout>
+                                        
+                                        <af:panelGroupLayout id="pgFun" rendered="#{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.funcionalidad != null}">
+                                            <af:outputText id="otFun" value="  - #{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.funcionalidad}"/>
+                                            <br/>
+                                        </af:panelGroupLayout>
+                                        
+                                        <af:panelGroupLayout id="pgCob" rendered="#{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.cobertura != null}">
+                                            <af:outputText id="otCob" value="  - #{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.cobertura}"/>
+                                            <br/>
+                                        </af:panelGroupLayout>
+                                        
+                                        <af:outputText id="otVig" value="  - Vigencia: #{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.vigencia} días"
+                                                       rendered="#{pageFlowScope.BBCambioPaqueteCelular.detalleProductoSeleccionado.vigencia != null}"/>
+                                    </af:panelGroupLayout>
+                                    <br/>
+                                    <br/>
+                                    <af:outputText id="otAvi" value="El cambio aplica para todas las líneas que tenga contratadas y se verá reflejado en su siguiente recarga"/>
+                                </div>
+                                
+                                
+                                <div class="col-12 dialog-background">
+                                    <div class="row top autocenter">
+                                        <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-left sm-no-padd-left" style="float: right">
+                                                <af:button id="bConfirmarCambio"
+                                                           text="Confirmar"
+                                                           styleClass="btn-pay-dialog"
+                                                           action="#{pageFlowScope.BBCambioPaqueteCelular.cambiarPaqeteCelular}">
+                                                    <af:clientListener method="enforcePreventUserInput"
+                                                                       type="action"/>
+                                                </af:button>
+                                            </div>
+                                        <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-right sm-no-padd-right" style="float: right">
+                                            <af:button id="b6" text="Cancelar"
+                                                       styleClass="btn-pay-dialog"
+                                                       action="#{pageFlowScope.BBCambioPaqueteCelular.cancelarCambioPaqCel}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </af:dialog>
+                        </div>
+                    </af:popup>
+                </div>
+            </div>
+        </div>
+        
+    </af:group>
+</ui:composition>

@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <TaskFlowCall
+      id="TaskFlowCall5">
+      <property
+         name="runAsDialog">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>compraRecargaTF&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="activityId">compraRecargaTF</property>
+      <property
+         name="x">304.01562</property>
+      <property
+         name="y">62.436523</property>
+      <property
+         name="documentReference">/WEB-INF/compraRecargaTF.xml</property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="taskFlowId">compraRecargaTF</property>
+   </TaskFlowCall>
+   <View
+      id="View6">
+      <property
+         name="activityId">compraPaqueteDatos</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">21.03418</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>compraPaqueteDatos&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">27.488281</property>
+      <property
+         name="page">/pages/compraPaqueteDatos/compraPaqueteDatos.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase7"
+      from="View6"
+      to="TaskFlowCall5">
+      <property
+         name="tosrcid">__3</property>
+      <property
+         name="fromOutcome">compra</property>
+      <property
+         name="fromsrcid">__2</property>
+      <property
+         name="sdm:polyPoints">R50,62.03418,27.137695,263.01562,62.085938,L50</property>
+   </ControlFlowCase>
+</SDM>

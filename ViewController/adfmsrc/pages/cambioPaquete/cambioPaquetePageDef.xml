@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="cambioPaquetePageDef"
+                Package="pages.cambioPaquete">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="obtenerSolicitudServicio.result" DataControl="DCCambioPaquete" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.solicitudservicio.DetalleSolicitudServicio"
+                    id="obtenerSolicitudServicioIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerSolicitudServicio" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerSolicitudServicio" IsViewObjectMethod="false" DataControl="DCCambioPaquete"
+                  InstanceName="bindings.obtenerSolicitudServicio.dataControl.dataProvider"
+                  ReturnName="data.DCCambioPaquete.methodResults.obtenerSolicitudServicio_obtenerSolicitudServicio_dataControl_dataProvider_obtenerSolicitudServicio_result">
+      <NamedData NDName="rowID" NDValue="#{sesion.suscriptor.rowId}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="obtenerSolicitudServicioIterator" id="DetalleSolicitudServicio">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.solicitudservicio.DetalleSolicitudServicio" Name="result0">
+        <AttrNames>
+          <Item Value="numeroSolicitud"/>
+          <Item Value="area"/>
+          <Item Value="subAarea"/>
+          <Item Value="comentario"/>
+          <Item Value="fechaCreacion"/>
+          <Item Value="apellidoDeContrato"/>
+          <Item Value="tarjetaInteligente"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="obtenerSolicitudServicioIterator" id="ExecuteDetalleSolicitudServicio" InstanceName="DCCambioPaquete.dataProvider"
+            DataControl="DCCambioPaquete" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <methodAction id="obtenerPaquetes" RequiresUpdateModel="true" Action="invokeMethod" MethodName="obtenerPaquetes"
+                  IsViewObjectMethod="false" DataControl="DCCambioPaquete"
+                  InstanceName="bindings.obtenerPaquetes.dataControl.dataProvider"
+                  ReturnName="data.DCCambioPaquete.methodResults.obtenerPaquetes_obtenerPaquetes_dataControl_dataProvider_obtenerPaquetes_result">
+      <NamedData NDName="paqueteActual" NDValue="#{sesion.suscriptor.paquete}" NDType="java.lang.String"/>
+      <NamedData NDName="codigoPais" NDValue="#{sesion.suscriptor.organizacion}" NDType="java.lang.String"/>
+      <NamedData NDName="tipoCuenta" NDValue="#{sesion.suscriptor.marketType}" NDType="java.lang.String"/>
+      <NamedData NDName="paisISO" NDValue="#{sesion.suscriptor.paisISO}" NDType="java.lang.String"/>
+      <NamedData NDName="ctaSKY" NDValue="#{sesion.cuentaSKY}" NDType="java.lang.String"/>
+      <NamedData NDName="sistema" NDValue="#{sesion.sistema}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="revistaContratadaPs" RequiresUpdateModel="true" Action="invokeMethod" MethodName="revistaContratada"
+                  IsViewObjectMethod="false" DataControl="DCRevista"
+                  InstanceName="bindings.revistaContratadaPs.dataControl.dataProvider"
+                  ReturnName="data.DCRevista.methodResults.revistaContratada_revistaContratada_dataControl_dataProvider_revistaContratada_result">
+      <NamedData NDName="cuenta" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

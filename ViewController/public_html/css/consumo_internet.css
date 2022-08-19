@@ -1,0 +1,32 @@
+@charset "UTF-8";
+.channel-box {border:1px solid #0099FF; border-radius:10px; box-shadow:0px 1px 17px -2px #9B9B9B; width:720px; min-height:210px; margin:5px 10px; padding:5px; text-align:center; display:inline-block; float:left;}
+.channel-header {font:normal bolder 16px Helvetica, Arial, sans-serif; color:black; text-transform:uppercase; text-align:left; display:block;}
+.channel-bloqueo {font: bold 16px/20px Roboto; font-size: 16px; color:#004B8D; text-align:justify; display:block;}
+.channel-text1 {
+    font: bold 16px/20px Roboto; font-size: 16px;
+    color:#004B8D; 
+    text-transform:uppercase; 
+    display:inline-block; }
+.channel-text2 {
+    font: Medium Roboto;
+    font-size:12px;
+    color:#004B8D;
+    display:inline-block;}
+.center {text-align:center;}
+
+.myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+.myBar {
+  width: 10%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+
+.channel-compra {font:normal bolder 16px Helvetica, Arial, sans-serif; color:black; text-align:justify; display:block;}
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+    <itemNode id="itemNode_compraServicioSuplementarioCelularIndex"
+            label="#{lbl.smenu_COMPRA_SERVICIO_SUPLEMENTARIO_CELULAR}"
+            action="irCompraServicioSuplementarioRouter"
+            focusViewId="/compraServicioSuplementarioCelularIndex"
+            icon="/imagenes/menu/ic_compraPaqueteDatos.svg"
+            immediate="true"
+            rendered="#{sesion.COMPRA_SERVICIO_SUPLEMENTARIO_CELULAR}">
+        <itemNode id="itemNode_compraServicioSuplementarioCelular"
+                label="#{lbl.smenu_COMPRA_SERVICIO_SUPLEMENTARIO}"
+                action="irCompraServicioSuplementario"
+                focusViewId="/compraServicioSuplementarioCelular"
+                rendered="#{sesion.COMPRA_SERVICIO_SUPLEMENTARIO_CELULAR}"/>
+    </itemNode>
+</menu>

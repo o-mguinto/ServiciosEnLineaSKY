@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <af:group id="gpCambioTitularTyMx3a">
+        <af:resource type="javascript">
+          $('#cambioTitularTyMx3a').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            /*solo boton*/
+            .btn-internal {
+                min-width: 50%;
+            }
+
+            .output-internal, .output-internal label {
+                width: 30%;
+            }
+            /* For tablets: */
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+                .output-internal, .output-internal label {
+                    width: 50%;
+                }
+            }
+
+            /* For mobile phones: */
+@media only screen and (min-device-width:320px) and (max-device-width:767px) {
+                .output-internal, .output-internal label {
+                    width: 100%;
+                }
+            }
+
+        </af:resource>
+        <div id="cambioTitularTyMx3a">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:panelGroupLayout id="pgl1" layout="scroll" styleClass="dialog-background"
+                                             inlineStyle="border: none;">
+                            <h:outputText styleClass="title" value="LLENAR DOCUMENTOS" id="otTitulo"/>
+                            <div class="row top">
+                                <h:outputText styleClass="title" value="Datos de la tarjeta" id="ot14"/>
+                            </div>
+                            <div class="row ">
+                                <af:panelBox text="" id="pb1" maximized="true" showDisclosure="false"
+                                             showMaximize="never" background="medium" showHeader="never"
+                                             inlineStyle="margin:0.0%; padding:0.0%; border:none;">
+                                    <f:facet name="toolbar"/>
+                                    <af:panelFormLayout id="pfl1" labelAlignment="top" labelWidth="100%"
+                                                        fieldWidth="30%">
+                                        <af:inputText label="Número de Tarjeta" id="itCTNuevaTDC" maximumLength="16"
+                                                      columns="16" required="true"
+                                                      value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.noTDC}"
+                                                      styleClass="input-internal"/>
+                                        <af:selectOneChoice id="itFechaVenAno" label="Mes de Vencimiento"
+                                                            value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.anoVencimiento}"
+                                                            required="true" showRequired="true"
+                                                            styleClass="col-4 output-internal select-internal"
+                                                            labelStyle="opacity: 0.8;">
+                                            <f:selectItems value="#{pageFlowScope.PFCambioTitularForm.meses}" id="si2"/>
+                                        </af:selectOneChoice>
+                                        <af:selectOneChoice label="Año de Vencimiento" id="itFechaVenMes"
+                                                            value="#{pageFlowScope.PFCambioTitularForm.subrrogacion.mesVencimiento}"
+                                                            required="true" showRequired="true"
+                                                            styleClass="output-internal select-internal"
+                                                            labelStyle="opacity: 0.8;">
+                                            <f:selectItems value="#{pageFlowScope.PFCambioTitularForm.anios}" id="si3"/>
+                                        </af:selectOneChoice>
+                                    </af:panelFormLayout>
+                                </af:panelBox>
+                            </div>
+                        </af:panelGroupLayout>
+                         
+                        <af:panelGroupLayout id="panelGroupLayout1">
+                            <div class="top top-2 col-3 col-sm-8  col-tb-2 right" style="float:right;">
+                                <af:button text="Cancelar" id="cb2" action="cancelar" immediate="true"
+                                           styleClass="btn-internal"/>
+                            </div>
+                            <div class="top top-2 col-3 col-sm-8  col-tb-2 right" style="float:right;">
+                                <af:button text="Siguiente" id="cb1" action="siguiente" styleClass="btn-internal"/>
+                            </div>
+                            <div class="top top-2 col-3 col-sm-8  col-tb-2 right" style="float:right;">
+                                <af:button text="Atrás" id="cb3" action="atras" immediate="true"
+                                           styleClass="btn-internal"/>
+                            </div>
+                        </af:panelGroupLayout>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

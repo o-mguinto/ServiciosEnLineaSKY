@@ -1,0 +1,489 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#pagarNuevaTarjeta').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+        /*for phones*/
+            @media only screen and (min-device-width: 320px) and (max-device-width: 767px){
+                .btn-internal {
+                    width: 80%;
+                }
+            }
+            /*for tablets*/
+            @media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
+                .btn-internal {
+                    width: 95%;
+                }
+            }
+        </af:resource>
+        <!--scripts para implementar encriptacion Voltage-->
+        <af:resource type="javascript"  source="https://despievoltage.sky.com.mx/pie/v1/encryption.js"/>
+        <af:resource type="javascript"  source="https://despievoltage.sky.com.mx/pie/v1/voltageskytc/getkey.js"/>
+        <af:resource type="javascript"  source="js/voltage/pie-data-protection.js"/>
+        <af:resource type="javascript"  source="js/voltage/pie-services.js"/>
+        <div id="pagarNuevaTarjeta">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <div class="col-8 col-tb-8 col-sm-8">
+                            <div class="row">
+                                <div class="col-12">
+                                    <af:outputLabel for="nombreTarjetahabiente"
+                                                    value="#{selSKYBundle.lbl_nombreTarjetahabiente}"
+                                                    id="ol1"
+                                                    styleClass="label-internal"/>
+                                     
+                                    <!---->
+                                     
+                                    <af:inputText id="nombreTarjetahabiente"
+                                                  simple="true" required="true"
+                                                  autoSubmit="true"
+                                                  value="#{viewScope.pagosNuevaTarjetaMB.nombreTarjetaHabiente}"
+                                                  placeholder="#{selSKYBundle['placeHolder_ingresarNombreTarjeta']}"
+                                                  maximumLength="100"
+                                                  styleClass="input-internal"
+                                                  partialTriggers="dlgPagar"/>
+                                </div>
+                            </div>
+                            <div class="row top">
+                                <div class="col-12">
+                                    <af:outputLabel for="numeroTarjeta"
+                                                    value="#{selSKYBundle.lbl_numeroTarjeta}"
+                                                    id="ol2"
+                                                    styleClass="label-internal"/>
+                                     
+                                    <!---->
+                                    <af:inputText id="numeroTarjeta"
+                                                  simple="true" secret="true"
+                                                  required="true"
+                                                  value="#{viewScope.pagosNuevaTarjetaMB.numeroTarjeta}"
+                                                  placeholder="#{selSKYBundle.placeHolder_ingresaNumeroTarjeta}"
+                                                  valueChangeListener="#{viewScope.pagosNuevaTarjetaMB.lstnrValueChangeNumeroTarjeta}"
+                                                  autoSubmit="true"
+                                                  maximumLength="16"
+                                                  styleClass="input-internal"
+                                                  partialTriggers="dlgPagar">
+                                        <af:validateRegExp messageDetailNoMatch="#{selSKYBundle.msg_estructuraTarjetaCredito}"
+                                                           pattern="^[0-9]{15,16}$"/>
+                                    </af:inputText>
+                                </div>
+                            </div>
+                            <div class="row top">
+                                <div class="col-12">
+                                    <h:inputHidden id="creditCardNumberProtect"
+                                                    binding="#{viewScope.pagosNuevaTarjetaMB.tarjetaProtegida}"/>
+                                </div>
+                            </div>
+                            <div class="row top">
+                                <div class="col-12 col-tb-8 col-sm-8">
+                                    <af:outputLabel value="#{selSKYBundle.lbl_tipotarjeta}"
+                                                    id="ol3"
+                                                    styleClass="label-internal"/>
+                                </div>
+                                <div class="col-12 col-tb-8 col-sm-8">
+                                    <af:panelGroupLayout id="pgl1"
+                                                         partialTriggers="numeroTarjeta"
+                                                         inlineStyle="padding: 10px;">
+                                        <h:inputHidden id="key_id"
+                                                    binding="#{viewScope.pagosNuevaTarjetaMB.key_id}"/>
+                                        <h:inputHidden id="phase"
+                                                    binding="#{viewScope.pagosNuevaTarjetaMB.phase}"/>
+                                        <af:image id="i1"
+                                                  source="imagenes/pc/interno/micuenta/Visa_logo.jpg"
+                                                  rendered="#{viewScope.pagosNuevaTarjetaMB.tipoTarjeta eq 'VISA'}"
+                                                  shortDesc="Visa"
+                                                  styleClass="credit-card-logo"/>
+                                        <af:image id="i2"
+                                                  source="imagenes/pc/interno/micuenta/MasterCard_logo.jpg"
+                                                  rendered="#{viewScope.pagosNuevaTarjetaMB.tipoTarjeta eq 'MASTERCARD'}"
+                                                  shortDesc="MasterCard"
+                                                  styleClass="credit-card-logo"/>
+                                        <af:image id="i3"
+                                                  source="imagenes/pc/interno/micuenta/Amex_logo.jpg"
+                                                  rendered="#{viewScope.pagosNuevaTarjetaMB.tipoTarjeta eq 'AMEX'}"
+                                                  shortDesc="American Express"
+                                                  styleClass="credit-card-logo"/>
+                                        <h:outputText id="ot2"
+                                                      value="#{viewScope.pagosNuevaTarjetaMB.tipoTarjeta}"
+                                                      styleClass="perfil-input-internal"/>
+                                    </af:panelGroupLayout>
+                                </div>
+                            </div>
+                            <div class="row top">
+                                <div class="col-12 col-tb-8 col-sm-8">
+                                    <af:outputLabel for="sncMesVencimiento"
+                                                    styleClass="label-internal"
+                                                    id="ol4"
+                                                    value="#{selSKYBundle.lbl_mesVencimiento}"/>
+                                     
+                                    <!---->
+                                     
+                                    <af:selectOneChoice styleClass="select-internal"
+                                                        id="sncMesVencimiento"
+                                                        simple="true"
+                                                        autoSubmit="true"
+                                                        showRequired="false"
+                                                        required="true"
+                                                        unselectedLabel="#{selSKYBundle.lbl_selecciona_una_opcion}"
+                                                        valueChangeListener="#{viewScope.pagosNuevaTarjetaMB.lstnrValueChangeMesVencimiento}"
+                                                        value="#{viewScope.pagosNuevaTarjetaMB.mesVencimiento}"
+                                                        partialTriggers="dlgPagar">
+                                        <!---->
+                                        <f:selectItems value="#{viewScope.pagosNuevaTarjetaMB.lstMesVencimiento}"
+                                                       id="si3"/>
+                                    </af:selectOneChoice>
+                                </div>
+                            </div>
+                            <div class="row top">
+                                <div class="col-12 col-tb-8 col-sm-8">
+                                    <af:outputLabel for="sncAnioVencimiento"
+                                                    value="#{selSKYBundle.lbl_anioVencimiento}"
+                                                    styleClass="label-internal"
+                                                    id="ol5"
+                                                    partialTriggers="dlgPagar"/>
+                                     
+                                    <af:selectOneChoice styleClass="select-internal"
+                                                        id="sncAnioVencimiento"
+                                                        simple="true"
+                                                        autoSubmit="true"
+                                                        showRequired="false"
+                                                        required="true"
+                                                        unselectedLabel="#{selSKYBundle.lbl_selecciona_una_opcion}"
+                                                        valueChangeListener="#{viewScope.pagosNuevaTarjetaMB.lstnrValueChangeAnioVencimiento}"
+                                                        value="#{viewScope.pagosNuevaTarjetaMB.anioVencimiento}"
+                                                        partialTriggers="dlgPagar">
+                                        <!---->
+                                        <f:selectItems value="#{viewScope.pagosNuevaTarjetaMB.lstAnioVencimiento}"
+                                                       id="si4"/>
+                                    </af:selectOneChoice>
+                                </div>
+                            </div>
+                            <div class="row top">
+                                <div class="col-12 col-tb-8 col-sm-8">
+                                    <af:outputLabel for="codigoSeguridad"
+                                                    value="#{selSKYBundle.lbl_codigoSeguridad}"
+                                                    id="ol6"
+                                                    styleClass="label-internal"/>
+                                </div>
+                                <div class="col-12 col-tb-8 col-sm-8">
+                                    <!---->
+                                    <af:inputText id="codigoSeguridad"
+                                                  simple="true" secret="true"
+                                                  required="true"
+                                                  value="#{viewScope.pagosNuevaTarjetaMB.codigoSeguridad}"
+                                                  placeholder="#{selSKYBundle.placeholder_cvv}"
+                                                  autoSubmit="true"
+                                                  maximumLength="4"
+                                                  styleClass="input-internal"
+                                                  partialTriggers="dlgPagar">
+                                        <af:validateRegExp messageDetailNoMatch="#{selSKYBundle.msg_estructuraCodigo}"
+                                                           pattern="^[0-9]{3,4}$"/>
+                                    </af:inputText>
+                                </div>
+                            </div>
+                            <div class="row top">
+                                <!---->
+                                <af:selectBooleanCheckbox id="sbcTerminos"
+                                                          autoSubmit="true"
+                                                          simple="true"
+                                                          value="#{viewScope.pagosNuevaTarjetaMB.aceptaTerminos}"
+                                                          partialTriggers="dlgPagar"/>
+                                 
+                                <label for="pt1:pt_s1:r1:2:sbcTerminos::content">
+                                    <h:outputText id="o23"
+                                                  value="#{selSKYBundle.mensaje_terminos1}"/>
+                                    <h:outputLink id="ol7"
+                                                  value="#{parametros.urlAvisoPrivacidad}"
+                                                  target="_blank"
+                                                  styleClass="terminos">
+                                        <h:outputText id="ot8"
+                                                      value="#{selSKYBundle.mensaje_terminos2}"/>
+                                    </h:outputLink>
+                                </label>
+                            </div>
+                            <div class="row top">
+                                <div class="col-12 col-tb-8 col-sm-8">
+                                    <af:outputLabel for="it4"
+                                                    value="#{selSKYBundle['pago.inputText1.label']}"
+                                                    id="ol9"
+                                                    styleClass="label-internal"/>
+                                </div>
+                                <div class="col-12 col-tb-8 col-sm-8">
+                                    <af:outputText id="ol11" value="$"
+                                                   styleClass="output-internal"
+                                                   inlineStyle="padding-right:5px;vertical-align: text-top;"/>
+                                     
+                                    <af:inputText value="#{pageFlowScope.PagosBackingBean.importe.value}"
+                                                  binding="#{viewScope.pagosNuevaTarjetaMB.importe}"
+                                                  required="true"
+                                                  showRequired="false"
+                                                  simple="true" readOnly="true"
+                                                  columns="6" maximumLength="8"
+                                                  id="it4"
+                                                  styleClass="input-internal"
+                                                  inlineStyle="vertical-align: bottom;"
+                                                  partialTriggers="dlgPagar">
+                                        <f:convertNumber minFractionDigits="2"
+                                                         currencyCode="MXN"
+                                                         type="currency"/>
+                                    </af:inputText>
+                                     
+                                    <af:outputText value="#{sessionScope.sesion.moneda}"
+                                                   id="ot790"
+                                                   styleClass="output-internal"
+                                                   inlineStyle="padding-left: 5px;vertical-align: bottom;"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="top top-2 col-2 col-tb-2 col-sm-8 padd-left padd-right sm-no-padd-right sm-no-padd-left sm-cancel-align"
+                                     style="float: right;">
+                                    <af:button id="cbPagar"
+                                               text="#{selSKYBundle.btn_pagar}"
+                                               partialTriggers="sbcTerminos numeroTarjeta"
+                                               disabled="#{not (viewScope.pagosNuevaTarjetaMB.tajetaValida and viewScope.pagosNuevaTarjetaMB.aceptaTerminos)}"
+                                               action="#{viewScope.pagosNuevaTarjetaMB.lstnrPagar}"
+                                               styleClass="btn-internal">
+                                        <af:clientListener method="enforcePreventUserInput"
+                                                           type="action"/>
+                                    </af:button>
+                                </div>
+                                <div class="top top-2 col-7 col-tb-5 col-sm-8 padd-right padd-left sm-no-padd-right sm-no-padd-left sm-cancel-align"
+                                     style="float: right;">
+                                    <af:button id="cbPagarYGuardar"
+                                               text="#{selSKYBundle.btn_pagarMisTarjetas}"
+                                               disabled="#{not (viewScope.pagosNuevaTarjetaMB.tajetaValida and viewScope.pagosNuevaTarjetaMB.aceptaTerminos)}"
+                                               action="#{viewScope.pagosNuevaTarjetaMB.lstnrPagaryGuardar}"
+                                               partialTriggers="sbcTerminos numeroTarjeta"
+                                               styleClass="btn-internal">
+                                        <af:clientListener method="enforcePreventUserInput"
+                                                           type="action"/>
+                                                           
+                                    </af:button>
+                                </div>
+                                <div class="top top-2 col-3 col-tb-2 col-sm-8 padd-right sm-no-padd-right sm-cancel-align"
+                                     style="float: right;">
+                                    <af:button id="cbRegresar"
+                                               text="#{selSKYBundle.btn_regresar}"
+                                               immediate="true"
+                                               action="regresarPago"
+                                               styleClass="btn-internal"/>
+                                </div>
+                            </div>
+                        </div>
+                        <af:popup id="p1" childCreation="deferred"
+                                  binding="#{viewScope.pagosNuevaTarjetaMB.popup}"
+                                  contentDelivery="lazyUncached"
+                                  autoCancel="disabled">
+                            <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                <af:dialog id="dlgPagar" title="Confirmar Pago"
+                                           type="none" closeIconVisible="false"
+                                           modal="true" styleClass="alert">
+                                    <div class="text-internal">
+                                        <div class="col-12 autocenter">
+                                            <h:outputText value="#{selSKYBundle['pago.d2.title']}"
+                                                          id="ot6"
+                                                          styleClass="font-bolder"/>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row top">
+                                                <h:outputText value="#{selSKYBundle['pago.inputText1.label']}"
+                                                              id="ot7"/>
+                                            </div>
+                                            <div class="border-bottom">
+                                                <h:outputText value="#{pageFlowScope.PagosBackingBean.importe.value} #{sessionScope.sesion.moneda}"
+                                                              id="ot10"
+                                                              styleClass="azul-internal"
+                                                              style="padding:5px;"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <h:outputText value="#{selSKYBundle.lbl_nombreTarjetahabiente}"
+                                                              id="ot5"/>
+                                            </div>
+                                            <div class="border-bottom">
+                                                <h:outputText value="#{viewScope.pagosNuevaTarjetaMB.nombreTarjetaHabiente}"
+                                                              styleClass="azul-internal"
+                                                              id="ot9"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <h:outputText value="#{selSKYBundle.lbl_numeroTarjeta}"
+                                                              id="ot11"/>
+                                            </div>
+                                            <div class="border-bottom">
+                                                <h:outputText value="#{viewScope.pagosNuevaTarjetaMB.tarjeta.noCodificado}"
+                                                              styleClass="azul-internal"
+                                                              id="ot12"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <h:outputText value="#{selSKYBundle['pago.it9.label']}"
+                                                              id="ot3"/>
+                                            </div>
+                                            <div class="border-bottom">
+                                                <h:outputText value="#{viewScope.pagosNuevaTarjetaMB.tarjeta.tipo}"
+                                                              styleClass="azul-internal"
+                                                              id="ot13"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <h:outputText value="#{selSKYBundle['pago.it12.label']}"
+                                                              id="ot14"/>
+                                            </div>
+                                            <div class="border-bottom">
+                                                <h:outputText value="#{viewScope.pagosNuevaTarjetaMB.tarjeta.creditoDebitoTexto}"
+                                                              styleClass="azul-internal"
+                                                              id="ot15"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <h:outputText value="#{selSKYBundle.lbl_mesVencimiento}"
+                                                              id="ot16"/>
+                                            </div>
+                                            <div class="border-bottom">
+                                                <h:outputText value="#{viewScope.pagosNuevaTarjetaMB.mesVencimiento}"
+                                                              styleClass="azul-internal"
+                                                              id="ot17"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <h:outputText value="#{selSKYBundle.lbl_anioVencimiento}"
+                                                              id="ot18"/>
+                                            </div>
+                                            <div class="border-bottom">
+                                                <h:outputText value="#{viewScope.pagosNuevaTarjetaMB.anioVencimiento}"
+                                                              styleClass="azul-internal"
+                                                              id="ot19"/>
+                                            </div>
+                                        </div>
+                                        <af:group rendered="#{sesion.suscriptor.paisISO ne 'MX'}"
+                                                  id="g10">
+                                            <div class="col-12">
+                                                <div class="row padd-top-dialog">
+                                                    <h:outputText value="Tipo de Cambio: "
+                                                                  id="ot4"/>
+                                                </div>
+                                                <div class="border-bottom">
+                                                    <h:outputText value="#{pageFlowScope.PagosBackingBean.tipoCambio}"
+                                                                  id="ot21"
+                                                                  styleClass="azul-internal"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <h:outputText value="Importe que se va cobrar en su tarjeta "
+                                                                  id="ot22"/>
+                                                </div>
+                                                <div class="border-bottom">
+                                                    <h:outputText value="$ #{pageFlowScope.PagosBackingBean.importeMonedaLocal} #{sessionScope.sesion.monedaLocal}"
+                                                                  id="ot20"
+                                                                  styleClass="azul-internal"
+                                                                  style="padding:5px;"/>
+                                                </div>
+                                            </div>
+                                        </af:group>
+                                         
+                                        <af:group id="gl6_CV"
+                                                  rendered="#{sesion.cuentaCV}">
+                                            <div class="col-12">
+                                                <div class="row padd-top-dialog">
+                                                    <h:outputText value="Para la cuenta "
+                                                                  id="ot23"/>
+                                                </div>
+                                                <div class="border-bottom">
+                                                    <h:outputText value="#{sesion.cuentaSKY}"
+                                                                  id="ot24"
+                                                                  styleClass="azul-internal"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <af:outputFormatted value="#{selSKYBundle['pago.of1_CV.value']}"
+                                                                        id="of1_CV"
+                                                                        styleUsage="pageStamp"/>
+                                                </div>
+                                            </div>
+                                        </af:group>
+                                    
+                                    </div>
+                                    <div class="col-12 dialog-background">
+                                        <div class="row autocenter">
+                                            <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align" style="float: right">
+                                                <af:button id="b1"
+                                                           text="Cancelar"
+                                                           styleClass="btn-pay-dialog"
+                                                           action="#{viewScope.pagosNuevaTarjetaMB.cancelarPago}"/>
+                                            </div>
+                                            <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align" style="float: right">
+                                                <af:button id="cb2"
+                                                           text="Aceptar"
+                                                           styleClass="btn-pay-dialog"
+                                                           action="#{viewScope.pagosNuevaTarjetaMB.aceptarPago}">
+                                                    <af:clientListener method="enforcePreventUserInput"
+                                                                       type="action"/>
+                                                </af:button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </af:dialog>
+                            </div>
+                        </af:popup>
+                         
+                        <af:popup id="mensajePago"
+                                  contentDelivery="lazyUncached"
+                                  childCreation="deferred"
+                                  binding="#{viewScope.pagosNuevaTarjetaMB.popupMensajeRespuesta}"
+                                  autoCancel="disabled">
+                            <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                <af:dialog id="dialog1" type="none"
+                                           title="Notificación de Pago"
+                                           styleClass="alert"
+                                           closeIconVisible="false"
+                                           partialTriggers="cb2">
+                                    <div class="text-internal">
+                                        <h:outputText value="#{viewScope.pagosNuevaTarjetaMB.mensajeRespuestaPago}"
+                                                      id="outputText1"
+                                                      styleClass="font-bolder"/>
+                                         
+                                        <af:group rendered="#{viewScope.pagosNuevaTarjetaMB.mensajeRespuestaGuardado != null}"
+                                                  id="g2">
+                                            <div class="top"></div>
+                                            <h:outputText value="#{viewScope.pagosNuevaTarjetaMB.mensajeRespuestaGuardado}"
+                                                          id="ot1"
+                                                          styleClass="font-bolder"/>
+                                        </af:group>
+                                    </div>
+                                    <div class="col-12 dialog-background">
+                                        <div class="row top autocenter">
+                                            <af:button id="b3"
+                                                       text="#{selSKYBundle['pago.cb5.text']}"
+                                                       styleClass="btn-pay-dialog"
+                                                       action="#{viewScope.pagosNuevaTarjetaMB.aceptar}"/>
+                                        </div>
+                                    </div>
+                                </af:dialog>
+                            </div>
+                        </af:popup>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

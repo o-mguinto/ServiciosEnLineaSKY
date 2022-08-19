@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#quejas').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="quejas">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <label>
+                            <h:outputText value="Envíanos tu Queja" id="ot2"/>
+                        </label>
+                        <div class="row top">
+                            <af:panelBox id="pb1" background="medium"
+                                         showHeader="ifNeeded"
+                                         showDisclosure="false"
+                                         inlineStyle="border: 0px;">
+                                <af:panelCollection id="pc1"
+                                                    defaultToolbarItemDisplay="icon"
+                                                    styleClass="AFStretchWidth">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="t2"></af:toolbar>
+                                    </f:facet>
+                                    <f:facet name="statusbar"/>
+                                    <af:table value="#{bindings.Queja.collectionModel}"
+                                              var="row"
+                                              rows="#{bindings.Queja.rangeSize}"
+                                              emptyText="#{bindings.Queja.viewable ? 'Usted aún no ha presentado quejas.' : 'Acceso denegado.'}"
+                                              fetchSize="#{bindings.Queja.rangeSize}"
+                                              id="t1" partialTriggers=":::cb1"
+                                              horizontalGridVisible="false"
+                                              verticalGridVisible="false"
+                                              autoHeightRows="10"
+                                              rowBandingInterval="0"
+                                              styleClass="tbl-Class">
+                                        <af:column sortProperty="queja"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['quejas.c1.headertext']}"
+                                                   id="c1" width="450"
+                                                   displayIndex="-1"
+                                                   headerClass="content-text">
+                                            <af:inputText value="#{row.bindings.queja.inputValue}"
+                                                          label="#{bindings.Queja.hints.queja.label}"
+                                                          required="#{bindings.Queja.hints.queja.mandatory}"
+                                                          columns="70"
+                                                          maximumLength="#{bindings.Queja.hints.queja.precision}"
+                                                          shortDesc="#{bindings.Queja.hints.queja.tooltip}"
+                                                          id="it2" rows="1"
+                                                          readOnly="true">
+                                                <f:validator binding="#{row.bindings.queja.validator}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="fechaRegistro"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['quejas.c2.headertext']}"
+                                                   id="c2" width="130"
+                                                   headerClass="content-text">
+                                            <af:inputDate value="#{row.bindings.fechaRegistro.inputValue}"
+                                                          label="#{bindings.Queja.hints.fechaRegistro.label}"
+                                                          required="#{bindings.Queja.hints.fechaRegistro.mandatory}"
+                                                          shortDesc="#{bindings.Queja.hints.fechaRegistro.tooltip}"
+                                                          id="id1"
+                                                          readOnly="true">
+                                                <f:validator binding="#{row.bindings.fechaRegistro.validator}"/>
+                                                <af:convertDateTime pattern="#{bindings.Queja.hints.fechaRegistro.format}"/>
+                                            </af:inputDate>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                                <div class="row top">
+                                    <div class="col-3 col-sm-8  col-tb-4 right"
+                                         style="float:right;">
+                                        <af:button id="ctbAgregarComentario"
+                                                   styleClass="btn-internal"
+                                                   targetFrame="_self"
+                                                   text="#{selSKYBundle['quejas.ctbAgregarComentario.text']}">
+                                            <af:showPopupBehavior triggerType="click"
+                                                                  popupId="::popUpQueja"/>
+                                        </af:button>
+                                    </div>
+                                </div>
+                            </af:panelBox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <af:popup id="popUpQueja" autoCancel="disabled"
+                      childCreation="deferred" contentDelivery="lazyUncached"
+                      binding="#{backingBeanScope.BBQuejas.popupQueja}">
+                <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                    <af:dialog id="d2"
+                               title="#{selSKYBundle['quejas.pw1.title']}"
+                               type="none" styleClass="alert"
+                               closeIconVisible="false">
+                        <div class="text-internal">
+                            <div class="col-12">
+                                <div class="row">
+                                    <span class="xf">* </span>
+                                     
+                                    <af:outputLabel for="it3"
+                                                    value="#{selSKYBundle['quejas.it3.label']}"
+                                                    id="ol6"/>
+                                </div>
+                                <div class="border-bottom">
+                                    <af:inputText value="#{bindings.queja.inputValue}"
+                                                  required="true" columns="50"
+                                                  maximumLength="500"
+                                                  shortDesc="#{bindings.queja.hints.tooltip}"
+                                                  id="it3" rows="5"
+                                                  showRequired="false"
+                                                  simple="true">
+                                        <f:validator binding="#{bindings.queja.validator}"/>
+                                    </af:inputText>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 dialog-background">
+                            <div class="row autocenter">
+                                <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-left sm-no-padd-left" style="float: right">
+                                    <af:button text="Agregar"
+                                               disabled="#{!bindings.agregarQueja.enabled}"
+                                               id="cb1"
+                                               action="#{backingBeanScope.BBQuejas.cbAgregarQueja_action}"
+                                               styleClass="btn-pay-dialog">
+                                        <f:setPropertyActionListener target="#{bindings.uid.inputValue}"
+                                                                     value="#{sesion.usuario.uid}"/>
+                                        <af:clientListener method="enforcePreventUserInput"
+                                                           type="action"/>
+                                    </af:button>
+                                </div>
+                                <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-right sm-no-padd-right" style="float: right">
+                                    <af:button text="Cancelar" id="cb2"
+                                               immediate="true"
+                                               styleClass="btn-pay-dialog"
+                                               action="#{backingBeanScope.BBQuejas.cancelarAgregarQueja}">
+                                        <f:setPropertyActionListener value=""
+                                                                     target="#{bindings.queja.inputValue}"/>
+                                    </af:button>
+                                </div>
+                            </div>
+                        </div>
+                    </af:dialog>
+                </div>
+            </af:popup>
+        </div>
+    </af:group>
+</ui:composition>

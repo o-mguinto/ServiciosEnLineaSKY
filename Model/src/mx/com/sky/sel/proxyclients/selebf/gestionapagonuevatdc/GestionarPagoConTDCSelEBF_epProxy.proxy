@@ -1,0 +1,155 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jdevws:WebServiceProxy xmlns:jdevws="http://xmlns.oracle.com/jdeveloper/10130/webserviceproxy">
+   <list n="CHILD_NODES">
+      <url path="GestionarPagoConTDCSelEBFEp.xml"/>
+      <url path="GestionarPagoConTDCSelEBF_ep.wsdl"/>
+      <url path="RuntimeFaultMessage.xsd"/>
+      <url path="GestionarPagoConTDCSelEBFEBM.xsd"/>
+      <url path="TarjetaPagoEBO.xsd"/>
+      <url path="Meta.xsd"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/EBMType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/package-info.java"/>
+      <url path="../../../../enterpriseflowmessages/sel/gestionarpagocontdc/GestionarPagoConTDCResponseEBMType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ObjectFactory.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ErrorNegocioType.java"/>
+      <url path="../../../../enterpriseflowmessages/sel/gestionarpagocontdc/GestionarPagoConTDCRequestEBMType.java"/>
+      <url path="../../../../enterpriseflowmessages/sel/gestionarpagocontdc/ObjectFactory.java"/>
+      <url path="../../../../enterpriseflowmessages/sel/gestionarpagocontdc/DatosTransaccionPagoOutputMessageType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ErrorTecnicoType.java"/>
+      <url path="../../../../enterpriseobjects/sel/tarjetapagoebo/package-info.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/EBMHeaderResponseType.java"/>
+      <url path="../../../../enterpriseobjects/sel/tarjetapagoebo/DatosTarjetaPagoType.java"/>
+      <url path="GestionarPagoConTDCSelEBF.java"/>
+      <url path="GestionarPagoConTDCSelEBF_ptClient.java"/>
+      <url path="../../../../enterpriseflowmessages/sel/gestionarpagocontdc/package-info.java"/>
+      <url path="../../../../enterpriseobjects/sel/tarjetapagoebo/ObjectFactory.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/SeguridadListType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ParametroItemType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/ParametroListType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/EBMHeaderRequestType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/SeguridadItemType.java"/>
+      <url path="GestionarPagoConTDCSelEBFEp.java"/>
+      <url path="../../../../enterpriseflowmessages/sel/gestionarpagocontdc/DatosTransaccionPagoInputMessageType.java"/>
+      <url path="../../../../enterpriseobjects/sel/common/v1/RuntimeFaultMessageType.java"/>
+   </list>
+   <hash n="DATA_MODEL">
+      <value n="ATTACHMENT_ENCODING" v="MIME"/>
+      <list n="LOCAL_FILES"/>
+      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy"/>
+      <url n="ORACLE_WEBSERVICES_XML" path="GestionarPagoConTDCSelEBFEp.xml"/>
+      <hash n="PROPERTY_GROUPS">
+         <hash n="WSDL_TO_JAVA_PROPERTIES">
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+            <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.selebf.gestionapagonuevatdc"/>
+         </hash>
+      </hash>
+      <value n="PROXY_ASYNC_METHODS" v="FOR_NONE"/>
+      <list n="PROXY_CLIENTS">
+         <url path="GestionarPagoConTDCSelEBF_ptClient.java"/>
+      </list>
+      <value n="PROXY_MAPPING_URL"/>
+      <url n="PROXY_ORIGINAL_WSDL_URL" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/SEL_EBF/GestionarPagoConTDCSelEBF/GestionarPagoConTDCSelEBF_ep" query="WSDL"/>
+      <hash n="PROXY_PORTS">
+         <hash n="GestionarPagoConTDCSelEBF_pt">
+            <value n="ACCESSES_DOC_WRAPPPED" v="true"/>
+            <value n="ACCESSES_RPC_ENCODED" v="false"/>
+            <value n="CLASS_NAME" v="mx.com.sky.sel.proxyclients.selebf.gestionapagonuevatdc.GestionarPagoConTDCSelEBF"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
+            <value n="NAME" v="GestionarPagoConTDCSelEBF_pt"/>
+            <hash n="OPERATIONS">
+               <hash n="gestionarPagoConTDC">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </hash>
+            <hash n="PROPERTY_GROUPS">
+               <hash n="WS_POLICY">
+                  <value n="addressing"/>
+                  <hash n="GLOBAL_CONFIG_PROPERTIES"/>
+                  <list n="management"/>
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.policy.PolicyClientModel"/>
+                  <value n="mtom"/>
+                  <hash n="POLICY_OVERRIDE_PROPERTIES"/>
+                  <list n="security"/>
+                  <list n="wsconfig"/>
+                  <value n="wsrm"/>
+               </hash>
+            </hash>
+            <url n="PROXY_ORIGINAL_PORT_ENDPOINT" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/SEL_EBF/GestionarPagoConTDCSelEBF/GestionarPagoConTDCSelEBF_ep"/>
+         </hash>
+      </hash>
+      <value n="PROXY_SERVICE_NAME" v="GestionarPagoConTDCSelEBF_ep"/>
+      <value n="PROXY_SERVICE_NAMESPACE" v="http://xmlns.sky.com.mx/EnterpriseFlows/Sel/GestionarPagoConTDC"/>
+      <url n="PROXY_TARGET_PROJECT" path="../../../../../../../../Model.jpr"/>
+      <list n="PROXY_WSDL_IMPORT_LIST">
+         <url path="RuntimeFaultMessage.xsd"/>
+         <url path="GestionarPagoConTDCSelEBFEBM.xsd"/>
+         <url path="TarjetaPagoEBO.xsd"/>
+         <url path="Meta.xsd"/>
+      </list>
+      <url n="PROXY_WSDL_URL" path="GestionarPagoConTDCSelEBF_ep.wsdl"/>
+      <hash n="REFERENCED_WEBSERVICE">
+         <list n="BD_">
+            <hash>
+               <value n="BOUND_PORT_TYPE" v="{http://xmlns.sky.com.mx/EnterpriseFlows/Sel/GestionarPagoConTDC}GestionarPagoConTDCSelEBF"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+               <value n="NAME" v="{http://xmlns.sky.com.mx/EnterpriseFlows/Sel/GestionarPagoConTDC}GestionarPagoConTDCSelEBFBinding"/>
+               <list n="OP_BINDINGS">
+                  <hash>
+                     <value n="BOUND_OPERATION" v="mx.com.sky.enterpriseflowmessages.sel.gestionarpagocontdc.GestionarPagoConTDCResponseEBMType.gestionarPagoConTDC.mx.com.sky.enterpriseflowmessages.sel.gestionarpagocontdc.GestionarPagoConTDCRequestEBMType"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+            </hash>
+         </list>
+         <list n="BINDING_FILES"/>
+         <value n="GUID" v="2dba0597-0172-1000-8002-0afd094abd71"/>
+         <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
+         <list n="PO_">
+            <hash>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+               <value n="NAME" v="GestionarPagoConTDCSelEBF_pt"/>
+               <value n="PORT_BINDING_NAME" v="{http://xmlns.sky.com.mx/EnterpriseFlows/Sel/GestionarPagoConTDC}GestionarPagoConTDCSelEBFBinding"/>
+               <list n="PORT_OPS">
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="mx.com.sky.enterpriseflowmessages.sel.gestionarpagocontdc.GestionarPagoConTDCResponseEBMType.gestionarPagoConTDC.mx.com.sky.enterpriseflowmessages.sel.gestionarpagocontdc.GestionarPagoConTDCRequestEBMType"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+               <url n="URL" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/SEL_EBF/GestionarPagoConTDCSelEBF/GestionarPagoConTDCSelEBF_ep"/>
+            </hash>
+         </list>
+         <hash n="PROPERTY_GROUPS">
+            <hash n="WSDL_TO_JAVA_PROPERTIES">
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+               <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.selebf.gestionapagonuevatdc"/>
+            </hash>
+         </hash>
+         <list n="PT_">
+            <hash>
+               <value n="AUTO_SERVICE_INTERFACE"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaPortType"/>
+               <value n="NAME" v="{http://xmlns.sky.com.mx/EnterpriseFlows/Sel/GestionarPagoConTDC}GestionarPagoConTDCSelEBF"/>
+               <hash n="PROPERTY_GROUPS"/>
+               <value n="PT_CLASS" v="mx.com.sky.sel.proxyclients.selebf.gestionapagonuevatdc.GestionarPagoConTDCSelEBFImpl"/>
+               <value n="PT_SERVICE_INTERFACE" v="mx.com.sky.sel.proxyclients.selebf.gestionapagonuevatdc.GestionarPagoConTDCSelEBF"/>
+               <value n="PT_TOP_DOWN_GENERATED_SEI_NAME" v="mx.com.sky.sel.proxyclients.selebf.gestionapagonuevatdc.GestionarPagoConTDCSelEBF"/>
+            </hash>
+         </list>
+         <url n="TARGET_PROJECT" path="../../../../../../../../Model.jpr"/>
+         <value n="WS_ORIG_GEN_DIRECTION" v="TOP_DOWN"/>
+         <value n="WS_TARGET_NAMESPACE" v="http://xmlns.sky.com.mx/EnterpriseFlows/Sel/GestionarPagoConTDC"/>
+         <value n="WS_URI" v="GestionarPagoConTDCSelEBF_ep"/>
+         <url n="WS_WSDL_FILE" path="GestionarPagoConTDCSelEBF_ep.wsdl"/>
+      </hash>
+      <value n="SERVICE_ASYNC" v="false"/>
+      <value n="USE_WSDL_LOCATION" v="true"/>
+   </hash>
+</jdevws:WebServiceProxy>

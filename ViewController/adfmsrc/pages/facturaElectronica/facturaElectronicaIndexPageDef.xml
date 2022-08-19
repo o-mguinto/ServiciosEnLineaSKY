@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="facturaElectronicaIndexPageDef"
+                Package="pages.facturaElectronica">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="consultarFacturas.result" DataControl="DCFactura" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.facturas.Factura" id="consultarFacturasIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="consultarFacturas" RequiresUpdateModel="true" Action="invokeMethod" MethodName="consultarFacturas"
+                  IsViewObjectMethod="false" DataControl="DCFactura"
+                  InstanceName="bindings.consultarFacturas.dataControl.dataProvider"
+                  ReturnName="data.DCFactura.methodResults.consultarFacturas_consultarFacturas_dataControl_dataProvider_consultarFacturas_result"/>
+    <tree IterBinding="consultarFacturasIterator" id="Factura">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.facturas.Factura" Name="result0">
+        <AttrNames>
+          <Item Value="uuid"/>
+          <Item Value="fechacorte"/>
+          <Item Value="tipoArchivo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="obtenerFacturaPDF" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerFacturaPDF" IsViewObjectMethod="false" DataControl="DCFactura"
+                  InstanceName="bindings.obtenerFacturaPDF.dataControl.dataProvider"
+                  ReturnName="data.DCFactura.methodResults.obtenerFacturaPDF_obtenerFacturaPDF_dataControl_dataProvider_obtenerFacturaPDF_result">
+      <NamedData NDName="UUID" NDType="java.lang.String"/>
+      <NamedData NDName="fechaTimbrado" NDType="java.lang.String"/>
+      <NamedData NDName="PAC" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="consultarFacturasIterator" id="idFactura">
+      <AttrNames>
+        <Item Value="uuid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="consultarFacturasIterator" id="pac">
+      <AttrNames>
+        <Item Value="pac"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="consultarFacturasIterator" id="fechatimbrado">
+      <AttrNames>
+        <Item Value="fechaTimbrado"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

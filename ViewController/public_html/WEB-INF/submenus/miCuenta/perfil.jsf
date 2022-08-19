@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+xmlns:trh="http://myfaces.apache.org/trinidad/html">
+    <af:document title="SKY | Servicios en Línea" id="d1">
+    <f:facet name="metaContainer">
+            <trh:meta charset="utf-8"/>
+            <trh:meta name="viewport"
+                      content="width=device-width,initial-scale=1.0,maximum-scale=3.0,user-scalable=yes"/>
+            <trh:meta http-equiv="X-UA-Compatible" content="IE=11"/>
+            <f:subview id="head">
+                    <meta name="description"
+                          content="SKY | Servicios en Línea"/>
+                    <meta name="keywords" content="servicios en linea sky"/>
+                    <af:outputText value="&lt;link rel='SHORTCUT ICON' href='#{facesContext.externalContext.requestContextPath}/imagenes/aplicacion/favicon.ico' type='image/x-icon'/>"
+                                   id="ot6" escape="false"/>
+                <af:resource type="css">
+                    .linkSinBorde:focus{
+                        outline-width: 0px !important;
+                    }
+                </af:resource>
+                                   </f:subview>
+        </f:facet>
+        <af:form id="f1">
+            <!-- Google Tag Manager (noscript) -->
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZQXB5N"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+            <!-- End Google Tag Manager (noscript) -->
+            <af:pageTemplate viewId="/WEB-INF/mx/com/sky/common/jsfTemplates/pagInternas_template.jsf"
+                             value="#{bindings.ptb1}" id="pt1">
+                <f:facet name="contenido_facet">
+                    <af:region value="#{bindings.perfilTF1.regionModel}" id="r1"/>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    
+        <!--af:showPopupBehavior triggerType="#{pageFlowScope.anunciosMB.triggerTypePopupbtcel}"
+                               popupId="BTCEL"/>
+        <af:popup id="BTCEL" contentDelivery="lazyUncached" childCreation="deferred">
+            <af:dialog id="diagBTCEL" title="Blue Telecomm Cel" type="none" closeIconVisible="false" styleClass="alert">
+                <div class="row center">
+                    <af:link id="link2" destination="https://www.bluetelecomm.mx/cel/"
+                             immediate="true" targetFrame="_blank" styleClass="linkSinBorde">
+                        <img src="/sky/imagenes/825X300/BTCEL_PREP.png" alt="promo"
+                             class="col-12 col-tb-8 col-sm-8"/>
+                    </af:link>
+                </div>
+                <br/>
+                <div class="row center">
+                    <af:button text="Cerrar" id="cb5" partialSubmit="false" styleClass="btn-internal">
+                        <f:setPropertyActionListener target="#{pageFlowScope.anunciosMB.mostrarPopupBTCEL}"
+                                                     value="false"/>
+                    </af:button>
+                </div>
+            </af:dialog>
+        </af:popup>
+        
+        <af:showPopupBehavior triggerType="#{pageFlowScope.anunciosMB.triggerTypePopupBTCELSkySports}"
+                               popupId="BTCEL_sky_sports"/>
+        <af:popup id="BTCEL_sky_sports" contentDelivery="lazyUncached" childCreation="deferred">
+            <af:dialog id="diagBTCEL_sky_sports" title="Blue Telecomm Cel" type="none" closeIconVisible="false" styleClass="alert">
+                <div class="row center">
+                    <af:link id="link3" destination="https://www.bluetelecomm.mx/cel/"
+                             immediate="true" targetFrame="_blank" styleClass="linkSinBorde">
+                        <img src="/sky/imagenes/825X300/BTCEL_PREP.png" alt="promo"
+                             class="col-12 col-tb-8 col-sm-8"/>
+                    </af:link>
+                </div>
+                <br/>
+                <div class="row center">
+                    <af:button text="Cerrar" id="cb6" partialSubmit="false" styleClass="btn-internal">
+                        <f:setPropertyActionListener target="#{pageFlowScope.anunciosMB.mostrarPopupBTCELSkySports}"
+                                                     value="false"/>
+                    </af:button>
+                </div>
+            </af:dialog>
+        </af:popup>
+        
+        <af:showPopupBehavior triggerType="#{pageFlowScope.anunciosMB.triggerTypePopupBTCELSkyNE}"
+                               popupId="BTCEL_sky_ne"/>
+        <af:popup id="BTCEL_sky_ne" contentDelivery="lazyUncached" childCreation="deferred">
+            <af:dialog id="diagBTCEL_sky_ne" title="Blue Telecomm Cel" type="none" closeIconVisible="false" styleClass="alert">
+                <div class="row center">
+                    <af:link id="link4" destination="https://www.bluetelecomm.mx/cel/"
+                             immediate="true" targetFrame="_blank" styleClass="linkSinBorde">
+                        <img src="/sky/imagenes/825X300/BTCEL_POSP.png" alt="promo"
+                             class="col-12 col-tb-8 col-sm-8"/>
+                    </af:link>
+                </div>
+                <br/>
+                <div class="row center">
+                    <af:button text="Cerrar" id="cb7" partialSubmit="false" styleClass="btn-internal">
+                        <f:setPropertyActionListener target="#{pageFlowScope.anunciosMB.mostrarPopupBTCELSkyNE}"
+                                                     value="false"/>
+                    </af:button>
+                </div>
+            </af:dialog>
+        </af:popup-->
+        
+        <!-- Anuncio de incremento de precio en BTI-->
+         <!--af:showPopupBehavior triggerType="#{pageFlowScope.anunciosMB.triggerTypePopupIncrementoBTI}"
+                               popupId="IncrementoBTI"/>
+        <af:popup id="IncrementoBTI" contentDelivery="lazyUncached" childCreation="deferred">
+            <af:dialog id="diagIncrementoBTI" title="Nuestras tarifas cambian" type="none" closeIconVisible="false" styleClass="alert">
+                <div class="row center">
+                 <af:link id="link8" destination="https://www.bluetelecomm.mx/"
+                             immediate="true" targetFrame="_blank" styleClass="linkSinBorde">
+                        <img src="/sky/imagenes/825X300/IncrementoBTI.png" alt="promo"
+                             class="col-12 col-tb-8 col-sm-8"/>
+                    </af:link>
+                </div>
+                <br/>
+                <div class="row center">
+                    <af:button text="Cerrar" id="cb16" partialSubmit="false" styleClass="btn-internal">
+                        <f:setPropertyActionListener target="#{pageFlowScope.anunciosMB.mostrarPopupIncrementoBTI}"
+                                                     value="false"/>
+                    </af:button>
+                </div>
+            </af:dialog>
+        </af:popup-->
+                    
+        <!-- Anuncio de incremento de precio en VETV, VETV HD Y VETV PLUS-->
+         <!--af:showPopupBehavior triggerType="#{pageFlowScope.anunciosMB.triggerTypePopupVETV}"
+                               popupId="IncrementoVETV"/>
+        <af:popup id="IncrementoVETV" contentDelivery="lazyUncached" childCreation="deferred">
+            <af:dialog id="diagIncrementoVETV" title="Nuestras tarifas cambian" type="none" closeIconVisible="false" styleClass="alert">
+                <div class="row center">
+                 <af:link id="link10" destination="https://www.vetv.com.mx/"
+                             immediate="true" targetFrame="_blank" styleClass="linkSinBorde">
+                        <img src="/sky/imagenes/825X300/IncrementoVETV.png" alt="promo"
+                             class="col-12 col-tb-8 col-sm-8"/>
+                     </af:link>
+                </div>
+                <br/>
+                <div class="row center">
+                    <af:button text="Cerrar" id="cb1" partialSubmit="false" styleClass="btn-internal">
+                        <f:setPropertyActionListener target="#{pageFlowScope.anunciosMB.mostrarPopupVETV}"
+                                                     value="false"/>
+                    </af:button>
+                </div>
+            </af:dialog>
+        </af:popup-->
+        
+         <!-- Anuncio de baja de precio en VETV PLUS HD-->
+         <!--af:showPopupBehavior triggerType="#{pageFlowScope.anunciosMB.triggerTypePopupVETVPLUSHD}"
+                               popupId="IncrementoVETVHDPLUS"/>
+        <af:popup id="IncrementoVETVHDPLUS" contentDelivery="lazyUncached" childCreation="deferred">
+            <af:dialog id="diagIncrementoVETVHDPLUS" title="Nuestras tarifas cambian" type="none" closeIconVisible="false" styleClass="alert">
+                <div class="row center">
+                <af:link id="link9" destination="https://www.vetv.com.mx/"
+                             immediate="true" targetFrame="_blank" styleClass="linkSinBorde">
+                        <img src="/sky/imagenes/825X300/BajaDePrecio.png" alt="promo"
+                             class="col-12 col-tb-8 col-sm-8"/>
+                     </af:link>
+                </div>
+                <br/>
+                <div class="row center">
+                    <af:button text="Cerrar" id="cb2" partialSubmit="false" styleClass="btn-internal">
+                        <f:setPropertyActionListener target="#{pageFlowScope.anunciosMB.mostrarPopupVETVPLUSHD}"
+                                                     value="false"/>
+                    </af:button>
+                </div>
+            </af:dialog>
+        </af:popup>
+                    
+        <af:showPopupBehavior triggerType="#{pageFlowScope.anunciosMB.triggerTypePopupControlUniversal}"
+                               popupId="popupControlUniversal"/>
+        <af:popup id="popupControlUniversal" contentDelivery="lazyUncached" childCreation="deferred">
+            <af:dialog id="diagControlUniversal" title="Control Remoto Universal" type="none" closeIconVisible="false" styleClass="alert">
+                <div class="row center">
+                   
+                    <img src="/sky/imagenes/825X300/PopUpControlRemoto.png" alt="promo"
+                             class="col-12 col-tb-8 col-sm-8"/>
+                </div>
+                <br/>
+                <div class="row center">
+                    <af:button text="Cerrar" id="cb9" partialSubmit="false" styleClass="btn-internal">
+                        <f:setPropertyActionListener target="#{pageFlowScope.anunciosMB.mostrarPopupControlUniversal}"
+                                                     value="false"/>
+                    </af:button>
+                </div>
+            </af:dialog>
+        </af:popup-->
+     
+           
+        
+        <!-- Anuncio para incentivar al suscriptor de SD a cambiarse a HD-->
+        <!--af:showPopupBehavior triggerType="#{pageFlowScope.anunciosMB.triggerTypePopupSDtoHD}"
+                               popupId="popupSDtoHD"/>
+        <af:popup id="popupSDtoHD" contentDelivery="lazyUncached" childCreation="deferred">
+            <af:dialog id="diagPopupSDtoHD" title="SKY HD" type="none" closeIconVisible="false" styleClass="alert">
+                <div class="row center">
+                    <img src="/sky/imagenes/825X300/AnuncioSDtoHD.png" alt="promo"
+                             class="col-12 col-tb-8 col-sm-8"/>
+                </div>
+                <br/>
+                <div class="row center">
+                    <af:button text="Cerrar" id="cb13" partialSubmit="false" styleClass="btn-internal">
+                        <f:setPropertyActionListener target="#{pageFlowScope.anunciosMB.mostrarPopupSDtoHD}"
+                                                     value="false"/>
+                    </af:button>
+                </div>
+            </af:dialog>
+        </af:popup-->
+        
+        
+        <!-- Incentivar cambio a SKY HD PLATINUM para el Salvador-->
+        <!--af:showPopupBehavior triggerType="#{pageFlowScope.anunciosMB.triggerTypePopupCambioSKYHDPlatinumElSalvador}"
+                               popupId="popupSKYHDPSalvador"/>
+        <af:popup id="popupSKYHDPSalvador" contentDelivery="lazyUncached" childCreation="deferred">
+            <af:dialog id="diagPopupSKYHDPSalvador" title="Atención" type="none" closeIconVisible="false" styleClass="alert">
+                <div class="row center">
+                    <img src="/sky/imagenes/825X300/CambioPlanElSalvador.png" alt="Cámbiate"
+                             class="col-12 col-tb-8 col-sm-8"/>
+                </div>
+                <br/>
+                <div class="row center">
+                    <af:button text="Cerrar" id="b2" partialSubmit="false" styleClass="btn-internal">
+                        <f:setPropertyActionListener target="#{pageFlowScope.anunciosMB.mostrarPopupSKYHDPSalvador}"
+                                                     value="false"/>
+                    </af:button>
+                </div>
+            </af:dialog>
+        </af:popup-->
+        
+        
+                <!-- Anuncio de nuevos canales abril 2022-->
+        <!--af:showPopupBehavior triggerType="#{pageFlowScope.anunciosMB.triggerTypePopupNuevosCanales}"
+                               popupId="popupNuevosCanales"/>
+        <af:popup id="popupNuevosCanales" contentDelivery="lazyUncached" childCreation="deferred">
+            <af:dialog id="diagPopupNuevosCanales" title="Nuevos Canales" type="none" closeIconVisible="false" styleClass="alert">
+                <div class="row center">
+                    <img src="/sky/imagenes/825X300/#{pageFlowScope.anunciosMB.imgAnuncioNuevosCanales}" alt="promo"
+                             class="col-12 col-tb-8 col-sm-8"/>
+                </div>
+                <br/>
+                <div class="row center">
+                    <af:button text="Cerrar" id="b1" partialSubmit="false" styleClass="btn-internal">
+                        <f:setPropertyActionListener target="#{pageFlowScope.anunciosMB.mostrarPopupNuevosCanales}"
+                                                     value="false"/>
+                    </af:button>
+                </div>
+            </af:dialog>
+        </af:popup-->
+        
+       </af:document>
+</f:view>

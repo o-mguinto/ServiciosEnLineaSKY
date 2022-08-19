@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="consultaEstatusDfIndexPageDef"
+                Package="pages.consultaEstatusDf">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="consultarEstadoSolicitudDF.result" DataControl="DCCorporativos" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.corporativos.BatchDF"
+                    id="consultarEstadoSolicitudDFIterator"/>
+    <searchRegion id="BatchDFQuery" Binds="consultarEstadoSolicitudDFIterator"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="consultarEstadoSolicitudDF" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="consultarEstadoSolicitudDF" IsViewObjectMethod="false" DataControl="DCCorporativos"
+                  InstanceName="bindings.consultarEstadoSolicitudDF.dataControl.dataProvider"
+                  ReturnName="data.DCCorporativos.methodResults.consultarEstadoSolicitudDF_consultarEstadoSolicitudDF_dataControl_dataProvider_consultarEstadoSolicitudDF_result">
+      <NamedData NDName="nombreCorporativo" NDValue="#{sesion.usuario.nombreCorporativo}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="consultarEstadoSolicitudDFIterator" id="BatchDF">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.corporativos.BatchDF" Name="result0">
+        <AttrNames>
+          <Item Value="bpelId"/>
+          <Item Value="status"/>
+          <Item Value="fechaCreacion"/>
+          <Item Value="noSolicitud"/>
+          <Item Value="noCuentaSKY"/>
+          <Item Value="rfc"/>
+          <Item Value="razonSocial"/>
+          <Item Value="compania"/>
+          <Item Value="tipoFactura"/>
+          <Item Value="metodoEnvio"/>
+          <Item Value="calle"/>
+          <Item Value="noExterior"/>
+          <Item Value="noInterior"/>
+          <Item Value="colonia"/>
+          <Item Value="delMunicipio"/>
+          <Item Value="codigoPostal"/>
+          <Item Value="poblacion"/>
+          <Item Value="estado"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="reintentarConErrorDF" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="reintentarConErrorDF" IsViewObjectMethod="false" DataControl="DCCorporativos"
+                  InstanceName="bindings.reintentarConErrorDF.dataControl.dataProvider"
+                  ReturnName="data.DCCorporativos.methodResults.reintentarConErrorDF_reintentarConErrorDF_dataControl_dataProvider_reintentarConErrorDF_result">
+      <NamedData NDName="nombreCorporativo" NDValue="#{sesion.usuario.nombreCorporativo}" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

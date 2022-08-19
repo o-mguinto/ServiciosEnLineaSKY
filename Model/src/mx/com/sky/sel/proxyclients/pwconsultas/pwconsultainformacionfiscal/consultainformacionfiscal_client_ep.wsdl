@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="ConsultaInformacionFiscal" targetNamespace="http://xmlns.oracle.com/Consultas/PWConsultaInformacionFiscal/ConsultaInformacionFiscal" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:client="http://xmlns.oracle.com/Consultas/PWConsultaInformacionFiscal/ConsultaInformacionFiscal" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>
+    <abstractWSDL>https://preselsoa.sky.com.mx:443/soa-infra/services/pwconsultas/PWConsultaInformacionFiscal!20220422-1436/WSDLs/ConsultaInformacionFiscal.wsdl</abstractWSDL>
+  </wsdl:documentation>
+  <plnk:partnerLinkType name="ConsultaInformacionFiscal">
+    <plnk:role name="ConsultaInformacionFiscalProvider" portType="client:ConsultaInformacionFiscal"/>
+  </plnk:partnerLinkType>
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://xmlns.oracle.com/Consultas/PWConsultaInformacionFiscal/ConsultaInformacionFiscal" schemaLocation="ConsultaInformacionFiscal.xsd"/>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultaInformacionFiscalRequestMessage">
+    <wsdl:part name="payload" element="client:proceso"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaInformacionFiscalResponseMessage">
+    <wsdl:part name="payload" element="client:respuestaProceso"/>
+  </wsdl:message>
+  <wsdl:portType name="ConsultaInformacionFiscal">
+    <wsdl:operation name="process">
+      <wsdl:input message="client:ConsultaInformacionFiscalRequestMessage"/>
+      <wsdl:output message="client:ConsultaInformacionFiscalResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConsultaInformacionFiscalBinding" type="client:ConsultaInformacionFiscal">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="process">
+      <soap:operation style="document" soapAction="process"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="consultainformacionfiscal_client_ep">
+    <wsdl:port name="ConsultaInformacionFiscal_pt" binding="client:ConsultaInformacionFiscalBinding">
+      <soap:address location="https://preselsoa.sky.com.mx:443/soa-infra/services/pwconsultas/PWConsultaInformacionFiscal/consultainformacionfiscal_client_ep"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

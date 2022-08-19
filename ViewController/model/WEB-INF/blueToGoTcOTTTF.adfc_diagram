@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">btgew_btgvew_terminoscondiciones</property>
+      <property
+         name="x">735.0</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>btgew_btgvew_terminoscondiciones&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">349.49414</property>
+      <property
+         name="page">/btgew_btgvew_terminoscondiciones.jspx</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+</SDM>

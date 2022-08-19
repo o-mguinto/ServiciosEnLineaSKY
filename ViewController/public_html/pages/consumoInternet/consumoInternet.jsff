@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#consumoInternet').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css" source="/css/consumos/consumoInternet.css"/>
+        <af:resource type="css">
+            div[role="progressbar"]::before {
+                counter-reset: percentage var(--value);
+            }
+            @keyframes growProgressBar {
+                0%, 33% {--pgPercentage: 0;
+                }
+                100% {--pgPercentage: var(--value);
+                }
+            }
+        </af:resource>
+        
+        <div id="consumoInternet">
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <af:group id="g2">
+                        <af:panelGroupLayout id="pgl0"
+                                             rendered="#{backingBeanScope.BBConsumoDatos.bloqueoMovilidadInternet}">
+                            <div class="row">
+                                <div class="channel-bloqueo">
+                                    <div class="col-12">
+                                     <div class="autocenter">
+                                            <span class="icon-faq"></span>
+                                            <af:outputText id="ot1"
+                                                               value="Bloqueo por movilidad"
+                                                               styleClass="check-internal-bold"/>
+                                        </div>
+                                        <div class="row top">
+                                            <af:outputText id="ot6"
+                                                                   value="Favor de contactar a nuestro Centro de Atención Ciudad de México y zona metropolitana: 4000 7171"
+                                                                   styleClass="channel-text2"/>
+                                                    <af:outputText id="ot15"
+                                                                   value="Resto de la República: 0155 4000 7171"
+                                                                   styleClass="channel-text2" inlineStyle="padding-left: 5px;"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </af:panelGroupLayout>
+                        <af:panelBox id="pb3" showDisclosure="false" background="medium"
+                                     showMaximize="never"
+                                     inlineStyle="border: 0px;"
+                                     rendered="#{!backingBeanScope.BBConsumoDatos.consultaValida}">
+                            <af:panelGroupLayout id="pgl7" layout="horizontal">
+                                <af:outputText id="ot12"
+                                               value="Estimado suscriptor, por el momento no podemos realizar la consulta de su consumo de datos, por favor comunicarse a atención a clientes por cualquiera de nuestros medios de contacto."
+                                               styleClass="channel-bloqueo"/>
+                            </af:panelGroupLayout>
+                        </af:panelBox>
+                        <af:panelGroupLayout id="pglpb"
+                                             rendered="#{backingBeanScope.BBConsumoDatos.consultaValida}">
+                            <div class="row top">
+                                <div class="col-12">
+                                    <div class="autocenter">
+                                        <span class="icon-faq"></span>
+                                        <af:outputText id="ot13" value="Detalle de consumo de datos" styleClass="check-internal-bold"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row top">
+                                <div class="col-3 sm-top" style="padding: 10px;">
+                                    <div class="col-12 bolderPaquete">
+                                        <div class="row top-sm autocenter">
+                                            <h:outputText id="nomBolsa"
+                                                          value="PAQUETE PRINCIPAL"
+                                                          styleClass="channel-text1"
+                                                          style="line-height: 0.9em; padding-left: 5px; text-transform: capitalize;"/>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="row top">
+                                                <div class="autocenter" role="progressbar" aria-valuemin="0"
+                                                     aria-valuemax="100"
+                                                     style="--value:#{backingBeanScope.BBConsumoDatos.datosDisponiblesPorcentaje}">
+                                                    <h:outputText id="datosDispLnCelVal"
+                                                                  value="#{backingBeanScope.BBConsumoDatos.datosDisponibles}"
+                                                                  styleClass="lbl-datosDisponibles"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row top-sm autocenter ">
+                                                    <h:outputText id="dispon" value="Disponibles"
+                                                                  styleClass="channel-text2"
+                                                                  style="opacity: 0.8;"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="row top-sm autocenter">
+                                                <af:outputText id="datosTotLnCelLbl" value="Incluidos: "
+                                                               styleClass="channel-text2"/>
+                                                 
+                                                <h:outputText id="datosTotLnCelVal"
+                                                              value="#{backingBeanScope.BBConsumoDatos.totalDatos}"
+                                                              styleClass="channel-text1"/>
+                                            </div>
+                                            <div class="row top-sm autocenter">
+                                                <af:outputText id="datosConsLnCelLbl" value="Consumidos: "
+                                                               styleClass="channel-text2"/>
+                                                 
+                                                <h:outputText id="datosConsLnCelVal"
+                                                              value="#{backingBeanScope.BBConsumoDatos.datosConsumidos}"
+                                                              styleClass="channel-text1"/>
+                                            </div>
+                                            <div class="row top-sm autocenter">
+                                                <af:outputText id="vigenciaDatosLnCelLbl"
+                                                               value="Vigente hasta: "
+                                                               styleClass="channel-text2"/>
+                                                 
+                                                <h:outputText id="vigenciaDatosLnCelVal"
+                                                              value="#{backingBeanScope.BBConsumoDatos.vigenteDatos}"
+                                                              styleClass="channel-text1"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- PAQUETE ADICIONAL -->
+                                <div class="col-3 sm-top" style="padding: 10px; #{backingBeanScope.BBConsumoDatos.consultaValida and backingBeanScope.BBConsumoDatos.datosAdicionales? '' : 'display:none;'}" >
+                                    <div class="col-12 bolderPaquete">
+                                        <div class="row top-sm autocenter">
+                                            <h:outputText id="nomBolsaAdicional"
+                                                          value="PAQUETE ADICIONAL"
+                                                          styleClass="channel-text1"
+                                                          style="line-height: 0.9em; padding-left: 5px; text-transform: capitalize;"/>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="row top">
+                                                <div class="autocenter" role="progressbar" aria-valuemin="0"
+                                                     aria-valuemax="100"
+                                                     style="--value:#{backingBeanScope.BBConsumoDatos.datosDisponiblesCompradosPorcentaje}">
+                                                    <h:outputText id="datosDispCompVal"
+                                                                  value="#{backingBeanScope.BBConsumoDatos.datosDisponiblesComprados}"
+                                                                  styleClass="lbl-datosDisponibles"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row top-sm autocenter ">
+                                                    <h:outputText id="disponComp" value="Disponibles"
+                                                                  styleClass="channel-text2"
+                                                                  style="opacity: 0.8;"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="row top-sm autocenter">
+                                                <af:outputText id="datosTotCompLbl" value="Incluidos: "
+                                                               styleClass="channel-text2"/>
+                                                 
+                                                <h:outputText id="datosTotCompVal"
+                                                              value="#{backingBeanScope.BBConsumoDatos.totalDatosComprados}"
+                                                              styleClass="channel-text1"/>
+                                            </div>
+                                            <div class="row top-sm autocenter">
+                                                <af:outputText id="datosConsCompLbl" value="Consumidos: "
+                                                               styleClass="channel-text2"/>
+                                                 
+                                                <h:outputText id="datosConsCompVal"
+                                                              value="#{backingBeanScope.BBConsumoDatos.datosConsumidosComprados}"
+                                                              styleClass="channel-text1"/>
+                                            </div>
+                                            <div class="row top-sm autocenter">
+                                                <af:outputText id="vigenciaDatosCompLbl"
+                                                               value="Vigente hasta: "
+                                                               styleClass="channel-text2"/>
+                                                 
+                                                <h:outputText id="vigenciaDatosCompVal"
+                                                              value="#{backingBeanScope.BBConsumoDatos.vigenteDatosComprados}"
+                                                              styleClass="channel-text1"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </af:panelGroupLayout>
+                    </af:group>
+                </div>
+                <!--div class="row top">
+                    <af:panelGroupLayout id="pg2pb"
+                                         rendered="#{backingBeanScope.BBConsumoDatos.consultaValida and backingBeanScope.BBConsumoDatos.datosAdicionales}">
+                        <div class="col-12 content-internal">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="autocenter">
+                                        <span class="icon-faq"></span>
+                                        <af:outputText id="ot16"
+                                                               value="Detalle de consumo de datos adicionales"
+                                                               styleClass="check-internal-bold"/>
+                                        </div>
+                                        <div class="row top autocenter">
+                                            <af:outputText id="ot18"
+                                                                   value="Total datos: "
+                                                                   styleClass="channel-text2"/>
+                                                    <h:outputText id="ot19"
+                                                                   value="#{backingBeanScope.BBConsumoDatos.totalDatosComprados}"
+                                                                   styleClass="channel-text1"
+                                                                  style="line-height: 0.9em; padding-left: 5px;"/>
+                                        </div>
+                                        <div class="row top autocenter padd-right padd-left">
+                                            <div id="myProgressComprados">
+                                                    <div id="myBarComprados"></div>
+                                                </div>
+                                            <div class="row top">
+                                                <div class="col-6 col-tb-4 col-sm-4 center">
+                                                    <af:outputText id="ot20"
+                                                                       value="Datos Disponibles: "
+                                                                       styleClass="channel-text2"/>
+                                                        <div class="row"/>
+                                                        <h:outputText id="ot21"
+                                                                       value="#{backingBeanScope.BBConsumoDatos.datosDisponiblesComprados}"
+                                                                       styleClass="channel-text1"/>
+                                                </div>
+                                                <div class="col-6 col-tb-4 col-sm-4 center">
+                                                    <af:outputText id="ot22"
+                                                                       value="Datos Consumidos: "
+                                                                       styleClass="channel-text2"/>
+                                                        <div class="row"/>
+                                                        <h:outputText id="ot23"
+                                                                       value="#{backingBeanScope.BBConsumoDatos.datosConsumidosComprados}"
+                                                                       styleClass="channel-text1"/>
+                                                </div>
+                                            </div>
+                                            <af:group id="g4" rendered="#{sesion.userVeTV}">
+                                                <div class="row top">
+                                                    <af:outputText id="ot24"
+                                                                   value="Vigente hasta: "
+                                                                   styleClass="channel-text2" />
+                                                    <h:outputText id="ot25"
+                                                                   value="#{backingBeanScope.BBConsumoDatos.vigenteDatosComprados}"
+                                                                   styleClass="channel-text1"
+                                                                  style="line-height: 0.9em; padding-left: 5px;"/>
+                                                </div>
+                                            </af:group>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </af:panelGroupLayout>
+                </div-->
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

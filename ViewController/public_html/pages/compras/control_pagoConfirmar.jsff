@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <!--Aqui va TODO el contenido-->
+    <af:group id="gpCtrolPagoConfirmar">
+        <af:resource type="javascript">
+          $('#CtrolPagoConfirmar').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            /*solo boton*/
+            .btn-internal {
+                min-width: 50%;
+            }
+        </af:resource>
+        <div id="CtrolPagoConfirmar">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <h:outputText styleClass="title" value="#{selSKYBundle['control.d3.title']}" id="otTitulo"
+                                      style="text-transform: uppercase;"/>
+                        <div class="row top">
+                            <af:panelGroupLayout id="pgl4" styleClass="col-3 col-sm-8  col-tb-3 right"
+                                                 inlineStyle="float:right;">
+                                <div class="top">
+                                    <div class="autocenter padd-top-dialog">
+                                        <af:image source="/imagenes/controlremoto/#{pageFlowScope.ControlBackingBean.control.pathIcon}"
+                                                  id="i2"/>
+                                    </div>
+                                    <div class="row autocenter">
+                                        <h:outputText id="it13"
+                                                      value="Precio: $ #{pageFlowScope.ControlBackingBean.control.precioDisplay}"
+                                                      styleClass="text-internal font-bolder"/>
+                                    </div>
+                                    <div class="row top dialog-descrip" style="max-height: 220px;">
+                                        <h:outputText id="it1"
+                                                      value="#{pageFlowScope.ControlBackingBean.control.descripcion}"/>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                             
+                            <af:panelGroupLayout id="pgl5" styleClass="col-9 col-sm-8  col-tb-5 right"
+                                                 inlineStyle="float:right;">
+                                <h:outputText styleClass="title"
+                                              value="Confirme que los datos solicitados son correctos" id="ot14"/>
+                                <div class="row">
+                                    <af:panelBox id="panelBox1" maximized="true" showDisclosure="false"
+                                                 showMaximize="never" background="medium" showHeader="never"
+                                                 inlineStyle="border:none;    border-right: solid 1px #D6DFE6;     margin-right: 5px;">
+                                        <af:panelGroupLayout layout="scroll"
+                                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                             id="pgl8">
+                                            <h:outputText styleClass="subtitle padd-top-dialog" value="Dirección"
+                                                          id="ot15"/>
+                                            <af:panelFormLayout id="panelFormLayout1" fieldWidth="65%" labelWidth="35%">
+                                                <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.calleNumero}"
+                                                              readOnly="true"
+                                                              label="#{selSKYBundle['control.it6.label']}"
+                                                              required="true" id="it5" styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.numeroExt}"
+                                                              readOnly="true"
+                                                              label="#{selSKYBundle['control.it3.label']}"
+                                                              required="true" id="it15" styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.numeroInt}"
+                                                              readOnly="true"
+                                                              label="#{selSKYBundle['control.it12.label']}"
+                                                              required="true" id="it14" styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.colonia}"
+                                                              readOnly="true"
+                                                              label="#{selSKYBundle['control.it4.label']}"
+                                                              required="true" id="it11" styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.poblacion}"
+                                                              readOnly="true"
+                                                              label="#{selSKYBundle['control.it5.label']}"
+                                                              required="true" id="it8" styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.delMun}"
+                                                              readOnly="true"
+                                                              label="#{selSKYBundle['control.it9.label']}"
+                                                              required="true" id="it10" styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.ciudad}"
+                                                              readOnly="true"
+                                                              label="#{selSKYBundle['control.it8.label']}"
+                                                              required="true" id="it7" styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.estado}"
+                                                              readOnly="true"
+                                                              label="#{selSKYBundle['control.it11.label']}"
+                                                              required="true" id="it6" styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.cp}"
+                                                              readOnly="true"
+                                                              label="#{selSKYBundle['control.it7.label']}"
+                                                              required="true" id="it2" styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.telefono}"
+                                                              readOnly="true"
+                                                              label="#{selSKYBundle['control.it2.label']}"
+                                                              required="true" id="it12" styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText value="#{pageFlowScope.ControlBackingBean.direccionEnvio.lada}"
+                                                              readOnly="true"
+                                                              label="#{selSKYBundle['control.it10.label']}"
+                                                              required="true" id="it9" styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                            </af:panelFormLayout>
+                                        </af:panelGroupLayout>
+                                    </af:panelBox>
+                                </div>
+                                <div class="row">
+                                    <af:panelBox showMaximize="never" id="pb1" showDisclosure="false"
+                                                 background="medium" showHeader="never"
+                                                 inlineStyle="border:none;    border-right: solid 1px #D6DFE6;     margin-right: 5px;">
+                                        <f:facet name="toolbar"/>
+                                        <h:outputText styleClass="subtitle" value="Datos de pago" id="ot16"/>
+                                        <af:panelFormLayout id="pfl1" fieldWidth="50%" labelWidth="50%">
+                                            <af:inputText id="it3"
+                                                          value="#{pageFlowScope.ControlBackingBean.tarjeta.nombre}"
+                                                          required="true" label="Nombre del tarjetahabiente:"
+                                                          readOnly="true" styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder;"/>
+                                            <af:inputText id="it4"
+                                                          value="#{pageFlowScope.ControlBackingBean.tarjeta.noCodificado}"
+                                                          required="true" label="Número de tarjeta:" readOnly="true"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder;"/>
+                                        </af:panelFormLayout>
+                                    </af:panelBox>
+                                </div>
+                            </af:panelGroupLayout>
+                             
+                            <af:panelGroupLayout id="pgl2">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <label>
+                                            <h:outputText value="Recuerde que se cargará a su tarjeta el pago correspondiente al precio del control remoto"
+                                                          id="ot1"/>
+                                        </label>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                             
+                            <af:panelGroupLayout id="pgl3">
+                                <div class="top top-2 col-3 col-sm-8  col-tb-2 right" style="float:right;">
+                                    <af:button text="Cancelar" id="cbCancelar"
+                                               action="#{pageFlowScope.ControlBackingBean.cbCancelar_action}"
+                                               immediate="true" styleClass="btn-internal"/>
+                                </div>
+                                <div class="top top-2 col-3 col-sm-8  col-tb-2 right" style="float:right;">
+                                    <af:button text="Comprar" id="cbSiguienteGuardarTDC" partialSubmit="true"
+                                               styleClass="btn-internal"
+                                               action="#{pageFlowScope.ControlBackingBean.comprarControlVeTV_action}">
+                                        <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                    </af:button>
+                                </div>
+                                <div class="top top-2 col-3 col-sm-8  col-tb-2 right" style="float:right;">
+                                    <af:button text="Atrás" id="cb1" immediate="true" action="regresar"
+                                               styleClass="btn-internal"/>
+                                </div>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

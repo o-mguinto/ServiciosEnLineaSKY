@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="estadoCuenta">
+    <page>/WEB-INF/submenus/consultaSaldoyPagoEnLinea/estadoCuenta.jsf</page>
+    <input-page-parameter id="__20">
+      <from-value>/WEB-INF/estadoCuentaTF.xml#estadoCuentaTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="cambioFormaPago">
+    <page>/WEB-INF/submenus/consultaSaldoyPagoEnLinea/cambioFormaPago.jsf</page>
+    <input-page-parameter id="__33">
+      <from-value>/WEB-INF/cambioFormaPagoTF.xml#cambioFormaPagoTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="saldoActualVeTv">
+    <page>/WEB-INF/submenus/consultaSaldoyPagoEnLinea/saldoActualVeTv.jsf</page>
+    <input-page-parameter id="__22">
+      <from-value>#{sesion.codigoRecargaVeTV}</from-value>
+      <to-value>#{ParametrosPago.tipoPago}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__23">
+      <from-value>/WEB-INF/saldoActualTF.xml#saldoActualTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="realizarPago">
+    <page>/WEB-INF/submenus/consultaSaldoyPagoEnLinea/pago.jsf</page>
+    <input-page-parameter id="__25">
+      <from-value>/WEB-INF/pagoTF.xml#pagoTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__26">
+      <from-value>PAGO</from-value>
+      <to-value>#{ParametrosPago.tipoPago}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__48">
+      <from-value>false</from-value>
+      <to-value>#{Menu.fromPagos}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="misTarjetas">
+    <page>/WEB-INF/submenus/consultaSaldoyPagoEnLinea/misTarjetas.jsf</page>
+    <input-page-parameter id="__31">
+      <from-value>/WEB-INF/tarjetaTF.xml#tarjetaTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__47">
+      <from-value>false</from-value>
+      <to-value>#{Menu.fromPagos}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="recargaVeTv">
+    <page>/WEB-INF/submenus/consultaSaldoyPagoEnLinea/pago.jsf</page>
+    <input-page-parameter id="__28">
+      <from-value>#{sesion.codigoRecargaVeTV}</from-value>
+      <to-value>#{ParametrosPago.tipoPago}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__29">
+      <from-value>/WEB-INF/pagoTF.xml#pagoTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__49">
+      <from-value>false</from-value>
+      <to-value>#{Menu.fromPagos}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="promesaPago">
+    <page>/WEB-INF/submenus/consultaSaldoyPagoEnLinea/promesaPago.jsf</page>
+    <input-page-parameter id="__35">
+      <from-value>/WEB-INF/promesaPagoTF.xml#promesaPagoTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="consultaSaldoyPagoIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <router id="routerConsultaSalgoyPago">
+    <case id="__10">
+      <expression>#{sesion.ESTADO_CUENTA}</expression>
+      <outcome>irEstadoCuenta</outcome>
+    </case>
+    <case id="__11">
+      <expression>#{sesion.SALDO_ACTUALVeTV}</expression>
+      <outcome>irSaldoActualVeTv</outcome>
+    </case>
+    <case id="__12">
+      <expression>#{sesion.REALIZAR_PAGO}</expression>
+      <outcome>irRealizarPago</outcome>
+    </case>
+    <case id="__13">
+      <expression>#{sesion.RECARGA_VETV}</expression>
+      <outcome>irRecargaVeTv</outcome>
+    </case>
+    <case id="__14">
+      <expression>#{sesion.MIS_TARJETAS}</expression>
+      <outcome>irMisTarjetas</outcome>
+    </case>
+    <case id="__15">
+      <expression>#{sesion.CAMBIO_FORMA_PAGO}</expression>
+      <outcome>irRegistarCargoRecurrente</outcome>
+    </case>
+    <case id="__16">
+      <expression>#{sesion.REPORTAR_UN_PAGO_REALIZADO}</expression>
+      <outcome>irReportarPago</outcome>
+    </case>
+    <default-outcome>irConsultaSaldoyPagoIndex</default-outcome>
+  </router>
+  <control-flow-rule id="__1">
+    <from-activity-id>routerConsultaSalgoyPago</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>irConsultaSaldoyPagoIndex</from-outcome>
+      <to-activity-id>consultaSaldoyPagoIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__3">
+      <from-outcome>irEstadoCuenta</from-outcome>
+      <to-activity-id>estadoCuenta</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__4">
+      <from-outcome>irSaldoActualVeTv</from-outcome>
+      <to-activity-id>saldoActualVeTv</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__5">
+      <from-outcome>irRealizarPago</from-outcome>
+      <to-activity-id>realizarPago</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__6">
+      <from-outcome>irRecargaVeTv</from-outcome>
+      <to-activity-id>recargaVeTv</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__7">
+      <from-outcome>irMisTarjetas</from-outcome>
+      <to-activity-id>misTarjetas</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__8">
+      <from-outcome>irRegistarCargoRecurrente</from-outcome>
+      <to-activity-id>cambioFormaPago</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__9">
+      <from-outcome>irReportarPago</from-outcome>
+      <to-activity-id>promesaPago</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__17">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__18">
+      <from-outcome>irRouterConsultaSalgoPago</from-outcome>
+      <to-activity-id>routerConsultaSalgoyPago</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__36">
+      <from-outcome>smenu_estadoCuenta</from-outcome>
+      <to-activity-id>estadoCuenta</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__37">
+      <from-outcome>smenu_cambioFormaPago</from-outcome>
+      <to-activity-id>cambioFormaPago</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__38">
+      <from-outcome>smenu_saldoActualVeTv</from-outcome>
+      <to-activity-id>saldoActualVeTv</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__39">
+      <from-outcome>smenu_realizarPago</from-outcome>
+      <to-activity-id>realizarPago</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__40">
+      <from-outcome>smenu_misTarjetas</from-outcome>
+      <to-activity-id>misTarjetas</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__41">
+      <from-outcome>smenu_recargaVeTv</from-outcome>
+      <to-activity-id>recargaVeTv</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__42">
+      <from-outcome>smenu_promesaPago</from-outcome>
+      <to-activity-id>promesaPago</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__43">
+      <from-outcome>irRouterConsultaSalgoPago_0</from-outcome>
+      <to-activity-id>consultaSaldoyPagoIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__44">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>consultaSalgoyPago_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__45">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__46">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/consultaSaldoyPagoEnLinea/consultaSalgoyPago_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

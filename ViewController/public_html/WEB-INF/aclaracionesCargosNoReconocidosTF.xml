@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="aclaracionesCargosNoReconocidosTF">
+    <default-activity>aclaracionesCargosTC</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>CTDCBackingBean</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.aclaracionescargos.BBCargosTDC</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="aclaracionesCargosTC">
+      <page>/pages/aclaracionesCargosTC/aclaracionesCargosTC.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

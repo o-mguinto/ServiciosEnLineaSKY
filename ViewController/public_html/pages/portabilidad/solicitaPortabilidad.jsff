@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#portabilidad').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="portabilidad">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                   <div class="row">
+                    <h:outputText styleClass="title"
+                                                  value="Ingresa los siguientes datos:"
+                                                  id="ot11"/>
+                        <div class="col-6 col-tb-8 col-sm-8 padd-right">
+                        <div class="row top">
+                            <div class="col-12 col-tb-8 col-sm-8">
+                            <span class="xf">* </span>
+                                                        <af:outputLabel for="socLineasCelulares"
+                                                                        value="Línea celular receptora:"
+                                                                        styleClass="label-internal"
+                                                                        id="ol2"/>
+                        <af:selectOneChoice value="#{pageFlowScope.PortabilidadMB.lineaCelularSeleccionada}"
+                                            simple="true"
+                                            id="socLineasCelulares"
+                                            unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                            showRequired="false"
+                                            required="true"
+                                            styleClass="select-internal">
+                            <f:selectItems value="#{pageFlowScope.PortabilidadMB.lineasCelularesComboBox}" id="si1"/>
+                        </af:selectOneChoice>
+                    </div>
+                </div>
+                        <div class="row top">
+                                                    <div class="col-12 col-tb-8 col-sm-8">
+                                                        <span class="xf">* </span>
+                                                         
+                                                        <af:outputLabel for="socCompania"
+                                                                        value="Compañía donante"
+                                                                        styleClass="label-internal"
+                                                                        id="ol6"/>
+                                                         
+                                                        <af:selectOneChoice styleClass="select-internal"
+                                                                            id="socCompania"
+                                                                            simple="true"
+                                                                            autoSubmit="true"
+                                                                            required="true"
+                                                                            unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                                                            showRequired="false"
+                                                                            value="#{pageFlowScope.PortabilidadMB.beanPortab.operadorDonante}">
+                                                            <af:forEach var="item" items="#{bindings.companias.rangeSet}">
+                                                        <f:selectItem id="si2" itemLabel="#{item.nombre}"
+                                                                      itemValue="#{item.nombre}"/>
+                                                    </af:forEach>
+                                                        </af:selectOneChoice>
+                                                        
+                                                    </div>
+                                                </div>
+                            <div class="row top">
+                                                <div class="col-12 padd-right ">
+                                                <span class="xf">* </span>
+                                                 
+                                                <af:outputLabel id="ol1"
+                                                                for="noPortab"
+                                                                styleClass="label-internal"
+                                                                value="Número a portar"/>
+                                                 
+                                                <af:inputText 
+                                                              required="true"
+                                                              showRequired="false"
+                                                              simple="true"
+                                                              autoSubmit="true"
+                                                              id="noPortab"
+                                                              styleClass="input-internal"
+                                                              value="#{pageFlowScope.PortabilidadMB.beanPortab.numeroPortar}">
+                                                        <af:validateRegExp id="validateRegExp3"
+                                                                           pattern="[0-9]{10}"
+                                                                           messageDetailNoMatch="Debes ingresar exactamente 10 números"/>
+                                                </af:inputText>
+                                            </div>
+                                            </div>
+                        </div>
+                        <div class="col-6 col-tb-8 col-sm-8 padd-left-2">
+                                            <div class="row top">
+                                                <div class="col-12 padd-right ">
+                                                <span class="xf">* </span>
+                                                 
+                                                <af:outputLabel id="ol3"
+                                                                for="itNip"
+                                                                styleClass="label-internal"
+                                                                value="NIP"/>
+                                                 
+                                                <af:inputText 
+                                                              required="true"
+                                                              showRequired="false"
+                                                              simple="true"
+                                                              autoSubmit="true"
+                                                              id="itNip"
+                                                              styleClass="input-internal"
+                                                              value="#{pageFlowScope.PortabilidadMB.beanPortab.nipConfirmation}">
+                                                    
+                                                        <af:validateRegExp id="validateRegExpNip"
+                                                                           pattern="[0-9]{4}"
+                                                                           messageDetailNoMatch="Debes ingresar 4 números"/>
+                                                </af:inputText>
+                                            </div>
+                                            </div>
+                            
+                            <div class="row">
+                            <h:outputLabel value="*Para obtener tu NIP, manda un SMS al 051 con la palabra “NIP”"
+                                                                    id="ot1"
+                                                                    styleClass="font-bolder"/>
+                            </div>
+                            <div class="row">
+                            <h:outputLabel value="(desde el número que deseas portar)."
+                                                                    id="ol9"
+                                                                    styleClass="font-bolder"/>
+                            </div>
+                            <div class="row top">
+                                                <div class="col-12 padd-right ">
+                                                <span class="xf">* </span>
+                                                             
+                                                            <af:outputLabel id="ol4"
+                                                                            for="idVig"
+                                                                            styleClass="label-internal"
+                                                                            value="Vigencia del NIP"/>
+                                                             
+                                                            <af:inputDate id="idVig"
+                                                                          required="true"
+                                                                          styleClass="input-internal"
+                                                                          simple="true"
+                                                                          showRequired="false"
+                                                                          inlineStyle="display: inline-block;"
+                                                                          value="#{pageFlowScope.PortabilidadMB.beanPortab.vigenciaNip}"/>
+                                            </div>
+                                            </div>
+                            <div class="row top">
+                                                <div class="col-12 padd-right ">
+                                                 
+                                                <af:outputLabel id="ol5"
+                                                                for="itCurp"
+                                                                styleClass="label-internal"
+                                                                value="CURP (Opcional)"/>
+                                                 
+                                                <af:inputText 
+                                                              required="false"
+                                                              simple="true"
+                                                              autoSubmit="true"
+                                                              id="itCurp" 
+                                                              styleClass="input-internal"
+                                                              value="#{pageFlowScope.PortabilidadMB.beanPortab.curp}"
+                                                              partialTriggers="itCurp">
+                                                </af:inputText>
+                                            </div>
+                                </div>
+                        </div>
+                    
+                        <div class="col-12 right row top"
+                                                 style="float:right;">
+                                                <div class="col-2 col-tb-8 col-sm-8 center sm-cancel-align top-2"
+                                                     style="float: right;">
+                                                    <af:button text="PORTAR NÚMERO"
+                                                               id="cbPortar"
+                                                               styleClass="btn-internal"
+                                                               action="#{pageFlowScope.PortabilidadMB.solicitarPortabilidad}">
+                                                        <af:clientListener method="enforcePreventUserInput"
+                                                                           type="action"/>
+                                                    </af:button>
+                                                </div> 
+                                                <div class="col-2 col-tb-8 col-sm-8 center sm-cancel-align top-2"
+                                                     style="float: right;">
+                                                    <af:button text="CANCELAR"
+                                                               id="cbCancelar" immediate="true"
+                                                               styleClass="btn-internal"
+                                                               action="regresar">
+                                                        <af:clientListener method="enforcePreventUserInput"
+                                                                           type="action"/>
+                                                    </af:button>
+                                                    </div>
+                                <af:popup id="mensajeNotif" contentDelivery="lazyUncached"
+                          childCreation="deferred"
+                          binding="#{pageFlowScope.PortabilidadMB.popupMensajeRespuesta}"
+                          autoCancel="disabled">
+                    <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                        <af:dialog id="dialog1" type="none"
+                                   title="Notificación de la Solicitud"
+                                   styleClass="alert" closeIconVisible="false">
+                            <div class="text-internal">
+                                <h:outputText value="#{pageFlowScope.PortabilidadMB.mensajeRespuesta}"
+                                              id="outputText1"
+                                              styleClass="font-bolder"/>
+                            </div>
+                            <div class="col-12 dialog-background">
+                                <div class="row top autocenter">
+                                    <af:button id="btnAceptar"
+                                               text="#{selSKYBundle['pago.cb5.text']}"
+                                               styleClass="btn-pay-dialog"
+                                               action="#{pageFlowScope.PortabilidadMB.aceptarNotif}"
+                                               actionListener="#{pageFlowScope.PortabilidadMB.aceptarNotifAction}"/>
+                                </div>
+                            </div>
+                        </af:dialog>
+                    </div>
+                </af:popup>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

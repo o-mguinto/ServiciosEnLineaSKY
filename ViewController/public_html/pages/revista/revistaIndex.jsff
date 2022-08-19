@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#revista').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            /* For mobile phones: */
+@media only screen and (min-device-width:320px) and (max-device-width:767px) {
+                .img-2-rev-size {
+                    width: 75%;
+                    height: auto;
+                }
+                .subtitle {
+                    font-size: 1.3em;
+                }
+                /*para el tamaño maximizado de las imagenes en submenu revistas*/
+                .img-rev-maxsize {
+                    width: 100%;
+                    height: auto;
+                }
+                /*para hacer mas visible el icono de X en el ppoup  de revistas*/
+                div.alert > table tr td div.x1e8 > a {
+                    width: 50px;
+                    height: 40px;
+                    background-position: center;
+                    /* Center the image */
+
+                    background-repeat: no-repeat;
+                    /* Do not repeat the image */
+
+                    background-size: cover;
+                    /* Resize the background image to cover the entire container */
+                }
+                /*para que en los popups de las imagenes se muestren al 100% de ancho*/
+                div[role='dialog'] table {
+                    width: 100%;
+                }
+            }
+
+            /* For tablets: */
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+                .img-2-rev-size {
+                    width: 75%;
+                    height: auto;
+                }
+                .col-tb-2 {
+                    width: 25%;
+                }
+                .col-tb-6 {
+                    width: 75%;
+                }
+                .img-rev-size {
+                    width: 85%;
+                    height: auto;
+                }
+                /*para hacer mas visible el icono de X en el ppoup  de revistas*/
+                div.alert > table tr td div.x1e8 > a {
+                    width: 50px;
+                    height: 40px;
+                    background-position: center;
+                    /* Center the image */
+
+                    background-repeat: no-repeat;
+                    /* Do not repeat the image */
+
+                    background-size: cover;
+                    /* Resize the background image to cover the entire container */
+                }
+            }
+
+        </af:resource>
+        <div id="revista">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <!--Aqui va TODO el contenido-->
+                        <af:panelGroupLayout id="pgl3" styleClass="col-2 col-sm-8  col-tb-2 autocenter"
+                                             inlineStyle="float:right;">
+                            <div class="col-12 col-sm-4 top">
+                                <af:image source="#{viewScope.Revista.revista04}" id="i5" styleClass="img-2-rev-size"/>
+                            </div>
+                            <div class="col-12 col-sm-4 top">
+                                <af:image source="#{viewScope.Revista.revista03}" id="i6" styleClass="img-2-rev-size"/>
+                            </div>
+                            <div class="col-12 col-sm-4 top">
+                                <af:image source="#{viewScope.Revista.revista02}" id="i3" styleClass="img-2-rev-size"/>
+                            </div>
+                            <div class="col-12 col-sm-4 top">
+                                <af:image source="#{viewScope.Revista.revista01}" id="i4" styleClass="img-2-rev-size"/>
+                            </div>
+                            <!--af:panelGroupLayout id="pgl1" layout="vertical">
+                                    <af:spacer width="10" height="40" id="s5"/>
+                                    
+                                    <af:spacer width="5" height="5" id="s2"/>
+                                    
+                                    <af:spacer width="5" height="5" id="s6"/>
+                                    
+                                    <af:spacer width="5" height="5" id="s8"/>
+                                    
+                                    <af:spacer width="5" height="5" id="s9"/>
+                                </af:panelGroupLayout-->
+                        </af:panelGroupLayout>
+                         
+                        <af:panelGroupLayout id="pgl5" styleClass="col-10 col-sm-8  col-tb-6 right"
+                                             inlineStyle="float:right;">
+                            <af:declarativeComponent id="dc1" viewId="/pages/reusable/direccionEnvio.jsff"/>
+                            <af:panelGroupLayout id="pgl7">
+                                <p class="top bottom">
+                                    <h:outputText styleClass="subtitle" value="#{selSKYBundle['revista.pb1.text']}"
+                                                  id="ot14"/>
+                                </p>
+                            </af:panelGroupLayout>
+                            <div class="row top">
+                                <af:panelBox id="pb1" background="medium" showHeader="never" showDisclosure="false"
+                                             inlineStyle="border: 0px;">
+                                    <f:facet name="toolbar"/>
+                                    <af:subform id="subFrm1">
+                                        <af:panelGroupLayout id="pgl2">
+                                            <label>
+                                                <af:outputText id="ot8" value="#{selSKYBundle['revista.ot1.value']}"
+                                                               inlineStyle="font-size: 15px;"/>
+                                            </label>
+                                            <af:spacer id="s11" height="15"/>
+                                            <label>
+                                                <af:outputText id="ot3"
+                                                               value="Estimado suscriptor: Usted ya tiene contratada su Revista SKY View."
+                                                               rendered="#{viewScope.BBRevista.revistaContratada}"/>
+                                            </label>
+                                        </af:panelGroupLayout>
+                                        <div class="row top">
+                                            <div class="col-12 col-sm-8 col-tb-7 right" style="float:right;">
+                                                <af:button id="cb1"
+                                                           action="#{viewScope.BBRevista.showPopupConfirmacion}"
+                                                           text="Enviar solicitud de compra" styleClass="btn-internal"
+                                                           disabled="#{viewScope.BBRevista.revistaContratada}"/>
+                                            </div>
+                                        </div>
+                                        <af:separator id="s10" styleClass="separador"/>
+                                        <af:panelGroupLayout id="pgl4" styleClass="autocenter">
+                                            <div class="row top">
+                                                <af:outputText value="Nuestro ejemplares anteriores" id="ot4"
+                                                               styleClass="check-internal-bold"/>
+                                            </div>
+                                            <div class="top"></div>
+                                            <div class="col-12">
+                                                <div class="top bottom col-4 col-tb-4">
+                                                    <af:image id="i9" source="#{viewScope.Revista.imgRevista01}"
+                                                              styleClass="img-rev-size">
+                                                        <af:showPopupBehavior triggerType="click" popupId="pImg01"/>
+                                                    </af:image>
+                                                </div>
+                                                <div class="top bottom col-4 col-tb-4">
+                                                    <af:image id="i1" source="#{viewScope.Revista.imgRevista02}"
+                                                              styleClass="img-rev-size">
+                                                        <af:showPopupBehavior triggerType="click" popupId="pImg02"/>
+                                                    </af:image>
+                                                </div>
+                                                <div class="top bottom col-4 col-tb-4">
+                                                    <af:image id="i2" rendered="#{viewScope.Revista.mostrarRevista03}"
+                                                              source="#{viewScope.Revista.imgRevista03}"
+                                                              styleClass="img-rev-size">
+                                                        <af:showPopupBehavior triggerType="click" popupId="pImg03"/>
+                                                    </af:image>
+                                                </div>
+                                                <af:popup id="pImg01">
+                                                    <af:panelWindow id="pw1" modal="true" styleClass="alert">
+                                                        <af:image id="i7" source="#{viewScope.Revista.imgRevista01}"
+                                                                  styleClass="img-rev-maxsize"></af:image>
+                                                    </af:panelWindow>
+                                                </af:popup>
+                                                 
+                                                <af:popup id="pImg02">
+                                                    <af:panelWindow id="pw2" modal="true" styleClass="alert">
+                                                        <af:image id="i8" source="#{viewScope.Revista.imgRevista02}"
+                                                                  styleClass="img-rev-maxsize"></af:image>
+                                                    </af:panelWindow>
+                                                </af:popup>
+                                                 
+                                                <af:popup id="pImg03">
+                                                    <af:panelWindow id="pw3" modal="true" styleClass="alert">
+                                                        <af:image id="i10" source="#{viewScope.Revista.imgRevista03}"
+                                                                  styleClass="img-rev-maxsize"></af:image>
+                                                    </af:panelWindow>
+                                                </af:popup>
+                                            </div>
+                                        </af:panelGroupLayout>
+                                    </af:subform>
+                                </af:panelBox>
+                            </div>
+                            <af:popup id="confirmacion" childCreation="deferred" contentDelivery="lazyUncached"
+                                      autoCancel="disabled" binding="#{viewScope.BBRevista.popupConfirmacion}">
+                                <div class="col-10 col-tb-8 col-sm-7 center-popup">
+                                    <af:dialog id="d1" title="#{selSKYBundle['revista.d1.title']}" type="none"
+                                               styleClass="alert" closeIconVisible="false">
+                                        <div class="text-internal">
+                                            <div class="col-12 autocenter">
+                                                <af:image source="#{viewScope.Revista.revista04}" id="image2"
+                                                          styleClass="img-2-rev-size"/>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row top">
+                                                    <af:outputText id="ot2" styleClass="azul-internal"
+                                                                   value="#{selSKYBundle['revista.ot1.value']}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 dialog-background">
+                                            <div class="row top autocenter">
+                                                <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-left sm-no-padd-left">
+                                                    <af:button id="b5" text="#{selSKYBundle['revista.d1.btnAceptar']}"
+                                                               styleClass="btn-pay-dialog"
+                                                               action="#{viewScope.BBRevista.contratarRevista}">
+                                                        <af:clientListener method="enforcePreventUserInput"
+                                                                           type="action"/>
+                                                    </af:button>
+                                                </div>
+                                                <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align padd-left sm-no-padd-left">
+                                                    <af:button id="b6" text="#{selSKYBundle['pago.cb6.text']}"
+                                                               styleClass="btn-pay-dialog"
+                                                               action="#{viewScope.BBRevista.cancelarContratacionRevista}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </af:dialog>
+                                </div>
+                            </af:popup>
+                            <af:popup id="mensaje" childCreation="deferred" contentDelivery="lazyUncached"
+                                      autoCancel="disabled" binding="#{viewScope.BBRevista.popupMensajeContratacion}">
+                                <div class="col-10 col-tb-8 col-sm-7 center-popup">
+                                    <af:dialog id="dialog1" type="none" title="Notificación de la contratación"
+                                               styleClass="alert" closeIconVisible="false">
+                                        <div class="text-internal">
+                                            <af:outputText value="#{viewScope.BBRevista.mensajeContratacion}"
+                                                           id="outputText1" styleClass="font-bolder"/>
+                                        </div>
+                                        <div class="col-12 dialog-background">
+                                            <div class="row top autocenter">
+                                                <af:button id="b3" text="#{selSKYBundle['pago.cb5.text']}"
+                                                           styleClass="btn-pay-dialog"
+                                                           action="#{viewScope.BBRevista.aceptarContratacion}"/>
+                                            </div>
+                                        </div>
+                                    </af:dialog>
+                                </div>
+                            </af:popup>
+                        </af:panelGroupLayout>
+                    </div>
+                </div>
+                <div class="row top">
+                    <div class="col-12 content-internal">
+                        <af:panelGroupLayout id="pgl1">
+                            <p>
+                                <h:outputText styleClass="title" value="#{selSKYBundle['revista.pb2.text']}" id="ot9"/>
+                            </p>
+                        </af:panelGroupLayout>
+                        <div class="row">
+                            <div class="col-12">
+                                <af:panelBox id="pb2" background="medium" showHeader="never" showDisclosure="false"
+                                             inlineStyle="border: 0px;">
+                                    <f:facet name="toolbar"/>
+                                    <af:panelCollection id="pc1" defaultToolbarItemDisplay="icon"
+                                                        styleClass="AFStretchWidth">
+                                        <f:facet name="menus"/>
+                                        <f:facet name="toolbar"/>
+                                        <f:facet name="statusbar"/>
+                                        <af:table value="#{bindings.DetalleSolicitudServicio.collectionModel}" var="row"
+                                                  rows="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                                  emptyText="#{bindings.DetalleSolicitudServicio.viewable ? selSKYBundle['revista.sinsolicitudes'] : 'Access Denied.'}"
+                                                  fetchSize="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                                  rowBandingInterval="0"
+                                                  selectedRowKeys="#{bindings.DetalleSolicitudServicio.collectionModel.selectedRow}"
+                                                  selectionListener="#{bindings.DetalleSolicitudServicio.collectionModel.makeCurrent}"
+                                                  rowSelection="single" id="t1" autoHeightRows="10"
+                                                  partialTriggers=":::d1" width="100%" scrollPolicy="auto"
+                                                  horizontalGridVisible="false" verticalGridVisible="false"
+                                                  styleClass="tbl-Class">
+                                            <af:column sortProperty="numeroSolicitud" sortable="false" id="c2"
+                                                       width="150" headerClass="content-text"
+                                                       headerText="#{selSKYBundle['revista.c2.headertext']}">
+                                                <af:outputText value="#{row.numeroSolicitud}" id="ot7"/>
+                                            </af:column>
+                                            <af:column sortProperty="comentario" sortable="false" id="c3" width="200"
+                                                       headerClass="content-text"
+                                                       headerText="#{selSKYBundle['revista.c3.headertext']}">
+                                                <af:outputText value="#{row.comentario}" id="ot5"/>
+                                            </af:column>
+                                            <af:column sortProperty="fechaCreacion" sortable="false" id="c1" width="150"
+                                                       headerClass="content-text"
+                                                       headerText="#{selSKYBundle['revista.c1.headertext']}">
+                                                <af:outputText value="#{row.fechaCreacion}" id="ot6"/>
+                                            </af:column>
+                                        </af:table>
+                                    </af:panelCollection>
+                                </af:panelBox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

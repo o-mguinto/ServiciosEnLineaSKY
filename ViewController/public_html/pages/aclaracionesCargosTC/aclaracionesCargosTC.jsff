@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#aclaracionesCargosTC').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+        .ifDocumentoSeguro tbody tr td{
+                    display: block;
+                    text-align: left;
+                }
+         </af:resource>
+        <div id="aclaracionesCargosTC">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <af:group id="g2">
+                            <af:outputText value="#{selSKYBundle['cargos.pb1.text']}"
+                                           id="otpb1" styleClass="subtitle"/>
+                            <div class="row">
+                                <label>
+                                    <h:outputText value="#{selSKYBundle['cargos.ot2.value']}"
+                                                  id="ot2"/>
+                                </label>
+                            </div>
+                            <div class="row top">
+                                <af:outputText value="#{selSKYBundle['cargos.pb2.text']}"
+                                               id="otpb" styleClass="subtitle"/>
+                                 
+                                <af:panelList id="panelList1"
+                                              listStyle="list-style-type:circle">
+                                    <af:outputText rendered="#{!sesion.PAN}"
+                                                   value="#{selSKYBundle['cargos.ot1.value']} #{sesion.telefonoFax}"
+                                                   id="ot8"/>
+                                    <af:outputText rendered="#{sesion.PAN}"
+                                                   value="Fax 833 6675, 832 3298 y 00 800 226 0270"
+                                                   id="ot12"/>
+                                    <af:outputText value="#{selSKYBundle['cargos.ot10.value']} #{sesion.emailCAC}"
+                                                   id="ot10"/>
+                                    <af:outputText value="Le recordamos que el tamaño máximo por documento que se envíe deberá ser de 1 MB"
+                                                   id="ot_6"/>
+                                    <af:outputText value="El formato de imagen PNG no esta soportado, se recomienda enviar documentos en formato PDF"
+                                                   id="ot_7"/>
+                                    <af:outputText value="#{selSKYBundle['cargos.ot1.seguridadDatos']}"
+                                                   id="ot11"/>
+                                </af:panelList>
+                            </div>
+                            <af:subform id="sform1">
+                                <div class="row top-btn">
+                                <div class="col-7 col-sm-8 col-tb-4 right padd-right"
+                                         style="float:left;">
+                                        <af:inputFile label="Estado de Cuenta:"
+                                                      id="if1"
+                                                      value="#{pageFlowScope.CTDCBackingBean.estadoCuenta}"
+                                                      required="true"
+                                                      inlineStyle="padding:15.0px;"
+                                                      valueChangeListener="#{pageFlowScope.CTDCBackingBean.fileUpdate}"
+                                                      partialTriggers="if1"
+                                                      autoSubmit="true"
+                                                      styleClass="ifDocumentoSeguro"/>
+                                    </div>
+                                    <div class="col-5 col-sm-8  col-tb-4 right padd-left"
+                                         style="float:right;">
+                                        <af:button text="#{selSKYBundle['cargos.cb1.text']}"
+                                                   id="cb1"
+                                                   styleClass="btn-internal"
+                                                   action="#{pageFlowScope.CTDCBackingBean.enviarSolicitud}">
+                                            <af:clientListener method="enforcePreventUserInput"
+                                                               type="action"/>
+                                        </af:button>
+                                    </div>
+                                </div>
+                            </af:subform>
+                            <af:popup id="mensaje"
+                                      contentDelivery="lazyUncached"
+                                      autoCancel="disabled"
+                                      childCreation="deferred"
+                                      binding="#{pageFlowScope.CTDCBackingBean.popupMensajeSeguro}">
+                                <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                    <af:dialog id="dialog1" type="none"
+                                               title="#{selSKYBundle['mensaje_Notificacion']}"
+                                               styleClass="alert"
+                                               closeIconVisible="false">
+                                        <div class="text-internal">
+                                            <af:outputText value="#{pageFlowScope.CTDCBackingBean.mensajeSeguro}"
+                                                           id="outputText1"
+                                                           styleClass="font-bolder"/>
+                                        </div>
+                                        <div class="col-12 dialog-background">
+                                            <div class="row top autocenter">
+                                                <af:button id="b3"
+                                                           text="#{selSKYBundle['pago.cb5.text']}"
+                                                           styleClass="btn-pay-dialog"
+                                                           action="#{pageFlowScope.CTDCBackingBean.aceptarAclaracion}"/>
+                                            </div>
+                                        </div>
+                                    </af:dialog>
+                                </div>
+                            </af:popup>
+                        </af:group>
+                    </div>
+                <div class="row top">
+                        <p class="top bottom">
+                            <af:outputText value="#{selSKYBundle['cargos.pb3.text']}"
+                                           id="otpb3" styleClass="subtitle"/>
+                        </p>
+                        </div>
+                    <div class="row top">
+                                <af:panelCollection id="pc1"
+                                                    shortDesc="#{selSKYBundle['cargos.pb3.text']}"
+                                                    styleClass="AFStretchWidth">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar"/>
+                                    <f:facet name="statusbar"/>
+                                    <af:table value="#{bindings.DetalleSolicitudServicio.collectionModel}"
+                                              var="row"
+                                              rows="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                              emptyText="#{bindings.DetalleSolicitudServicio.viewable ? 'Sin información disponible' : 'Access Denied.'}"
+                                              fetchSize="#{bindings.DetalleSolicitudServicio.rangeSize}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.DetalleSolicitudServicio.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.DetalleSolicitudServicio.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="t1"
+                                              autoHeightRows="10"
+                                              partialTriggers=":::sform1:cb1"
+                                              width="100%"  scrollPolicy="auto" horizontalGridVisible="false"
+                                              verticalGridVisible="false"
+                                              styleClass="tbl-Class">
+                                        <af:column sortProperty="numeroSolicitud"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['cargos.c1.headertext']}"
+                                                   id="c1" width="150"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.numeroSolicitud}"
+                                                           id="ot3"/>
+                                        </af:column>
+                                        <af:column sortProperty="area"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['cargos.c5.headertext']}"
+                                                   id="c5" width="150"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.area}"
+                                                           id="ot7"/>
+                                        </af:column>
+                                        <af:column sortProperty="subAarea"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['cargos.c2.headertext']}"
+                                                   id="c2" width="200"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.subAarea}"
+                                                           id="ot5"/>
+                                        </af:column>
+                                        <af:column sortProperty="comentario"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['cargos.c4.headertext']}"
+                                                   id="c4" width="300"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.comentario}"
+                                                           id="ot6"/>
+                                        </af:column>
+                                        <af:column sortProperty="fechaCreacion"
+                                                   sortable="false"
+                                                   headerText="#{selSKYBundle['cargos.c3.headertext']}"
+                                                   id="c3" width="130"
+                                                   headerClass="content-text">
+                                            <af:outputText value="#{row.fechaCreacion}"
+                                                           id="ot4"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

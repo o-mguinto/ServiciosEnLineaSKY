@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="compraServicioSuplementarioCelularTF">
+    <default-activity>compraServicioSuplementarioCelular</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>CompraServicioSuplementarioBackingBean</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.compraserviciosuplementariocelular.BBCompraServicioSuplementarioCelular</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="compraServicioSuplementarioCelular">
+      <page>/pages/compraServicioSuplementarioCelular/compraServicioSuplementarioCelular.jsff</page>
+    </view>
+    <task-flow-call id="compraRecargaTF">
+      <task-flow-reference>
+        <document>/WEB-INF/compraRecargaTF.xml</document>
+        <id>compraRecargaTF</id>
+      </task-flow-reference>
+      <input-parameter id="__4">
+        <name>idPaquete</name>
+        <value>#{pageFlowScope.CompraServicioSuplementarioBackingBean.idPaquete}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__5">
+        <name>nombre_display</name>
+        <value>#{pageFlowScope.CompraServicioSuplementarioBackingBean.paqueteActiva.nombre_display}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__6">
+        <name>costo</name>
+        <value>#{pageFlowScope.CompraServicioSuplementarioBackingBean.paqueteActiva.costo}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__7">
+        <name>imagen</name>
+        <value>serviciosCelular/80x120/#{pageFlowScope.CompraServicioSuplementarioBackingBean.paqueteActiva.imagen}.png</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__8">
+        <name>fecha_corte</name>
+        <value>#{pageFlowScope.CompraServicioSuplementarioBackingBean.fecha_corte}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__9">
+        <name>saldoCuenta</name>
+        <value>#{pageFlowScope.CompraServicioSuplementarioBackingBean.paqueteActiva.saldoCuenta}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__10">
+        <name>montoDiferencia</name>
+        <value>#{pageFlowScope.CompraServicioSuplementarioBackingBean.paqueteActiva.montoDiferencia}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__11">
+        <name>assetNumber</name>
+        <value>#{pageFlowScope.CompraServicioSuplementarioBackingBean.assetNumberLineaSeleccionada}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__12">
+        <name>secondAssetNumber</name>
+        <value>#{''}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__13">
+        <name>isSuplementario</name>
+        <value>#{true}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__14">
+        <name>indexColor</name>
+        <value>#{pageFlowScope.CompraServicioSuplementarioBackingBean.indexColor}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__15">
+        <name>datos</name>
+        <value>#{pageFlowScope.CompraServicioSuplementarioBackingBean.paqueteActiva.datos}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__16">
+        <name>mins</name>
+        <value>#{pageFlowScope.CompraServicioSuplementarioBackingBean.paqueteActiva.mins}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__17">
+        <name>sms</name>
+        <value>#{pageFlowScope.CompraServicioSuplementarioBackingBean.paqueteActiva.sms}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__18">
+        <name>mostrarPaisesIncluidos</name>
+        <value>#{pageFlowScope.CompraServicioSuplementarioBackingBean.mostrarPaisesIncluidos}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <run-as-dialog>
+        <display-type>
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    </task-flow-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>compraServicioSuplementarioCelular</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>compra</from-outcome>
+        <to-activity-id>compraRecargaTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

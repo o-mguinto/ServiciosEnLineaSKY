@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="canalesTF">
+    <default-activity>canales</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>CanalesBackingBean</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.canal.BBCanal</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__2">
+      <managed-bean-name>PFBlueToGo</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.btgew.PFBlueToGoEveryWhere</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="canales">
+      <page>/pages/canales/canales.jsff</page>
+    </view>
+    <task-flow-call id="canalesContrataTF">
+      <task-flow-reference>
+        <document>/WEB-INF/canalesContrataTF.xml</document>
+        <id>canalesContrataTF</id>
+      </task-flow-reference>
+      <input-parameter id="__6">
+        <name>nombreCanal</name>
+        <value>#{backingBeanScope.CanalesBackingBean.canal.nombre}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__7">
+        <name>imagenCanal</name>
+        <value>#{backingBeanScope.CanalesBackingBean.canal.imagen}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__8">
+        <name>idCanal</name>
+        <value>#{backingBeanScope.CanalesBackingBean.canal.id}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__9">
+        <name>precioDisplay</name>
+        <value>#{backingBeanScope.CanalesBackingBean.canal.precio_display}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__10">
+        <name>sinopsis</name>
+        <value>#{backingBeanScope.CanalesBackingBean.canal.sinopsis}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__11">
+        <name>nombreDisplayCanal</name>
+        <value>#{backingBeanScope.CanalesBackingBean.canal.nombre_display}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__12">
+        <name>canal</name>
+        <value>#{backingBeanScope.CanalesBackingBean.canal.canal}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__13">
+        <name>canal_display</name>
+        <value>#{backingBeanScope.CanalesBackingBean.canal.canal_display}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__14">
+        <name>precioPO_display</name>
+        <value>#{backingBeanScope.CanalesBackingBean.canal.precioPO_display}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <run-as-dialog>
+        <display-type>
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    </task-flow-call>
+    <task-flow-call id="hotGoActivar">
+      <task-flow-reference>
+        <document>/WEB-INF/hotGoActivar.xml</document>
+        <id>hotGoActivar</id>
+      </task-flow-reference>
+      <run-as-dialog>
+        <display-type>
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    </task-flow-call>
+    <task-flow-call id="streamingContrataTF">
+      <task-flow-reference>
+        <document>/WEB-INF/streamingContrataTF.xml</document>
+        <id>streamingContrataTF</id>
+      </task-flow-reference>
+      <input-parameter id="__16">
+        <name>nombreServicio</name>
+        <value>#{backingBeanScope.CanalesBackingBean.canal.nombre}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__17">
+        <name>imagenServicio</name>
+        <value>#{backingBeanScope.CanalesBackingBean.canal.imagen}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__18">
+        <name>idServicio</name>
+        <value>#{backingBeanScope.CanalesBackingBean.canal.id}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__19">
+        <name>precio</name>
+        <value>#{backingBeanScope.CanalesBackingBean.canal.precio_display}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__20">
+        <name>sinopsis</name>
+        <value>#{backingBeanScope.CanalesBackingBean.canal.sinopsis}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <run-as-dialog>
+        <display-type>
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    </task-flow-call>
+    <control-flow-rule id="__3">
+      <from-activity-id>canales</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>contrata</from-outcome>
+        <to-activity-id>canalesContrataTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>contrata_hotgo</from-outcome>
+        <to-activity-id>hotGoActivar</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__15">
+        <from-outcome>contrata_streaming</from-outcome>
+        <to-activity-id>streamingContrataTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

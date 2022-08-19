@@ -1,0 +1,317 @@
+/*---------------------Skinning Section Started--------------------------*/
+.document {
+    background-color: White;
+}
+
+af|panelGroupLayout.mainRootContainer {
+    max-width: 950px;
+    margin: 0px auto;
+    overflow: visible;
+}
+
+af|panelGroupLayout.formRootContainer {
+    margin: 0px 1%;
+    padding-bottom: 20px;
+}
+
+af|panelGroupLayout.formContainer {
+    width: 100%;
+}
+
+.principalImage {
+    width: 100%;
+}
+
+.ImgPromo {
+    width: 100%;
+}
+
+.AppStor {
+    width: 40%;
+    height: 37%;
+}
+
+.PlayStor {
+    width: 40%;
+    height: 37%;
+}
+
+.SelWebMov {
+    width: 100%;
+    height: 42%;
+    top: 70%;
+}
+
+af|image.originalImage {
+    width: auto;
+    height: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+af|image.skyLogo {
+    width: auto;
+    margin-bottom: -7px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.planeLogo {
+    width: auto;
+    margin: 10px;
+}
+
+.buttonImage {
+    width: 100%;
+    display: inline-block;
+    padding: 0px;
+}
+
+.dispImage {
+    width: 44%;
+    padding: 20px;
+    display: inline-flex;
+    -webkit-box-shadow: 6px 5px 11px 0pxrgba(219, 219, 219, 1);
+    -moz-box-shadow: 6px 5px 11px 0pxrgba(219, 219, 219, 1);
+    box-shadow: 6px 5px 11px 0pxrgba(219, 219, 219, 1);
+}
+
+.dispButtons {
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titleHuge {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: Black;
+    padding-bottom: 50px;
+}
+
+.titleIngreso {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: Black;
+    padding-bottom: 50px;
+}
+
+.titleHuge2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    width: 100%;
+    color: rgb(248, 26, 129);
+    padding-bottom: 50px;
+}
+
+.itemPageCenter {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.titleHuge3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: rgb(248, 26, 129);
+}
+
+.normalFont {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: Black;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.normalFontCustom1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: Black;
+    display: inline-block;
+    text-align: center;
+}
+
+af|selectBooleanCheckbox.acceptTerms {
+    display: inline-block;
+}
+
+.normalPinkFont {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    color: rgba(247, 0, 157, 0.63);
+}
+
+.normalWhiteFont {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    color: White;
+    display: inline-block;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-align: left;
+}
+
+.mailFont {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: rgb(248, 26, 129);
+    text-align: right;
+}
+
+af|inputText.mailFontInput {
+    display: inline-table;
+    text-align: right;
+}
+
+af|inputText.mailFontInput::label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    width: 50%;
+    color: rgb(248, 26, 129);
+}
+
+af|inputText.mailFontInput::content {
+    height: 30px;
+    border: none;
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    color: rgb(248, 26, 129);
+    font-size: 16px;
+    background-image: none;
+    width: 100%;
+    margin-left: 0px;
+}
+
+.mailFontPassword {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: rgb(248, 26, 129);
+    text-align: right;
+}
+
+af|inputText.mailFontPassword {
+    display: inline-table;
+    text-align: right;
+}
+
+af|inputText.mailFontPassword::label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    width: 50%;
+    color: rgb(248, 26, 129);
+}
+
+af|inputText.mailFontPassword::content {
+    height: 30px;
+    border: none;
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    color: rgb(248, 26, 129);
+    font-size: 16px;
+    background-image: none;
+    width: 100%;
+    margin-left: 0px;
+    background-color: rgb(1, 204, 219);
+}
+
+af|image.footerImage {
+    width: auto;
+    float: right;
+}
+
+af|panelGroupLayout.footerImage {
+    background-image: url("../images/footer_norton_line.png");
+    background-repeat: repeat-x;
+    width: 100%;
+    float: right;
+}
+
+.custom {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.custom01 {
+    width: 90%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-shadow: 6px 5px 11px 0pxrgba(219, 219, 219, 1);
+    -moz-box-shadow: 6px 5px 11px 0pxrgba(219, 219, 219, 1);
+    box-shadow: 6px 5px 11px 0pxrgba(219, 219, 219, 1);
+}
+
+.custom02 {
+    width: 90%;
+    background-color: rgb(1, 204, 219);
+    display: inline-flex;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 10px;
+}
+
+.custom03 {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(1, 204, 219);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.custom01_internal {
+    padding-bottom: 30px;
+    padding-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.custom02_internal {
+    padding-bottom: 30px;
+    padding-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.custom01_internalCenter {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+.insideBox {
+    margin-left: 30px;
+}
+
+af|panelGroupLayout.mail01 {
+    width: 100%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.x17c, .x17d {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+    color: black !important;
+}

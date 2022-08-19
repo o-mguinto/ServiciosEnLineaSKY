@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#crecimientoInternetIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="crecimientoInternetIndex">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-sm-8 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <!--Para cada fila una div-->
+                    <div class="row">
+                        <!--Aqui va TODO el contenido-->
+                        <div class="col-4 col-sm-4 col-tb-4 autocenter" style="float: none">
+                            <af:image source="/imagenes/crecimientos/internet2.png"
+                                      id="i21" shortDesc=" "
+                                      styleClass="AFStretchWidth"/>
+                        </div>
+                        <div class="row top">
+                            <af:panelBox id="pb1" showDisclosure="false"
+                                         showHeader="never" background="medium"
+                                         inlineStyle="border: 0px;">
+                                <af:subform id="s2">
+                                    <div class="row">
+                                        <af:outputText value="Datos de tu cuenta:"
+                                                       id="outputText4"
+                                                       styleClass="subtitle"/>
+                                    </div>
+                                    <div class="row top">
+                                        <div class="col-12">
+                                            <af:panelGroupLayout halign="start"
+                                                                 id="pgl4">
+                                                <af:panelLabelAndMessage label=" Cuenta:"
+                                                                         id="plam3"
+                                                                         styleClass="output-internal">
+                                                    <h:outputText id="it1"
+                                                                  value="#{sesion.cuentaSKY}"
+                                                                  styleClass="font-bolder"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:panelLabelAndMessage id="plam15"
+                                                                         styleClass="output-internal"
+                                                                         rendered="#{sesion.userVeTV}">
+                                                    <h:outputText id="ot4"
+                                                                  value="#{backingBeanScope.BBCrecimientoInternet.precio}"
+                                                                  styleClass="font-bolder"/>
+                                                </af:panelLabelAndMessage>
+                                                <div class="top">
+                                                <af:panelLabelAndMessage id="plam4"
+                                                                         styleClass="check-internal-bold">
+                                                    <h:outputText value="#{backingBeanScope.BBCrecimientoInternet.mensajeTya}"
+                                                                  id="ot6"
+                                                                  rendered="#{!sesion.userVeTV}"/>
+                                                    <h:outputText value="#{backingBeanScope.BBCrecimientoInternet.mensajeVeTv}"
+                                                                  id="ot1"
+                                                                  rendered="#{sesion.userVeTV}"/>
+                                                </af:panelLabelAndMessage>
+                                                </div>
+                                            </af:panelGroupLayout>
+                                        </div>
+                                    </div>
+                                </af:subform>
+                            </af:panelBox>
+                            <div class="row top">
+                                <!---->
+                                <af:panelBox id="pb2" showDisclosure="false"
+                                             showHeader="never"
+                                             inlineStyle="border: 0px;"
+                                             titleHalign="start"
+                                             background="medium"
+                                             rendered="#{backingBeanScope.BBCrecimientoInternet.cuentaValida or backingBeanScope.BBCrecimientoInternet.cuentaValidaVeTv}">
+                                    <af:subform id="s1">
+                                        <div class="row">
+                                            <af:outputText value="Dirección de servicio:"
+                                                           id="outputText3"
+                                                           styleClass="subtitle"/>
+                                        </div>
+                                        <div class="row top">
+                                            <div class="col-12">
+                                                <af:panelGroupLayout id="pgl2"
+                                                                     halign="left">
+                                                    <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam4.label']}"
+                                                                             id="plam5"
+                                                                             styleClass="output-internal">
+                                                        <h:outputText value="#{backingBeanScope.BBCrecimientoInternet.calle}"
+                                                                      id="ot94"
+                                                                      styleClass="font-bolder"/>
+                                                    </af:panelLabelAndMessage>
+                                                        <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam1.label']}"
+                                                                                 id="plam1"
+                                                                                 styleClass="output-internal">
+                                                            <h:outputText id="ot95"
+                                                                          value='#{backingBeanScope.BBCrecimientoInternet.numExt}'
+                                                                          styleClass="font-bolder"/>
+                                                        </af:panelLabelAndMessage>
+                                                        <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam7.label']}"
+                                                                                 id="plam7"
+                                                                                 styleClass="output-internal">
+                                                            <h:outputText id="ot99"
+                                                                          value="#{backingBeanScope.BBCrecimientoInternet.numInt}"
+                                                                          styleClass="font-bolder"/>
+                                                        </af:panelLabelAndMessage>
+                                                        <af:panelLabelAndMessage label="Colonia: "
+                                                                                 id="plam8"
+                                                                                 styleClass="output-internal">
+                                                            <h:outputText value="#{backingBeanScope.BBCrecimientoInternet.colonia}"
+                                                                          styleClass="font-bolder"
+                                                                          id="ot96"/>
+                                                        </af:panelLabelAndMessage>
+                                                        <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam11.label']}"
+                                                                                 id="plam2"
+                                                                                 styleClass="output-internal">
+                                                            <h:outputText value="#{backingBeanScope.BBCrecimientoInternet.delMun}"
+                                                                          styleClass="font-bolder"
+                                                                          id="ot97"/>
+                                                        </af:panelLabelAndMessage>
+                                                        <af:panelLabelAndMessage label="Cuidad: "
+                                                                                 id="plam11"
+                                                                                 styleClass="output-internal">
+                                                            <h:outputText value="#{backingBeanScope.BBCrecimientoInternet.cuidad}"
+                                                                          styleClass="font-bolder"
+                                                                          id="ot93"/>
+                                                        </af:panelLabelAndMessage>
+                                                        <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam9.label']}"
+                                                                                 id="plam9"
+                                                                                 styleClass="output-internal">
+                                                            <h:outputText value="#{backingBeanScope.BBCrecimientoInternet.estado}"
+                                                                          styleClass="font-bolder"
+                                                                          id="ot98"/>
+                                                        </af:panelLabelAndMessage>
+                                                    
+                                                        <af:panelLabelAndMessage label="#{selSKYBundle['direccionenvio.plam6.label']}"
+                                                                                 id="plam6"
+                                                                                 styleClass="output-internal">
+                                                            <h:outputText value="#{backingBeanScope.BBCrecimientoInternet.cp}"
+                                                                          styleClass="font-bolder"
+                                                                          id="ot910"/>
+                                                        </af:panelLabelAndMessage>
+                                                    
+                                                    <div class="row top">
+                                                        <div class="col-3 col-tb-5 col-sm-8 center sm-cancel-align"
+                                                             style="float:right;">
+                                                            <af:button text="Validar cobertura"
+                                                                       id="cb444"
+                                                                       rendered="#{!sesion.userVeTV}"
+                                                                       partialSubmit="true"
+                                                                       styleClass="btn-internal"
+                                                                       action="#{backingBeanScope.BBCrecimientoInternet.validaCobertura}">
+                                                                <af:clientListener method="enforcePreventUserInput"
+                                                                                   type="action"/>
+                                                            </af:button>
+                                                             
+                                                            <af:button text="Validar cobertura"
+                                                                       id="cb2"
+                                                                       rendered="#{sesion.userVeTV}"
+                                                                       partialSubmit="true"
+                                                                       styleClass="btn-internal"
+                                                                       action="#{backingBeanScope.BBCrecimientoInternet.validaCoberturaVeTV}">
+                                                                <af:clientListener method="enforcePreventUserInput"
+                                                                                   type="action"/>
+                                                            </af:button>
+                                                        </div>
+                                                    </div>
+                                                </af:panelGroupLayout>
+                                            </div>
+                                            <af:popup id="popupTYA"
+                                                      binding="#{viewScope.BBCrecimientoEquipos.popupTYA}"
+                                                      contentDelivery="lazyUncached"
+                                                      autoCancel="disabled"
+                                                      childCreation="deferred">
+                                                <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                                    <af:dialog id="dialog1"
+                                                               type="none"
+                                                               title="Notificación de crecimiento internet"
+                                                               styleClass="alert"
+                                                               closeIconVisible="false">
+                                                        <div class="text-internal">
+                                                            <af:outputText value="No. SS: "
+                                                                           id="otNo"/>
+                                                             
+                                                            <h:outputText value="#{viewScope.BBCrecimientoEquipos.SSTransaccion}"
+                                                                          id="ot5"
+                                                                          styleClass="font-bolder"/>
+                                                            <div class="row">
+                                                                <af:outputText value="Necesaria para seguimiento"
+                                                                               id="outputText1"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 dialog-background">
+                                                            <div class="row top autocenter">
+                                                                <af:button text="Aceptar"
+                                                                           id="cb1"
+                                                                           action="#{viewScope.BBCrecimientoEquipos.nuevoCrecimiento}"
+                                                                           styleClass="btn-pay-dialog"/>
+                                                            </div>
+                                                        </div>
+                                                    </af:dialog>
+                                                </div>
+                                            </af:popup>
+                                        </div>
+                                    </af:subform>
+                                </af:panelBox>
+                            </div>
+                            <div class="row"></div>
+                            <af:panelBox id="pb3" showDisclosure="false"
+                                         titleHalign="start" showHeader="never"
+                                         background="medium"
+                                         inlineStyle="border: 0px;"
+                                         binding="#{backingBeanScope.BBCrecimientoInternet.boxCobertura}">
+                                <af:subform id="s4">
+                                    <af:panelLabelAndMessage id="plam13"
+                                                             styleClass="check-internal-bold">
+                                        <h:outputText value="#{backingBeanScope.BBCrecimientoInternet.mensajeCrecimiento}"
+                                                      id="ot2"
+                                                      rendered="#{!sesion.userVeTV}"/>
+                                        <h:outputText value="#{backingBeanScope.BBCrecimientoInternet.mensajeCrecimientoVeTV}"
+                                                      id="ot3"
+                                                      rendered="#{sesion.userVeTV}"/>
+                                    </af:panelLabelAndMessage>
+                                    <!---->
+                                    <af:panelGroupLayout id="pgl6"
+                                                         rendered="#{backingBeanScope.BBCrecimientoInternet.cuentaValidaCobertura and !sesion.userVeTV}">
+                                        <div class="row top">
+                                            <div class="col-3 col-tb-5 col-sm-8 center sm-cancel-align"
+                                                 style="float:right;">
+                                                <af:button text="Enviar Solicitud"
+                                                           id="cb4"
+                                                           partialSubmit="true"
+                                                           styleClass="btn-internal">
+                                                    <af:clientListener method="enforcePreventUserInput"
+                                                                       type="action"/>
+                                                </af:button>
+                                            </div>
+                                        </div>
+                                        <div class="row top">
+                                            <label>
+                                                <af:outputText value="El pago de estos equipos se realizará en la visita del técnico de Sky"
+                                                               id="ot10"
+                                                               truncateAt="0"/>
+                                            </label>
+                                        </div>
+                                    </af:panelGroupLayout>
+                                </af:subform>
+                            </af:panelBox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

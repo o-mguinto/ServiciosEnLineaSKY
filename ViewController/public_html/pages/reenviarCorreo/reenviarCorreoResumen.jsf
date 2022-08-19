@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+    <af:document title="reenviarCorreoResumen.jsf" id="d1">
+        <af:form id="f1">
+        
+        <af:panelStretchLayout topHeight="80px" id="psl1">
+          <f:facet name="center">
+            <!-- id="af_one_column_header_scroll"   -->
+            <af:panelGroupLayout layout="scroll" id="pgl1">
+              <af:panelBox titleHalign="center" text="Resumen" id="pb2" background="medium"
+                           showDisclosure="false"            
+                           inlineStyle="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? 'width:100.0%;' : 'width:95.0%; margin:0.0%; padding:0.0%;' }"
+                           maximized="true" showMaximize="never">
+                <af:panelGroupLayout id="pgl2" layout="vertical" valign="middle" halign="end">
+                  <af:outputFormatted value="#{selSKYBundle['nuevor.outputFormatted1.value']}"
+                                      id="outputFormatted1" styleUsage="instruction"/>
+                  <af:panelGroupLayout id="pgl3" layout="horizontal" halign="end">
+                    <af:commandButton text="#{selSKYBundle['nuevor.cb1.text']}" id="cb1"
+                                      immediate="true" action="index"
+                                      icon="/imagenes/16X16/nav_16x16/done.png"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelStretchLayout>
+        
+        </af:form>
+    </af:document>
+</f:view>

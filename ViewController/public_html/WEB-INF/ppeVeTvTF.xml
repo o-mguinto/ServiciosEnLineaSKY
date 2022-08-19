@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ppeVeTvTF">
+    <default-activity>ppvIndex</default-activity>
+    <input-parameter-definition id="__4">
+      <name>tipoEvento</name>
+      <value>#{pageFlowScope.tipoEvento}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__5">
+      <name>evento</name>
+      <value>#{pageFlowScope.PFPPEVeTV.evento}</value>
+      <class>mx.com.sky.sel.services.beans.eventos.Evento</class>
+      <required/>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>PFPPEVeTV</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.ppevetv.PFPPEVeTV</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="ppvIndex">
+      <page>/pages/ppeVeTv/ppvIndex.jsff</page>
+    </view>
+    <task-flow-return id="closeTaskFlow">
+      <outcome>
+        <name>closeTaskFlow</name>
+      </outcome>
+    </task-flow-return>
+    <router id="siguiente">
+      <case id="__11">
+        <expression>#{sesion.userVeTV}</expression>
+        <outcome>siguienteVeTv</outcome>
+      </case>
+      <default-outcome>siguienteSKY</default-outcome>
+    </router>
+    <view id="ppvConfirmar">
+      <page>/pages/ppeVeTv/ppvConfirmar.jsff</page>
+    </view>
+    <view id="ppvPago">
+      <page>/pages/ppeVeTv/ppvPago.jsff</page>
+    </view>
+    <view id="ppvResumen">
+      <page>/pages/ppeVeTv/ppvResumen.jsff</page>
+    </view>
+    <view id="ppvPagoConfirmar">
+      <page>/pages/ppeVeTv/ppvPagoConfirmar.jsff</page>
+    </view>
+    <view id="ppvVeTVResumen">
+      <page>/pages/ppeVeTv/ppvVeTVResumen.jsff</page>
+    </view>
+    <view id="ppvNuevaTDC">
+      <page>/pages/ppeVeTv/ppvNuevaTDC.jsff</page>
+    </view>
+    <view id="ppvNuevaTDCConfirmar">
+      <page>/pages/ppeVeTv/ppvNuevaTDCConfirmar.jsff</page>
+    </view>
+    <view id="ppvNuevaTDCResumen">
+      <page>/pages/ppeVeTv/ppvNuevaTDCResumen.jsff</page>
+    </view>
+    <view id="sky_evento">
+      <page>/pages/ppeVeTv/sky_evento.jsff</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>closeTaskFlow</from-outcome>
+        <to-activity-id>closeTaskFlow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>ppvIndex</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>siguiente</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>siguiente</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>siguienteSKY</from-outcome>
+        <to-activity-id>ppvConfirmar</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__10">
+        <from-outcome>siguienteVeTv</from-outcome>
+        <to-activity-id>ppvPago</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>ppvConfirmar</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>ppvResumen</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id>ppvPago</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>ppvPagoConfirmar</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__16">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>ppvIndex</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__20">
+        <from-outcome>nuevaTDC</from-outcome>
+        <to-activity-id>ppvNuevaTDC</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__17">
+      <from-activity-id>ppvPagoConfirmar</from-activity-id>
+      <control-flow-case id="__18">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>ppvPago</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__19">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>ppvVeTVResumen</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__21">
+      <from-activity-id>ppvNuevaTDC</from-activity-id>
+      <control-flow-case id="__22">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>ppvPago</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__23">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>ppvNuevaTDCConfirmar</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__24">
+      <from-activity-id>ppvNuevaTDCConfirmar</from-activity-id>
+      <control-flow-case id="__25">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>ppvNuevaTDC</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>ppvNuevaTDCResumen</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id>ppvNuevaTDCResumen</from-activity-id>
+      <control-flow-case id="__28">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>ppvPago</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="btgVideoEverywhereIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <view id="btgveEventosDisponibles">
+    <page>/WEB-INF/submenus/btgVideoEverywhere/btgveEventosDisponibles.jsf</page>
+    <input-page-parameter id="__12">
+      <from-value>/WEB-INF/blueToGoVideoEverywhereTF.xml#blueToGoVideoEverywhereTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="btgveContrata">
+    <page>/WEB-INF/submenus/btgVideoEverywhere/btgveContrata.jsf</page>
+    <input-page-parameter id="__15">
+      <from-value>/WEB-INF/btgVeoBtgTF.xml#btgVeoBtgTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="btgveSoloNetwork">
+    <page>/WEB-INF/submenus/btgVideoEverywhere/btgveSoloNetwork.jsf</page>
+    <input-page-parameter id="__17">
+      <from-value>/WEB-INF/btgNetworkTF.xml#btgNetworkTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <router id="routerBtgve">
+    <case id="__8">
+      <expression>#{sessionScope.sesion.OTT}</expression>
+      <outcome>smenu_btgveEventosDisponibles</outcome>
+    </case>
+    <case id="__9">
+      <expression>#{sessionScope.sesion.CONTRATA_BTGEW}</expression>
+      <outcome>smenu_btgveContrata</outcome>
+    </case>
+    <case id="__10">
+      <expression>#{sessionScope.sesion.CONTRATA_BTGEW}</expression>
+      <outcome>smenu_btgveSoloNetwork</outcome>
+    </case>
+    <default-outcome>btgveIndex</default-outcome>
+  </router>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>btgveIndex</from-outcome>
+      <to-activity-id>routerBtgve</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__19">
+      <from-outcome>smenu_btgveEventosDisponibles</from-outcome>
+      <to-activity-id>btgveEventosDisponibles</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__20">
+      <from-outcome>smenu_btgveContrata</from-outcome>
+      <to-activity-id>btgveContrata</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__21">
+      <from-outcome>smenu_btgveSoloNetwork</from-outcome>
+      <to-activity-id>btgveSoloNetwork</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__3">
+    <from-activity-id>routerBtgve</from-activity-id>
+    <control-flow-case id="__4">
+      <from-outcome>btgveIndex</from-outcome>
+      <to-activity-id>btgVideoEverywhereIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__5">
+      <from-outcome>smenu_btgveSoloNetwork</from-outcome>
+      <to-activity-id>btgveSoloNetwork</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__6">
+      <from-outcome>smenu_btgveContrata</from-outcome>
+      <to-activity-id>btgveContrata</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__7">
+      <from-outcome>smenu_btgveEventosDisponibles</from-outcome>
+      <to-activity-id>btgveEventosDisponibles</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__22">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>btgVideoEverywhere_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__23">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__24">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/btgVideoEverywhere/btgVideoEverywhere_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

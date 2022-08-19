@@ -1,0 +1,782 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#pago').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        
+        
+        <div id="pago">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <af:spacer width="10" height="10" id="s8"
+                               rendered="#{!sesion.suscriptor.permitePagoTC}"/>
+                    <div class="col-12 col-tb-7">
+                        <af:panelGroupLayout id="pglAlertaImg" layout="vertical"
+                                             halign="left" valign="middle"
+                                             rendered="#{sesion.cuentaBloqueSistema or sesion.cuentaBloqueSueveDuro or
+                                                                 (sesion.cuentaVetv and !sesion.userMini) or (sesion.cuentavetvPlus and !sesion.userMini) 
+                                                                 or !sesion.suscriptor.permitePagoTC or sesion.usuario.cuentaJerarquia}"
+                                             inlineStyle="text-align: justify;">
+                            <af:panelGroupLayout id="pgl3"
+                                                 rendered="#{sesion.cuentaBloqueSistema}"
+                                                 halign="center">
+                                <af:outputText value="#{selSKYBundle['pago.ot75.value']}"
+                                               styleClass="check-internal-bold top-channel"
+                                               id="ot75"></af:outputText>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl4"
+                                                 rendered="#{sesion.cuentaBloqueSueveDuro}"
+                                                 halign="center">
+                                <af:outputText value="#{selSKYBundle['pago.ot76.value']}"
+                                               styleClass="check-internal-bold top-channel"
+                                               id="ot76"></af:outputText>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl2" valign="bottom"
+                                                 rendered="#{sesion.cuentaVetv and !sesion.userMini}">
+                                <af:outputText value="¡Recarga y gana! "
+                                               styleClass="check-internal-bold-red"
+                                               id="ot50"/>
+                                               <af:outputText value="Disfruta"
+                                               styleClass="output-internal-red"
+                                               id="ot51"/>
+                                               <af:outputText value="exclusivas del futbol europeo "
+                                               styleClass="check-internal-bold-red"
+                                               id="ot52"/>
+                                               <af:outputText value="y 5 canales adicionales al realizar 3 recargas en 4 meses consecutivos. Consulta detalles en "
+                                              styleClass="output-internal-red"
+                                               id="ot53"/>
+                                <h:outputLink id="otl1"
+                                              value="#{selSKYBundle['lnk.vetv']}"
+                                              target="_blank"
+                                              styleClass="link-indicacion-red">
+                                    <h:outputText id="ot8" value="vetv.com.mx"/>
+                                </h:outputLink>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl5"
+                                                 rendered="#{sesion.cuentavetvPlus and !sesion.userMini}"
+                                                 valign="bottom">
+                                <af:outputText value="¡Recarga y gana! "
+                                               styleClass="check-internal-bold-red"
+                                               id="ot54"/>
+                                               <af:outputText value="Disfruta"
+                                               styleClass="output-internal-red"
+                                               id="ot55"/>
+                                               <af:outputText value="exclusivas del futbol europeo "
+                                               styleClass="check-internal-bold-red"
+                                               id="ot56"/>
+                                               <af:outputText value="y 5 canales adicionales al realizar 4 recargas en 5 meses consecutivos. Consulta detalles "
+                                              styleClass="output-internal-red"
+                                               id="ot57"/>
+                                <h:outputLink id="otl2"
+                                              value="#{selSKYBundle['lnk.vetv']}"
+                                              target="_blank" styleClass="link-indicacion-red">
+                                    <h:outputText id="ot9" value="vetv.com.mx"/>
+                                </h:outputLink>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl6" layout="horizontal"
+                                                 halign="center"
+                                                 rendered="#{!sesion.suscriptor.permitePagoTC}">
+                                <af:outputText value="#{selSKYBundle['pago.ot2.value']}"
+                                               styleClass="check-internal-bold top-channel"
+                                               id="ot2"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl1"
+                                                 rendered="#{sesion.usuario.cuentaJerarquia}">
+                                <af:outputText value="#{selSKYBundle['pago.ot3.value']}"
+                                               styleClass="check-internal-bold top-channel"
+                                               id="ot3"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </div>
+                    <div class="row">
+                        <div>
+                            <af:panelGroupLayout id="pgl7">
+                                <div class="col-12 bottom">
+                                                        <af:outputText value="Para realizar el pago, colocar el total a pagar para continuar con el proceso."
+                                                           rendered="#{!sesion.userVeTV and !sesion.userMini and sesion.suscriptor.permitePagoTC and !sesion.usuario.cuentaJerarquia}" styleClass="check-internal-bold"
+                                                        id="ot1"/>
+                                </div>
+                                <p class="top bottom">
+                                    <h:outputText styleClass="title"
+                                                  value="#{selSKYBundle['pago.pb2.text']}"
+                                                  id="ot11"/>
+                                </p>
+                                <af:subform id="f2">
+                                    <af:group id="g4">
+                                        <div class="col-5 col-tb-4 col-sm-8 padd-left-2 sm-no-padd-left autocenter"
+                                             style="float: right;">
+                                            <div class="row">
+                                                <div class="col-12 col-tb-8 col-sm-8">
+                                                    <af:outputLabel value="#{selSKYBundle['pago.it3.label']}"
+                                                                    id="ot7"
+                                                                    styleClass="label-internal"/>
+                                                    <div class="col-12">
+                                                        <h:outputText value="#{bindings.fechaPagoOportuno.inputValue}"
+                                                                      id="it3"
+                                                                      styleClass="balance-saldo"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row top bottom">
+                                                <div class="col-12 col-tb-8 col-sm-8">
+                                                    <af:outputLabel for="it5"
+                                                                    value="#{selSKYBundle['estadocuenta.pb2.text']}"
+                                                                    id="ol4"
+                                                                    styleClass="label-internal"/>
+                                                </div>
+                                                <div class="col-12"
+                                                     style="padding-top: 7px;">
+                                                     <af:panelGroupLayout id="pgl10" 
+                                                         partialTriggers="b5">
+                                                          <h:outputText value="$ #{bindings.saldoTotal.inputValue} #{sessionScope.sesion.moneda}"
+                                                                  id="it5"
+                                                                  styleClass="balance-saldo"/>
+                                                          <!--h:outputText value="$ #{pageFlowScope.PagosBackingBean.saldo.saldoTotal} #{sessionScope.sesion.moneda}"
+                                                                  id="it5"
+                                                                  styleClass="balance-saldo"/-->
+                                                          </af:panelGroupLayout>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-7 col-tb-4 col-sm-8 padd-right sm-no-padd-right"
+                                                style="float: right;">
+                                            <div class="row">
+                                                <div class="col-12 col-tb-8 col-sm-8">
+                                                    <span class="xf">* </span>
+                                                     
+                                                    <af:outputLabel for="soc10"
+                                                                    value="#{selSKYBundle['pago.soc10.label']}"
+                                                                    styleClass="label-internal"
+                                                                    id="ol5"/>
+                                                     
+                                                    <af:selectOneChoice styleClass="select-internal"
+                                                                        id="soc10"
+                                                                        simple="true"
+                                                                        autoSubmit="true"
+                                                                        required="true"
+                                                                        unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                                                        valueChangeListener="#{pageFlowScope.PagosBackingBean.tipoPagoChanged}"
+                                                                        value="#{pageFlowScope.PagosBackingBean.tipoPago}"
+                                                                        showRequired="false">
+                                                        <f:selectItems value="#{pageFlowScope.PagosBackingBean.tiposPago}"
+                                                                       id="si10"/>
+                                                    </af:selectOneChoice>
+                                                </div>
+                                            </div>
+                                            <div class="row top">
+                                                <div class="col-12 col-tb-8 col-sm-8">
+                                                    <span class="xf">* </span>
+                                                     
+                                                    <af:outputLabel for="codigoSeguridad"
+                                                                    value="#{selSKYBundle['lbl_codigoSeguridad']}"
+                                                                    id="ol6"
+                                                                    styleClass="label-internal"/>
+                                                     
+                                                    <af:inputText secret="true"
+                                                                  value="#{pageFlowScope.PagosBackingBean.cVVTemp}"
+                                                                  id="codigoSeguridad"
+                                                                  required="true"
+                                                                  styleClass="input-internal"
+                                                                  maximumLength="4"
+                                                                  placeholder="#{selSKYBundle['placeholder_cvv']}"
+                                                                  showRequired="false"
+                                                                  simple="true">
+                                                        <af:validateRegExp messageDetailNoMatch="#{selSKYBundle.msg_estructuraCodigo}"
+                                                                           pattern="^[0-9]{3,4}$"/>
+                                                    </af:inputText>
+                                                </div>
+                                            </div>
+                                            <af:group id="g5"
+                                                      rendered="#{sesion.userVeTV and !sesion.cuentaDualPlay}">
+                                                <div class="row top">
+                                                    <div class="col-12 col-tb-8 col-sm-8">
+                                                        <span class="xf">* </span>
+                                                         
+                                                        <af:outputLabel for="TipoRecarga"
+                                                                        value="Tipo de recarga"
+                                                                        styleClass="label-internal"
+                                                                        id="ol1"/>
+                                                         
+                                                        <af:selectOneChoice styleClass="select-internal"
+                                                                            id="TipoRecarga"
+                                                                            simple="true"
+                                                                            autoSubmit="true"
+                                                                            required="true"
+                                                                            unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                                                            value="#{pageFlowScope.PagosBackingBean.tipoRecarga}"
+                                                                            valueChangeListener="#{pageFlowScope.PagosBackingBean.recargasVeTVdiasValueChange}"
+                                                                            showRequired="false">
+                                                            <af:selectItem label="30 días"
+                                                                           value="1"
+                                                                           id="si19"/>
+                                                                           <!--rendered="#{!sesion.paqueteVetvHD}"-->
+                                                            <af:selectItem label="14 días"
+                                                                           value="2"
+                                                                           id="si21"/>
+                                                        </af:selectOneChoice>
+                                                    </div>
+                                                </div>
+                                            </af:group>
+                                            
+                                            <!--para vetv hd--> 
+                                            <!--af:group id="g6"
+                                                      rendered="#{sesion.userVeTV and sesion.paqueteVetvHD}">
+                                                <div class="row top">
+                                                    <div class="col-12 col-tb-8 col-sm-8">
+                                                        <span class="xf">* </span>
+                                                         
+                                                        <af:outputLabel for="TipoRecargaVetvHD"
+                                                                        value="Tipo de recarga hd"
+                                                                        styleClass="label-internal"
+                                                                        id="ol10"/>
+                                                         
+                                                        <af:selectOneChoice styleClass="select-internal"
+                                                                            id="TipoRecargaVetvHD"
+                                                                            simple="true"
+                                                                            autoSubmit="true"
+                                                                            required="true"
+                                                                            unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                                                            value="#{pageFlowScope.PagosBackingBean.tipoRecarga}"
+                                                                            valueChangeListener="#{pageFlowScope.PagosBackingBean.recargasVeTVdiasValueChange}"
+                                                                            showRequired="false">
+                                                            <af:selectItem label="30 días"
+                                                                           value="1"
+                                                                           id="si1"/>
+                                                        </af:selectOneChoice>
+                                                    </div>
+                                                </div>
+                                            </af:group-->
+                                            
+                                            <af:group rendered="#{sesion.userVeTV and sesion.cuentaDualPlay}"
+                                                      id="g11">
+                                                <div class="row top">
+                                                    <div class="col-12 col-tb-8 col-sm-8">
+                                                        <span class="xf">* </span>
+                                                         
+                                                        <af:outputLabel for="TipoRecargaDual"
+                                                                        value="Tipo de recarga"
+                                                                        styleClass="label-internal"
+                                                                        id="ol2"/>
+                                                         
+                                                        <af:selectOneChoice styleClass="select-internal"
+                                                                            id="TipoRecargaDual"
+                                                                            simple="true"
+                                                                            autoSubmit="true"
+                                                                            required="true"
+                                                                            unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                                                            valueChangeListener="#{pageFlowScope.PagosBackingBean.recargasVeTVdiasValueChange}"
+                                                                            showRequired="false">
+                                                            <af:selectItem label="30 días"
+                                                                           value="1"
+                                                                           id="si19Dual"/>
+                                                        </af:selectOneChoice>
+                                                    </div>
+                                                </div>
+                                            </af:group>
+                                            <!--mini tipo recargas 30dias-->
+                                            <af:group rendered="#{sesion.userMini}"
+                                                      id="gpMiniTiposRec">
+                                                <div class="row top">
+                                                    <div class="col-12 col-tb-8 col-sm-8">
+                                                        <span class="xf">* </span>
+                                                         
+                                                        <af:outputLabel for="TipoRecargaMini"
+                                                                        value="Tipo de recarga"
+                                                                        styleClass="label-internal"
+                                                                        id="ol8"/>
+                                                         
+                                                        <af:selectOneChoice styleClass="select-internal"
+                                                                            id="TipoRecargaMini"
+                                                                            simple="true"
+                                                                            autoSubmit="true"
+                                                                            required="true"
+                                                                            unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                                                            valueChangeListener="#{pageFlowScope.PagosBackingBean.recargasVeTVdiasValueChange}"
+                                                                            showRequired="false">
+                                                            <af:selectItem label="30 días"
+                                                                           value="1"
+                                                                           id="si1Mini"/>
+                                                        </af:selectOneChoice>
+                                                    </div>
+                                                </div>
+                                            </af:group>
+                                            <af:group id="g7"
+                                                      rendered="#{sesion.userVeTV or sesion.userMini}">
+                                                <div class="row top">
+                                                    <div class="col-12 col-tb-8 col-sm-8">
+                                                        <af:outputLabel for="it7"
+                                                                        value="Costo de Recarga"
+                                                                        id="ol3"
+                                                                        styleClass="label-internal"/>
+                                                         
+                                                        <af:inputText binding="#{pageFlowScope.PagosBackingBean.costoRecarga}"
+                                                                      value="$ #{ParametrosPago.montoRecarga}"
+                                                                      id="it7"
+                                                                      simple="true"
+                                                                      styleClass="input-internal"
+                                                                      inlineStyle="display: inline-table;"></af:inputText>
+                                                    </div>
+                                                </div>
+                                            </af:group>
+                                             
+                                            <af:group id="g8"
+                                                      rendered="#{sesion.userVeTV || sesion.userMini}">
+                                                <div class="row top">
+                                                    <div class="col-12 col-tb-8 col-sm-8">
+                                                        <af:panelGroupLayout id="pgl8"
+                                                                             partialTriggers="TipoRecarga"
+                                                                             visible="#{pageFlowScope.PagosBackingBean.numeroRecargas.required and pageFlowScope.PagosBackingBean.numeroRecargas.visible}">
+                                                            <span class="xf">*</span>
+                                                        </af:panelGroupLayout>
+                                                         
+                                                        <af:outputLabel partialTriggers="TipoRecarga"
+                                                                        for="soc1"
+                                                                        value="Recargas a pagar"
+                                                                        visible="#{pageFlowScope.PagosBackingBean.numeroRecargas.visible}"
+                                                                        styleClass="label-internal"
+                                                                        id="ol7"/>
+                                                         
+                                                        <af:selectOneChoice partialTriggers="TipoRecarga"
+                                                                            styleClass="select-internal"
+                                                                            id="soc1"
+                                                                            simple="true"
+                                                                            autoSubmit="true"
+                                                                            required="true"
+                                                                            unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                                                            binding="#{pageFlowScope.PagosBackingBean.numeroRecargas}"
+                                                                            showRequired="false"
+                                                                            valueChangeListener="#{pageFlowScope.PagosBackingBean.recargasVeTVValueChange}">
+                                                            <f:selectItems id="siVeTv"
+                                                                           value="#{pageFlowScope.PagosBackingBean.recargasVeTv}"
+                                                                           binding="#{pageFlowScope.PagosBackingBean.siRecargasVeTv}"/>
+                                                        </af:selectOneChoice>
+                                                    </div>
+                                                </div>
+                                            </af:group>
+                                             
+                                            <!--af:group id="g9"
+                                                      rendered="#{sesion.userMini}">
+                                                <div class="row top">
+                                                    <div class="col-12 col-tb-8 col-sm-8">
+                                                        <af:panelGroupLayout id="pgl9"
+                                                                             partialTriggers="TipoRecarga"
+                                                                             visible="#{pageFlowScope.PagosBackingBean.numeroRecargasMini.required and pageFlowScope.PagosBackingBean.numeroRecargasMini.visible}">
+                                                            <span class="xf">*</span>
+                                                        </af:panelGroupLayout>
+                                                         
+                                                        <af:outputLabel partialTriggers="TipoRecarga"
+                                                                        for="soc2"
+                                                                        value="Recargas a pagar"
+                                                                        visible="#{pageFlowScope.PagosBackingBean.numeroRecargasMini.visible}"
+                                                                        styleClass="label-internal"
+                                                                        id="ol8"/>
+                                                         
+                                                        <af:selectOneChoice partialTriggers="TipoRecarga"
+                                                                            styleClass="select-internal"
+                                                                            id="soc2"
+                                                                            simple="true"
+                                                                            autoSubmit="true"
+                                                                            required="true"
+                                                                            unselectedLabel="#{selSKYBundle['lbl_selecciona_una_opcion']}"
+                                                                            value="#{pageFlowScope.PagosBackingBean.noRecargaVeTv}"
+                                                                            valueChangeListener="#{pageFlowScope.PagosBackingBean.recargasVeTVValueChange}"
+                                                                            showRequired="false"
+                                                                            binding="#{pageFlowScope.PagosBackingBean.numeroRecargasMini}">
+                                                            <f:selectItems id="siMini"
+                                                                           binding="#{pageFlowScope.PagosBackingBean.siRecargasMini}"
+                                                                           value="#{pageFlowScope.PagosBackingBean.recargasMini}"/>
+                                                        </af:selectOneChoice>
+                                                    </div>
+                                                </div>
+                                            </af:group-->
+                                            <div class="row top">
+                                                <div class="col-12 col-tb-8 col-sm-8">
+                                                    <span class="xf">* </span>
+                                                    <af:outputLabel for="it4"
+                                                                    value="#{selSKYBundle['pago.inputText1.label']}"
+                                                                    id="ol9"
+                                                                    styleClass="label-internal"/>
+                                                    <div class="col-12">
+                                                        <af:outputText id="ol11"
+                                                                       value="$"
+                                                                       styleClass="output-internal"
+                                                                       inlineStyle="padding-right:5px;vertical-align: text-top;"></af:outputText>
+                                                         
+                                                        <af:inputText value="#{sessionScope.ParametrosPago.monto}"
+                                                                      binding="#{pageFlowScope.PagosBackingBean.importe}"
+                                                                      required="true"
+                                                                      showRequired="true"
+                                                                      simple="true"
+                                                                      readOnly="#{sesion.userVeTV or sesion.userMini}"
+                                                                      columns="6"
+                                                                      maximumLength="8"
+                                                                      validator="#{pageFlowScope.PagosBackingBean.montoValidate}"
+                                                                      id="it4"
+                                                                      styleClass="input-internal"
+                                                                      inlineStyle="vertical-align: bottom;"
+                                                                      autoSubmit="true"
+                                                                      partialTriggers="soc1 TipoRecargaDual TipoRecargaMini"/>
+                                                         
+                                                        <af:outputText value="#{sessionScope.sesion.moneda}"
+                                                                       id="ot790"
+                                                                       inlineStyle="padding-left: 5px;vertical-align: bottom;"
+                                                                       styleClass="output-internal"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row top">
+                                                <af:panelGroupLayout id="g1a">
+                                                    <span class="xf">* </span>
+                                                    <af:outputText value="#{selSKYBundle['general.obligatorio']}"
+                                                                   id="ot5"
+                                                                   styleClass="cursiv"/>
+                                                </af:panelGroupLayout>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-12 col-tb-8 col-sm-8">
+                                            <div class="row top">
+                                                <af:panelLabelAndMessage label="Aviso:"
+                                                                         id="plam2"
+                                                                         styleClass="panelLabelM">
+                                                    <h:outputText value="#{selSKYBundle['pago.ot78.value']}#{sessionScope.sesion.monedaLocal}"
+                                                                  id="ot78"/>
+                                                </af:panelLabelAndMessage>
+                                            </div>
+                                            <div class="row">
+                                                <div class="top top-2 col-1 col-tb-2 col-sm-8 center sm-cancel-align"
+                                                     style="float: right;">
+                                                    <af:button text="#{selSKYBundle['pago.cb2.text']}"
+                                                               id="cb2"
+                                                               action="#{pageFlowScope.PagosBackingBean.popupPagar}"
+                                                               disabled="#{empty pageFlowScope.PagosBackingBean.importe.value}"
+                                                               rendered="#{sesion.suscriptor.permitePagoTC and !sesion.usuario.cuentaJerarquia}"
+                                                               styleClass="btn-internal"
+                                                               partialTriggers="it4">
+                                                        <af:clientListener method="enforcePreventUserInput"
+                                                                           type="action"/>
+                                                    </af:button>
+                                                </div>
+                                                <div class="top top-2 col-4 col-tb-5 col-sm-8 sm-cancel-align center"
+                                                     style="float: right;">
+                                                    <af:button text="#{selSKYBundle['btn_pagarNuevaTarjeta']}"
+                                                               id="cb1"
+                                                               styleClass="btn-internal"
+                                                               partialTriggers="it4"
+                                                               action="irNuevaTarjeta"
+                                                               disabled="#{empty pageFlowScope.PagosBackingBean.importe.value}"
+                                                               rendered="#{sesion.suscriptor.permitePagoTC and !sesion.usuario.cuentaJerarquia}"
+                                                               immediate="true">
+                                                        <af:clientListener method="enforcePreventUserInput"
+                                                                           type="action"/>
+                                                    </af:button>
+                                                </div>
+                                                <div class="top top-2 col-2 col-tb-3 col-sm-8 center sm-cancel-align"
+                                                     style="#{(Menu.fromPagos eq 'true') and (pageFlowScope.PagosBackingBean.hayTarjetas eq 'true' )? 'display: block;float: right;' : 'display: none;'}">
+                                                    <af:button text="Mis Tarjetas"
+                                                               rendered="#{Menu.fromPagos and pageFlowScope.PagosBackingBean.hayTarjetas}"
+                                                               id="b2"
+                                                               styleClass="btn-internal"
+                                                               action="misTarjetas"
+                                                               immediate="true">
+                                                        <f:setPropertyActionListener target="#{Menu.taskFlowId}"
+                                                                                     value="/WEB-INF/tarjetaTF.xml#tarjetaTF"/>
+                                                        <af:clientListener method="enforcePreventUserInput"
+                                                                           type="action"/>
+                                                    </af:button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </af:group>
+                                    <div class="col-12">
+                                        <div class="row top"
+                                             style="#{sesion.userVeTV eq 'true' ? 'display: block' : 'display:none;'}">
+                                            <h:outputLabel value="#{selSKYBundle['pago.ot79.value']}"
+                                                           id="ot79"
+                                                           rendered="#{sesion.userVeTV}"
+                                                           style="text-align: justify;"/>
+                                        </div>
+                                        <!--Si viene desde adelanta recargas-->
+                                        <div class="row" style="#{!pageFlowScope.PagosBackingBean.hayTarjetas eq 'true' ? 'display: block' : 'display:none;'}">
+                                            <af:panelBorderLayout id="pbl1"
+                                                                  rendered="#{!pageFlowScope.PagosBackingBean.hayTarjetas}">
+                                                <f:facet name="bottom">
+                                                    <af:group id="g2"
+                                                              rendered="#{Menu.fromPagos}">
+                                                        <div class="top top-2 col-2 col-tb-4 col-sm-8 right sm-cancel-align"
+                                                             style="float: right;">
+                                                            <af:button text="Registrar Tarjeta"
+                                                                       id="b1"
+                                                                       styleClass="btn-internal"
+                                                                       action="misTarjetas"
+                                                                       immediate="true">
+                                                                <f:setPropertyActionListener target="#{Menu.taskFlowId}"
+                                                                                             value="/WEB-INF/tarjetaTF.xml#tarjetaTF"/>
+                                                                <af:clientListener method="enforcePreventUserInput"
+                                                                                   type="action"/>
+                                                            </af:button>
+                                                        </div>
+                                                    </af:group>
+                                                </f:facet>
+                                                <f:facet name="top">
+                                                    <af:group id="g3">
+                                                        <div class="row top">
+                                                            <h:outputLabel value="#{selSKYBundle['pago.ot80.value']}"
+                                                                           id="ot80"
+                                                                           styleClass="font-bolder"/>
+                                                        </div>
+                                                    </af:group>
+                                                </f:facet>
+                                            </af:panelBorderLayout>
+                                        </div>
+                                        <af:popup id="popupPago"
+                                                  childCreation="deferred"
+                                                  contentDelivery="lazyUncached"
+                                                  autoCancel="disabled"
+                                                  binding="#{pageFlowScope.PagosBackingBean.popupPagar}">
+                                            <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                                                <af:dialog id="d2"
+                                                           title="Confirmar Pago"
+                                                           type="none"
+                                                           styleClass="alert"
+                                                           closeIconVisible="false">
+                                                    <div class="text-internal">
+                                                        <div class="col-12 autocenter">
+                                                            <h:outputText value="#{selSKYBundle['pago.d2.title']}"
+                                                                          id="ot6"
+                                                                          styleClass="font-bolder"/>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="row top">
+                                                                <h:outputText value="#{selSKYBundle['pago.it13.label']}"
+                                                                              id="ot12"/>
+                                                            </div>
+                                                            <div class="border-bottom">
+                                                                <h:outputText value="#{pageFlowScope.PagosBackingBean.tipoPago}"
+                                                                              id="ot10"
+                                                                              styleClass="azul-internal"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="row">
+                                                                <h:outputText value="#{selSKYBundle['pago.it14.label']}"
+                                                                              id="ot15"/>
+                                                            </div>
+                                                            <div class="border-bottom">
+                                                                <h:outputText value="$ #{pageFlowScope.PagosBackingBean.importe.value} #{sessionScope.sesion.moneda}"
+                                                                              id="ot16"
+                                                                              styleClass="azul-internal"
+                                                                              style="padding:5px;"/>
+                                                            </div>
+                                                        </div>
+                                                        <af:group rendered="#{sesion.suscriptor.paisISO ne 'MX'}"
+                                                                  id="g10">
+                                                            <div class="col-12">
+                                                                <div class="row top">
+                                                                    <h:outputText value="Tipo de Cambio: "
+                                                                                  id="ot17"/>
+                                                                </div>
+                                                                <div class="border-bottom">
+                                                                    <h:outputText value="#{pageFlowScope.PagosBackingBean.tipoCambio}"
+                                                                                  id="ot18"
+                                                                                  styleClass="azul-internal"/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <div class="row">
+                                                                    <h:outputText value="Importe que se va cobrar en su tarjeta "
+                                                                                  id="ot19"/>
+                                                                </div>
+                                                                <div class="border-bottom">
+                                                                    <h:outputText value="$ #{pageFlowScope.PagosBackingBean.importeMonedaLocal} #{sessionScope.sesion.monedaLocal}"
+                                                                                  id="ot20"
+                                                                                  styleClass="azul-internal"
+                                                                                  style="padding:5px;"/>
+                                                                </div>
+                                                            </div>
+                                                        </af:group>
+                                                         
+                                                        <af:group id="gl6_CV"
+                                                                  rendered="#{sesion.cuentaCV}">
+                                                            <div class="col-12">
+                                                                <div class="row top">
+                                                                    <h:outputText value="Para la cuenta "
+                                                                                  id="ot23"/>
+                                                                </div>
+                                                                <div class="border-bottom">
+                                                                    <h:outputText value="#{sesion.cuentaSKY}"
+                                                                                  id="ot24"
+                                                                                  styleClass="azul-internal"/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <div class="row">
+                                                                    <af:outputFormatted value="#{selSKYBundle['pago.of1_CV.value']}"
+                                                                                        id="of1_CV"
+                                                                                        styleUsage="pageStamp"/>
+                                                                </div>
+                                                            </div>
+                                                        </af:group>
+                                                    </div>
+                                                    <div class="col-12 dialog-background">
+                                                        <div class="row autocenter">
+                                                            <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align" style="float: right">
+                                                                <af:button id="b6"
+                                                                           text="#{selSKYBundle['pago.cb6.text']}"
+                                                                           styleClass="btn-pay-dialog"
+                                                                           action="#{pageFlowScope.PagosBackingBean.cancelarPago}"/>
+                                                            </div>
+                                                            <div class="top top-2 col-6 col-tb-4 col-sm-8 center sm-cancel-align" style="float: right">
+                                                                <af:button id="b5"
+                                                                           text="#{selSKYBundle['pago.cb5.text']}"
+                                                                           styleClass="btn-pay-dialog"
+                                                                           action="#{pageFlowScope.PagosBackingBean.pagarCyber}">
+                                                                    <af:clientListener method="enforcePreventUserInput"
+                                                                                       type="action"/>
+                                                                </af:button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </af:dialog>
+                                            </div>
+                                        </af:popup>
+                                    </div>
+                                </af:subform>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+                <div class="row top">
+                    <div class="col-12 content-internal">
+                        <p >
+                            <h:outputText styleClass="title"
+                                          value="#{selSKYBundle['pago.pb3.text']}"
+                                          id="ot14"/>
+                        </p>
+                        <div class="row">
+                            <af:panelBox id="pb1" background="medium"
+                                             showHeader="ifNeeded"
+                                             showDisclosure="false"
+                                             inlineStyle="border: 0px;"
+                                             contentStyle="border: 0px;"
+                                             titleHalign="center">
+                                    <af:panelCollection id="pc1"
+                                                        defaultToolbarItemDisplay="icon"
+                                                        styleClass="AFStretchWidth">
+                                        <af:table value="#{bindings.Pago.collectionModel}"
+                                                  var="row"
+                                                  rows="#{bindings.Pago.rangeSize}"
+                                                  emptyText="#{bindings.Pago.viewable ? 'No Existen Pagos Disponibles.' : 'Access Denied.'}"
+                                                  fetchSize="#{bindings.Pago.rangeSize}"
+                                                  selectedRowKeys="#{bindings.Pago.collectionModel.selectedRow}"
+                                                  selectionListener="#{bindings.Pago.collectionModel.makeCurrent}"
+                                                  rowSelection="single"
+                                                  id="tPago" autoHeightRows="10"
+                                                  partialTriggers=":::ctb1 :::f2:b5"
+                                                  contentDelivery="immediate"
+                                                  width="100%"
+                                                  scrollPolicy="auto"
+                                                  rowBandingInterval="0"
+                                                  horizontalGridVisible="false"
+                                                  verticalGridVisible="false"
+                                                  styleClass="tbl-Class">
+                                            <af:column sortProperty="tarjeta"
+                                                       sortable="false"
+                                                       headerText="#{selSKYBundle['pago.c1.headertext']}"
+                                                       headerClass="content-text"
+                                                       id="c1" width="200">
+                                                <af:outputText value="#{row.noTarjeta}"
+                                                               id="ot81"/>
+                                            </af:column>
+                                            <af:column sortProperty="estatus"
+                                                       sortable="false"
+                                                       headerText="#{selSKYBundle['pago.c5.headertext']}"
+                                                       headerClass="content-text"
+                                                       id="c5" width="100">
+                                                <af:outputText value="#{row.estatus}"
+                                                               id="ot82"/>
+                                            </af:column>
+                                            <af:column sortProperty="importe"
+                                                       sortable="false"
+                                                       headerText="#{selSKYBundle['pago.c4.headertext']} #{sessionScope.sesion.moneda}"
+                                                       headerClass="content-text"
+                                                       id="c4" width="100"
+                                                       align="end"
+                                                       displayIndex="-1">
+                                                <af:outputText value="#{row.importe}"
+                                                               id="ot83"/>
+                                            </af:column>
+                                            <af:column sortProperty="referencia"
+                                                       sortable="false"
+                                                       headerText="#{selSKYBundle['pago.c3.headertext']}"
+                                                       headerClass="content-text"
+                                                       id="c3" width="180"
+                                                       align="center">
+                                                <af:outputText value="#{row.noReferencia}"
+                                                               id="ot85"/>
+                                            </af:column>
+                                            <af:column sortProperty="fecha"
+                                                       sortable="false"
+                                                       headerText="#{selSKYBundle['pago.c2.headertext']}"
+                                                       headerClass="content-text"
+                                                       id="c2" width="250">
+                                                <af:outputText value="#{row.fechaPago}"
+                                                               id="ot84"/>
+                                            </af:column>
+                                        </af:table>
+                                        <f:facet name="toolbar"></f:facet>
+                                    </af:panelCollection>
+                                </af:panelBox>
+                            <div class="row top">
+                                    <div class="col-3 col-sm-8  col-tb-4 right"
+                                         style="float:right;">
+                                        <af:button styleClass="btn-internal"
+                                                   text="Actualizar" id="ctb1"
+                                                   action="#{pageFlowScope.PagosBackingBean.actualizarTPagos}"
+                                                   targetFrame="_self">
+                                            <af:clientListener method="enforcePreventUserInput"
+                                                               type="action"/>
+                                        </af:button>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <af:popup id="mensajePago" contentDelivery="lazyUncached"
+                          childCreation="deferred"
+                          binding="#{pageFlowScope.PagosBackingBean.popupMensajeRespuesta}"
+                          autoCancel="disabled">
+                    <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                        <af:dialog id="dialog1" type="none"
+                                   title="Notificación de Pago"
+                                   styleClass="alert" closeIconVisible="false">
+                            <div class="text-internal">
+                                <h:outputText value="#{pageFlowScope.PagosBackingBean.mensajeRespuesta}"
+                                              id="outputText1"
+                                              styleClass="font-bolder"/>
+                            </div>
+                            <div class="col-12 dialog-background">
+                                <div class="row top autocenter">
+                                    <af:button id="b3"
+                                               text="#{selSKYBundle['pago.cb5.text']}"
+                                               styleClass="btn-pay-dialog"
+                                               action="#{pageFlowScope.PagosBackingBean.aceptarPago}"/>
+                                </div>
+                            </div>
+                        </af:dialog>
+                    </div>
+                </af:popup>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

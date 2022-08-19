@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="compraPaqueteDatos">
+    <page>/WEB-INF/submenus/compraPaqueteDatos/compraPaqueteDatos.jsf</page>
+    <input-page-parameter id="__4">
+      <from-value>/WEB-INF/compraPaqueteDatosTF.xml#compraPaqueteDatosTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <router id="compraPacDatosSelectPagDefault">
+    <case id="__9">
+      <expression>#{sesion.COMPRA_DATOS}</expression>
+      <outcome>smenu_compraPaqueteDatos</outcome>
+    </case>
+    <default-outcome>smenu_compraPaqueteDatosIndex</default-outcome>
+  </router>
+  <view id="compraPaqueteDatosIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>irCompraPaqueteDatos</from-outcome>
+      <to-activity-id>compraPaqueteDatos</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__10">
+      <from-outcome>irCompraPacDatosRouter</from-outcome>
+      <to-activity-id>compraPacDatosSelectPagDefault</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__11">
+      <from-outcome>adfMenu_compraPaqueteDatosIndex</from-outcome>
+      <to-activity-id>compraPaqueteDatosIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__5">
+    <from-activity-id>compraPacDatosSelectPagDefault</from-activity-id>
+    <control-flow-case id="__6">
+      <from-outcome>smenu_compraPaqueteDatos</from-outcome>
+      <to-activity-id>compraPaqueteDatos</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__7">
+      <from-outcome>smenu_compraPaqueteDatosIndex</from-outcome>
+      <to-activity-id>compraPaqueteDatosIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__12">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>compraPaqueteDatos_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__13">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__14">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/compraPaqueteDatos/compraPaqueteDatos_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

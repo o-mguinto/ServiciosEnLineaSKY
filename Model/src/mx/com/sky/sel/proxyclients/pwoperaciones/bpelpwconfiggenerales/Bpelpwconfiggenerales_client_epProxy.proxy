@@ -1,0 +1,141 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jdevws:WebServiceProxy xmlns:jdevws="http://xmlns.oracle.com/jdeveloper/10130/webserviceproxy">
+   <list n="CHILD_NODES">
+      <url path="BpelpwconfiggeneralesClientEp.xml"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/EntradaUpdateConfigGenerales.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/RespuestaProceso.java"/>
+      <url path="BpelpwconfiggeneralesClientEp.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/SalidaUpdateConfigGenerales.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/Parametro.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/CabeceraSalida.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/Salida.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/SalidaActivarConfigGenerales.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/EntradaDeleteConfigGenerales.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/EntradaSelectConfigGenerales.java"/>
+      <url path="BPELPWConfigGenerales_ptClient.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/ErrorBPEL.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/SalidaDeleteConfigGenerales.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/EntradaActivarConfigGenerales.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/SalidaSelectConfigGenerales.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/Proceso.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/ObjectFactory.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/Entrada.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/package-info.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/EntradaInsertConfigGenerales.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/CabeceraEntrada.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/pwoperaciones/pwconfiggenerales/bpelpwconfiggenerales/SalidaInsertConfigGenerales.java"/>
+      <url path="BPELPWConfigGenerales.java"/>
+   </list>
+   <hash n="DATA_MODEL">
+      <value n="ATTACHMENT_ENCODING" v="MIME"/>
+      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy"/>
+      <url n="ORACLE_WEBSERVICES_XML" path="BpelpwconfiggeneralesClientEp.xml"/>
+      <hash n="PROPERTY_GROUPS">
+         <hash n="WSDL_TO_JAVA_PROPERTIES">
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+            <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.pwoperaciones.bpelpwconfiggenerales"/>
+         </hash>
+      </hash>
+      <value n="PROXY_ASYNC_METHODS" v="FOR_NONE"/>
+      <list n="PROXY_CLIENTS">
+         <url path="BPELPWConfigGenerales_ptClient.java"/>
+      </list>
+      <value n="PROXY_MAPPING_URL"/>
+      <hash n="PROXY_PORTS">
+         <hash n="BPELPWConfigGenerales_pt">
+            <value n="ACCESSES_DOC_WRAPPPED" v="true"/>
+            <value n="ACCESSES_RPC_ENCODED" v="false"/>
+            <value n="CLASS_NAME" v="mx.com.sky.sel.proxyclients.pwoperaciones.bpelpwconfiggenerales.BPELPWConfigGenerales"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
+            <value n="NAME" v="BPELPWConfigGenerales_pt"/>
+            <hash n="OPERATIONS">
+               <hash n="process">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </hash>
+            <hash n="PROPERTY_GROUPS">
+               <hash n="WS_POLICY">
+                  <value n="addressing"/>
+                  <hash n="GLOBAL_CONFIG_PROPERTIES"/>
+                  <list n="management"/>
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.policy.PolicyClientModel"/>
+                  <value n="mtom"/>
+                  <hash n="POLICY_OVERRIDE_PROPERTIES"/>
+                  <list n="security"/>
+                  <list n="wsconfig"/>
+                  <value n="wsrm"/>
+               </hash>
+            </hash>
+            <url n="PROXY_ORIGINAL_PORT_ENDPOINT" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/pwoperaciones/PWConfigGenerales/bpelpwconfiggenerales_client_ep"/>
+         </hash>
+      </hash>
+      <value n="PROXY_SERVICE_NAME" v="bpelpwconfiggenerales_client_ep"/>
+      <value n="PROXY_SERVICE_NAMESPACE" v="http://xmlns.oracle.com/PWOperaciones/PWConfigGenerales/BPELPWConfigGenerales"/>
+      <url n="PROXY_TARGET_PROJECT" path="../../../../../../../../Model.jpr"/>
+      <url n="PROXY_WSDL_URL" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/pwoperaciones/PWConfigGenerales/bpelpwconfiggenerales_client_ep" query="WSDL"/>
+      <hash n="REFERENCED_WEBSERVICE">
+         <list n="BD_">
+            <hash>
+               <value n="BOUND_PORT_TYPE" v="{http://xmlns.oracle.com/PWOperaciones/PWConfigGenerales/BPELPWConfigGenerales}BPELPWConfigGenerales"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+               <value n="NAME" v="{http://xmlns.oracle.com/PWOperaciones/PWConfigGenerales/BPELPWConfigGenerales}BPELPWConfigGeneralesBinding"/>
+               <list n="OP_BINDINGS">
+                  <hash>
+                     <value n="BOUND_OPERATION" v="com.oracle.xmlns.pwoperaciones.pwconfiggenerales.bpelpwconfiggenerales.RespuestaProceso.process.com.oracle.xmlns.pwoperaciones.pwconfiggenerales.bpelpwconfiggenerales.Proceso"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+            </hash>
+         </list>
+         <list n="BINDING_FILES"/>
+         <value n="GUID" v="3c4e0629-0170-1000-8089-0afd091b9866"/>
+         <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
+         <list n="PO_">
+            <hash>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+               <value n="NAME" v="BPELPWConfigGenerales_pt"/>
+               <value n="PORT_BINDING_NAME" v="{http://xmlns.oracle.com/PWOperaciones/PWConfigGenerales/BPELPWConfigGenerales}BPELPWConfigGeneralesBinding"/>
+               <list n="PORT_OPS">
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="com.oracle.xmlns.pwoperaciones.pwconfiggenerales.bpelpwconfiggenerales.RespuestaProceso.process.com.oracle.xmlns.pwoperaciones.pwconfiggenerales.bpelpwconfiggenerales.Proceso"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+               <url n="URL" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/pwoperaciones/PWConfigGenerales/bpelpwconfiggenerales_client_ep"/>
+            </hash>
+         </list>
+         <hash n="PROPERTY_GROUPS">
+            <hash n="WSDL_TO_JAVA_PROPERTIES">
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+               <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.pwoperaciones.bpelpwconfiggenerales"/>
+            </hash>
+         </hash>
+         <list n="PT_">
+            <hash>
+               <value n="AUTO_SERVICE_INTERFACE"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaPortType"/>
+               <value n="NAME" v="{http://xmlns.oracle.com/PWOperaciones/PWConfigGenerales/BPELPWConfigGenerales}BPELPWConfigGenerales"/>
+               <hash n="PROPERTY_GROUPS"/>
+               <value n="PT_CLASS" v="mx.com.sky.sel.proxyclients.pwoperaciones.bpelpwconfiggenerales.BPELPWConfigGeneralesImpl"/>
+               <value n="PT_SERVICE_INTERFACE" v="mx.com.sky.sel.proxyclients.pwoperaciones.bpelpwconfiggenerales.BPELPWConfigGenerales"/>
+               <value n="PT_TOP_DOWN_GENERATED_SEI_NAME" v="mx.com.sky.sel.proxyclients.pwoperaciones.bpelpwconfiggenerales.BPELPWConfigGenerales"/>
+            </hash>
+         </list>
+         <url n="TARGET_PROJECT" path="../../../../../../../../Model.jpr"/>
+         <value n="WS_ORIG_GEN_DIRECTION" v="TOP_DOWN"/>
+         <value n="WS_TARGET_NAMESPACE" v="http://xmlns.oracle.com/PWOperaciones/PWConfigGenerales/BPELPWConfigGenerales"/>
+         <value n="WS_URI" v="bpelpwconfiggenerales_client_ep"/>
+         <url n="WS_WSDL_FILE" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/pwoperaciones/PWConfigGenerales/bpelpwconfiggenerales_client_ep" query="WSDL"/>
+      </hash>
+      <value n="SERVICE_ASYNC" v="false"/>
+      <value n="WSDL_IS_LOCAL_COPY" v="false"/>
+   </hash>
+</jdevws:WebServiceProxy>

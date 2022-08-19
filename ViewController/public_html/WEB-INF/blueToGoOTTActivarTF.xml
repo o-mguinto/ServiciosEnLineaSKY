@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="blueToGoOTTActivarTF">
+    <default-activity>btgOttIndexActivar</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>PFBlueToGoEveryWhere</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.btgew.PFBlueToGoEveryWhere</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="btgOttIndexActivar">
+      <page>/pages/btgVeoBtg/btgOttIndexActivar.jsf</page>
+    </view>
+    <view id="btgOttIndexActivarOk">
+      <page>/pages/btgVeoBtg/btgOttIndexActivarOk.jsf</page>
+    </view>
+    <task-flow-return id="closeTaskFlowReturn">
+      <outcome>
+        <name>closeTaskFlowReturn</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__2">
+      <from-activity-id>btgOttIndexActivar</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>index</from-outcome>
+        <to-activity-id>btgOttIndexActivarOk</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>closeTaskFlow</from-outcome>
+        <to-activity-id>closeTaskFlowReturn</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

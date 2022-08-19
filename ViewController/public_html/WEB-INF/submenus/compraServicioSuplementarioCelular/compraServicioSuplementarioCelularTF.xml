@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="compraServicioSuplementarioCelular">
+    <page>/WEB-INF/submenus/compraServicioSuplementarioCelular/compraServicioSuplementarioCelular.jsf</page>
+    <input-page-parameter id="__12">
+      <from-value>/WEB-INF/compraServicioSuplementarioCelularTF.xml#compraServicioSuplementarioCelularTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <router id="router1">
+    <case id="__6">
+      <expression>#{sesion.COMPRA_SERVICIO_SUPLEMENTARIO_CELULAR}</expression>
+      <outcome>irCompraServicioSuplementarioCelular</outcome>
+    </case>
+    <default-outcome>irCompraServicioSuplementarioCelularIndex</default-outcome>
+  </router>
+  <view id="compraServicioSuplementarioCelularIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>irCompraServicioSuplementarioRouter</from-outcome>
+      <to-activity-id>router1</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__7">
+      <from-outcome>irCompraServicioSuplementario</from-outcome>
+      <to-activity-id>compraServicioSuplementarioCelular</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__8">
+      <from-outcome>adfMenu_compraServicioSuplementarioCelularIndex</from-outcome>
+      <to-activity-id>compraServicioSuplementarioCelularIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__3">
+    <from-activity-id>router1</from-activity-id>
+    <control-flow-case id="__4">
+      <from-outcome>irCompraServicioSuplementarioCelular</from-outcome>
+      <to-activity-id>compraServicioSuplementarioCelular</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__5">
+      <from-outcome>irCompraServicioSuplementarioCelularIndex</from-outcome>
+      <to-activity-id>compraServicioSuplementarioCelularIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__9">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>compraServicioSuplementarioCelular_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__10">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__11">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/compraServicioSuplementarioCelular/compraServicioSuplementarioCelular_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

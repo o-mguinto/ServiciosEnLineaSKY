@@ -1,0 +1,2908 @@
+@charset "UTF-8";
+
+/*
+Autor: Torres Hurtado Omar
+Version: 1.0
+Comentario-Version: Creacion de plantilla para pagInternas_template.jsf
+*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font: normal normal 1em 'Roboto', sans-serif !important;
+    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
+    display: block;
+}
+/*links que no aparecen como botones*/
+a {
+    text-decoration: none;
+    color: #00A4E4;
+    font: Medium Roboto;
+    font-size: 15px;
+}
+/*para los terminos y condiciones*/
+a.terminos {
+    color: #004B8D;
+    font: medium 'Roboto';
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+a.link-indicacion {
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 1;
+    font-weight: bolder;
+    font: bold 16px/20px Roboto;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+img {
+    border: none;
+}
+
+*:before, *:after {
+    box-sizing: inherit;
+}
+
+.row::after, .row::before {
+    content: "";
+    clear: both;
+    display: table;
+}
+/*para el fondo de la region*/
+.rowBackGround {
+    background-color: White;
+}
+
+.top {
+    margin-top: 20px;
+}
+
+.top-sm {
+    margin-top: 10px;
+}
+
+.top-md {
+    margin-top: 60px;
+}
+
+.top-lg {
+    margin-top: 100px;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.bottom {
+    margin-bottom: 20px;
+}
+
+.bottom-md {
+    margin-bottom: 60px;
+}
+
+.bottom-lg {
+    margin-bottom: 100px;
+}
+
+#blue-logo {
+    min-height: 70px;
+    height: 100%;
+}
+
+.left-panel {
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    padding-left: 25px;
+}
+
+/*panel derecho del template*/
+.content-panel-right {
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    height:auto;
+}
+
+.btn-sm {
+    width: 90px;
+}
+
+.btn-md {
+    width: 160px;
+    height: 25px;
+}
+
+.btn-lg {
+    width: 220px;
+    height: 40px;
+}
+
+.logo {
+    width: 90%;
+    height: auto;
+    margin: 15px;
+}
+
+.codigoQR {
+    background: transparent url('/sky/imagenes/pc/interno/facturaelectronica/QR.jpg')no-repeat center center;
+    background-size: contain;
+    width: 140px;
+    height: 140px;
+    display: inline-block;
+}
+
+.titleh1 {
+    font: normal bolder 18px 'Roboto', sans-serif;
+    color: #FFFFFF;
+    text-align: left;
+    display: block;
+}
+
+.subtitle {
+    font: bold 16px/20px Roboto;
+    text-align: left;
+    display: block;
+    color: #004B8D;
+    font-size: 16px;
+    opacity: 1;
+}
+
+.information {
+    padding: 22px;
+    line-height: 30px;
+}
+
+.welcome {
+    letter-spacing: 0;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    opacity: 1;
+    font: normal 14px/29px 'Roboto', sans-serif, serif;
+    display: block;
+    line-height: 1.5em;
+}
+
+.user-name {
+    letter-spacing: 0;
+    color: #FFFFFF;
+    opacity: 1;
+    font: normal bold 21px 'Roboto', sans-serif, serif;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.acc-num-txt, .acc-num-txt label{
+    letter-spacing: 0;
+    color: #8AD5F2;
+    opacity: 1;
+    font: normal 14px/29px 'Roboto', sans-serif;
+    line-height: 0.8em;
+    vertical-align: middle;
+    display: block;
+}
+
+.account-number span {
+    letter-spacing: 0;
+    color: #8AD5F2;
+    opacity: 1;
+    font: normal bold 28px 'Roboto', sans-serif, serif;
+    word-wrap: break-word;
+    display: block;
+}
+
+.pack-txt {
+    display: none;
+}
+
+.pack {
+    display: none;
+}
+
+.menu {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.menu table {
+    text-transform: uppercase;
+    width: 100%;
+    line-height: 30px;
+    background-color: transparent;
+    vertical-align: middle;
+    text-decoration: none;
+    word-wrap: break-word;
+}
+
+.menu table tr td {
+    width: 15%;
+}
+
+.menu table tr td[role='listitem'] {
+    height: 45px;
+    padding-left: 10px;
+    padding: 3% 0% 3% 0%;
+    width: 85%;
+}
+
+.menu table tr td[role='listitem'] > .p_AFSelected {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    /*min-height: 35px;*/
+    border: none;
+    cursor: default;
+    text-decoration: none;
+    padding: 5% 0% 5% 2%;
+}
+
+.menu table tr:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.menu table tr td > a {
+    letter-spacing: 0;
+    color: #FFFFFF;
+    opacity: 1;
+    height: auto;
+    font: normal 13px Arial;
+    padding-top: 0px;
+    white-space: pre-line;
+}
+/*tablas dentro del contenido interno jsff*/
+.content-internal table tr td > a {
+    color: #004B8D;
+    opacity: 0.8;
+    font: normal 1em 'Roboto', sans-serif;
+}
+/*para quitar los bordes de las tablas*/
+/*border externos de las tablas*/
+.xtc, .xou, .content-internal table, .content-internal table tr, .content-internal table tr td, .content-internal table tr td div not[class='roundbutton'] {
+    border: none !important;
+    background-image: none;
+}
+/*clase para aplciar formato al texto de las filas en las tablas*/
+.tbl-Class > div table tbody tr td span {
+    font: Medium Roboto;
+    color: #004B8D;
+    text-align: left;
+    background-image: none;
+    font-size: 14px;
+    width:100%;
+}
+
+.header {
+    font: Medium Roboto;
+    font-size: 14px;
+    max-height: 100px;
+    color: gray;
+}
+
+.title {
+    letter-spacing: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    font: bold 16px/20px Roboto;
+    text-align: left;
+    display: block;
+    color: #004B8D;
+    font-size: 18px;
+    opacity: 1;
+}
+.paquetes-link span{
+    display: block;
+    position: relative;
+    top: 60px;
+    margin: auto;
+    text-align: center;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    font: bold 16px/20px Roboto;
+    font-size: 20px;
+    opacity: 1;
+}
+.paquetes-capacitad span{
+    display: block;
+    position: relative;
+    top: -50px
+}
+.links {
+    font-weight: bolder;
+    padding-right: 20px;
+    text-align: right;
+    line-height: 35px;
+}
+
+.content {
+    font-size: 1.4em;
+}
+
+.footer {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.border {
+    border: 1px solid blue;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.terms {
+    font-size: 0.8em;
+    color: #5B2178;
+}
+
+a .terms {
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+a .terms:hover {
+    text-decoration: none;
+    background-color: #5B2178;
+    color: white;
+}
+
+.link-tel {
+    font-size: 1em;
+    color: #5B2178;
+    text-decoration: underline;
+}
+
+a .link-tel {
+    font-weight: bolder;
+}
+
+a .link-tel:hover {
+    text-decoration: none;
+    background-color: #5B2178;
+    color: white;
+}
+/*para los links del banner*/
+.link-top {
+    text-align: left;
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 1;
+    vertical-align: middle;
+    padding-right: 5px;
+    padding-left: 5px;
+    font-weight: bolder;
+    font: Bold 14px/29px Roboto;
+}
+
+.link-top:hover {
+    color: #004B8D;
+    text-decoration: none;
+    opacity: 0.5;
+    border-radius: 5px;
+    text-align: center;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.content-internal {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+    font-size: 0.65em;
+    width: 100%;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-bottom: 25px;
+    padding-top: 10px;
+    margin: 5px;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.content-internal-border {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+    padding: 10px;
+    min-height: 200px;
+    margin-bottom: 20px;
+}
+
+.content-internal-border .row {
+    margin: 5px;
+}
+
+.content-internal-confirmar {
+    font-size: 0.8em;
+    background: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    text-align: left;
+    color: rgb(0, 75, 141);
+    word-wrap: break-word;
+}
+
+.content-text {
+    font: Medium Roboto;
+    color: #004B8D;
+    border: none !important;
+    height: 40px;
+    
+    font-weight: bold;
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    font-size: 14px;
+}
+
+.balance-saldo {
+    font: Bold 12px/29px Roboto;
+    color: #00ACDC;
+    font-size: 26px;
+    line-height: 1.5em;
+}
+.font26{
+    font-size: 26px;
+}
+/**outtext de saldo*/
+.balance-output {
+    font: normal bold 2em 'Roboto', sans-serif;
+    color: #00ACDC;
+    font-size: 1.8em;
+}
+
+.bg-font {
+    font-size: 2.8em;
+}
+
+.md-font {
+    font-size: 1.3em;
+}
+
+.sm-font {
+    font-size: 0.75em;
+}
+/*estilo para los textos outputtext de la nueva version 12C*/
+.label-internal {
+    line-height: 0px;
+}
+
+.label-internal label {
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 0.8;
+    font: Medium Roboto;
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+.label-internal span {
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 1;
+    font: Medium Roboto;
+    font-size: 12px;
+    margin-top: 4px;
+}
+/*para quitar el paddTop de los list inputtext*/
+.label-internal td.xvo.xtk {
+    padding-top: 0px;
+}
+
+.output-internal {
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 1;
+    font: Medium Roboto;
+    font-size: 15px;
+    margin-top: 4px;
+    line-height: 1.5em;
+}
+
+.output-internal label {
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 1;
+    font: Medium Roboto;
+    font-size: 15px;
+    margin-top: 4px;
+    line-height: 1.5em;
+}
+
+.output-internal span {
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 1;
+    font: Medium Roboto;
+    font-size: 15px;
+    margin-top: 4px;
+    line-height: 1.5em;
+    vertical-align: baseline;
+    height: auto !important;
+}
+/*para establecer el top entre los inputtext en los popup de Control*/
+tr.output-internal > td {
+    padding-top: 2px !important;
+}
+
+.capital {
+    text-transform: capitalize;
+}
+
+.perfil-input-internal, .perfil-input-internal label {
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 1;
+    width: 100%;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font: Bold 12px/29px Roboto;
+    font-size: 15px;
+    line-height: 1.5em;
+}
+
+.text-internal {
+    color: #004B8D !important;
+    font: medium 'Roboto', sans-serif;
+    opacity: 1;
+    line-height: 1.5em;
+    padding-right: 10%;
+    padding-left: 10%;
+    font-size: 15px;
+    text-align: justify;
+}
+.text-internal textarea {
+    font-weight: bolder;
+    width: 100% !important;
+}
+.text-internal label {
+    color: #004B8D !important;
+    font: medium 'Roboto', sans-serif;
+    opacity: 0.8;
+    line-height: 1.5em;
+    font-size: 15px;
+    text-align: justify;
+}
+
+/*etiquetas de las alertas*/
+.text-internal span {
+    opacity: 0.8;
+}
+
+/*
+.text-internal input {
+    border: white;
+    font: medium 'Roboto', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 1;
+    border-bottom: 1px solid #8AD5F2;
+    min-height: 34px;
+    max-height: 54px;
+    padding: 0px 4px 0px 4px;
+}
+*/
+/*-----------------------------------------------------------*/
+/*para el valor de los textos en el dialog alerts*/
+.azul-internal {
+    opacity: 1 !important;
+    padding-left: 5px;
+    font-weight: bolder;
+    border: white;
+    letter-spacing: 0;
+    min-height: 35px;
+}
+/*labels de descripcion de los dialogs popup*/
+.dialog-descrip {
+    min-height: 10px;
+    max-height: 110px;
+    text-align: justify;
+    overflow:auto;
+}
+.dialog-descrip span {
+    font: Medium  Roboto;
+    font-size:12px/16px;
+    letter-spacing: 0;
+    color: #000000;
+    opacity: 0.7 !important;
+    text-align:justify;width:13em;
+    padding-left:10px;
+}
+
+/*top para dialog de control*/
+.padd-top-dialog {
+    padding-top: 10px;
+}
+/*bottom para dialog de control*/
+.padd-bottom-dialog {
+    padding-bottom: 5px;
+}
+
+.input-internal {
+    width: 100%;
+}
+
+.input-internal span[class='x25'] {
+    border: white;
+    font: Bold 12px/29px Roboto;
+    font-size: 26px;
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 1;
+    height: 30px !important;
+    display: inline-table !important;
+}
+
+.input-internal input {
+    border: white;
+    font: Bold 12px/29px Roboto;
+    font-size: 15px;
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 1;
+    border-bottom: 1px solid #8AD5F2;
+    min-height: 34px;
+    max-height: 54px;
+    padding: 0px 4px 0px 4px;
+    width: 100%;
+}
+
+.input-internal textarea {
+    font: Bold 12px/29px Roboto;
+    font-size: 15px;
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 1;
+    border: 1px solid #8AD5F2;
+    padding: 0px 4px 0px 4px;
+}
+
+.input-internal input[type='password'] {
+    border: white;
+    font: Bold 12px/29px Roboto;
+    font-size: 15px;
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 1;
+    border-bottom: 1px solid #8AD5F2;
+    min-height: 34px;
+    max-height: 54px;
+    padding: 0px 4px 0px 4px;
+}
+
+.input-internal label {
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 0.8;
+    font: normal 12px/29px Roboto;
+    font-size: 15px;
+    margin-top: 4px;
+}
+/*para quitar el pading top en los dialog*/
+table.input-internal tr td.xvo, table.input-internal tr td.xu {
+    padding-top: 0px;
+}
+/*dialog de calendario*/
+div.x193[role='dialog']{
+	/*width: 20% !important;
+        position: fixed !important;*/
+}
+/*para el select del mes del calendario*/
+div.x193[role='dialog'] tr td.xo3 table tr td span.xor select {
+    color: #004B8D;
+    font-size: 15px;
+    font-weight: bold;
+}
+/*Calendario: col dia*/
+div.x193[role='dialog'] table.x21d tr.xoa > th.xob {
+    width: 24px;
+    padding: 4px 0;
+    color: #004B8D;
+    font-weight: bold;
+}
+/*numero dia del mes no seleccionado*/
+div.x193[role='dialog'] table.xo1 td td.xof {
+    color: #004B8D;
+    opacity: 0.7;
+}
+/*numero del dia del mes actual seleccionado*/
+div.x193[role='dialog'] table.xo1 td td.xoe {
+    color: #004B8D;
+    opacity: 0.9;
+}
+/*para el select del campo del anio*/
+div.x193[role='dialog'] tr td.xo3 table tr td.xo6 div.xoj table tr td > input.xjq {
+    color: #004B8D;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.input-internal-60, .input-internal-60 input[type=text] {
+    width: 60%;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    display: inline;
+}
+
+.input-width-all {
+    width: 100%;
+    padding-left: 5px;
+}
+
+.check-internal {
+    font-size: 0.8em;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.check-internal-bold, .check-internal-bold label {
+    letter-spacing: 0;
+    color: #004B8D;
+    opacity: 1;
+    font-weight: bolder;
+    font: bold 16px/20px Roboto;
+    padding-left: 5px;
+    padding-right: 0px;
+    font-size: 16px;
+}
+/*solo boton*/
+.btn-internal {
+    background: #004B8D 0% 0% no-repeat padding-box;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    opacity: 1;
+    margin-right: 10px;
+    min-width: 5%;
+    max-width:95%;
+    height: auto;
+    text-align: center;
+    vertical-align: middle;
+    background-image: none;
+}
+/*texto del boton*/
+.btn-internal > a {
+        font: Bold 12px/26px Arial;
+    color: #FFFFFF;
+    padding: 3px 8px 2px 5px !important;
+    text-transform: uppercase;
+    text-shadow: none;
+}
+/*para los links del boton*/
+a.btn-internal {
+    color: #FFFFFF;
+    font: bold 12px/26px Arial;
+    padding: 3px 8px 2px 5px !important;
+    text-transform: uppercase;
+    text-shadow: none;
+}
+/*estilo del boton deshabilitado*/
+btn-internal, .xfl.p_AFDisabled > a {
+    color: black;
+    opacity: 0.4 !important;
+}
+
+/*hover del boton deshabilitado*/
+btn-internal, .xfl.p_AFDisabled > a:hover {
+    cursor: default;
+}
+
+.btn-internal:hover {
+    cursor: pointer;
+}
+
+.btn-internal:hover a {
+    cursor: pointer;
+    color: black;
+}
+
+.btn-pay {
+    font: normal bolder 1em 'Roboto', sans-serif;
+    border: 1px solid rgb(0, 75, 141);
+    background-image: none;
+    background-color: transparent;
+    color: rgb(0, 75, 141);
+    min-width: 45px;
+    max-width: 110px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 0px 15px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.btn-pay:hover {
+    font: normal bolder 1em 'Roboto', sans-serif;
+    border: 1px solid rgb(0, 75, 141);
+    background-image: none;
+    background-color: transparent;
+    color: rgb(0, 75, 141);
+    width: 100%;
+    margin-top: 10px;
+    padding: 0px 15px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 10px 12px 0 rgba(0, 0, 0, 0.24), 0 15px 48px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-pay-dialog, div.alert div.xfl {
+    background: #004B8D 0% 0% no-repeat padding-box;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    background-image: none;
+    min-width: 35px;
+    max-width: 155px;
+    width: 93%;
+    height: 20px;
+    margin-top: 10px;
+}
+
+.btn-pay-dialog > a, div.alert div.xfl > a{
+    font: Bold 12px Arial;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.btn-pay-dialog:hover, div.alert div.xfl:hover {
+    width: 93%;
+    margin-top: 10px;
+    padding: 0px 15px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 10px 12px 0 rgba(0, 0, 0, 0.24), 0 15px 48px 0 rgba(0, 0, 0, 0.19);
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+}
+
+.btn-pay-dialog:hover a, div.alert div.xfl:hover a {
+    color: black;
+}
+
+.btn-view-acc {
+    font-size: 1.2em;
+    border: 1px solid rgb(0, 75, 141);
+    background: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgb(0, 75, 141);
+    min-width: 45px;
+    max-width: 110px;
+    width: 100%;
+    padding: 0px 15px;
+    margin-top: 25px;
+}
+
+.btn-view-acc:hover {
+    font-size: 1.2em;
+    border: 1px solid rgb(0, 75, 141);
+    background: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgb(0, 75, 141);
+    min-width: 45px;
+    max-width: 110px;
+    width: 100%;
+    padding: 0px 15px;
+    margin-top: 25px;
+    cursor: pointer;
+    box-shadow: 0 10px 12px 0 rgba(0, 0, 0, 0.24), 0 15px 48px 0 rgba(0, 0, 0, 0.19);
+}
+
+.lbl-view-acc, .lbl-view-acc label {
+    color: rgb(0, 75, 141);
+}
+
+select.select-internal, .select-internal select {
+    text-align: left;
+    letter-spacing: 0;
+    font: Bold 12px/29px Roboto;
+    font-size: 15px;
+    border: none;
+    color: #004B8D;
+    min-height: 30px;
+    max-height: 50px;
+    padding: 0px 4px 0px 4px;
+    min-width: 50%;
+    max-width: 100%;
+    width: 100%;
+    border-bottom: 1px solid #8AD5F2;
+    opacity: 1;
+}
+
+.select-internal label {
+    font-weight: bolder;
+    opacity: 1;
+}
+.decorated-link {
+    text-decoration: underline;
+}
+
+.footer-content-account, .footer-register, .footer-internal1, .footer-internal2, .footer-internal3 {
+    background: #8DC26F;
+    /* fallback for old browsers */
+
+    background: -webkit-linear-gradient(to right, rgb(0, 75, 141), #00ACDC, #83a4d4, #a80077);
+    /* Chrome 10-25, Safari 5.1-6 */
+
+    background: linear-gradient(to right, rgb(0, 75, 141), #00ACDC, #83a4d4, #a80077);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    width: 100%;
+    height: 20px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.footer-content-text {
+    font-weight: bold;
+    color: rgb(0, 75, 141);
+    clear: both;
+}
+
+.margin-left {
+    margin-left: 10px;
+}
+
+.margin-right {
+    margin-right: 10px;
+}
+
+.padd {
+    padding: 1px;
+}
+
+.padd-left {
+    padding-left: 10px;
+}
+
+.padd-right {
+    padding-right: 10px;
+}
+
+.padd-top {
+    padding-top: 10px;
+}
+
+.padd-left-2 {
+    padding-left: 40px;
+}
+
+.padd-top-2 {
+    padding-top: 30px;
+}
+
+.spacing h4:first-child {
+    margin-top: 15px;
+}
+
+.spacing > * {
+    margin-bottom: 4px;
+}
+
+.warn {
+    color: #FF0000;
+}
+
+.links .xi {
+    letter-spacing: 0;
+    color: #000000;
+    opacity: 0.5;
+    font: normal bolder 1em 'Roboto', sans-serif;
+    text-decoration: none;
+}
+
+.xtc {
+    border: none;
+    background-color: transparent;
+}
+
+.x14z {
+    background-color: transparent;
+}
+
+.x25 {
+    width: 100%;
+    font-size: inherit;
+    color: #004B8D;
+}
+
+.xq {
+    text-align: inherit;
+}
+
+.x1e7 {
+    box-sizing: initial;
+}
+
+.x15p {
+    word-wrap: break-word;
+    max-width: 360px;
+}
+
+.xfn {
+    padding: 0;
+}
+
+.call-detail tr th {
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+}
+
+.call-detail tr td {
+    background-color: white;
+    margin: 3px;
+    padding: 5px;
+}
+
+.wait-popup {
+    color: white;
+}
+
+.cvv-label {
+    display: inline;
+}
+
+.cvv-input {
+    width: 75px;
+}
+
+.credit-card-logo {
+    width: 40px;
+    height: 25.4px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.channel-box {
+    border: 2px solid #b97ed6;
+    border-radius: 12px;
+    min-height: 230px;
+    margin: 5px 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.channel-text3 {
+    font: normal bolder 0.7em 'Roboto', sans-serif;
+    color: #f7ba0e;
+    text-decoration: none;
+}
+
+.channel-text4 {
+    font: normal bolder 0.7em 'Roboto', sans-serif;
+    color: rgb(0, 75, 141);
+    text-decoration: none;
+}
+
+.contact-icons {
+    background-size: contain !important;
+    display: block;
+    width: 80px;
+    height: 80px;
+    vertical-align: top;
+    margin: 5px auto 15px auto;
+}
+
+.contact-icons:hover {
+    width: 80px;
+    height: 80px;
+}
+
+.icon-phone {
+    background: transparent url('/sky/imagenes/pc/interno/contactanos/ico-phone1.png')no-repeat center center;
+}
+
+.icon-chat {
+    background: transparent url('/sky/imagenes/pc/interno/contactanos/ico-chat1.png')no-repeat center center;
+}
+
+.icon-chat:hover {
+    background: transparent url('/sky/imagenes/pc/interno/contactanos/ico-chat2.png')no-repeat center center;
+}
+
+.icon-answer {
+    background: transparent url('/sky/imagenes/pc/interno/contactanos/ico-answer1.png')no-repeat center center;
+}
+
+.icon-answer:hover {
+    background: transparent url('/sky/imagenes/pc/interno/contactanos/ico-answer2.png')no-repeat center center;
+}
+
+.icon-mail {
+    background: transparent url('/sky/imagenes/pc/interno/contactanos/ico-mail1.png')no-repeat center center;
+}
+
+.icon-mail:hover {
+    background: transparent url('/sky/imagenes/pc/interno/contactanos/ico-mail2.png')no-repeat center center;
+}
+
+.icon-message {
+    background: transparent url('/sky/imagenes/pc/interno/contactanos/ico-message1.png')no-repeat center center;
+}
+
+.icon-message:hover {
+    background: transparent url('/sky/imagenes/pc/interno/contactanos/ico-message2.png')no-repeat center center;
+}
+
+.btn-tel {
+    font: normal bolder 0.45em 'Roboto', sans-serif;
+    background-color: rgb(0, 75, 141);
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    display: inline-block;
+    min-width: 90px;
+}
+
+.link-chat {
+    padding: 0px 10px;
+    border-radius: 40px;
+    color: #fff;
+    min-width: 100%;
+    height: auto;
+    display: inline-block;
+    line-height: 50px;
+    background: linear-gradient(141deg, rgba(237, 0, 142, 1) 10%, rgba(162, 0, 237, 1) 90%);
+    text-align: left;
+    font-weight: bolder;
+    font-size: 1.05em;
+}
+
+.link-chat:hover, link-chat:active, .link-chat:visited {
+    text-decoration: none;
+    color: #fff;
+}
+
+.chat-icon {width:35px; height:35px; vertical-align: middle; top: -195px; left: -24%;}
+
+.icon-chat-header {
+    width: 35%;
+    height: auto;
+    vertical-align: middle;
+    margin-left: 15%;
+}
+
+.links-header {
+    min-width: 100%;
+}
+
+.links-icon-header {
+    width: 100%;
+    padding: 3%;
+    height: 50px;
+}
+/* Classes Menu Mobile */
+#blue-foot {
+    display: block;
+    padding-top: 20px;
+}
+
+#sm-blue-foot {
+    display: none;
+}
+
+.sm-icon-menu {
+    display: none;
+}
+
+.sm-icon-close {
+    display: none;
+}
+
+.sm-close-session {
+    display: none;
+}
+
+.sm-acc-num-txt {
+    display: none;
+}
+
+.col-atention {
+    display: none;
+}
+
+.col-chat {
+    display: none;
+}
+
+.d-flex{
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+}
+
+.flex-align-items-center{
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+}
+
+.justify-content-center{
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -webkit-justify-contents: center;
+}
+
+.px-1{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.px-2{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.px-3{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* For PC: */
+[class*="col-"] {
+    float: left;
+}
+
+.col-auto{
+    width: auto;
+}
+
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3-1 {
+    width: 20%;
+}
+
+.col-3-2 {
+    width: 11%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-4-1 {
+    width: 30%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-10-2 {
+    width: 89%;
+}
+
+.col-11 {
+    width: 97.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+/*recargas*/
+.no-show-img-rmv {
+    display: none
+}
+
+.no-show-img-rpc {
+    display: block
+}
+
+.top-channel {
+    position: relative;
+    top: 10px;
+}
+
+.autocenter {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center
+}
+
+#passwordStrength {
+    width: 25px;
+    display: block;
+    float: left;
+    position: relative;
+}
+
+.strength0 {
+    height: 30px;
+    background: gray;
+}
+
+.strength1 {
+    height: 5px;
+    background: orange;
+    top: 10px;
+}
+
+.strength2 {
+    height: 15px;
+    background: yellow;
+    top: 10px;
+}
+
+.strength3 {
+    height: 25px;
+    background: #56e500;
+    top: 5px;
+}
+
+.strength4 {
+    height: 30px;
+    background: green;
+    top: 0px;
+}
+
+.xf {
+    FONT-FAMILY: Helvetica, Arial, sans-serif !important;
+    COLOR: #004B8D !important;
+	opacity: 0.8 !important;
+    FONT-SIZE: 13px !important;
+    FONT-WEIGHT: norma1;
+}
+
+.cursiv {
+    color: #004B8D;
+    font: italic Medium Roboto;
+    font-size: 12px;
+}
+/*para para las tablas*/
+.p_AFMedium {
+    background-color: transparent !important;
+}
+
+.submenu-2 > a.xgp {
+    background: #FEF662 0% 0% no-repeat padding-box;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    opacity: 0.7;
+    margin-right: 10px;
+    color: #2846AA;
+    min-width: 5%;
+    height: 24px;
+    text-align: center;
+    vertical-align: middle;
+    font: Bold 11px/26px Arial;
+    padding: 0px 8px 0px 8px !important;
+    text-transform: uppercase;
+    text-shadow: none;
+}
+
+/*popup dialog de elertas de error*/
+div[role='dialog'] {
+    width: 50% !important;
+    float: none;
+    margin: auto;
+}
+
+.sinopsis {
+        font: normal 1.0em 'Roboto', sans-serif;
+        text-align: justify;
+}
+
+/* Color del dialog "Error" y su alineacion*/
+.x17g, .x1e5 {
+    margin-top: 2px;
+    cursor: default;
+    white-space: nowrap;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin: 0px;
+}
+
+/*para las dimensiones del dialog pan*/
+/*.x1do, .x1dp{
+  height:500px !important;
+  width: 650px !important;
+}*/
+
+/*textos pie de pafina*/
+.pie-sky {
+                            color:#003861;font-weight:bold;font-size: 12px;
+                        }
+.img-exploradores{
+                            width: 180px; height: auto;
+                        }
+                        .img-alerta{
+                            height: 50px;
+                            width: auto;
+                        }
+
+                        
+/* For tablets: */
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+    .col-tb-1 {
+        width: 12.5%;
+    }
+    .col-tb-2 {
+        width: 30%;
+    }
+    .col-tb-3 {
+        width: 37.5%;
+    }
+    .col-tb-4 {
+        width: 50%;
+    }
+    .col-tb-5 {
+        width: 62.5%;
+    }
+    .col-tb-6 {
+        width: 75%;
+    }
+    .col-tb-7 {
+        width: 87.5%;
+    }
+    .col-tb-9 {
+        width: 95%;
+    }
+    .col-tb-8 {
+        width: 100%;
+    }
+    /*para quitar espacios en el panel derecho cuando sea para tablet*/
+    .content-panel-right {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    /*para quitar espacios en el panel izquierdo cuando sea para tablet*/
+    .left-panel {
+        padding-left: 0px;
+    }
+    #blue-logo {
+        min-height: 77px;
+    }
+    .logo {
+        width: 85%;
+    }
+    .welcome {
+        font-size: 0.8em;
+        font-weight: normal;
+    }
+    .acc-num-txt {
+        letter-spacing: 0;
+        color: #8AD5F2;
+        opacity: 1;
+        font-size: 0.8em;
+        line-height: normal;
+        display: inline;
+    }
+    .account-number {
+        font-size: 1.3em;
+        display: inline;
+    }
+    .bg-font {
+        font-size: 2em;
+    }
+    .header, .links {
+        font-size: 0.85em;
+        line-height: 1.5em;
+        height: 77px;
+    }
+    .links-header {
+        min-width: 120px;
+    }
+    .links-icon-header {
+        width: 65px;
+        height: 25px;
+    }
+    .link-chat {
+        padding: 1px 12px;
+        height: 28px;
+        font-size: 0.6em;
+        min-width: 75px;
+        line-height: 25px;
+    }
+    .icon-chat-header {
+        width: 24px;
+        height: 24px;
+        margin-left: 5px;
+    }
+    .title {
+        font-size: 1em;
+        line-height: 1.75em;
+    }
+    .subtitle {
+        font-size: 1.3em;
+    }
+    .footer {
+        font-size: 0.8em;
+    }
+    .menu table tr td {
+        font-size: 0.9em;
+    }
+    .menu table tr td > a {
+        padding-left: 8px;
+    }
+    .balance {
+        font-size: 2em;
+    }
+    .footer-content-text {
+        font-size: 0.9em;
+    }
+    .sm-no-padd-left {
+        padding-left: 0;
+    }
+    .sm-no-padd-right {
+        padding-right: 0;
+    }
+    /* Contactanos */
+    .channel-box {
+        min-height: 280px;
+    }
+    .contact-icons {
+        width: 65px;
+        height: 65px;
+        display: block;
+    }
+    .channel-text1 {
+        font-size: 1em;
+    }
+    .channel-text2 {
+        font-size: 0.8em;
+    }
+    .channel-text3 {
+        font-size: 0.6em;
+    }
+    .channel-text4 {
+        font-size: 0.5em;
+    }
+    /*recargas*/
+    .no-show-img-rmv {
+        display: none;
+    }
+    .no-show-img-rpc {
+        display: block
+    }
+    /*para los links del banner*/
+    .link-top {
+        text-align: left;
+        letter-spacing: 0;
+        color: #004B8D;
+        opacity: 1;
+        vertical-align: middle;
+        padding-right: 2px;
+        padding-left: 2px;
+        font-weight: bolder;
+        font: normal bolder 0.8em 'Roboto', sans-serif;
+    }
+    /*estilo para los textos outputtext de la nueva version 12C*/
+    .output-internal, .output-internal label {
+        font-size: 16px;
+    }
+    .perfil-input-internal, .perfil-input-internal label {
+        font: Bold 12px/29px Roboto;
+        font-size: 14px;
+    }
+    /*solo boton*/
+.btn-internal {
+    width: 85%;
+    height: 45px;
+}
+.btn-internal > a {
+    line-height: 40px;
+    font-size: 16px;
+}
+/*botones en dialogo*/
+.btn-pay-dialog {
+    height: 36px !important;
+}
+.btn-pay-dialog > a > span{
+    line-height: 28px;
+}
+/*margin-top para separar los botones u otro componente en dispositivos*/
+.top-2{
+    margin-top: 30px;
+}
+.padd-left-2 {
+    padding-left: 0px;
+}
+/*estilos utilizados para skyudc -confirmacion actualizacion de correo*/
+                        .img-cabeza_tx{
+                            width: 80%;
+                            height: 65px;
+                        }
+                        .img-alerta{
+                            height: 40px;
+                            width: auto;
+                        }
+                        .img-exploradores{
+                            width: 140px; height: auto;
+                        }
+                        
+                        .pie-sky {
+                            color:#003861;font-weight:bold;font-size: 12px;
+                        }
+                        /*logo sky de encabezado*/
+                        .loginStyle {
+                            width: 100%;
+                        }
+                        
+/*fin skyudc- update correo*/
+}
+/*pantalla error*/
+div#contenedor {width: 90%; height: 100%; margin: 0px auto 0px auto;}
+    
+        div#encabezado {
+		width: 60%; 
+                margin: 10px auto 0px auto;
+		background-color: #004B8D;
+		background-image: url("/sky/imagenes/pc/patron_BannerPrincipal2.png");
+		background-repeat: repeat-x;
+		border-radius: 7px;
+	}
+        div#encabezado > img{
+            width: 100%;
+        }
+	div#cuerpo {
+		width: 60%; 
+		height: 50%;
+		margin: 20px auto 0px auto;
+	}
+    
+	p {
+		color: #003861;
+		font-family: "Heveltica", "Serif";
+	}
+
+	p#titulo {
+		margin: 20px 0px 0px 15px;
+		font-size: 1.5em;
+	}
+
+	p#mensaje {
+		margin: 25px 0px 0px 15px;
+		font-size: 1.2em;
+	}
+        
+        /*popup dialog de elertas de error*/
+div[role='dialog'] {
+    width: 50% !important;
+    float: none;
+    margin: auto;
+}
+div[role='dialog'] > table {
+    float: none;
+    margin: auto;
+}
+        /*fin pantalla error*/
+/* For tablets */
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) and (orientation:landscape) {
+    .welcome {
+        font-size: 1em;
+        font-weight: normal;
+    }
+    .account-number {
+        font-size: 1.3em;
+        display: inline;
+    }
+    .subtitle {
+        font-size: 1.5em;
+    }
+    .sm-no-padd-left {
+        padding-left: 0;
+    }
+    .sm-no-padd-right {
+        padding-right: 0;
+    }
+    /* Contactanos */
+    .channel-box {
+        min-height: 260px;
+    }
+    .contact-icons {
+        width: 65px;
+        height: 65px;
+        display: block;
+    }
+    .channel-text1 {
+        font-size: 1em;
+    }
+    .channel-text2 {
+        font-size: 0.8em;
+    }
+    .channel-text3 {
+        font-size: 0.55em;
+    }
+    .channel-text4 {
+        font-size: 0.5em;
+    }
+    .link-chat {
+        padding: 1px 12px;
+        height: 28px;
+        font-size: 0.6em;
+        min-width: 75px;
+        line-height: 25px;
+    }
+    .icon-chat-header {
+        width: 30px;
+        height: 24px;
+        margin-left: 5px;
+    }
+    .links-header {
+        min-width: 130px;
+    }
+    .links-icon-header {
+        width: 80px;
+        height: 25px;
+        padding-right: 2px;
+    }
+    /*recargas*/
+    .no-show-img-rmv {
+        display: none
+    }
+    .no-show-img-rpc {
+        display: block;
+    }
+    /*para los links del banner*/
+    .link-top {
+        text-align: left;
+        letter-spacing: 0;
+        color: #004B8D;
+        opacity: 1;
+        vertical-align: middle;
+        padding-right: 5px;
+        padding-left: 5px;
+        font-weight: bolder;
+        font: normal bolder 1em 'Roboto', sans-serif;
+    }
+    /*estilo para los textos outputtext de la nueva version 12C*/
+    
+    .perfil-input-internal, .perfil-input-internal label {
+        font: Bold 12px/29px Roboto;
+        font-size: 16px;
+    }
+    /*solo boton*/
+.btn-internal {
+    width: 70%;
+    height: 45px;
+}
+.btn-internal > a {
+    line-height: 40px;
+}
+/*margin-top para separar los botones u otro componente en dispositivos*/
+.top-2{
+    margin-top: 30px;
+}
+.padd-left-2 {
+    padding-left: 0px;
+}
+    div[role='dialog'] {
+        width: 75% !important;
+    }
+}
+
+/* For mobile phones: */
+@media only screen and (min-device-width:320px) and (max-device-width:767px) {
+/*logo sky de encabezado*/
+                        .loginStyle {
+                            width: 100%;
+                        }
+    .img-cabeza_tx{
+                            width: 80%;
+                            height: 50px;
+                        }
+                        .img-alerta{
+                            height: 25px;
+                            width: auto;
+                        }
+                        .img-exploradores{
+                            width: 120px; height: auto;
+                        }
+                        .pie-sky {
+                            font-size: 10px;
+                        }
+                        .right{
+                            text-align: center;
+                        }
+    .bottom {
+        margin-bottom: 10px;
+    }
+[    class*="col-"] {
+        float: left;
+        width: 100%;
+    }
+    .col-sm-1 {
+        width: 12.5%;
+    }
+    .col-sm-2 {
+        width: 25%;
+    }
+    .col-sm-3 {
+        width: 37.5%;
+    }
+    .col-sm-3-2 {
+        width: 33%;
+    }
+    .col-sm-4 {
+        width: 50%;
+    }
+    .col-sm-5 {
+        width: 62.5%;
+    }
+    .col-sm-6 {
+        width: 75%;
+    }
+    .col-sm-7 {
+        width: 87.5%;
+    }
+    .col-sm-8 {
+        width: 100%;
+    }
+    .col-sm-rec-4 {
+        width: 50%;
+    }
+    #blue-logo {
+        min-height: 0px;
+    }
+    #blue-menu {
+        display: none;
+    }
+    #blue-foot {
+        display: none;
+    }
+    #sm-blue-foot {
+        display: block;
+    }
+    .logo {
+        width: 50%;
+        height: auto;
+        margin: 5px auto;
+        display: block;
+    }
+    .welcome {
+        font-size: 0.7em;
+        font-weight: normal;
+        display: block;
+    }
+    .user-name {
+        font-size: 1em;
+        display: block;
+        margin-right: 0px;
+        margin-bottom: 2px;
+    }
+    .sm-acc-num-txt {
+        letter-spacing: 0;
+        color: #8AD5F2;
+        opacity: 1;
+        font-size: 0.7em;
+        font-weight: normal;
+        line-height: normal;
+        display: inline;
+    }
+    .account-number {
+        font-size: 1.3em;
+        line-height: normal;
+        display: inline;
+    }
+    .pack-txt {
+        font: normal bolder 1em 'Roboto', sans-serif, serif;
+        color: #E7E614;
+        display: inline;
+    }
+    .pack {
+        font: normal normal 0.75em 'Roboto', sans-serif, serif;
+        display: inline;
+        color: #01ccdb;
+    }
+    .information {
+        padding: 5px 20px;
+        line-height: normal;
+    }
+    .content-internal {
+        padding-right: 8px;
+        padding-left: 8px;
+        padding-bottom: 8px;
+        margin: 0;
+    }
+    /* Layout y Menu */
+    .sel-bt {
+        text-align: center;
+    }
+    .title {
+        font-size: 1em;
+        line-height: 1.75em;
+        padding-left: 0;
+    }
+    .titleh1 {
+        font-size: 1.0em;
+        text-align: center;
+    }
+    .links {
+        display: none;
+    }
+    .menu {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .menu table {
+        line-height: 15px;
+    }
+    .menu table tr td {
+        height: 15px;
+    }
+    .menu table tr td > .p_AFSelected {
+        height: 45px;
+        line-height: 45px;
+    }
+    .sm-icon-menu {
+        display: inline;
+    }
+    .sm-close-session {
+        display: inline;
+        margin-bottom: 5px;
+    }
+    .sm-menu .sm-close-session {
+        font: normal normal 1em "Roboto", sans-serif;
+        color: white;
+        text-decoration: none;
+        height: 15px;
+        line-height: 15px;
+        padding-left: 18px;
+    }
+    .sm-menu .sm-close-session:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    .link-chat {
+        min-width: 55px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 0.8em;
+    }
+    .icon-chat-header {
+        width: 20px;
+        height: 22px;
+        margin: 3px;
+    }
+    .links-header {
+        min-width: 100px;
+    }
+    .links-icon-header {
+        width: 100px;
+    }
+    .col-atention {
+        font-size: 0.70em;
+        vertical-align: middle;
+        display: inline;
+        padding: 4px 10px;
+        color: #01ccdb;
+    }
+    .col-menu {
+        display: block;
+    }
+    .col-chat {
+        display: inline-block;
+        padding: 5px;
+    }
+    .line-divisor {
+        border-bottom: 1px solid white;
+    }
+    .sm-no-padd-left {
+        padding-left: 0;
+    }
+    .sm-no-padd-right {
+        padding-right: 0;
+    }
+    .sm-left {
+        text-align: left;
+    }
+    .sm-right {
+        text-align: right;
+    }
+    .sm-cancel-align {
+        text-align: center;
+    }
+    .bg-font {
+        font-size: 1.8em;
+    }
+    .md-font {
+        font-size: 1em;
+    }
+    .sm-font {
+        font-size: 0.55em;
+    }
+    select.select-internal, .select-internal select {
+        font-size: 0.55em;
+    }
+    /* Estado de cuenta */
+    .balance {
+        font-size: 1.5em;
+    }
+    .no-show {
+        display: none;
+    }
+    .cvv-input {
+        width: 75px;
+    }
+    /* Contactanos */
+    .subtitle {
+        font-size: 1em;
+    }
+    .contact-icons {
+        width: 65px;
+        height: 65px;
+        display: block;
+    }
+    .channel-box {
+        min-height: 220px;
+    }
+    /*recargas*/
+    .no-show-img-rmv {
+        display: block
+    }
+    .no-show-img-rpc {
+        display: none
+    }
+    /*para los links del banner*/
+    .link-top a {
+        text-align: left;
+        letter-spacing: 0;
+        color: #004B8D;
+        opacity: 1;
+        vertical-align: middle;
+        font-size: 0.85em;
+    }
+    /*estilo para los textos outputtext de la nueva version 12C*/
+    .output-internal, .output-internal label {
+        font: normal 0.9em 'Roboto', sans-serif;
+        font-size: 14px;
+    }
+    .perfil-input-internal, .perfil-input-internal label {
+        font: Bold 12px/29px Roboto;
+        font-size: 12px;
+    }
+    .img-sm {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .left-panel {
+        background: #F4F4F4 0% 0% no-repeat padding-box;
+        padding-left: 0px;
+    }
+    
+    .content-panel-right {
+        padding-left: 0px;
+        padding-top: 10px;
+        padding-right: 5px;
+        padding-bottom: 30px;
+        background: #F4F4F4 0% 0% no-repeat padding-box;
+        height:auto;
+    }
+    
+    .tbl-Class table {
+       display: block;
+       overflow-x: auto;
+     }
+     
+    .account-number span {
+        letter-spacing: 0;
+        color: #8AD5F2;
+        opacity: 1;
+        font: normal bold 15px 'Roboto', sans-serif, serif;
+        word-wrap: break-word;
+        display: block;
+    }
+    
+    .submenu-2 > a.xgp {
+        background: #FEF662 0% 0% no-repeat padding-box;
+        border: 1px solid #FFFFFF;
+        border-radius: 4px;
+        opacity: 0.7;
+        margin-right: 10px;
+        color: #2846AA;
+        min-width: 5%;
+        height: 20px;
+        text-align: center;
+        vertical-align: middle;
+        font: Bold 10px/20px Arial;
+        padding: 0px 8px 0px 8px !important;
+        text-transform: capitalize;
+        text-shadow: none;
+    }
+    
+    /*popup dialog de elertas de error*/
+    div[role='dialog'] {
+        width: 90% !important;
+        float: none;
+        margin: auto;
+    }
+    
+    .sinopsis {
+        font: normal 0.7em 'Roboto', sans-serif;
+        text-align: justify;
+    }
+    
+    /* Color del dialog "Error" y su alineacion*/
+    .x17g, .x1e5 {
+        margin-top: 2px;
+        cursor: default;
+        white-space: nowrap;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 10px;
+        color: white;
+        font-weight: bold;
+        text-align: left;
+        margin: 0px;
+    }
+    
+    /*.x1do, .x1dp {
+        height:500px !important;
+        width: 350px !important;
+    }*/
+    
+    .output-internal span {
+        letter-spacing: 0;
+        color: #004B8D;
+        opacity: 1;
+        font: Medium Roboto;
+        font-size: 11px;
+        margin-top: 4px;
+        line-height: 1.5em;
+        vertical-align: baseline;
+        height: auto !important;
+    }
+    
+    .input-internal label {
+        letter-spacing: 0;
+        color: #004B8D;
+        opacity: 0.8;
+        font: normal 12px/29px Roboto;
+        font-size: 11px;
+        margin-top: 4px;
+    }
+    
+    .input-internal input {
+        border: white;
+        font: Bold 12px/29px Roboto;
+        font-size: 10px;
+        letter-spacing: 0;
+        color: #004B8D;
+        opacity: 1;
+        border-bottom: 1px solid #8AD5F2;
+        min-height: 34px;
+        max-height: 54px;
+        padding: 0px 4px 0px 4px;
+    }
+    
+    .input-internal input[type='password'] {
+        border: white;
+        font: Bold 12px/29px Roboto;
+        font-size: 10px;
+        letter-spacing: 0;
+        color: #004B8D;
+        opacity: 1;
+        border-bottom: 1px solid #8AD5F2;
+        min-height: 34px;
+        max-height: 54px;
+        padding: 0px 4px 0px 4px;
+    }
+    /*solo boton*/
+.btn-internal {
+    width: 65%;
+    height: 45px;
+}
+.btn-internal > a {
+    line-height: 40px;
+}
+/*botones en dialogo*/
+.btn-pay-dialog {
+    height: 36px !important;
+    max-width: 225px !important;
+}
+.btn-pay-dialog > a > span{
+    line-height: 28px;
+}
+/*margin-top para separar los botones u otro componente en dispositivos*/
+.top-2{
+    margin-top: 30px;
+}
+/*margin-top para separar los botones u otro componente en movil*/
+.top-btn{
+    margin-top: 30px;
+}
+.padd-left-2 {
+    padding-left: 0px;
+}
+/*PANTTALLA ERROR*/
+div#encabezado {
+		width: 100%; 
+}
+div#encabezado > img{
+            width: 100%;
+        }
+div#cuerpo {
+		width: 100%; 
+		height: 40%;
+	}
+        
+    div[role='dialog'] {
+        width: 90% !important;
+        float: none;
+        margin: auto;
+    }
+}
+
+/* For mobile phones: */
+@media only screen and (min-device-width:320px) and (max-device-width:767px) and (orientation:landscape) {
+[    class*="col-"] {
+        float: left;
+        width: 100%;
+    }
+    .col-sm-1 {
+        width: 12.5%;
+    }
+    .col-sm-2 {
+        width: 25%;
+    }
+    .col-sm-3 {
+        width: 37.5%;
+    }
+    .col-sm-3-2 {
+        width: 33%;
+    }
+    .col-sm-4 {
+        width: 50%;
+    }
+    .col-sm-5 {
+        width: 62.5%;
+    }
+    .col-sm-6 {
+        width: 75%;
+    }
+    .col-sm-7 {
+        width: 87.5%;
+    }
+    .col-sm-8 {
+        width: 100%;
+    }
+    /*para mantener dos columnas en pantalla horiozontal*/
+    .col-sm-8-1 {
+        width: 66.66%;
+    }
+    .col-sm-4-1 {
+        width: 33.33%;
+    }
+    .sm-menu .sm-close-session {
+        padding-left: 30px;
+    }
+    /* Contactanos */
+    .contact-icons {
+        width: 65px;
+        height: 65px;
+        display: block;
+    }
+    .channel-box {
+        min-height: 220px;
+    }
+    /*recargas*/
+    .no-show-img-rmv {
+        display: none
+    }
+    .no-show-img-rpc {
+        display: block;
+    }
+    /*para los links del banner*/
+    .link-top a {
+        text-align: left;
+        letter-spacing: 0;
+        color: #00A4E4;
+        opacity: 1;
+        vertical-align: middle;
+        font-size: 0.85em;
+    }
+    /*estilo para los textos outputtext de la nueva version 12C*/
+    .output-internal, .output-internal label {
+        font-size: 14px;
+    }
+    .perfil-input-internal, .perfil-input-internal label {
+        font: Bold 12px/29px Roboto;
+        font-size: 12px;
+    }
+    /*solo boton*/
+.btn-internal {
+    width: 50%;
+    height: 45px;
+}
+.btn-internal > a {
+    line-height: 40px;
+}
+/*botones en dialogo*/
+.btn-pay-dialog {
+    height: 36px !important;
+    max-width: 225px !important;
+}
+.btn-pay-dialog > a > span{
+    line-height: 28px;
+}
+/*margin-top para separar los botones u otro componente en dispositivos*/
+.top-2{
+    margin-top: 30px;
+}
+/*margin-top para separar los botones u otro componente en movil*/
+.top-btn{
+    margin-top: 30px;
+}
+.padd-left-2 {
+    padding-left: 0px;
+}
+}
+
+/*nuevos SEL 12*/
+.backgroundMenu {
+    background: transparent url('/sky/imagenes/aplicacion/bg4@2x.png')0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.backgroundTitulo {
+    background: #2846AA 0% 0% no-repeat padding-box;
+    opacity: 1;
+    padding-bottom: 10px;
+    margin-left: 5px;
+    margin-top: 0px;
+    height: auto;
+}
+
+.submenu-2 {
+    background-color: transparent;
+    padding: 1px;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    line-height: 30px;
+    vertical-align: middle;
+    text-decoration: none;
+    word-wrap: break-word;
+}
+
+.submenu-2 > a[aria-selected="true"] {
+    background: #FEF662 0% 0% no-repeat padding-box;
+    border: 1px solid #FFFFFF;
+    color: black;
+    border-radius: 4px;
+    opacity: 1;
+    cursor: default;
+    text-decoration: none;
+}
+
+.submenu-2 > a.xgp:hover{
+    opacity:0.9;
+}
+
+input[type=checkbox] {
+    background: #004B8D 0% 0% no-repeat padding-box;
+    opacity: 0.54;
+    color: #004B8D;
+    width: 24px;
+    height: 24px;
+}
+/*estilo general para las etiquetas*/
+label {
+    color: #004B8D;
+    font: medium 'Roboto';
+    line-height: 0px;
+    font-size: 12px;
+}
+
+/*estilos general para elementos de lista*/
+div > ul li {
+    color: #004B8D;
+    font: medium 'Roboto', sans-serif;
+    font-size: 12px;
+}
+
+div > ul li a span {
+    color: #004B8D;
+    font: medium 'Roboto', sans-serif;
+    font-size: 12px;
+}
+
+/*icono del menu*/
+.menu table tr td a img {
+    padding-right: 5px;
+    vertical-align: sub;
+    width: 32px;
+    height: 32px;
+}
+/*textos de los menus*/
+.menu table tr td a span {
+    vertical-align: super;
+    white-space: break-spaces;
+}
+/*Para los botones de las tablas*/
+.roundbutton {
+    display: block;
+    border-radius: 50% !important;
+    border: solid 5px #004B8D !important;
+    background-image: radial-gradient(#004B8D 45%, white 0%, white) !important;
+    cursor: default;
+    min-height: 25px;
+    height: 25px;
+    width: 25px;
+    text-shadow: none !important;
+}
+
+.separador {
+    border: none;
+}
+
+.font-bolder {
+    font-weight: bolder !important;
+    opacity: 1 !important;
+}
+/*para el tamanio de las imagenes pequenas en submenu revistas*/
+.img-2-rev-size {
+    width: 80px;
+    height: 100px;
+}
+/*para el tamanio de las imagenes en submenu revistas*/
+.img-rev-size {
+    width: 200px;
+    height: 260px;
+}
+/*para el tamanio maximizado de las imagenes en submenu revistas*/
+.img-rev-maxsize {
+    width: 400px;
+    height: 470px;
+}
+/*para marcar los textos internos en azul
+           af|outputText*/
+span.azul {
+    color: #00A4E4 !important;
+    font: bold 15px Roboto;
+    font-size: 15px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #8AD5F2;
+}
+
+/*af|panelLabelMessage*/
+.panelLabelM {
+    color: #004B8D;
+    font: medium 'Roboto';
+    font-size: 12px;
+}
+
+.panelLabelM label {
+    vertical-align: baseline;
+}
+.panelLabelM span {
+    font-weight: bolder !important;
+    opacity: 1 !important;
+}
+/*para las imagenes de canales*/
+a.cacImg > img {
+    width: 100%;
+    padding: 3%;
+    /* display: unset; */
+}
+
+a.cacImgHotgo > img {
+    width: 100%;
+    padding: 1%;
+    height: 130px;
+}
+/*para el borde que seniala el error en el inputtext*/
+.x1u.p_AFError .x25, .xeo.p_AFError .xjp {
+    border: 2px solid #004B8D;
+    margin: 0;
+}
+/*para el borde que seniala el error en el select*/
+.x1z.p_AFFatal .x2h, .x1z.p_AFError .x2h {
+    border: 2px solid #004B8D;
+    border-color: #004B8D;
+}
+/*para el borde que seniala el error en el one choise*/
+.x1v.p_AFError .xu4, .x1w.p_AFError .xu2, .x1x.p_AFError .xu5, .x21.p_AFError .xu3, .x1v.p_AFFatal .xu4, .x1w.p_AFFatal .xu2, .x1x.p_AFFatal .xu5, .x21.p_AFFatal .xu3 {
+    outline: 2px #004B8D solid;
+}
+/*para los mensajes de alertas*/
+.alert > table, .dialog-background {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+}
+/*para quitar el borde externo al dialog alert*/
+div.alert, x1d4 {
+    border: none;
+    background-color: #2846AA;
+    color: #FFFFFF;
+}
+/*para el titulo del dialog*/
+.alert > table tr td div.x1e5 {
+    color: #FFFFFF;
+    border: 0px;
+    border-style: none;
+    height: 40px;
+}
+
+div.alert > table tr td.x1db, div.alert > table tr td.x1d9, div.alert > table tr td.x1dd, div.alert > table tr td.x1dm div.x1e5 {
+    background: #2846AA 0% 0% no-repeat padding-box;
+    border: 0px;
+    border-style: none;
+    text-shadow: none !important;
+    font: normal bolder 1.8em 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 19px;
+    line-height: 40px;
+}
+
+/*para el backgraound del titulo del |panelWindow en revistas*/
+div.alert > table tr td.x1da {
+    background-image: none;
+    background-color: #2846AA;
+}
+/*para mantener visual la X en el |panelWindow en revistas*/
+div.alert > table tr td.x1da > table tr td div.x1e8 > a {
+    background-color: #2846AA;
+    background-image: url(/sky/afr/alta-v1/dialog_close_ena.png);
+}
+/*para eliminar el titulo del mensaje de alerta espera*/
+div.waitpopup > table tr td.x1db, div.waitpopup > table tr td.x1d9, div.waitpopup > table tr td.x1dd, div.waitpopup > table tr td.x1dm div.x1e5 {
+    display: none;
+}
+/*ancho del div del popup espera*/
+div.waitpopup{
+    width: 100%;
+    background: #FFFFFF !important; border:0px;
+}
+div.alert td.x1df, td.x1de, td.x1dg {
+    height: 15px;
+}
+/*centrar popup*/
+.center-popup{
+    float: none;     margin: auto;
+}
+
+
+div[role='dialog'] > table {
+    float: none;
+    margin: auto;
+}
+div#d1_msgDlg {
+    background: white;
+}
+/*
+div#d1_msgDlg div.x15p {
+    color: #004B8D;
+}
+*/
+
+div#d1_msgDlg_cancel {
+    background: #004B8D 0% 0% no-repeat padding-box;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    background-image: none;
+    min-width: 35px;
+    max-width: 155px;
+    width: 93%;
+    height: 20px;
+    margin-top: 10px;
+}
+
+div#d1_msgDlg_cancel:hover {
+    padding: 0px 15px;
+    cursor: pointer;
+    box-shadow: 0 10px 12px 0 rgba(0, 0, 0, 0.24), 0 15px 48px 0 rgba(0, 0, 0, 0.19);
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+}
+
+div#d1_msgDlg_cancel > a{
+    color: #FFFFFF;
+    font: Bold 12px/29px Arial;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0px 5px;
+}
+div#d1_msgDlg_cancel:hover a {
+    color: black;
+}
+/*Nuevos estilos alertas*/
+/* Color borde error*/
+.xra.p_AFDisclosed, .x1da.p_AFResizable, .x1db.p_AFResizable {
+    cursor: n-resize;
+    background: #2846AA;
+}
+/*Bordes finales del error*/
+.x1d8, .x1d9, .x1dc, .x1dd {
+    font-size: 0px;
+    width: 5px;
+    height: 29px;
+    border-bottom: none;
+    background-image: -webkit-linear-gradient(top, #2846AA 100%, #2846AA 100%);
+}
+/* Color Texto de los warning*/
+.x15q, .x15p {
+    font-weight: bold;
+    color: #E09354;
+    background: white;
+    padding: 2px 10px 7px 0px;
+}
+/* Color del dialog "Error" y su alineacion*/
+.x17g, .x1e5 {
+    margin-top: 2px;
+    cursor: default;
+    white-space: break-spaces;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin: 0px;
+}
+/* Color del texto Los mensajes de esta pagina se muestran a continuacion.*/
+.x1a6 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    word-wrap: break-word;
+    color: #145c9e;
+    padding-top: 0px;
+    line-height: normal;
+}
+/* Ocultar la imagen X DEL BORDE*/
+.x1e7 {
+   display:none;
+}
+/* Quitar el borde de todo el cuadro*/
+.x1d3, .x1d4 {
+    
+    border-width: 0px;
+  
+}
+/* Para esconder bootom X*/
+.x17e, .x1dz {
+    display: block;
+    cursor: default;
+    margin-top: 2px;
+    border: 1px solid transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: 0px;
+    width: 16px;
+    height: 16px;
+    padding-right: 4px;
+    padding-left: 4px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background: bottom;
+}
+/*nuevo*/
+/*boton de flechas nuevo*/
+.AFNoteWindowPreviousLink, .x1a2 {
+    display: block;
+    width: 0px;
+    height: 0px;
+    cursor: default;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 0px;
+    padding: 0px;
+}
+/*boton de flechas nuevo*/
+.AFNoteWindowNextLink, .x1a3 {
+    display: block;
+    width: 0px;
+    height: 0px;
+    cursor: default;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 0px;
+    padding: 0px;
+}
+/*texto de error*/
+.x1av {
+    word-wrap: break-word;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #145c9e;
+    padding-top: 6px;
+    line-height: normal;
+    border-bottom: 1px solid #004b8d;
+    padding-bottom: 8px;
+    background: white;
+    padding-left: 12px;
+    display: none;
+}
+/* Color de borde y estilo de fuente de la palabra error*/
+.x1at {
+    color: #f2f4f7;
+    padding: 5px 0px;
+    background: #2846AA;
+    text-align: center;
+}
+
+
+/*Oculta el boton*/
+.AFNoteWindowAllButton, .xg7 {
+    display: none;
+}
+/* contorno de la tabla*/
+.AFNoteWindow, .x19k {
+  
+    padding: -0px;
+    
+}
+/* se disminuye los padding*/
+.AFNoteWindowFooter, .x19q {
+    margin-top: 0px;
+}
+/* Quita el color de la imagen de los warning*/
+table.x1ay tr > td.x1b2 {
+    display: none;
+}
+/* quita el color de la imagen x*/
+.x1b0 .x1b2 {
+    background: #2846AA;
+}
+.x1b0 .x1b2 > img {
+    display: none;
+}
+/* oculta las x del texto de los warning*/
+table.x1b1 tr > td.x1b2 {
+    display: none;
+}
+
+/*Nuevo estilo de los bordes*/
+.AFNoteWindowRight, .x19l {
+    border-top: 0px;
+    padding: 0;
+    
+}
+/*Elimina el texto que se repite*/
+.AFNoteWindowHintText, .x19n {
+    
+    display: none;
+}
+.x1az{
+    background: white;
+}
+.AFNoteWindowSeparator{
+    display: none;
+}
+.x1b0 {
+    background: white;
+}
+
+/*horario guia prog*/
+.parrilla-eventos div{
+    min-width:120px;
+}
+.parrilla-titulos {
+    font-size:0.8em !important;
+    color: #004B8D !important;
+}
+.parrilla-horarios {
+    margin:1em; font-size:1em; color:ActiveCaption; font-weight:normal;
+}
+
+/*para ajustar los iconos de expandir y filtar de las tablas*/
+div.xl8 table.xq2 tr td.x15m > div.xfk > a.xfm {
+    /* background-size: cover; */
+    display: block;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 23px;
+    height: 23px;
+    /*padding-left: 180px;*/
+}
+
+div.xl8 table.xq2 tr td.x15m > div.xfk[title='Separar'] > a.xfm, div.xl8 table.xq2 tr td.x15m > div.xfk[title='Unir'] > a.xfm{
+    background: url(/sky/faces/imagenes/aplicacion/icon_maxim.svg) no-repeat;
+}
+div.xl8 table.xq2 tr td.x15m > div.xfk > a.xfm{
+    background: url(/sky/faces/imagenes/aplicacion/icon_filter.svg) no-repeat;
+}
+div.xl8 table.xq2 tr td.x15m > div.xfk > a.xfm > img, div.xl8 table.xq2 tr td.x15m > div.xfk > a.xfm > span {
+    display:none;
+}
+
+.check-internal-bold-red{
+    letter-spacing: 0;
+    color: #BB0202;
+    opacity: 1;
+    font-weight: bolder;
+    font: bold 16px/20px Roboto;
+    padding-left: 5px;
+    padding-right: 0px;
+    font-size: 16px;
+}
+
+.output-internal-red {
+    letter-spacing: 0;
+    color: #BB0202;
+    opacity: 1;
+    font: Medium Roboto;
+    font-size: 15px;
+    margin-top: 4px;
+    line-height: 1.5em;
+}
+a.link-indicacion-red {
+    letter-spacing: 0;
+    color: #BB0202;
+    opacity: 1;
+    font-weight: bolder;
+    font: bold 16px/20px Roboto;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+

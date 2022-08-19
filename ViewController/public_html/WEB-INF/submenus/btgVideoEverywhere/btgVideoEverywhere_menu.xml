@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_btgVideoEverywhereIndex" label="#{lbl.menu_MBLUE_TO_GO}"
+            action="btgveIndex" focusViewId="/btgVideoEverywhereIndex" icon="/imagenes/menu/ic_btg.svg"
+             immediate="true" rendered="#{sessionScope.sesion.MBLUE_TO_GO}">
+    <itemNode id="itemNode_btgveEventosDisponibles" label="#{lbl.smenu_EVENTOS}"
+              action="smenu_btgveEventosDisponibles" focusViewId="/btgveEventosDisponibles" immediate="true"
+              rendered="#{sessionScope.sesion.OTT}"/>
+    <itemNode id="itemNode_btgveContrata" label="#{lbl.smenu_CONTRATA}" action="smenu_btgveContrata"
+              focusViewId="/btgveContrata" immediate="true" rendered="#{sessionScope.sesion.CONTRATA_BTGEW}"/>
+    <itemNode id="itemNode_btgveSoloNetwork" label="#{lbl.smenu_NETWORKS}" action="smenu_btgveSoloNetwork"
+              focusViewId="/btgveSoloNetwork" immediate="true" rendered="#{sessionScope.sesion.CONTRATA_BTGEW}"/>
+  </itemNode>
+</menu>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:tr="http://myfaces.apache.org/trinidad">
+    <af:group id="gpcel">
+        <div class="row">
+            <div class="col-3"/>
+            <div class="col-6">
+                <div class="row">
+                    <div class=" ml-2 col-12" style="text-align: center;">
+                        <af:outputText  value="Su contraseña ha sido actualizada" id="ot1" inlineStyle="font-size: x-large; color: black;"/>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-tb-4"/>
+                    <div class="col-6 col-tb-4 col-sm-12">
+                        <af:commandLink id="cl1" action="salir" immediate="true" inlineStyle="border-color: transparent;">
+                            <af:image id="i2" source="/imagenes/pc/uno/btn_aceptar.png"/>
+                        </af:commandLink>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="col-12">
+                    <af:image source="/imagenes/pc/uno/dispositivos.png"/>
+                </div>
+            </div>
+        </div>
+     </af:group>   
+</ui:composition>

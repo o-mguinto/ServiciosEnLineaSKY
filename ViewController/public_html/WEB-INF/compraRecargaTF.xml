@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="compraRecargaTF">
+    <default-activity>compraRecargaInicial</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__4">
+      <name>idPaquete</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.idPaquete}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__5">
+      <name>nombre_display</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.nombre_display}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__6">
+      <name>costo</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.costo}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__7">
+      <name>imagen</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.imagen}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__8">
+      <name>fecha_corte</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.fecha_corte}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__9">
+      <name>saldoCuenta</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.saldoCuenta}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__10">
+      <name>montoDiferencia</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.montoDiferencia}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__13">
+      <name>assetNumber</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.assetNumber}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__14">
+      <name>secondAssetNumber</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.secondAssetNumber}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__15">
+      <name>isSuplementario</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.isSuplementario}</value>
+      <class>java.lang.Boolean</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__16">
+      <name>indexColor</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.indexColor}</value>
+      <class>java.lang.Integer</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__17">
+      <name>datos</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.datos}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__18">
+      <name>mins</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.mins}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__19">
+      <name>sms</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.sms}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__20">
+      <name>mostrarPaisesIncluidos</name>
+      <value>#{pageFlowScope.CompraDatosBackingBean.mostrarPaisesIncluidos}</value>
+      <class>java.lang.Boolean</class>
+    </input-parameter-definition>
+    <managed-bean id="__3">
+      <managed-bean-name>CompraDatosBackingBean</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.compradatos.BBCompraDatos</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="compraRecargaInicial">
+      <page>/pages/compraPaqueteDatos/compraRecargaInicial.jsf</page>
+    </view>
+    <view id="datosPago">
+      <page>/pages/compraPaqueteDatos/datosPago.jsf</page>
+    </view>
+    <view id="datos_nuevaTDC">
+      <page>/pages/compraPaqueteDatos/datos_nuevaTDC.jsf</page>
+    </view>
+    <view id="datos_nuevaTDC_confirmar">
+      <page>/pages/compraPaqueteDatos/datos_nuevaTDC_confirmar.jsf</page>
+    </view>
+    <view id="nuevaTDC_resumen">
+      <page>/pages/compraPaqueteDatos/nuevaTDC_resumen.jsf</page>
+    </view>
+    <task-flow-return id="closeTaskFlow">
+      <outcome>
+        <name>closeTaskFlow</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__1">
+      <from-activity-id>compraRecargaInicial</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>datosPago</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__21">
+      <from-activity-id>datosPago</from-activity-id>
+      <control-flow-case id="__22">
+        <from-outcome>nuevaTDC</from-outcome>
+        <to-activity-id>datos_nuevaTDC</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id>datos_nuevaTDC</from-activity-id>
+      <control-flow-case id="__24">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>datosPago</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__25">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>datos_nuevaTDC_confirmar</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__26">
+      <from-activity-id>datos_nuevaTDC_confirmar</from-activity-id>
+      <control-flow-case id="__27">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>datos_nuevaTDC</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__28">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>nuevaTDC_resumen</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__29">
+      <from-activity-id>nuevaTDC_resumen</from-activity-id>
+      <control-flow-case id="__30">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>datosPago</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome>closeTaskFlow</from-outcome>
+        <to-activity-id>closeTaskFlow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

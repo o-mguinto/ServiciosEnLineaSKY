@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+xmlns:trh="http://myfaces.apache.org/trinidad/html">
+    <af:document title="SKY | Servicios en Línea" id="d1">
+    <f:facet name="metaContainer">
+            <trh:meta charset="utf-8"/>
+            <trh:meta name="viewport"
+                      content="width=device-width,initial-scale=1.0,maximum-scale=3.0,user-scalable=yes"/>
+            <trh:meta http-equiv="X-UA-Compatible" content="IE=11"/>
+            <f:subview id="head">
+                    <meta name="description"
+                          content="SKY | Servicios en Línea"/>
+                    <meta name="keywords" content="servicios en linea sky"/>
+                    <af:outputText value="&lt;link rel='SHORTCUT ICON' href='#{facesContext.externalContext.requestContextPath}/imagenes/aplicacion/favicon.ico' type='image/x-icon'/>"
+                                   id="ot6" escape="false"/>
+                                   </f:subview>
+        </f:facet>
+        <af:form id="f1">
+            <!-- Google Tag Manager (noscript) -->
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZQXB5N"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+            <!-- End Google Tag Manager (noscript) -->
+            <af:pageTemplate viewId="/WEB-INF/mx/com/sky/common/jsfTemplates/pagInternas_template.jsf"
+                             value="#{bindings.ptb1}" id="pt1">
+                <f:facet name="contenido_facet">
+                    <af:region value="#{bindings.solicitudServicioTF1.regionModel}" id="r1"/>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

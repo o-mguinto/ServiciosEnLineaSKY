@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:h="http://java.sun.com/jsf/html" locale="es">
+    <meta http-equiv="X-UA-Compatible" content="IE=11.0" charset="utf-8"/>
+    <af:document id="d1"
+                 title="#{pageFlowScope.CompraDatosBackingBean.isSuplementario? 'Contratar Servicio Suplementario' : 'Contratar Paquete de datos ' += pageFlowScope.CompraDatosBackingBean.paqueteActiva.nombre_display}">
+        <af:messages id="m1"/>
+        <af:resource type="css" source="/css/custom/pagInternas_template.css"/>
+        <af:form id="f1">
+            <af:panelGroupLayout id="pgl1" layout="scroll"
+                                 styleClass="dialog-background"
+                                 inlineStyle="border: none;">
+                <h:outputText styleClass="subtitle padd-top-dialog padd-bottom-dialog"
+                              value="La información se guardó correctamente"
+                              id="ot14"/>
+                <div class="row ">
+                    <div class="col-12">
+                        <af:panelBox id="panelBox1" maximized="true"
+                                     showDisclosure="false" showMaximize="never"
+                                     background="medium"
+                                     inlineStyle="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? 'width:100.0%; border:none;' : 'width:95.0%; margin:0.0%; padding:0.0%; border:none;' }"
+                                     contentStyle="min-height: 350px;max-height: 360px;"
+                                     showHeader="never">
+                            <af:panelStretchLayout id="psl1"
+                                                   endWidth="100px;vertical-align: middle;"
+                                                   styleClass="AFStretchWidth">
+                                <f:facet name="center">
+                                    <af:panelGroupLayout layout="scroll"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                         id="pgl8">
+                                        <af:panelBox showDisclosure="false"
+                                                     showMaximize="never"
+                                                     background="medium"
+                                                     showHeader="never" id="pb2"
+                                                     contentStyle="max-height:330px"
+                                                     inlineStyle="border:none;    border-right: solid 1px #D6DFE6;     margin-right: 5px;">
+                                            <f:facet name="toolbar"/>
+                                            <af:panelFormLayout id="panelFormLayout1"
+                                                                fieldWidth="65%"
+                                                                labelWidth="35%">
+                                                <af:inputText id="it1"
+                                                              value="#{pageFlowScope.CompraDatosBackingBean.tarjeta.nombre}"
+                                                              required="true"
+                                                              label="Nombre del tarjetahabiente"
+                                                              readOnly="true"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText id="it2"
+                                                              value="#{pageFlowScope.CompraDatosBackingBean.tarjeta.noCodificado}"
+                                                              required="true"
+                                                              label="Número de tarjeta"
+                                                              readOnly="true"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText id="soc1"
+                                                              value="#{pageFlowScope.CompraDatosBackingBean.tarjeta.tipo}"
+                                                              required="true"
+                                                              label="Tipo"
+                                                              readOnly="true"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText id="soc2"
+                                                              value="#{pageFlowScope.CompraDatosBackingBean.tarjeta.mes}"
+                                                              required="true"
+                                                              label="Mes de vencimiento"
+                                                              readOnly="true"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText id="soc3"
+                                                              value="#{pageFlowScope.CompraDatosBackingBean.tarjeta.anio}"
+                                                              required="true"
+                                                              label="Año de vencimiento"
+                                                              readOnly="true"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                            </af:panelFormLayout>
+                                        </af:panelBox>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                            </af:panelStretchLayout>
+                        </af:panelBox>
+                    </div>
+                </div>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl2">
+                <div class="col-12 dialog-background">
+                    <div class="row autocenter">
+                        <div class="col-6">
+                            <af:button text="Siguiente"
+                                       id="cbSiguienteGuardarTDC"
+                                       styleClass="btn-pay-dialog"
+                                       partialSubmit="true" action="siguiente"/>
+                        </div>
+                        <div class="col-6">
+                            <af:button text="Cancelar" id="cbCancelar"
+                                       styleClass="btn-pay-dialog"
+                                       action="#{pageFlowScope.CompraDatosBackingBean.cbCancelar_action}"
+                                       immediate="true"/>
+                        </div>
+                    </div>
+                </div>
+            </af:panelGroupLayout>
+        </af:form>
+    </af:document>
+</f:view>

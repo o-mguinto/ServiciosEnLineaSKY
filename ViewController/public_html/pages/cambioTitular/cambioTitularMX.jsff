@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#cambioTitularMX').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="cambioTitularMX">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <!--Para cada fila una div-->
+                        <h:outputText value="#{selSKYBundle['cambiotitular.mxinstrucciones1']}"
+                                               id="ot1" styleClass="subtitle"/>
+                        <div class="row top" >
+                                <af:outputText value="Instrucciones:"
+                                               id="ot15" styleClass="check-internal-bold"/>
+                            <div class="row">
+                                <af:panelList id="pl2" listStyle="list-style-type:circle">
+                                    <af:outputText value="#{selSKYBundle['cambiotitular.mxinstrucciones2']}"
+                                                  id="ot2"/>
+                                    <af:outputText value="#{selSKYBundle['cambiotitular.mxinstrucciones3']}"
+                                                  id="ot3"/>
+                                    <af:outputText value="#{selSKYBundle['cambiotitular.mxinstrucciones4']}"
+                                                  id="ot4"/>
+                                    <af:outputText value="#{selSKYBundle['cambiotitular.mxinstrucciones5']}"
+                                                  id="ot5"/>
+                                </af:panelList>
+                            </div>                    
+                        </div>
+                        <div class="row top" >
+                            <af:outputText value="#{selSKYBundle['cambiotitular.mxinstrucciones6']}" styleClass="check-internal-bold" id="ot16"/>
+                            <div class="row">
+                                <af:panelList id="panelList1" listStyle="list-style-type:circle">
+                                    <af:outputText value="#{selSKYBundle['cambiotitular.ot2.value']}"
+                                                  id="ot6"/>
+                                    <af:outputText value="#{selSKYBundle['cambiotitular.ot3.value']}"
+                                                  id="ot7"/>
+                                    <af:outputText value="#{selSKYBundle['cambiotitular.ot4.value']}"
+                                                  id="ot8"/>
+                                </af:panelList>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <div class="top top-2 col-4 col-sm-8  col-tb-5 center" style="float:right;">
+                                     <af:button text="#{selSKYBundle['cambiotitular.mxinstrucciones8']}"
+                                               id="cb2"
+                                               action="uploadDocumentos"
+                                               styleClass="btn-internal"
+                                               returnListener="#{pageFlowScope.CambioTitularBackingBean.enviarDocumentosReturnListener}"/>
+                                    
+                                </div>
+                                <div class="top top-2 col-3 col-sm-8  col-tb-4 center" style="float:right;">
+                                    <af:button text="#{selSKYBundle['cambiotitular.mxinstrucciones7']}"
+                                               id="cb1"
+                                               action="llenarDocumentos"
+                                               styleClass="btn-internal"/>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="row top">
+                    <div class="col-12 content-internal">
+                        <af:panelBox id="pb1" background="medium"
+                                     showHeader="ifNeeded"
+                                     showDisclosure="false"
+                                     inlineStyle="border: 0px;">
+                            <af:panelCollection id="pc1"
+                                                defaultToolbarItemDisplay="icon"
+                                                styleClass="AFStretchWidth">
+                                <f:facet name="menus"/>
+                                <f:facet name="toolbar">
+                                    <af:toolbar id="t2">
+                                        
+                                    </af:toolbar>
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.DetalleSolicitudCambioTitular.collectionModel}"
+                                          var="row"
+                                          rows="#{bindings.DetalleSolicitudCambioTitular.rangeSize}"
+                                          emptyText="#{bindings.DetalleSolicitudCambioTitular.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          fetchSize="#{bindings.DetalleSolicitudCambioTitular.rangeSize}"
+                                          rowBandingInterval="0" id="tableCT"
+                                          autoHeightRows="10"
+                                          width="100%" scrollPolicy="auto"
+                                          horizontalGridVisible="false"
+                                          verticalGridVisible="false"
+                                          styleClass="tbl-Class"
+                                          partialTriggers=":::cb2">
+                                    <af:column sortProperty="cuenta"
+                                               sortable="true"
+                                               headerText="#{selSKYBundle['cambiotitular.mxtablacampocuenta']}"
+                                               id="c5"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.cuenta}"
+                                                       id="ot9"/>
+                                    </af:column>
+                                    <af:column sortProperty="numSolicitud"
+                                               sortable="true"
+                                               headerText="#{selSKYBundle['cambiotitular.mxtablacamponosolicitud']}"
+                                               id="c6" width="130"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.numSolicitud}"
+                                                       id="ot10"/>
+                                    </af:column>
+                                    <af:column sortProperty="fechaSolicitud"
+                                               sortable="true"
+                                               headerText="#{selSKYBundle['cambiotitular.mxtablacampofechasolicitud']}"
+                                               id="c2" width="200"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.fechaSolicitud}"
+                                                       id="ot11"/>
+                                    </af:column>
+                                    <af:column sortProperty="estatus"
+                                               sortable="true"
+                                               headerText="#{selSKYBundle['cambiotitular.mxtablacampostatus']}"
+                                               id="c4"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.estatus}"
+                                                       id="ot12"/>
+                                    </af:column>
+                                    <af:column sortProperty="subEstatus"
+                                               sortable="true"
+                                               headerText="#{selSKYBundle['cambiotitular.mxtablacamposubestatus']}"
+                                               id="c1"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.subEstatus}"
+                                                       id="ot13"/>
+                                    </af:column>
+                                    <af:column sortProperty="comentarios"
+                                               sortable="true"
+                                               headerText="#{selSKYBundle['cambiotitular.mxtablacampocomentarios']}"
+                                               id="c3" width="300"
+                                               displayIndex="-1"
+                                               headerClass="content-text">
+                                        <af:outputText value="#{row.comentarios}"
+                                                       id="ot14"/>
+                                    </af:column>
+                                </af:table>
+                            </af:panelCollection>
+                            <div class="row">
+                                    <div class="col-3 col-sm-8  col-tb-4 center"
+                                         style="float:right;">
+                                            <af:button actionListener="#{bindings.obtenerSolicitudCambioTitular.execute}"
+                                                   disabled="#{!bindings.obtenerSolicitudCambioTitular.enabled}"
+                                                   id="cb3"
+                                                   styleClass="btn-internal"
+                                                   targetFrame="_self"
+                                                    text="#{selSKYBundle['cambiotitular.mxbotonactualizar']}">
+                                            <af:clientListener method="enforcePreventUserInput"
+                                                               type="action"/>
+                                        </af:button>
+                                    </div>
+                            </div>
+                        </af:panelBox>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="canalesIndexPageDef"
+                Package="pages.canales">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="obtenerTarjetaInteligente.result" DataControl="DCTarjetaInteligente" RangeSize="10"
+                    BeanClass="mx.com.sky.sel.services.beans.utils.TarjetaInteligente"
+                    id="obtenerTarjetaInteligenteIter"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerTarjetaInteligente" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerTarjetaInteligente" IsViewObjectMethod="false" DataControl="DCTarjetaInteligente"
+                  InstanceName="DCTarjetaInteligente.dataProvider"
+                  ReturnName="data.DCTarjetaInteligente.methodResults.obtenerTarjetaInteligente_obtenerTarjetaInteligente_dataControl_dataProvider_obtenerTarjetaInteligente_result">
+      <NamedData NDName="rowID" NDValue="#{sesion.suscriptor.rowId}" NDType="java.lang.String"/>
+    </methodAction>
+    <table IterBinding="obtenerTarjetaInteligenteIter" id="tablaTarjetaInteligente">
+      <AttrNames>
+        <Item Value="tarjetaInteligente"/>
+      </AttrNames>
+    </table>
+    <attributeValues IterBinding="obtenerTarjetaInteligenteIter" id="tarjetaInteligente">
+      <AttrNames>
+        <Item Value="tarjetaInteligente"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

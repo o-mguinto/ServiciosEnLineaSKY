@@ -1,0 +1,357 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#perfil').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="perfil">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8 col-sm-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <div class="col-12">
+                            <h:outputText id="ot1" value="Información" styleClass="subtitle"/>
+                            <div class="top"></div>
+                        </div>
+                        <af:group id="g2">
+                            <div class="col-12 padd-left">
+                                <div class="col-3 col-tb-8 col-sm-8">
+                                    <h:outputText id="ot8" value="Nombre de usuario :" styleClass="output-internal"/>
+                                </div>
+                                <div class="col-8 col-tb-8 col-sm-8">
+                                    <h:outputText id="it3" value="#{sesion.usuario.nombreUsuario}"
+                                                  styleClass="perfil-input-internal"/>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-3 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot17" value="Nombre :" styleClass="output-internal"/>
+                                        </div>
+                                        <div class="col-8 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot20" value="#{sesion.usuario.nombreCompleto}"
+                                                          styleClass="perfil-input-internal"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-3 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot22" value="Corporativo :" styleClass="output-internal"
+                                                          rendered="#{sesion.cuentaCV}"/>
+                                        </div>
+                                        <div class="col-8 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot23" value="#{sesion.usuario.nombreCorporativo}"
+                                                          styleClass="perfil-input-internal"
+                                                          rendered="#{sesion.cuentaCV}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-3 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot24" value="#{selSKYBundle['perfil.ot1.value']}"
+                                                          styleClass="output-internal"/>
+                                        </div>
+                                        <div class="col-8 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot25" value="#{sesion.usuario.mail}"
+                                                          styleClass="perfil-input-internal"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-3 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot26" value="País :" styleClass="output-internal"/>
+                                        </div>
+                                        <div class="col-8 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot27" value="#{sesion.suscriptor.pais}"
+                                                          styleClass="perfil-input-internal"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-3 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot28" value="#{selSKYBundle['perfil.pt_ot20.value']}"
+                                                          styleClass="output-internal"/>
+                                        </div>
+                                        <div class="col-8 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot29" value="#{sesion.suscriptor.nombreSuscriptor}"
+                                                          styleClass="perfil-input-internal"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-3 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot30" value="#{selSKYBundle['perfil.pt_ot19.value']}"
+                                                          styleClass="output-internal"/>
+                                        </div>
+                                        <div class="col-8 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot31" value="#{sesion.cuentaSKY}"
+                                                          styleClass="perfil-input-internal"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-3 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot32" value="Paquete Video:"
+                                                          rendered="#{sesion.suscriptor.paqueteMiPerfil != ' '}"
+                                                          styleClass="output-internal"/>
+                                        </div>
+                                        <div class="col-8 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot33" value="#{sesion.suscriptor.paqueteMiPerfil}"
+                                                          rendered="#{sesion.suscriptor.paqueteMiPerfil != ' '}"
+                                                          styleClass="perfil-input-internal"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <!--Textos para cuentas DUAL PLAY   -->
+                                        <div class="col-3 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot34" value="Paquete Internet:"
+                                                          rendered="#{sesion.cuentaDualPlay and sesion.suscriptor.skyPaqueteInternet != ''}"
+                                                          styleClass="output-internal"/>
+                                        </div>
+                                        <div class="col-8 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot35" value="#{sesion.suscriptor.skyPaqueteInternet}"
+                                                          styleClass="perfil-input-internal"
+                                                          rendered="#{sesion.cuentaDualPlay and sesion.suscriptor.skyPaqueteInternet != ''}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <!--Textos para cuentas DUAL PLAY   -->
+                                        <div class="col-3 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot11" value="Paquete Celular:"
+                                                          rendered="#{sesion.cuentaDualPlay and sesion.suscriptor.cuentaCelular}"
+                                                          styleClass="output-internal"/>
+                                        </div>
+                                        <div class="col-8 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot46" value="#{sesion.suscriptor.paqueteCelular}"
+                                                          styleClass="perfil-input-internal"
+                                                          rendered="#{sesion.cuentaDualPlay and sesion.suscriptor.cuentaCelular}"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot47" value="Número de líneas celular:"
+                                                          rendered="#{sesion.cuentaDualPlay and sesion.suscriptor.cuentaCelular}"
+                                                          styleClass="output-internal"/>
+                                        </div>
+                                        <div class="col-8 col-tb-8 col-sm-8">
+                                            <af:outputText id="otInfoNumLin" 
+                                               value="#{sesion.suscriptor.numLineasCelular}"
+                                               rendered="#{sesion.cuentaDualPlay and sesion.suscriptor.cuentaCelular}"
+                                               styleClass="perfil-input-internal"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <!--Textos para cuentas DUAL PLAY   -->
+                                        <div class="col-3 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot36" value="Estado de la Cuenta"
+                                                          styleClass="output-internal"/>
+                                        </div>
+                                        <div class="col-8 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot37" value="#{sesion.suscriptor.statusCuenta}"
+                                                          styleClass="perfil-input-internal"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-3 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot38" value="Estado de la Recarga"
+                                                          rendered="#{sesion.userVeTV || sesion.userMini}"
+                                                          styleClass="output-internal"/>
+                                        </div>
+                                        <div class="col-8 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot39" value="#{sesion.suscriptor.statusRecarga}"
+                                                          styleClass="perfil-input-internal"
+                                                          rendered="#{sesion.userVeTV || sesion.userMini}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-3 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot40" value="Fecha de Fin de Recarga de Video"
+                                                          rendered="#{sesion.userVeTV || sesion.userMini}"
+                                                          styleClass="output-internal"/>
+                                        </div>
+                                        <div class="col-8 col-tb-8 col-sm-8">
+                                            <h:outputText id="ot41" value="#{sesion.dataVeTV.fechaFinRecarga}"
+                                                          styleClass="perfil-input-internal"
+                                                          rendered="#{sesion.userVeTV || sesion.userMini}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </af:group>
+                    </div>
+                </div>
+                <div class="row top">
+                    <div class="content-internal">
+                        <div class="row">
+                            <div class="col-12 autocenter">
+                                <h:outputText value="#{selSKYBundle['perfil.pb2.text']}" id="ot200"
+                                              styleClass="check-internal-bold top-channel"/>
+                                <div class="top"></div>
+                                <div class="col-5  col-tb-7 col-sm-7 right padd-right">
+                                    <af:image source="/imagenes/aplicacion/telefono.jpg" id="image1"
+                                              inlineStyle="width:130.0px;"/>
+                                </div>
+                                <div class="label-internal col-7 col-tb-7 col-sm-7 padd-right">
+                                    <!--para MEXICO-->
+                                    <af:group id="g3" rendered="#{sesion.MEX}">
+                                        <div class="col-12 center">
+                                            <af:image source="/imagenes/banderas/Mexico.png" id="i1"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['contacto.mex.value']}" id="ot10"/>
+                                        </div>
+                                        <!--tradicional-->
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['perfil.ot2M1.value']}"
+                                                          rendered="#{!sesion.userVeTV}" id="ot2"/>
+                                        </div>
+                                        <!--VeTV-->
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['perfil.ot2M3.value']}"
+                                                          rendered="#{sesion.userVeTV}" id="ot19"/>
+                                        </div>
+                                    </af:group>
+                                     
+                                    <!--para CRI-->
+                                     
+                                    <af:group id="g4" rendered="#{sesion.CRI}">
+                                        <div class="col-12 center">
+                                            <af:image source="/imagenes/banderas/Costa-Rica.png" id="i3"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['contacto.cri.value']}" id="ot3"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['perfil.telsCR1.value']}" id="ot9"/>
+                                        </div>
+                                    </af:group>
+                                     
+                                    <!--para GTM-->
+                                     
+                                    <af:group id="g5" rendered="#{sesion.GTM}">
+                                        <div class="col-12 center">
+                                            <af:image source="/imagenes/banderas/Guatemala.png" id="i10"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['contacto.gua.value']}" id="ot42"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['perfil.telsGT1.value']}" id="ot43"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['perfil.telsGT1.value2']}" id="ot44"/>
+                                        </div>
+                                    </af:group>
+                                     
+                                    <!--para NIC-->
+                                     
+                                    <af:group id="g6" rendered="#{sesion.NIC}">
+                                        <div class="col-12 center">
+                                            <af:image source="/imagenes/banderas/Nicaragua.png" id="i4"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['contacto.nic.value']}" id="ot4"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['perfil.telsNI1.value']}" id="ot12"/>
+                                        </div>
+                                    </af:group>
+                                     
+                                    <!--para SLV-->
+                                     
+                                    <af:group id="g7" rendered="#{sesion.SLV}">
+                                        <div class="col-12 center">
+                                            <af:image source="/imagenes/banderas/El-Salvador.png" id="i5"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['contacto.sal.value']}" id="ot5"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['perfil.telsSV1.value']}" id="ot13"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['perfil.telsSV1.value2']}" id="ot45"/>
+                                        </div>
+                                    </af:group>
+                                     
+                                    <!--para HND-->
+                                     
+                                    <af:group id="g8" rendered="#{sesion.HND}">
+                                        <div class="col-12 center">
+                                            <af:image source="/imagenes/banderas/Honduras.png" id="i6"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['contacto.hon.value']}" id="ot6"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['perfil.telsHN1.value']}" id="ot14"/>
+                                        </div>
+                                    </af:group>
+                                     
+                                    <!--para PAN-->
+                                     
+                                    <af:group id="g10" rendered="#{sesion.PAN}">
+                                        <div class="col-12 center">
+                                            <af:image source="/imagenes/banderas/Panama.png" id="i8"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['contacto.pan.value']}" id="ot7"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['perfil.telsPA3.value']}" id="ot18a"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['perfil.telsPA4.value']}" id="ot18b"/>
+                                        </div>
+                                    </af:group>
+                                </div>
+                                <!--para DOM-->
+                                <div class="col-7 col-tb-7 col-sm-7 padd-right">
+                                    <af:group id="g9" rendered="#{sesion.DOM}">
+                                        <div class="col-12 center">
+                                            <af:image source="/imagenes/banderas/Dominican-Republic.png" id="i7"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['contacto.dom.value']}" id="ot15"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['perfil.telsDO1.value']}" id="ot16"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="#{selSKYBundle['perfil.telsDO1.value2']}" id="ot18"/>
+                                        </div>
+                                        <div class="col-12 center">
+                                            <h:outputText value="Importante: los teléfonos 829-956-9755 y 1-800-148-5169 dejarán de operar el 30 de noviembre 2017."
+                                                          id="ot21"/>
+                                        </div>
+                                    </af:group>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-content-text"></div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

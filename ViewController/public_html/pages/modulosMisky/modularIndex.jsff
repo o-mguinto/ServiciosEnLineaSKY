@@ -1,0 +1,332 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#modularIndex').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="modularIndex">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <!--Para cada fila una div-->
+                    <div class="row">
+                        <!--Aqui va TODO el contenido-->
+                        <af:panelGroupLayout id="pg20">
+                            <p class="top bottom">
+                                <h:outputText styleClass="title"
+                                              value="#{selSKYBundle['modulosmisky.pb1.text']}"
+                                              id="ot24"/>
+                            </p>
+                        </af:panelGroupLayout>
+                        <div class="row top">
+                            <af:panelBox id="pb1" background="medium"
+                                         showHeader="never"
+                                         showDisclosure="false"
+                                         inlineStyle="border: 0px;">
+                                <f:facet name="toolbar">
+                                    <af:outputText id="ot2"
+                                                   styleClass="check-internal-bold top-channel"
+                                                   rendered="#{!pageFlowScope.modularesBackingBean.editable}"
+                                                   value="#{selSKYBundle['modulosmisky.ot2.value']}"/>
+                                </f:facet>
+                                <af:panelSplitter id="ps1"
+                                                  splitterPosition="300"
+                                                  orientation="horizontal"
+                                                  dimensionsFrom="children">
+                                    <f:facet name="first">
+                                        <af:panelGroupLayout xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                             id="pgl1"
+                                                             layout="vertical">
+                                            <af:panelGroupLayout id="pg22">
+                                                <p class="top bottom">
+                                                    <h:outputText styleClass="title"
+                                                                  value="#{selSKYBundle['modulosmisky.pb2.text']}"
+                                                                  id="ot8"/>
+                                                </p>
+                                            </af:panelGroupLayout>
+                                            <div class="row top">
+                                                <af:panelBox id="pb2"
+                                                             background="medium"
+                                                             showHeader="never"
+                                                             showDisclosure="false"
+                                                             inlineStyle="border: 0px;">
+                                                    <f:facet name="toolbar"/>
+                                                    <af:panelGroupLayout id="pgl2"
+                                                                         layout="vertical"
+                                                                         partialTriggers="popupresultado">
+                                                        <af:forEach items="#{pageFlowScope.modularesBackingBean.modulos}"
+                                                                    var="modulo">
+                                                            <div class="top">
+                                                                <div class="col-4 col-tb-2 autocenter"
+                                                                     style="float:none">
+                                                                    <!---->
+                                                                    <af:link id="cil1"
+                                                                             icon="#{parametros.urlImgsModulos246X70}#{modulo.imagen}"
+                                                                             action="#{pageFlowScope.modularesBackingBean.mostrarPopup}"
+                                                                             disabled="#{!pageFlowScope.modularesBackingBean.editable}">
+                                                                        <f:setPropertyActionListener target="#{pageFlowScope.modularesBackingBean.modulo}"
+                                                                                                     value="#{modulo}"/>
+                                                                        <f:setPropertyActionListener target="#{pageFlowScope.modularesBackingBean.operacion}"
+                                                                                                     value="AGREGAR"/>
+                                                                    </af:link>
+                                                                </div>
+                                                            </div>
+                                                        </af:forEach>
+                                                    </af:panelGroupLayout>
+                                                </af:panelBox>
+                                            </div>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                    <f:facet name="second">
+                                        <af:panelGroupLayout xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                             id="pgl5"
+                                                             halign="center">
+                                            <div class="col-12">
+                                                <af:panelGroupLayout id="pg21">
+                                                    <p class="top bottom">
+                                                        <h:outputText styleClass="title"
+                                                                      value="#{selSKYBundle['modulosmisky.pb3.text']}"
+                                                                      id="ot10"/>
+                                                    </p>
+                                                </af:panelGroupLayout>
+                                                <div class="row top">
+                                                    <af:panelBox id="pb3"
+                                                                 background="medium"
+                                                                 showHeader="never"
+                                                                 showDisclosure="false"
+                                                                 inlineStyle="border: 0px;">
+                                                        <f:facet name="toolbar"/>
+                                                        <af:panelGroupLayout xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                                             id="pgl3"
+                                                                             layout="vertical"
+                                                                             halign="center">
+                                                            <af:table value="#{bindings.Modulo1.collectionModel}"
+                                                                      var="row"
+                                                                      rows="#{bindings.Modulo1.rangeSize}"
+                                                                      emptyText="#{bindings.Modulo1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                                      fetchSize="#{bindings.Modulo1.rangeSize}"
+                                                                      id="t1"
+                                                                      partialTriggers="::popupresultado"
+                                                                      width="100%"
+                                                                      scrollPolicy="auto"
+                                                                      rowBandingInterval="0"
+                                                                      horizontalGridVisible="false"
+                                                                      verticalGridVisible="false"
+                                                                      autoHeightRows="10"
+                                                                      styleClass="tbl-Class">
+                                                                <af:column sortProperty="imagen"
+                                                                           sortable="false"
+                                                                           headerText="Módulo"
+                                                                           id="c2"
+                                                                           align="center"
+                                                                           width="150"
+                                                                           headerClass="content-text">
+                                                                    <af:panelGroupLayout id="pgl4"
+                                                                                         layout="vertical">
+                                                                        <af:image id="gil1"
+                                                                                  source="#{parametros.urlImgsModulos80X120}#{row.imagen}"
+                                                                                  shortDesc="#{row.nombre}"
+                                                                                  inlineStyle="width:56px; height:84px;"/>
+                                                                    </af:panelGroupLayout>
+                                                                </af:column>
+                                                                <af:column sortProperty="nombre"
+                                                                           sortable="false"
+                                                                           headerClass="content-text"
+                                                                           headerText="Módulo"
+                                                                           id="c1"
+                                                                           rendered="false">
+                                                                    <af:outputText value="#{row.nombre}"
+                                                                                   id="ot7"/>
+                                                                </af:column>
+                                                                <af:column sortable="false"
+                                                                           id="c7"
+                                                                           align="center"
+                                                                           headerClass="content-text"
+                                                                           shortDesc="Cambiar Módulo">
+                                                                    <af:link id="cl3"
+                                                                             action="#{pageFlowScope.modularesBackingBean.mostrarPopup}"
+                                                                             disabled="#{!pageFlowScope.modularesBackingBean.editable}">
+                                                                        <f:setPropertyActionListener target="#{pageFlowScope.modularesBackingBean.modulo.nombre}"
+                                                                                                     value="#{row.bindings.nombre}"/>
+                                                                        <f:setPropertyActionListener target="#{pageFlowScope.modularesBackingBean.modulo.imagen}"
+                                                                                                     value="#{row.bindings.imagen}"/>
+                                                                        <f:setPropertyActionListener target="#{pageFlowScope.modularesBackingBean.operacion}"
+                                                                                                     value="CAMBIAR"/>
+                                                                        <af:outputText id="ot9"
+                                                                                       value="#{selSKYBundle['modulosmisky.ot9.value']}"/>
+                                                                        <!--<af:image source="/imagenes/aplicacion/edit.png" id="i3"/>-->
+                                                                    </af:link>
+                                                                    <f:facet name="header">
+                                                                        <af:group id="g2">
+                                                                            <af:image source="/imagenes/25X25/servicios_25x25/m_cambiar.png"
+                                                                                      id="i1"/>
+                                                                        </af:group>
+                                                                    </f:facet>
+                                                                </af:column>
+                                                                <af:column sortProperty="Desconectar"
+                                                                           sortable="false"
+                                                                           id="c20"
+                                                                           align="center"
+                                                                           headerClass="content-text"
+                                                                           shortDesc="Desconectar">
+                                                                    <af:link id="cl13"
+                                                                             action="#{pageFlowScope.modularesBackingBean.mostrarPopup}"
+                                                                             disabled="#{!pageFlowScope.modularesBackingBean.editable}">
+                                                                        <f:setPropertyActionListener target="#{pageFlowScope.modularesBackingBean.modulo.nombre}"
+                                                                                                     value="#{row.bindings.nombre}"/>
+                                                                        <f:setPropertyActionListener target="#{pageFlowScope.modularesBackingBean.modulo.imagen}"
+                                                                                                     value="#{row.bindings.imagen}"/>
+                                                                        <f:setPropertyActionListener target="#{pageFlowScope.modularesBackingBean.operacion}"
+                                                                                                     value="DESCONECTAR"/>
+                                                                        <!-- <af:image source="/imagenes/aplicacion/delete.png" id="ii3"/>-->
+                                                                        <af:outputText id="ott9"
+                                                                                       value="#{selSKYBundle['modulosmisky.ott9.value']}"/>
+                                                                    </af:link>
+                                                                    <f:facet name="header">
+                                                                        <af:image source="/imagenes/25X25/servicios_25x25/m_desconectar.png"
+                                                                                  id="i2"/>
+                                                                    </f:facet>
+                                                                </af:column>
+                                                            </af:table>
+                                                        </af:panelGroupLayout>
+                                                    </af:panelBox>
+                                                </div>
+                                            </div>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                </af:panelSplitter>
+                                <af:popup id="p1"
+                                          binding="#{pageFlowScope.modularesBackingBean.popupConfirmar}"
+                                          contentDelivery="lazyUncached"
+                                          autoCancel="disabled">
+                                    <af:dialog id="d1"
+                                               title="Confirmación para #{pageFlowScope.modularesBackingBean.operacionBundle} Módulo"
+                                               contentHeight="200"
+                                               contentWidth="300" type="none"
+                                               closeIconVisible="false">
+                                        <af:panelSplitter id="ps2"
+                                                          collapsed="false"
+                                                          splitterPosition="200">
+                                            <f:facet name="first">
+                                                <af:panelGroupLayout layout="default"
+                                                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                                     id="pgl6"
+                                                                     styleClass="text-internal">
+                                                    <af:outputText value="¿Desea #{pageFlowScope.modularesBackingBean.operacionBundle} el Módulo "
+                                                                   id="ot3"/>
+                                                    <af:outputText value="#{pageFlowScope.modularesBackingBean.modulo.nombre}"
+                                                                   id="ot11"/>
+                                                    <af:outputText value=" por el Módulo "
+                                                                   id="ot5"
+                                                                   rendered="#{pageFlowScope.modularesBackingBean.operacion eq 'CAMBIAR'}"/>
+                                                    <af:outputText value="#{pageFlowScope.modularesBackingBean.moduloCambiar.nombre}"
+                                                                   id="ot12"
+                                                                   rendered="#{pageFlowScope.modularesBackingBean.operacion eq 'CAMBIAR'}"/>
+                                                    <af:outputText value="?"
+                                                                   id="ot6"/>
+                                                </af:panelGroupLayout>
+                                            </f:facet>
+                                            <f:facet name="second">
+                                                <af:panelGroupLayout layout="scroll"
+                                                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                                     id="pgl7">
+                                                    <af:image source="#{parametros.urlImgsModulos80X120}#{pageFlowScope.modularesBackingBean.modulo.imagen}"
+                                                              shortDesc="modulo"
+                                                              id="i3"
+                                                              rendered="#{pageFlowScope.modularesBackingBean.operacion ne 'CAMBIAR'}"/>
+                                                    <af:image source="#{parametros.urlImgsModulos80X120}#{pageFlowScope.modularesBackingBean.moduloCambiar.imagen}"
+                                                              shortDesc="modulo"
+                                                              id="image1"
+                                                              rendered="#{pageFlowScope.modularesBackingBean.operacion eq 'CAMBIAR'}"/>
+                                                </af:panelGroupLayout>
+                                            </f:facet>
+                                        </af:panelSplitter>
+                                        <div class="col-12 dialog-background">
+                                                        <div class="row top autocenter">
+                                                            <div class="col-6 col-tb-4 col-sm-4">
+                                                                <af:button id="bAceptarConfirma"
+                                                           text="Aceptar"
+                                                           styleClass="btn-pay-dialog"
+                                                           action="#{pageFlowScope.modularesBackingBean.confirmarPopUp}">>
+                                                                    <af:clientListener method="enforcePreventUserInput"
+                                                                                       type="action"/>
+                                                                </af:button>
+                                                
+                                            </div>
+                                            <div class="col-6 col-tb-4 col-sm-4">
+                                                <af:button id="bCancelarConfirma"
+                                                           text="Cancelar"
+                                                           styleClass="btn-pay-dialog"
+                                                           action="#{pageFlowScope.modularesBackingBean.cancelarConfirmarPopup}"/>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </af:dialog>
+                                </af:popup>
+                                <af:popup id="p2"
+                                          binding="#{pageFlowScope.modularesBackingBean.popupCambiar}"
+                                          contentDelivery="lazyUncached"
+                                          autoCancel="disabled">
+                                    <af:dialog id="d3"
+                                               title="Cambio del Módulo #{pageFlowScope.modularesBackingBean.moduloCambiar.nombre}"
+                                               type="none"
+                                               closeIconVisible="false">
+                                        <af:selectOneChoice label="Módulos disponibles"
+                                                            id="soc1"
+                                                            required="true"
+                                                            value="#{pageFlowScope.modularesBackingBean.moduloCambiar}"
+                                                            styleClass="text-internal">
+                                            <f:selectItems value="#{pageFlowScope.modularesBackingBean.modulosNoAsociadosMap}"
+                                                           id="si1"/>
+                                        </af:selectOneChoice>
+                                        <div class="col-12 dialog-background">
+                                                        <div class="row top autocenter">
+                                                            <div class="col-6 col-tb-4 col-sm-4">
+                                                                <af:button id="bAceptarCambio"
+                                                           text="Aceptar"
+                                                           styleClass="btn-pay-dialog"
+                                                           action="#{pageFlowScope.modularesBackingBean.cambiarPopup}"></af:button>
+                                                
+                                            </div>
+                                            <div class="col-6 col-tb-4 col-sm-4">
+                                                <af:button id="bCancelarCambio"
+                                                           text="Cancelar"
+                                                           styleClass="btn-pay-dialog"
+                                                           action="#{pageFlowScope.modularesBackingBean.cancelarCambiarPopup}"/>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </af:dialog>
+                                </af:popup>
+                                <af:popup id="p3"
+                                          binding="#{pageFlowScope.modularesBackingBean.popupMensajeResultado}">
+                                    <af:dialog id="popupresultado" type="none"
+                                               title="Detalle de la solicitud">
+                                        <af:outputText id="ot4"
+                                                       value="#{pageFlowScope.modularesBackingBean.mensajeResultado}"/>
+                                        <div class="col-12 dialog-background">
+                                <div class="row top autocenter">
+                                                <af:button id="b4"
+                                                           text="Aceptar"
+                                                           styleClass="btn-pay-dialog"
+                                                           action="#{pageFlowScope.modularesBackingBean.aceptarMensajePopUp}"/>
+                                            </div>
+                                        </div>
+                                    </af:dialog>
+                                </af:popup>
+                            </af:panelBox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

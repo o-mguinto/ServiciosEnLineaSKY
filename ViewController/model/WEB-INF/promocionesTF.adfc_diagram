@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">promocionesIndex</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">416.0</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>promocionesIndex&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">336.7295</property>
+      <property
+         name="page">/pages/promociones/promocionesIndex.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <UrlView
+      id="UrlView3">
+      <property
+         name="activityId">miCuenta</property>
+      <property
+         name="x">789.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>miCuenta&lt;/b>&lt;/p>&lt;p>Activity Type:  Url View&lt;/p></property>
+      <property
+         name="y">316.84473</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="exceptionHandler">false</property>
+   </UrlView>
+   <Router
+      id="Router4">
+      <property
+         name="activityId">routerPromos</property>
+      <property
+         name="x">568.0</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>routerPromos&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Router&lt;/p></property>
+      <property
+         name="y">140.44238</property>
+      <property
+         name="exceptionHandler">false</property>
+   </Router>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="Router4"
+      to="View2">
+      <property
+         name="fromOutcome">irPromociones</property>
+      <property
+         name="sdm:polyPoints">B44,564.5,194.0918,416.0,282.3789,T50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="Router4"
+      to="UrlView3">
+      <property
+         name="fromOutcome">irCuenta</property>
+      <property
+         name="sdm:polyPoints">B56,571.5,194.0918,748.0,316.49414,L50</property>
+   </ControlFlowCase>
+</SDM>

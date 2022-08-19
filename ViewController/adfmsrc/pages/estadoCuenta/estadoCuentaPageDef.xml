@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="estadoCuentaPageDef"
+                Package="pages.estadoCuenta">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator id="consultaSaldoIterator" Binds="consultaSaldo.result" DataControl="DCSaldo" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.saldos.Saldo"
+                    Refresh="ifNeeded"/>
+    <methodIterator Binds="consultaEstadoCuenta.result"
+                    DataControl="DCEstadoCuenta" RangeSize="10"
+                    BeanClass="mx.com.sky.sel.services.beans.estadocuenta.EstadosCuenta"
+                    id="consultaEstadoCuentaIterator"/>
+  </executables>
+  <bindings>
+    
+    <methodAction id="consultaSaldo" RequiresUpdateModel="true" Action="invokeMethod" MethodName="consultaSaldo"
+                  IsViewObjectMethod="false" DataControl="DCSaldo"
+                  ReturnName="data.DCSaldo.methodResults.consultaSaldo_consultaSaldo_dataControl_dataProvider_consultaSaldo_result"
+                  InstanceName="DCSaldo.dataProvider"
+                  />
+    <attributeValues IterBinding="consultaSaldoIterator" id="saldoTotal">
+      <AttrNames>
+        <Item Value="saldoTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="consultaSaldoIterator" id="totConPop">
+      <AttrNames>
+        <Item Value="totConPop"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="consultaSaldoIterator" id="fechaPagoOportuno">
+      <AttrNames>
+        <Item Value="fechaPagoOportuno"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="consultaEstadoCuenta" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="consultaEstadoCuenta"
+                  IsViewObjectMethod="false" DataControl="DCEstadoCuenta"
+                  InstanceName="DCEstadoCuenta.dataProvider"
+                  ReturnName="data.DCEstadoCuenta.methodResults.consultaEstadoCuenta_consultaEstadoCuenta_dataControl_dataProvider_consultaEstadoCuenta_result">
+      <NamedData NDName="cuentaSKY" NDValue="#{sesion.suscriptor.cuentaSKY}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="consultaEstadoCuentaIterator" id="EstadosCuenta">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.estadocuenta.EstadosCuenta"
+                      Name="result0">
+        <AttrNames>
+          <Item Value="numCuenta"/>
+          <Item Value="referenciaEdoCta"/>
+          <Item Value="cargos"/>
+          <Item Value="porPagar"/>
+          <Item Value="ajustes"/>
+          <Item Value="fechaEdoCuenta"/>
+          <Item Value="pagos"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,470 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:group id="g1">
+        <af:resource type="javascript">
+          $('#admonMiCuenta').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <div id="admonMiCuenta">
+            <c:set var="selSKYBundle"
+                   value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8 col-sm-8" id="div-panel-right-frame">
+                    <div class="row">
+                        <div class="col-12">
+                            <af:outputText id="ot2"
+                                           value="¡BIENVENIDO! Por única vez actualiza los siguientes datos"
+                                           styleClass="check-internal-bold top-channel"/>
+                            <div class="top"></div>
+                        </div>
+                        <div class="col-7 col-tb-8 col-sm-8">
+                            <!--Para cada fila una div-->
+                            <div class="content-internal">
+                            <div class="row">
+                                <p class="top bottom">
+                                    <h:outputText styleClass="title"
+                                                  value="Datos personales:"
+                                                  id="ot11"/>
+                                </p>
+                                <af:panelGroupLayout id="pgl1" layout="vertical"
+                                                     halign="left">
+                                    <!--Datos de cuenta-->
+                                    <af:subform id="s2">
+                                        <af:panelGroupLayout id="PCRow1"></af:panelGroupLayout>
+                                            <div class="row top">
+                                                <div class="col-12 padd-right ">
+                                                <span class="xf">* </span>
+                                                 
+                                                <af:outputLabel id="ol1"
+                                                                for="nombre"
+                                                                styleClass="label-internal"
+                                                                value="Nombre:"/>
+                                                 
+                                                <af:inputText value="#{bindings.nombre.inputValue}"
+                                                              required="true"
+                                                              showRequired="false"
+                                                              simple="true"
+                                                              columns="#{bindings.nombre.hints.displayWidth}"
+                                                              maximumLength="#{bindings.nombre.hints.precision}"
+                                                              autoSubmit="true"
+                                                              shortDesc="#{bindings.nombre.hints.tooltip}"
+                                                              id="nombre"
+                                                              styleClass="input-internal">
+                                                    <af:validateRegExp pattern="[ A-Za-zñÑáéíóúÁÉÍÓÚ\\s]+"
+                                                                       messageDetailNoMatch="Ingrese un apellido válido"/>
+                                                    <f:validator binding="#{bindings.nombre.validator}"/>
+                                                </af:inputText>
+                                            </div>
+                                            </div>
+                                        <div class="row top">
+                                            <div class="col-12 padd-right">
+                                                <span class="xf">* </span>
+                                                 
+                                                <af:outputLabel id="ol2"
+                                                                for="aPaterno"
+                                                                styleClass="label-internal"
+                                                                value="Apellido Paterno:"/>
+                                                 
+                                                <af:inputText value="#{bindings.apellidoPaterno.inputValue}"
+                                                              required="true"
+                                                              showRequired="false"
+                                                              simple="true"
+                                                              columns="#{bindings.apellidoPaterno.hints.displayWidth}"
+                                                              maximumLength="#{bindings.apellidoPaterno.hints.precision}"
+                                                              autoSubmit="true"
+                                                              shortDesc="#{bindings.apellidoPaterno.hints.tooltip}"
+                                                              id="aPaterno"
+                                                              styleClass="input-internal">
+                                                    <af:validateRegExp pattern="[ A-Za-zñÑáéíóúÁÉÍÓÚ\\s]+"
+                                                                       messageDetailNoMatch="Ingrese un apellido válido"/>
+                                                    <f:validator binding="#{bindings.apellidoPaterno.validator}"/>
+                                                </af:inputText>
+                                            </div>
+                                        </div>
+                                        <div class="row top">
+                                            <div class="col-12 padd-right ">
+                                                <span class="xf">* </span>
+                                                 
+                                                <af:outputLabel id="ol3"
+                                                                for="aMaterno"
+                                                                styleClass="label-internal"
+                                                                value="Apellido Materno:"/>
+                                                 
+                                                <af:inputText label="Apellido Materno:"
+                                                              value="#{bindings.apellidoMaterno.inputValue}"
+                                                              required="true"
+                                                              showRequired="false"
+                                                              simple="true"
+                                                              columns="#{bindings.apellidoMaterno.hints.displayWidth}"
+                                                              maximumLength="#{bindings.apellidoMaterno.hints.precision}"
+                                                              autoSubmit="true"
+                                                              shortDesc="#{bindings.apellidoMaterno.hints.tooltip}"
+                                                              id="aMaterno"
+                                                              styleClass="input-internal">
+                                                    <af:validateRegExp pattern="[ A-Za-zñÑáéíóúÁÉÍÓÚ\\s]+"
+                                                                       messageDetailNoMatch="Ingrese un nombre válido"/>
+                                                    <f:validator binding="#{bindings.apellidoMaterno.validator}"/>
+                                                </af:inputText>
+                                            </div>
+                                        </div>
+                                        <div class="row top">
+                                            <div class="col-12 padd-right ">
+                                                <span class="xf">* </span>
+                                                 
+                                                <af:outputLabel id="ol5"
+                                                                for="correoNotificaciones"
+                                                                styleClass="label-internal"
+                                                                value="Correo Electrónico (Notificaciones):"/>
+                                                 
+                                                <af:inputText value="#{bindings.email.inputValue}"
+                                                              required="true"
+                                                              showRequired="false"
+                                                              simple="true"
+                                                              columns="#{bindings.email.hints.displayWidth}"
+                                                              maximumLength="#{bindings.email.hints.precision}"
+                                                              autoSubmit="true"
+                                                              shortDesc="#{bindings.email.hints.tooltip}"
+                                                              id="correoNotificaciones"
+                                                              styleClass="input-internal">
+                                                    <af:validateRegExp pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"
+                                                                       messageDetailNoMatch="Ingrese una dirección válida"/>
+                                                    <f:validator binding="#{bindings.email.validator}"/>
+                                                </af:inputText>
+                                            </div>
+                                        </div>
+                                        <div class="row top">
+                                            <div class="col-6 padd-right ">
+                                                <af:panelFormLayout id="pfl1"
+                                                                    labelAlignment="top">
+                                                    <af:panelLabelAndMessage label="Clave larga distancia:"
+                                                                             id="plam1"
+                                                                             for="soc1"
+                                                                             styleClass="label-internal">
+                                                        <af:selectOneChoice id="soc1"
+                                                                            styleClass="select-internal"
+                                                                            value="#{bindings.telefonoLada.inputValue}"
+                                                                            autoSubmit="true"
+                                                                            simple="true"
+                                                                            valueChangeListener="#{backingBeanScope.BBAdministracionUsuario.socLada_ValueChange}">
+                                                            <af:forEach var="item"
+                                                                        items="#{bindings.tablaLadas.rangeSet}">
+                                                                <f:selectItem id="si1"
+                                                                              itemLabel="#{item.element}"
+                                                                              itemValue="#{item.element}"/>
+                                                            </af:forEach>
+                                                        </af:selectOneChoice>
+                                                    </af:panelLabelAndMessage>
+                                                    <f:facet name="footer"/>
+                                                </af:panelFormLayout>
+                                            </div>
+                                            <div class="col-6 padd-right ">
+                                                <af:panelGroupLayout id="pgl2">
+                                                    <span class="xf">* </span>
+                                                    <af:outputLabel id="ol4"
+                                                                    for="telefonoPrincipal"
+                                                                    styleClass="label-internal"
+                                                                    value="Teléfono Principal:"/>
+                                                    <af:inputText value="#{bindings.telefonoCasa.inputValue}"
+                                                                  autoSubmit="true"
+                                                                  showRequired="false"
+                                                                  simple="true"
+                                                                  columns="#{bindings.telefonoCasa.hints.displayWidth}"
+                                                                  maximumLength="10"
+                                                                  shortDesc="#{bindings.telefonoCasa.hints.tooltip}"
+                                                                  id="telefonoPrincipal"
+                                                                  styleClass="input-internal"
+                                                                  required="true">
+                                                        <f:validator binding="#{bindings.telefonoCasa.validator}"/>
+                                                        <af:validateLength id="telcasaVal"
+                                                                           minimum="7"
+                                                                           maximum="10"
+                                                                           hintNotInRange="de 7 a 10 números"/>
+                                                        <af:validateRegExp id="validateRegExp3"
+                                                                           pattern="[0-9]{0,10}"
+                                                                           messageDetailNoMatch="Debe ingresar solo números"/>
+                                                    </af:inputText>
+                                                </af:panelGroupLayout>
+                                            </div>
+                                        </div>
+                                        <div class="row top">
+                                            <div class="col-6 padd-right ">
+                                                <af:panelFormLayout id="pfl4"
+                                                                    labelAlignment="top">
+                                                    <af:panelLabelAndMessage id="plam2"
+                                                                             for="soc2"
+                                                                             label="Clave larga distancia:"
+                                                                             styleClass="label-internal">
+                                                        <af:selectOneChoice id="soc2"
+                                                                            styleClass="select-internal"
+                                                                            value="#{bindings.telefonoTrabajoLada.inputValue}"
+                                                                            autoSubmit="true"
+                                                                            simple="true"
+                                                                            valueChangeListener="#{backingBeanScope.BBAdministracionUsuario.socLadaTrabajo_ValueChange}">
+                                                            <af:forEach var="item2"
+                                                                        items="#{bindings.tablaLadas.rangeSet}">
+                                                                <f:selectItem id="si2"
+                                                                              itemLabel="#{item2.element}"
+                                                                              itemValue="#{item2.element}"/>
+                                                            </af:forEach>
+                                                        </af:selectOneChoice>
+                                                    </af:panelLabelAndMessage>
+                                                </af:panelFormLayout>
+                                            </div>
+                                            <div class="col-4 padd-right ">
+                                                <af:outputLabel id="ol9"
+                                                                for="telefonoTrabajo"
+                                                                styleClass="label-internal"
+                                                                value="Teléfono Trabajo:"/>
+                                                 
+                                                <af:inputText value="#{bindings.telefonoTrabajo.inputValue}"
+                                                              required="false"
+                                                              autoSubmit="true"
+                                                              simple="true"
+                                                              columns="#{bindings.telefonoTrabajo.hints.displayWidth}"
+                                                              maximumLength="10"
+                                                              shortDesc="#{bindings.telefonoTrabajo.hints.tooltip}"
+                                                              id="telefonoTrabajo"
+                                                              styleClass="input-internal">
+                                                    <f:validator binding="#{bindings.telefonoTrabajo.validator}"/>
+                                                    <af:validateLength id="validateLength2"
+                                                                       minimum="7"
+                                                                       maximum="10"
+                                                                       hintNotInRange="de 7 a 10 números"/>
+                                                    <af:validateRegExp id="validateRegExp2"
+                                                                       pattern="[0-9]{0,10}"
+                                                                       messageDetailNoMatch="Debe ingresar solo números"/>
+                                                </af:inputText>
+                                            </div>
+                                            <div class="col-2 padd-right ">
+                                                <af:outputLabel id="o20"
+                                                                for="extTrabajo"
+                                                                styleClass="label-internal"
+                                                                value="Ext:"/>
+                                                 
+                                                <af:inputText value="#{bindings.telefonoTrabajoExt.inputValue}"
+                                                              required="false"
+                                                              autoSubmit="true"
+                                                              columns="#{bindings.telefonoTrabajoExt.hints.displayWidth}"
+                                                              maximumLength="10"
+                                                              shortDesc="#{bindings.telefonoTrabajoExt.hints.tooltip}"
+                                                              id="extTrabajo"
+                                                              styleClass="input-internal">
+                                                    <f:validator binding="#{bindings.telefonoTrabajoExt.validator}"/>
+                                                    <af:validateRegExp id="validateRegExp4"
+                                                                       pattern="[0-9]{0,8}"
+                                                                       messageDetailNoMatch="Hasta 8 números"/>
+                                                </af:inputText>
+                                            </div>
+                                        </div>
+                                        <div class="row top">
+                                            <div class="col-6 padd-right ">
+                                                <af:panelFormLayout id="pfl5"
+                                                                    labelAlignment="top">
+                                                    <af:panelLabelAndMessage id="plam3"
+                                                                             for="soc3"
+                                                                             styleClass="label-internal"
+                                                                             label="Clave larga distancia:">
+                                                        <af:selectOneChoice id="soc3"
+                                                                            styleClass="select-internal"
+                                                                            value="#{bindings.telefonoMovilLada.inputValue}"
+                                                                            autoSubmit="true"
+                                                                            simple="true"
+                                                                            valueChangeListener="#{backingBeanScope.BBAdministracionUsuario.socLadaMovil_ValueChange}">
+                                                            <af:forEach var="item3"
+                                                                        items="#{bindings.tablaLadas.rangeSet}">
+                                                                <f:selectItem id="si3"
+                                                                              itemLabel="#{item3.element}"
+                                                                              itemValue="#{item3.element}"/>
+                                                            </af:forEach>
+                                                        </af:selectOneChoice>
+                                                    </af:panelLabelAndMessage>
+                                                </af:panelFormLayout>
+                                            </div>
+                                            <div class="col-6 padd-right ">
+                                                <af:panelGroupLayout id="pgl3">
+                                                    <af:outputLabel id="o22"
+                                                                    for="telefonoMovil"
+                                                                    styleClass="label-internal"
+                                                                    value="Teléfono Móvil:"/>
+                                                    <af:inputText value="#{bindings.telefonoMovil.inputValue}"
+                                                                  columns="#{bindings.telefonoMovil.hints.displayWidth}"
+                                                                  maximumLength="10"
+                                                                  autoSubmit="true"
+                                                                  simple="true"
+                                                                  shortDesc="#{bindings.telefonoMovil.hints.tooltip}"
+                                                                  id="telefonoMovil"
+                                                                  styleClass="input-internal">
+                                                        <f:validator binding="#{bindings.telefonoMovil.validator}"/>
+                                                        <af:validateLength id="validateLength3"
+                                                                           minimum="7"
+                                                                           maximum="10"
+                                                                           hintNotInRange="de 7 a 10 números"/>
+                                                        <af:validateRegExp id="validateRegExp5"
+                                                                           pattern="[0-9]{0,10}"
+                                                                           messageDetailNoMatch="Debe ingresar solo números"/>
+                                                    </af:inputText>
+                                                </af:panelGroupLayout>
+                                            </div>
+                                        </div>
+                                        <div class="row top">
+                                            <div class="col-12">
+                                                <af:selectBooleanCheckbox required="true"
+                                                                          label="Aviso"
+                                                                          id="sbc1"
+                                                                          autoSubmit="true"
+                                                                          simple="true"
+                                                                          value="#{backingBeanScope.BBAdministracionUsuario.aceptaTC}"></af:selectBooleanCheckbox>
+                                                 
+                                                <label for="pt1:pt_s1:r1:1:sbc1::content">
+                                                    <h:outputText id="o23"
+                                                                  value="#{selSKYBundle.mensaje_terminos1}"/>
+                                                    <h:outputLink id="ol6"
+                                                                  value="#{parametros.urlAvisoPrivacidad}"
+                                                                  target="_blank"
+                                                                  styleClass="terminos">
+                                                        <h:outputText id="ot8"
+                                                                      value="#{selSKYBundle.mensaje_terminos2}"/>
+                                                    </h:outputLink>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row top">
+                                            <div class="col-12 right">
+                                                <af:button id="cb1"
+                                                           text="Continuar"
+                                                           action="#{backingBeanScope.BBAdministracionUsuario.cbModificarMiCuenta_action}"
+                                                           styleClass="btn-internal"
+                                                           >
+                                                    <af:clientListener method="enforcePreventUserInput"
+                                                                       type="action"/>
+                                                </af:button>
+                                            </div>
+                                        </div>
+                                    </af:subform>
+                                </af:panelGroupLayout>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-1 col-tb-8 col-sm-8">
+                            <br/>
+                        </div>
+                        <div class="col-4 col-tb-8 col-sm-8">
+                            <!--Para cada fila una div-->
+                            <div class="content-internal">
+                            <div class="row" >
+                            <p class="top bottom">
+                                <h:outputText styleClass="title"
+                                                  value="Actualización de contraseña:"
+                                                  id="ot3"/>
+                                </p>
+                                <af:panelGroupLayout id="pgl8" halign="left"
+                                                     layout="vertical">
+                                    <!--Cambio de contraseña-->
+                                    
+                                        <af:subform id="s1">
+                                        <div class="row top">
+                                                <div class="col-12 padd-right ">
+                                                <span class="xf">* </span>
+                                                 
+                                                <af:outputLabel id="ol7"
+                                                                for="it60"
+                                                                styleClass="label-internal"
+                                                                value="Contraseña actual:"/>
+                                                                
+                                                <af:inputText 
+                                                              styleClass="input-internal"
+                                                              id="it60"
+                                                              secret="true"
+                                                              required="true"
+                                                              simple="true"
+                                                              value="#{backingBeanScope.BBAdministracionUsuario.contraseniaAutentica}">
+                                                </af:inputText>
+                                                
+                                            </div>
+                                            </div>
+                                            <div class="row top">
+                                                <div class="col-12 padd-right ">
+                                                <span class="xf">* </span>
+                                                 
+                                                <af:outputLabel id="ol8"
+                                                                for="it140"
+                                                                styleClass="label-internal"
+                                                                value="Nueva contraseña:"/>
+                                                                
+                                                <af:inputText 
+                                                              id="it140"
+                                                              secret="true"
+                                                              required="true"
+                                                              maximumLength="20"
+                                                              simple="true"
+                                                              value="#{backingBeanScope.BBAdministracionUsuario.contraseniaNueva}"
+                                                              styleClass="input-internal ">
+                                                    <f:validator validatorId="validadorEstructuraContrasenia"/>
+                                                    <af:validateRegExp messageDetailNoMatch="Le recordamos que debe utilizar entre 8 y 20 caracteres."
+                                                                       pattern=".{8,20}"
+                                                                       hint="Le recordamos que debe utilizar entre 8 y 20 caracteres."
+                                                                       id="valcontra0"/>
+                                                </af:inputText>
+                                            </div>
+                                            </div>
+                                            <div class="row top">
+                                                <div class="col-12 padd-right ">
+                                                <span class="xf">* </span>
+                                                
+                                                <af:outputLabel id="ol10"
+                                                                for="it150"
+                                                                styleClass="label-internal"
+                                                                value="Confirmar contraseña:"/>
+                                                                
+                                                <af:inputText 
+                                                              id="it150"
+                                                              secret="true"
+                                                              required="true"
+                                                              maximumLength="20"
+                                                              simple="true"
+                                                              value="#{backingBeanScope.BBAdministracionUsuario.contraseniaNuevaC}"
+                                                              styleClass="input-internal ">
+                                                    <f:validator validatorId="validadorEstructuraContrasenia"/>
+                                                    <af:validateRegExp messageDetailNoMatch="Le recordamos que debe utilizar entre 8 y 20 caracteres."
+                                                                       pattern=".{8,20}"
+                                                                       hint="Le recordamos que debe utilizar entre 8 y 20 caracteres."
+                                                                       id="vre10"/>
+                                                </af:inputText>
+                                                </div>
+                                            </div>
+                                             <div class="row top">
+                                                <div class="col-12">
+                                                    <span class="xf">* </span>
+                                                                 
+                                                                <af:outputText value="#{selSKYBundle['general.obligatorio']}"
+                                                                               id="ot1"
+                                                                               styleClass="cursiv"/>
+                                                </div>
+                                            </div>
+                                            <div class="row top">
+                                                <div class="col-12 right">
+                                                    <af:button id="cb2"
+                                                               text="Actualizar contraseña"
+                                                               styleClass="btn-internal"
+                                                               action="#{backingBeanScope.BBAdministracionUsuario.cbActualizarContrasenia_action}">
+                                                        <af:clientListener method="enforcePreventUserInput"
+                                                                           type="action"/>
+                                                    </af:button>
+                                                </div>
+                                            </div>
+                                        </af:subform>
+                                    
+                                </af:panelGroupLayout>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

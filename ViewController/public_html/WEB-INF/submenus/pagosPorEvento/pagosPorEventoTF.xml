@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="pagosPorEventoIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <view id="peliculasPremiere">
+    <page>/WEB-INF/submenus/pagosPorEvento/peliculasPremiere.jsf</page>
+    <input-page-parameter id="__17">
+      <from-value>/WEB-INF/premiereTF.xml#premiereTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+    
+  </view>
+  <router id="routerPPE">
+    <case id="__7">
+      <expression>#{sesion.SKY_PREMIERE}</expression>
+      <outcome>irPeliculasPremiere</outcome>
+    </case>
+    <case id="__9">
+    <expression>#{sesion.SKY_EVENT}</expression>
+      <outcome>irSkyEvent</outcome>
+    </case>
+    <case id="__21">
+    <expression>#{sesion.ADULTOS_ALLDAY}</expression>
+      <outcome>irAdultosAllDay</outcome>
+    </case>
+    <case id="__19">
+      <expression>#{sesion.cuentaCV}</expression>
+      <outcome>irStatusEventosPPE</outcome>
+    </case>
+    <case id="__30">
+      <expression>#{sesion.HISTORICO_DE_EVENTOS_CONTRATADOS}</expression>
+      <outcome>irHistoricoEventosC</outcome>
+    </case>
+    <default-outcome>irPagosPorEventoIndex</default-outcome>
+  </router>
+  <view id="historicoEventosC">
+    <page>/WEB-INF/submenus/pagosPorEvento/historicoEventosC.jsf</page>
+    <input-page-parameter id="__12">
+      <from-value>/WEB-INF/contratacionesTF.xml#contratacionesTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="allDay">
+    <page>/WEB-INF/submenus/pagosPorEvento/allDay.jsf</page>
+    <input-page-parameter id="__22">
+      <from-value>/WEB-INF/adultosTF.xml#adultosTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="eventosEspeciales">
+    <page>/WEB-INF/submenus/pagosPorEvento/eventosEspeciales.jsf</page>
+    <input-page-parameter id="__26">
+      <from-value>/WEB-INF/eventosTF.xml#eventosTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="statusEventosPPE">
+    <page>/WEB-INF/submenus/pagosPorEvento/statusEventosPPE.jsf</page>
+    <input-page-parameter id="__31">
+      <from-value>/WEB-INF/consultaEstatusPpeTF.xml#consultaEstatusPpeTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>irRouterPPE</from-outcome>
+      <to-activity-id>routerPPE</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__10">
+      <from-outcome>irPeliculasPremiere</from-outcome>
+      <to-activity-id>peliculasPremiere</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__11">
+      <from-outcome>irHistoricoEventosC</from-outcome>
+      <to-activity-id>historicoEventosC</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__24">
+      <from-outcome>irAdultosAllDay</from-outcome>
+      <to-activity-id>allDay</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__28">
+      <from-outcome>irSkyEvent</from-outcome>
+      <to-activity-id>eventosEspeciales</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__33">
+      <from-outcome>irStatusEventosPPE</from-outcome>
+      <to-activity-id>statusEventosPPE</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__13">
+      <from-outcome>irRouterPPE_0</from-outcome>
+      <to-activity-id>pagosPorEventoIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__34">
+      <from-outcome>irAdultosAllDay_3</from-outcome>
+      <to-activity-id>Adultos</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__3">
+    <from-activity-id>routerPPE</from-activity-id>
+    <control-flow-case id="__4">
+      <from-outcome>irPagosPorEventoIndex</from-outcome>
+      <to-activity-id>pagosPorEventoIndex</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__6">
+      <from-outcome>irPeliculasPremiere</from-outcome>
+      <to-activity-id>peliculasPremiere</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__8">
+      <from-outcome>irHistoricoEventosC</from-outcome>
+      <to-activity-id>historicoEventosC</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__20">
+      <from-outcome>irAdultosAllDay</from-outcome>
+      <to-activity-id>allDay</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__5">
+      <from-outcome>irSkyEvent</from-outcome>
+      <to-activity-id>eventosEspeciales</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__29">
+      <from-outcome>irStatusEventosPPE</from-outcome>
+      <to-activity-id>statusEventosPPE</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__14">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>pagosPorEvento_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__15">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__27">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/pagosPorEvento/pagosPorEvento_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

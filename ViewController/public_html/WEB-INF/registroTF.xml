@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="registroTF">
+    <default-activity>preparaUsuario</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>PFNuevoUsuario</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.registro.PFNuevoUsuario</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <method-call id="preparaUsuario">
+      <method>#{pageFlowScope.PFNuevoUsuario.preparaNuevoUsuario}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <view id="registro">
+      <page>/pages/registro/registro.jsff</page>
+    </view>
+    <view id="nuevousuarioDP">
+      <page>/pages/registro/nuevousuarioDP.jsff</page>
+    </view>
+    <parent-action id="regresarBienvenido">
+      <parent-outcome>regresarBienvenido</parent-outcome>
+    </parent-action>
+    <view id="obtenerNumCuentaSKY">
+      <page>/pages/registro/obtenerNumCuentaSKY.jsff</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id>preparaUsuario</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>ok</from-outcome>
+        <to-activity-id>registro</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>registro</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>obtenerCuenta</from-outcome>
+        <to-activity-id>obtenerNumCuentaSKY</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>obtenerNumCuentaSKY</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>registro</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>irBienvenido</from-outcome>
+        <to-activity-id>regresarBienvenido</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">estadoCuenta</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">408.3623</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>estadoCuenta&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">267.89062</property>
+      <property
+         name="page">/pages/estadoCuenta/estadoCuenta.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <TaskFlowCall
+      id="TaskFlowCall9">
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>pagoTF&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="activityId">pagoTF</property>
+      <property
+         name="x">936.5</property>
+      <property
+         name="y">382.74707</property>
+      <property
+         name="documentReference">/WEB-INF/pagoTF.xml</property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="taskFlowId">pagoTF</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase10"
+      from="View2"
+      to="TaskFlowCall9">
+      <property
+         name="fromOutcome">irRealizarPago</property>
+      <property
+         name="sdm:polyPoints">R46,450.2489,264.04004,895.5,378.89648,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase11"
+      from="TaskFlowCall9"
+      to="View2">
+      <property
+         name="fromOutcome">pagar</property>
+      <property
+         name="sdm:polyPoints">L54,894.61255,385.89648,449.3623,271.04004,R54</property>
+   </ControlFlowCase>
+</SDM>

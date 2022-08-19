@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="estatusInternet">
+    <page>/WEB-INF/submenus/estatusInternet/estatusInternet.jsf</page>
+    <input-page-parameter id="__4">
+      <from-value>/WEB-INF/consumoInternetTF.xml#consumoInternetTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
+  <router id="estInternetSelectPagDefault">
+    <case id="__8">
+      <expression>#{sesion.CONSUMO_INTERNET}</expression>
+      <outcome>smenu_estatusInternet</outcome>
+    </case>
+    <default-outcome>smenu_estInternetIndex</default-outcome>
+  </router>
+  <view id="estInternetIndex">
+    <page>/menu_index.jsf</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>irEstatusInternet</from-outcome>
+      <to-activity-id>estatusInternet</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__9">
+      <from-outcome>irEstInternetRouter</from-outcome>
+      <to-activity-id>estInternetSelectPagDefault</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__10">
+      <from-outcome>adfMenu_estInternetIndex</from-outcome>
+      <to-activity-id>estInternetIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__5">
+    <from-activity-id>estInternetSelectPagDefault</from-activity-id>
+    <control-flow-case id="__6">
+      <from-outcome>smenu_estatusInternet</from-outcome>
+      <to-activity-id>estatusInternet</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__7">
+      <from-outcome>smenu_estInternetIndex</from-outcome>
+      <to-activity-id>estInternetIndex</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__11">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>estatusInternet_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__12">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__13">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/submenus/estatusInternet/estatusInternet_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

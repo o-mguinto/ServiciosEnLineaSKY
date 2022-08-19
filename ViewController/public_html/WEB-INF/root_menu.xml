@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+    <sharedNode ref="#{miCuenta_menu}"/>
+    <sharedNode ref="#{btgVideoEverywhere_menu}"/>
+    <sharedNode ref="#{adelantaRecargas_menu}"/>
+    <sharedNode ref="#{pagosPorEvento_menu}"/>
+    <sharedNode ref="#{canalesAlaCarta_menu}"/>
+    <sharedNode ref="#{guiaProgTv_menu}"/>
+    <sharedNode ref="#{cambioPaquete_menu}"/>
+    <sharedNode ref="#{cambioPaqueteCelular_menu}"/>
+    <sharedNode ref="#{adquiereEquiposAd_menu}"/>
+    <sharedNode ref="#{compras_menu}"/>
+    <sharedNode ref="#{manuales_menu}"/>
+    <sharedNode ref="#{consultaSalgoyPago_menu}"/>
+    <sharedNode ref="#{estatusInternet_menu}"/>
+    <sharedNode ref="#{estatusCelular_menu}"/>
+    <sharedNode ref="#{compraPaqueteDatos_menu}"/>
+    <sharedNode ref="#{compraServicioSuplementarioCelular_menu}"/>
+    <sharedNode ref="#{servicioComparteCelular_menu}"/>
+    <sharedNode ref="#{portabilidadCelular_menu}"/>
+    <sharedNode ref="#{servTecyCambio_menu}"/>
+    <sharedNode ref="#{facturaElectronica_menu}"/>
+    <sharedNode ref="#{cambioTitular_menu}"/>
+    <sharedNode ref="#{reporteDanoRoboExtravio_menu}"/>
+    <sharedNode ref="#{suOpinionNosInteresa_menu}"/>
+    <sharedNode ref="#{aclaraciones_menu}"/>
+    <sharedNode ref="#{requiereOtraInfo_menu}"/>
+</menu>

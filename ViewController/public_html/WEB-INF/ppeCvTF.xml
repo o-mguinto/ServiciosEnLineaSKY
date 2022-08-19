@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ppeCvTF">
+    <default-activity>ppeCvIndex</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__2">
+      <name>titulo</name>
+      <value>#{pageFlowScope.PFPPEVeTV.evento.titulo}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__4">
+      <name>sinopsis</name>
+      <value>#{pageFlowScope.PFPPEVeTV.evento.sinopsis}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__5">
+      <name>modalidad</name>
+      <value>#{pageFlowScope.PFPPEVeTV.evento.modalidad}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__6">
+      <name>canal</name>
+      <value>#{pageFlowScope.PFPPEVeTV.evento.canal}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__7">
+      <name>canalDisplay</name>
+      <value>#{pageFlowScope.PFPPEVeTV.evento.canalDisplay}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__8">
+      <name>precio</name>
+      <value>#{pageFlowScope.PFPPEVeTV.evento.precio}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__9">
+      <name>image</name>
+      <value>#{pageFlowScope.PFPPEVeTV.evento.image}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__10">
+      <name>tipoEvento</name>
+      <value>#{pageFlowScope.tipoEvento}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>PFPPEVeTV</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.ppevetv.PFPPEVeTV</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="ppeCvIndex">
+      <page>/pages/ppeCv/ppeCvIndex.jsf</page>
+    </view>
+    <task-flow-return id="closeTaskFlow">
+      <outcome>
+        <name>closeTaskFlow</name>
+      </outcome>
+    </task-flow-return>
+    <router id="tipo_seleccion">
+      <case id="__17">
+        <expression>#{pageFlowScope.PFPPEVeTV.seleccionCV == 'seleccion'}</expression>
+        <outcome>seleccion</outcome>
+      </case>
+      <default-outcome>listaTI</default-outcome>
+    </router>
+    <view id="ppeCvListaTI">
+      <page>/pages/ppeCv/ppeCvListaTI.jsf</page>
+    </view>
+    <view id="ppeCvSeleccionTI">
+      <page>/pages/ppeCv/ppeCvSeleccionTI.jsf</page>
+    </view>
+    <view id="ppeCvConfirmaLista">
+      <page>/pages/ppeCv/ppeCvConfirmaLista.jsf</page>
+    </view>
+    <view id="ppeCvResumenLista">
+      <page>/pages/ppeCv/ppeCvResumenLista.jsf</page>
+    </view>
+    <view id="ppeCvConfirmarSeleccion">
+      <page>/pages/ppeCv/ppeCvConfirmarSeleccion.jsf</page>
+    </view>
+    <view id="ppeCvResumenSeleccion">
+      <page>/pages/ppeCv/ppeCvResumenSeleccion.jsf</page>
+    </view>
+    <control-flow-rule id="__12">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>closeTaskFlow</from-outcome>
+        <to-activity-id>closeTaskFlow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>ppeCvIndex</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>tipo_seleccion</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id>tipo_seleccion</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome>listaTI</from-outcome>
+        <to-activity-id>ppeCvListaTI</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__16">
+        <from-outcome>seleccion</from-outcome>
+        <to-activity-id>ppeCvSeleccionTI</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__18">
+      <from-activity-id>ppeCvListaTI</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>ppeCvIndex</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__20">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>ppeCvConfirmaLista</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__21">
+      <from-activity-id>ppeCvConfirmaLista</from-activity-id>
+      <control-flow-case id="__22">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>ppeCvListaTI</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__25">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>ppeCvResumenLista</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id>ppeCvSeleccionTI</from-activity-id>
+      <control-flow-case id="__24">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>ppeCvIndex</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>ppeCvConfirmarSeleccion</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id>ppeCvConfirmarSeleccion</from-activity-id>
+      <control-flow-case id="__28">
+        <from-outcome>regresar</from-outcome>
+        <to-activity-id>ppeCvSeleccionTI</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__29">
+        <from-outcome>siguiente</from-outcome>
+        <to-activity-id>ppeCvResumenSeleccion</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

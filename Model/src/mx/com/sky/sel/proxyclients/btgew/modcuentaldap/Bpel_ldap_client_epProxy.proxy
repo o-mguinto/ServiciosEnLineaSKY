@@ -1,0 +1,126 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jdevws:WebServiceProxy xmlns:jdevws="http://xmlns.oracle.com/jdeveloper/10130/webserviceproxy">
+   <list n="CHILD_NODES">
+      <url path="BpelLdapClientEp.xml"/>
+      <url path="../../../../../../../com/oracle/xmlns/sky_btgew/modificarcuentaldap/bpel_modificarcuentaldap/LdapProcess.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/sky_btgew/modificarcuentaldap/bpel_modificarcuentaldap/package-info.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/sky_btgew/modificarcuentaldap/bpel_modificarcuentaldap/LdapProcessResponse.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/sky_btgew/modificarcuentaldap/bpel_modificarcuentaldap/ObjectFactory.java"/>
+      <url path="../../../../../../../com/oracle/xmlns/sky_btgew/modificarcuentaldap/bpel_modificarcuentaldap/Operaciones.java"/>
+      <url path="BPEL_ModificarCuentaLDAP_ptClient.java"/>
+      <url path="BpelLdapClientEp.java"/>
+      <url path="BPELModificarCuentaLDAP.java"/>
+   </list>
+   <hash n="DATA_MODEL">
+      <value n="ATTACHMENT_ENCODING" v="MIME"/>
+      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy"/>
+      <url n="ORACLE_WEBSERVICES_XML" path="BpelLdapClientEp.xml"/>
+      <hash n="PROPERTY_GROUPS">
+         <hash n="WSDL_TO_JAVA_PROPERTIES">
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+            <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.btgew.modcuentaldap"/>
+         </hash>
+      </hash>
+      <value n="PROXY_ASYNC_METHODS" v="FOR_NONE"/>
+      <list n="PROXY_CLIENTS">
+         <url path="BPEL_ModificarCuentaLDAP_ptClient.java"/>
+      </list>
+      <value n="PROXY_MAPPING_URL"/>
+      <hash n="PROXY_PORTS">
+         <hash n="BPEL_ModificarCuentaLDAP_pt">
+            <value n="ACCESSES_DOC_WRAPPPED" v="true"/>
+            <value n="ACCESSES_RPC_ENCODED" v="false"/>
+            <value n="CLASS_NAME" v="mx.com.sky.sel.proxyclients.btgew.modcuentaldap.BPELModificarCuentaLDAP"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
+            <value n="NAME" v="BPEL_ModificarCuentaLDAP_pt"/>
+            <hash n="OPERATIONS">
+               <hash n="process">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </hash>
+            <hash n="PROPERTY_GROUPS">
+               <hash n="WS_POLICY">
+                  <value n="addressing"/>
+                  <hash n="GLOBAL_CONFIG_PROPERTIES"/>
+                  <list n="management"/>
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.policy.PolicyClientModel"/>
+                  <value n="mtom"/>
+                  <hash n="POLICY_OVERRIDE_PROPERTIES"/>
+                  <list n="security"/>
+                  <list n="wsconfig"/>
+                  <value n="wsrm"/>
+               </hash>
+            </hash>
+            <url n="PROXY_ORIGINAL_PORT_ENDPOINT" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/btgew/ModificarCuentaLDAP/bpel_ldap_client_ep"/>
+         </hash>
+      </hash>
+      <value n="PROXY_SERVICE_NAME" v="bpel_ldap_client_ep"/>
+      <value n="PROXY_SERVICE_NAMESPACE" v="http://xmlns.oracle.com/SKY_BTGEW/ModificarCuentaLDAP/BPEL_ModificarCuentaLDAP"/>
+      <url n="PROXY_TARGET_PROJECT" path="../../../../../../../../Model.jpr"/>
+      <url n="PROXY_WSDL_URL" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/btgew/ModificarCuentaLDAP/bpel_ldap_client_ep" query="WSDL"/>
+      <hash n="REFERENCED_WEBSERVICE">
+         <list n="BD_">
+            <hash>
+               <value n="BOUND_PORT_TYPE" v="{http://xmlns.oracle.com/SKY_BTGEW/ModificarCuentaLDAP/BPEL_ModificarCuentaLDAP}BPEL_ModificarCuentaLDAP"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+               <value n="NAME" v="{http://xmlns.oracle.com/SKY_BTGEW/ModificarCuentaLDAP/BPEL_ModificarCuentaLDAP}BPEL_ModificarCuentaLDAPBinding"/>
+               <list n="OP_BINDINGS">
+                  <hash>
+                     <value n="BOUND_OPERATION" v="com.oracle.xmlns.sky_btgew.modificarcuentaldap.bpel_modificarcuentaldap.LdapProcessResponse.process.com.oracle.xmlns.sky_btgew.modificarcuentaldap.bpel_modificarcuentaldap.LdapProcess"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+            </hash>
+         </list>
+         <list n="BINDING_FILES"/>
+         <value n="GUID" v="2a55170e-016b-1000-8002-0afd091b8932"/>
+         <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
+         <list n="PO_">
+            <hash>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+               <value n="NAME" v="BPEL_ModificarCuentaLDAP_pt"/>
+               <value n="PORT_BINDING_NAME" v="{http://xmlns.oracle.com/SKY_BTGEW/ModificarCuentaLDAP/BPEL_ModificarCuentaLDAP}BPEL_ModificarCuentaLDAPBinding"/>
+               <list n="PORT_OPS">
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="com.oracle.xmlns.sky_btgew.modificarcuentaldap.bpel_modificarcuentaldap.LdapProcessResponse.process.com.oracle.xmlns.sky_btgew.modificarcuentaldap.bpel_modificarcuentaldap.LdapProcess"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+               <url n="URL" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/btgew/ModificarCuentaLDAP/bpel_ldap_client_ep"/>
+            </hash>
+         </list>
+         <hash n="PROPERTY_GROUPS">
+            <hash n="WSDL_TO_JAVA_PROPERTIES">
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+               <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="mx.com.sky.sel.proxyclients.btgew.modcuentaldap"/>
+            </hash>
+         </hash>
+         <list n="PT_">
+            <hash>
+               <value n="AUTO_SERVICE_INTERFACE"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaPortType"/>
+               <value n="NAME" v="{http://xmlns.oracle.com/SKY_BTGEW/ModificarCuentaLDAP/BPEL_ModificarCuentaLDAP}BPEL_ModificarCuentaLDAP"/>
+               <hash n="PROPERTY_GROUPS"/>
+               <value n="PT_CLASS" v="mx.com.sky.sel.proxyclients.btgew.modcuentaldap.BPELModificarCuentaLDAPImpl"/>
+               <value n="PT_SERVICE_INTERFACE" v="mx.com.sky.sel.proxyclients.btgew.modcuentaldap.BPELModificarCuentaLDAP"/>
+               <value n="PT_TOP_DOWN_GENERATED_SEI_NAME" v="mx.com.sky.sel.proxyclients.btgew.modcuentaldap.BPELModificarCuentaLDAP"/>
+            </hash>
+         </list>
+         <url n="TARGET_PROJECT" path="../../../../../../../../Model.jpr"/>
+         <value n="WS_ORIG_GEN_DIRECTION" v="TOP_DOWN"/>
+         <value n="WS_TARGET_NAMESPACE" v="http://xmlns.oracle.com/SKY_BTGEW/ModificarCuentaLDAP/BPEL_ModificarCuentaLDAP"/>
+         <value n="WS_URI" v="bpel_ldap_client_ep"/>
+         <url n="WS_WSDL_FILE" protocol="http" host="10.249.1.67" port="5007" path="/soa-infra/services/btgew/ModificarCuentaLDAP/bpel_ldap_client_ep" query="WSDL"/>
+      </hash>
+      <value n="SERVICE_ASYNC" v="false"/>
+      <value n="WSDL_IS_LOCAL_COPY" v="false"/>
+   </hash>
+</jdevws:WebServiceProxy>

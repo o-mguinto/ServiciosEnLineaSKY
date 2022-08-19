@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:h="http://java.sun.com/jsf/html" xmlns:tr="http://myfaces.apache.org/trinidad"
+        xmlns:trh="http://myfaces.apache.org/trinidad/html" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=11.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0, user-scalable = no"/>
+    <af:document id="d1" title="SKY | Servicios en Línea" styleClass="body"
+                     rendered="true">
+        <f:facet name="metaContainer">
+            <trh:meta charset="utf-8"/>
+            <trh:meta name="viewport"
+                      content="width=device-width,initial-scale=1.0,maximum-scale=3.0,user-scalable=no"/>
+            <trh:meta http-equiv="X-UA-Compatible" content="IE=11"/>
+            <trh:meta name="apple-mobile-web-app-capable" content="yes"/>
+            <f:subview id="head">
+                <meta name="description" content="SKY | Servicios en Línea"/>
+                <meta name="keywords" content="servicios en linea sky"/>
+                <af:outputText value="&lt;link rel='SHORTCUT ICON' href='#{facesContext.externalContext.requestContextPath}/imagenes/aplicacion/favicon.ico' type='image/x-icon'/>"
+                               id="ot6" escape="false"/>
+                <!-- Estilos y Scripts Especificos de la pagina -->
+                <af:resource type="css"
+                             source="/assets/css/estilos_canales.css"/>
+                <af:resource type="javascript" source="/js/jquery-3.5.1.min.js"/>
+                <af:resource type="javascript"
+                             source="/assets/js/smoothScroll.js"/>
+                <af:resource type="javascript" source="/js/scriptJSMobile.js"/>
+                <af:resource type="css" source="/css/custom/pagPublicas_template.css"/>
+            </f:subview>
+        </f:facet>
+        <af:form id="f3">
+            <af:group id="g1">
+                <div class="row">
+                    <div class="col-3"/>
+                    <div class="col-6">
+                        <a>
+                            <img alt="hotgo.jpg" src="/sky/imagenes/pc/uno/header.jpg"/>
+                        </a>
+                    </div>
+                    <div class="col-3"/>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-3"/>
+                    <div class="col-6">
+                        <div class="col-6 col-tb-8 col-sm-8">
+                            <div class="container-fluid" align="center"
+                                                                 style="display:block;">
+                            <div class=" ml-2 col-12">
+                                <af:outputText  value="Se envió a su e-mail un enlace para reestablecer la contraseña." id="ot1" inlineStyle="font-size: large; color: black;"/>
+                            </div>
+                            <div class="col-12">
+                                <br/>                                
+                                <br/>                                
+                            </div>
+                            <div class="col-12">
+                                <af:commandLink id="cl2" action="regresarBienvenido" immediate="true" inlineStyle="border-color: transparent;">
+                                    <af:image id="i3" source="/imagenes/pc/uno/btn_aceptar.png"/>
+                                </af:commandLink>
+                            </div>
+                            <div class="col-12">
+                                <br/>
+                                <br/>
+                                <br/>
+                            </div>
+                            <div class="col-12">
+                                <af:image source="/imagenes/pc/uno/dispositivos.png"/>
+                            </div>
+                            <div class="col-12">
+                                <br/>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3"/>
+                </div>
+                
+                <div class="row">
+                    <div class="col-3"/>
+                    <div class="col-6">
+                        <div class="col-12" align="center">
+                            <af:outputText value="“Sky” y las marcas relacionadas, nombres y logotipos, son propiedad de “Sky International AG” y otras empresas del grupo."
+                                                                           id="ot11"
+                                                                           inlineStyle="color:black; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                        </div>
+                        
+                        <div class="col-12" align="center">
+                            <af:outputText value="Corporación Novavisión S. de R.L. de C.V. 2020. Prohibida su reproducción total o parcial."
+                                                                           id="ot19"
+                                                                           inlineStyle="color:black; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
+                        </div>
+                        
+                        <!--div class="col-12" align="center">
+                            <af:outputText value=" SESION_ID : #{Foliador.folio}"
+                                                                           id="pt_ot1"
+                                                                           inlineStyle="color:black; font-weight:bold; text-align:center;font-size:9px; font-family:Arial, Helvetica, sans-serif;"/>
+                        </div-->
+                    </div>
+                    <div class="col-3"/>
+                </div>
+            </af:group>
+        </af:form>
+    </af:document>
+</f:view>

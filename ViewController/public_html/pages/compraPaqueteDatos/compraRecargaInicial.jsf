@@ -1,0 +1,414 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:h="http://java.sun.com/jsf/html" locale="es">
+    
+    <af:document id="d1"
+                styleClass="dialog-background"
+                 title="#{pageFlowScope.CompraDatosBackingBean.isSuplementario? 'Contratar Servicio Suplementario' : 'Contratar ' += pageFlowScope.CompraDatosBackingBean.paqueteActiva.nombre_display}">
+        <!--af:resource type="css" source="/css/consumo_internet.css"/-->
+        <af:resource type="css" source="/css/bolsas/bolsas.css"/>
+        <af:resource type="css" source="/css/custom/pagInternas_template.css"/>
+        <af:messages id="m1"/>
+        <c:set var="selSKYBundle"
+               value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+         <!--efecto animado del dialogo de espera-->
+        <af:resource type="css" source="/css/spinner-sel-sky.css"/>
+        <af:form id="f1">
+            <!--Aqui va TODO el contenido-->
+            <af:resource type="javascript">
+              function enforcePreventUserInput(evt) {
+                  var popup = AdfPage.PAGE.findComponentByAbsoluteId('popUpBusy');
+                  if (popup != null) {
+                      AdfPage.PAGE.addBusyStateListener(popup, handleBusyState);
+                      evt.preventUserInput();
+                  }
+              }
+
+              function handleBusyState(evt) {
+                  var popup = AdfPage.PAGE.findComponentByAbsoluteId('popUpBusy');
+                  if (popup != null) {
+                      if (evt.isBusy()) {
+                          popup.show();
+                      }
+                      else if (popup.isPopupVisible()) {
+                          popup.hide();
+                          AdfPage.PAGE.removeBusyStateListener(popup, handleBusyState);
+                      }
+                  }
+              }
+            </af:resource>
+            <!-- CEL -->
+            <af:panelGroupLayout id="pgl" rendered="#{!pageFlowScope.CompraDatosBackingBean.isSuplementario}">
+                <div class="row top">
+                    <div class="col-7 sm-top autocenter" style="padding: 10px; float:none;">
+                        <h:outputText value="Quieres adquirir el paquete" id="lblConfPaqAd" 
+                                    styleClass="check-internal" style="font-weight: bold;"/>
+                        <div class="top-sm"/>
+                        <h:outputText id="NomPaquete" 
+                                        value="#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.nombre_display}"
+                                        styleClass="titulo-paquete text_color_#{pageFlowScope.CompraDatosBackingBean.indexColor}"/>
+                        <br/>
+                        <af:group id="gpPromo5" rendered="#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.costo eq '15'}">
+                            <h:outputText id="otLblPromo5"
+                                        value="Precio normal:"
+                                        styleClass="lbl-txt font-s14 text_color_#{pageFlowScope.CompraDatosBackingBean.indexColor}"
+                                        style="text-decoration: line-through;"/>
+                            <h:outputText id="otValPromo5"
+                                        value="$25"
+                                        styleClass="lbl-txt font-s14 text_color_#{pageFlowScope.CompraDatosBackingBean.indexColor}"
+                                        style="text-decoration: line-through;"/>
+                        </af:group>
+                        <!--Promocion descuento bolsa BTI 10GB-->
+                        <af:group id="gpPromo10" rendered="#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.costo eq '30'}">
+                            <h:outputText id="otLblPromo10"
+                                        value="Precio normal:"
+                                        styleClass="lbl-txt font-s14 text_color_#{pageFlowScope.CompraDatosBackingBean.indexColor}"
+                                        style="text-decoration: line-through;"/>
+                            <h:outputText id="otValPromo10"
+                                        value="$45"
+                                        styleClass="lbl-txt font-s14 text_color_#{pageFlowScope.CompraDatosBackingBean.indexColor}"
+                                        style="text-decoration: line-through;"/>
+                        </af:group>
+                        <!--Promocion descuento bolsa BTI 25GB-->
+                        <af:group id="gpPromo25" rendered="#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.costo eq '75'}">
+                            <h:outputText id="otLblPromo25"
+                                        value="Precio normal:"
+                                        styleClass="lbl-txt font-s14 text_color_#{pageFlowScope.CompraDatosBackingBean.indexColor}"
+                                        style="text-decoration: line-through;"/>
+                            <h:outputText id="otValPromo25"
+                                        value="$99"
+                                        styleClass="lbl-txt font-s14 text_color_#{pageFlowScope.CompraDatosBackingBean.indexColor}"
+                                        style="text-decoration: line-through;"/>
+                        </af:group>
+                        <br/>
+                        <br/>
+                        <h:outputText id="otLblPrecioPaq" value="Precio promoción:"
+                                    rendered="#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.costo eq '15' or pageFlowScope.CompraDatosBackingBean.paqueteActiva.costo eq '30' or pageFlowScope.CompraDatosBackingBean.paqueteActiva.costo eq '75'}"
+                                    styleClass="top-sm lbl-value font-s14 text_color_#{pageFlowScope.CompraDatosBackingBean.indexColor}"
+                                    style="text-transform: none;"/>
+                        <h:outputText id="otValPrecioPaq" value="$ #{pageFlowScope.CompraDatosBackingBean.paqueteActiva.costo}"
+                                    styleClass="lbl-value lbl-costoPaq text_color_#{pageFlowScope.CompraDatosBackingBean.indexColor}"/>
+                    </div>
+                </div>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pg2" rendered="#{pageFlowScope.CompraDatosBackingBean.isSuplementario}">
+                <div class="row top">
+                    <div class="col-7 sm-top autocenter" style="padding: 10px; float:none; text-align:start;">
+                        <div class="bolderPaquete color_#{pageFlowScope.CompraDatosBackingBean.indexColor}">
+                            <div class="col-12">
+                                <div class="row top-sm autocenter">
+                                    <h:outputText id="nomPaquete"
+                                                  value="#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.nombre_display}"
+                                                  styleClass="titulo-paquete"
+                                                  />
+                                </div>
+                                <div class="col-12 top-sm flex-center flex-dir-col" style="align-items: start; padding: 10px;">
+                                    <!--div class="col-6 col-sm-4 col-tb-4 flex-center flex-dir-col"-->
+                                    <af:group id="gpConSoloDatos" rendered="#{(pageFlowScope.CompraDatosBackingBean.paqueteActiva.datos ne '0.0' and empty pageFlowScope.CompraDatosBackingBean.paqueteActiva.sms and empty pageFlowScope.CompraDatosBackingBean.paqueteActiva.mins)}">
+                                        <h:outputText id="otPaqDatNav" 
+                                                    value="Paquete con Datos para navegar"
+                                                    styleClass="lbl-txt"/>
+                                        <br/>
+                                    </af:group>
+                                    <h:outputText id="otPaqMin" style="#{!empty pageFlowScope.CompraDatosBackingBean.paqueteActiva.mins and empty pageFlowScope.CompraDatosBackingBean.paqueteActiva.sms and pageFlowScope.CompraDatosBackingBean.paqueteActiva.datos eq '0.0' ? 'display:block;':'display:none;'}"
+                                                        value="Paquete con minutos"
+                                                        styleClass="lbl-txt"/>
+                                    <h:outputText id="lblPaqContMinSMS" style="#{(!empty pageFlowScope.CompraDatosBackingBean.paqueteActiva.mins and !empty pageFlowScope.CompraDatosBackingBean.paqueteActiva.sms and pageFlowScope.CompraDatosBackingBean.paqueteActiva.datos eq '0.0')? 'display:block;':'display:none;'}"
+                                                        value="Paquete con minutos, SMS"
+                                                        styleClass="lbl-txt"/>
+                                    <h:outputText id="lblPaqCont3" style="#{(!empty pageFlowScope.CompraDatosBackingBean.paqueteActiva.mins and !empty pageFlowScope.CompraDatosBackingBean.paqueteActiva.sms and pageFlowScope.CompraDatosBackingBean.paqueteActiva.datos ne '0.0')? 'display:block;':'display:none;'}"
+                                                        value="Paquete con minutos, SMS y Datos para navegar"
+                                                        styleClass="lbl-txt"/>
+                                    <br/>
+                                    <h:outputText id="toPrecioPaq" value="Precio: $#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.costo}"
+                                                    styleClass="lbl-txt"/>
+                                    <br/>
+                                    <br/>
+                                    <!--/div-->
+                                    <!--div class="col-6 col-sm-4 col-tb-4 flex-center flex-dir-row"-->
+                                    <af:group id="gpConTiempoPaq" >
+                                        <h:outputText id="lblIncluye" value="Incluye:"
+                                                    styleClass="lbl-txt"/>
+                                        <h:outputText id="minVal" style="#{!empty pageFlowScope.CompraDatosBackingBean.paqueteActiva.mins ? 'display:block;':'display:none;'}"
+                                                        value="#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.mins} para llamadas"
+                                                        styleClass="lbl-txt"/>
+                                        <h:outputText id="smsVal" style="#{!empty pageFlowScope.CompraDatosBackingBean.paqueteActiva.sms ? 'display:block;':'display:none;'}"
+                                                        value="#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.sms}"
+                                                        styleClass="lbl-txt"/>
+                                        <h:outputText id="datosVal" style="#{(pageFlowScope.CompraDatosBackingBean.paqueteActiva.datos ne '0.0' ) ? 'display:block;':'display:none;'}"
+                                                        value="#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.datos}"
+                                                        styleClass="lbl-txt"/>
+                                    </af:group>
+                                        
+                                    <!--/div-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12" style="text-align:center;">
+                        <af:link id="btn_paises" text="Consulta los destinos incluidos" rendered="#{pageFlowScope.CompraDatosBackingBean.mostrarPaisesIncluidos}">
+                            <af:showPopupBehavior popupId="p1"/>
+                        </af:link>
+                    </div>
+                    <af:popup id="p1">
+                        <af:dialog id="d2" type="cancel" cancelTextAndAccessKey="Cerrar" >
+                            <iframe src="#{request.contextPath}/deeplinkios/DestinosIncluidos/#{pageFlowScope.CompraDatosBackingBean.generarNombreArchivoPaises()}.html"
+                                    height="300" width="350"></iframe>
+                        </af:dialog>
+                    </af:popup>
+                </div>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl2">
+                <div class="col-12">
+                    <div class="row top">
+                        <label>
+                            <h:outputText id="ot3"
+                                          value="Tu cuenta tiene saldo a favor, el producto lo puedes comprar sin realizar un pago."
+                                          style="text-align:justify;"
+                                          rendered="#{pageFlowScope.CompraDatosBackingBean.saldoFavor and sesion.userVeTV}"/>
+                        </label>
+                    </div>
+                </div>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl3">
+                <div class="col-12 dialog-background">
+                    <div class="row autocenter">
+                        <div class="col-6">
+                            <af:button text="Siguiente" id="cb2"
+                                       rendered="#{!pageFlowScope.CompraDatosBackingBean.saldoFavor}"
+                                       partialSubmit="true"
+                                       styleClass="btn-pay-dialog"
+                                       action="#{pageFlowScope.CompraDatosBackingBean.cbSiguiente_action}"/>
+                        </div>
+                        <div class="col-6">
+                            <af:button text="Comprar" id="cb1"
+                                       rendered="#{pageFlowScope.CompraDatosBackingBean.saldoFavor}"
+                                       partialSubmit="true"
+                                       styleClass="btn-pay-dialog"
+                                       action="#{pageFlowScope.CompraDatosBackingBean.cbContrataDatosTyA_action}">
+                                       <af:clientListener method="enforcePreventUserInput"
+                                               type="action"/>
+                                               </af:button>
+                        </div>
+                        <div class="col-6">
+                            <af:button text="Cancelar" id="cbCancelar"
+                                       action="#{pageFlowScope.CompraDatosBackingBean.cbCancelar_action}"
+                                       immediate="true"
+                                       styleClass="btn-pay-dialog"/>
+                        </div>
+                    </div>
+                </div>
+            </af:panelGroupLayout>
+            <!--af:panelGroupLayout id="pgl">
+                <af:panelGroupLayout id="pgl1" layout="scroll"
+                                     styleClass="dialog-background"
+                                     inlineStyle="border: none;">
+                    <h:outputText styleClass="title padd-top-dialog padd-bottom-dialog"
+                                  value="Confirme que los datos solicitados son correctos"
+                                  id="ot14"/>
+                    <af:panelBox id="panelBox1" maximized="true"
+                                 showDisclosure="false" showMaximize="never"
+                                 background="medium"
+                                 inlineStyle="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? 'width:100.0%; border:none;' : 'width:95.0%; margin:0.0%; padding:0.0%; border:none;' }"
+                                 contentStyle="min-height: 350px;max-height: 360px;"
+                                 showHeader="never">
+                        <af:panelStretchLayout id="psl1"
+                                               endWidth="100px;vertical-align: middle;"
+                                               styleClass="AFStretchWidth">
+                            <f:facet name="center">
+                                <af:panelGroupLayout layout="scroll"
+                                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                     id="pgl8">
+                                    <af:panelBox showDisclosure="false"
+                                                 showMaximize="never"
+                                                 background="medium"
+                                                 showHeader="never" id="pb2"
+                                                 contentStyle="min-height:200px; max-height: 220px;"
+                                                 inlineStyle="border:none;    border-right: solid 1px #D6DFE6;     margin-right: 5px;">
+                                        <f:facet name="toolbar"/>
+                                        <af:panelFormLayout id="panelFormLayout1"
+                                                            fieldWidth="65%"
+                                                            labelWidth="35%">
+                                            <af:inputText label="Nombre:"
+                                                          id="inputText1"
+                                                          readOnly="true"
+                                                          value="#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.nombre_display}"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder;"/>
+                                            <af:inputText label="Precio producto:"
+                                                          id="it1"
+                                                          readOnly="true"
+                                                          value="$ #{pageFlowScope.CompraDatosBackingBean.paqueteActiva.costo} #{sesion.moneda}"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder;"/>
+                                            <af:inputText label="Saldo actual:"
+                                                          id="it3"
+                                                          readOnly="true"
+                                                          value="$ #{pageFlowScope.CompraDatosBackingBean.paqueteActiva.saldoCuenta} #{sesion.moneda}"
+                                                          rendered="#{sesion.userVeTV and !pageFlowScope.CompraDatosBackingBean.isSuplementario}"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder;"/>
+                                            <af:inputText label="Monto a cobrar:"
+                                                          id="it4"
+                                                          readOnly="true"
+                                                          value="$ #{pageFlowScope.CompraDatosBackingBean.paqueteActiva.montoDiferencia} #{sesion.moneda}"
+                                                          rendered="#{!pageFlowScope.CompraDatosBackingBean.saldoFavor}"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder;"/>
+                                            <af:inputText label="Vigencia: "
+                                                          id="it2"
+                                                          readOnly="true"
+                                                          value="#{pageFlowScope.CompraDatosBackingBean.fecha_corte}"
+                                                          styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder;"/>
+                                        </af:panelFormLayout>
+                                    </af:panelBox>
+                                </af:panelGroupLayout>
+                            </f:facet>
+                            <f:facet name="end">
+                                <af:panelGroupLayout id="pgl4">
+                                    <div class="text-internal"
+                                             style="padding: 0px;">
+                                    <div class="autocenter">
+                                        <af:image id="i6"
+                                                  source="/imagenes/#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.imagen}"
+                                                  rendered="#{!pageFlowScope.CompraDatosBackingBean.isSuplementario}"
+                                                  inlineStyle="width: 60%;     height: auto;"/>
+                                        <af:commandLink
+                                            rendered="#{pageFlowScope.CompraDatosBackingBean.isSuplementario}"
+                                            text="#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.nombre_display}"
+                                            disabled="true"
+                                            styleClass="ficha-paquete-cel color_#{pageFlowScope.CompraDatosBackingBean.indexColor}"
+                                        />
+                                    </div>
+                                    <div class="row autocenter paquetes-capacitad">
+                                                <h:outputText id="it13"
+                                                              value="#{pageFlowScope.CompraDatosBackingBean.paqueteActiva.nombre_display}"
+                                                              styleClass="font-bolder" rendered="#{pageFlowScope.CompraDatosBackingBean.secondAssetNumber != ''}"/>
+                                            </div>
+                                    </div>
+                                </af:panelGroupLayout>
+                            </f:facet>
+                        </af:panelStretchLayout>
+                        <af:panelGroupLayout id="pgl2">
+                            <div class="col-12">
+                                <div class="row top">
+                                    <label>
+                                        <h:outputText id="ot3"
+                                                      value="Tu cuenta tiene saldo a favor, el producto lo puedes comprar sin realizar un pago."
+                                                      style="text-align:justify;"
+                                                      rendered="#{pageFlowScope.CompraDatosBackingBean.saldoFavor and sesion.userVeTV}"/>
+                                    </label>
+                                </div>
+                            </div>
+                        </af:panelGroupLayout>
+                    </af:panelBox>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl3">
+                    <div class="col-12 dialog-background">
+                        <div class="row autocenter">
+                            <div class="col-6">
+                                <af:button text="Siguiente" id="cb2"
+                                           rendered="#{!pageFlowScope.CompraDatosBackingBean.saldoFavor}"
+                                           partialSubmit="true"
+                                           styleClass="btn-pay-dialog"
+                                           action="#{pageFlowScope.CompraDatosBackingBean.cbSiguiente_action}"/>
+                            </div>
+                            <div class="col-6">
+                                <af:button text="Comprar" id="cb1"
+                                           rendered="#{pageFlowScope.CompraDatosBackingBean.saldoFavor}"
+                                           partialSubmit="true"
+                                           styleClass="btn-pay-dialog"
+                                           action="#{pageFlowScope.CompraDatosBackingBean.cbContrataDatosTyA_action}">
+                                           <af:clientListener method="enforcePreventUserInput"
+                                                   type="action"/>
+                                                   </af:button>
+                            </div>
+                            <div class="col-6">
+                                <af:button text="Cancelar" id="cbCancelar"
+                                           action="#{pageFlowScope.CompraDatosBackingBean.cbCancelar_action}"
+                                           immediate="true"
+                                           styleClass="btn-pay-dialog"/>
+                            </div>
+                        </div>
+                    </div>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout-->
+        </af:form>
+        <af:popup id="contrataTyAOK" contentDelivery="lazyUncached"
+                  childCreation="deferred" autoCancel="disabled"
+                  binding="#{pageFlowScope.CompraDatosBackingBean.popupResultadoCompraTyA}">
+            <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                <af:dialog id="contrataTyADia" type="none"
+                           title="Resumen de la compra" styleClass="alert"
+                           closeIconVisible="false">
+                    <div class="text-internal">
+                        <af:outputText id="ot1" styleClass="font-bolder"
+                                       value="La solicitud ha sido enviada correctamente." inlineStyle="text-align:justify;"/>
+                    </div>
+                    <div class="col-12">
+                        <div class="row top">
+                            <div class="col-12 right sm-cancel-align padd-right">
+                                <af:button text="Aceptar" id="cb3"
+                                           action="closeTaskFlow"
+                                           styleClass="btn-pay-dialog"/>
+                            </div>
+                        </div>
+                    </div>
+                </af:dialog>
+            </div>
+        </af:popup>
+        <af:popup id="contrataTyAKO" contentDelivery="lazyUncached"
+                  childCreation="deferred" autoCancel="disabled"
+                  binding="#{pageFlowScope.CompraDatosBackingBean.popupResultadoCompraTyAKo}">
+            <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                <af:dialog id="contrataTyADiaKO" type="none"
+                           title="Resumen de la compra" styleClass="alert"
+                           closeIconVisible="false">
+                    <div class="text-internal">
+                        <af:outputText id="ot5"
+                                       value="No es posible procesar tu solicitud de compra, para mayor información comuníquese a la línea de atención a clientes."
+                                       styleClass="font-bolder"
+                                       inlineStyle="text-align:justify;"/>
+                    </div>
+                    <div class="col-12">
+                        <div class="row top">
+                            <div class="col-12 right sm-cancel-align padd-right">
+                                <af:button text="Aceptar" id="cb4"
+                                           action="closeTaskFlow"
+                                           styleClass="btn-pay-dialog"/>
+                            </div>
+                        </div>
+                    </div>
+                </af:dialog>
+            </div>
+        </af:popup>
+        <af:group id="pt_g3">
+            <af:popup id="popUpBusy" contentDelivery="immediate"
+                      clientComponent="true">
+                <div class="col-10 col-tb-7 col-sm-7 center-popup">
+                    <af:dialog id="dlgWait" type="none" closeIconVisible="false"
+                               modal="true" clientComponent="true"
+                               styleClass="waitpopup">
+                        <div class="text-internal">
+                            <div class="col-12 autocenter">
+                                <span class="spinner"
+                                      style="top: 40px;position: absolute;"></span>
+                            </div>
+                            <div class="col-12 autocenter"
+                                 style="padding-top:40px;">
+                                <div class="row top">
+                                    <h:outputText value="#{selSKYBundle['admoneditar.ot7.value']}"
+                                                  id="ot2" styleClass="font-bolder"
+                                                  style="font: normal 1em 'Roboto', sans-serif;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </af:dialog>
+                </div>
+            </af:popup>
+        </af:group>
+    </af:document>
+</f:view>

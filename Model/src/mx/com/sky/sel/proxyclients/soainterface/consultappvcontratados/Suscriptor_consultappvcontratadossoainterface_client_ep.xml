@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle-webservice-clients xmlns:ns2="http://java.sun.com/xml/ns/javaee">
+   <webservice-client>
+      <service-qname namespaceURI="http://xmlns.sky.com.mx/InterfaceServices/SOA/Suscriptor_consultaPPVContratadosSOAInterface"
+                     localpart="suscriptor_consultappvcontratadossoainterface_client_ep"/>
+      <port-info>
+         <wsdl-port namespaceURI="http://xmlns.sky.com.mx/InterfaceServices/SOA/Suscriptor_consultaPPVContratadosSOAInterface"
+                    localpart="Suscriptor_consultaPPVContratadosSOAInterface_pt"/>
+         <runtime/>
+         <operations>
+            <operation name="suscriptorConsultaPPVContratados"/>
+         </operations>
+      </port-info>
+   </webservice-client>
+</oracle-webservice-clients>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:facelets="http://xmlns.oracle.com/jdev/webapp/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <!--Aqui va TODO el contenido-->
+    <af:group id="gpControlResumen">
+        <af:resource type="javascript">
+          $('#controlResumen').ready(function () {
+              $('body').removeClass();
+              $('body').addClass('backgroundPlantilla');
+          });
+        </af:resource>
+        <af:resource type="css">
+            /*solo boton*/
+            .btn-internal {
+                min-width: 50%;
+            }
+
+            .output-internal, .output-internal label {
+                width: 100%;
+            }
+        </af:resource>
+        <div id="controlResumen">
+            <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+            <div class="col-11 col-tb-8" id="div-panel-right-frame">
+                <div class="content-internal">
+                    <div class="row">
+                        <h:outputText styleClass="title" value="#{selSKYBundle['control.d3.title']}" id="otTitulo"
+                                      style="text-transform: uppercase;"/>
+                        <div class="row top">
+                            <af:panelGroupLayout id="pgl4" styleClass="col-3 col-sm-8  col-tb-3 right"
+                                                 inlineStyle="float:right;">
+                                <div class="top">
+                                    <div class="autocenter padd-top-dialog">
+                                        <af:image source="/imagenes/controlremoto/#{pageFlowScope.ControlBackingBean.control.pathIcon}"
+                                                  id="i2"/>
+                                    </div>
+                                    <div class="row autocenter">
+                                        <h:outputText id="it13"
+                                                      value="Precio: $ #{pageFlowScope.ControlBackingBean.control.precioDisplay}"
+                                                      styleClass="text-internal font-bolder"/>
+                                    </div>
+                                    <div class="row top dialog-descrip" style="max-height: 220px;">
+                                        <h:outputText id="it1"
+                                                      value="#{pageFlowScope.ControlBackingBean.control.descripcion}"/>
+                                    </div>
+                                </div>
+                            </af:panelGroupLayout>
+                             
+                            <af:panelGroupLayout id="pgl5" styleClass="col-9 col-sm-8  col-tb-5 right"
+                                                 inlineStyle="float:right;">
+                                <h:outputText styleClass="subtitle"
+                                              value="Se ha comprado el control remoto exitosamente" id="ot14"/>
+                                <div class="row top">
+                                    <af:panelBox showMaximize="never" id="panelBox1" showDisclosure="false"
+                                                 background="medium" showHeader="never"
+                                                 inlineStyle="border:none;    border-right: solid 1px #D6DFE6;     margin-right: 5px;">
+                                        <f:facet name="toolbar"/>
+                                        <h:outputText styleClass="subtitle" value="Datos de pago" id="ot16"/>
+                                        <af:panelFormLayout id="panelFormLayout1"
+                                                            labelAlignment="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? 'start': 'top'}"
+                                                            fieldWidth="50%" labelWidth="50%">
+                                            <af:inputText label="Número de referencia de pago" id="it3"
+                                                          value="#{pageFlowScope.ControlBackingBean.ticketNumber}"
+                                                          readOnly="true" styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder;"/>
+                                            <af:inputText label="Número de referencia del evento" id="it4"
+                                                          value="#{pageFlowScope.ControlBackingBean.numeroSolicitud}"
+                                                          readOnly="true" styleClass="output-internal"
+                                                          contentStyle="font-weight: bolder;"/>
+                                        </af:panelFormLayout>
+                                    </af:panelBox>
+                                </div>
+                            </af:panelGroupLayout>
+                             
+                            <af:panelGroupLayout id="pgl2">
+                                <div class="top top-2 col-3 col-sm-8  col-tb-2 right" style="float:right;">
+                                    <af:button text="Terminar" id="cb2" partialSubmit="true"
+                                               action="#{pageFlowScope.ControlBackingBean.cbCancelar_action}"
+                                               styleClass="btn-internal"/>
+                                </div>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </af:group>
+</ui:composition>

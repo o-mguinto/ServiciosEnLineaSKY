@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="indexPortabilidadPageDef"
+                Package="pages.portabilidad">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="obtenerSolicitudesPortabilidad.result" DataControl="DCPortabilidad" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.solicitudservicio.DetalleSolicitudServicio"
+                    id="obtenerSolicitudesPortabilidadIterator" Refresh="ifNeeded"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerSolicitudesPortabilidad" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerSolicitudesPortabilidad" IsViewObjectMethod="false" DataControl="DCPortabilidad"
+                  InstanceName="bindings.obtenerSolicitudesPortabilidad.dataControl.dataProvider"
+                  ReturnName="data.DCPortabilidad.methodResults.obtenerSolicitudesPortabilidad_obtenerSolicitudesPortabilidad_dataControl_dataProvider_obtenerSolicitudesPortabilidad_result">
+      <NamedData NDName="rowID" NDValue="#{sesion.suscriptor.rowId}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="obtenerSolicitudesPortabilidadIterator" id="DetalleSolicitudServicio">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.solicitudservicio.DetalleSolicitudServicio"
+                      Name="DetalleSolicitudServicio0">
+        <AttrNames>
+          <Item Value="numeroSolicitud"/>
+          <Item Value="fechaCreacion"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

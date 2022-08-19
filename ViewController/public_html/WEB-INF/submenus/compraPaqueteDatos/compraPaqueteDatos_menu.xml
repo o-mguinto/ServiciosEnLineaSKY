@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_compraPaqueteDatosIndex" label="#{lbl.smenu_COMPRAPAQUETEDATOS}"
+            action="irCompraPacDatosRouter" focusViewId="/compraPaqueteDatosIndex"
+            icon="/imagenes/menu/ic_compraPaqueteDatos.svg"
+            immediate="true" rendered="#{sesion.COMPRA_DATOS}">
+    <itemNode id="itemNode_compraPaqueteDatos" label="#{lbl.smenu_COMPRAPAQUETEDATOS_ADICIONALES}" action="irCompraPaqueteDatos"
+              focusViewId="/compraPaqueteDatos" rendered="#{sesion.COMPRA_DATOS}"/>
+  </itemNode>
+</menu>

@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:h="http://java.sun.com/jsf/html" locale="es">
+    <meta http-equiv="X-UA-Compatible" content="IE=11.0" charset="utf-8"/>
+    <af:document id="d1"
+                 title="Contratar Canal a la Carta #{pageFlowScope.PFCanalesContrata.canal.nombre_display}">
+        <af:messages id="m1"/>
+        <c:set var="selSKYBundle"
+               value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+        <af:resource type="css" source="/css/custom/pagInternas_template.css"/>
+        <af:form id="f1">
+            <af:panelGroupLayout id="pgl1" layout="scroll"
+                                 styleClass="dialog-background"
+                                 inlineStyle="border: none;">
+                <h:outputText styleClass="subtitle padd-top-dialog padd-bottom-dialog"
+                              value="La información se guardó correctamente"
+                              id="ot14"/>
+                <div class="row ">
+                    <div class="col-12">
+                        <af:panelBox id="panelBox1" maximized="true"
+                                     showDisclosure="false" showMaximize="never"
+                                     background="medium"
+                                     inlineStyle="#{adfFacesContext.agent.capabilities['touchScreen'] eq 'none'  ? 'width:100.0%; border:none;' : 'width:95.0%; margin:0.0%; padding:0.0%; border:none;' }"
+                                     contentStyle="min-height: 415px;max-height: 420px;"
+                                     showHeader="never">
+                            <af:panelStretchLayout id="psl1"
+                                                   endWidth="160px;vertical-align: middle;"
+                                                   styleClass="AFStretchWidth">
+                                <f:facet name="center">
+                                    <af:panelGroupLayout layout="scroll"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                         id="pgl8">
+                                        <af:panelBox showDisclosure="false"
+                                                     showMaximize="never"
+                                                     background="medium"
+                                                     showHeader="never" id="pb2"
+                                                     contentStyle="max-height:330px"
+                                                     inlineStyle="border:none;    border-right: solid 1px #D6DFE6;     margin-right: 5px;">
+                                            <f:facet name="toolbar"/>
+                                            <af:panelFormLayout id="panelFormLayout1"
+                                                                fieldWidth="65%"
+                                                                labelWidth="35%">
+                                                <af:inputText id="it1"
+                                                              value="#{pageFlowScope.PFCanalesContrata.tarjeta.nombre}"
+                                                              required="true"
+                                                              label="#{selSKYBundle['pago.it4.label']}"
+                                                              readOnly="true"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                <af:inputText id="it2"
+                                                              value="#{pageFlowScope.PFCanalesContrata.tarjeta.noCodificado}"
+                                                              required="true"
+                                                              label="#{selSKYBundle['pago.it5.label']}"
+                                                              readOnly="true"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"></af:inputText>
+                                                <af:selectOneChoice id="soc1"
+                                                                    value="#{pageFlowScope.PFCanalesContrata.tarjeta.tipo}"
+                                                                    required="true"
+                                                                    label="#{selSKYBundle['pago.it9.label']}"
+                                                                    readOnly="true"
+                                                                    styleClass="output-internal"
+                                                                    contentStyle="font-weight: bolder;">
+                                                    <f:selectItems value="#{pageFlowScope.PFCanalesContrata.tipos}"
+                                                                   id="si1"/>
+                                                </af:selectOneChoice>
+                                                <af:selectOneChoice id="soc2"
+                                                                    value="#{pageFlowScope.PFCanalesContrata.tarjeta.mes}"
+                                                                    required="true"
+                                                                    label="#{selSKYBundle['pago.soc2.label']}"
+                                                                    readOnly="true"
+                                                                    styleClass="output-internal"
+                                                                    contentStyle="font-weight: bolder;">
+                                                    <f:selectItems value="#{pageFlowScope.PFCanalesContrata.meses}"
+                                                                   id="si2"/>
+                                                </af:selectOneChoice>
+                                                <af:selectOneChoice id="soc3"
+                                                                    value="#{pageFlowScope.PFCanalesContrata.tarjeta.anio}"
+                                                                    required="true"
+                                                                    label="#{selSKYBundle['pago.soc3.label']}"
+                                                                    readOnly="true"
+                                                                    styleClass="output-internal"
+                                                                    contentStyle="font-weight: bolder;">
+                                                    <f:selectItems value="#{pageFlowScope.PFCanalesContrata.anios}"
+                                                                   id="si3"/>
+                                                </af:selectOneChoice>
+                                            </af:panelFormLayout>
+                                        </af:panelBox>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                                <f:facet name="end">
+                                    <af:panelGroupLayout id="pgl4">
+                                        <div class="autocenter">
+                                            <af:image id="i6"
+                                                      source="#{parametros.urlImgsCanalMovil}#{pageFlowScope.PFCanalesContrata.canal.imagen}"
+                                                      inlineStyle="width: 60%;     height: auto;"/>
+                                        </div>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                            </af:panelStretchLayout>
+                            <af:panelGroupLayout id="pgl6">
+                                <!--#{pageFlowScope.PFCanalesContrata.canal.sinopsis}-->
+                                <div class="row top dialog-descrip">
+                                    <h:outputText id="inputText6"
+                                                  value="#{pageFlowScope.PFCanalesContrata.canal.sinopsis}"/>
+                                </div>
+                            </af:panelGroupLayout>
+                        </af:panelBox>
+                    </div>
+                </div>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl2">
+                <div class="col-12 dialog-background">
+                    <div class="row autocenter">
+                        <div class="col-6">
+                            <af:button text="Siguiente"
+                                       id="cbSiguienteGuardarTDC"
+                                       partialSubmit="true" action="siguiente"
+                                       styleClass="btn-pay-dialog"/>
+                        </div>
+                        <div class="col-6">
+                            <af:button text="Cancelar" id="cbCancelar"
+                                       action="#{pageFlowScope.PFCanalesContrata.cbCancelar_action}"
+                                       immediate="true"
+                                       styleClass="btn-pay-dialog"/>
+                        </div>
+                    </div>
+                </div>
+            </af:panelGroupLayout>
+        </af:form>
+    </af:document>
+</f:view>

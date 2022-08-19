@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+    <itemNode id="itemNode_portabCelIndex" label="#{lbl.smenu_CELULAR_PORTABILIDAD}" action="irPortabCelRouter"
+                focusViewId="/portabCelIndex" immediate="true" rendered="#{sesion.CONSUMO_CELULAR}"
+                >
+      <itemNode id="itemNode_Portabilidad" label="#{lbl.smenu_CELULAR_PORTABILIDAD}" action="irPortabilidad"
+              rendered="#{sesion.CONSUMO_CELULAR}" focusViewId="/portabilidad"/>
+    </itemNode>
+</menu>

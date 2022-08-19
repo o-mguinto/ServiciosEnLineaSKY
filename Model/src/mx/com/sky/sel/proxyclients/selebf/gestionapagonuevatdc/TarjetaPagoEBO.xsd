@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tarjetapagoebo="http://www.sky.com.mx/EnterpriseObjects/Sel/TarjetaPagoEBO" targetNamespace="http://www.sky.com.mx/EnterpriseObjects/Sel/TarjetaPagoEBO" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation>
+    elemento "DatosTarjetaPagoType.tipoTarjeta" 
+    indica si la tarjeta es de crédito o débito.
+  </xsd:documentation>
+    <xsd:documentation>
+    elemento "DatosTarjetaPagoType.marcaTarjeta" 
+    indica si la tarjeta es MasterCard,VISA,AMEX.
+  </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="DatosTarjetaPago" type="tarjetapagoebo:DatosTarjetaPagoType"/>
+  <xsd:complexType name="DatosTarjetaPagoType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="numero"/>
+      <xsd:element type="xsd:string" name="anioExp"/>
+      <xsd:element type="xsd:string" name="mesExp"/>
+      <xsd:element type="xsd:string" name="cvv" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="nombreTitular"/>
+      <xsd:element type="xsd:string" name="tipoTarjeta"/>
+      <xsd:element type="xsd:string" name="marcaTarjeta"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

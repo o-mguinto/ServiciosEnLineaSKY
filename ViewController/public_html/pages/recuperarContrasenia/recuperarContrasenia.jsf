@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
+    <af:document title="Olvidó su contraseña de Servicios en línea SKY" id="d1">
+        <af:form id="f1">
+            <af:panelGroupLayout id="pgl1" layout="scroll" halign="center">
+              <af:decorativeBox id="db1" topHeight="50px" dimensionsFrom="auto">
+                <f:facet name="center">
+                  <af:panelHeader text="#{selSKYBundle['olvido.ph1.text']}" id="ph1">
+                    <f:facet name="context"/>
+                    <f:facet name="menuBar"/>
+                    <f:facet name="toolbar"/>
+                    <f:facet name="legend"/>
+                    <f:facet name="info"/>
+                    <af:panelLabelAndMessage label="#{selSKYBundle['olvido.plam1.label']}"
+                                             id="plam1">
+                      <af:panelList id="pl1">
+                        <af:outputText value="#{selSKYBundle['olvido.ot2.value']}" id="ot2"
+                                       inlineStyle="text-align:justify;"/>
+                        <af:outputText value="#{selSKYBundle['olvido.ot3.value']}" id="ot3"
+                                       inlineStyle="text-align:justify;"/>
+                        <af:outputText value="#{selSKYBundle['olvido.ot4.value']}" id="ot4"
+                                       inlineStyle="text-align:justify;"/>
+                        <!--af:outputText value="#{viewcontrollerBundle['olvido.ot23.value']}"
+                                       id="ot23" inlineStyle="text-align:justify;"/-->
+                        <af:outputText value="#{selSKYBundle['olvido.ot5.value']}" id="ot5"
+                                       inlineStyle="text-align:justify;"/>
+                      </af:panelList>
+                    </af:panelLabelAndMessage>
+                    <af:spacer width="10" height="20" id="s2"/>
+                    <af:inputText id="it1" required="true"
+                                  value="#{backingBeanScope.BBContrasenia.identificador}"
+                                  label="#{selSKYBundle['olvido.it1.label']}"/>
+                    <af:spacer width="10" height="25" id="s1"/>
+                    <af:panelGroupLayout id="pgl2" layout="vertical" halign="end">
+                      <af:commandButton text="#{selSKYBundle['olvido.cb1.text']}" id="cb1"
+                                        icon="/imagenes/19X19/servicios_19x19/contrasenia.png"
+                                        action="#{backingBeanScope.BBContrasenia.recuperarContraseniaPC}"/>
+                    </af:panelGroupLayout>
+                  </af:panelHeader>
+                </f:facet>
+              </af:decorativeBox>
+            </af:panelGroupLayout>
+        </af:form>
+    </af:document>
+</f:view>

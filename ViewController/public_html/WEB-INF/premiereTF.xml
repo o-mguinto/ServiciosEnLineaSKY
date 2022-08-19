@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="premiereTF">
+    <default-activity>premiere</default-activity>
+    <managed-bean id="__7">
+      <managed-bean-name>PremiereBackingBean</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.premiere.BBPremiere</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="premiere">
+      <page>/pages/premiere/premiere.jsff</page>
+    </view>
+    <router id="TipoCuenta">
+      <case id="__6">
+        <expression>#{sesion.cuentaCV}</expression>
+        <outcome>cv</outcome>
+      </case>
+      <default-outcome>normal</default-outcome>
+    </router>
+    <task-flow-call id="ppeCvTF">
+      <task-flow-reference>
+        <document>/WEB-INF/ppeCvTF.xml</document>
+        <id>ppeCvTF</id>
+      </task-flow-reference>
+      <input-parameter id="__10">
+        <name>titulo</name>
+        <value>#{pageFlowScope.PremiereBackingBean.event.titulo}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__11">
+        <name>sinopsis</name>
+        <value>#{pageFlowScope.PremiereBackingBean.event.sinopsis}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__12">
+        <name>modalidad</name>
+        <value>#{pageFlowScope.PremiereBackingBean.event.modalidad}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__13">
+        <name>canal</name>
+        <value>#{pageFlowScope.PremiereBackingBean.event.canal}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__14">
+        <name>canalDisplay</name>
+        <value>#{pageFlowScope.PremiereBackingBean.event.canalDisplay}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__15">
+        <name>precio</name>
+        <value>#{pageFlowScope.PremiereBackingBean.event.precio}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__16">
+        <name>image</name>
+        <value>#{pageFlowScope.PremiereBackingBean.event.image}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__17">
+        <name>tipoEvento</name>
+        <value>SKY Premiere</value>
+      </input-parameter>
+      <run-as-dialog>
+        <display-type>
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    </task-flow-call>
+    <task-flow-call id="ppeVeTvTF">
+      <task-flow-reference>
+        <document>/WEB-INF/ppeVeTvTF.xml</document>
+        <id>ppeVeTvTF</id>
+      </task-flow-reference>
+      <input-parameter id="__8">
+        <name>tipoEvento</name>
+        <value>SKY Premiere</value>
+      </input-parameter>
+      <input-parameter id="__9">
+        <name>evento</name>
+        <value>#{pageFlowScope.PremiereBackingBean.event}</value>
+        <pass-by-value/>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>premiere</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>ppe</from-outcome>
+        <to-activity-id>TipoCuenta</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>TipoCuenta</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>normal</from-outcome>
+        <to-activity-id>ppeVeTvTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>cv</from-outcome>
+        <to-activity-id>ppeCvTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

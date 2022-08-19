@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">cambioFormaPagoIndex</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">445.0</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>cambioFormaPagoIndex&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">289.1953</property>
+      <property
+         name="page">/pages/cambioFormaPago/cambioFormaPagoIndex.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <View
+      id="View4">
+      <property
+         name="activityId">cambioFormaPagoResumen</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">705.0</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>cambioFormaPagoResumen&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">181.59766</property>
+      <property
+         name="page">/pages/cambioFormaPago/cambioFormaPagoResumen.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View2"
+      to="View4">
+      <property
+         name="fromOutcome">ok</property>
+      <property
+         name="sdm:polyPoints">R50,486.0,288.84473,664.0,181.24707,L50</property>
+   </ControlFlowCase>
+</SDM>

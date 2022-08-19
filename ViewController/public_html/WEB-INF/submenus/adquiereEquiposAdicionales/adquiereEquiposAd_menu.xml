@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu" resourceBundle="mx.com.sky.sel.resources.menu" var="lbl">
+  <itemNode id="itemNode_adquiereEquiposAdIndex" label="#{lbl.menu_CRECIMIENTO_CUENTA}"
+            action="irRouterAdquiereEquiposAd" focusViewId="/adquiereEquiposAdIndex" immediate="true"
+            rendered="#{sesion.crecimientoCuenta}" icon="/imagenes/menu/ic_equipos_ad.svg">
+    <itemNode id="itemNode_equipoAdicional" label="#{lbl.smenu_AD_EQUIPO}" action="smenu_equipoAdicional"
+              focusViewId="/equipoAdicional" immediate="true" rendered="#{sesion.EQUIPO_ADICIONAL}"/>
+    <itemNode id="itemNode_internetAdicional" label="#{lbl.smenu_AD_INTERNET}" action="smenu_internetAdicional"
+              focusViewId="/internetAdicional"  immediate="true"
+              rendered="#{sesion.INTERNET_ADICIONAL}"/>
+  </itemNode>
+</menu>
