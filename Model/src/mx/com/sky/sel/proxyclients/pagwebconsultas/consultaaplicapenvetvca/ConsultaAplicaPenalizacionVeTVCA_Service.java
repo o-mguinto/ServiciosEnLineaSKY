@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ConsultaAplicaPenalizacionVeTVCA",
                   targetNamespace = "http://xmlns.oracle.com/ConsultaAplicaPenalizacionVeTVCA",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaAplicaPenalizacionVeTVCA/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaAplicaPenalizacionVeTVCA%7DConsultaAplicaPenalizacionVeTVCA")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaAplicaPenalizacionVeTVCA/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaAplicaPenalizacionVeTVCA%7DConsultaAplicaPenalizacionVeTVCA")
 public class ConsultaAplicaPenalizacionVeTVCA_Service extends Service {
 
     private final static URL CONSULTAAPLICAPENALIZACIONVETVCA_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class ConsultaAplicaPenalizacionVeTVCA_Service extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaAplicaPenalizacionVeTVCA/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaAplicaPenalizacionVeTVCA%7DConsultaAplicaPenalizacionVeTVCA");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaAplicaPenalizacionVeTVCA/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaAplicaPenalizacionVeTVCA%7DConsultaAplicaPenalizacionVeTVCA");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

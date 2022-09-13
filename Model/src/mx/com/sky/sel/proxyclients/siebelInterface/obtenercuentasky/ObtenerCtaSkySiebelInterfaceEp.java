@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ObtenerCtaSkySiebelInterface_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Siebel/ObtenerCtaSky",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SIEBEL_Interface/ObtenerCtaSkySiebelInterface/ObtenerCtaSkySiebelInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSiebel%2FObtenerCtaSky%7DObtenerCtaSkySiebelInterface_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SIEBEL_Interface/ObtenerCtaSkySiebelInterface/ObtenerCtaSkySiebelInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSiebel%2FObtenerCtaSky%7DObtenerCtaSkySiebelInterface_ep")
 public class ObtenerCtaSkySiebelInterfaceEp extends Service {
 
     private final static URL OBTENERCTASKYSIEBELINTERFACEEP_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class ObtenerCtaSkySiebelInterfaceEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SIEBEL_Interface/ObtenerCtaSkySiebelInterface/ObtenerCtaSkySiebelInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSiebel%2FObtenerCtaSky%7DObtenerCtaSkySiebelInterface_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SIEBEL_Interface/ObtenerCtaSkySiebelInterface/ObtenerCtaSkySiebelInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSiebel%2FObtenerCtaSky%7DObtenerCtaSkySiebelInterface_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

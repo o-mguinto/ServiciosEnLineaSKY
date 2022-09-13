@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 
+import mx.com.sky.sel.log.LogServicios;
 import mx.com.sky.sel.services.beans.cybersource.ConsultarPropiedadAmbienteResponseDTO;
 
 @Stateless(name = "PropiedadesAmbienteManagement", mappedName = "SEL-PropiedadesAmbienteManagement")
@@ -40,23 +41,23 @@ public class PropiedadesAmbienteManagementBean implements PropiedadesAmbienteMan
     public ConsultarPropiedadAmbienteResponseDTO consultarPropiedadesAmbiente(List<Integer> idsPropiedades) {
         ConsultarPropiedadAmbienteResponseDTO response = new ConsultarPropiedadAmbienteResponseDTO();
         if(this.hostAPIGW == null){
-            System.out.println("Propiedades no cargadas.");
+            LogServicios.println(this, "Propiedades no cargadas.");
             try {
                 String ambiente = this.obtenerAmbiente();
                 Properties properties = new Properties();
                 properties.load(PropiedadesAmbienteManagementBean.class.getResourceAsStream("/mx/com/sky/sel/resources/Propiedades_" + ambiente + ".properties"));
-                System.out.println("Propiedades recuperadas:");
-                System.out.println(properties.getProperty("HOST_APIGW"));
-                System.out.println(properties.getProperty("URL_DEVICE_FINGERPRINT"));
-                System.out.println(properties.getProperty("MERCHANT_ID"));
-                System.out.println(properties.getProperty("ORG_ID"));
-                System.out.println(properties.getProperty("ACCESS_KEY"));
-                System.out.println(properties.getProperty("PROFILE_ID"));
-                System.out.println(properties.getProperty("SECRET_KEY"));
-                System.out.println(properties.getProperty("USER_APIGW"));
-                System.out.println(properties.getProperty("PASS_APIGW"));
-                System.out.println(properties.getProperty("HOST_CHECKOUT_API"));
-                System.out.println(properties.getProperty("HOST_SEL_TOK_REDIRECT"));
+                LogServicios.println(this, "Propiedades recuperadas:");
+                LogServicios.println(this, properties.getProperty("HOST_APIGW"));
+                LogServicios.println(this, properties.getProperty("URL_DEVICE_FINGERPRINT"));
+                LogServicios.println(this, properties.getProperty("MERCHANT_ID"));
+                LogServicios.println(this, properties.getProperty("ORG_ID"));
+                LogServicios.println(this, properties.getProperty("ACCESS_KEY"));
+                LogServicios.println(this, properties.getProperty("PROFILE_ID"));
+                LogServicios.println(this, properties.getProperty("SECRET_KEY"));
+                LogServicios.println(this, properties.getProperty("USER_APIGW"));
+                LogServicios.println(this, properties.getProperty("PASS_APIGW"));
+                LogServicios.println(this, properties.getProperty("HOST_CHECKOUT_API"));
+                LogServicios.println(this, properties.getProperty("HOST_SEL_TOK_REDIRECT"));
                 
                 this.hostAPIGW = properties.getProperty("HOST_APIGW");
                 this.urlDeviceFingerPrint = properties.getProperty("URL_DEVICE_FINGERPRINT");
@@ -123,11 +124,11 @@ public class PropiedadesAmbienteManagementBean implements PropiedadesAmbienteMan
         /*Iterator<String> it = ManagementFactory.getRuntimeMXBean().getSystemProperties().keySet().iterator();
         while(it.hasNext()){
             String key = it.next();
-            System.out.println(key + " = " + ManagementFactory.getRuntimeMXBean().getSystemProperties().get(key));
+            LogServicios.println(this, key + " = " + ManagementFactory.getRuntimeMXBean().getSystemProperties().get(key));
         }*/
-        System.out.println("Buscando ambiente en " + argumentos.size() + " argumentos");
+        LogServicios.println(this, "Buscando ambiente en " + argumentos.size() + " argumentos");
         for(String arg : argumentos){
-            //System.out.println(arg);
+            //LogServicios.println(this, arg);
             switch(arg){
                 case "-Dambiente=DES":
                     return "DES";

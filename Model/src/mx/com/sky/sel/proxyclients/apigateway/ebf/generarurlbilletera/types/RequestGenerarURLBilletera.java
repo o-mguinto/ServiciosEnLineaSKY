@@ -241,7 +241,7 @@ public class RequestGenerarURLBilletera implements Serializable {
         this.urlBTGS = urlBTGS;
     }
 
-    @JsonProperty("urlBTGS")
+    @JsonProperty("UrlBTGS")
     public String getUrlBTGS() {
         return urlBTGS;
     }

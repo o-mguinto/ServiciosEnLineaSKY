@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ejecutarRemotebookingSelEBFEBM="http://www.sky.com.mx/EnterpriseFlowMessage/Sel/EjecutarRemoteBooking" xmlns:Meta="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" targetNamespace="http://www.sky.com.mx/EnterpriseFlowMessage/Sel/EjecutarRemoteBooking" elementFormDefault="qualified">
+  <xsd:import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" schemaLocation="Meta.xsd"/>
+  <xsd:element name="EjecutarRemoteBookingRequestEBM" type="ejecutarRemotebookingSelEBFEBM:EjecutarRemoteBookingRequestEBFEBMType"/>
+  <xsd:element name="EjecutarRemoteBookingResponseEBM" type="ejecutarRemotebookingSelEBFEBM:EjecutarRemoteBookingResponseEBFEBMType"/>
+  <xsd:complexType name="EjecutarRemoteBookingRequestEBFEBMType">
+    <xsd:sequence>
+      <xsd:element ref="Meta:EBMHeaderRequest"/>
+      <xsd:element name="EjecutarRemoteBookingRequest" type="ejecutarRemotebookingSelEBFEBM:RemoteBookingRequestEBMType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EjecutarRemoteBookingResponseEBFEBMType">
+    <xsd:sequence>
+      <xsd:element ref="Meta:EBMHeaderResponse"/>
+      <xsd:element name="EjecutarRemoteBookingResponse" type="ejecutarRemotebookingSelEBFEBM:RemoteBookingResponseEBMType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RemoteBookingRequestEBMType">
+    <xsd:sequence>
+      <xsd:element name="Operacion" type="xsd:string"/>
+      <xsd:element name="NumeroCuenta" type="xsd:string"/>
+      <xsd:element name="Origen" type="xsd:string"/>
+      <xsd:element name="Grupo" type="xsd:string"/>
+      <xsd:element name="Tipo" type="xsd:string"/>
+      <xsd:element name="TarjetaInteligente" type="xsd:string"/>
+      <xsd:element name="NumeroComercial" type="xsd:string"/>
+      <xsd:element name="IdentificadorCanalUnico" type="xsd:string"/>
+      <xsd:element name="NombreCanal" type="xsd:string"/>
+      <xsd:element name="NombreEvento" type="xsd:string"/>
+      <xsd:element name="EventId" type="xsd:string"/>
+      <xsd:element name="ContentId" type="xsd:string"/>
+      <xsd:element name="ContentProvider" type="xsd:string"/>
+      <xsd:element name="OriginalNetwork" type="xsd:string"/>
+      <xsd:element name="TransportStream" type="xsd:string"/>
+      <xsd:element name="SeriesId" type="xsd:string"/>
+      <xsd:element name="ProgramId" type="xsd:string"/>
+      <xsd:element name="FechaInicio" type="xsd:string"/>
+      <xsd:element name="FechaFin" type="xsd:string"/>
+      <xsd:element name="TipoGrabacion" type="xsd:string"/>
+      <xsd:element name="Duracion" type="xsd:string"/>
+      <xsd:element name="TipoContenido" type="xsd:string"/>
+      <xsd:element name="Recurrencia" type="xsd:string"/>
+      <xsd:element name="SistemaOrigen" type="xsd:string"/>
+      <xsd:element name="Recordatorio" type="xsd:string"/>
+      <xsd:element name="SessionID" type="xsd:string"/>
+      <xsd:element name="UserName" type="xsd:string"/>
+      <xsd:element name="Categoria" type="xsd:string"/>
+      <xsd:element name="Pais" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RemoteBookingResponseEBMType">
+    <xsd:sequence>
+      <xsd:element name="SRNumber" type="xsd:string"/>
+      <xsd:element name="SREstatus" type="xsd:string"/>
+      <xsd:element name="SRSubestatus" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

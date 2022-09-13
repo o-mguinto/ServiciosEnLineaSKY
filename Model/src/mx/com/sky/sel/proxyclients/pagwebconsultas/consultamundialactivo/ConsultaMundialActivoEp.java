@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ConsultaMundialActivo_ep",
                   targetNamespace = "http://xmlns.oracle.com/SKYConsultas/ConsultaMundialActivo/ConsultaMundialActivo",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaMundialActivo/ConsultaMundialActivo_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaMundialActivo%2FConsultaMundialActivo%7DConsultaMundialActivo_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaMundialActivo/ConsultaMundialActivo_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaMundialActivo%2FConsultaMundialActivo%7DConsultaMundialActivo_ep")
 public class ConsultaMundialActivoEp extends Service {
 
     private final static URL CONSULTAMUNDIALACTIVOEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class ConsultaMundialActivoEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaMundialActivo/ConsultaMundialActivo_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaMundialActivo%2FConsultaMundialActivo%7DConsultaMundialActivo_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaMundialActivo/ConsultaMundialActivo_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaMundialActivo%2FConsultaMundialActivo%7DConsultaMundialActivo_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

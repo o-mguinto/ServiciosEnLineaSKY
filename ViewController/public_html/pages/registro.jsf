@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
 <f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
-        xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html">
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+        xmlns:h="http://java.sun.com/jsf/html">
         <meta http-equiv="X-UA-Compatible" content="IE=11.0"/>
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         <meta name="viewport" content="width = device-width, initial-scale = 1.0, user-scalable = no"/>
-    <af:document id="d1" title="SKY | Servicios en Línea" styleClass="body">
+    <af:document id="d1" title="SKY | Servicios en Línea" inlineStyle="background: white; max-width: 2050px; width: 80%;margin: 0 auto;">
         <f:facet name="metaContainer">
             <trh:meta charset="utf-8"/>
             <trh:meta name="viewport"
@@ -24,7 +25,7 @@
             </f:subview>
         </f:facet>
         <af:messages id="m2"/>
-        <af:form id="f1PC">
+        
             <!-- Google Tag Manager (noscript) -->
             <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZQXB5N"
             height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -56,7 +57,7 @@
             </af:resource>
             <af:resource type="css">
                 .headerpc {
-                    background-repeat: repeat-x;
+                    
                     margin: 0 !important;
                     -moz-border-radius: 7px;
                     -webkit-border-radius: 7px;
@@ -77,7 +78,8 @@
                     text-align: right;
                     vertical-align: middle;
                 }
-                @media (max-width: 480px){
+                
+                @media screen and (max-width: 480px){
                     .font_titutos_24 {
                         font: normal normal 900 14px/18px Arial;
                     }
@@ -90,66 +92,92 @@
                     .ln-h100{
                         line-height: normal;
                     }
-                    .img-captcha{
-                        width: 100%;
-                        height: auto;
-                        vertical-align: middle;
-                    }
-                    input[type=checkbox] {
-                        width: 38px;
-                        height: 38px;
-                    }
+                    
                     x15q, .x15p {
                         font-size: 14px;
                     }
+                    
+                    
                 }
+                 
+                
+
+                
+                @media screen and (max-width:400px) {
+                    #d1{
+                        width: 100%;
+                    }
+                    
+                }
+                
             </af:resource>
-            <af:panelGroupLayout id="pgl10"
-                                                     layout="vertical"
-                                                     halign="center">
-                <af:panelGroupLayout id="pgl6"
-                                                             layout="vertical"
-                                                             styleClass="headerpc"
-                                                             inlineStyle="background-color: white !important;">
-                    <af:panelGroupLayout id="PCHeader" layout="horizontal">
-                        <af:image source="/imagenes/pc/dos/header.jpg" id="header" shortDesc="SKY"
-                                  styleClass="AFStretchWidth"></af:image>
-                    </af:panelGroupLayout>
-                    <af:spacer width="100%" height="10" id="s2"/>
-                    <af:group id="regionRegistro">
-                        <af:region value="#{bindings.registroTF2.regionModel}" id="r1"/>
-                    </af:group>
-                    <af:popup id="popUpBusy" contentDelivery="immediate">
-                        <af:dialog id="d2" type="none" title="Procesando información" closeIconVisible="false">
-                            <af:panelGroupLayout id="pgEspera" layout="vertical" halign="center">
-                                <af:image source="../imagenes/aplicacion/loading.gif" id="i7" shortDesc=" "/>
-                            </af:panelGroupLayout>
-                        </af:dialog>
-                    </af:popup>
-                    <af:panelGroupLayout id="pgl1">
-                            <div class="col-11 col-tb-8 col-sm-8">
-                                <div class="row" style="text-align: right;">
-                                    <af:outputText value='&lt;script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=serviciosenlinea.sky.com.mx&amp;size=L&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=es">&lt;/script>&lt;map name="sealmap_large" id="sealmap_large">&lt;area alt="Click to Verify - This site has chosen an SSL Certificate to improve Web site security" title="" href="javascript:vrsn_splash()" shape="rect" coords="0,0,130,65" tabindex="-1" style="outline:none;">&lt;area alt="Click to Verify - This site has chosen an SSL Certificate to improve Web site security" title="" href="javascript:vrsn_splash()" shape="rect" coords="0,65,71,88" tabindex="-1" style="outline:none;">&lt;area alt="" title="" href="javascript:symcBuySSL()" shape="rect" coords="71,65,130,88" style="outline:none;">&lt;/map>
-&lt;a href="https://www.symantec.com/es/es/ssl-certificates" target="_blank" style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;">ACERCA DE LOS CERTIFICADOS SSL&lt;/a>'
-                                       id="footerPC" escape="false"/>
-                                </div>
-                            </div>
-                    </af:panelGroupLayout>
-                    <af:panelGroupLayout id="pgl11" layout="horizontal" halign="center">
-                        <af:panelGroupLayout id="pgl2"
-                                             inlineStyle="color: black;"
-                                             layout="vertical" halign="center">
-                            <af:outputText id="ot20"
-                                           value="“Sky” y las marcas relacionadas, nombres y logotipos, son propiedad de “Sky International AG” y otras empresas del grupo."
-                                           inlineStyle="font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
-                            <af:outputText id="ot21"
-                                           value="Corporación Novavisión S. de R.L. de C.V. 2022. Prohibida su reproducción total o parcial."
-                                           inlineStyle="font-weight:bold; font-size:12px; font-family:Arial, Helvetica, sans-serif;"/>
-                            <af:spacer width="100" height="20" id="s1"/>
-                        </af:panelGroupLayout>
-                    </af:panelGroupLayout>
-                </af:panelGroupLayout>
+            <af:form id="f1PC">
+            <af:switcher id="s5" defaultFacet="PC" facetName="#{backingBeanScope.login.renderADFPC ? 'PC':'MOVIL'}">
+            
+            <f:facet name="PC">
+            <af:panelGroupLayout id="pgl10">
+                <table id="reg_header" xmlns="http://www.w3.org/1999/xhtml">
+                        <tr>
+                                <td  class="header" style="width: 60%; text-align:left;">
+                                   <af:panelGroupLayout id="PCHeader" layout="vertical">
+                                        <img alt="Layer 5 1" src="/sky/imagenes/pc/cinco/Layer 5 1.jpg"
+                                             id="header" 
+                                             style="width: 100%; height: 715px;"/>
+                                    </af:panelGroupLayout>                      
+                                </td>
+                                <td style="width: 40%; background-color: White;" class="regist">
+                                     <af:panelStretchLayout id="psl1" startWidth="10px" topHeight="0px" bottomHeight="20px">
+                                        <f:facet name="start">
+                                            <af:spacer width="10" height="0" id="s3"/>
+                                        </f:facet>
+                                        <f:facet name="center">
+                                            <af:panelGroupLayout id="pgl23">
+                                            <noscript>
+                                            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZQXB5N"
+                                                    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+                                            </noscript>
+                                                 <af:group id="regionRegistro">
+                                                    <af:region value="#{bindings.registroTF2.regionModel}" id="r1"/>
+                                                </af:group>
+                                                
+                                            </af:panelGroupLayout>
+                                        </f:facet>
+                                        <f:facet name="top">
+                                            <af:spacer width="10" height="0" id="s18"/>
+                                        </f:facet>
+                                    </af:panelStretchLayout>                  
+                                </td>
+                        </tr>
+                </table>
+                
             </af:panelGroupLayout>
+            </f:facet>
+            <f:facet name="MOVIL">
+                <af:panelGroupLayout id="pgl4">
+                        <div class="container-fluid" align="center" style="display:block;">
+                            <div class="col-12">                                    
+                                <af:panelGroupLayout id="pgl23Mov">
+                                            <noscript>
+                                            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZQXB5N"
+                                                    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+                                            </noscript>
+                                                 <af:group id="regionRegistroMov">
+                                                    <af:region value="#{bindings.registroTF1.regionModel}" id="r1Mov"/>
+                                                </af:group>
+                                                
+                                            </af:panelGroupLayout>                                                      
+                            </div>
+                        </div>
+                    </af:panelGroupLayout>       
+            </f:facet>
+            </af:switcher>
+            <af:popup id="popUpBusy" contentDelivery="immediate">
+                                                    <af:dialog id="d2" type="none" title="Procesando información" closeIconVisible="false">
+                                                        <af:panelGroupLayout id="pgEspera" layout="vertical" halign="center">
+                                                            <af:image source="../imagenes/aplicacion/loading.gif" id="i7" shortDesc=" "/>
+                                                        </af:panelGroupLayout>
+                                                    </af:dialog>
+                                                </af:popup>
         </af:form>
     </af:document>
 </f:view>

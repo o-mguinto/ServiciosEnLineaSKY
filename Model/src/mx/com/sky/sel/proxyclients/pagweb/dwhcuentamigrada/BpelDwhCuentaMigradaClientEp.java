@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "bpel_dwh_cuenta_migrada_client_ep",
                   targetNamespace = "http://xmlns.oracle.com/PAGWEB_BAM/PAGWEB_BAM/BPEL_DWH_CUENTA_MIGRADA",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/PAGWEB_BAM/bpel_dwh_cuenta_migrada_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPAGWEB_BAM%2FPAGWEB_BAM%2FBPEL_DWH_CUENTA_MIGRADA%7Dbpel_dwh_cuenta_migrada_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/PAGWEB_BAM/bpel_dwh_cuenta_migrada_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPAGWEB_BAM%2FPAGWEB_BAM%2FBPEL_DWH_CUENTA_MIGRADA%7Dbpel_dwh_cuenta_migrada_client_ep")
 public class BpelDwhCuentaMigradaClientEp extends Service {
 
     private final static URL BPELDWHCUENTAMIGRADACLIENTEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class BpelDwhCuentaMigradaClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/PAGWEB_BAM/bpel_dwh_cuenta_migrada_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPAGWEB_BAM%2FPAGWEB_BAM%2FBPEL_DWH_CUENTA_MIGRADA%7Dbpel_dwh_cuenta_migrada_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/PAGWEB_BAM/bpel_dwh_cuenta_migrada_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPAGWEB_BAM%2FPAGWEB_BAM%2FBPEL_DWH_CUENTA_MIGRADA%7Dbpel_dwh_cuenta_migrada_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

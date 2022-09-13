@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/BatchAltaSolicitudesDeServicioWeb" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ssbatch="http://xmlns.oracle.com/BatchAltaSolicitudesDeServicioWeb">
+  <element name="BatchAltaSolicitudesDeServicioWebProcessRequest">
+    <complexType>
+      <sequence>
+        <element name="NombreCorporativo" type="string"/>
+        <element name="ListaLlaves" type="ssbatch:ListaLlaves"/>
+        <element name="DetallesSolicitudDeServicio" type="ssbatch:DetallesSolicitudDeServicio"/>
+        <element name="SISTEMA" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="BatchAltaSolicitudesDeServicioWebProcessResponse">
+    <complexType>
+      <sequence>
+        <element name="resultado" type="string"/>
+        <element name="resultadodesc" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <complexType name="DetallesSolicitudDeServicio">
+    <sequence>
+      <element name="Area" type="string"/>
+      <element name="SubArea" type="string"/>
+      <element name="Descripcion" type="string"/>
+      <element name="MailConfirmacion" type="string"/>
+      <element name="Pais" type="string"/>
+      <element name="TipoCuenta" type="string"/>
+      <element name="NombreSuscriptor" type="string"/>
+      <element name="DatosFiscales" type="ssbatch:DatosFiscales"/>
+      <element name="Direccion" type="ssbatch:Direccion"/>
+      <element name="InfoPPE" type="ssbatch:InfoPPE"/>
+    </sequence>
+  </complexType>
+  <complexType name="ListaLlaves">
+    <sequence>
+      <element name="Llave" type="ssbatch:Llave" maxOccurs="unbounded" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="Llave">
+    <sequence>
+      <element name="NumeroLlave" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="DatosFiscales">
+    <sequence>
+      <element name="RFC" type="string"/>
+      <element name="TipoPersona" type="string"/>
+      <element name="RegimenFiscal" type="string"/>
+      <element name="UsoCfdi" type="string"/>
+      <element name="RazonSocial" type="string"/>
+      <element name="Compania" type="string"/>
+      <element name="TipoFactura" type="string"/>
+      <element name="MetodoEnvio" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="Direccion">
+    <sequence>
+      <element name="Estado" type="string"/>
+      <element name="Poblacion" type="string"/>
+      <element name="DelMun" type="string"/>
+      <element name="Colonia" type="string"/>
+      <element name="CP" type="string"/>
+      <element name="Calle" type="string"/>
+      <element name="NoExt" type="string"/>
+      <element name="NoInt" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="InfoPPE">
+    <sequence>
+      <element name="NombreDelEvento" type="string"/>
+      <element name="TipoEvento" type="string"/>
+      <element name="Costo" type="string"/>
+      <element name="MailFechaInicio" type="string"/>
+      <element name="MailFechaTermino" type="string"/>
+      <element name="CanalDisplay" type="string"/>
+      <element name="Canal" type="string"/>
+      <element name="IDEvento" type="string"/>
+      <element name="FechaExpiracion" type="string"/>
+      <element name="FechaInicio" type="string"/>
+      <element name="Duracion" type="string"/>
+      <element name="ZonaHoraria" type="string"/>
+      <element name="TokenOverride" type="string"/>
+      <element name="TokenValue" type="string"/>
+      <element name="ppvGenreId" type="string"/>
+      <element name="providerEventId" type="string"/>
+      <element name="orderType" type="string"/>
+      <element name="SKYTrackingId" type="string"/>
+    </sequence>
+  </complexType>
+</schema>

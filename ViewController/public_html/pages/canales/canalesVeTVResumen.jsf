@@ -50,12 +50,12 @@
                                                               readOnly="true"
                                                               styleClass="output-internal"
                                                               contentStyle="font-weight: bolder;"/>
-                                                <af:inputText label="Número de referencia del canal"
+                                                <!--af:inputText label="Número de referencia del canal"
                                                               id="it4"
                                                               value="#{pageFlowScope.PFCanalesContrata.numeroSolicitud}"
                                                               readOnly="true"
                                                               styleClass="output-internal"
-                                                              contentStyle="font-weight: bolder;"/>
+                                                              contentStyle="font-weight: bolder;"/-->
                                                 <af:inputText label="Título"
                                                               id="inputText1"
                                                               readOnly="true"

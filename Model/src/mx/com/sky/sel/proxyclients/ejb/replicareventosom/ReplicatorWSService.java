@@ -20,7 +20,7 @@ import javax.xml.ws.WebServiceFeature;
  */
 @WebServiceClient(name = "ReplicatorWSService", targetNamespace = "http://ws.eventos.servicios.sky.com.mx/",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/ReplicarEventosOM/ReplicatorWSPort?WSDL#%7Bhttp%3A%2F%2Fws.eventos.servicios.sky.com.mx%2F%7DReplicatorWSService")
+                  "https://qaselsoa.sky.com.mx:443/ReplicarEventosOM/ReplicatorWSPort?WSDL#%7Bhttp%3A%2F%2Fws.eventos.servicios.sky.com.mx%2F%7DReplicatorWSService")
 public class ReplicatorWSService extends Service {
 
     private final static URL REPLICATORWSSERVICE_WSDL_LOCATION;
@@ -33,7 +33,7 @@ public class ReplicatorWSService extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/ReplicarEventosOM/ReplicatorWSPort?WSDL#%7Bhttp%3A%2F%2Fws.eventos.servicios.sky.com.mx%2F%7DReplicatorWSService");
+                new URL("https://qaselsoa.sky.com.mx:443/ReplicarEventosOM/ReplicatorWSPort?WSDL#%7Bhttp%3A%2F%2Fws.eventos.servicios.sky.com.mx%2F%7DReplicatorWSService");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

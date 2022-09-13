@@ -62,6 +62,13 @@
       <to-value>#{Menu.taskFlowId}</to-value>
     </input-page-parameter>
   </view>
+  <view id="selPPE">
+    <page>/WEB-INF/submenus/pagosPorEvento/selPPE.jsf</page>
+    <input-page-parameter id="__18">
+      <from-value>/WEB-INF/premiereTF.xml#premiereTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
   <control-flow-rule id="__1">
     <from-activity-id>*</from-activity-id>
     <control-flow-case id="__2">
@@ -70,7 +77,7 @@
     </control-flow-case>
     <control-flow-case id="__10">
       <from-outcome>irPeliculasPremiere</from-outcome>
-      <to-activity-id>peliculasPremiere</to-activity-id>
+      <to-activity-id>selPPE</to-activity-id>
     </control-flow-case>
     <control-flow-case id="__11">
       <from-outcome>irHistoricoEventosC</from-outcome>
@@ -96,6 +103,10 @@
       <from-outcome>irAdultosAllDay_3</from-outcome>
       <to-activity-id>Adultos</to-activity-id>
     </control-flow-case>
+    <control-flow-case id="__16">
+      <from-outcome>irPeliculasP</from-outcome>
+      <to-activity-id>peliculasPremiere</to-activity-id>
+    </control-flow-case>
   </control-flow-rule>
   <control-flow-rule id="__3">
     <from-activity-id>routerPPE</from-activity-id>
@@ -105,7 +116,7 @@
     </control-flow-case>
     <control-flow-case id="__6">
       <from-outcome>irPeliculasPremiere</from-outcome>
-      <to-activity-id>peliculasPremiere</to-activity-id>
+      <to-activity-id>selPPE</to-activity-id>
     </control-flow-case>
     <control-flow-case id="__8">
       <from-outcome>irHistoricoEventosC</from-outcome>

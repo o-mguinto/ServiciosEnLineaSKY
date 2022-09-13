@@ -22,7 +22,7 @@ import javax.xml.ws.WebServiceFeature;
                   targetNamespace =
                   "http://xmlns.oracle.com/SKY_CrecimientosEquipos/SKY_Crecimientos/VentaCrecimientos_TYA",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/CrecimientosEquipos/ventacrecimientos_tya_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_CrecimientosEquipos%2FSKY_Crecimientos%2FVentaCrecimientos_TYA%7Dventacrecimientos_tya_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/CrecimientosEquipos/ventacrecimientos_tya_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_CrecimientosEquipos%2FSKY_Crecimientos%2FVentaCrecimientos_TYA%7Dventacrecimientos_tya_client_ep")
 public class VentacrecimientosTyaClientEp extends Service {
 
     private final static URL VENTACRECIMIENTOSTYACLIENTEP_WSDL_LOCATION;
@@ -36,7 +36,7 @@ public class VentacrecimientosTyaClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/CrecimientosEquipos/ventacrecimientos_tya_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_CrecimientosEquipos%2FSKY_Crecimientos%2FVentaCrecimientos_TYA%7Dventacrecimientos_tya_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/CrecimientosEquipos/ventacrecimientos_tya_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_CrecimientosEquipos%2FSKY_Crecimientos%2FVentaCrecimientos_TYA%7Dventacrecimientos_tya_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

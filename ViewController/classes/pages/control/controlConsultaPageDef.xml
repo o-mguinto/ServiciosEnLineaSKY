@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="controlConsultaPageDef"
+                Package="pages.control">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+        <methodIterator Binds="consultarRegiones.result"
+                    DataControl="DCControlRemoto" RangeSize="10"
+                    BeanClass="mx.com.sky.sel.services.beans.controlremoto.Region"
+                    id="consultarRegionesIter"/>
+    <methodIterator Binds="consultarDirecciones.result"
+                    DataControl="DCControlRemoto" RangeSize="10"
+                    BeanClass="mx.com.sky.sel.services.beans.controlremoto.DireccionCR"
+                    id="consultarDireccionesIter"/>
+  </executables>
+  <bindings>
+ <methodAction id="consultarRegiones" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="consultarRegiones"
+                  IsViewObjectMethod="false" DataControl="DCControlRemoto"
+                  InstanceName="DCControlRemoto.dataProvider"
+                  ReturnName="data.DCControlRemoto.methodResults.consultarRegiones_DCControlRemoto_dataProvider_consultarRegiones_result">
+      <NamedData NDName="organizationId"
+                 NDValue="#{sesion.suscriptor.organizacion}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <table IterBinding="consultarRegionesIter" id="regiones">
+      <AttrNames>
+        <Item Value="idRegion"/>
+      </AttrNames>
+    </table>
+    <attributeValues IterBinding="consultarRegionesIter" id="idRegion">
+      <AttrNames>
+        <Item Value="idRegion"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="consultarDirecciones" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="consultarDirecciones"
+                  IsViewObjectMethod="false" DataControl="DCControlRemoto"
+                  InstanceName="DCControlRemoto.dataProvider"
+                  ReturnName="data.DCControlRemoto.methodResults.consultarDirecciones_DCControlRemoto_dataProvider_consultarDirecciones_result">
+      <NamedData NDName="regionID" NDValue="#{bindings.idRegion.inputValue}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <table IterBinding="consultarDireccionesIter" id="direcciones">
+      <AttrNames>
+        <Item Value="idDireccion"/>
+        <Item Value="codigoPostal"/>
+        <Item Value="direccion"/>
+        <Item Value="fax"/>
+        <Item Value="horario"/>
+        <Item Value="idRegion"/>
+        <Item Value="nombre"/>
+        <Item Value="notas"/>
+        <Item Value="poblacion"/>
+        <Item Value="telefono"/>
+        <Item Value="tipo"/>
+        <Item Value="zona"/>
+      </AttrNames>
+    </table>
+    <attributeValues IterBinding="consultarDireccionesIter" id="idDireccion">
+      <AttrNames>
+        <Item Value="idDireccion"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="consultarDireccionesIter" id="idRegion1">
+      <AttrNames>
+        <Item Value="idRegion"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="consultarDireccionesIter" id="nombre">
+      <AttrNames>
+        <Item Value="nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="consultarDireccionesIter" id="codigoPostal">
+      <AttrNames>
+        <Item Value="codigoPostal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="consultarDireccionesIter" id="direccion">
+      <AttrNames>
+        <Item Value="direccion"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="consultarDireccionesIter" id="tipo">
+      <AttrNames>
+        <Item Value="tipo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="consultarDireccionesIter" id="telefono">
+      <AttrNames>
+        <Item Value="telefono"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="consultarDireccionesIter" id="fax">
+      <AttrNames>
+        <Item Value="fax"/>
+      </AttrNames>
+    </attributeValues>  
+  
+  </bindings>
+  
+</pageDefinition>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:tr="http://myfaces.apache.org/trinidad">
+                xmlns:tr="http://myfaces.apache.org/trinidad" xmlns:f="http://java.sun.com/jsf/core">
     <af:group id="g1">
         <c:set var="selSKYBundle" value="#{adfBundle['mx.com.sky.sel.resources.pantallas']}"/>
         
@@ -31,235 +31,285 @@
             </af:resource>
         
         <af:resource type="css">
-        .label-registro label{
-            color:rgba(247,0,157,0.63);font-size:large;font-weight: normal;
-        }
-        .input-registro input{
-            border-bottom: 1px solid rgba(247, 0, 157, 0.63) !important;
-            background-color: white;
-            border: 1px solid #fafdff;
-            color: Black;
-            font-weight: bold;
-            font-size: large;
+        
+        .x25, .input-registro input{
+            width: 175px; 
+            height: 20px;
         }
             div#j_id7\:\:popup-container .x1e5 {
                 color: black;
             }
+            
+            #headerSky{
+                    width: 50%;
+            }
+            
+            .btn_consultar{
+                    width: 50%;
+            }
+            
+            .btn_continuar{
+                    width: 50%;
+            }
+            
+            .btn_captcha{
+                  width: 50%;  
+            }
+            
+            .x51{
+                padding-top: 0px;
+            }
+            
+            .label-registro label{
+                    width:13px; 
+                    height:6px; 
+                    font-style:normal; 
+                    font-weight:200; 
+                    font-size:8px; 
+                    line-height:12px;
+                }
+                
+            .term_link{
+                    font-size:small; 
+                }
+            
+            .term_text{
+                    font-size: small;
+                }
+                
+            @media screen and (min-width: 500px){
+                #ol1{
+                        font-size:18px; 
+                    }
+                
+                #headerSky{
+                    width: 100%;
+                }
+                    
+                .x25, .input-registro input{
+                    width: 350px; 
+                    height: 20px; 
+                    left: 861px; 
+                    top: 404px; 
+                    background: #FFFFFF; 
+                    border: 1px solid #E0E3E6; 
+                    border-radius: 8px; 
+                    box-sizing: border-box; 
+                    flex-direction: row; 
+                    padding: 12px;
+                }
+                
+                .label-registro label{
+                    width:52px; 
+                    height:24px; 
+                    font-style:normal; 
+                    font-weight:400; 
+                    font-size:16px; 
+                    line-height:24px; 
+                    color: #7B7B7B; 
+                    flex: none;
+                }
+                
+                .btn_consultar{
+                    width: 100%;
+                }
+                
+                .btn_continuar{
+                    width: 50%;
+                }
+                
+                .btn_captcha{
+                  width: 100%;  
+                }
+                
+                .term_link{
+                    font-size:medium; 
+                    color:#3C00FF; 
+                    border-bottom: 1px solid rgb(0,0,0);
+                }
+                .term_text{
+                    font-size: medium; 
+                    color: black; 
+                    text-align:justify
+                }
+            }
         </af:resource>
-        <div class="col-11 col-tb-8 col-sm-8" id="div-panel-form-registro">
-            <div class="row" style="display: flex;     align-items: center;     justify-content: center;     flex-direction: column;">
-                <div class="col-9 col-tb-8 col-sm-8">
-                            <!--Para cada fila una div-->
-                            <div class="content-internal">
-                            <div class="row">
-                                <p class="bottom">
-                                    <!--h:outputText styleClass="title"
-                                                  value="Datos personales:"
-                                                  id="ot11"/-->
-                                    <h:outputText value="¡Bienvenido!" id="PCTextHeader"
-                                        style="font-size: xx-large; color: rgba(247, 0, 157, 0.63);z-index: 2;font-family: Arial;"/>
-                                </p>
-                                <p class="top buttom">
-                                    <h:outputText value="Ingrese su correo electrónico que será el usuario de su cuenta de  " id="ot1"
-                                                  style="color: black;     z-index: 2;     font-family: Arial;     font-size: large;"/>
-                                        <img src="/sky/imagenes/pc/dos/logo_sky.png" id="logo_sky"
-                                             style="width: 40px;     z-index: 1;"/>
-                                        <h:outputText value="servicios  en línea. " id="ot2"
-                                                      style="font-weight: bold; color: black;z-index: 2;font-family: Arial;font-size: large;"/>
-                                </p>
-                                <af:panelGroupLayout id="pgl1"
-                                                     inlineStyle="display: flex;     align-items: center;     justify-content: center;     flex-direction: column;">
+              
+        <af:panelGroupLayout id="pgl3" 
+                             layout="vertical"
+                             inlineStyle="display: flex;     align-items: center;     justify-content: center;     flex-direction: column;">
+                                    <af:image source="/imagenes/pc/cinco/header.png" id="headerSky" 
+                                              shortDesc="SKY"
+                                              styleClass="AFStretchWidth"></af:image>
+                                    <af:outputLabel value="Mi SKY" 
+                                                    id="ol1"
+                                                    inlineStyle="font-family: 'Sky Text'; font-size:18px; color:Black; font-weight:bold;"/>
+                                </af:panelGroupLayout>
+
+                                <af:panelFormLayout id="pfl1"
+                                                    inlineStyle="display: flex;  align-items: center; justify-content: flex-start;     flex-direction: column;">
+                                
                                         <!--style="display: flex;     align-items: center;     justify-content: center;     flex-direction: column;"-->
                                         <div class="col-10">
-                                            <div class="row top">
-                                                <af:outputLabel id="olEmail" value="Correo electrónico: " for="itEmail"
-                                                                styleClass="label-registro label-internal"></af:outputLabel>
-                                                <af:inputText label="" id="itEmail" required="true"
-                                                            value="#{pageFlowScope.PFNuevoUsuario.usuario.email}"
-                                                            styleClass="input-registro input-internal">
-                                                    <af:validateRegExp messageDetailNoMatch="#{selSKYBundle['preReg.msgCorreo.value']}"
-                                                                           pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
-                                                </af:inputText>
-                                            </div>
-                                            <div class="row top">
-                                                <af:outputLabel id="olNoMovil" for="itNoMovil" value="Número de teléfono móvil:"
-                                                            styleClass="label-registro label-internal"></af:outputLabel>
-                                                <af:inputText label="" id="itNoMovil" required="true" maximumLength="12"
+                                            
+                                            <h:outputLabel value="Ingrese su correo electrónico que será el usuario de su cuenta de servicios  en línea. " 
+                                                  id="ot1"
+                                                  styleClass="label-registro"/>
+                                                  
+                                            <af:outputLabel id="olEmail" 
+                                                            value="Correo electrónico: " 
+                                                            for="itEmail"
+                                                            styleClass="label-registro"/>
+                                            <af:inputText label="" 
+                                                          id="itEmail" 
+                                                          value="#{pageFlowScope.PFNuevoUsuario.usuario.email}"
+                                                          styleClass="input-registro"
+                                                          inlineStyle="font-family: 'Sky Text'; font-size:18px; color:Black; font-weight:bold;">
+                                                <af:validateRegExp messageDetailNoMatch="#{selSKYBundle['preReg.msgCorreo.value']}"
+                                                                   pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                                            </af:inputText>
+                                            <af:outputLabel id="olNoMovil" 
+                                                            for="itNoMovil" 
+                                                            value="Número de teléfono móvil:"
+                                                            inlineStyle="font-family: 'Sky Text'; font-size:18px; color:Black; font-weight:bold;"
+                                                            styleClass="label-registro"/>
+                                                <af:inputText label="" 
+                                                              id="itNoMovil" 
+                                                              maximumLength="12"
                                                               value="#{pageFlowScope.PFNuevoUsuario.usuario.telefonoMovil}"
-                                                              styleClass="input-registro input-internal" >
+                                                              inlineStyle="font-family: 'Sky Text'; font-size:18px; color:Black; font-weight:bold;"
+                                                              styleClass="input-registro">
+                                                <af:validateRegExp messageDetailNoMatch="#{selSKYBundle['preReg.msgNumTel.value']}"
+                                                                   pattern="^[0-9]{7,12}$"/>
+                                            </af:inputText>
+                                           
+                                           <af:outputLabel id="olNoTelBT" 
+                                                            for="itNoTelBT" 
+                                                            value="Número de teléfono Blue Telecomm Cel:"
+                                                            styleClass="label-registro"></af:outputLabel>
+                                            
+                                            <af:panelGroupLayout id="pgl1" 
+                                                                 layout="horizontal">
+                                                                 
+                                                <af:inputText label="" 
+                                                              id="itNoTelBT" 
+                                                              maximumLength="12" 
+                                                              value="#{pageFlowScope.PFNuevoUsuario.telefonoBTCEL}"
+                                                              styleClass="input-registro"
+                                                              inlineStyle="font-family: 'Sky Text'; font-size:18px; color:Black; font-weight:bold;"
+                                                              autoSubmit="true">
                                                     <af:validateRegExp messageDetailNoMatch="#{selSKYBundle['preReg.msgNumTel.value']}"
                                                                        pattern="^[0-9]{7,12}$"/>
                                                 </af:inputText>
-                                            </div>
-                                            <div class="row top">
-                                                <h:outputText value="Si cuentas con Blue Telecomm Cel puedes consultar tu cuenta con tu número" id="ot3"
-                                                            style="font-size:small;color: black;z-index: 2;"/>
-                                            </div>
-                                            <div class="row top">
-                                                <af:outputLabel id="olNoTelBT" for="itNoTelBT" value="Número de teléfono Blue Telecomm Cel:"
-                                                                styleClass="label-registro label-internal"></af:outputLabel>
-                                                <af:inputText label="" id="itNoTelBT" maximumLength="12" 
-                                                                  value="#{pageFlowScope.PFNuevoUsuario.telefonoBTCEL}"
-                                                                  styleClass="input-registro input-internal"
-                                                                  autoSubmit="true">
-                                                    <af:validateRegExp messageDetailNoMatch="#{selSKYBundle['preReg.msgNumTel.value']}"
-                                                                           pattern="^[0-9]{7,12}$"/>
-                                                </af:inputText>
-                                            </div>
-                                            <div class="row top autocenter">
-                                                <af:link id="cl4" inlineStyle="border-color: transparent;" immediate="true" partialSubmit="true"
-                                                                    actionListener="#{pageFlowScope.PFNuevoUsuario.consultarCuenta}">
-                                                    <img src="/sky/imagenes/pc/dos/boton_consultar_cuenta.png"
-                                                             style="border-color: transparent;"/>
-                                                    <af:clientListener method="enforcePreventUserInput" type="action"/>
+                                                <af:spacer width="10" height="10" id="s1"/>
+                                                <af:link id="cl4" 
+                                                         inlineStyle="border-color: transparent;" 
+                                                         immediate="true" 
+                                                         partialSubmit="true"
+                                                         actionListener="#{pageFlowScope.PFNuevoUsuario.consultarCuenta}">
+                                                    <img src="/sky/imagenes/pc/dos/btn_consultar_cuenta.png" class="btn_consultar"
+                                                         style="border-color: transparent;" alt="boton_consultar"/>
+                                                    <af:clientListener method="enforcePreventUserInput" 
+                                                                       type="action"/>
                                                 </af:link>
-                                            </div>
-                                            <div class="row top">
-                                                <h:outputText value="Ingrese su dato verificador (Número de cuenta)" id="ot7"
-                                                              style="font-weight: bold;color: black;z-index: 2;font-family: Arial;font-size: large;"/>
-                                            </div>
-                                            <div class="row top">
-                                                <af:outputLabel id="olNoCuentaSky" value="Número de cuenta:"
-                                                                styleClass="label-registro label-internal"></af:outputLabel>
-                                                <af:inputText label="*" id="itNoCuentaSky" maximumLength="12"
-                                                                  value="#{pageFlowScope.PFNuevoUsuario.usuario.cuentaSKY}"
-                                                                  styleClass="input-registro input-internal"
-                                                                  immediate="true" autoSubmit="true"
-                                                                  partialTriggers="cl4"/>
-                                            </div>
-                                            <div class="row top">
-                                                <div class="autocenter top">
-                                                    <af:link text="¿Cómo obtener su número de cuenta?" id="cl2"
-                                                         destination="https://skyvideo.custhelp.com/app/answers/detail/a_id/217"
-                                                         inlineStyle="font-weight: bold; border-bottom: 1px solid rgb(0,0,0);color: black;z-index: 2;font-family: Arial;font-size: large;"
-                                                         immediate="true" targetFrame="_blank">
-                                                    </af:link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                </af:panelGroupLayout>
-                                <af:panelGroupLayout id="pgl9">
-                                    <div class="row top autocenter">
-                                        <af:outputText value="Al presionar  " id="ot10"
-                                                        inlineStyle="font-weight:bold; font-size:16px; color:black;"/>
-                                                 
-                                        <af:outputText value="Continuar" id="ot4"
-                                                        inlineStyle="font-weight:bold; font-size:18px; color:black;"/>
-                                                 
-                                        <af:outputText value=" le enviaremos un e-mail a la dirección que nos proporcionó." id="ot5"
-                                                        inlineStyle="font-weight:bold; font-size:16px; color:black;"/>
-                                    </div>
-                                </af:panelGroupLayout>
-                                <af:panelGroupLayout id="pgl4" inlineStyle="height:auto;">
-                                    <div class="row"
-                                        style="background:  transparent url('/sky/imagenes/pc/dos/caja_azul.png') 0% 0% round;padding:2% 1%">
-                                        <div class="col-12" style="display: flex;     align-items: center;     justify-content: center;     flex-direction: row;">
-                                            <div class="col-2 col-sm-1 autocenter">
-                                                <img src="/sky/imagenes/pc/dos/icono_avion.png" id="icono_avion" alt="icono_avion"
-                                                 style="z-index: 2;width: 60%;height: auto;"/>    
-                                            </div>
-                                            <div class="col-10 col-sm-7">
-                                                <af:outputText value="En un lapso no mayor a 15 minutos recibirá un correo electrónico de " id="ot11"
-                                                           inlineStyle="font-weight:bold;font-family: Arial;font-size: large;"/>
-                                            <af:outputText value=" confirmación en la siguiente dirección: serviciosenlinea@sky.com.mx" id="ot8"
-                                                           inlineStyle="font-weight:bold;font-family: Arial;font-size: large;"/>
-                                            <af:outputText value="Si el correo no aparece en su bandeja de entrada, revise en la bandeja de correo "
-                                                           id="ot12" inlineStyle="font-weight:bold;font-family: Arial;font-size: large;"/>
-                                            <af:outputText value="no deseado / spam." id="ot14"
-                                                           inlineStyle="font-weight:bold;font-family: Arial;font-size: large;"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </af:panelGroupLayout>
-                                <af:panelGroupLayout id="pgl5">
-                                    <div class="row top">
-                                            <div class="col-1 col-sm-1">
-                                                <img src="/sky/imagenes/pc/dos/icono_reloj.png" id="icono_relojPC" alt="icono_relojPC"
-                                                        style="float:right;vertical-align: middle;"/>
-                                            </div>
-                                            <div class="col-10 col-sm-7 ln-h30" style="padding-left: 5px;">
-                                                <h:outputText value="Cuenta con 72 horas para confirmar su correo electrónico." id="ot15"
-                                                            style="color: black;font-size: medium;     font-weight: bold;"/>
-                                            </div>
-                                        </div>
-                                </af:panelGroupLayout>
-                                
-                                <af:panelGroupLayout id="pglRecaptcha" styleClass="submit"
-                                                     binding="#{pageFlowScope.PFNuevoUsuario.pglRecaptcha}">
-                                    <div class="row top">
-                                        <div class="col-9 col-sm-8 autocenter">
-                                            <af:image source="/captchaservlet" shortDesc="Captcha"
-                                                      id="i1" styleClass="img-captcha"/>
-                                        </div>
-                                        <div class="col-3 col-sm-8 autocenter " >
-                                            <af:commandLink id="cl3" inlineStyle="border-color: transparent;" 
-                                                                immediate="true" partialSubmit="true"
+                                            </af:panelGroupLayout>
+                                            
+                                            <af:outputLabel value="Ingrese su dato verificador (Número de cuenta)" 
+                                                            id="ot7"
+                                                            styleClass="label-registro"/>
+                                            <af:inputText label="" 
+                                                          id="itNoCuentaSky" 
+                                                          maximumLength="12"
+                                                          value="#{pageFlowScope.PFNuevoUsuario.usuario.cuentaSKY}"
+                                                          styleClass="input-registro"
+                                                          inlineStyle="font-family: 'Sky Text'; font-size:18px; color:Black; font-weight:bold;"
+                                                          immediate="true" 
+                                                          autoSubmit="true"
+                                                          partialTriggers="cl4">
+                                        <?audit suppress oracle.adf.faces.compnotlabelled?>
+                                    </af:inputText>
+                                    <af:panelGroupLayout id="pglRecaptcha" layout="vertical"
+                                                             styleClass="submit"
+                                                             >
+                    <af:panelGroupLayout id="pgl2" layout="horizontal">
+                                                <af:image source="/captchaservlet" 
+                                                          shortDesc="Captcha"
+                                                          id="i1" 
+                                                          styleClass="img-captcha"/>
+                                            <af:commandLink id="cl3" 
+                                                                inlineStyle="border-color: transparent;" 
+                                                                immediate="true" 
+                                                                partialSubmit="true"
                                                                 actionListener="#{pageFlowScope.PFNuevoUsuario.actualizarCaptcha}"
-                                                            styleClass="ln-h100">
-                                                <img src="/sky/imagenes/pc/dos/boton_otra_imagen_2.png"
-                                                    style="border-color: transparent;margin:1%;vertical-align: middle;"/>
-                                            </af:commandLink>
+                                                                styleClass="ln-h100">
+                                                    
+                                                        <img src="/sky/imagenes/pc/dos/btn_captcha.png" alt="boton_captcha" class="btn_captcha"
+                                                            style="border-color: transparent;margin:1%;vertical-align: middle;"/>                                                        
+                                                </af:commandLink>
+                                            </af:panelGroupLayout>
+                                            
+                                            <af:outputLabel id="olRecaptcha" 
+                                                                for="itRecaptcha" 
+                                                                value="Ingrese el texto que aparece en la imagen"
+                                                                styleClass="label-registro"/>
+                                                                 
+                                                <af:inputText value="#{requestScope.captchaValue}" 
+                                                              partialTriggers="cl3"
+                                                              label=""
+                                                              id="itRecaptcha"
+                                                              inlineStyle="width: 50%; font-family: 'Sky Text'; font-size:18px; color:Black; font-weight:bold;"/>
+                                            </af:panelGroupLayout>
+                                
+                                    <af:panelGroupLayout id="pgl8" >
+                                        <div class="row top autocenter">
+                                            <div class="col-1 col-sm-2">
+                                                <af:selectBooleanCheckbox id="sbc1" 
+                                                                          autoSubmit="true"
+                                                                          value="#{pageFlowScope.PFNuevoUsuario.aceptaTC}">
+                                                </af:selectBooleanCheckbox>
+                                            </div>
+                                        <af:spacer width="10" height="10" id="s4"/>
+                                            <div class="col-10 col-sm-6" style="text-align: left;">
+                                                    <af:outputText value="He leído y acepto los términos de " id="ot16"
+                                                                   styleClass="term_text"/>
+                                                     
+                                                    <af:goLink id="gl3" styleClass="term_link"
+                                                               targetFrame="_blank"
+                                                               destination="http://sky.com.mx/aviso-de-privacidad.html" text="aviso de privacidad"
+                                                               />
+                                                     
+                                                    <af:outputText value=" y del " 
+                                                                   id="ot17"
+                                                                   styleClass="term_text"/>
+                                                     
+                                                    <af:goLink id="gl2" styleClass="term_link"
+                                                               targetFrame="_blank"
+                                                               destination="http://sky.com.mx/aviso-de-privacidad.html#convenio"
+                                                               text="convenio de uso"
+                                                               />
+                                                     
+                                                    <af:outputText value=" para continuar." 
+                                                                   id="ot22"
+                                                                   styleClass="term_text"/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row top autocenter">
-                                        <af:outputLabel id="olRecaptcha" for="itRecaptcha" value="Ingrese el texto que aparece en la imagen"
-                                                        styleClass="label-registro label-internal"></af:outputLabel>
-                                        <af:inputText value="#{requestScope.captchaValue}" partialTriggers="cl3"
-                                                    label=""
-                                                    id="itRecaptcha"
-                                                    styleClass="input-registro input-internal autocenter"
-                                                    required="true" inlineStyle="width: 50%"/>
-                                    </div>
-                                </af:panelGroupLayout>
-                                <af:panelGroupLayout id="pgl8" >
-                                    <div class="row top autocenter">
-                                        <div class="col-1 col-sm-2">
-                                            <af:selectBooleanCheckbox id="sbc1" autoSubmit="true"
-                                                                    value="#{pageFlowScope.PFNuevoUsuario.aceptaTC}"/>
-                                        </div>
-                                        <div class="col-10 col-sm-6" style="text-align: left;">
-                                                <af:outputText value="He leído y acepto los términos de " id="ot16"
-                                                               inlineStyle="font-size: medium; color: black; text-align:justify"/>
-                                                 
-                                                <af:goLink id="gl3" targetFrame="_blank"
-                                                           destination="http://sky.com.mx/aviso-de-privacidad.html" text="aviso de privacidad"
-                                                           inlineStyle="font-size:medium; color:Black; border-bottom: 1px solid rgb(0,0,0);"/>
-                                                 
-                                                <af:outputText value=" y del " id="ot17"
-                                                               inlineStyle="font-size: medium; color: black; text-align:justify"/>
-                                                 
-                                                <af:goLink id="gl2" targetFrame="_blank"
-                                                           destination="http://sky.com.mx/aviso-de-privacidad.html#convenio"
-                                                           text="convenio de uso"
-                                                           inlineStyle="font-size:medium; color:Black; border-bottom: 1px solid rgb(0,0,0);"/>
-                                                 
-                                                <af:outputText value=" para continuar." id="ot22"
-                                                               inlineStyle="font-size: medium; color: black; text-align:justify"/>
-                                        </div>
-                                    </div>
-                                </af:panelGroupLayout>
-                                <af:panelGroupLayout id="pgl7">
-                                    <div class="row autocenter">
-                                        <div class="col-6 col-sm-8 top">
-                                            <img src="/sky/imagenes/pc/dos/dispositivos.png"
-                                                     alt="dispositivos" style="width: 80%"/>
-                                        </div>
-                                        <div class="col-6 col-sm-8 top">
-                                            <af:commandLink id="cl1" inlineStyle="border-color: transparent; width:80%;"
-                                                                action="#{pageFlowScope.PFNuevoUsuario.crearUsuario}">
-                                                <img src="/sky/imagenes/pc/dos/boton_continuar.png"
-                                                        style="border-color: transparent;"
-                                                         alt="boton_continuar" />
-                                                <af:clientListener method="enforcePreventUserInput" type="action"/>
-                                            </af:commandLink>
-                                        </div>
-                                    </div>
-                                </af:panelGroupLayout>
-                            </div>
-                        </div>
-                </div>
-            </div>
-        </div>      
+                                    </af:panelGroupLayout>
+                                    <af:spacer width="10" height="20" id="s2"/>
+                                    <af:panelGroupLayout id="pgl7"
+                                                      inlineStyle="display: flex;     align-items: center;     justify-content: center;     flex-direction: column;">
+                                        <af:commandLink id="cl1" 
+                                                        inlineStyle="border-color: transparent; width:80%;"
+                                                        action="#{pageFlowScope.PFNuevoUsuario.crearUsuario}">
+                                            <img src="/sky/imagenes/pc/dos/btn_continuar.png"
+                                                 style="border-color: transparent;"
+                                                 alt="boton_continuar" class="btn_continuar"/>
+                                            <af:clientListener method="enforcePreventUserInput" 
+                                                               type="action"/>
+                                        </af:commandLink>
+                                    </af:panelGroupLayout>    
+                                </div>
+                                
+                                </af:panelFormLayout>
         <af:group id="pt_g3">
             <af:popup id="popUpBusy" contentDelivery="immediate"
                       clientComponent="true">

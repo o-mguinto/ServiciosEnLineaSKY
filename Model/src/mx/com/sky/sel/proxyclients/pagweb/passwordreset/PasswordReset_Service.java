@@ -20,7 +20,7 @@ import javax.xml.ws.WebServiceFeature;
  */
 @WebServiceClient(name = "PasswordReset", targetNamespace = "http://xmlns.oracle.com/PasswordReset",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/PasswordReset/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPasswordReset%7DPasswordReset")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/PasswordReset/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPasswordReset%7DPasswordReset")
 public class PasswordReset_Service extends Service {
 
     private final static URL PASSWORDRESET_WSDL_LOCATION;
@@ -33,7 +33,7 @@ public class PasswordReset_Service extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/PasswordReset/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPasswordReset%7DPasswordReset");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/PasswordReset/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPasswordReset%7DPasswordReset");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

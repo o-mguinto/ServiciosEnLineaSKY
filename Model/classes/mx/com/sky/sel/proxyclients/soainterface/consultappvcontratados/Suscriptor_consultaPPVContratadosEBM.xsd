@@ -1,0 +1,28 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:consultaPPVContratados="http://www.sky.com.mx/EnterpriseObjects/SOA/Suscriptor_consultaPPVContratadosEBM"
+     xmlns:consultaPPVContratadosEBO="http://www.sky.com.mx/soasky" xmlns:Meta="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1"
+     targetNamespace="http://www.sky.com.mx/EnterpriseObjects/SOA/Suscriptor_consultaPPVContratadosEBM"
+     elementFormDefault="qualified">
+    <xsd:import namespace="http://www.sky.com.mx/soasky" schemaLocation="Suscriptor_consultaPPVContratadosEBO.xsd"/>
+    <xsd:import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" schemaLocation="Meta.xsd"/>
+    <xsd:element name="Suscriptor_consultaPPVContratadosEBMRequest" type="consultaPPVContratados:Suscriptor_consultaPPVContratadosEBMRequestTYPE"/>
+    <xsd:element name="Suscriptor_consultaPPVContratadosEBMResponse" type="consultaPPVContratados:Suscriptor_consultaPPVContratadosEBMResponseTYPE_Salida"/>
+    <xsd:element name="Suscriptor_consultaPPVContratadosEBMResponseFiltro" type="consultaPPVContratados:Suscriptor_consultaPPVContratadosEBMResponseTYPE_SalidaFiltro"/>
+    <xsd:complexType name="Suscriptor_consultaPPVContratadosEBMRequestTYPE">
+        <xsd:sequence>
+            <xsd:element ref="Meta:EBMHeaderRequest"/>
+            <xsd:element ref="consultaPPVContratadosEBO:Suscriptor_consultaPPVContratados_Entrada"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Suscriptor_consultaPPVContratadosEBMResponseTYPE_Salida">
+        <xsd:sequence>
+            <xsd:element ref="Meta:EBMHeaderResponse"/>
+            <xsd:element ref="consultaPPVContratadosEBO:Suscriptor_consultaPPVContratados_Salida"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Suscriptor_consultaPPVContratadosEBMResponseTYPE_SalidaFiltro">
+        <xsd:sequence>
+            <xsd:element ref="Meta:EBMHeaderResponse"/>
+            <xsd:element ref="consultaPPVContratadosEBO:Suscriptor_consultaPPVContratados_SalidaFiltros"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

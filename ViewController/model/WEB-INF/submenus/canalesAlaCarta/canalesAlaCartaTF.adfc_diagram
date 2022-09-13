@@ -82,7 +82,7 @@
       <property
          name="fromsrcid">__2</property>
       <property
-         name="sdm:polyPoints">R62,155.43896,326.0948,525.24854,458.49417,L50</property>
+         name="sdm:polyPoints">R58,153.6875,322.5918,527.0,458.49414,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -92,7 +92,7 @@
       <property
          name="fromOutcome">irRouterCanales</property>
       <property
-         name="sdm:polyPoints">B29,205.49707,115.29736,112.6875,259.84036,T50</property>
+         name="sdm:polyPoints">B36,209.0,113.5459,112.6875,261.5918,T50</property>
    </ControlFlowCase>
    <View
       id="View16">
@@ -117,7 +117,7 @@
       <property
          name="fromOutcome">irCacDeportes</property>
       <property
-         name="sdm:polyPoints">R50,156.9065,315.59183,548.24854,274.79736,L56</property>
+         name="sdm:polyPoints">R50,154.68593,315.5918,550.0,273.0459,L54</property>
    </ControlFlowCase>
    <View
       id="View18">
@@ -156,7 +156,7 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">R58,253.75148,76.29736,548.24854,264.29443,L44</property>
+         name="sdm:polyPoints">R55,252.0,74.5459,550.0,266.0459,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -184,7 +184,7 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">R42,255.77562,65.79442,525.24854,116.99558,L44</property>
+         name="sdm:polyPoints">R45,253.35068,67.5459,527.0,118.74707,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -223,7 +223,7 @@
       <property
          name="fromOutcome">irCacStreaming</property>
       <property
-         name="sdm:polyPoints">B50,112.6875,371.3433,268.27295,500.74707,L50</property>
+         name="sdm:polyPoints">B50,112.6875,369.5918,270.0244,500.74707,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -233,6 +233,6 @@
       <property
          name="fromOutcome">smenu_canalesAlaCartaStreaming</property>
       <property
-         name="sdm:polyPoints">B50,216.00002,118.48294,311.0244,444.99564,T50</property>
+         name="sdm:polyPoints">B50,216.0,115.662025,311.0244,446.74707,T50</property>
    </ControlFlowCase>
 </SDM>

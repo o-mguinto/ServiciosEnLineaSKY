@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ConsultaInformacionFiscalVigente",
                   targetNamespace = "http://xmlns.oracle.com/ConsultaInformacionFiscalVigente",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaInformacionFiscalVigente/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaInformacionFiscalVigente%7DConsultaInformacionFiscalVigente")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaInformacionFiscalVigente/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaInformacionFiscalVigente%7DConsultaInformacionFiscalVigente")
 public class ConsultaInformacionFiscalVigente_Service extends Service {
 
     private final static URL CONSULTAINFORMACIONFISCALVIGENTE_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class ConsultaInformacionFiscalVigente_Service extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaInformacionFiscalVigente/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaInformacionFiscalVigente%7DConsultaInformacionFiscalVigente");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaInformacionFiscalVigente/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaInformacionFiscalVigente%7DConsultaInformacionFiscalVigente");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

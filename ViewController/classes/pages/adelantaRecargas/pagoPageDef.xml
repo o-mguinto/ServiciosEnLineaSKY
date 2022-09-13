@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="pagoPageDef"
+                Package="pages.adelantaRecargas">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="obtenerConsultaPagos.result" DataControl="DCPagos" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.proxyclients.pagwebconsultas.consultapagos.types.Pago"
+                    id="obtenerConsultaPagosIterator" Refresh="ifNeeded"/>
+    <methodIterator Binds="consultaSaldo.result" DataControl="DCSaldo"
+                    RangeSize="10"
+                    BeanClass="mx.com.sky.sel.services.beans.saldos.Saldo"
+                    id="consultaSaldoIter" Refresh="ifNeeded"/>
+    <methodIterator id="consultarTarjetasIterator"
+                    Binds="consultarTarjetasPs.result" DataControl="DCTarjetas"
+                    RangeSize="25" Refresh="ifNeeded"
+                    BeanClass="mx.com.sky.sel.services.beans.pagos.tarjetas.Tarjeta"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerConsultaPagos" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerConsultaPagos" IsViewObjectMethod="false" DataControl="DCPagos"
+                  InstanceName="bindings.obtenerConsultaPagos.dataControl.dataProvider"
+                  ReturnName="data.DCPagos.methodResults.obtenerConsultaPagos_obtenerConsultaPagos_dataControl_dataProvider_obtenerConsultaPagos_result">
+      <NamedData NDName="rowID" NDValue="#{sesion.suscriptor.rowId}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="obtenerConsultaPagosIterator" id="Pago">
+      <nodeDefinition DefName="mx.com.sky.sel.proxyclients.pagwebconsultas.consultapagos.types.Pago" Name="result0">
+        <AttrNames>
+          <Item Value="noTarjeta"/>
+          <Item Value="tipoPago"/>
+          <Item Value="importe"/>
+          <Item Value="noReferencia"/>
+          <Item Value="fechaPago"/>
+          <Item Value="estatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="obtenerConsultaPagosIterator" id="actualizarTablaPagos" InstanceName="DCPagos.dataProvider"
+            DataControl="DCPagos" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <methodAction id="procesaPagoPs" RequiresUpdateModel="true" Action="invokeMethod" MethodName="procesaPago"
+                  IsViewObjectMethod="false" DataControl="DCPagos"
+                  InstanceName="bindings.procesaPagoPs.dataControl.dataProvider"
+                  ReturnName="data.DCPagos.methodResults.procesaPago_procesaPago_dataControl_dataProvider_procesaPago_result">
+      <NamedData NDName="fpago" NDType="mx.com.sky.sel.services.beans.pagos.FormatoPago"/>
+    </methodAction>
+    <methodAction id="consultaSaldo" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="consultaSaldo"
+                  IsViewObjectMethod="false" DataControl="DCSaldo"
+                  InstanceName="bindings.consultaSaldo.dataControl.dataProvider"
+                  ReturnName="data.DCSaldo.methodResults.consultaSaldo_consultaSaldo_dataControl_dataProvider_consultaSaldo_result"/>
+    <attributeValues IterBinding="consultaSaldoIter" id="fechaPagoOportuno">
+      <AttrNames>
+        <Item Value="fechaPagoOportuno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="consultaSaldoIter" id="saldoTotal">
+      <AttrNames>
+        <Item Value="saldoTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="consultarTarjetasPs" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="consultarTarjetasPs"
+                  IsViewObjectMethod="false" DataControl="DCTarjetas"
+                  InstanceName="bindings.consultarTarjetasPs.dataControl.dataProvider"
+                  ReturnName="data.DCTarjetas.methodResults.consultarTarjetasPs_consultarTarjetasPs_dataControl_dataProvider_consultarTarjetasPs_result">
+      <NamedData NDName="numeroCuentaCliente"
+                 NDValue="#{sesion.suscriptor.cuentaSKY}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="phaseId" NDValue="1" NDType="java.lang.String"/>
+      <NamedData NDName="keyId" NDValue="1" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "admonbanner_client_ep",
                   targetNamespace = "http://xmlns.oracle.com/SKYPortal/AdmonBanner/AdmonBanner",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/AdmonBanner/admonbanner_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYPortal%2FAdmonBanner%2FAdmonBanner%7Dadmonbanner_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/AdmonBanner/admonbanner_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYPortal%2FAdmonBanner%2FAdmonBanner%7Dadmonbanner_client_ep")
 public class AdmonbannerClientEp extends Service {
 
     private final static URL ADMONBANNERCLIENTEP_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class AdmonbannerClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/AdmonBanner/admonbanner_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYPortal%2FAdmonBanner%2FAdmonBanner%7Dadmonbanner_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/AdmonBanner/admonbanner_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYPortal%2FAdmonBanner%2FAdmonBanner%7Dadmonbanner_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

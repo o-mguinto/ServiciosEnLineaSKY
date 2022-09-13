@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "CrearSolicitudServicioSoaInterface_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Soa/CrearSolicitudServicioSoaInterface",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/CrearSolicitudServicioSoaInterface/CrearSolicitudServicioSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FCrearSolicitudServicioSoaInterface%7DCrearSolicitudServicioSoaInterface_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/CrearSolicitudServicioSoaInterface/CrearSolicitudServicioSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FCrearSolicitudServicioSoaInterface%7DCrearSolicitudServicioSoaInterface_ep")
 public class CrearSolicitudServicioSoaInterfaceEp extends Service {
 
     private final static URL CREARSOLICITUDSERVICIOSOAINTERFACEEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class CrearSolicitudServicioSoaInterfaceEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/CrearSolicitudServicioSoaInterface/CrearSolicitudServicioSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FCrearSolicitudServicioSoaInterface%7DCrearSolicitudServicioSoaInterface_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/CrearSolicitudServicioSoaInterface/CrearSolicitudServicioSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FCrearSolicitudServicioSoaInterface%7DCrearSolicitudServicioSoaInterface_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

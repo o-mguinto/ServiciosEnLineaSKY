@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "bpel_consultaflagcuenta_client_ep",
                   targetNamespace = "http://xmlns.oracle.com/SKYConsultas/ConsultaFlagTCCuenta/BPEL_ConsultaFlagCuenta",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaFlagTCCuenta/bpel_consultaflagcuenta_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaFlagTCCuenta%2FBPEL_ConsultaFlagCuenta%7Dbpel_consultaflagcuenta_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaFlagTCCuenta/bpel_consultaflagcuenta_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaFlagTCCuenta%2FBPEL_ConsultaFlagCuenta%7Dbpel_consultaflagcuenta_client_ep")
 public class BpelConsultaflagcuentaClientEp extends Service {
 
     private final static URL BPELCONSULTAFLAGCUENTACLIENTEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class BpelConsultaflagcuentaClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaFlagTCCuenta/bpel_consultaflagcuenta_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaFlagTCCuenta%2FBPEL_ConsultaFlagCuenta%7Dbpel_consultaflagcuenta_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaFlagTCCuenta/bpel_consultaflagcuenta_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaFlagTCCuenta%2FBPEL_ConsultaFlagCuenta%7Dbpel_consultaflagcuenta_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

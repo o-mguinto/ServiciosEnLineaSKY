@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "VentaCrecimientosComboSecInterface_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Sec/VentaCrecimientosCombo",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/VentaCrecimientosComboSecInterface/VentaCrecimientosComboSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FVentaCrecimientosCombo%7DVentaCrecimientosComboSecInterface_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/VentaCrecimientosComboSecInterface/VentaCrecimientosComboSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FVentaCrecimientosCombo%7DVentaCrecimientosComboSecInterface_ep")
 public class VentaCrecimientosComboSecInterfaceEp extends Service {
 
     private final static URL VENTACRECIMIENTOSCOMBOSECINTERFACEEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class VentaCrecimientosComboSecInterfaceEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/VentaCrecimientosComboSecInterface/VentaCrecimientosComboSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FVentaCrecimientosCombo%7DVentaCrecimientosComboSecInterface_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/VentaCrecimientosComboSecInterface/VentaCrecimientosComboSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FVentaCrecimientosCombo%7DVentaCrecimientosComboSecInterface_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

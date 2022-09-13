@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:selgestionarpagocontdc="http://www.sky.com.mx/EnterpriseFlowMessages/Sel/GestionarPagoConTDC" xmlns:ebotarjetapago="http://www.sky.com.mx/EnterpriseObjects/Sel/TarjetaPagoEBO" xmlns:selcom="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" targetNamespace="http://www.sky.com.mx/EnterpriseFlowMessages/Sel/GestionarPagoConTDC" elementFormDefault="qualified">
+  <xsd:import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" schemaLocation="Meta.xsd"/>
+  <xsd:import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/TarjetaPagoEBO" schemaLocation="TarjetaPagoEBO.xsd"/>
+  <xsd:element name="GestionarPagoConTDCRequestEBM" type="selgestionarpagocontdc:GestionarPagoConTDCRequestEBMType"/>
+  <xsd:element name="GestionarPagoConTDCResponseEBM" type="selgestionarpagocontdc:GestionarPagoConTDCResponseEBMType"/>
+  <xsd:complexType name="GestionarPagoConTDCRequestEBMType">
+    <xsd:sequence>
+      <xsd:element ref="selcom:EBMHeaderRequest"/>
+      <xsd:element ref="ebotarjetapago:DatosTarjetaPago"/>
+      <xsd:element name="DatosTransaccionPagoIn" type="selgestionarpagocontdc:DatosTransaccionPagoInputMessageType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GestionarPagoConTDCResponseEBMType">
+    <xsd:sequence>
+      <xsd:element ref="selcom:EBMHeaderResponse"/>
+      <xsd:element name="DatosTransaccionPagoOut" type="selgestionarpagocontdc:DatosTransaccionPagoOutputMessageType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DatosTransaccionPagoInputMessageType">
+    <xsd:sequence>
+      <xsd:element name="phaseId" type="xsd:string"/>
+      <xsd:element name="keyId" type="xsd:string"/>
+      <xsd:element name="fechaPago" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="horaPago" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="montoPago" type="xsd:string"/>
+      <xsd:element name="propositoPago" type="xsd:string"/>
+      <xsd:element name="pais" type="xsd:string"/>
+      <xsd:element name="token" type="xsd:string"/>
+      <xsd:element name="codigoMoneda" type="xsd:string"/>
+      <xsd:element name="descripcion" type="xsd:string"/>
+      <xsd:element name="cuentaSky" type="xsd:string"/>
+      <xsd:element name="organizacionId" type="xsd:string"/>
+      <xsd:element name="metodoPago" type="xsd:string"/>
+      <xsd:element name="servicio" type="xsd:string"/>
+      <xsd:element name="emailNotificacion" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DatosTransaccionPagoOutputMessageType">
+    <xsd:sequence>
+      <xsd:element name="idSolicitudServicio" type="xsd:string"/>
+      <xsd:element name="numeroSolicitudServicio" type="xsd:string"/>
+      <xsd:element name="identificadorUnicoPago" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

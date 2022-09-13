@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="portabilidadPageDef"
+                Package="pages.portabilidad">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="obtenerOperadoresDonantes.result" DataControl="DCPortabilidad"
+                    BeanClass="mx.com.sky.sel.services.beans.portabilidad.Companias"
+                    id="obtenerOperadoresDonantesIter"/>
+  </executables>
+  <bindings>
+    <methodAction id="solicitarPortabilidad" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="solicitarPortabilidad" IsViewObjectMethod="false" DataControl="DCPortabilidad"
+                  InstanceName="bindings.solicitarPortabilidad.dataControl.dataProvider"
+                  ReturnName="data.DCPortabilidad.methodResults.solicitarPortabilidad_solicitarPortabilidad_dataControl_dataProvider_solicitarPortabilidad_result">
+      <NamedData NDName="datosPortabilidad" NDType="mx.com.sky.sel.services.beans.portabilidad.PortabilidadBean"/>
+    </methodAction>
+    <methodAction id="obtenerOperadoresDonantes" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerOperadoresDonantes" IsViewObjectMethod="false" DataControl="DCPortabilidad"
+                  InstanceName="bindings.obtenerOperadoresDonantes.dataControl.dataProvider"
+                  ReturnName="data.DCPortabilidad.methodResults.obtenerOperadoresDonantes_obtenerOperadoresDonantes_dataControl_dataProvider_obtenerOperadoresDonantes_result"/>
+    <table IterBinding="obtenerOperadoresDonantesIter" id="companias">
+      <AttrNames>
+        <Item Value="nombre"/>
+      </AttrNames>
+    </table>
+  </bindings>
+</pageDefinition>

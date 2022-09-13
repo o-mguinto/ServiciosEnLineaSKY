@@ -59,11 +59,11 @@
       islink="true"
       id="ControlFlowCase10"
       from="Router6"
-      to="View4">
+      to="View28">
       <property
          name="fromOutcome">irPeliculasPremiere</property>
       <property
-         name="sdm:polyPoints">R54,83.0,422.83887,447.8353,433.38477,L54</property>
+         name="sdm:polyPoints">R54,83.0,422.83887,323.0,505.24707,L50</property>
    </ControlFlowCase>
    <View
       id="View11">
@@ -202,7 +202,7 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">R28,-209.0,-67.850586,117.0,-70.75293,L50</property>
+         name="sdm:polyPoints">R23,-203.00246,-71.350586,117.0,-70.75293,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -230,13 +230,13 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">R61,-207.06496,-46.850586,437.0,273.74707,L46</property>
+         name="sdm:polyPoints">R55,-204.62784,-50.350586,437.0,273.74707,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase35"
       from="WildcardControlFlowRule28"
-      to="View4">
+      to="View28">
       <property
          name="tosrcid">__10</property>
       <property
@@ -244,7 +244,7 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">R72,-209.0,-39.850586,449.0,426.38477,L46</property>
+         name="sdm:polyPoints">R77,-209.0,-36.350586,364.0,451.24707,T50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -258,7 +258,7 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">R50,-206.01485,-53.850586,464.0,34.74121,T50</property>
+         name="sdm:polyPoints">R45,-203.56073,-57.350586,464.0,34.74121,T50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -272,11 +272,26 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">R39,-205.63933,-60.850586,290.0,-19.103516,L50</property>
+         name="sdm:polyPoints">R34,-203.16402,-64.350586,290.0,-19.103516,L50</property>
    </ControlFlowCase>
+   <View
+      id="View28">
+      <property
+         name="activityId">selPPE</property>
+      <property
+         name="x">364.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>selPPE&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">505.59766</property>
+      <property
+         name="page">/WEB-INF/submenus/pagosPorEvento/selPPE.jsf</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase28"
+      id="ControlFlowCase31"
       from="WildcardControlFlowRule28">
       <property
          name="tosrcid">__34</property>
@@ -284,5 +299,15 @@
          name="fromOutcome">irAdultosAllDay_3</property>
       <property
          name="fromsrcid">__1</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase30"
+      from="WildcardControlFlowRule28"
+      to="View4">
+      <property
+         name="fromOutcome">irPeliculasP</property>
+      <property
+         name="sdm:polyPoints">R66,-206.58447,-43.350586,449.0,429.88477,L50</property>
    </ControlFlowCase>
 </SDM>

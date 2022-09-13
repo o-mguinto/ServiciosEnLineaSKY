@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:usuario="http://www.sky.com.mx/EnterpriseObjects/Sel/Usuario" targetNamespace="http://www.sky.com.mx/EnterpriseObjects/Sel/Usuario" elementFormDefault="qualified">
+  <xsd:element name="UsuarioSelEBO" type="usuario:UsuarioEBOType"/>
+  <xsd:complexType name="UsuarioEBOType">
+    <xsd:sequence>
+      <xsd:element name="NumeroCuenta" type="xsd:string"/>
+      <xsd:element name="NombreSuscriptor" type="xsd:string"/>
+      <xsd:element name="Producto" type="xsd:string"/>
+      <xsd:element name="Nombre" type="xsd:string"/>
+      <xsd:element name="APaterno" type="xsd:string"/>
+      <xsd:element name="AMaterno" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

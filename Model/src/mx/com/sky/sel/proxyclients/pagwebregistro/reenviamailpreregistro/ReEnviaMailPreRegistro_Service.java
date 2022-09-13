@@ -20,7 +20,7 @@ import javax.xml.ws.WebServiceFeature;
  */
 @WebServiceClient(name = "ReEnviaMailPreRegistro", targetNamespace = "http://xmlns.oracle.com/ReEnviaMailPreRegistro",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebregistro/ReEnviaMailPreRegistro/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FReEnviaMailPreRegistro%7DReEnviaMailPreRegistro")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebregistro/ReEnviaMailPreRegistro/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FReEnviaMailPreRegistro%7DReEnviaMailPreRegistro")
 public class ReEnviaMailPreRegistro_Service extends Service {
 
     private final static URL REENVIAMAILPREREGISTRO_WSDL_LOCATION;
@@ -33,7 +33,7 @@ public class ReEnviaMailPreRegistro_Service extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebregistro/ReEnviaMailPreRegistro/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FReEnviaMailPreRegistro%7DReEnviaMailPreRegistro");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebregistro/ReEnviaMailPreRegistro/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FReEnviaMailPreRegistro%7DReEnviaMailPreRegistro");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

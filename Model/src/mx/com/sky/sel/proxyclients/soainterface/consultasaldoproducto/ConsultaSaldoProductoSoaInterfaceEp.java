@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ConsultaSaldoProductoSoaInterface_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Soa/ConsultaSaldoProductoSoaInterface",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/ConsultaSaldoProductoSoaInterface/ConsultaSaldoProductoSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FConsultaSaldoProductoSoaInterface%7DConsultaSaldoProductoSoaInterface_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/ConsultaSaldoProductoSoaInterface/ConsultaSaldoProductoSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FConsultaSaldoProductoSoaInterface%7DConsultaSaldoProductoSoaInterface_ep")
 public class ConsultaSaldoProductoSoaInterfaceEp extends Service {
 
     private final static URL CONSULTASALDOPRODUCTOSOAINTERFACEEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class ConsultaSaldoProductoSoaInterfaceEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/ConsultaSaldoProductoSoaInterface/ConsultaSaldoProductoSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FConsultaSaldoProductoSoaInterface%7DConsultaSaldoProductoSoaInterface_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/ConsultaSaldoProductoSoaInterface/ConsultaSaldoProductoSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FConsultaSaldoProductoSoaInterface%7DConsultaSaldoProductoSoaInterface_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

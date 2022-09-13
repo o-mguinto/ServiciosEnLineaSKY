@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "btgew_activacion_client_ep",
                   targetNamespace = "http://xmlns.oracle.com/SKY_BTGEW/Activacion/BTGEW_Activacion",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/btgew/Activacion/btgew_activacion_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_BTGEW%2FActivacion%2FBTGEW_Activacion%7Dbtgew_activacion_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/btgew/Activacion/btgew_activacion_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_BTGEW%2FActivacion%2FBTGEW_Activacion%7Dbtgew_activacion_client_ep")
 public class BtgewActivacionClientEp extends Service {
 
     private final static URL BTGEWACTIVACIONCLIENTEP_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class BtgewActivacionClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/btgew/Activacion/btgew_activacion_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_BTGEW%2FActivacion%2FBTGEW_Activacion%7Dbtgew_activacion_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/btgew/Activacion/btgew_activacion_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_BTGEW%2FActivacion%2FBTGEW_Activacion%7Dbtgew_activacion_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

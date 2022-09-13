@@ -1112,6 +1112,31 @@ public class ConfigMenu extends SesionMB implements Serializable {
 
         return moneda;
     }
+    
+    
+    public String getMonedaCyber() {
+        String moneda = "MXN";
+
+        if (pais.equalsIgnoreCase("MEX")) {
+            moneda = "MXN";
+        } else if (pais.equalsIgnoreCase("CRICA")) {
+            moneda = "CRC";
+        } else if (pais.equalsIgnoreCase("GT")) {
+            moneda = "GTQ";
+        } else if (pais.equalsIgnoreCase("HON")) {
+            moneda = "HNL";
+        } else if (pais.equalsIgnoreCase("NIC")) {
+            moneda = "NIO";
+        } else if (pais.equalsIgnoreCase("PAN")) {
+            moneda = "USD";
+        } else if (pais.equalsIgnoreCase("DOM")) {
+            moneda = "DOP";
+        } else if (pais.equalsIgnoreCase("SAL")) {
+            moneda = "USD";
+        }
+
+        return moneda;
+    }
 
     public String getMonedaLocal() {
         String moneda = "pesos";

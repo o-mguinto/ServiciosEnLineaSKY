@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "RegistrarDatosFiscalesSelEBF_ep",
                   targetNamespace = "http://xmlns.oracle.com/InterfaceServices/Sel/RegistrarDatosFiscales",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx/soa-infra/services/SEL_EBF/RegistrarDatosFiscalesSelEBF/RegistrarDatosFiscalesSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FInterfaceServices%2FSel%2FRegistrarDatosFiscales%7DRegistrarDatosFiscalesSelEBF_ep")
+                  "https://qaselsoa.sky.com.mx/soa-infra/services/SEL_EBF/RegistrarDatosFiscalesSelEBF/RegistrarDatosFiscalesSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FInterfaceServices%2FSel%2FRegistrarDatosFiscales%7DRegistrarDatosFiscalesSelEBF_ep")
 public class RegistrarDatosFiscalesSelEBFEp extends Service {
 
     private final static URL REGISTRARDATOSFISCALESSELEBFEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class RegistrarDatosFiscalesSelEBFEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx/soa-infra/services/SEL_EBF/RegistrarDatosFiscalesSelEBF/RegistrarDatosFiscalesSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FInterfaceServices%2FSel%2FRegistrarDatosFiscales%7DRegistrarDatosFiscalesSelEBF_ep");
+                new URL("https://qaselsoa.sky.com.mx/soa-infra/services/SEL_EBF/RegistrarDatosFiscalesSelEBF/RegistrarDatosFiscalesSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FInterfaceServices%2FSel%2FRegistrarDatosFiscales%7DRegistrarDatosFiscalesSelEBF_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

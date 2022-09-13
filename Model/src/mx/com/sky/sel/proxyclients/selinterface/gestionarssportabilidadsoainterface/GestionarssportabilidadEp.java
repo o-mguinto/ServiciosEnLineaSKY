@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "gestionarssportabilidad_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Sel/GestionarSSPortabilidadSoa",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/GestionarSSPortabilidadSoaInterface/gestionarssportabilidad_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FGestionarSSPortabilidadSoa%7Dgestionarssportabilidad_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/GestionarSSPortabilidadSoaInterface/gestionarssportabilidad_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FGestionarSSPortabilidadSoa%7Dgestionarssportabilidad_ep")
 public class GestionarssportabilidadEp extends Service {
 
     private final static URL GESTIONARSSPORTABILIDADEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class GestionarssportabilidadEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/GestionarSSPortabilidadSoaInterface/gestionarssportabilidad_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FGestionarSSPortabilidadSoa%7Dgestionarssportabilidad_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/GestionarSSPortabilidadSoaInterface/gestionarssportabilidad_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FGestionarSSPortabilidadSoa%7Dgestionarssportabilidad_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

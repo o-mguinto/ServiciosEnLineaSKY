@@ -1,0 +1,39 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sky.com.mx/soasky" targetNamespace="http://www.sky.com.mx/soasky"
+     elementFormDefault="qualified">
+    <xsd:include schemaLocation="Cabecera_ConsultaSaldosCorrientes.xsd"/>
+    <xsd:element name="Saldos_consultaSaldosCorrientes_Entrada" type="Saldos_consultaSaldosCorrientes_Entrada_TYPE"/>
+    <xsd:element name="Saldos_consultaSaldosCorrientes_Salida" type="Saldos_consultaSaldosCorrientes_Salida_TYPE"/>
+    <xsd:complexType name="Saldos_consultaSaldosCorrientes_Entrada_TYPE">
+        <xsd:sequence>
+            <xsd:element name="CABECERA" type="Cabecera_EntradaConsultaSaldosCorrientes_TYPE"/>
+            <xsd:element name="NUMERO_CUENTA" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Saldos_consultaSaldosCorrientes_Salida_TYPE">
+        <xsd:sequence>
+            <xsd:element name="CABECERA" type="Cabecera_SalidaConsultaSaldosCorrientes_TYPE"/>
+            <xsd:element name="ADEUDO" type="xsd:string"/>
+            <xsd:element name="CPR" type="xsd:string"/>
+            <xsd:element name="SALDO_MINIMO" type="xsd:string"/>
+            <xsd:element name="PRORRATEO" type="xsd:string"/>
+            <xsd:element name="CNR" type="xsd:string"/>
+            <xsd:element name="PPVXF" type="xsd:string"/>
+            <xsd:element name="SALDO_POR_FACTURAR" type="xsd:string"/>
+            <xsd:element name="SALDO_TOTAL" type="xsd:string"/>
+            <xsd:element name="DESCUENTO" type="xsd:string"/>
+            <xsd:element name="FECHA_PROMOCION" type="xsd:string"/>
+            <xsd:element name="PROMOCION" type="xsd:string"/>
+            <xsd:element name="NUMERO_FACTURA" type="xsd:string"/>
+            <xsd:element name="FECHA_EMISION" type="xsd:string"/>
+            <xsd:element name="TIPO_BANCO" type="xsd:string"/>
+            <xsd:element name="STATUS" type="xsd:string"/>
+            <xsd:element name="DESCUENTO_PAGO_OPORTUNO" type="xsd:string" nillable="true" minOccurs="0"/>
+            <xsd:element name="TOTAL_PAGO_OPORTUNO" type="xsd:string" nillable="true" minOccurs="0"/>
+            <xsd:element name="SALDO_TOTAL_PAGO_OPORTUNO" type="xsd:string" nillable="true" minOccurs="0"/>
+            <xsd:element name="FECHA_PAGO_OPORTUNO" type="xsd:string" nillable="true" minOccurs="0"/>
+            <xsd:element name="TIPO_TARJETA" type="xsd:string" nillable="true" minOccurs="0"/>
+            <xsd:element name="FECHA_SIGUIENTE_CORTE" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="CARGO_RECXFAC" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

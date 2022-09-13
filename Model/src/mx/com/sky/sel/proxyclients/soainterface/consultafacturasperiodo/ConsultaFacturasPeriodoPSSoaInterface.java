@@ -16,7 +16,7 @@ import javax.xml.ws.Action;
 // For reporting problems, use the following
 // Version = Oracle WebServices (11.1.1.0.0, build 130224.1947.04102)
 
-@WebService(wsdlLocation="https://preselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/ConsultaFacturasPeriodoPSSoaInterface/ConsultaFacturasPeriodoPSSoaInterface_ep?WSDL",
+@WebService(wsdlLocation="https://qaselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/ConsultaFacturasPeriodoPSSoaInterface/ConsultaFacturasPeriodoPSSoaInterface_ep?WSDL",
   targetNamespace="http://xmlns.sky.com.mx/InterfaceServices/Soa/ConsultaFacturasPeriodoPS",
   name="ConsultaFacturasPeriodoPSSoaInterface")
 @XmlSeeAlso(

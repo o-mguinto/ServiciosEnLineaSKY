@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <af:document title="selPPE.jsf" id="d1">
+        <af:form id="f1">
+            <af:pageTemplate viewId="/WEB-INF/mx/com/sky/common/jsfTemplates/pagInternas_template.jsf"
+                             value="#{bindings.ptb1}" id="pt1">
+                <f:facet name="contenido_facet">
+                    <af:panelStretchLayout id="psl1">
+                        <f:facet name="start"/>
+                        <f:facet name="end"/>
+                        <f:facet name="top"/>
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">                        
+                            <af:panelGroupLayout id="pgl1">
+                                <div id="premiere">
+                                <c:set var="lbl" value="#{adfBundle['mx.com.sky.sel.resources.menu']}"/>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h:outputText id="otMenu" value="#{lbl.smenu_PPE_PELICULAS}"
+                                                          styleClass="titleh1"/>                                                                                                          
+                                        </div>
+                                    </div>	
+                                    <af:region value="#{bindings.premiereTF1.regionModel}" id="r1"/>
+                                    <af:spacer width="10" height="10" id="s1"/>
+                                    
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h:outputText id="otMenu2" value="#{lbl.smenu_PPE_ADULTOS}"
+                                                          styleClass="titleh1"/>                                                                                                          
+                                        </div>
+                                    </div>	
+                                    <af:region value="#{bindings.adultosTF1.regionModel}" id="r2"/>
+                                    <af:spacer width="10" height="10" id="s2"/>
+                                    
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h:outputText id="otMenu3" value="#{lbl.smenu_PPE_HISTORICO_EVENTOS}"
+                                                          styleClass="titleh1"/>                                                                                                          
+                                        </div>
+                                    </div>	
+                                    <af:region value="#{bindings.contratacionesTF1.regionModel}" id="r3"/>
+                                </div>
+                            </af:panelGroupLayout>
+                            
+                        </f:facet>
+                    </af:panelStretchLayout>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

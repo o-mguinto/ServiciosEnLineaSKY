@@ -99,14 +99,19 @@ public class BBTarjetasBilletera extends UtileriasMB implements Serializable {
         GenerarURLBilleteraRequestDTO requestDTOWS = this.crearRequestDTOGenerarURLBilletera();
         
         portalTokenizacionURL = billeteraMB.generarURLBilletera(requestDTOWS);
-        LogPC.println(this, "Haciendo redirect al portal de tokenizacion: " + portalTokenizacionURL + " ...");
-
-        try {
-            response.sendRedirect(portalTokenizacionURL);
-            JSFUtils.getFacesContext().responseComplete();
-        } catch (IOException e) {
-            LogPC.println(this, "Exception: " + e.getMessage());
+        
+        if( portalTokenizacionURL != null && !portalTokenizacionURL.isEmpty() ) {
+            LogPC.println(this, "Haciendo redirect al portal de tokenizacion: " + portalTokenizacionURL + " ...");
+            try {
+                response.sendRedirect(portalTokenizacionURL);
+                JSFUtils.getFacesContext().responseComplete();
+            } catch (IOException e) {
+                LogPC.println(this, "Exception: " + e.getMessage());
+            }
+        } else {
+            ADFUtils.showErrorMessage("Se presento un error, por favor intentar más tarde");
         }
+        
         
         
         return null;
@@ -232,7 +237,10 @@ public class BBTarjetasBilletera extends UtileriasMB implements Serializable {
         LogPC.println(this, "ApellidoMaterno: " + sesion.getUsuario().getApellidoMaterno());
         LogPC.println(this, "PaisISO: " + sesion.getSuscriptor().getPaisISO());
         LogPC.println(this, "vigenciaURL: " + vigenciaURL);
-        LogPC.println(this, "Moneda: " + sesion.getMoneda());
+        LogPC.println(this, "Moneda cyber: " + sesion.getMonedaCyber());
+        LogPC.println(this, "Currency Code: " + sesion.getSuscriptor().getCurrencyCode());
+        LogPC.println(this, "Billing Code: " + sesion.getSuscriptor().getBillingCode());
+        
         LogPC.println(this, "CuentaSKY: " + sesion.getSuscriptor().getCuentaSKY());
         
         
@@ -251,7 +259,7 @@ public class BBTarjetasBilletera extends UtileriasMB implements Serializable {
         request.setMunicipio(direccionConsultada.getDelMun());
         request.setCodigoPostal(direccionConsultada.getCp());
         request.setVigencia(vigenciaURL);
-        request.setMoneda(sesion.getMoneda());
+        request.setMoneda(sesion.getMonedaCyber());
         request.setCuenta(sesion.getSuscriptor().getCuentaSKY());
         
         return request;

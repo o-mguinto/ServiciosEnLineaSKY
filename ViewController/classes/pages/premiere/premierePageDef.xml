@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="premierePageDef"
+                Package="pages.premiere">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <searchRegion id="EventoQuery" Binds="obtenerPPEventosIterator"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <methodIterator Binds="obtenerPPEventos.result" DataControl="DCPremiere" RangeSize="80"
+                    BeanClass="mx.com.sky.sel.services.beans.eventos.Evento" id="obtenerPPEventosIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerPPEventos" RequiresUpdateModel="true" Action="invokeMethod" MethodName="obtenerPPEventos"
+                  IsViewObjectMethod="false" DataControl="DCPremiere"
+                  InstanceName="bindings.obtenerPPEventos.dataControl.dataProvider"
+                  ReturnName="data.DCPremiere.methodResults.obtenerPPEventos_obtenerPPEventos_dataControl_dataProvider_obtenerPPEventos_result">
+      <NamedData NDName="tipoPPE" NDValue="1" NDType="java.lang.String"/>
+      <NamedData NDName="pais" NDValue="#{sesion.suscriptor.pais}" NDType="java.lang.String"/>
+      <NamedData NDName="banderaHD" NDValue='#{sesion.suscriptor.equipoHD ? "Y" : "N" }' NDType="java.lang.String"/>
+      <NamedData NDName="paquete" NDValue="#{sesion.suscriptor.paquete}" NDType="java.lang.String"/>
+      <NamedData NDName="tipoCuenta"
+                 NDValue='#{sesion.cuentaNewEra or sesion.cuentaVETVHD or sesion.cuentaVETVPLUSHD ? "%N%" : "%T%"}'
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="obtenerPPEventosIterator" id="Evento">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.eventos.Evento" Name="Evento0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="titulo"/>
+          <Item Value="sinopsis"/>
+          <Item Value="modalidad"/>
+          <Item Value="canal"/>
+          <Item Value="canalDisplay"/>
+          <Item Value="precio"/>
+          <Item Value="image"/>
+          <Item Value="horaEvento"/>
+          <Item Value="horaPedido"/>
+          <Item Value="horaExpiracion"/>
+          <Item Value="horaCancelacion"/>
+          <Item Value="token"/>
+          <Item Value="languageCode"/>
+          <Item Value="tituloAlternativo"/>
+          <Item Value="serviceType"/>
+          <Item Value="diferenciaHoraria"/>
+          <Item Value="duracion"/>
+          <Item Value="tipoEvento"/>
+          <Item Value="status"/>
+          <Item Value="tituloCanal"/>
+          <Item Value="isPackage"/>
+          <Item Value="minutosPrevios"/>
+          <Item Value="tokenPSC"/>
+          <Item Value="minutosLibres"/>
+          <Item Value="eventoLibre"/>
+          <Item Value="fechaUltimaOrden"/>
+          <Item Value="fechaUltimaOrdenTS"/>
+          <Item Value="subjectMaterRating"/>
+          <Item Value="tipoOrden"/>
+          <Item Value="providerEventId"/>
+          <Item Value="ppvClass"/>
+          <Item Value="ppvGenreId"/>
+          <Item Value="skyTrackingId"/>
+          <Item Value="idioma"/>
+          <Item Value="subtitulos"/>
+          <Item Value="tituloMensaje"/>
+          <Item Value="mensaje"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="obtenerPPEventosIterator" id="id">
+      <AttrNames>
+        <Item Value="id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerPPEventosIterator" id="image">
+      <AttrNames>
+        <Item Value="image"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerPPEventosIterator" id="canal">
+      <AttrNames>
+        <Item Value="canal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerPPEventosIterator" id="canalDisplay">
+      <AttrNames>
+        <Item Value="canalDisplay"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerPPEventosIterator" id="titulo">
+      <AttrNames>
+        <Item Value="titulo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerPPEventosIterator" id="sinopsis">
+      <AttrNames>
+        <Item Value="sinopsis"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerPPEventosIterator" id="precio">
+      <AttrNames>
+        <Item Value="precio"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerPPEventosIterator" id="modalidad">
+      <AttrNames>
+        <Item Value="modalidad"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerPPEventosIterator" id="idioma">
+      <AttrNames>
+        <Item Value="idioma"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerPPEventosIterator" id="subtitulos">
+      <AttrNames>
+        <Item Value="subtitulos"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerPPEventosIterator" id="tituloMensaje">
+      <AttrNames>
+        <Item Value="tituloMensaje"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="obtenerPPEventosIterator" id="mensaje">
+      <AttrNames>
+        <Item Value="mensaje"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="obtenerPPEventosIterator" id="setCurrentRowWithKey" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey" DataControl="DCPremiere" InstanceName="DCPremiere.dataProvider">
+      <NamedData NDName="rowKey" NDValue="#{pageFlowScope.PremiereBackingBean.rowKey}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,17 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://msg.factura.edicom.sky.com.mx"
+     targetNamespace="http://msg.factura.edicom.sky.com.mx" elementFormDefault="qualified">
+    <xsd:element name="EDICOM_PD_IN" type="EDICOM_PD_Type">
+        <xsd:annotation>
+            <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="EDICOM_PD_Type">
+        <xsd:sequence>
+            <xsd:element name="cadenaOriginal" type="xsd:string"/>
+            <xsd:element name="archivoStringBase64" type="xsd:string"/>
+            <xsd:element name="errorcode" type="xsd:string"/>
+            <xsd:element name="errordesc" type="xsd:string"/>
+            <xsd:element name="sistemaerror" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

@@ -22,7 +22,7 @@ import javax.xml.ws.WebServiceFeature;
                   targetNamespace =
                   "http://xmlns.oracle.com/SKYConsultas/ConsultaOrdenModificacion/ConsultaOrdenModificacion",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaOrdenModificacion/ConsultaOrdenModificacion_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaOrdenModificacion%2FConsultaOrdenModificacion%7DConsultaOrdenModificacion_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaOrdenModificacion/ConsultaOrdenModificacion_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaOrdenModificacion%2FConsultaOrdenModificacion%7DConsultaOrdenModificacion_ep")
 public class ConsultaOrdenModificacionEp extends Service {
 
     private final static URL CONSULTAORDENMODIFICACIONEP_WSDL_LOCATION;
@@ -36,7 +36,7 @@ public class ConsultaOrdenModificacionEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaOrdenModificacion/ConsultaOrdenModificacion_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaOrdenModificacion%2FConsultaOrdenModificacion%7DConsultaOrdenModificacion_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaOrdenModificacion/ConsultaOrdenModificacion_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaOrdenModificacion%2FConsultaOrdenModificacion%7DConsultaOrdenModificacion_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

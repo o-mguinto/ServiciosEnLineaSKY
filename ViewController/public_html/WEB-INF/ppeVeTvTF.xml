@@ -2,6 +2,9 @@
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
   <task-flow-definition id="ppeVeTvTF">
     <default-activity>ppvIndex</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
     <input-parameter-definition id="__4">
       <name>tipoEvento</name>
       <value>#{pageFlowScope.tipoEvento}</value>
@@ -17,6 +20,11 @@
     <managed-bean id="__1">
       <managed-bean-name>PFPPEVeTV</managed-bean-name>
       <managed-bean-class>mx.com.sky.sel.managedbeans.ppevetv.PFPPEVeTV</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__29">
+      <managed-bean-name>BilleteraBB</managed-bean-name>
+      <managed-bean-class>mx.com.sky.sel.managedbeans.tarjetasbilletera.BBTarjetasBilletera</managed-bean-class>
       <managed-bean-scope>pageFlow</managed-bean-scope>
     </managed-bean>
     <view id="ppvIndex">

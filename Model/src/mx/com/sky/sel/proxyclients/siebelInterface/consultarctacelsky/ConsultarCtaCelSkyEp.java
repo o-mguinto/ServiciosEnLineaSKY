@@ -22,7 +22,7 @@ import javax.xml.ws.WebServiceFeature;
                   targetNamespace =
                   "http://xmlns.sky.com.mx/InterfaceServices/Siebel/ConsultarCtaCelSky",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SIEBEL_Interface/ConsultarCtaCelSkySiebelInterface/ConsultarCtaCelSky_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSiebel%2FConsultarCtaCelSky%7DConsultarCtaCelSky_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SIEBEL_Interface/ConsultarCtaCelSkySiebelInterface/ConsultarCtaCelSky_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSiebel%2FConsultarCtaCelSky%7DConsultarCtaCelSky_ep")
 public class ConsultarCtaCelSkyEp extends Service {
 
     private final static URL CONSULTARCTACELSKYEP_WSDL_LOCATION;
@@ -36,7 +36,7 @@ public class ConsultarCtaCelSkyEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SIEBEL_Interface/ConsultarCtaCelSkySiebelInterface/ConsultarCtaCelSky_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSiebel%2FConsultarCtaCelSky%7DConsultarCtaCelSky_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SIEBEL_Interface/ConsultarCtaCelSkySiebelInterface/ConsultarCtaCelSky_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSiebel%2FConsultarCtaCelSky%7DConsultarCtaCelSky_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

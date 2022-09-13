@@ -22,7 +22,7 @@ import javax.xml.ws.WebServiceFeature;
                   targetNamespace =
                   "http://xmlns.sky.com.mx/EnterpriseFlows/Sel/EjecutarRemoteBookingSelEBF",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/EjecutarRemoteBookingSelEBF/EjecutarRemoteBookingSelEBF_ep?wsdl#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FEjecutarRemoteBookingSelEBF%7DEjecutarRemoteBookingSelEBF_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/EjecutarRemoteBookingSelEBF/EjecutarRemoteBookingSelEBF_ep?wsdl#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FEjecutarRemoteBookingSelEBF%7DEjecutarRemoteBookingSelEBF_ep")
 public class EjecutarRemoteBookingSelEBFEp extends Service {
 
     private final static URL EJECUTARREMOTEBOOKINGSELEBFEP_WSDL_LOCATION;
@@ -36,7 +36,7 @@ public class EjecutarRemoteBookingSelEBFEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/EjecutarRemoteBookingSelEBF/EjecutarRemoteBookingSelEBF_ep?wsdl#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FEjecutarRemoteBookingSelEBF%7DEjecutarRemoteBookingSelEBF_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/EjecutarRemoteBookingSelEBF/EjecutarRemoteBookingSelEBF_ep?wsdl#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FEjecutarRemoteBookingSelEBF%7DEjecutarRemoteBookingSelEBF_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

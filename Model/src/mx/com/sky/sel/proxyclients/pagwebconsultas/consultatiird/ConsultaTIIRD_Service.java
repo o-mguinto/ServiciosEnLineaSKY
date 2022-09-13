@@ -20,7 +20,7 @@ import javax.xml.ws.WebServiceFeature;
  */
 @WebServiceClient(name = "ConsultaTI_IRD", targetNamespace = "http://xmlns.oracle.com/ConsultaTI_IRD",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaTI_IRD/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaTI_IRD%7DConsultaTI_IRD")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaTI_IRD/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaTI_IRD%7DConsultaTI_IRD")
 public class ConsultaTIIRD_Service extends Service {
 
     private final static URL CONSULTATIIRD_WSDL_LOCATION;
@@ -33,7 +33,7 @@ public class ConsultaTIIRD_Service extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaTI_IRD/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaTI_IRD%7DConsultaTI_IRD");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaTI_IRD/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaTI_IRD%7DConsultaTI_IRD");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

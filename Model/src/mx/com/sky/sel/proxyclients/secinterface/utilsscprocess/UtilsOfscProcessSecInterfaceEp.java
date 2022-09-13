@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "UtilsOfscProcessSecInterface_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Sec/UtilsOfscProcess",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/UtilsOfscProcessSecInterface/UtilsOfscProcessSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FUtilsOfscProcess%7DUtilsOfscProcessSecInterface_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/UtilsOfscProcessSecInterface/UtilsOfscProcessSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FUtilsOfscProcess%7DUtilsOfscProcessSecInterface_ep")
 public class UtilsOfscProcessSecInterfaceEp extends Service {
 
     private final static URL UTILSOFSCPROCESSSECINTERFACEEP_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class UtilsOfscProcessSecInterfaceEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/UtilsOfscProcessSecInterface/UtilsOfscProcessSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FUtilsOfscProcess%7DUtilsOfscProcessSecInterface_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/UtilsOfscProcessSecInterface/UtilsOfscProcessSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FUtilsOfscProcess%7DUtilsOfscProcessSecInterface_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

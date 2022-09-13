@@ -19,7 +19,7 @@ import javax.xml.ws.WebServiceFeature;
 // For reporting problems, use the following
 // Version = Oracle WebServices (11.1.1.0.0, build 130224.1947.04102)
 
-@WebServiceClient(wsdlLocation="https://preselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/Suscriptor_consultaPPVContratadosSOAInterface/suscriptor_consultappvcontratadossoainterface_client_ep?WSDL",
+@WebServiceClient(wsdlLocation="https://qaselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/Suscriptor_consultaPPVContratadosSOAInterface/suscriptor_consultappvcontratadossoainterface_client_ep?WSDL",
   targetNamespace="http://xmlns.sky.com.mx/InterfaceServices/SOA/Suscriptor_consultaPPVContratadosSOAInterface",
   name="suscriptor_consultappvcontratadossoainterface_client_ep")
 public class Suscriptor_consultappvcontratadossoainterface_client_ep
@@ -40,12 +40,12 @@ public class Suscriptor_consultappvcontratadossoainterface_client_ep
       {
         wsdlLocationURL =
             Suscriptor_consultappvcontratadossoainterface_client_ep.class
-            .getResource("https://preselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/Suscriptor_consultaPPVContratadosSOAInterface/suscriptor_consultappvcontratadossoainterface_client_ep?WSDL");
+            .getResource("https://qaselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/Suscriptor_consultaPPVContratadosSOAInterface/suscriptor_consultappvcontratadossoainterface_client_ep?WSDL");
         if (wsdlLocationURL == null)
         {
           baseUrl = new File(".").toURL();
           wsdlLocationURL =
-              new URL(baseUrl, "https://preselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/Suscriptor_consultaPPVContratadosSOAInterface/suscriptor_consultappvcontratadossoainterface_client_ep?WSDL");
+              new URL(baseUrl, "https://qaselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/Suscriptor_consultaPPVContratadosSOAInterface/suscriptor_consultappvcontratadossoainterface_client_ep?WSDL");
         }
       }
       else
@@ -54,13 +54,13 @@ public class Suscriptor_consultappvcontratadossoainterface_client_ep
          baseUrl = new URL(baseUrl, baseUrl.getPath() + "/");
 }
                 wsdlLocationURL =
-            new URL(baseUrl, "https://preselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/Suscriptor_consultaPPVContratadosSOAInterface/suscriptor_consultappvcontratadossoainterface_client_ep?WSDL");
+            new URL(baseUrl, "https://qaselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/Suscriptor_consultaPPVContratadosSOAInterface/suscriptor_consultappvcontratadossoainterface_client_ep?WSDL");
       }
     }
     catch (MalformedURLException e)
     {
       logger.log(Level.ALL,
-          "Failed to create wsdlLocationURL using https://preselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/Suscriptor_consultaPPVContratadosSOAInterface/suscriptor_consultappvcontratadossoainterface_client_ep?WSDL",
+          "Failed to create wsdlLocationURL using https://qaselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/Suscriptor_consultaPPVContratadosSOAInterface/suscriptor_consultappvcontratadossoainterface_client_ep?WSDL",
           e);
     }
   }

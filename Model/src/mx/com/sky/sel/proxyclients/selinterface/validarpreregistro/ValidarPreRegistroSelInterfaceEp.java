@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ValidarPreRegistroSelInterface_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Sel/ValidarPreRegistroSel",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/ValidarPreRegistroSelInterface/ValidarPreRegistroSelInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FValidarPreRegistroSel%7DValidarPreRegistroSelInterface_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/ValidarPreRegistroSelInterface/ValidarPreRegistroSelInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FValidarPreRegistroSel%7DValidarPreRegistroSelInterface_ep")
 public class ValidarPreRegistroSelInterfaceEp extends Service {
 
     private final static URL VALIDARPREREGISTROSELINTERFACEEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class ValidarPreRegistroSelInterfaceEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/ValidarPreRegistroSelInterface/ValidarPreRegistroSelInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FValidarPreRegistroSel%7DValidarPreRegistroSelInterface_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/ValidarPreRegistroSelInterface/ValidarPreRegistroSelInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FValidarPreRegistroSel%7DValidarPreRegistroSelInterface_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

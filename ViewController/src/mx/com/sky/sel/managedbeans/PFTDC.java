@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import java.util.Calendar;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.faces.application.FacesMessage;
@@ -13,9 +14,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 import mx.com.sky.sel.log.LogPC;
+import static mx.com.sky.sel.log.LogPC.println;
 import mx.com.sky.sel.managedbeans.sesion.ConfigMenu;
+import mx.com.sky.sel.services.beans.billetera.TarjetaBilletera;
 import mx.com.sky.sel.services.beans.pagos.tarjetas.Bines;
 import mx.com.sky.sel.services.beans.pagos.tarjetas.Tarjeta;
+import mx.com.sky.sel.services.cybersource.billetera.BilleteraManagementBean;
 import mx.com.sky.sel.services.pagos.tarjetas.ServicioBines;
 import mx.com.sky.sel.utils.ADFUtils;
 import mx.com.sky.sel.utils.JSFUtils;
@@ -36,6 +40,18 @@ public class PFTDC extends UtileriasMB implements Serializable {
     protected String tipoTarjetaBines;
     protected String tipoTarjeta;
     protected Boolean tarjetaValida;
+    
+    //Cyber
+    protected List<TarjetaBilletera> tarjetasBilletera;
+    protected Map<String, String> tiposPago;
+    protected String tipoPago;
+    protected TarjetaBilletera tarjetaBillParaPago = null;
+    protected static final String CODIGO_CYBER_AMEX = "003";
+    protected String cVVTemp;
+    protected String mensajeRespuesta;
+    protected static final String MENSAJE_PAGO_REALIZADO = "bbpago.pagorealizado";
+    protected static final String MENSAJE_ERROR_DEFAULT = "bbpago.error.default";
+    //Cyber
     
     public PFTDC() {
         super();
@@ -71,7 +87,75 @@ public class PFTDC extends UtileriasMB implements Serializable {
         tipoTarjetaBines="";
         tipoTarjeta=null;
         tarjetaValida=false;
+        
+        //Cyber
+        tarjetasBilletera = consultarTarjetasBilletera();
+        actualizarComboBoxFormasPagoBilletera();
+        //Cyber
     }
+    
+    //Metodos cyber
+    protected List<TarjetaBilletera> consultarTarjetasBilletera() {
+        List<TarjetaBilletera> tarjetasConsultadas = null;
+        BilleteraManagementBean billeteraMB = null;
+        
+        ConfigMenu sesion = (ConfigMenu)JSFUtils.getBean("sesion");
+        String organizationId = sesion.getSuscriptor().getOrganizacion();
+        String cuentaSKY = sesion.getSuscriptor().getCuentaSKY();
+        LogPC.println(this, "organizationId: " + organizationId);
+        LogPC.println(this, "cuentaSKY: " + cuentaSKY);
+        
+        billeteraMB = new BilleteraManagementBean();
+        
+        tarjetasConsultadas = billeteraMB.consultarBilletera(cuentaSKY);
+        
+        //DUMMY
+        //tarjetasConsultadas = billeteraMB.consultarBilletera("501248988964");
+        //DUMMY
+        
+        println(this, tarjetasConsultadas.size() + " Tarjetas obtenidas desde la billetera");
+    //        if( tarjetasConsultadas.size() > 0 ) {
+    //            hayTarjetas=true;
+    //        } else {
+    //            hayTarjetas=false;
+    //        }
+        
+        if( tarjetasConsultadas != null && !tarjetasConsultadas.isEmpty() ) {
+            for(TarjetaBilletera tarBill : tarjetasConsultadas ) {
+                if( tarBill.getTipoTarjeta() != null ) {
+                    if( tarBill.getTipoTarjeta().equalsIgnoreCase("CREDITO") ) {
+                        tarBill.setTipoTarjetaParaMostrar("crédito");
+                    } else if( tarBill.getTipoTarjeta().equalsIgnoreCase("DEBITO") ) {
+                        tarBill.setTipoTarjetaParaMostrar("débito");
+                    }
+                }
+                
+                
+                if( tarBill.getNumeroTarjeta() != null ) {
+                    if( tarBill.getNumeroTarjeta().length() >= 4 ) {
+                        tarBill.setNumeroTarjetaOculta("************" + tarBill.getNumeroTarjeta().substring(tarBill.getNumeroTarjeta().length()-4, tarBill.getNumeroTarjeta().length()));
+                    }
+                }
+            }
+        }
+        
+        return tarjetasConsultadas;
+    }
+    
+    protected void actualizarComboBoxFormasPagoBilletera(){
+        if( this.tarjetasBilletera != null && !this.tarjetasBilletera.isEmpty() ) {
+            tiposPago = new LinkedHashMap<String, String>();
+            for (TarjetaBilletera tarjetaBilletera : tarjetasBilletera) {
+                tiposPago.put(tarjetaBilletera.getNumeroTarjetaOculta() + " - " + tarjetaBilletera.getTipoTarjetaParaMostrar(), tarjetaBilletera.getNumeroTarjeta());
+    
+            }
+        }
+    }
+    
+    public boolean isEmptyTarjetasBilletera() {
+        return (this.tarjetasBilletera == null || this.tarjetasBilletera.isEmpty());
+    }
+    //Metodos cyber
 
     public String cbSiguienteCaptura_action() {
         // Add event code here...
@@ -248,4 +332,35 @@ public class PFTDC extends UtileriasMB implements Serializable {
     public HtmlInputHidden getPhase_Id() {
         return phase_Id;
     }
+    
+    //Accessors Cyber
+    public Map<String, String> getTiposPago() {
+        return tiposPago;
+    }
+
+    public void setTiposPago(Map<String, String> tiposPago) {
+        this.tiposPago = tiposPago;
+    }
+
+    public void setTipoPago(String tipoPago) {
+        this.tipoPago = tipoPago;
+    }
+
+    public String getTipoPago() {
+        return tipoPago;
+    }
+
+    public void setCVVTemp(String cVVTemp) {
+        this.cVVTemp = cVVTemp;
+    }
+
+    public String getCVVTemp() {
+        return cVVTemp;
+    }
+    
+    public TarjetaBilletera getTarjetaBillParaPago() {
+        return tarjetaBillParaPago;
+    }
+    
+    //Accessors Cyber
 }

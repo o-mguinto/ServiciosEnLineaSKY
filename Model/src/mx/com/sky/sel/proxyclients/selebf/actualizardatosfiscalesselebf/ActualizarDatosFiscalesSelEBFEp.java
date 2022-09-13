@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ActualizarDatosFiscalesSelEBF_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Sel/ActualizarDatosFiscales",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx/soa-infra/services/SEL_EBF/ActualizarDatosFiscalesSelEBF/ActualizarDatosFiscalesSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FActualizarDatosFiscales%7DActualizarDatosFiscalesSelEBF_ep")
+                  "https://qaselsoa.sky.com.mx/soa-infra/services/SEL_EBF/ActualizarDatosFiscalesSelEBF/ActualizarDatosFiscalesSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FActualizarDatosFiscales%7DActualizarDatosFiscalesSelEBF_ep")
 public class ActualizarDatosFiscalesSelEBFEp extends Service {
 
     private final static URL ACTUALIZARDATOSFISCALESSELEBFEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class ActualizarDatosFiscalesSelEBFEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx/soa-infra/services/SEL_EBF/ActualizarDatosFiscalesSelEBF/ActualizarDatosFiscalesSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FActualizarDatosFiscales%7DActualizarDatosFiscalesSelEBF_ep");
+                new URL("https://qaselsoa.sky.com.mx/soa-infra/services/SEL_EBF/ActualizarDatosFiscalesSelEBF/ActualizarDatosFiscalesSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FActualizarDatosFiscales%7DActualizarDatosFiscalesSelEBF_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

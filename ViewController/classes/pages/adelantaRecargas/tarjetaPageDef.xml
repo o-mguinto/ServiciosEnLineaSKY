@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="tarjetaPageDef"
+                Package="pages.adelantaRecargas">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="consultarTarjetasPs.result" DataControl="DCTarjetas"
+                    RangeSize="25" Refresh="ifNeeded"
+                    BeanClass="mx.com.sky.sel.services.beans.pagos.tarjetas.Tarjeta"
+                    id="consultarTarjetasIterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="consultarTarjetasIterator" id="actualizarTablaTarjetas" InstanceName="DCTarjetas.dataProvider"
+            DataControl="DCTarjetas" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <methodAction id="guardarTarjetaPs" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="guardarTarjetaPs"
+                  IsViewObjectMethod="false" DataControl="DCTarjetas"
+                  InstanceName="bindings.guardarTarjetaPs.dataControl.dataProvider"
+                  ReturnName="data.DCTarjetas.methodResults.guardarTarjetaPs_guardarTarjetaPs_dataControl_dataProvider_guardarTarjetaPs_result">
+      <NamedData NDName="numeroCuentaCliente" NDType="java.lang.String"/>
+      <NamedData NDName="tarjeta"
+                 NDType="mx.com.sky.sel.services.beans.pagos.tarjetas.Tarjeta"/>
+      <NamedData NDName="organizationID" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="consultarTarjetasPs" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="consultarTarjetasPs"
+                  IsViewObjectMethod="false" DataControl="DCTarjetas"
+                  InstanceName="bindings.consultarTarjetasPs.dataControl.dataProvider"
+                  ReturnName="data.DCTarjetas.methodResults.consultarTarjetasPs_consultarTarjetasPs_dataControl_dataProvider_consultarTarjetasPs_result">
+      <NamedData NDName="numeroCuentaCliente"
+                 NDValue="#{sesion.suscriptor.cuentaSKY}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="phaseId" NDValue="1" NDType="java.lang.String"/>
+      <NamedData NDName="keyId" NDValue="1" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="consultarTarjetasIterator" id="TarjetasV">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.pagos.tarjetas.Tarjeta"
+                      Name="result0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="numeroTarjeta"/>
+          <Item Value="nombre"/>
+          <Item Value="tipo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="eliminarTarjetaPs" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="eliminarTarjetaPs"
+                  IsViewObjectMethod="false" DataControl="DCTarjetas"
+                  InstanceName="bindings.eliminarTarjetaPs.dataControl.dataProvider"
+                  ReturnName="data.DCTarjetas.methodResults.eliminarTarjetaPs_eliminarTarjetaPs_dataControl_dataProvider_eliminarTarjetaPs_result">
+      <NamedData NDName="numeroCuentaCliente" NDType="java.lang.String"/>
+      <NamedData NDName="idTarjeta" NDType="java.lang.String"/>
+      <NamedData NDName="keyId" NDType="java.lang.String"/>
+      <NamedData NDName="phase" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

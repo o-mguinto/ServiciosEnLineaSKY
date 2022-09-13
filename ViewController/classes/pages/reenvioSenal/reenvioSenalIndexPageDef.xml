@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="reenvioSenalIndexPageDef"
+                Package="pages.reenvioSenal">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="consultarReenvioSenalSEL.result" DataControl="DCReenvioSenal" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.reenviosenal.ReenvioSenial"
+                    id="consultarReenvioSenalSELIterator"/>
+    <searchRegion id="ReenvioSenialQuery" Binds="consultarReenvioSenalSELIterator"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="consultarReenvioSenalSEL" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="consultarReenvioSenalSEL" IsViewObjectMethod="false" DataControl="DCReenvioSenal"
+                  InstanceName="bindings.consultarReenvioSenalSEL.dataControl.dataProvider"
+                  ReturnName="data.DCReenvioSenal.methodResults.consultarReenvioSenalSEL_consultarReenvioSenalSEL_dataControl_dataProvider_consultarReenvioSenalSEL_result">
+      <NamedData NDName="cuentaSKY" NDValue="#{sesion.cuentaSKY}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="consultarReenvioSenalSELIterator" id="ReenvioSenial">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.reenviosenal.ReenvioSenial" Name="result0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="userId"/>
+          <Item Value="cuentaSKY"/>
+          <Item Value="ti"/>
+          <Item Value="paquete"/>
+          <Item Value="pais"/>
+          <Item Value="fechaRegistro"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="consultarReenvioSenalSELIterator" id="ActualizarTabla" InstanceName="DCReenvioSenal.dataProvider"
+            DataControl="DCReenvioSenal" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <methodAction id="insertarReenvioSenalSEL" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="insertarReenvioSenalSEL" IsViewObjectMethod="false" DataControl="DCReenvioSenal"
+                  InstanceName="bindings.insertarReenvioSenalSEL.dataControl.dataProvider">
+      <NamedData NDName="reenvioSenialSEL" NDType="mx.com.sky.sel.services.beans.reenviosenal.ReenvioSenial"/>
+    </methodAction>
+    <methodAction id="insertarReenvioSenalSIEBEL" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="insertarReenvioSenalSIEBEL" IsViewObjectMethod="false" DataControl="DCReenvioSenal"
+                  InstanceName="bindings.insertarReenvioSenalSIEBEL.dataControl.dataProvider">
+      <NamedData NDName="reenvioSenialSEL" NDType="mx.com.sky.sel.services.beans.reenviosenal.ReenvioSenial"/>
+      <NamedData NDName="sistema" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

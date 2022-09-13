@@ -652,7 +652,7 @@ public class PFNuevoUsuario extends UtileriasMB implements Serializable {
        }else{
            setMensajeRespuesta("Texto incorrecto, intente nuevamente");
            this.setCaptchaValido(false);
-           AdfFacesContext.getCurrentInstance().addPartialTarget(pglRecaptcha);
+           //AdfFacesContext.getCurrentInstance().addPartialTarget(pglRecaptcha);
        }
     }
 

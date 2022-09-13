@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ConsultaControlRemotoRegiones",
                   targetNamespace = "http://xmlns.oracle.com/ConsultaControlRemotoRegiones",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaControlRemotoRegiones/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaControlRemotoRegiones%7DConsultaControlRemotoRegiones")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaControlRemotoRegiones/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaControlRemotoRegiones%7DConsultaControlRemotoRegiones")
 public class ConsultaControlRemotoRegiones_Service extends Service {
 
     private final static URL CONSULTACONTROLREMOTOREGIONES_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class ConsultaControlRemotoRegiones_Service extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaControlRemotoRegiones/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaControlRemotoRegiones%7DConsultaControlRemotoRegiones");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaControlRemotoRegiones/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaControlRemotoRegiones%7DConsultaControlRemotoRegiones");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

@@ -63,7 +63,7 @@
       <property
          name="fromOutcome">irNuevaTarjeta</property>
       <property
-         name="sdm:polyPoints">R50,529.02277,261.29297,723.63586,427.22092,L44</property>
+         name="sdm:polyPoints">R50,526.02783,261.29297,725.3633,428.94824,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -87,6 +87,6 @@
       <property
          name="fromsrcid">__2</property>
       <property
-         name="sdm:polyPoints">R38,525.22736,250.8383,854.7726,212.44824,L50</property>
+         name="sdm:polyPoints">R42,523.5,254.29297,856.5,212.44824,L50</property>
    </ControlFlowCase>
 </SDM>

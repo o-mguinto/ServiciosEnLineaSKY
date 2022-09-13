@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ConsultaSolicitudDeServicioIndividual",
                   targetNamespace = "http://xmlns.oracle.com/ConsultaSolicitudDeServicioIndividual",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebss/ConsultaSolicitudDeServicioIndividual/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaSolicitudDeServicioIndividual%7DConsultaSolicitudDeServicioIndividual")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebss/ConsultaSolicitudDeServicioIndividual/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaSolicitudDeServicioIndividual%7DConsultaSolicitudDeServicioIndividual")
 public class ConsultaSolicitudDeServicioIndividual_Service extends Service {
 
     private final static URL CONSULTASOLICITUDDESERVICIOINDIVIDUAL_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class ConsultaSolicitudDeServicioIndividual_Service extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebss/ConsultaSolicitudDeServicioIndividual/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaSolicitudDeServicioIndividual%7DConsultaSolicitudDeServicioIndividual");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebss/ConsultaSolicitudDeServicioIndividual/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaSolicitudDeServicioIndividual%7DConsultaSolicitudDeServicioIndividual");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

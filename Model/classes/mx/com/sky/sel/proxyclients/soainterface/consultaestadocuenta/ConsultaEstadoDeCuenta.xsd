@@ -1,0 +1,22 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sky.com.mx/soasky" targetNamespace="http://www.sky.com.mx/soasky"
+     elementFormDefault="qualified">
+    <xsd:include schemaLocation="Cabecera.xsd"/>
+    <xsd:element name="consultaEstadoDeCuenta_Entrada" type="consultaEstadoDeCuenta_Entrada_TYPE">
+        <xsd:annotation>
+            <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="consultaEstadoDeCuenta_Salida" type="consultaEstadoDeCuenta_Salida_TYPE"/>
+    <xsd:complexType name="consultaEstadoDeCuenta_Entrada_TYPE">
+        <xsd:sequence>
+            <xsd:element name="CABECERA" type="Cabecera_Entrada_TYPE"/>
+            <xsd:element name="NUMERO_FACTURA" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="consultaEstadoDeCuenta_Salida_TYPE">
+        <xsd:sequence>
+            <xsd:element name="CABECERA" type="Cabecera_Salida_TYPE"/>
+            <xsd:element name="FACTURA_FORMATEADA" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

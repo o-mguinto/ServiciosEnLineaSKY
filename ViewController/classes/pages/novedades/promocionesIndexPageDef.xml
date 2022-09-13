@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="promocionesIndexPageDef"
+                Package="pages.novedades">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="obtenerPromocionesActivas.result" DataControl="DCPromocion" RangeSize="10"
+                    BeanClass="mx.com.sky.sel.services.beans.promociones.Promocion" id="obtenerPromocionesActivasIter"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerPromociones" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerPromociones" IsViewObjectMethod="false" DataControl="DCPromocion"
+                  InstanceName="bindings.obtenerPromociones.dataControl.dataProvider"
+                  ReturnName="data.DCPromocion.methodResults.obtenerPromociones_obtenerPromociones_dataControl_dataProvider_obtenerPromociones_result">
+      <NamedData NDName="idCodigoPais" NDValue="#{sesion.suscriptor.organizacion}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="obtenerPromocionesActivas" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerPromocionesActivas" IsViewObjectMethod="false" DataControl="DCPromocion"
+                  InstanceName="bindings.obtenerPromocionesActivas.dataControl.dataProvider"
+                  ReturnName="data.DCPromocion.methodResults.obtenerPromocionesActivas_obtenerPromocionesActivas_dataControl_dataProvider_obtenerPromocionesActivas_result">
+      <NamedData NDName="organizationId" NDValue="#{sesion.suscriptor.organizacion}" NDType="java.lang.String"/>
+      <NamedData NDName="isUserVetv" NDValue="#{sesion.userVeTV}" NDType="boolean"/>
+    </methodAction>
+    <table IterBinding="obtenerPromocionesActivasIter" id="tablaPromociones">
+      <AttrNames>
+        <Item Value="id"/>
+        <Item Value="carrusel"/>
+        <Item Value="descripcion"/>
+        <Item Value="fechaActualizacion"/>
+        <Item Value="fechaCreacion"/>
+        <Item Value="habilitada"/>
+        <Item Value="idPais"/>
+        <Item Value="imagen"/>
+        <Item Value="nombre"/>
+        <Item Value="popUp"/>
+        <Item Value="vetv"/>
+      </AttrNames>
+    </table>
+  </bindings>
+</pageDefinition>

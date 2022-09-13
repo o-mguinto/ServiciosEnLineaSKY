@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:consultarcambiopaqueteprincipalselebo="http://www.sky.com.mx/EnterpriseObjects/Sel/ConsultarCambioPaquetePrincipal" targetNamespace="http://www.sky.com.mx/EnterpriseObjects/Sel/ConsultarCambioPaquetePrincipal" elementFormDefault="qualified">
+  <xsd:element name="ConsultarCambioPaquetePrincipalEBO" type="consultarcambiopaqueteprincipalselebo:ConsultarCambioPaquetePrincipalEBOType"/>
+  <xsd:complexType name="ConsultarCambioPaquetePrincipalEBOType">
+    <xsd:sequence>
+      <xsd:element name="NombreProductoCRM" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="NombreProductoSEL" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="PartNum" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="Descripcion" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="Minutos" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="SMS" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="Datos" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="Vigencia" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="Precio" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="ListProductFacturacion" minOccurs="0" type="consultarcambiopaqueteprincipalselebo:ListProductFacturacion_Type"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ListProductFacturacion_Type">
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="ProductFacturacion" maxOccurs="unbounded" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1">
+            <xsd:element name="NombreProductoFactura" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="PartNumberFactura" type="xsd:string" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ConsultarCambioPaquetePrincipalListType">
+    <xsd:sequence>
+      <xsd:element name="ConsultarCambioPaquetePrincipal" type="consultarcambiopaqueteprincipalselebo:ConsultarCambioPaquetePrincipalEBOType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -5,7 +5,7 @@
             focusViewId="/pagosPorEventoIndex" immediate="true" rendered="#{sesion.PAGOS_POR_EVENTO}"
             icon="/imagenes/menu/ic_pagoporevento.svg">
     <itemNode id="itemNode_peliculasPremiere" label="#{lbl.smenu_PPE_PELICULAS}" action="irPeliculasPremiere"
-              focusViewId="/peliculasPremiere" immediate="true"
+              focusViewId="/selPPE" immediate="true"
               rendered="#{sesion.SKY_PREMIERE}"/>
     <itemNode id="itemNode_eventosEspeciales" focusViewId="/eventosEspeciales" action="irSkyEvent" immediate="true"
                label="#{lbl.smenu_PPE_EVENTOS}" rendered="#{sesion.SKY_EVENT}"/>

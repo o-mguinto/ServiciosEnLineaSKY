@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:meta="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" elementFormDefault="qualified" targetNamespace="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1">
+  <xsd:element name="EBM" type="meta:EBMType"/>
+  <xsd:complexType name="EBMType">
+    <xsd:sequence>
+      <xsd:element ref="meta:EBMHeaderRequest"/>
+      <xsd:element ref="meta:EBMHeaderResponse"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="EBMHeaderRequest" type="meta:EBMHeaderRequestType"/>
+  <xsd:complexType name="EBMHeaderRequestType">
+    <xsd:sequence>
+      <xsd:element name="Operacion" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="SistemaOrigen" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="ParametroList" type="meta:ParametroListType" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="SeguridadList" type="meta:SeguridadListType" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="EBMHeaderResponse" type="meta:EBMHeaderResponseType"/>
+  <xsd:complexType name="EBMHeaderResponseType">
+    <xsd:sequence>
+      <xsd:element name="ErrorTecnico" type="meta:ErrorTecnicoType"/>
+      <xsd:element name="ErrorNegocio" type="meta:ErrorNegocioType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorTecnicoType">
+    <xsd:sequence>
+      <xsd:element name="code" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="summary" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="detail" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="Sistema" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorNegocioType">
+    <xsd:sequence>
+      <xsd:element name="Estado" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="CodigoError" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="DescripcionError" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SeguridadListType">
+    <xsd:sequence>
+      <xsd:element name="SeguridadItem" type="meta:SeguridadItemType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SeguridadItemType">
+    <xsd:sequence>
+      <xsd:element name="SistemaAAutenticar" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="Username" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="Password" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ParametroItemType">
+    <xsd:sequence>
+      <xsd:element name="Nombre" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="Valor" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ParametroListType">
+    <xsd:sequence>
+      <xsd:element name="ParametroItem" type="meta:ParametroItemType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -10,6 +10,7 @@ import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 
 import mx.com.sky.sel.log.LogPC;
+import mx.com.sky.sel.log.LogServicios;
 import mx.com.sky.sel.proxyclients.apigateway.ebf.cambiarformadepago.CambiarFormaDePagoEBF_Client;
 import mx.com.sky.sel.proxyclients.apigateway.ebf.cambiarformadepago.type.CambiarFormaDePagoInput;
 import mx.com.sky.sel.proxyclients.apigateway.ebf.cambiarformadepago.type.RequestCambiarFormaDePago;
@@ -99,6 +100,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
     
     private CambiarFormaDePagoEBF_Client clienteCambiarFormaDePagoEBF;
     private static final String SISTEMA_ORIGEN = "SEL";
+    private static final String SISTEMA_ORIGEN_HEADER = "Web";
     private static final String CONSULTAR_BILLETERA_OPERACION = "ConsultarBilletera";
     private static final String ELIMINAR_METODO_DE_PAGO_OPERACION = "EliminarMetodoDePago";
     private static final String CONSULTAR_TIPO_CAMBIO = "ConsultarTipoCambio";
@@ -225,7 +227,8 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
  
     @Override
     public EliminarMetodoDePagoResponseDTO eliminarMetodoDePago(EliminarMetodoDePagoRequestDTO requestDTO) {
-        System.out.println("Llamando a EliminarMetodoDePago()");
+        LogServicios.println(this, "Llamando a EliminarMetodoDePago()");
+        LogServicios.println(this, "Llamando a EliminarMetodoDePago()");
         PropiedadesAmbienteManagementBean cyberSourcePropertiesMB = new PropiedadesAmbienteManagementBean();
             
         ConsultarPropiedadAmbienteResponseDTO propiedadesAmbiente = cyberSourcePropertiesMB.consultarPropiedadesAmbiente(Arrays.asList(0,6,7));
@@ -283,7 +286,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
         wsClient = new GenerarURLBilleteraEBF_Client(propiedadesAmbiente.getPropiedades().get(0), propiedadesAmbiente.getPropiedades().get(6), propiedadesAmbiente.getPropiedades().get(7));
         
         wsProxyRequest = this.crearProxyRequestGenerarURLBilletera(request);
-        System.out.println("URL para redirect a SEL por parte del portal de tokenizacion: " + propiedadesAmbiente.getPropiedades().get(9));
+        LogServicios.println(this, "URL para redirect a SEL por parte del portal de tokenizacion: " + propiedadesAmbiente.getPropiedades().get(9));
         wsProxyRequest.setUrlBTGS(propiedadesAmbiente.getPropiedades().get(9));
         //DUMMY
         //wsProxyRequest = this.crearProxyRequestGenerarURLBilleteraDUMMY();
@@ -297,7 +300,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
             wsResponse.getHeader().getErrorNegocio().getCodigoError() != null &&
             wsResponse.getHeader().getErrorNegocio().getCodigoError().equalsIgnoreCase("0") ) {
             
-            System.out.println("URLBilletera:" + wsResponse.getUrlBilletera());
+            LogServicios.println(this, "URLBilletera:" + wsResponse.getUrlBilletera());
             billeteraURL = wsResponse.getUrlBilletera();
             
         }
@@ -382,7 +385,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
     }
     
     public ConsultarProductoResponseDTO consultarProducto(ConsultarProductoRequestDTO reqConsultarProducto){
-        System.out.println("Llamando a ConsultarProducto()");
+        LogServicios.println(this, "Llamando a ConsultarProducto()");
         PropiedadesAmbienteManagementBean cyberSourcePropertiesMB = new PropiedadesAmbienteManagementBean();
         
         if( clienteConsultarProductoEBS == null ){
@@ -411,8 +414,8 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
         ResponseConsultarProducto responseWS = clienteConsultarProductoEBS.ConsultarProducto(requestWS);
         
         if(responseWS != null && responseWS.getHeader() != null){
-            System.out.println("Error Tecnico " + responseWS.getHeader().getErrorTecnico().getCode());
-            System.out.println("Error Negocio " + responseWS.getHeader().getErrorNegocio().getCodigoError() + " " + responseWS.getHeader().getErrorNegocio().getDescripcionError());
+            LogServicios.println(this, "Error Tecnico " + responseWS.getHeader().getErrorTecnico().getCode());
+            LogServicios.println(this, "Error Negocio " + responseWS.getHeader().getErrorNegocio().getCodigoError() + " " + responseWS.getHeader().getErrorNegocio().getDescripcionError());
             if(responseWS.getHeader().getErrorNegocio() != null && responseWS.getHeader().getErrorNegocio().getCodigoError() != null){
                 if(!responseWS.getHeader().getErrorNegocio().getCodigoError().equals("0")){
                     responseDTO.getHeader().setCodigoError(responseWS.getHeader().getErrorNegocio().getCodigoError());
@@ -424,7 +427,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
                 }
                 
                 responseDTO.getHeader().setCodigoError("0");
-                System.out.println("Status " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
+                LogServicios.println(this, "Status " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
             }
         }
         
@@ -433,7 +436,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
 
     @Override
     public ConsultarTipoCambioResponseDTO consultarTipoCambio(ConsultarTipoCambioRequestDTO reqTipoCambio) {
-        System.out.println("Llamando a ConsultarTipoCambio()");
+        LogServicios.println(this, "Llamando a ConsultarTipoCambio()");
         PropiedadesAmbienteManagementBean cyberSourcePropertiesMB = new PropiedadesAmbienteManagementBean();
         
         if( clienteConsultarTipoCambioEBS == null ){
@@ -456,35 +459,35 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
         ResponseConsultarTipoCambio responseWS = clienteConsultarTipoCambioEBS.consultarTipoCambio(requestWS);
         ConsultarTipoCambioResponseDTO responseDTO = new ConsultarTipoCambioResponseDTO();
         if(responseWS != null && responseWS.getHeader() != null) {
-            System.out.println("Error Tecnico " + responseWS.getHeader().getErrorTecnico().getCode());
-            System.out.println("Error Negocio " + responseWS.getHeader().getErrorNegocio().getCodigoError() + " " + responseWS.getHeader().getErrorNegocio().getDescripcionError());
+            LogServicios.println(this, "Error Tecnico " + responseWS.getHeader().getErrorTecnico().getCode());
+            LogServicios.println(this, "Error Negocio " + responseWS.getHeader().getErrorNegocio().getCodigoError() + " " + responseWS.getHeader().getErrorNegocio().getDescripcionError());
             if(responseWS.getHeader().getErrorNegocio() != null && responseWS.getHeader().getErrorNegocio().getCodigoError() != null) {
                 if(responseWS.getHeader().getErrorNegocio().getCodigoError().equals("100")) {
                     responseDTO.getHeader().setCodigoError("0");
                     return responseDTO;
                 }
             } else {
-                System.out.println("Error inesperado...");
+                LogServicios.println(this, "Error inesperado...");
                 responseDTO.getHeader().setCodigoError("-1");
                 return responseDTO;
             }
                     
             responseDTO.getHeader().setCodigoError("0");
-            System.out.println("Status " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
-            System.out.println("Tipo de Cambios Recuperados " + responseWS.getBilleteraTipoCambioCollection().getBilleteraTipoCambio().size());
+            LogServicios.println(this, "Status " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
+            LogServicios.println(this, "Tipo de Cambios Recuperados " + responseWS.getBilleteraTipoCambioCollection().getBilleteraTipoCambio().size());
             if(responseWS.getBilleteraTipoCambioCollection().getBilleteraTipoCambio() != null) {//si se recupera tarjetas
                 responseDTO.setBilleteraTipoCambioCollection(responseWS.getBilleteraTipoCambioCollection());
                 for(BilleteraTipoCambio tipoCambio : responseWS.getBilleteraTipoCambioCollection().getBilleteraTipoCambio()) {
-                    System.out.println("Id : "+tipoCambio.getId());
-                    System.out.println("Estatus : "+tipoCambio.getEstatus());
-                    System.out.println("Pais : "+tipoCambio.getPais());
-                    System.out.println("Origen : "+tipoCambio.getOrigen());
-                    System.out.println("Destino : "+tipoCambio.getDestino());
-                    System.out.println("Tasa : "+tipoCambio.getTasa());
-                    System.out.println("FechaVigenciaInicio : "+tipoCambio.getFechaVigenciaInicio());
-                    System.out.println("FechaVigenciaFin : "+tipoCambio.getFechaVigenciaFin());
-                    System.out.println("FechaCreacion : "+tipoCambio.getFechaCreacion());
-                    System.out.println("FechaActualizacion : "+tipoCambio.getFechaActualizacion());
+                    LogServicios.println(this, "Id : "+tipoCambio.getId());
+                    LogServicios.println(this, "Estatus : "+tipoCambio.getEstatus());
+                    LogServicios.println(this, "Pais : "+tipoCambio.getPais());
+                    LogServicios.println(this, "Origen : "+tipoCambio.getOrigen());
+                    LogServicios.println(this, "Destino : "+tipoCambio.getDestino());
+                    LogServicios.println(this, "Tasa : "+tipoCambio.getTasa());
+                    LogServicios.println(this, "FechaVigenciaInicio : "+tipoCambio.getFechaVigenciaInicio());
+                    LogServicios.println(this, "FechaVigenciaFin : "+tipoCambio.getFechaVigenciaFin());
+                    LogServicios.println(this, "FechaCreacion : "+tipoCambio.getFechaCreacion());
+                    LogServicios.println(this, "FechaActualizacion : "+tipoCambio.getFechaActualizacion());
                 }
             }
         }
@@ -494,7 +497,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
     
     @Override
     public DeterminarComercioResponseDTO determinarComercio(DeterminarComercioRequestDTO reqDeterminarCom){
-        System.out.println("Llamando a determinarComercio()");
+        LogServicios.println(this, "Llamando a determinarComercio()");
         PropiedadesAmbienteManagementBean cyberSourcePropertiesMB = new PropiedadesAmbienteManagementBean();
         
         if( clienteDeterminarComercio == null ){
@@ -522,8 +525,8 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
         responseWS = clienteDeterminarComercio.determinarComercioEBS(requestWS);
 
         if(responseWS != null && responseWS.getHeader() != null){
-            System.out.println("Error Tecnico " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
-            System.out.println("Error Negocio " + responseWS.getHeader().getErrorNegocio().getCodigoError() + " " + responseWS.getHeader().getErrorNegocio().getDescripcionError());
+            LogServicios.println(this, "Error Tecnico " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
+            LogServicios.println(this, "Error Negocio " + responseWS.getHeader().getErrorNegocio().getCodigoError() + " " + responseWS.getHeader().getErrorNegocio().getDescripcionError());
             if(responseWS.getHeader().getErrorNegocio() != null && responseWS.getHeader().getErrorNegocio().getCodigoError() != null){
                 if(!responseWS.getHeader().getErrorNegocio().getCodigoError().equals("0")){
                     responseDTO.getHeader().setCodigoError(responseWS.getHeader().getErrorNegocio().getCodigoError());
@@ -548,7 +551,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
     
     @Override
     public ResponseGenerarIdUnicoDePagoDTO generarIdUnicoDePago(RequestGenerarIdUnicoDePagoDTO reqGenIdUnicoP){
-        System.out.println("BilleteraManagementBean.generarIdUnicoDePago()");
+        LogServicios.println(this, "BilleteraManagementBean.generarIdUnicoDePago()");
         PropiedadesAmbienteManagementBean cyberSourcePropertiesMB = new PropiedadesAmbienteManagementBean();
 
         if (this.clienteGenerarIdUnicoDePagoEBS == null){
@@ -578,8 +581,8 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
         responseWS = clienteGenerarIdUnicoDePagoEBS.generarIdUnicoDePago(requestWS);
         //aqui se agrega toda la logica de manejo de respuesta del WS
         if(responseWS != null && responseWS.getHeader() != null){
-            System.out.println("Error Tecnico " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
-            System.out.println("Error Negocio " + responseWS.getHeader().getErrorNegocio().getCodigoError() + " " + responseWS.getHeader().getErrorNegocio().getDescripcionError());
+            LogServicios.println(this, "Error Tecnico " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
+            LogServicios.println(this, "Error Negocio " + responseWS.getHeader().getErrorNegocio().getCodigoError() + " " + responseWS.getHeader().getErrorNegocio().getDescripcionError());
             if(responseWS.getHeader().getErrorNegocio() != null && responseWS.getHeader().getErrorNegocio().getCodigoError() != null){
                 if(!responseWS.getHeader().getErrorNegocio().getCodigoError().equals("0")){
                     responseDTO.getHeader().setCodigoError(responseWS.getHeader().getErrorNegocio().getCodigoError());
@@ -604,7 +607,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
     
     
     public EvaluarRiesgoResponseDTO EvaluarRiesgoTdcTdd(EvaluarRiesgoRequestDTO reqEvalRiesgo){
-        System.out.println("EvaluadorRiesgoManagementBean.EvaluarRiesgoTdcTdd()");
+        LogServicios.println(this, "EvaluadorRiesgoManagementBean.EvaluarRiesgoTdcTdd()");
         
         if (this.clienteEvaluarRiesgoEBS == null) {
             PropiedadesAmbienteManagementBean cyberSourcePropertiesMB = new PropiedadesAmbienteManagementBean();
@@ -652,7 +655,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
         //si vienen datos de comerciante se agregan
         if(reqEvalRiesgo.getDatosComerciante() != null && reqEvalRiesgo.getDatosComerciante().size()>0){
             //agregando datos del comerciante
-            System.out.println("agregando datos del comerciante al request de EvaluarRiesgo...");
+            LogServicios.println(this, "agregando datos del comerciante al request de EvaluarRiesgo...");
             DatosComerciante datosComerciante = new DatosComerciante();
             datosComerciante.setParametro(reqEvalRiesgo.getDatosComerciante());
             requestWS.setDatosComerciante(datosComerciante);
@@ -661,8 +664,8 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
         responseWS = clienteEvaluarRiesgoEBS.evaluarRiesgo(requestWS);
         //aqui se agrega toda la logica de manejo de respuesta del WS
         if(responseWS != null && responseWS.getHeader() != null){
-            System.out.println("Error Tecnico " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
-            System.out.println("Error Negocio " + responseWS.getHeader().getErrorNegocio().getCodigoError() + " " + responseWS.getHeader().getErrorNegocio().getDescripcionError());
+            LogServicios.println(this, "Error Tecnico " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
+            LogServicios.println(this, "Error Negocio " + responseWS.getHeader().getErrorNegocio().getCodigoError() + " " + responseWS.getHeader().getErrorNegocio().getDescripcionError());
             if(responseWS.getHeader().getErrorNegocio() != null && responseWS.getHeader().getErrorNegocio().getCodigoError() != null){
                 if(!responseWS.getHeader().getErrorNegocio().getCodigoError().equals("0")){
                     responseDTO.setCodigoError(responseWS.getHeader().getErrorNegocio().getCodigoError());
@@ -686,7 +689,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
 
     @Override
     public ActualizarTDCBilleteraResponseDTO actualizarTDCBilletera(TokenDTO requestDTO) {
-        System.out.println("BilleteraManagementBean.actualizarTDCBilletera()");
+        LogServicios.println(this, "BilleteraManagementBean.actualizarTDCBilletera()");
         
         if (this.clienteActualizarTDCBilleteraEBS == null) {
             PropiedadesAmbienteManagementBean cyberSourcePropertiesMB = new PropiedadesAmbienteManagementBean();
@@ -754,8 +757,8 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
         ActualizarTDCBilleteraResponseDTO responseDTO = new ActualizarTDCBilleteraResponseDTO();
         
         if(responseWS != null && responseWS.getHeader() != null){
-            System.out.println("Error Tecnico " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
-            System.out.println("Error Negocio " + responseWS.getHeader().getErrorNegocio().getCodigoError() + " " + responseWS.getHeader().getErrorNegocio().getDescripcionError());
+            LogServicios.println(this, "Error Tecnico " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
+            LogServicios.println(this, "Error Negocio " + responseWS.getHeader().getErrorNegocio().getCodigoError() + " " + responseWS.getHeader().getErrorNegocio().getDescripcionError());
             if(responseWS.getHeader().getErrorNegocio() != null && responseWS.getHeader().getErrorNegocio().getCodigoError() != null){
                 if(!responseWS.getHeader().getErrorNegocio().getCodigoError().equals("0")){
                     responseDTO.setCodigoError(responseWS.getHeader().getErrorNegocio().getCodigoError());
@@ -776,7 +779,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
 
     @Override
     public ResponseOrquestarProcesoPagoDTO orquestarProcesoPago(RequestOrquestarProcesoPagoDTO requestDTO) {
-        System.out.println("PagoManagementBean.orquestarProcesoPago()");
+        LogServicios.println(this, "PagoManagementBean.orquestarProcesoPago()");
         
         if(this.clienteOrquestarProcesoPago == null){
             PropiedadesAmbienteManagementBean cyberSourcePropertiesMB = new PropiedadesAmbienteManagementBean();
@@ -793,7 +796,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
         RequestOrquestarProcesoPagoPMP requestWS = new RequestOrquestarProcesoPagoPMP();
         EBMHeaderRequest header = new EBMHeaderRequest();
         header.setOperacion("OrquestarProcesoPago");
-        header.setSistemaOrigen(SISTEMA_ORIGEN);
+        header.setSistemaOrigen(SISTEMA_ORIGEN_HEADER);
         requestWS.setHeader(header);
         
         DatosTarjeta_Entrada datosTarjeta = new DatosTarjeta_Entrada();
@@ -862,7 +865,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
         ResponseOrquestarProcesoPagoPMP responseWS = clienteOrquestarProcesoPago.orquestarProcesoPagoPMP(requestWS);
         
         if(responseWS != null && responseWS.getHeader() != null){
-            System.out.println("Status " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
+            LogServicios.println(this, "Status " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
             if(responseWS.getHeader().getErrorNegocio() != null && responseWS.getHeader().getErrorNegocio().getCodigoError() != null){
                 if(!responseWS.getHeader().getErrorNegocio().getCodigoError().equals("0")){
                     responseDTO.setCodigoError(responseWS.getHeader().getErrorNegocio().getCodigoError());
@@ -891,7 +894,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
                 //responseDTO.setTipoTarjeta( responseWS.getClasificacionesLlamada().getCardType() );
                 //responseDTO.setClearingHouse(responseWS.getClasificacionesLlamada().getClearingHouse());
             }else{
-                System.out.println("Error inesperado...");
+                LogServicios.println(this, "Error inesperado...");
                 responseDTO.setCodigoError("-1");
             }
         }
@@ -901,7 +904,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
     
 
         public CambiarFormaDePagoResponseDTO cambiarFormaPago(CambiarFormaDePagoRequestDTO reqCambiarFormaPago){
-            System.out.println("Llamando a cambiarFormaPago()");
+            LogServicios.println(this, "Llamando a cambiarFormaPago()");
         PropiedadesAmbienteManagementBean cyberSourcePropertiesMB = new PropiedadesAmbienteManagementBean();
             
             if( clienteCambiarFormaDePagoEBF == null ){
@@ -927,8 +930,8 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
             ResponseCambiarFormaDePago responseWS = clienteCambiarFormaDePagoEBF.cambiarFormaDePago(requestWS);
             
             if(responseWS != null && responseWS.getHeader() != null){
-                System.out.println("Error Tecnico " + responseWS.getHeader().getErrorTecnico().getCode());
-                System.out.println("Error Negocio " + responseWS.getHeader().getErrorNegocio().getCodigoError() + " " + responseWS.getHeader().getErrorNegocio().getDescripcionError());
+                LogServicios.println(this, "Error Tecnico " + responseWS.getHeader().getErrorTecnico().getCode());
+                LogServicios.println(this, "Error Negocio " + responseWS.getHeader().getErrorNegocio().getCodigoError() + " " + responseWS.getHeader().getErrorNegocio().getDescripcionError());
                 if(responseWS.getHeader().getErrorNegocio() != null && responseWS.getHeader().getErrorNegocio().getCodigoError() != null){
                     if(!responseWS.getHeader().getErrorTecnico().getCode().equalsIgnoreCase("ok")
                     ){
@@ -941,7 +944,7 @@ public class BilleteraManagementBean implements BilleteraManagement, BilleteraMa
                     }
                     
                     responseDTO.getHeader().setCodigoError("0");
-                    System.out.println("Status " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
+                    LogServicios.println(this, "Status " + responseWS.getHeader().getErrorTecnico().getCode() + " " + responseWS.getHeader().getErrorNegocio().getCodigoError());
                     responseDTO.getHeader().setDescripcionError(responseWS.getHeader().getErrorNegocio().getDescripcionError());
                 
                 }

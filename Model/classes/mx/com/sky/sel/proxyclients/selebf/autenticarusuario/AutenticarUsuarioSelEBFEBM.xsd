@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:autenticarusuariosel="http://www.sky.com.mx/EnterpriseFlowMessage/Sel/AutenticarUsuario" targetNamespace="http://www.sky.com.mx/EnterpriseFlowMessage/Sel/AutenticarUsuario" xmlns:seccom="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" xmlns:eboautenticarusuariosel="http://www.sky.com.mx/EnterpriseObjects/Sel/Usuario" elementFormDefault="qualified">
+  <xsd:import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" schemaLocation="Meta.xsd"/>
+  <xsd:import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/Usuario" schemaLocation="UsuarioEBO.xsd"/>
+  <xsd:element name="AutenticarUsuarioRequestEBM" type="autenticarusuariosel:AutenticarUsuarioRequestEBMType"/>
+  <xsd:element name="AutenticarUsuarioResponseEBM" type="autenticarusuariosel:AutenticarUsuarioResponseEBMType"/>
+  <xsd:complexType name="AutenticarUsuarioRequestEBMType">
+    <xsd:sequence>
+      <xsd:element ref="seccom:EBMHeaderRequest"/>
+      <xsd:element name="AutenticarUsuarioInputMessage" type="autenticarusuariosel:AutenticarUsuarioInputMessageType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AutenticarUsuarioResponseEBMType">
+    <xsd:sequence>
+      <xsd:element ref="seccom:EBMHeaderResponse"/>
+      <xsd:element name="ListUsuariosSel" type="autenticarusuariosel:ListUsuariosSelType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ListUsuariosSelType">
+    <xsd:sequence>
+      <xsd:element ref="eboautenticarusuariosel:UsuarioSelEBO" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AutenticarUsuarioInputMessageType">
+    <xsd:sequence>
+      <xsd:element name="Correo" type="xsd:string"/>
+      <xsd:element name="Password" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

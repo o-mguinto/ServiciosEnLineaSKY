@@ -473,7 +473,7 @@
                                                                id="cb1"
                                                                styleClass="btn-internal"
                                                                partialTriggers="it4"
-                                                               action="irNuevaTarjeta"
+                                                               action="misTarjetas"
                                                                disabled="#{empty pageFlowScope.PagosBackingBean.importe.value}"
                                                                rendered="#{sesion.suscriptor.permitePagoTC and !sesion.usuario.cuentaJerarquia}"
                                                                immediate="true">

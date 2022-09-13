@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ConsultarFactura_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Sicof/ConsultarFactura",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SICOF_Interface/ConsultarFacturaSicofInterface/ConsultarFactura_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSicof%2FConsultarFactura%7DConsultarFactura_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SICOF_Interface/ConsultarFacturaSicofInterface/ConsultarFactura_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSicof%2FConsultarFactura%7DConsultarFactura_ep")
 public class ConsultarFacturaEp extends Service {
 
     private final static URL CONSULTARFACTURAEP_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class ConsultarFacturaEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SICOF_Interface/ConsultarFacturaSicofInterface/ConsultarFactura_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSicof%2FConsultarFactura%7DConsultarFactura_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SICOF_Interface/ConsultarFacturaSicofInterface/ConsultarFactura_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSicof%2FConsultarFactura%7DConsultarFactura_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

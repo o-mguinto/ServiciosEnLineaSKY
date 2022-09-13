@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "bpel_reenviosenal_client_ep",
                   targetNamespace = "http://xmlns.oracle.com/SKYPortal/ReenvioSenal/BPEL_ReenvioSenal",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/ReenvioSenal/bpel_reenviosenal_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYPortal%2FReenvioSenal%2FBPEL_ReenvioSenal%7Dbpel_reenviosenal_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/ReenvioSenal/bpel_reenviosenal_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYPortal%2FReenvioSenal%2FBPEL_ReenvioSenal%7Dbpel_reenviosenal_client_ep")
 public class BpelReenviosenalClientEp extends Service {
 
     private final static URL BPELREENVIOSENALCLIENTEP_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class BpelReenviosenalClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/ReenvioSenal/bpel_reenviosenal_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYPortal%2FReenvioSenal%2FBPEL_ReenvioSenal%7Dbpel_reenviosenal_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/ReenvioSenal/bpel_reenviosenal_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYPortal%2FReenvioSenal%2FBPEL_ReenvioSenal%7Dbpel_reenviosenal_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

@@ -562,9 +562,10 @@ public class BBPago implements Serializable {
     
     public String pagarCyber() {
         String flujo = "";
-        boolean pagoExitoso = false;
+        boolean isPagoExitoso = false;
+        boolean isTarjetaRechazada = false;
         mensajeRespuesta = "";
-        String numeroReferenciaPago = null;
+        String numeroAutorizacionPago = null;
         ConfigMenu sesion = (ConfigMenu)JSFUtils.getBean("sesion");
         TarjetaBilletera tarjetaBillParaPago = null;
         ServicioBines binesWS = new ServicioBines();
@@ -610,10 +611,15 @@ public class BBPago implements Serializable {
             }
         }
         LogPC.println(this, "El pago se realizara con esta tarjeta: " + tarjetaBillParaPago.getNumeroTarjeta());
+        LogPC.println(this, "TipoPagoCyber: " + tarjetaBillParaPago.getTipoTarjeta().substring(0, 1) +
+                            tarjetaBillParaPago.getTipoTarjeta().substring(1).toLowerCase());
         
         organizationId = sesion.getSuscriptor().getOrganizacion();
         //Llamada al servicio
         binesWSResponse = binesWS.validarBines(tarjetaBillParaPago.getNumeroTarjeta(), organizationId);
+        if( binesWSResponse != null ) {
+            LogPC.println(this, "binesWSResponse.isTarjetaValida from WS: " + binesWSResponse.isTarjetaValida());
+        }
         //DUMMY
         binesWSResponse.setTarjetaValida(true);
         //DUMMY
@@ -719,8 +725,8 @@ public class BBPago implements Serializable {
                                             procesaPagoTarjetaResponseWS.getNumeroReferenciaPago() != null ) {
                                             LogPC.println(this, "NumeroAutorizacionPago (GwOrquestarProcesoPagoPMPEBF): " + procesaPagoTarjetaResponseWS.getNumeroAutorizacionPago());
                                             LogPC.println(this, "NumeroReferenciaPago (GwOrquestarProcesoPagoPMPEBF): " + procesaPagoTarjetaResponseWS.getNumeroReferenciaPago());
-                                            numeroReferenciaPago = procesaPagoTarjetaResponseWS.getNumeroReferenciaPago();
-                                            pagoExitoso = true;
+                                            numeroAutorizacionPago = procesaPagoTarjetaResponseWS.getNumeroAutorizacionPago();
+                                            isPagoExitoso = true;
                                         } else {
                                             LogPC.println(this, "El servicio GwOrquestarProcesoPagoPMPEBF presento un error");
                                         }
@@ -728,9 +734,12 @@ public class BBPago implements Serializable {
                                         LogPC.println(this, "El servicio GwConsultarTipoCambioEBS presento un error");
                                     }
                                 } else if( evalRiesgoResponseWSDTO.getEstatusRiesgo().equalsIgnoreCase("PENDING_REVIEW") ) {
+                                    //Por el momento se van a rechazar las tarjetas en PENDING_REVIEW, quitar esta
+                                    //instruccion al implementar el reto.
+                                    isTarjetaRechazada = true;
                                     //TODO ejecutar reto
                                 } else {
-                                    //TODO Mandar mensaje de error al usuario para informar que su tarjeta fue rechazada
+                                    isTarjetaRechazada = true;
                                 }
                             } else {
                                 LogPC.println(this, "El servicio GwActualizarTDCBilleteraEBS presento un error");
@@ -752,15 +761,18 @@ public class BBPago implements Serializable {
             }
         }
         
-        if( pagoExitoso ) {
+        if( isPagoExitoso ) {
             consultaSaldo();
-            mensajeRespuesta = ADFUtils.getString(MENSAJE_PAGO_REALIZADO) + numeroReferenciaPago;
+            mensajeRespuesta = ADFUtils.getString(MENSAJE_PAGO_REALIZADO) + numeroAutorizacionPago +
+                               ". La actualización de su saldo puede tardar unos minutos.";
             //Operaciones BAM de pago web versi\u00F3n PC
             OperacionBAMUtils.registrarOperacion(EnumOperacionBAM.PAGO_ENLINEA, "Pago Web-PC Exitoso");
-        } else {
+        } else if( !isTarjetaRechazada ) {
             mensajeRespuesta = mensajeRespuesta + "Error al procesar el pago. " + ADFUtils.getString(MENSAJE_ERROR_DEFAULT);
             //Operaciones BAM pago web versi\u00F3n PC
             OperacionBAMUtils.registrarOperacion(EnumOperacionBAM.PAGO_ENLINEA, "Pago Web-PC Error");
+        } else {
+            mensajeRespuesta = "Su forma de pago fue rechazada, por favor intente con otra.";
         }
         
         println(this, "mensaje para el usuario: " + mensajeRespuesta);
@@ -805,9 +817,9 @@ public class BBPago implements Serializable {
         fechaHoraActual = sdf.format(new Date());
         
         String[] timeTransaction = fechaHoraActual.split("T");
-        System.out.println("fechaHoraActual: " + fechaHoraActual);
-        System.out.println("HoraActual: "+ timeTransaction[1].substring(0, timeTransaction[1].length() - 1).replace(":", ""));
-        System.out.println("FechaActual: "+ timeTransaction[0].substring(2).replace("-", ""));
+        println(this, "fechaHoraActual: " + fechaHoraActual);
+        println(this, "HoraActual: "+ timeTransaction[1].substring(0, timeTransaction[1].length() - 1).replace(":", ""));
+        println(this, "FechaActual: "+ timeTransaction[0].substring(2).replace("-", ""));
         requestDTO.setHoraActual(timeTransaction[1].substring(0, timeTransaction[1].length() - 1).replace(":", ""));
         requestDTO.setFechaActual(timeTransaction[0].substring(2).replace("-", ""));
         requestDTO.setPropositoPago("1");
@@ -832,7 +844,7 @@ public class BBPago implements Serializable {
         
         requestDTO.setEntidadBancaria(clearingHouse);
         
-        requestDTO.setTipoPago("Tarjeta de " + tarjetaPago.getTipoTarjeta());
+        requestDTO.setTipoPago("Tarjeta de " + tarjetaPago.getTipoTarjeta().substring(0, 1) + tarjetaPago.getTipoTarjeta().substring(1).toLowerCase());
         requestDTO.setTokenVoltage("Y");
         requestDTO.setComentarios("");
         requestDTO.setMerchantId(merchanId);

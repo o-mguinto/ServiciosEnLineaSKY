@@ -22,7 +22,7 @@ import javax.xml.ws.WebServiceFeature;
                   targetNamespace =
                   "http://xmlns.oracle.com/SKYConsultas/ConsultaCambioTitular/ConsultaTI_IRD_Principal",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaCambioTitular/consultati_ird_principal_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaCambioTitular%2FConsultaTI_IRD_Principal%7Dconsultati_ird_principal_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaCambioTitular/consultati_ird_principal_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaCambioTitular%2FConsultaTI_IRD_Principal%7Dconsultati_ird_principal_client_ep")
 public class ConsultatiIrdPrincipalClientEp extends Service {
 
     private final static URL CONSULTATIIRDPRINCIPALCLIENTEP_WSDL_LOCATION;
@@ -36,7 +36,7 @@ public class ConsultatiIrdPrincipalClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaCambioTitular/consultati_ird_principal_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaCambioTitular%2FConsultaTI_IRD_Principal%7Dconsultati_ird_principal_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaCambioTitular/consultati_ird_principal_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaCambioTitular%2FConsultaTI_IRD_Principal%7Dconsultati_ird_principal_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ConsultaTablaBatchSSAltaFacturacion",
                   targetNamespace = "http://xmlns.oracle.com/ConsultaTablaBatchSSAltaFacturacion",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebss/ConsultaTablaBatchSSAltaFacturacion/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaTablaBatchSSAltaFacturacion%7DConsultaTablaBatchSSAltaFacturacion")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebss/ConsultaTablaBatchSSAltaFacturacion/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaTablaBatchSSAltaFacturacion%7DConsultaTablaBatchSSAltaFacturacion")
 public class ConsultaTablaBatchSSAltaFacturacion_Service extends Service {
 
     private final static URL CONSULTATABLABATCHSSALTAFACTURACION_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class ConsultaTablaBatchSSAltaFacturacion_Service extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebss/ConsultaTablaBatchSSAltaFacturacion/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaTablaBatchSSAltaFacturacion%7DConsultaTablaBatchSSAltaFacturacion");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebss/ConsultaTablaBatchSSAltaFacturacion/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultaTablaBatchSSAltaFacturacion%7DConsultaTablaBatchSSAltaFacturacion");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

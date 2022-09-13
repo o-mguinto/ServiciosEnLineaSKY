@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ConsultarServiciosAdicionales_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/ABCSImpl/Sel/ConsultarServiciosAdicionales",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_ABCS/ConsultarServiciosAdicionalesSelABCS/ConsultarServiciosAdicionales_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FABCSImpl%2FSel%2FConsultarServiciosAdicionales%7DConsultarServiciosAdicionales_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_ABCS/ConsultarServiciosAdicionalesSelABCS/ConsultarServiciosAdicionales_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FABCSImpl%2FSel%2FConsultarServiciosAdicionales%7DConsultarServiciosAdicionales_ep")
 public class ConsultarServiciosAdicionalesEp extends Service {
 
     private final static URL CONSULTARSERVICIOSADICIONALESEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class ConsultarServiciosAdicionalesEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_ABCS/ConsultarServiciosAdicionalesSelABCS/ConsultarServiciosAdicionales_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FABCSImpl%2FSel%2FConsultarServiciosAdicionales%7DConsultarServiciosAdicionales_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_ABCS/ConsultarServiciosAdicionalesSelABCS/ConsultarServiciosAdicionales_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FABCSImpl%2FSel%2FConsultarServiciosAdicionales%7DConsultarServiciosAdicionales_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

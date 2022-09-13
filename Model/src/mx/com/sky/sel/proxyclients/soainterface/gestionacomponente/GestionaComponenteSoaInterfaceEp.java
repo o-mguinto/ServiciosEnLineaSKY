@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "GestionaComponenteSoaInterface_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Soa/GestionaComponente",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/GestionaComponenteSoaInterface/GestionaComponenteSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FGestionaComponente%7DGestionaComponenteSoaInterface_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/GestionaComponenteSoaInterface/GestionaComponenteSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FGestionaComponente%7DGestionaComponenteSoaInterface_ep")
 public class GestionaComponenteSoaInterfaceEp extends Service {
 
     private final static URL GESTIONACOMPONENTESOAINTERFACEEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class GestionaComponenteSoaInterfaceEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/GestionaComponenteSoaInterface/GestionaComponenteSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FGestionaComponente%7DGestionaComponenteSoaInterface_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/GestionaComponenteSoaInterface/GestionaComponenteSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FGestionaComponente%7DGestionaComponenteSoaInterface_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

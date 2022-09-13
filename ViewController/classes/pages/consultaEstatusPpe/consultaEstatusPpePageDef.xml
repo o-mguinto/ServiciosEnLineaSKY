@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="consultaEstatusPpePageDef"
+                Package="pages.consultaEstatusPpe">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="consultarEstadoSolicitud.result" DataControl="DCCorporativos" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.corporativos.Batch" id="consultarEstadoSolicitudIterator"/>
+    <searchRegion id="BatchQuery" Binds="consultarEstadoSolicitudIterator"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="consultarEstadoSolicitud" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="consultarEstadoSolicitud" IsViewObjectMethod="false" DataControl="DCCorporativos"
+                  InstanceName="DCCorporativos.dataProvider"
+                  ReturnName="data.DCCorporativos.methodResults.consultarEstadoSolicitud_consultarEstadoSolicitud_dataControl_dataProvider_consultarEstadoSolicitud_result">
+      <NamedData NDName="nombreCorporativo" NDValue="#{sesion.usuario.nombreCorporativo}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="consultarEstadoSolicitudIterator" id="Batch">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.corporativos.Batch" Name="result0">
+        <AttrNames>
+          <Item Value="nombreEvento"/>
+          <Item Value="status"/>
+          <Item Value="noSolicitud"/>
+          <Item Value="tipoEvento"/>
+          <Item Value="canalDisplay"/>
+          <Item Value="fechaInicio"/>
+          <Item Value="fechaCreacion"/>
+          <Item Value="fechaCreacionString"/>
+          <Item Value="bpelId"/>
+          <Item Value="llaveOperacion"/>
+          <Item Value="costoEvento"/>
+          <Item Value="canal"/>
+          <Item Value="idEvento"/>
+          <Item Value="nombreCorporativo"/>
+          <Item Value="duracion"/>
+          <Item Value="descripcion"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="reintentarConError" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="reintentarConError" IsViewObjectMethod="false" DataControl="DCCorporativos"
+                  InstanceName="DCCorporativos.dataProvider"
+                  ReturnName="data.DCCorporativos.methodResults.reintentarConError_reintentarConError_dataControl_dataProvider_reintentarConError_result">
+      <NamedData NDName="nombreCorporativo" NDValue="#{sesion.usuario.nombreCorporativo}" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

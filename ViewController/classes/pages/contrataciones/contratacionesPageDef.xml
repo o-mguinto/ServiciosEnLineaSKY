@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="contratacionesPageDef"
+                Package="pages.contrataciones">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getPagoPorEventosContratados.result" DataControl="DCEventos" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.eventos.Evento" id="getPagoPorEventosContratadosIterator"/>
+    <methodIterator Binds="obtenerTarjetaInteligente.result" DataControl="DCTarjetaInteligente" RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.utils.TarjetaInteligente"
+                    id="obtenerTarjetaInteligenteIter"/>
+  </executables>
+  <bindings>
+    <methodAction id="getPagoPorEventosContratados" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerPagoPorEventosContratados" IsViewObjectMethod="false" DataControl="DCEventos"
+                  InstanceName="DCEventos.dataProvider"
+                  ReturnName="data.DCEventos.methodResults.obtenerPagoPorEventosContratados_obtenerPagoPorEventosContratados_dataControl_dataProvider_obtenerPagoPorEventosContratados_result">
+      <NamedData NDName="tarjetaInteligente" NDValue="#{pageFlowScope.ContratacionBackingBean.ti}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="cuentaSKY" NDValue="#{sesion.cuentaSKY}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="getPagoPorEventosContratadosIterator" id="Evento">
+      <nodeDefinition DefName="mx.com.sky.sel.services.beans.eventos.Evento" Name="result0">
+        <AttrNames>
+          <Item Value="titulo"/>
+          <Item Value="canal"/>
+          <Item Value="horaEvento"/>
+          <Item Value="horaPedido"/>
+          <Item Value="status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="obtenerTarjetaInteligente" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerTarjetaInteligente" IsViewObjectMethod="false" DataControl="DCTarjetaInteligente"
+                  InstanceName="DCTarjetaInteligente.dataProvider"
+                  ReturnName="data.DCTarjetaInteligente.methodResults.obtenerTarjetaInteligente_obtenerTarjetaInteligente_dataControl_dataProvider_obtenerTarjetaInteligente_result">
+      <NamedData NDName="rowID" NDValue="#{sesion.suscriptor.rowId}" NDType="java.lang.String"/>
+    </methodAction>
+    <table IterBinding="obtenerTarjetaInteligenteIter" id="tablaTI">
+      <AttrNames>
+        <Item Value="tarjetaInteligente"/>
+      </AttrNames>
+    </table>
+  </bindings>
+</pageDefinition>

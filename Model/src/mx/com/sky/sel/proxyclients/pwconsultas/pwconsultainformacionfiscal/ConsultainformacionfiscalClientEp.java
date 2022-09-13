@@ -22,7 +22,7 @@ import javax.xml.ws.WebServiceFeature;
                   targetNamespace =
                   "http://xmlns.oracle.com/Consultas/PWConsultaInformacionFiscal/ConsultaInformacionFiscal",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx/soa-infra/services/pwconsultas/PWConsultaInformacionFiscal/consultainformacionfiscal_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultas%2FPWConsultaInformacionFiscal%2FConsultaInformacionFiscal%7Dconsultainformacionfiscal_client_ep")
+                  "https://qaselsoa.sky.com.mx/soa-infra/services/pwconsultas/PWConsultaInformacionFiscal/consultainformacionfiscal_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultas%2FPWConsultaInformacionFiscal%2FConsultaInformacionFiscal%7Dconsultainformacionfiscal_client_ep")
 public class ConsultainformacionfiscalClientEp extends Service {
 
     private final static URL CONSULTAINFORMACIONFISCALCLIENTEP_WSDL_LOCATION;
@@ -36,7 +36,7 @@ public class ConsultainformacionfiscalClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx/soa-infra/services/pwconsultas/PWConsultaInformacionFiscal/consultainformacionfiscal_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultas%2FPWConsultaInformacionFiscal%2FConsultaInformacionFiscal%7Dconsultainformacionfiscal_client_ep");
+                new URL("https://qaselsoa.sky.com.mx/soa-infra/services/pwconsultas/PWConsultaInformacionFiscal/consultainformacionfiscal_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FConsultas%2FPWConsultaInformacionFiscal%2FConsultaInformacionFiscal%7Dconsultainformacionfiscal_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

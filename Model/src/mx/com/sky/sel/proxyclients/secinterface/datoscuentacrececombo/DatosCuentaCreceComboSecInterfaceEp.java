@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "DatosCuentaCreceComboSecInterface_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Sec/DatosCuentaCreceCombo",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/DatosCuentaCreceComboSecInterface/DatosCuentaCreceComboSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FDatosCuentaCreceCombo%7DDatosCuentaCreceComboSecInterface_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/DatosCuentaCreceComboSecInterface/DatosCuentaCreceComboSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FDatosCuentaCreceCombo%7DDatosCuentaCreceComboSecInterface_ep")
 public class DatosCuentaCreceComboSecInterfaceEp extends Service {
 
     private final static URL DATOSCUENTACRECECOMBOSECINTERFACEEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class DatosCuentaCreceComboSecInterfaceEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/DatosCuentaCreceComboSecInterface/DatosCuentaCreceComboSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FDatosCuentaCreceCombo%7DDatosCuentaCreceComboSecInterface_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/DatosCuentaCreceComboSecInterface/DatosCuentaCreceComboSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FDatosCuentaCreceCombo%7DDatosCuentaCreceComboSecInterface_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

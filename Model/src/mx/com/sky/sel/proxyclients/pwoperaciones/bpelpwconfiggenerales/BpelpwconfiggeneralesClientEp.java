@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "bpelpwconfiggenerales_client_ep",
                   targetNamespace = "http://xmlns.oracle.com/PWOperaciones/PWConfigGenerales/BPELPWConfigGenerales",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pwoperaciones/PWConfigGenerales/bpelpwconfiggenerales_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPWOperaciones%2FPWConfigGenerales%2FBPELPWConfigGenerales%7Dbpelpwconfiggenerales_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pwoperaciones/PWConfigGenerales/bpelpwconfiggenerales_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPWOperaciones%2FPWConfigGenerales%2FBPELPWConfigGenerales%7Dbpelpwconfiggenerales_client_ep")
 public class BpelpwconfiggeneralesClientEp extends Service {
 
     private final static URL BPELPWCONFIGGENERALESCLIENTEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class BpelpwconfiggeneralesClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pwoperaciones/PWConfigGenerales/bpelpwconfiggenerales_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPWOperaciones%2FPWConfigGenerales%2FBPELPWConfigGenerales%7Dbpelpwconfiggenerales_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pwoperaciones/PWConfigGenerales/bpelpwconfiggenerales_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPWOperaciones%2FPWConfigGenerales%2FBPELPWConfigGenerales%7Dbpelpwconfiggenerales_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

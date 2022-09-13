@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "GeneraURLChatRNInterfaceSOAP_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/GeneraURLChatRNInterfaceEBFS/GeneraURLChatRNInterface",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/RNSOA/GeneraURLChatRNInterfaceEBFS/GeneraURLChatRNInterfaceSOAP_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FGeneraURLChatRNInterfaceEBFS%2FGeneraURLChatRNInterface%7DGeneraURLChatRNInterfaceSOAP_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/RNSOA/GeneraURLChatRNInterfaceEBFS/GeneraURLChatRNInterfaceSOAP_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FGeneraURLChatRNInterfaceEBFS%2FGeneraURLChatRNInterface%7DGeneraURLChatRNInterfaceSOAP_ep")
 public class GeneraURLChatRNInterfaceSOAPEp extends Service {
 
     private final static URL GENERAURLCHATRNINTERFACESOAPEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class GeneraURLChatRNInterfaceSOAPEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/RNSOA/GeneraURLChatRNInterfaceEBFS/GeneraURLChatRNInterfaceSOAP_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FGeneraURLChatRNInterfaceEBFS%2FGeneraURLChatRNInterface%7DGeneraURLChatRNInterfaceSOAP_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/RNSOA/GeneraURLChatRNInterfaceEBFS/GeneraURLChatRNInterfaceSOAP_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FGeneraURLChatRNInterfaceEBFS%2FGeneraURLChatRNInterface%7DGeneraURLChatRNInterfaceSOAP_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

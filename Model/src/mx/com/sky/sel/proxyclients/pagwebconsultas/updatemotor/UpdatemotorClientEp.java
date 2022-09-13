@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "updatemotor_client_ep",
                   targetNamespace = "http://xmlns.oracle.com/SKYConsultas/ConsultaConfig_General/BPELUpdateMotor",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaConfig_General/updatemotor_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaConfig_General%2FBPELUpdateMotor%7Dupdatemotor_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaConfig_General/updatemotor_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaConfig_General%2FBPELUpdateMotor%7Dupdatemotor_client_ep")
 public class UpdatemotorClientEp extends Service {
 
     private final static URL UPDATEMOTORCLIENTEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class UpdatemotorClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaConfig_General/updatemotor_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaConfig_General%2FBPELUpdateMotor%7Dupdatemotor_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaConfig_General/updatemotor_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaConfig_General%2FBPELUpdateMotor%7Dupdatemotor_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

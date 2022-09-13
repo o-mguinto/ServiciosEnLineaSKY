@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "CertificaConcesionBeneficioSelEBF_ep",
                   targetNamespace = "http://www.sky.com.mx/EnterpriseFlows/Sel/CertificaConcesionBeneficio",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/CertificaConcesionBeneficionSelEBF/CertificaConcesionBeneficioSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fwww.sky.com.mx%2FEnterpriseFlows%2FSel%2FCertificaConcesionBeneficio%7DCertificaConcesionBeneficioSelEBF_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/CertificaConcesionBeneficionSelEBF/CertificaConcesionBeneficioSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fwww.sky.com.mx%2FEnterpriseFlows%2FSel%2FCertificaConcesionBeneficio%7DCertificaConcesionBeneficioSelEBF_ep")
 public class CertificaConcesionBeneficioSelEBFEp extends Service {
 
     private final static URL CERTIFICACONCESIONBENEFICIOSELEBFEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class CertificaConcesionBeneficioSelEBFEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/CertificaConcesionBeneficionSelEBF/CertificaConcesionBeneficioSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fwww.sky.com.mx%2FEnterpriseFlows%2FSel%2FCertificaConcesionBeneficio%7DCertificaConcesionBeneficioSelEBF_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/CertificaConcesionBeneficionSelEBF/CertificaConcesionBeneficioSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fwww.sky.com.mx%2FEnterpriseFlows%2FSel%2FCertificaConcesionBeneficio%7DCertificaConcesionBeneficioSelEBF_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

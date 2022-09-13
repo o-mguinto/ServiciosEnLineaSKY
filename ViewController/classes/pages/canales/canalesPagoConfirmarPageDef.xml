@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="canalesPagoConfirmarPageDef"
+                Package="pages.canales">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="procesaPagoPs" RequiresUpdateModel="true" Action="invokeMethod" MethodName="procesaPago"
+                  IsViewObjectMethod="false" DataControl="DCPagos"
+                  InstanceName="bindings.procesaPagoPs.dataControl.dataProvider"
+                  ReturnName="data.DCPagos.methodResults.procesaPago_procesaPago_dataControl_dataProvider_procesaPago_result">
+      <NamedData NDName="fpago" NDType="mx.com.sky.sel.services.beans.pagos.FormatoPago"/>
+    </methodAction>
+    <methodAction id="crearSolicitudPs" RequiresUpdateModel="true" Action="invokeMethod" MethodName="crearSolicitud"
+                  IsViewObjectMethod="false" DataControl="DCCanalCarta"
+                  InstanceName="bindings.crearSolicitudPs.dataControl.dataProvider"
+                  ReturnName="data.DCCanalCarta.methodResults.crearSolicitud_crearSolicitud_dataControl_dataProvider_crearSolicitud_result">
+      <NamedData NDName="solicitudServicio"
+                 NDType="mx.com.sky.sel.services.beans.solicitudservicio.SolicitudServicioBean"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

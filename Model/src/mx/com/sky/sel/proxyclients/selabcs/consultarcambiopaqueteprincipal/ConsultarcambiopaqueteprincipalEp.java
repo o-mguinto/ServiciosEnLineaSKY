@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "consultarcambiopaqueteprincipal_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/ABCSImpl/Sel/ConsultarCambioPaquetePrincipal",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_ABCS/ConsultarCambioPaquetePrincipalSelABCS/consultarcambiopaqueteprincipal_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FABCSImpl%2FSel%2FConsultarCambioPaquetePrincipal%7Dconsultarcambiopaqueteprincipal_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_ABCS/ConsultarCambioPaquetePrincipalSelABCS/consultarcambiopaqueteprincipal_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FABCSImpl%2FSel%2FConsultarCambioPaquetePrincipal%7Dconsultarcambiopaqueteprincipal_ep")
 public class ConsultarcambiopaqueteprincipalEp extends Service {
 
     private final static URL CONSULTARCAMBIOPAQUETEPRINCIPALEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class ConsultarcambiopaqueteprincipalEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_ABCS/ConsultarCambioPaquetePrincipalSelABCS/consultarcambiopaqueteprincipal_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FABCSImpl%2FSel%2FConsultarCambioPaquetePrincipal%7Dconsultarcambiopaqueteprincipal_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_ABCS/ConsultarCambioPaquetePrincipalSelABCS/consultarcambiopaqueteprincipal_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FABCSImpl%2FSel%2FConsultarCambioPaquetePrincipal%7Dconsultarcambiopaqueteprincipal_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "AltaSolicitudDeServicioWeb",
                   targetNamespace = "http://xmlns.oracle.com/AltaSolicitudDeServicioWeb",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebss/AltaSolicitudDeServicioWeb/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FAltaSolicitudDeServicioWeb%7DAltaSolicitudDeServicioWeb")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebss/AltaSolicitudDeServicioWeb/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FAltaSolicitudDeServicioWeb%7DAltaSolicitudDeServicioWeb")
 public class AltaSolicitudDeServicioWeb_Service extends Service {
 
     private final static URL ALTASOLICITUDDESERVICIOWEB_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class AltaSolicitudDeServicioWeb_Service extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebss/AltaSolicitudDeServicioWeb/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FAltaSolicitudDeServicioWeb%7DAltaSolicitudDeServicioWeb");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebss/AltaSolicitudDeServicioWeb/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FAltaSolicitudDeServicioWeb%7DAltaSolicitudDeServicioWeb");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

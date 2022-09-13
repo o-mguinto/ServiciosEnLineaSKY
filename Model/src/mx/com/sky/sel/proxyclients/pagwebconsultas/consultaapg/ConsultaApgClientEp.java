@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "consulta_apg_client_ep",
                   targetNamespace = "http://xmlns.oracle.com/SKYConsultas/ConsultaAPG/Consulta_APG",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaAPG/consulta_apg_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaAPG%2FConsulta_APG%7Dconsulta_apg_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaAPG/consulta_apg_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaAPG%2FConsulta_APG%7Dconsulta_apg_client_ep")
 public class ConsultaApgClientEp extends Service {
 
     private final static URL CONSULTAAPGCLIENTEP_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class ConsultaApgClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaAPG/consulta_apg_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaAPG%2FConsulta_APG%7Dconsulta_apg_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaAPG/consulta_apg_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaAPG%2FConsulta_APG%7Dconsulta_apg_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

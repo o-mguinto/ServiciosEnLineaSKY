@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="canalesConfirmarPageDef"
+                Package="pages.canales">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="crearSolicitudPs" RequiresUpdateModel="true" Action="invokeMethod" MethodName="crearSolicitud"
+                  IsViewObjectMethod="false" DataControl="DCCanalCarta"
+                  InstanceName="bindings.crearSolicitudPs.dataControl.dataProvider"
+                  ReturnName="data.DCCanalCarta.methodResults.crearSolicitud_crearSolicitud_dataControl_dataProvider_crearSolicitud_result">
+      <NamedData NDName="solicitudServicio"
+                 NDType="mx.com.sky.sel.services.beans.solicitudservicio.SolicitudServicioBean"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

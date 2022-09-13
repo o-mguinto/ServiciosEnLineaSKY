@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "bpel_bam_sessions_client_ep",
                   targetNamespace = "http://xmlns.oracle.com/PAGWEB_BAM/PAGWEB_BAM/BPEL_BAM_SESSIONS",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/PAGWEB_BAM/bpel_bam_sessions_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPAGWEB_BAM%2FPAGWEB_BAM%2FBPEL_BAM_SESSIONS%7Dbpel_bam_sessions_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/PAGWEB_BAM/bpel_bam_sessions_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPAGWEB_BAM%2FPAGWEB_BAM%2FBPEL_BAM_SESSIONS%7Dbpel_bam_sessions_client_ep")
 public class BpelBamSessionsClientEp extends Service {
 
     private final static URL BPELBAMSESSIONSCLIENTEP_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class BpelBamSessionsClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/PAGWEB_BAM/bpel_bam_sessions_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPAGWEB_BAM%2FPAGWEB_BAM%2FBPEL_BAM_SESSIONS%7Dbpel_bam_sessions_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/PAGWEB_BAM/bpel_bam_sessions_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FPAGWEB_BAM%2FPAGWEB_BAM%2FBPEL_BAM_SESSIONS%7Dbpel_bam_sessions_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

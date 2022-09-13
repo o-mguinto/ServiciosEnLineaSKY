@@ -90,7 +90,7 @@
       <property
          name="fromOutcome">normal</property>
       <property
-         name="sdm:polyPoints">R43,452.28976,167.05492,735.05493,97.09766,L50</property>
+         name="sdm:polyPoints">R46,450.0,169.34473,737.3447,97.09766,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"

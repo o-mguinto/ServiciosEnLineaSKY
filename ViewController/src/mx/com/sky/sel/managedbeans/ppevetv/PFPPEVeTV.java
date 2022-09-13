@@ -5,28 +5,51 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import java.util.TimeZone;
+import java.util.UUID;
 
 import javax.faces.component.html.HtmlInputHidden;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
+import mx.com.sky.sel.enums.CodigoPais;
 import mx.com.sky.sel.enums.EnumOperacionBAM;
 import mx.com.sky.sel.log.LogPC;
+import static mx.com.sky.sel.log.LogPC.println;
 import mx.com.sky.sel.managedbeans.PFTDC;
 import mx.com.sky.sel.managedbeans.sesion.ConfigMenu;
 import mx.com.sky.sel.managedbeans.sesion.SesionMB;
 import mx.com.sky.sel.managedbeans.tarjeta.BBTarjeta;
+import mx.com.sky.sel.proxyclients.apigateway.ebf.orquestarprocesopago.types.RespuestaPagoTarjeta;
+import mx.com.sky.sel.proxyclients.apigateway.ebs.evaluarriesgo.types.ParametroComerciante;
+import mx.com.sky.sel.services.beans.billetera.ActualizarTDCBilleteraResponseDTO;
+import mx.com.sky.sel.services.beans.billetera.RequestGenerarIdUnicoDePagoDTO;
+import mx.com.sky.sel.services.beans.billetera.RequestOrquestarProcesoPagoDTO;
+import mx.com.sky.sel.services.beans.billetera.ResponseGenerarIdUnicoDePagoDTO;
+import mx.com.sky.sel.services.beans.billetera.ResponseOrquestarProcesoPagoDTO;
+import mx.com.sky.sel.services.beans.billetera.TarjetaBilletera;
+import mx.com.sky.sel.services.beans.billetera.TokenDTO;
+import mx.com.sky.sel.services.beans.cybersource.ConsultarTipoCambioRequestDTO;
+import mx.com.sky.sel.services.beans.cybersource.ConsultarTipoCambioResponseDTO;
+import mx.com.sky.sel.services.beans.cybersource.DeterminarComercioRequestDTO;
+import mx.com.sky.sel.services.beans.cybersource.DeterminarComercioResponseDTO;
 import mx.com.sky.sel.services.beans.eventos.Evento;
 import mx.com.sky.sel.services.beans.eventos.Horario;
 import mx.com.sky.sel.services.beans.pagos.tarjetas.Bines;
 import mx.com.sky.sel.services.beans.pagos.tarjetas.Tarjeta;
+import mx.com.sky.sel.services.beans.riesgo.EvaluarRiesgoRequestDTO;
+import mx.com.sky.sel.services.beans.riesgo.EvaluarRiesgoResponseDTO;
 import mx.com.sky.sel.services.beans.solicitudservicio.SolicitudServicioBean;
 import mx.com.sky.sel.services.corporativos.ServiciosCorporativosPSManagementBean;
+import mx.com.sky.sel.services.cybersource.billetera.BilleteraManagementBean;
 import mx.com.sky.sel.services.eventos.ServicioPagosEventosPSManagementBean;
 import mx.com.sky.sel.services.exception.ServicioException;
 import mx.com.sky.sel.services.pagos.tarjetas.ServicioBines;
@@ -362,6 +385,29 @@ public class PFPPEVeTV extends PFTDC implements Serializable {
     }
 
     public String cbSiguientePago_action() {
+        //Cyber
+        for( TarjetaBilletera tarjetaBill : this.tarjetasBilletera ) {
+            if( tarjetaBill.getNumeroTarjeta().equalsIgnoreCase(this.tipoPago) ) {
+                this.tarjetaBillParaPago = tarjetaBill;
+                break;
+            }
+        }
+        
+        LogPC.println(this, "El pago se realizara con esta tarjeta: " + this.tarjetaBillParaPago.getNumeroTarjeta());
+        
+        
+        if (this.tarjetaBillParaPago.getCodigoRedFinanciera().equalsIgnoreCase(CODIGO_CYBER_AMEX)) {
+            if (cVVTemp.length() != 4) {
+                ADFUtils.showErrorMessage("Debe introducir 4 digitos en el c\u00F3digo de seguridad");
+                return null;
+            }
+        } else {
+            if (cVVTemp.length() != 3) {
+                ADFUtils.showErrorMessage("Debe introducir 3 digitos en el c\u00F3digo de seguridad");
+                return null;
+            }
+        }
+        //Cyber
         return "siguiente";
     }
 
@@ -381,6 +427,364 @@ public class PFPPEVeTV extends PFTDC implements Serializable {
         setPhase_Id(new HtmlInputHidden());
         return "regresar";
     }
+    
+    
+    
+    
+    
+    
+    public String contratarVeTV_actionCyber() {
+        String flujo = "";
+        boolean isPagoExitoso = false;
+        boolean isTarjetaRechazada = false;
+        mensajeRespuesta = "";
+        String numeroAutorizacionPago = null;
+        ConfigMenu sesion = (ConfigMenu)JSFUtils.getBean("sesion");
+        TarjetaBilletera tarjetaBillParaPago = null;
+        ServicioBines binesWS = new ServicioBines();
+        Bines binesWSResponse = null;
+        String organizationId = null;
+        String clearingHouseBines = null;
+        String tipoTarjetaCodigo = null;
+        String clearingHouseDeterminarComercio = null;
+        
+        DeterminarComercioRequestDTO determinarComercioRequestWSDTO = null;
+        DeterminarComercioResponseDTO determinarComercioResponseWSDTO = null;
+        BilleteraManagementBean billeteraMB = null;
+        billeteraMB = new BilleteraManagementBean();
+        String afiliacion = null;
+        String codigoMoneda = null;
+        String merchanId = null;
+        
+        ResponseGenerarIdUnicoDePagoDTO generarIDPagoUnicoResponseDTO = null;
+        RequestGenerarIdUnicoDePagoDTO generarIDPagoUnicoRequestDTO = null;
+        
+        String codigoSKY = null;
+        String idPagoUnico = null;
+        
+        EvaluarRiesgoRequestDTO evalRiesgoRequestWSDTO = null;
+        EvaluarRiesgoResponseDTO evalRiesgoResponseWSDTO = null;
+        String codigoSKYEvalRiesgo = null;
+        String idTransaccionEvalRiesgo = null;
+        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+        String fechaActual = dateFormat.format(new Date());
+        TokenDTO tokenDTO = null;
+        ActualizarTDCBilleteraResponseDTO actualizarTDCBilleteraResponseWSDTO = null;
+        
+        ConsultarTipoCambioRequestDTO consultarTipoCambioRequestWSDTO = null;
+        ConsultarTipoCambioResponseDTO consultarTipoCambioResponseWSDTO = null;
+        String tipoCambioCyber = null;
+        RespuestaPagoTarjeta procesaPagoTarjetaResponseWS = null;
+        
+        
+        if(!sesion.getSuscriptor().isPermitePagoTC()){
+               ADFUtils.showErrorMessage("Por el momento su cuenta no permite pagos. Para m\u00E1s informaci\u00F3n comun\u00EDquese a los tel\u00E9fonos de atenci\u00F3n a clientes.");
+               return null;
+        }
+        
+        LogPC.println(this, "Se procede a realizar el pago desde cyber");
+        for( TarjetaBilletera tarjetaBill : tarjetasBilletera ) {
+            if( tarjetaBill.getNumeroTarjeta().equalsIgnoreCase(this.tipoPago) ) {
+                tarjetaBillParaPago = tarjetaBill;
+                break;
+            }
+        }
+        LogPC.println(this, "El pago se realizara con esta tarjeta: " + tarjetaBillParaPago.getNumeroTarjeta());
+        LogPC.println(this, "TipoPagoCyber: " + tarjetaBillParaPago.getTipoTarjeta().substring(0, 1) +
+                            tarjetaBillParaPago.getTipoTarjeta().substring(1).toLowerCase());
+        
+        organizationId = sesion.getSuscriptor().getOrganizacion();
+        //Llamada al servicio
+        binesWSResponse = binesWS.validarBines(tarjetaBillParaPago.getNumeroTarjeta(), organizationId);
+        if( binesWSResponse != null ) {
+            LogPC.println(this, "binesWSResponse.isTarjetaValida from WS: " + binesWSResponse.isTarjetaValida());
+        }
+        //DUMMY
+        binesWSResponse.setTarjetaValida(true);
+        //DUMMY
+        
+        if( binesWSResponse != null && binesWSResponse.isTarjetaValida() ) {
+            LogPC.println(this, "binesWSResponse.isTarjetaValida: " + binesWSResponse.isTarjetaValida());
+            LogPC.println(this, "Los bines de la tarjeta de pago " + tarjetaBillParaPago.getNumeroTarjeta() + " son validos");
+            LogPC.println(this, "binesWSResponse: " + binesWSResponse);
+            clearingHouseBines = binesWSResponse.getClearingHouse();
+            tipoTarjetaCodigo = binesWSResponse.getCd();
+            LogPC.println(this, "clearingHouseBines (binesWSResponse): " + clearingHouseBines);
+            
+            determinarComercioRequestWSDTO = new DeterminarComercioRequestDTO();
+            determinarComercioRequestWSDTO.setPais(sesion.getPaisISO());
+            determinarComercioRequestWSDTO.setTipoTarjeta(tarjetaBillParaPago.getCodigoRedFinanciera());
+            //Llamada al servicio
+            determinarComercioResponseWSDTO = billeteraMB.determinarComercio(determinarComercioRequestWSDTO);
+            
+            if( determinarComercioResponseWSDTO != null &&
+                determinarComercioResponseWSDTO.getAfiliacion() != null &&
+                !determinarComercioResponseWSDTO.getAfiliacion().isEmpty() &&
+                determinarComercioResponseWSDTO.getCodigoMoneda() != null &&
+                !determinarComercioResponseWSDTO.getCodigoMoneda().isEmpty() ) {
+                    afiliacion = determinarComercioResponseWSDTO.getAfiliacion();
+                    codigoMoneda = determinarComercioResponseWSDTO.getCodigoMoneda();
+                    clearingHouseDeterminarComercio = determinarComercioResponseWSDTO.getClearingHouse();
+                    merchanId = determinarComercioResponseWSDTO.getMerchanId();
+                    LogPC.println(this, "afiliacion (determinarComercio): " + afiliacion);
+                    LogPC.println(this, "codigoMoneda (determinarComercio): " + codigoMoneda);
+                    LogPC.println(this, "clearingHouseDeterminarComercio (determinarComercio): " + clearingHouseDeterminarComercio);
+                    
+                    //Obtener el id del pago único
+                    generarIDPagoUnicoRequestDTO = new RequestGenerarIdUnicoDePagoDTO();
+                    generarIDPagoUnicoRequestDTO.setCuenta(sesion.getCuentaSKY());
+                    generarIDPagoUnicoRequestDTO.setClearingHouse(clearingHouseDeterminarComercio);
+                //Llamada al servicio
+                    generarIDPagoUnicoResponseDTO = billeteraMB.generarIdUnicoDePago(generarIDPagoUnicoRequestDTO);
+                    if( generarIDPagoUnicoResponseDTO != null && generarIDPagoUnicoResponseDTO.getIdPagoSKY() != null &&
+                        !generarIDPagoUnicoResponseDTO.getIdPagoSKY().isEmpty() ) {
+                        LogPC.println(this, "IdPagoSKY (generarIDPagoUnico): " + generarIDPagoUnicoResponseDTO.getIdPagoSKY());
+                        codigoSKY = generarIDPagoUnicoResponseDTO.getIdPagoSKY();
+                        if( codigoSKY != null ) {
+                            String[] codigoSKYParts = codigoSKY.split("_");
+                            if( codigoSKYParts != null && codigoSKYParts.length == 3 ) {
+                                idPagoUnico = codigoSKYParts[2];
+                                LogPC.println(this, "idPagoUnico: " + idPagoUnico);
+                            }
+                            
+                        }
+                        
+                        //Llamar al servicio evaluarRiesgo
+                        evalRiesgoRequestWSDTO = new EvaluarRiesgoRequestDTO();
+                        evalRiesgoRequestWSDTO.setInstrumentoDePagoId(tarjetaBillParaPago.getPaymentInstrument());
+                        evalRiesgoRequestWSDTO.setMId(merchanId);
+                        evalRiesgoRequestWSDTO.setMonedaISO(sesion.getSuscriptor().getCurrencyCode());
+                        evalRiesgoRequestWSDTO.setMontoTotal(evento.getPrecio());
+                        evalRiesgoRequestWSDTO.setCodigoSKY(codigoSKY);
+                        evalRiesgoRequestWSDTO.setSesionId(sesion.getIdSesion());
+                        //evalRiesgoRequestWSDTO.setIdentificadorUnico(idPagoUnico);
+                        
+                        List<ParametroComerciante> parametrosComerciante = new ArrayList<ParametroComerciante> ();
+                        ParametroComerciante paramComerciante = new ParametroComerciante();
+                        paramComerciante.setNombreParametro("25");
+                        paramComerciante.setValorParametro("PAGO_UNICO");
+                        parametrosComerciante.add(paramComerciante);
+                        evalRiesgoRequestWSDTO.setDatosComerciante(parametrosComerciante);
+                        
+                        //Llamada al servicio
+                        evalRiesgoResponseWSDTO = billeteraMB.EvaluarRiesgoTdcTdd(evalRiesgoRequestWSDTO);
+                        if( evalRiesgoResponseWSDTO != null && evalRiesgoResponseWSDTO.getEstatusRiesgo() != null &&
+                            !evalRiesgoResponseWSDTO.getEstatusRiesgo().isEmpty() ) {
+                            LogPC.println(this, "codigoError (GwEvaluarRiesgoEBS): " + evalRiesgoResponseWSDTO.getCodigoError());
+                            LogPC.println(this, "descripcionError (GwEvaluarRiesgoEBS): " + evalRiesgoResponseWSDTO.getDescripcionError());
+                            LogPC.println(this, "codigoSKY (GwEvaluarRiesgoEBS): " + evalRiesgoResponseWSDTO.getCodigoSKY());
+                            LogPC.println(this, "estatusRiesgo (GwEvaluarRiesgoEBS): " + evalRiesgoResponseWSDTO.getEstatusRiesgo());
+                            LogPC.println(this, "idTransaccion (GwEvaluarRiesgoEBS): " + evalRiesgoResponseWSDTO.getIdTransaccion());
+                            codigoSKYEvalRiesgo = evalRiesgoResponseWSDTO.getCodigoSKY();
+                            idTransaccionEvalRiesgo = evalRiesgoResponseWSDTO.getIdTransaccion();
+                            tokenDTO = new TokenDTO();
+                            tokenDTO.setId(tarjetaBillParaPago.getId());
+                            tokenDTO.setFechaDm(fechaActual);
+                            tokenDTO.setEstatusDm(evalRiesgoResponseWSDTO.getEstatusRiesgo());
+                            actualizarTDCBilleteraResponseWSDTO = billeteraMB.actualizarTDCBilletera(tokenDTO);
+                            if( actualizarTDCBilleteraResponseWSDTO != null &&
+                                actualizarTDCBilleteraResponseWSDTO.getCodigoError() != null &&
+                                actualizarTDCBilleteraResponseWSDTO.getCodigoError().equalsIgnoreCase("0") ) {
+                                LogPC.println(this, "codigoError (actualizarTDCBilletera): " + actualizarTDCBilleteraResponseWSDTO.getCodigoError());
+                                
+                                if( evalRiesgoResponseWSDTO.getEstatusRiesgo().equalsIgnoreCase("ACCEPTED") ) {
+                                    //Se procede a realizar el pago
+                                    consultarTipoCambioRequestWSDTO = new ConsultarTipoCambioRequestDTO();
+                                    consultarTipoCambioRequestWSDTO.setPEstatus("1");
+                                    consultarTipoCambioRequestWSDTO.setPPais(sesion.getPaisISO());
+                                    consultarTipoCambioResponseWSDTO = billeteraMB.consultarTipoCambio(consultarTipoCambioRequestWSDTO);
+                                    if( consultarTipoCambioResponseWSDTO != null &&
+                                        consultarTipoCambioResponseWSDTO.getBilleteraTipoCambioCollection() != null &&
+                                        consultarTipoCambioResponseWSDTO.getBilleteraTipoCambioCollection().getBilleteraTipoCambio() != null &&
+                                        !consultarTipoCambioResponseWSDTO.getBilleteraTipoCambioCollection().getBilleteraTipoCambio().isEmpty() ) {
+                                        tipoCambioCyber = consultarTipoCambioResponseWSDTO.getBilleteraTipoCambioCollection().getBilleteraTipoCambio().get(0).getTasa();
+                                        LogPC.println(this, "tipoCambioCyber (GwConsultarTipoCambioEBS): " + tipoCambioCyber);
+                                        procesaPagoTarjetaResponseWS = this.procesarPago(tarjetaBillParaPago, tipoTarjetaCodigo, idPagoUnico, tipoCambioCyber, codigoMoneda, clearingHouseDeterminarComercio, merchanId, codigoSKYEvalRiesgo);
+                                        if( procesaPagoTarjetaResponseWS != null &&
+                                            procesaPagoTarjetaResponseWS.getNumeroReferenciaPago() != null ) {
+                                            LogPC.println(this, "NumeroAutorizacionPago (GwOrquestarProcesoPagoPMPEBF): " + procesaPagoTarjetaResponseWS.getNumeroAutorizacionPago());
+                                            LogPC.println(this, "NumeroReferenciaPago (GwOrquestarProcesoPagoPMPEBF): " + procesaPagoTarjetaResponseWS.getNumeroReferenciaPago());
+                                            ticketNumber = procesaPagoTarjetaResponseWS.getNumeroAutorizacionPago();
+                                            isPagoExitoso = true;
+                                            flujo = "siguiente";
+                                        } else {
+                                            LogPC.println(this, "El servicio GwOrquestarProcesoPagoPMPEBF presento un error");
+                                        }
+                                    } else {
+                                        LogPC.println(this, "El servicio GwConsultarTipoCambioEBS presento un error");
+                                    }
+                                } else if( evalRiesgoResponseWSDTO.getEstatusRiesgo().equalsIgnoreCase("PENDING_REVIEW") ) {
+                                    //Por el momento se van a rechazar las tarjetas en PENDING_REVIEW, quitar esta
+                                    //instruccion al implementar el reto.
+                                    isTarjetaRechazada = true;
+                                    //TODO ejecutar reto
+                                } else {
+                                    isTarjetaRechazada = true;
+                                }
+                            } else {
+                                LogPC.println(this, "El servicio GwActualizarTDCBilleteraEBS presento un error");
+                            }
+                        } else {
+                            LogPC.println(this, "El servicio GwEvaluarRiesgoEBS presento un error");
+                        }
+                    } else {
+                        LogPC.println(this, "El servicio GwGenerarIdentificadorUnicoDePagoEBS presento un error");
+                    }
+            } else {
+                LogPC.println(this, "El servicio GwDeterminarComercioEBS presento un error");
+            }            
+        } else {
+            if( binesWSResponse != null ) {
+                LogPC.println(this, "binesWSResponse.isTarjetaValida: " + binesWSResponse.isTarjetaValida());
+                LogPC.println(this, "Los bines de la tarjeta de pago " + tarjetaBillParaPago.getNumeroTarjeta() + " son invalidos");
+                mensajeRespuesta = "La forma de pago seleccionada ya no es valida, por favor intentar con otra. ";
+            }
+        }
+        
+        if( isPagoExitoso ) {
+            //consultaSaldo();
+            mensajeRespuesta = ADFUtils.getString(MENSAJE_PAGO_REALIZADO) + ticketNumber +
+                               ".";
+            //Operaciones BAM de pago web versi\u00F3n PC
+            OperacionBAMUtils.registrarOperacion(EnumOperacionBAM.PAGO_ENLINEA, "Pago Web-PC Exitoso");
+        } else if( !isTarjetaRechazada ) {
+            mensajeRespuesta = mensajeRespuesta + "Error al procesar el pago. " + ADFUtils.getString(MENSAJE_ERROR_DEFAULT);
+            //Operaciones BAM pago web versi\u00F3n PC
+            OperacionBAMUtils.registrarOperacion(EnumOperacionBAM.PAGO_ENLINEA, "Pago Web-PC Error");
+        } else {
+            mensajeRespuesta = "Su forma de pago fue rechazada, por favor intente con otra.";
+        }
+        
+        println(this, "mensaje para el usuario: " + mensajeRespuesta);
+        
+        ADFUtils.showInfoMessage(mensajeRespuesta);
+        //ADFUtils.showPopup(popupMensajeRespuesta);
+        //ADFUtils.hidePopup(popupPagar);
+        //actualizarTablaPagos();
+        
+        return flujo;
+    }
+    
+    
+    private RespuestaPagoTarjeta procesarPago(TarjetaBilletera tarjetaPago, String tipoTarjetaCodigo, String idPagoUnico, String tipoCambio, String codigoMoneda, String clearingHouse, String merchanId, String codigoSKY) {
+        ConfigMenu sesion = (ConfigMenu)JSFUtils.getBean("sesion");
+        String fechaHoraActual = null;
+        double imPagoMonLocal;
+        String randomUUID = null;
+        BilleteraManagementBean billeteraMB = null;
+        billeteraMB = new BilleteraManagementBean();
+        ResponseOrquestarProcesoPagoDTO orquestarProcesoPagoResponseWSDTO = null;
+        RespuestaPagoTarjeta procesaPagoTarjetaResponseWS = null;
+        
+        RequestOrquestarProcesoPagoDTO requestDTO = new RequestOrquestarProcesoPagoDTO();
+        
+        requestDTO.setTipoTarjeta(tipoTarjetaCodigo);
+        requestDTO.setNumeroTarjeta(tarjetaPago.getNumeroTarjeta());
+        
+        String[] partsFechaExp = tarjetaPago.getFechaExp().split("/");
+        requestDTO.setFechaExpTarjeta(partsFechaExp[1].substring(2) +  partsFechaExp[0]);
+        
+        requestDTO.setCvvTarjeta(this.cVVTemp);
+        requestDTO.setNombreTitularTarjeta(tarjetaPago.getNombreTarjeta());
+        requestDTO.setNombreEmpresaTransaccion(tarjetaPago.getRedFinanciera().toLowerCase());
+        requestDTO.setTipoOperacion("AplicarPago");
+        requestDTO.setIdTransaccion(idPagoUnico);
+        requestDTO.setNumeroCuentaClienteSky(sesion.getCuentaSKY());
+        randomUUID = UUID.randomUUID().toString();
+        requestDTO.setLoginUsr(randomUUID);
+        requestDTO.setIdSesion(randomUUID);
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+        fechaHoraActual = sdf.format(new Date());
+        
+        String[] timeTransaction = fechaHoraActual.split("T");
+        System.out.println("fechaHoraActual: " + fechaHoraActual);
+        System.out.println("HoraActual: "+ timeTransaction[1].substring(0, timeTransaction[1].length() - 1).replace(":", ""));
+        System.out.println("FechaActual: "+ timeTransaction[0].substring(2).replace("-", ""));
+        requestDTO.setHoraActual(timeTransaction[1].substring(0, timeTransaction[1].length() - 1).replace(":", ""));
+        requestDTO.setFechaActual(timeTransaction[0].substring(2).replace("-", ""));
+        requestDTO.setPropositoPago("1");
+        
+        imPagoMonLocal = Double.parseDouble(evento.getPrecio()) * Double.parseDouble(tipoCambio);
+        
+        requestDTO.setImportePago(evento.getPrecio());
+        requestDTO.setImportePagoMonedaLocal( String.format("%.2f", imPagoMonLocal));//String.format("%.2f", imPagoMonLocal));
+        requestDTO.setTipoCambio(tipoCambio);
+        
+        CodigoPais CP = CodigoPais.valueOf(sesion.getPaisISO().toUpperCase());
+        requestDTO.setPais(CP.getNombrePais());
+        requestDTO.setCodeStore(null);
+        requestDTO.setAuthidresponse(null);
+        requestDTO.setClerkId(null);
+        requestDTO.setOrigFecha(null);
+        requestDTO.setOrigHora(null);
+        requestDTO.setOrigStan(null);
+        requestDTO.setOrigMsg(null);
+        
+        requestDTO.setCodigoMoneda(codigoMoneda);
+        
+        requestDTO.setEntidadBancaria(clearingHouse);
+        
+        requestDTO.setTipoPago("Tarjeta de " + tarjetaPago.getTipoTarjeta().substring(0, 1) + tarjetaPago.getTipoTarjeta().substring(1).toLowerCase());
+        requestDTO.setTokenVoltage("Y");
+        requestDTO.setComentarios("");
+        requestDTO.setMerchantId(merchanId);
+        requestDTO.setCodigoSKY(codigoSKY);
+        requestDTO.setCaptura("true"); 
+        requestDTO.setToken(tarjetaPago.getPaymentInstrument());
+        requestDTO.setEcommerceIndicator(null);
+        requestDTO.setAuthenticationTransactioId(null);
+        requestDTO.setTransactionID(null);
+        
+        //Estos parametros se obtienen del validarReto3Ds
+        requestDTO.setCavv(null);
+        requestDTO.setEciRaw(null);
+        requestDTO.setEci(null);
+        requestDTO.setXid(null);
+        
+        //Descomentar solo si estos parametros se obtienen del validarReto3Ds
+    //        if(this.nombreEmpresaTransaccion!=null && (this.nombreEmpresaTransaccion.equalsIgnoreCase("VISA")
+    //           || this.nombreEmpresaTransaccion.equalsIgnoreCase("AMEX")
+    //           || this.nombreEmpresaTransaccion.equalsIgnoreCase("AMERICAN EXPRESS"))
+    //        ){
+    //            requestDTO.setCavv(this.cavv);
+    //            requestDTO.setEciRaw(this.eciRaw);
+    //            requestDTO.setEci(this.eciRaw);
+    //            requestDTO.setXid(this.xid);
+    //        }
+        
+        //Estos parametros se obtienen del validarReto3Ds
+        requestDTO.setIdentificadorDeCobroUCAF(null);    
+        requestDTO.setDatosDeAutenticacionUCAF(null);
+        requestDTO.setIdentificadorTransaccionServidor(null);
+        requestDTO.setVersion3DS(null);
+        
+        //Descomentar solo si estos parametros se obtienen del validarReto3Ds
+    //        if(this.nombreEmpresaTransaccion!=null && (this.nombreEmpresaTransaccion.equalsIgnoreCase("MASTERCARD"))
+    //        ){
+    //            requestDTO.setIdentificadorDeCobroUCAF(this.ucafCollectionIndicator);
+    //            requestDTO.setDatosDeAutenticacionUCAF(this.ucafAuthenticationData);
+    //            requestDTO.setIdentificadorTransaccionServidor(this.directoryServerTransactionId);
+    //            requestDTO.setVersion3DS(this.specificationVersion);
+    //        }
+        
+        //Llamada al WS de pago
+        orquestarProcesoPagoResponseWSDTO = billeteraMB.orquestarProcesoPago(requestDTO);
+        
+        if( orquestarProcesoPagoResponseWSDTO != null &&
+            orquestarProcesoPagoResponseWSDTO.getCodigoError().equalsIgnoreCase("0") &&
+            orquestarProcesoPagoResponseWSDTO.getRespuestaPagoTarjeta() != null ) {
+            procesaPagoTarjetaResponseWS = orquestarProcesoPagoResponseWSDTO.getRespuestaPagoTarjeta();
+        }
+        
+        return procesaPagoTarjetaResponseWS;
+    }
+    
+    
+    
+    
+    
     public String contratarVeTV_action() {
         String respuesta = "";
         //FormatoPago fpago = new FormatoPago();
@@ -516,12 +920,16 @@ public class PFPPEVeTV extends PFTDC implements Serializable {
     }
 
     public String cbActualizar_action() {
-        BindingContainer bindings = getBindings();
-        OperationBinding operationBinding = bindings.getOperationBinding("actualizarTarjetas");
-        Object result = operationBinding.execute();
-        if (!operationBinding.getErrors().isEmpty()) {
-            return null;
-        }
+        //Cyber
+        tarjetasBilletera = consultarTarjetasBilletera();
+        actualizarComboBoxFormasPagoBilletera();
+        //Cyber
+//        BindingContainer bindings = getBindings();
+//        OperationBinding operationBinding = bindings.getOperationBinding("actualizarTarjetas");
+//        Object result = operationBinding.execute();
+//        if (!operationBinding.getErrors().isEmpty()) {
+//            return null;
+//        }
         return null;
     }
 

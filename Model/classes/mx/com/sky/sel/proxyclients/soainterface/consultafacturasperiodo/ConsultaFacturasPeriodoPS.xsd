@@ -1,0 +1,141 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sky.com.mx/soasky" targetNamespace="http://www.sky.com.mx/soasky"
+     elementFormDefault="qualified">
+    <xsd:include schemaLocation="Cabecera.xsd"/>
+    <xsd:element name="Facturas_consultaFacturasPeriodo_Entrada" type="Facturas_consultaFacturasPeriodo_Entrada_TYPE"/>
+    <xsd:element name="Facturas_consultaFacturasPeriodo_Salida" type="Facturas_consultaFacturasPeriodo_Salida_TYPE"/>
+    <xsd:complexType name="Facturas_consultaFacturasPeriodo_Entrada_TYPE">
+        <xsd:sequence>
+            <xsd:element name="CABECERA" type="Cabecera_Entrada_TYPE"/>
+            <xsd:element name="NUMERO_CUENTA" type="simpleType1" nillable="false">
+                <xsd:annotation>
+                    <xsd:documentation>N��mero de cuenta de suscriptor</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FECHA_FIN" type="empty-date" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Fecha de fin del rango de b��squeda, act��a sobre la
+                             fecha de emisi��n</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FECHA_INICIO" type="empty-date" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Fecha de inicio del rango de b��squeda, act��a sobre
+                             la fecha de emisi��n</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Facturas_consultaFacturasPeriodo_Salida_TYPE">
+        <xsd:sequence>
+            <xsd:element name="CABECERA" type="Cabecera_Salida_TYPE"/>
+            <xsd:element name="RESULTADOS" type="Resultados_Salida_TYPE" maxOccurs="unbounded" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Resultados_Salida_TYPE">
+        <xsd:sequence>
+            <xsd:element name="NUMERO_FACTURA" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Numero de factura en la lista de facturas de la
+                             cuenta que ha recibido</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FECHA_EMISION" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Fecha de emisi��n de factura</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FECHA_FACTURA" type="xsd:string" nillable="true" minOccurs="0"/>
+            <xsd:element name="MONEDA" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Moneda de Facturaci��n</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="MONTO_FACTURADO" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Monto por pagar en la factura</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="AJUSTES" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Importe de los ajustes en la factura</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="CONSUMOS_DEL_MES" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Monto total de los consumos en la factura</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="PAGOS_A_FACTURA" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Monto de pagos asociados a la factura</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="INICIO_PERIODO" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Fecha de inicio del periodo de facturaci��n</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FIN_PERIODO" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Fecha fin del periodo de facturaci��n</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FECHA_A_PAGAR" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Fecha de l��mite del pago</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="SALDO" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Monto total a pagar de la factura</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="SALDO_TOTAL" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Saldo total de la cuenta</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ESTATUS_FORMATO" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Estado del Formato: 1 = Generado 0 = No Generado</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FECHA_CIERRE" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Fecha en que un pago termina de cubrir el total de
+                             la factura</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ID_FACTURA" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Identificador unico de la factura en el sistema de
+                             facturaci��n</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FECHA_VENCIMIENTO" type="empty-date" nillable="true" minOccurs="0"/>
+            <xsd:element name="CONSECUTIVO" type="xsd:string" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Numero de Consecutivo</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="simpleType1">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="simpleType2">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="empty">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value=""/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="empty-date">
+        <xsd:union memberTypes="xsd:dateTime empty"/>
+    </xsd:simpleType>
+</xsd:schema>

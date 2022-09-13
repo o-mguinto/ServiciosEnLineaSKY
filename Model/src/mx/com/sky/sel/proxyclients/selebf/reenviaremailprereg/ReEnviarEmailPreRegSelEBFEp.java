@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ReEnviarEmailPreRegSelEBF_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/EnterpriseFlows/Sel/ReEnviarEmailPreRegSel",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/ReEnviarEmailPreRegSelEBF/ReEnviarEmailPreRegSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FReEnviarEmailPreRegSel%7DReEnviarEmailPreRegSelEBF_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/ReEnviarEmailPreRegSelEBF/ReEnviarEmailPreRegSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FReEnviarEmailPreRegSel%7DReEnviarEmailPreRegSelEBF_ep")
 public class ReEnviarEmailPreRegSelEBFEp extends Service {
 
     private final static URL REENVIAREMAILPREREGSELEBFEP_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class ReEnviarEmailPreRegSelEBFEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/ReEnviarEmailPreRegSelEBF/ReEnviarEmailPreRegSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FReEnviarEmailPreRegSel%7DReEnviarEmailPreRegSelEBF_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/ReEnviarEmailPreRegSelEBF/ReEnviarEmailPreRegSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FReEnviarEmailPreRegSel%7DReEnviarEmailPreRegSelEBF_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

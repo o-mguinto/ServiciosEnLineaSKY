@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:actualizardatosfiscalesebo="http://www.sky.com.mx/EnterpriseObjects/Sel/ActualizarDatosFiscales" targetNamespace="http://www.sky.com.mx/EnterpriseObjects/Sel/ActualizarDatosFiscales" elementFormDefault="qualified">
+  <xsd:element name="ActualizarDatosFiscalesRequest" type="actualizardatosfiscalesebo:ActualizarDatosFiscalesRequestType"/>
+  <xsd:element name="ActualizarDatosFiscalesResponse" type="actualizardatosfiscalesebo:ActualizarDatosFiscalesResponseType"/>
+  <xsd:complexType name="ActualizarDatosFiscalesRequestType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" minOccurs="0" name="Cuenta"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="Descripcion"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="MetodoEnvio"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="TipoFactura"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="RazonSocial"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="Calle"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="Colonia"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="Municipio"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="Ciudad"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="CodigoPostal"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="Estado"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="Nombre"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="NumeroExterior"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="NumeroInterior"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="RFC"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="Proceso"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="Origen"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="TipoPersona"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="RegimenFiscal"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="UsoCFDI"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="SistemaOrigen"/>
+      <xsd:element type="xsd:string" minOccurs="0" name="SolicitudDeServicio"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ActualizarDatosFiscalesResponseType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="Proceso"/>
+      <xsd:element type="xsd:string" name="ErrorCode"/>
+      <xsd:element type="xsd:string" name="ErrorMessage"/>
+      <xsd:element type="xsd:string" name="SRId"/>
+      <xsd:element type="xsd:string" name="SRNumber"/>
+      <xsd:element type="xsd:string" name="SREstatus"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

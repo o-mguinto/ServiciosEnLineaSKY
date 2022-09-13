@@ -22,7 +22,7 @@ import javax.xml.ws.WebServiceFeature;
                   targetNamespace =
                   "http://xmlns.sky.com.mx/ABCSImpl/Sel/RegistrarTarjetaPago",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_ABCS/RegistrarTarjetaPagoSelABCS/RegistrarTarjetaPagoSelABCS_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FABCSImpl%2FSel%2FRegistrarTarjetaPago%7DRegistrarTarjetaPagoSelABCS_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_ABCS/RegistrarTarjetaPagoSelABCS/RegistrarTarjetaPagoSelABCS_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FABCSImpl%2FSel%2FRegistrarTarjetaPago%7DRegistrarTarjetaPagoSelABCS_ep")
 public class RegistrarTarjetaPagoSelABCSEp extends Service {
 
     private final static URL REGISTRARTARJETAPAGOSELABCSEP_WSDL_LOCATION;
@@ -36,7 +36,7 @@ public class RegistrarTarjetaPagoSelABCSEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_ABCS/RegistrarTarjetaPagoSelABCS/RegistrarTarjetaPagoSelABCS_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FABCSImpl%2FSel%2FRegistrarTarjetaPago%7DRegistrarTarjetaPagoSelABCS_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_ABCS/RegistrarTarjetaPagoSelABCS/RegistrarTarjetaPagoSelABCS_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FABCSImpl%2FSel%2FRegistrarTarjetaPago%7DRegistrarTarjetaPagoSelABCS_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

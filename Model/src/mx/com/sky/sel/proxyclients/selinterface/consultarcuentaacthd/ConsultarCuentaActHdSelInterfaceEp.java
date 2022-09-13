@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ConsultarCuentaActHdSelInterface_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarCuentaActHd",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/ConsultarCuentaActHdSelInterface/ConsultarCuentaActHdSelInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FConsultarCuentaActHd%7DConsultarCuentaActHdSelInterface_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/ConsultarCuentaActHdSelInterface/ConsultarCuentaActHdSelInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FConsultarCuentaActHd%7DConsultarCuentaActHdSelInterface_ep")
 public class ConsultarCuentaActHdSelInterfaceEp extends Service {
 
     private final static URL CONSULTARCUENTAACTHDSELINTERFACEEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class ConsultarCuentaActHdSelInterfaceEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/ConsultarCuentaActHdSelInterface/ConsultarCuentaActHdSelInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FConsultarCuentaActHd%7DConsultarCuentaActHdSelInterface_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/ConsultarCuentaActHdSelInterface/ConsultarCuentaActHdSelInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FConsultarCuentaActHd%7DConsultarCuentaActHdSelInterface_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

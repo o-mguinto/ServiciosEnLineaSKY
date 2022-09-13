@@ -33,13 +33,11 @@
                                                                                 styleClass="label-internal" id="ol1"/>
                                                                  
                                                                 <af:selectOneRadio id="sor1" showRequired="false" simple="true"
-                                                                                   value="#{pageFlowScope.PFPPEVeTV.tarjetaObject}"
+                                                                                   value="#{pageFlowScope.PFPPEVeTV.tipoPago}"
                                                                                    required="true" styleClass="output-internal"
                                                                                    autoSubmit="true">
-                                                                    <af:forEach var="tdc" items="#{bindings.tblTDC.rangeSet}">
-                                                                        <f:selectItem id="si1" itemValue="#{tdc}"
-                                                                                      itemLabel="#{tdc.numeroTarjeta}"/>
-                                                                    </af:forEach>
+                                                                    <f:selectItems value="#{pageFlowScope.PFPPEVeTV.tiposPago}"
+                                                                       id="si10"/>
                                                                 </af:selectOneRadio>
                                                             </div>
                                                         </div>
@@ -53,7 +51,7 @@
                                                                         styleClass="label-internal"/>
                                                          
                                                         <af:inputText label="CVV(Código de Seguridad)" secret="true"
-                                                                      value="#{pageFlowScope.PFPPEVeTV.tarjeta.codigo}"
+                                                                      value="#{pageFlowScope.PFPPEVeTV.CVVTemp}"
                                                                       styleClass="input-internal"
                                                                       placeholder="#{selSKYBundle['placeholder_cvv']}"
                                                                       showRequired="false" simple="true" id="codigoSeguridad"
@@ -101,7 +99,7 @@
                                     <div class="row autocenter">
                                         <div class="col-3 col-sm-4">
                                             <af:button text="Agregar tarjeta" id="cb1" immediate="true"
-                                                       action="#{pageFlowScope.PFPPEVeTV.cbSiguienteNTDC_action}"
+                                                       action="#{pageFlowScope.BilleteraBB.agregarMetodoPago}"
                                                        rendered="#{sesion.MIS_TARJETAS}" styleClass="btn-pay-dialog"/>
                                         </div>
                                         <div class="col-3 col-sm-4">
@@ -112,7 +110,7 @@
                                         <div class="col-3 col-sm-4">
                                             <af:button text="Siguiente" id="cbSiguientePago"
                                                        action="#{pageFlowScope.PFPPEVeTV.cbSiguientePago_action}"
-                                                       disabled="#{bindings.consultarTarjetasIterator.estimatedRowCount&lt;=0}"
+                                                       disabled="#{pageFlowScope.PFPPEVeTV.emptyTarjetasBilletera}"
                                                        styleClass="btn-pay-dialog" partialTriggers="sor1"/>
                                         </div>
                                         <div class="col-3 col-sm-4">

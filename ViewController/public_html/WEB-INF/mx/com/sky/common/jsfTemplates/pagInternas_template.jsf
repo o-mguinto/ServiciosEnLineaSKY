@@ -39,24 +39,24 @@
                 var hijos = firstChild.children;
                 if (dropdownContent.style.display === "block") {
                 //se le asigna la clase de abrir flecha al segundo hijo
-                    hijos[1].className = "flecha-abrir titulo-paquetes";
+                    hijos[1].className = "flecha-abrir skyTxt";
                     dropdownContent.style.display = "none";
                 } else {
                 //se le asigna la clase de cerrar flecha al segundo hijo
-                    hijos[1].className = "flecha-cerrar titulo-paquetes";
+                    hijos[1].className = "flecha-cerrar skyTxt";
                     dropdownContent.style.display = "block";
                 }
             };
 
               $('#show-menu').click(function () {
-                  $('#blue-menu').addClass('sm-blue-info');
+                  $('#blue-menu').addClass('sm-black-info');
                   $('#blue-menu').slideDown('slow');
                   $('#show-menu').hide();
                   $('#hide-menu').show();
               });
 
               $('#hide-menu').click(function () {
-                  $('#blue-menu').removeClass('sm-blue-info');
+                  $('#blue-menu').removeClass('sm-black-info');
                   $('#blue-menu').slideUp('slow');
                   $('#hide-menu').hide();
                   $('#show-menu').show();
@@ -80,17 +80,31 @@
             }
             .flecha-abrir:after {
                             content: '\2228';
-                            color: white;
-                            font-weight: bold;
-                            float: right;
-                            margin-right: 5px;
+                            font-family: 'Sky Text';
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 18px;
+                            line-height: 21px;
+                            /* identical to box height */
+    
+    
+    /* Text/Dark */
+    
+    color: #373737;
                         }
             .flecha-cerrar:after {
                             content: '\2227';
-                            color: white;
-                            font-weight: bold;
-                            float: right;
-                            margin-right: 5px;
+                            font-family: 'Sky Text';
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 18px;
+                            line-height: 21px;
+                            /* identical to box height */
+                            
+                            
+                            /* Text/Dark */
+                            
+                            color: #373737;
                         }
             .titulo-paquetes{
                 color: white;
@@ -99,7 +113,7 @@
                 font-size: 0.9em;
             }
             .submenu{
-                display: none;
+                display: black;
             }
             /*para quitar el color del borde del menu seleccionado*/
             .xkm.p_AFSelected{
@@ -144,15 +158,17 @@
                     <!-- Panel Izquierdo -->
                     <div class="col-3 left-panel" id="div-panel-left">
                         <div class="row backgroundMenu" id="div-background">
-                            <div id="blue-logo" class="autocenter">
+                            <div id="blue-logo" class=" links">
                                 <a href="#{request.contextPath}">
                                     <img src="#{request.contextPath}/imagenes/aplicacion/img_sel2020_h@2x.png"
                                          class="logo" alt="Servicios En Línea"/></a>
+                                        <h:outputText id="pt_ot13" class="miSky logo2 "
+                                                      value="#{skySELBundle.pagInternas_template_miSKY}"/>
                             </div>
                             <div id="blue-info">
                                 <div class="row line-divisor">
-                                    <div class="row col-atention col-sm-8 left">
-                                        <h:outputText id="pt_ot13"
+                                    <div class="row col-atention col-sm-8 left sm-close-session renderFalse">
+                                        <h:outputText id="pt_ot13_c"
                                                       value="#{skySELBundle.mensaje_contacto_atencionClientes}"/>
                                          
                                         <!--MX-->
@@ -305,7 +321,7 @@
                                     
                                     
                                     
-                                    <div class="row col-atention col-sm-8 left">
+                                    <div class="row col-atention col-sm-8 left sm-close-session renderFalse">
                                         <af:link id="pt_cl2sp" text="Contrato"
                                                  rendered="#{sesion.contratoTya}"
                                                  inlineStyle="border-right:  1px solid #8AD5F2; opacity: 1; color: #8AD5F2;"
@@ -360,9 +376,36 @@
                                             <a id="hide-menu" href="#" class="sm-icon-close">
                                                 <img src="#{request.contextPath}/imagenes/movil/generales/Ico_cerrar.png"
                                                      alt="Cierra menu"/></a>
+                                                     
+                                            <a href="#{request.contextPath}" class="sm-icon-menu logo-mov">
+                                                    <img src="#{request.contextPath}/imagenes/aplicacion/sky-new-2020-seeklogo1.png"
+                                                          alt="Servicios En Línea"/></a>
+                                                          
+                                                
+                                            <div class="row sm-icon-menu">
+                                                    
+                                                            
+                                                    
+                                            
+                                                            <af:outputText value="#{skySELBundle.pagInternas_template_welcome} #{sesion.usuario.nombreCompleto}" 
+                                                                                       id="pt_ot11_cust21"
+                                                                                       class="mySky-m sm-icon-menu"
+                                                                                       rendered="#{securityContext.authenticated}"/>
+                                                              
+                                                    
+                                                    
+                                            </div>
+                                            <div class="row sm-icon-menu UserLogo" >         
+                                            <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/userLogo.png" 
+                                            alt="UserLogo" class="accountTemplateIcon-m"/>
+                                                              <af:outputText value="#{skySELBundle.pagInternas_template_account_label} #{sesion.usuario.cuentaSKY}" 
+                                                                                       id="pt_ot10_cust1"
+                                                                                       class="accountTemplate-m"
+                                                                                       rendered="#{securityContext.authenticated}"/>
+                                                    </div>
                                         </div>
                                         
-                                        <div class="col-atention col-sm-6 right">
+                                        <div class="col-atention col-sm-6 right renderFalse">
                                             <af:link id="pt_l4sp" action="#{backingBeanScope.login.performLogout}"
                                                      inlineStyle="color: #8AD5F2;"
                                                      text="#{skySELBundle.pagInternas_template_cerrarSesion}"
@@ -374,30 +417,30 @@
                                 <!-- Informacion -->
                                 <section class="information line-divisor">
                                     <div class="row sm-cancel-align">
-                                        <div class="col-12 col-sm-8 col-tb-8">
+                                        <div class="col-12 col-sm-8 col-tb-8 renderFalse">
                                             <h:outputText id="pt_ot1" styleClass="welcome"
                                                           value="#{skySELBundle.pagInternas_template_bienvenido}"/>
                                         </div>
-                                        <div class="col-12 col-sm-8 col-tb-8">     
+                                        <div class="col-12 col-sm-8 col-tb-8 sm-close-session renderFalse">     
                                             <h:outputText id="pt_ot8" styleClass="user-name uppercase"
                                                           rendered="#{securityContext.authenticated}"
                                                           value="#{sesion.usuario.nombreCompleto}"/>
                                         </div>
-                                        <div class="col-12">
-                                            <h:outputText id="pt_ot9" styleClass="acc-num-txt uppercase no-show"
+                                        <div class="col-12 renderFalse">
+                                            <h:outputText id="pt_ot9" styleClass="acc-num-txt uppercase no-show sm-close-session"
                                                           value="#{skySELBundle.pagInternas_template_noCuenta}"/>
                                         </div>
-                                        <div class="col-12 col-sm-8 col-tb-8">     
-                                            <h:outputText id="pt_ot16" styleClass="sm-acc-num-txt uppercase"
+                                        <div class="col-12 col-sm-8 col-tb-8 sm-close-session renderFalse">     
+                                            <h:outputText id="pt_ot16" styleClass="sm-acc-num-txt uppercase sm-close-session"
                                                           value="#{skySELBundle.pagInternas_template_noCuentaCorto}"/>
                                         </div>
-                                        <div class="col-12 col-sm-8 col-tb-8">     
+                                        <div class="col-12 col-sm-8 col-tb-8 sm-close-session renderFalse">     
                                             <af:inputText id="pt_ot10" partialTriggers="soc1" label=""
                                                           styleClass="account-number" simple="true" autoSubmit="true"
                                                           rendered="#{securityContext.authenticated}"
                                                           value="#{sesion.cuentaSKY}" readOnly="true"/>
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-12 renderFalse">
                                             <h:outputText id="pt_ot12" value="#{sesion.paquete}"
                                                           styleClass="pack uppercase"/>
                                         </div>
@@ -449,10 +492,10 @@
                                             <div class="menuPrincipal"
                                                 id="menuAdmin">
                                                 <af:panelGroupLayout id="pt_pglMCuenta">
-                                                    <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/miCuentaIcon.svg"
+                                                    <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/bell.png"
                                                          alt="Perfil" style="width: 30px;vertical-align: middle;"/>
-                                                    <af:outputText value="mi cuenta"
-                                                                   styleClass="#{Menu.idxDiscloused eq '0' ?' flecha-cerrar' : 'flecha-abrir'} titulo-paquetes"
+                                                    <af:outputText value="mi cuenta  "
+                                                                   styleClass="#{Menu.idxDiscloused eq '0' ?' flecha-cerrar' : 'flecha-abrir'} skyTxt"
                                                                    id="otMenuP"/>
                                                 </af:panelGroupLayout>
                                             </div>
@@ -622,9 +665,9 @@
                                                 style="#{(sesion.ADELANTA_RECARGAS or sesion.PAGO_LINEA or sessionScope.sesion.MBLUE_TO_GO or sesion.PAGOS_POR_EVENTO
                                                 or sesion.CANAL_A_LA_CARTA or sesion.PROGRAMACION_TV or sesion.COMPRAS) ? 'display:block;' : 'display:none;'}">
                                                 <af:panelGroupLayout id="pt_pglMSky">
-                                                    <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/videoIcon.svg"
+                                                    <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/tv.png"
                                                          alt="SKY Video" style="width: 30px;vertical-align: middle; padding:2px;"/>
-                                                    <af:outputText value="Sky Televisión" styleClass="#{Menu.idxDiscloused eq '1' ?' flecha-cerrar' : 'flecha-abrir'} titulo-paquetes" id="pt_ot14"/>
+                                                    <af:outputText value="Sky Televisión  " styleClass="#{Menu.idxDiscloused eq '1' ?' flecha-cerrar' : 'flecha-abrir'} skyTxt" id="pt_ot14"/>
                                                 </af:panelGroupLayout>
                                             </div>
                                             <af:panelGroupLayout id="pt_pglSKY" styleClass="submenu" inlineStyle="#{Menu.idxDiscloused eq '1' ? 'display:block;padding-left: 10px;': 'display:none;padding-left: 10px;'}">
@@ -760,7 +803,7 @@
                                             <af:panelGroupLayout id="pt_pglMBti">
                                                 <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/btiIcon.svg"
                                                          alt="BTI SKY" style="width: 30px;vertical-align: middle;"/>
-                                                <af:outputText value="blue telecomm inalámbrico" styleClass="#{Menu.idxDiscloused eq '2' ?' flecha-cerrar' : 'flecha-abrir'} titulo-paquetes" id="pt_ot20"/>
+                                                <af:outputText value="blue telecomm inalámbrico  " styleClass="#{Menu.idxDiscloused eq '2' ?' flecha-cerrar' : 'flecha-abrir'} titulo-paquetes-2022" id="pt_ot20"/>
                                             </af:panelGroupLayout>
                                         </div>
                                             <af:panelGroupLayout id="pt_pglInternet" inlineStyle="#{Menu.idxDiscloused eq '2' ? 'display:block;padding-left: 10px;': 'display:none;padding-left: 10px;'}"
@@ -807,7 +850,7 @@
                                             <af:panelGroupLayout id="pt_pglMBtcel">
                                                 <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/btCelIcon.svg"
                                                          alt="BTCel SKY" style="width: 30px;vertical-align: middle;"/>
-                                                <af:outputText value="blue telecomm celular" styleClass="#{Menu.idxDiscloused eq '3' ?' flecha-cerrar' : 'flecha-abrir'} titulo-paquetes" id="pt_ot21"/>
+                                                <af:outputText value="blue telecomm celular  " styleClass="#{Menu.idxDiscloused eq '3' ?' flecha-cerrar' : 'flecha-abrir'} titulo-paquetes-2022" id="pt_ot21"/>
                                             </af:panelGroupLayout>
                                         </div>
                                             <af:panelGroupLayout id="pt_pglCelular" inlineStyle="#{Menu.idxDiscloused eq '3' ? 'display:block;padding-left: 10px;': 'display:none;padding-left: 10px;'}"
@@ -906,9 +949,9 @@
                                         <div class="menuPrincipal" id="menuOtros" 
                                                 style="#{(sesion.SU_OPINION_NOS_INTERESA or sesion.REQUIERE_OTRA_INFORMACION) ? 'display:block;' : 'display:none;'}">
                                             <af:panelGroupLayout id="pt_pglMOtros">
-                                                <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/comentariosIcon.svg"
+                                                <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/book.png"
                                                          alt="Otros" style="width: 30px;vertical-align: middle;"/>
-                                                <af:outputText value="Otros" styleClass="#{Menu.idxDiscloused eq '4' ?' flecha-cerrar' : 'flecha-abrir'} titulo-paquetes" id="pt_ot62"/>
+                                                <af:outputText value="Otros  " styleClass="#{Menu.idxDiscloused eq '4' ?' flecha-cerrar' : 'flecha-abrir'} skyTxt" id="pt_ot62"/>
                                             </af:panelGroupLayout>
                                         </div>
                                             <af:panelGroupLayout id="pt_pglOtros" inlineStyle="#{Menu.idxDiscloused eq '4' ? 'display:block;padding-left: 10px;': 'display:none;padding-left: 10px;'}"
@@ -954,8 +997,25 @@
                                                      immediate="true"
                                                      text="#{skySELBundle.pagInternas_template_cerrarSesion}"
                                                      styleClass="sm-close-session"/>
+                                            
                                         </nav>
                                     </div>
+                                     <div class="menuPrincipal">
+                                        <div class="lineSeparatorMenu links">
+                                        </div>
+                                     </div>                                     
+                                     <div class="menuPrincipal links">
+                                        <af:panelGroupLayout id="pg_close">
+                                        <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/closeSession.png" class="closeSessionCust"
+                                                         alt="Close" style="width: 30px;vertical-align: middle;"/>
+                                        <af:link id="pt_cl1_cust" action="#{backingBeanScope.login.performLogout}"
+                                                     immediate="true"
+                                                     text="#{skySELBundle.pagInternas_template_cerrarSesion}"
+                                                     class="closeSessionTxtCust"/>
+                                        </af:panelGroupLayout>
+                                    </div>
+                                    
+                                    
                                 </af:panelGroupLayout>
                             </div>
                         </div>
@@ -969,7 +1029,7 @@
                             <div class="row header">
                                 <header>
                                     <div class="col-5">
-                                        <div class="sel-bt col-3 col-tb-2 col-sm-3-2 left">
+                                        <div class="sel-bt col-3 col-tb-2 col-sm-3-2 left renderFalse">
                                             <af:link text="" id="cil1" styleClass="links-header" action="btgveContrata"
                                                      rendered="#{sessionScope.sesion.MBLUE_TO_GO}" targetFrame="_self"
                                                      partialSubmit="true" immediate="true">
@@ -1000,7 +1060,7 @@
                                                 <f:setPropertyActionListener target="#{Menu.taskFlowId}"
                                                                              value="/WEB-INF/btgNetworkTF.xml#btgNetworkTF"/>
                                                 <af:clientListener method="enforcePreventUserInput" type="action"/>
-                                                <div>
+                                                <div class="renderFalse">
                                                     <af:image shortDesc="BTG" id="i19"
                                                               rendered="#{backingBeanScope.login.renderiPad}"
                                                               source="#{parametros.btgew}encabezado/btgew_networks.png"
@@ -1013,7 +1073,7 @@
                                                 </div>
                                             </af:link>
                                         </div>
-                                        <div class="sel-bt col-3 col-tb-2 col-sm-3-2 left">
+                                        <div class="sel-bt col-3 col-tb-2 col-sm-3-2 left renderFalse">
                                             <af:group id="pt2_g2" rendered="#{sesion.CONTACTO_CHAT}">
                                                 <a href="#{sesion.urlChatTemplate}" title="Chatea con nosotros"
                                                    target="_blank" class="link-chat">
@@ -1041,8 +1101,8 @@
                                     </div>
                                     <div class="col-7" style="padding: 2px;">
                                         <div class="links">
-                                            <div class="row">
-                                                <div class="col-12 col-tb-8 col-sm-8">
+                                            <div class="row renderFalse">
+                                                <div class="col-12 col-tb-8 col-sm-8 renderFalse">
                                                     <h:outputText id="pt_ot4"
                                                                   value="#{skySELBundle.mensaje_contacto_atencionClientes}"
                                                                   styleClass="uppercase"/>
@@ -1226,7 +1286,14 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-12 col-sm-8 col-tb-8">
+                                                
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="row links">
+                                                <!--
                                                     <af:link id="pt_clPromo" text="Promociones" styleClass="link-top"
                                                              inlineStyle="border-right:  1px solid #004B8D; opacity: 1;"
                                                              action="promociones" targetFrame="_self" partialSubmit="true"
@@ -1274,11 +1341,27 @@
                                                      
                                                     <af:link id="pt_l4" action="#{backingBeanScope.login.performLogout}"
                                                              text="#{skySELBundle.pagInternas_template_cerrarSesion}"
-                                                             immediate="true" styleClass="link-top"/>
+                                                             immediate="true" styleClass="link-top"/>!-->
+                                                    
+                                                
+                            
+                                                    <af:outputText value="#{skySELBundle.pagInternas_template_welcome} #{sesion.usuario.nombreCompleto}" 
+                                                                   id="pt_ot11_cust2"
+                                                                   class="miSky"
+                                                                   rendered="#{securityContext.authenticated}"/>
+                                                      
+                                                
+                                                    
                                                 </div>
+                                                
+                                                <div class="row links" >         
+                                            <img src="#{request.contextPath}/imagenes/menu/iconosMenuSEL/userLogo.png"
+                                          alt="UserLogo"/>
+                                                      <af:outputText value="#{skySELBundle.pagInternas_template_account_label} #{sesion.usuario.cuentaSKY}" 
+                                                                   id="pt_ot10_cust"
+                                                                   class="accountTemplate"
+                                                                   rendered="#{securityContext.authenticated}"/>
                                             </div>
-                                        </div>
-                                    </div>
                                 </header>
                             </div>
                             <div class="content" id="idContent">
@@ -1289,9 +1372,11 @@
                                                 <div class="col-12">
                                                     <h:outputText id="otMenu" value="#{Menu.titulo}"
                                                                   styleClass="titleh1 uppercase"/>
+                                                                  <img src="#{request.contextPath}/imagenes/aplicacion/Line8.png" alt="Line" class="lineSeparatorMenu2"/>
+                                                                
                                                 </div>
                                             </div>
-                                            <div class="row">
+                                            <div class="row renderFalse">
                                                 <div class="col-12 right">
                                                     <af:navigationPane id="pt_np2" hint="buttons" level="1"
                                                                        var="submenu1" value="#{root_menu}"
@@ -1325,6 +1410,8 @@
                                         </af:navigationPane-->
                                                 </div>
                                             </div>
+                                            
+                                            
                                         </div>
                                     </div>
                                 </div>

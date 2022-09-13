@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "consultauuidsicof_client_ep",
                   targetNamespace = "http://xmlns.oracle.com/AppFacturaEdicom/ConsultaFacturasSICOF/ConsultaUUIDSicof",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaFacturasSICOF/consultauuidsicof_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FAppFacturaEdicom%2FConsultaFacturasSICOF%2FConsultaUUIDSicof%7Dconsultauuidsicof_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaFacturasSICOF/consultauuidsicof_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FAppFacturaEdicom%2FConsultaFacturasSICOF%2FConsultaUUIDSicof%7Dconsultauuidsicof_client_ep")
 public class ConsultauuidsicofClientEp extends Service {
 
     private final static URL CONSULTAUUIDSICOFCLIENTEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class ConsultauuidsicofClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaFacturasSICOF/consultauuidsicof_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FAppFacturaEdicom%2FConsultaFacturasSICOF%2FConsultaUUIDSicof%7Dconsultauuidsicof_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaFacturasSICOF/consultauuidsicof_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FAppFacturaEdicom%2FConsultaFacturasSICOF%2FConsultaUUIDSicof%7Dconsultauuidsicof_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

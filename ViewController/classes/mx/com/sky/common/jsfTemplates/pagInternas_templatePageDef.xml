@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="pagInternas_templatePageDef"
+                Package="mx.com.sky.common.jsfTemplates">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="consultarCuentasAsociadas.result"
+                    DataControl="DCCorporativos"
+                    BeanClass="mx.com.sky.sel.services.beans.corporativos.CuentaCV"
+                    id="consultarCuentasAsociadasIter"/>
+  </executables>
+  <bindings>
+    <methodAction id="consultarCuentasAsociadas" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="consultarCuentasAsociadas"
+                  IsViewObjectMethod="false" DataControl="DCCorporativos"
+                  InstanceName="DCCorporativos.dataProvider"
+                  ReturnName="data.DCCorporativos.methodResults.consultarCuentasAsociadas_consultarCuentasAsociadas_dataControl_dataProvider_consultarCuentasAsociadas_result">
+      <NamedData NDName="cuentaSKY" NDValue="#{sesion.usuario.cuentaSKY}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <table IterBinding="consultarCuentasAsociadasIter" id="tablaCuentas">
+      <AttrNames>
+        <Item Value="cuentaSKY"/>
+        <Item Value="rowId"/>
+      </AttrNames>
+    </table>
+    <action IterBinding="consultarCuentasAsociadasIter" id="ActualizarTabla"
+            InstanceName="DCCorporativos.dataProvider"
+            DataControl="DCCorporativos" RequiresUpdateModel="true"
+            Action="iteratorExecute"/>
+    <methodAction id="consultaSaldo" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="consultaSaldo"
+                  IsViewObjectMethod="false" DataControl="DCSaldo"
+                  InstanceName="bindings.consultaSaldo.dataControl.dataProvider"
+                  ReturnName="data.DCSaldo.methodResults.consultaSaldo_consultaSaldo_dataControl_dataProvider_consultaSaldo_result"/>
+    <methodAction id="consultarFacturas" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="consultarFacturas"
+                  IsViewObjectMethod="false" DataControl="DCFactura"
+                  InstanceName="bindings.consultarFacturas.dataControl.dataProvider"
+                  ReturnName="data.DCFactura.methodResults.consultarFacturas_consultarFacturas_dataControl_dataProvider_consultarFacturas_result"/>
+  </bindings>
+</pageDefinition>

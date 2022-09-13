@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "bpel_ldap_client_ep",
                   targetNamespace = "http://xmlns.oracle.com/SKY_BTGEW/ModificarCuentaLDAP/BPEL_ModificarCuentaLDAP",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/btgew/ModificarCuentaLDAP/bpel_ldap_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_BTGEW%2FModificarCuentaLDAP%2FBPEL_ModificarCuentaLDAP%7Dbpel_ldap_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/btgew/ModificarCuentaLDAP/bpel_ldap_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_BTGEW%2FModificarCuentaLDAP%2FBPEL_ModificarCuentaLDAP%7Dbpel_ldap_client_ep")
 public class BpelLdapClientEp extends Service {
 
     private final static URL BPELLDAPCLIENTEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class BpelLdapClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/btgew/ModificarCuentaLDAP/bpel_ldap_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_BTGEW%2FModificarCuentaLDAP%2FBPEL_ModificarCuentaLDAP%7Dbpel_ldap_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/btgew/ModificarCuentaLDAP/bpel_ldap_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_BTGEW%2FModificarCuentaLDAP%2FBPEL_ModificarCuentaLDAP%7Dbpel_ldap_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

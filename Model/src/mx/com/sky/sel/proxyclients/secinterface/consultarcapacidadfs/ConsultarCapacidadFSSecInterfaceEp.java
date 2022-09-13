@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ConsultarCapacidadFSSecInterface_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Sec/ConsultarCapacidadFS",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/ConsultarCapacidadFSSecInterface/ConsultarCapacidadFSSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FConsultarCapacidadFS%7DConsultarCapacidadFSSecInterface_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/ConsultarCapacidadFSSecInterface/ConsultarCapacidadFSSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FConsultarCapacidadFS%7DConsultarCapacidadFSSecInterface_ep")
 public class ConsultarCapacidadFSSecInterfaceEp extends Service {
 
     private final static URL CONSULTARCAPACIDADFSSECINTERFACEEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class ConsultarCapacidadFSSecInterfaceEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/ConsultarCapacidadFSSecInterface/ConsultarCapacidadFSSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FConsultarCapacidadFS%7DConsultarCapacidadFSSecInterface_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/ConsultarCapacidadFSSecInterface/ConsultarCapacidadFSSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FConsultarCapacidadFS%7DConsultarCapacidadFSSecInterface_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

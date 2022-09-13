@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:consultaParrillaGuiaSkyABCSEBM="http://www.sky.com.mx/EnterpriseMessages/Sel/ConsultaParrillaGuiaSky" xmlns:Meta="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" targetNamespace="http://www.sky.com.mx/EnterpriseMessages/Sel/ConsultaParrillaGuiaSky" elementFormDefault="qualified">
+  <xsd:import namespace="http://www.sky.com.mx/EnterpriseObjects/Sel/Common/V1" schemaLocation="Meta.xsd"/>
+  <xsd:element name="ConsultaParrillaGuiaSkyRequest" type="consultaParrillaGuiaSkyABCSEBM:ConsultaParrillaGuiaSkyRequestEBMType"/>
+  <xsd:element name="ConsultaParrillaGuiaSkyResponse" type="consultaParrillaGuiaSkyABCSEBM:ConsultaParillaGuiaSkyResponseEBMType"/>
+  <xsd:complexType name="ConsultaParrillaGuiaSkyRequestEBMType">
+    <xsd:sequence>
+      <xsd:element ref="Meta:EBMHeaderRequest"/>
+      <xsd:element name="ConsultaParrillaGuiaSkyRequestEBM" type="consultaParrillaGuiaSkyABCSEBM:ConsultaParrillaRequestType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ConsultaParrillaRequestType">
+    <xsd:sequence>
+      <xsd:element name="FECHA_INICIO" type="xsd:string"/>
+      <xsd:element name="FECHA_FIN" type="xsd:string"/>
+      <xsd:element name="PAQUETE_ID" type="xsd:string" nillable="true"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ConsultaParillaGuiaSkyResponseEBMType">
+    <xsd:sequence>
+      <xsd:element ref="Meta:EBMHeaderResponse"/>
+      <xsd:element name="ConsultaParrillaGuiaSkyResponseEBM" type="consultaParrillaGuiaSkyABCSEBM:ProgramacionesType" minOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProgramacionesType">
+    <xsd:sequence>
+      <xsd:element name="Programaciones" type="consultaParrillaGuiaSkyABCSEBM:Programaciones" minOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Programaciones">
+    <xsd:sequence maxOccurs="unbounded">
+      <xsd:element name="Programacion" type="consultaParrillaGuiaSkyABCSEBM:Programacion" minOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Programacion">
+    <xsd:sequence>
+      <xsd:element name="Canal" type="consultaParrillaGuiaSkyABCSEBM:Canal" minOccurs="1"/>
+      <xsd:element name="Eventos" type="consultaParrillaGuiaSkyABCSEBM:Eventos" minOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Eventos">
+    <xsd:sequence>
+      <xsd:element name="Evento" type="consultaParrillaGuiaSkyABCSEBM:Evento" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Canal">
+    <xsd:sequence>
+      <xsd:element name="Identificador" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="IdMostrado" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="CanalNombre" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="Nombre" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="Descripcion" minOccurs="0" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Evento">
+    <xsd:sequence>
+      <xsd:element name="Tipo" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="Titulo" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="Duracion" minOccurs="0" nillable="true" type="xsd:decimal"/>
+      <xsd:element name="Fechainicio" type="xsd:dateTime" minOccurs="0" nillable="true"/>
+      <xsd:element name="FechaFinal" type="xsd:dateTime" minOccurs="0" nillable="true"/>
+      <xsd:element name="Sinopsis" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="ContentId" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="TransportStreamId" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="EventId" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="SeriesId" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="ProgramId" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="ContentProviderId" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="NetworkId" minOccurs="0" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -22,7 +22,7 @@ import javax.xml.ws.WebServiceFeature;
                   targetNamespace =
                   "http://xmlns.sky.com.mx/EnterpriseFlows/Sel/AutenticarUsuario",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/AutenticarUsuarioSelEBF/AutenticarUsuarioSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FAutenticarUsuario%7DAutenticarUsuarioSelEBF_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/AutenticarUsuarioSelEBF/AutenticarUsuarioSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FAutenticarUsuario%7DAutenticarUsuarioSelEBF_ep")
 public class AutenticarUsuarioSelEBFEp extends Service {
 
     private final static URL AUTENTICARUSUARIOSELEBFEP_WSDL_LOCATION;
@@ -36,7 +36,7 @@ public class AutenticarUsuarioSelEBFEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/AutenticarUsuarioSelEBF/AutenticarUsuarioSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FAutenticarUsuario%7DAutenticarUsuarioSelEBF_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/AutenticarUsuarioSelEBF/AutenticarUsuarioSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FAutenticarUsuario%7DAutenticarUsuarioSelEBF_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

@@ -22,7 +22,7 @@ import javax.xml.ws.WebServiceFeature;
                   targetNamespace =
                   "http://xmlns.oracle.com/SKYConsultas/ConsultaDatosCuentaSuscriptor/ConsultaDatosCS",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaDatosCuentaSuscriptor/consultadatoscs_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaDatosCuentaSuscriptor%2FConsultaDatosCS%7Dconsultadatoscs_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaDatosCuentaSuscriptor/consultadatoscs_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaDatosCuentaSuscriptor%2FConsultaDatosCS%7Dconsultadatoscs_client_ep")
 public class ConsultadatoscsClientEp extends Service {
 
     private final static URL CONSULTADATOSCSCLIENTEP_WSDL_LOCATION;
@@ -36,7 +36,7 @@ public class ConsultadatoscsClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaDatosCuentaSuscriptor/consultadatoscs_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaDatosCuentaSuscriptor%2FConsultaDatosCS%7Dconsultadatoscs_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaDatosCuentaSuscriptor/consultadatoscs_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaDatosCuentaSuscriptor%2FConsultaDatosCS%7Dconsultadatoscs_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

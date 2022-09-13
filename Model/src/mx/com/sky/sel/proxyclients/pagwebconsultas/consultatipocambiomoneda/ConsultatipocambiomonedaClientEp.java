@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "consultatipocambiomoneda_client_ep",
                   targetNamespace = "http://xmlns.oracle.com/SKYConsultas/ConsultaTipoCambio/ConsultaTipoCambioMoneda",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaTipoCambio/consultatipocambiomoneda_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaTipoCambio%2FConsultaTipoCambioMoneda%7Dconsultatipocambiomoneda_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaTipoCambio/consultatipocambiomoneda_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaTipoCambio%2FConsultaTipoCambioMoneda%7Dconsultatipocambiomoneda_client_ep")
 public class ConsultatipocambiomonedaClientEp extends Service {
 
     private final static URL CONSULTATIPOCAMBIOMONEDACLIENTEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class ConsultatipocambiomonedaClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaTipoCambio/consultatipocambiomoneda_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaTipoCambio%2FConsultaTipoCambioMoneda%7Dconsultatipocambiomoneda_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaTipoCambio/consultatipocambiomoneda_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaTipoCambio%2FConsultaTipoCambioMoneda%7Dconsultatipocambiomoneda_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

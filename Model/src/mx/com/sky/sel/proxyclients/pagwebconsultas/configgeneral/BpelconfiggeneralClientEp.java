@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "bpelconfiggeneral_client_ep",
                   targetNamespace = "http://xmlns.oracle.com/SKYConsultas/ConsultaConfig_General/BPELConfigGeneral",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaConfig_General/bpelconfiggeneral_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaConfig_General%2FBPELConfigGeneral%7Dbpelconfiggeneral_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaConfig_General/bpelconfiggeneral_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaConfig_General%2FBPELConfigGeneral%7Dbpelconfiggeneral_client_ep")
 public class BpelconfiggeneralClientEp extends Service {
 
     private final static URL BPELCONFIGGENERALCLIENTEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class BpelconfiggeneralClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaConfig_General/bpelconfiggeneral_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaConfig_General%2FBPELConfigGeneral%7Dbpelconfiggeneral_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebconsultas/ConsultaConfig_General/bpelconfiggeneral_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYConsultas%2FConsultaConfig_General%2FBPELConfigGeneral%7Dbpelconfiggeneral_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

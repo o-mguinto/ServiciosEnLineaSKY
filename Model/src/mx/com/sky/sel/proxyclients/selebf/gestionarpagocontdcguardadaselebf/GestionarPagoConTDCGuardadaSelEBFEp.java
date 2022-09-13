@@ -22,7 +22,7 @@ import javax.xml.ws.WebServiceFeature;
                   targetNamespace =
                   "http://xmlns.sky.com.mx/EnterpriseFlows/Sel/GestionarPagoConTDCGuardada",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/GestionarPagoConTDCGuardadaSelEBF/GestionarPagoConTDCGuardadaSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FGestionarPagoConTDCGuardada%7DGestionarPagoConTDCGuardadaSelEBF_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/GestionarPagoConTDCGuardadaSelEBF/GestionarPagoConTDCGuardadaSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FGestionarPagoConTDCGuardada%7DGestionarPagoConTDCGuardadaSelEBF_ep")
 public class GestionarPagoConTDCGuardadaSelEBFEp extends Service {
 
     private final static URL GESTIONARPAGOCONTDCGUARDADASELEBFEP_WSDL_LOCATION;
@@ -36,7 +36,7 @@ public class GestionarPagoConTDCGuardadaSelEBFEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/GestionarPagoConTDCGuardadaSelEBF/GestionarPagoConTDCGuardadaSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FGestionarPagoConTDCGuardada%7DGestionarPagoConTDCGuardadaSelEBF_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/GestionarPagoConTDCGuardadaSelEBF/GestionarPagoConTDCGuardadaSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FGestionarPagoConTDCGuardada%7DGestionarPagoConTDCGuardadaSelEBF_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

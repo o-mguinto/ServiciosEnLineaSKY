@@ -55,15 +55,11 @@
                                                             <af:selectOneRadio id="sor1"
                                                                                showRequired="false"
                                                                                simple="true"
-                                                                               value="#{pageFlowScope.PFCanalesContrata.tarjetaObject}"
+                                                                               value="#{pageFlowScope.PFCanalesContrata.tipoPago}"
                                                                                required="true" autoSubmit="true"
                                                                                styleClass="output-internal">
-                                                                <af:forEach var="tdc"
-                                                                            items="#{bindings.tblTDC.rangeSet}">
-                                                                    <f:selectItem id="si1"
-                                                                                  itemValue="#{tdc}"
-                                                                                  itemLabel="#{tdc.numeroTarjeta}"/>
-                                                                </af:forEach>
+                                                                <f:selectItems value="#{pageFlowScope.PFCanalesContrata.tiposPago}"
+                                                                       id="si10"/>
                                                             </af:selectOneRadio>
                                                         </div>
                                                     </div>
@@ -80,7 +76,7 @@
                                                      
                                                     <af:inputText label="CVV(Código de Seguridad)"
                                                                   secret="true"
-                                                                  value="#{pageFlowScope.PFCanalesContrata.tarjeta.codigo}"
+                                                                  value="#{pageFlowScope.PFCanalesContrata.CVVTemp}"
                                                                   styleClass="input-internal"
                                                                   placeholder="#{selSKYBundle['placeholder_cvv']}"
                                                                   showRequired="false"
@@ -135,8 +131,9 @@
                     <div class="row autocenter">
                         <div class="col-3">
                             <af:button text="Agregar tarjeta" id="cb1"
+                                       rendered="false"
                                        immediate="true"
-                                       action="#{pageFlowScope.PFCanalesContrata.cbSiguienteNTDC_action}"
+                                       action="#{pageFlowScope.BilleteraBB.agregarMetodoPago}"
                                        styleClass="btn-pay-dialog"/>
                         </div>
                         <div class="col-4">
@@ -149,7 +146,7 @@
                         <div class="col-3-1 padd-right">
                             <af:button text="Siguiente" id="cbSiguientePago"
                                        action="#{pageFlowScope.PFCanalesContrata.cbSiguientePago_action}"
-                                       disabled="#{bindings.consultarTarjetasIterator.estimatedRowCount&lt;=0}"
+                                       disabled="#{pageFlowScope.PFCanalesContrata.emptyTarjetasBilletera}"
                                        styleClass="btn-pay-dialog"
                                        partialTriggers="sor1"/>
                         </div>

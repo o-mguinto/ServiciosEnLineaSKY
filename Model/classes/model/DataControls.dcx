@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration" version="12.2.1.16.48" id="DataControls"
+                    Package="model">
+  <AdapterDataControl id="DCTarjetas" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.pagos.administratarjeta.ServicioTarjetaPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.pagos.administratarjeta.ServicioTarjetaPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioTarjetaPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.pagos.administratarjeta.ServicioTarjetaPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCPagos" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.pagos.serviciopagos.ServicioPagosPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.pagos.serviciopagos.ServicioPagosPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioPagosPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.pagos.serviciopagos.ServicioPagosPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCBanner" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.banner.ServicioBannerPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.banner.ServicioBannerPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioBannerPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.banner.ServicioBannerPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCCorporativos" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.corporativos.ServiciosCorporativosPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.corporativos.ServiciosCorporativosPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServiciosCorporativosPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.corporativos.ServiciosCorporativosPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCCofetel" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.cofetel.ServicioCofetelPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.cofetel.ServicioCofetelPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioCofetelPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.cofetel.ServicioCofetelPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+
+  <AdapterDataControl id="DCPromesaPago" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.promesapago.ServicioPromesaPagoPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.promesapago.ServicioPromesaPagoPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioPromesaPagoPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.promesapago.ServicioPromesaPagoPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCBTGEW" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.btgew.ServicioBTGEWPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.btgew.ServicioBTGEWPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioBTGEWPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.btgew.ServicioBTGEWPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCPremiere" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.eventos.ServicioPagosEventosPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.eventos.ServicioPagosEventosPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioPagosEventosPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.eventos.ServicioPagosEventosPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCTarjetaInteligente" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.ti.ServicioTarjetaInteligentePSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.ti.ServicioTarjetaInteligentePSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioTarjetaInteligentePSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.ti.ServicioTarjetaInteligentePSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCSolicitudOtrosServicios" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.solicitudservicio.SolicitudOtrosServiciosPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.solicitudservicio.SolicitudOtrosServiciosPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="mx.com.sky.sel.services.beans.solicitudservicio.Sugerencia"/>
+    </CreatableTypes>
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="SolicitudOtrosServiciosPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.solicitudservicio.SolicitudOtrosServiciosPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCAclaracionesCargosTDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.solicitudservicio.AclaracionesCargosTDCPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.solicitudservicio.AclaracionesCargosTDCPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="mx.com.sky.sel.services.beans.solicitudservicio.DetalleSolicitudServicio"/>
+    </CreatableTypes>
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="AclaracionesCargosTDCPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.solicitudservicio.AclaracionesCargosTDCPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCRevista" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.revista.ServicioRevistaPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.revista.ServicioRevistaPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioRevistaPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.revista.ServicioRevistaPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCDatosGenerales" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.datosgenerales.ServicioDatosGeneralesPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.datosgenerales.ServicioDatosGeneralesPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioDatosGeneralesPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.datosgenerales.ServicioDatosGeneralesPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCModulo" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.modulares.ServicioModulosPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.modulares.ServicioModulosPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioModulosPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.modulares.ServicioModulosPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCSeguroEquipo" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.beans.seguroequipo.ServicioSeguroEquipoPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.beans.seguroequipo.ServicioSeguroEquipoPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="mx.com.sky.sel.services.beans.solicitudservicio.DetalleSolicitudServicio"/>
+       <TypeInfo FullName="mx.com.sky.sel.services.beans.seguroequipo.ServicioSeguroEquipoPSManagementBean"/>
+    </CreatableTypes>
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioSeguroEquipoPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.beans.seguroequipo.ServicioSeguroEquipoPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCSugerencias" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.sugerencias.ConsultarSugerenciasPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.sugerencias.ConsultarSugerenciasPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="mx.com.sky.sel.services.beans.solicitudservicio.Sugerencia"/>
+    </CreatableTypes>
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ConsultarSugerenciasPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.sugerencias.ConsultarSugerenciasPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCQuejas" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.quejas.QuejasPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.quejas.QuejasPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="QuejasPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.quejas.QuejasPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCReenvioSenal" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.reenviosenal.ServicioReenvioSenalPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.reenviosenal.ServicioReenvioSenalPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioReenvioSenalPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.reenviosenal.ServicioReenvioSenalPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCReparacion" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.stcd.ServicioSTCDPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.stcd.ServicioSTCDPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioSTCDPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.stcd.ServicioSTCDPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCDomicilio" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.stcd.ServicioSTCDPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.stcd.ServicioSTCDPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioSTCDPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.stcd.ServicioSTCDPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCCambioTitular" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.cambiotitular.ServicioCambioTitularPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.cambiotitular.ServicioCambioTitularPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioCambioTitularPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.cambiotitular.ServicioCambioTitularPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCPromocion" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.promociones.PromocionPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.promociones.PromocionPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="PromocionPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.promociones.PromocionPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCEstadoCuenta"
+                      FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.estadocuenta.EstadoCuentaPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.estadocuenta.EstadoCuentaPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="EstadoCuentaPSManagement"
+                      ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.estadocuenta.EstadoCuentaPSManagementLocal"
+                      ejb-interface-type="local"
+                      initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler"
+                      AccessMode="scrollable" EagerPersist="false"
+                      xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCCuentaSkyCel"
+                      FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.ctacelsky.ServicioCtaSkyCelPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.ctacelsky.ServicioCtaSkyCelPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioCtaSkyCelPSManagement"
+                      ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.ctacelsky.ServicioCtaSkyCelPSManagementLocal"
+                      ejb-interface-type="local"
+                      initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler"
+                      AccessMode="scrollable" EagerPersist="false"
+                      xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DCPortabilidad" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="mx.com.sky.sel.services.portabilidad.ServicioPortabilidadPSManagementBean"
+                      BeanClass="mx.com.sky.sel.services.portabilidad.ServicioPortabilidadPSManagementBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="ServicioPortabilidadPSManagement" ejb-type="Session"
+                      ejb-business-interface="mx.com.sky.sel.services.portabilidad.ServicioPortabilidadPSManagementLocal"
+                      ejb-interface-type="local" initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                      EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

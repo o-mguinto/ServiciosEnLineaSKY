@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "AltaRespuestaEncuestaSatisfaccion",
                   targetNamespace = "http://xmlns.oracle.com/AltaRespuestaEncuestaSatisfaccion",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/AltaRespuestaEncuestaSatisfaccion/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FAltaRespuestaEncuestaSatisfaccion%7DAltaRespuestaEncuestaSatisfaccion")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/AltaRespuestaEncuestaSatisfaccion/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FAltaRespuestaEncuestaSatisfaccion%7DAltaRespuestaEncuestaSatisfaccion")
 public class AltaRespuestaEncuestaSatisfaccion_Service extends Service {
 
     private final static URL ALTARESPUESTAENCUESTASATISFACCION_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class AltaRespuestaEncuestaSatisfaccion_Service extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/AltaRespuestaEncuestaSatisfaccion/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FAltaRespuestaEncuestaSatisfaccion%7DAltaRespuestaEncuestaSatisfaccion");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/AltaRespuestaEncuestaSatisfaccion/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FAltaRespuestaEncuestaSatisfaccion%7DAltaRespuestaEncuestaSatisfaccion");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

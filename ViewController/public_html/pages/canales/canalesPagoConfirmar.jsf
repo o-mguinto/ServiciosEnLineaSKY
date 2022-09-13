@@ -118,14 +118,14 @@
                                                                 fieldWidth="50%"
                                                                 labelWidth="50%">
                                                 <af:inputText id="it3"
-                                                              value="#{pageFlowScope.PFCanalesContrata.tarjeta.nombre}"
+                                                              value="#{pageFlowScope.PFCanalesContrata.tarjetaBillParaPago.nombreTarjeta}"
                                                               required="true"
                                                               label="#{selSKYBundle['pago.it4.label']}"
                                                               readOnly="true"
                                                               styleClass="output-internal"
                                                               contentStyle="font-weight: bolder;"/>
                                                 <af:inputText id="it4"
-                                                              value="#{pageFlowScope.PFCanalesContrata.tarjeta.noCodificado}"
+                                                              value="#{pageFlowScope.PFCanalesContrata.tarjetaBillParaPago.numeroTarjetaOculta}"
                                                               required="true"
                                                               label="#{selSKYBundle['pago.it5.label']}"
                                                               readOnly="true"
@@ -181,7 +181,7 @@
                             <af:button text="Contratar"
                                        id="cbSiguienteGuardarTDC"
                                        partialSubmit="true"
-                                       action="#{pageFlowScope.PFCanalesContrata.contratarVeTV_action}"
+                                       action="#{pageFlowScope.PFCanalesContrata.contratarVeTV_actionCyber}"
                                        styleClass="btn-pay-dialog">
                                 <af:clientListener method="enforcePreventUserInput"
                                                    type="action"/>

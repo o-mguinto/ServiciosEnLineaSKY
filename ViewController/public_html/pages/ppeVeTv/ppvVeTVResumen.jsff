@@ -35,10 +35,16 @@
                                                 <f:facet name="toolbar"/>
                                                 <af:panelFormLayout id="panelFormLayout1" fieldWidth="50%"
                                                                     labelWidth="50%">
-                                                    <af:inputText label="Número de referencia del evento" id="it4"
+                                                    <af:inputText label="Número de referencia de pago"
+                                                              id="it3"
+                                                              value="#{pageFlowScope.PFPPEVeTV.ticketNumber}"
+                                                              readOnly="true"
+                                                              styleClass="output-internal"
+                                                              contentStyle="font-weight: bolder;"/>
+                                                    <!--af:inputText label="Número de referencia del evento" id="it4"
                                                                   value="#{pageFlowScope.PFPPEVeTV.numeroSolicitud}"
                                                                   readOnly="true" styleClass="output-internal"
-                                                                  contentStyle="font-weight: bolder;"/>
+                                                                  contentStyle="font-weight: bolder;"/-->
                                                     <af:inputText label="Título" id="inputText1" readOnly="true"
                                                                   value="#{pageFlowScope.PFPPEVeTV.evento.titulo}"
                                                                   styleClass="output-internal"

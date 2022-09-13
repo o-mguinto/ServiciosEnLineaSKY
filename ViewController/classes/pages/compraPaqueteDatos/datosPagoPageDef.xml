@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="datosPagoPageDef"
+                Package="pages.compraPaqueteDatos">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="consultarTarjetasPs.result" DataControl="DCTarjetas"
+                    RangeSize="25"
+                    BeanClass="mx.com.sky.sel.services.beans.pagos.tarjetas.Tarjeta"
+                    id="consultarTarjetasIterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="consultarTarjetasIterator" id="actualizarTarjetas" InstanceName="DCTarjetas.dataProvider"
+            DataControl="DCTarjetas" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <methodAction id="procesaPago" RequiresUpdateModel="true" Action="invokeMethod" MethodName="procesaPago"
+                  IsViewObjectMethod="false" DataControl="DCPagos"
+                  InstanceName="bindings.procesaPago.dataControl.dataProvider"
+                  ReturnName="data.DCPagos.methodResults.procesaPago_procesaPago_dataControl_dataProvider_procesaPago_result">
+      <NamedData NDName="fpago" NDType="mx.com.sky.sel.services.beans.pagos.FormatoPago"/>
+    </methodAction>
+    <methodAction id="consultarTarjetasPs" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="consultarTarjetasPs"
+                  IsViewObjectMethod="false" DataControl="DCTarjetas"
+                  InstanceName="bindings.consultarTarjetasPs.dataControl.dataProvider"
+                  ReturnName="data.DCTarjetas.methodResults.consultarTarjetasPs_consultarTarjetasPs_dataControl_dataProvider_consultarTarjetasPs_result">
+      <NamedData NDName="numeroCuentaCliente"
+                 NDValue="#{sesion.suscriptor.cuentaSKY}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="phaseId" NDValue="1" NDType="java.lang.String"/>
+      <NamedData NDName="keyId" NDValue="1" NDType="java.lang.String"/>
+    </methodAction>
+    <table IterBinding="consultarTarjetasIterator" id="tblTDC">
+      <AttrNames>
+        <Item Value="nombre"/>
+        <Item Value="anio"/>
+        <Item Value="codigo"/>
+        <Item Value="creditoDebito"/>
+        <Item Value="id"/>
+        <Item Value="mes"/>
+        <Item Value="numeroTarjeta"/>
+        <Item Value="tipo"/>
+      </AttrNames>
+    </table>
+  </bindings>
+</pageDefinition>

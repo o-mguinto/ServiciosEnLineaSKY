@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "consultaroperadororigen_client_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarOperadorOrigen",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/ConsultarOperadorOrigenSelSecInterface/consultaroperadororigen_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FConsultarOperadorOrigen%7Dconsultaroperadororigen_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/ConsultarOperadorOrigenSelSecInterface/consultaroperadororigen_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FConsultarOperadorOrigen%7Dconsultaroperadororigen_client_ep")
 public class ConsultaroperadororigenClientEp extends Service {
 
     private final static URL CONSULTAROPERADORORIGENCLIENTEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class ConsultaroperadororigenClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/ConsultarOperadorOrigenSelSecInterface/consultaroperadororigen_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FConsultarOperadorOrigen%7Dconsultaroperadororigen_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_Interface/ConsultarOperadorOrigenSelSecInterface/consultaroperadororigen_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FConsultarOperadorOrigen%7Dconsultaroperadororigen_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

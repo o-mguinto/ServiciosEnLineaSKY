@@ -29,5 +29,7 @@ core.ignore.recursive= \
 
 core.ignore= \
 	{.data} \
+	{.git} \
+	{README.md} \
 	{bin} \
 	{deploy} 

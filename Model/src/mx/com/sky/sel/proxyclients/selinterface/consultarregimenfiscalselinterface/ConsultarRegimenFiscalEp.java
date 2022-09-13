@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ConsultarRegimenFiscal_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Sel/ConsultarRegimenFiscal",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx/soa-infra/services/SEL_Interface/ConsultarRegimenFiscalSelInterface/ConsultarRegimenFiscal_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FConsultarRegimenFiscal%7DConsultarRegimenFiscal_ep")
+                  "https://qaselsoa.sky.com.mx/soa-infra/services/SEL_Interface/ConsultarRegimenFiscalSelInterface/ConsultarRegimenFiscal_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FConsultarRegimenFiscal%7DConsultarRegimenFiscal_ep")
 public class ConsultarRegimenFiscalEp extends Service {
 
     private final static URL CONSULTARREGIMENFISCALEP_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class ConsultarRegimenFiscalEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx/soa-infra/services/SEL_Interface/ConsultarRegimenFiscalSelInterface/ConsultarRegimenFiscal_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FConsultarRegimenFiscal%7DConsultarRegimenFiscal_ep");
+                new URL("https://qaselsoa.sky.com.mx/soa-infra/services/SEL_Interface/ConsultarRegimenFiscalSelInterface/ConsultarRegimenFiscal_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSel%2FConsultarRegimenFiscal%7DConsultarRegimenFiscal_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

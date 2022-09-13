@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "ValidaCrecimientosPpBtiSecInterface_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/InterfaceServices/Sec/ValidaCrecimientosPpBti",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/ValidaCrecimientosPpBtiSecInterface/ValidaCrecimientosPpBtiSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FValidaCrecimientosPpBti%7DValidaCrecimientosPpBtiSecInterface_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/ValidaCrecimientosPpBtiSecInterface/ValidaCrecimientosPpBtiSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FValidaCrecimientosPpBti%7DValidaCrecimientosPpBtiSecInterface_ep")
 public class ValidaCrecimientosPpBtiSecInterfaceEp extends Service {
 
     private final static URL VALIDACRECIMIENTOSPPBTISECINTERFACEEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class ValidaCrecimientosPpBtiSecInterfaceEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/ValidaCrecimientosPpBtiSecInterface/ValidaCrecimientosPpBtiSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FValidaCrecimientosPpBti%7DValidaCrecimientosPpBtiSecInterface_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEC_Interface/ValidaCrecimientosPpBtiSecInterface/ValidaCrecimientosPpBtiSecInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSec%2FValidaCrecimientosPpBti%7DValidaCrecimientosPpBtiSecInterface_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

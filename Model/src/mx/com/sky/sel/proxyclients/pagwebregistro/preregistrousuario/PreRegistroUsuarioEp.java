@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "preRegistroUsuario_ep",
                   targetNamespace = "http://xmlns.oracle.com/Application1/PreRegistroUsuario/PreRegistroUsuarioProcess",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebregistro/PreRegistroUsuario/preRegistroUsuario_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FApplication1%2FPreRegistroUsuario%2FPreRegistroUsuarioProcess%7DpreRegistroUsuario_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebregistro/PreRegistroUsuario/preRegistroUsuario_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FApplication1%2FPreRegistroUsuario%2FPreRegistroUsuarioProcess%7DpreRegistroUsuario_ep")
 public class PreRegistroUsuarioEp extends Service {
 
     private final static URL PREREGISTROUSUARIOEP_WSDL_LOCATION;
@@ -35,7 +35,7 @@ public class PreRegistroUsuarioEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagwebregistro/PreRegistroUsuario/preRegistroUsuario_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FApplication1%2FPreRegistroUsuario%2FPreRegistroUsuarioProcess%7DpreRegistroUsuario_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagwebregistro/PreRegistroUsuario/preRegistroUsuario_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FApplication1%2FPreRegistroUsuario%2FPreRegistroUsuarioProcess%7DpreRegistroUsuario_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

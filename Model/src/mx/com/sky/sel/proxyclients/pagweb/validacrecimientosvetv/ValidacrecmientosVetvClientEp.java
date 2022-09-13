@@ -22,7 +22,7 @@ import javax.xml.ws.WebServiceFeature;
                   targetNamespace =
                   "http://xmlns.oracle.com/SKY_CrecimientosEquipos/SKY_Crecimientos/ValidaCrecimientos_VeTV",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/CrecimientosEquipos/validacrecimientos_vetv_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_CrecimientosEquipos%2FSKY_Crecimientos%2FValidaCrecimientos_VeTV%7Dvalidacrecmientos_vetv_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/CrecimientosEquipos/validacrecimientos_vetv_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_CrecimientosEquipos%2FSKY_Crecimientos%2FValidaCrecimientos_VeTV%7Dvalidacrecmientos_vetv_client_ep")
 public class ValidacrecmientosVetvClientEp extends Service {
 
     private final static URL VALIDACRECMIENTOSVETVCLIENTEP_WSDL_LOCATION;
@@ -36,7 +36,7 @@ public class ValidacrecmientosVetvClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/CrecimientosEquipos/validacrecimientos_vetv_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_CrecimientosEquipos%2FSKY_Crecimientos%2FValidaCrecimientos_VeTV%7Dvalidacrecmientos_vetv_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/CrecimientosEquipos/validacrecimientos_vetv_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKY_CrecimientosEquipos%2FSKY_Crecimientos%2FValidaCrecimientos_VeTV%7Dvalidacrecmientos_vetv_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

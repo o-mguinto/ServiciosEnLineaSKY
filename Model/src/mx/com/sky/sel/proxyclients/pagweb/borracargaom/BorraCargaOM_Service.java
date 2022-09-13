@@ -20,7 +20,7 @@ import javax.xml.ws.WebServiceFeature;
  */
 @WebServiceClient(name = "BorraCargaOM", targetNamespace = "http://xmlns.oracle.com/BorraCargaOM",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/BorraCargaOM/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FBorraCargaOM%7DBorraCargaOM")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/BorraCargaOM/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FBorraCargaOM%7DBorraCargaOM")
 public class BorraCargaOM_Service extends Service {
 
     private final static URL BORRACARGAOM_WSDL_LOCATION;
@@ -32,7 +32,7 @@ public class BorraCargaOM_Service extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/BorraCargaOM/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FBorraCargaOM%7DBorraCargaOM");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/BorraCargaOM/client?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FBorraCargaOM%7DBorraCargaOM");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="ppeCvIndexPageDef"
+                Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="obtenerHorariosPPE.result" DataControl="DCPremiere" RangeSize="10"
+                    BeanClass="mx.com.sky.sel.services.beans.eventos.Horario" id="obtenerHorariosPPEIter"/>
+  </executables>
+  <bindings>
+    <methodAction id="obtenerHorariosPPE" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="obtenerHorariosPPE" IsViewObjectMethod="false" DataControl="DCPremiere"
+                  InstanceName="DCPremiere.dataProvider"
+                  ReturnName="data.DCPremiere.methodResults.obtenerHorariosPPE_obtenerHorariosPPE_dataControl_dataProvider_obtenerHorariosPPE_result">
+      <NamedData NDName="canal" NDValue="#{pageFlowScope.PFPPEVeTV.evento.canal}" NDType="java.lang.String"/>
+      <NamedData NDName="tituloEvento" NDValue="#{pageFlowScope.PFPPEVeTV.evento.titulo}" NDType="java.lang.String"/>
+      <NamedData NDName="diferenciaGMT" NDValue="#{sesion.suscriptor.diferenciaHoraria}" NDType="java.lang.String"/>
+      <NamedData NDName="pais" NDValue="#{sesion.suscriptor.pais}" NDType="java.lang.String"/>
+      <NamedData NDName="tipoEvento" NDValue="pageFlowScope.PFPPEVeTV.evento.modalidad" NDType="java.lang.String"/>
+    </methodAction>
+    <table IterBinding="obtenerHorariosPPEIter" id="tablaHorarios">
+      <AttrNames>
+        <Item Value="fechaInicio"/>
+        <Item Value="duration"/>
+        <Item Value="fechaExpiracion"/>
+        <Item Value="fechaExpiracionTS"/>
+        <Item Value="fechaFin"/>
+        <Item Value="fechaFinTS"/>
+        <Item Value="fechaInicioTS"/>
+        <Item Value="fecharegistro"/>
+        <Item Value="fecharegistroTS"/>
+        <Item Value="modalidad"/>
+        <Item Value="ppveventid"/>
+        <Item Value="token"/>
+      </AttrNames>
+    </table>
+  </bindings>
+</pageDefinition>

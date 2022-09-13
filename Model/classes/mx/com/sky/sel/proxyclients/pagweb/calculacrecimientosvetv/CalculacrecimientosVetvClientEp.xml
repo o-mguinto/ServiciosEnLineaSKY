@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle-webservice-clients xmlns:ns0="http://java.sun.com/xml/ns/javaee">
+   <webservice-client>
+      <service-qname namespaceURI="http://xmlns.oracle.com/SKY_CrecimientosEquipos/SKY_Crecimientos/CalculaCrecimientos_VeTV"
+                     localpart="calculacrecimientos_vetv_client_ep"/>
+      <port-info>
+         <wsdl-port namespaceURI="http://xmlns.oracle.com/SKY_CrecimientosEquipos/SKY_Crecimientos/CalculaCrecimientos_VeTV"
+                    localpart="CalculaCrecimientos_VeTV_pt"/>
+         <runtime/>
+         <operations>
+            <operation name="calculaCrecimientos"/>
+         </operations>
+      </port-info>
+   </webservice-client>
+</oracle-webservice-clients>

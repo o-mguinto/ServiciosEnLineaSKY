@@ -22,7 +22,7 @@ import javax.xml.ws.WebServiceFeature;
                   targetNamespace =
                   "http://xmlns.sky.com.mx/InterfaceServices/Soa/GestionarSSComprarDatos",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/GestionarSSComprarDatosSoaInterface/GestionarSSComprarDatosSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FGestionarSSComprarDatos%7DGestionarSSComprarDatosSoaInterface_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/GestionarSSComprarDatosSoaInterface/GestionarSSComprarDatosSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FGestionarSSComprarDatos%7DGestionarSSComprarDatosSoaInterface_ep")
 public class GestionarSSComprarDatosSoaInterfaceEp extends Service {
 
     private final static URL GESTIONARSSCOMPRARDATOSSOAINTERFACEEP_WSDL_LOCATION;
@@ -36,7 +36,7 @@ public class GestionarSSComprarDatosSoaInterfaceEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/GestionarSSComprarDatosSoaInterface/GestionarSSComprarDatosSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FGestionarSSComprarDatos%7DGestionarSSComprarDatosSoaInterface_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SOA_Interface/GestionarSSComprarDatosSoaInterface/GestionarSSComprarDatosSoaInterface_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FInterfaceServices%2FSoa%2FGestionarSSComprarDatos%7DGestionarSSComprarDatosSoaInterface_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

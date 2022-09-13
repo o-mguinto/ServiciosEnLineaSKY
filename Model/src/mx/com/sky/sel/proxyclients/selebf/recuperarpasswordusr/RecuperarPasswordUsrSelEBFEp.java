@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "RecuperarPasswordUsrSelEBF_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/EnterpriseFlows/Sel/RecuperarPasswordUsr",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/RecuperarPasswordUsrSelEBF/RecuperarPasswordUsrSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FRecuperarPasswordUsr%7DRecuperarPasswordUsrSelEBF_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/RecuperarPasswordUsrSelEBF/RecuperarPasswordUsrSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FRecuperarPasswordUsr%7DRecuperarPasswordUsrSelEBF_ep")
 public class RecuperarPasswordUsrSelEBFEp extends Service {
 
     private final static URL RECUPERARPASSWORDUSRSELEBFEP_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class RecuperarPasswordUsrSelEBFEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/RecuperarPasswordUsrSelEBF/RecuperarPasswordUsrSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FRecuperarPasswordUsr%7DRecuperarPasswordUsrSelEBF_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/RecuperarPasswordUsrSelEBF/RecuperarPasswordUsrSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FRecuperarPasswordUsr%7DRecuperarPasswordUsrSelEBF_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="hotGoConfirmarPageDef"
+                Package="pages.canales">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="activarServiciosHOTGOPs" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="activarServiciosHOTGO" IsViewObjectMethod="false" DataControl="DCBTGEW"
+                  InstanceName="bindings.activarServiciosHOTGOPs.dataControl.dataProvider"
+                  ReturnName="data.DCBTGEW.methodResults.activarServiciosHOTGO_activarServiciosHOTGO_dataControl_dataProvider_activarServiciosHOTGO_result">
+      <NamedData NDName="activacionBean" NDType="mx.com.sky.sel.services.beans.btgew.ActivacionBean"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

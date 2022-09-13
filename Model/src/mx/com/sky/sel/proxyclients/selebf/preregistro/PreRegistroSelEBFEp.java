@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "PreRegistroSelEBF_ep",
                   targetNamespace = "http://xmlns.sky.com.mx/EnterpriseFlows/Sel/PreRegistroSel",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/PreRegistroSelEBF/PreRegistroSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FPreRegistroSel%7DPreRegistroSelEBF_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/PreRegistroSelEBF/PreRegistroSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FPreRegistroSel%7DPreRegistroSelEBF_ep")
 public class PreRegistroSelEBFEp extends Service {
 
     private final static URL PREREGISTROSELEBFEP_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class PreRegistroSelEBFEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/PreRegistroSelEBF/PreRegistroSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FPreRegistroSel%7DPreRegistroSelEBF_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/SEL_EBF/PreRegistroSelEBF/PreRegistroSelEBF_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.sky.com.mx%2FEnterpriseFlows%2FSel%2FPreRegistroSel%7DPreRegistroSelEBF_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

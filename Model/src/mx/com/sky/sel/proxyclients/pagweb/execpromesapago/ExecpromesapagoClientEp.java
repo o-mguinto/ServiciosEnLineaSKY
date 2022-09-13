@@ -21,7 +21,7 @@ import javax.xml.ws.WebServiceFeature;
 @WebServiceClient(name = "execpromesapago_client_ep",
                   targetNamespace = "http://xmlns.oracle.com/SKYPortal/ExecPromesaDePago/ExecPromesaPago",
                   wsdlLocation =
-                  "https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/ExecPromesaDePago/execpromesapago_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYPortal%2FExecPromesaDePago%2FExecPromesaPago%7Dexecpromesapago_client_ep")
+                  "https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/ExecPromesaDePago/execpromesapago_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYPortal%2FExecPromesaDePago%2FExecPromesaPago%7Dexecpromesapago_client_ep")
 public class ExecpromesapagoClientEp extends Service {
 
     private final static URL EXECPROMESAPAGOCLIENTEP_WSDL_LOCATION;
@@ -34,7 +34,7 @@ public class ExecpromesapagoClientEp extends Service {
         WebServiceException e = null;
         try {
             url =
-                new URL("https://preselsoa.sky.com.mx:443/soa-infra/services/pagweb/ExecPromesaDePago/execpromesapago_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYPortal%2FExecPromesaDePago%2FExecPromesaPago%7Dexecpromesapago_client_ep");
+                new URL("https://qaselsoa.sky.com.mx:443/soa-infra/services/pagweb/ExecPromesaDePago/execpromesapago_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2FSKYPortal%2FExecPromesaDePago%2FExecPromesaPago%7Dexecpromesapago_client_ep");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
