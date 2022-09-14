@@ -113,11 +113,11 @@
       islink="true"
       id="ControlFlowCase17"
       from="Router11"
-      to="View16">
+      to="View28">
       <property
          name="fromOutcome">irCacDeportes</property>
       <property
-         name="sdm:polyPoints">R50,154.68593,315.5918,550.0,273.0459,L54</property>
+         name="sdm:polyPoints">R50,154.50008,315.5918,624.0,368.24707,L50</property>
    </ControlFlowCase>
    <View
       id="View18">
@@ -148,7 +148,7 @@
       islink="true"
       id="ControlFlowCase20"
       from="WildcardControlFlowRule12"
-      to="View16">
+      to="View28">
       <property
          name="tosrcid">__24</property>
       <property
@@ -156,7 +156,7 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">R55,252.0,74.5459,550.0,266.0459,L46</property>
+         name="sdm:polyPoints">R55,252.0,74.5459,624.0,364.74707,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -198,7 +198,7 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">L50,178.24855,71.04589,-120.54638,202.09323,R44</property>
+         name="sdm:polyPoints">L50,180.0,71.0459,-122.29785,203.84473,R46</property>
    </ControlFlowCase>
    <View
       id="View25">
@@ -235,4 +235,19 @@
       <property
          name="sdm:polyPoints">B50,216.0,115.662025,311.0244,446.74707,T50</property>
    </ControlFlowCase>
+   <View
+      id="View28">
+      <property
+         name="activityId">selCanalesAlaCarta</property>
+      <property
+         name="x">665.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>selCanalesAlaCarta&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">368.59766</property>
+      <property
+         name="page">/WEB-INF/submenus/canalesAlaCarta/selCanalesAlaCarta.jsf</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
 </SDM>

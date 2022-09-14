@@ -5,6 +5,11 @@
     <data-control-scope>
       <shared/>
     </data-control-scope>
+    <input-parameter-definition id="__22">
+      <name>selCategoriaCAC</name>
+      <value>#{pageFlowScope.selCategoriaCAC}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
     <managed-bean id="__1">
       <managed-bean-name>CanalesBackingBean</managed-bean-name>
       <managed-bean-class>mx.com.sky.sel.managedbeans.canal.BBCanal</managed-bean-class>
@@ -14,6 +19,11 @@
       <managed-bean-name>PFBlueToGo</managed-bean-name>
       <managed-bean-class>mx.com.sky.sel.managedbeans.btgew.PFBlueToGoEveryWhere</managed-bean-class>
       <managed-bean-scope>pageFlow</managed-bean-scope>
+      <managed-property id="__21">
+        <property-name>selCategoriaCAC</property-name>
+        <property-class>java.lang.String</property-class>
+        <value>#{pageFlowScope.selCategoriaCAC}</value>
+      </managed-property>
     </managed-bean>
     <view id="canales">
       <page>/pages/canales/canales.jsff</page>

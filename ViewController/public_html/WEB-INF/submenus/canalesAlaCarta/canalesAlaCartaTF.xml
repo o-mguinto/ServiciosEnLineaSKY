@@ -66,6 +66,17 @@
       <to-value>#{sesion.categoriaCAC}</to-value>
     </input-page-parameter>
   </view>
+  <view id="selCanalesAlaCarta">
+    <page>/WEB-INF/submenus/canalesAlaCarta/selCanalesAlaCarta.jsf</page>
+    <input-page-parameter id="__29">
+      <from-value>DEPORTES</from-value>
+      <to-value>#{sesion.categoriaCAC}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__30">
+      <from-value>/WEB-INF/canalesTF.xml#canalesTF</from-value>
+      <to-value>#{Menu.taskFlowId}</to-value>
+    </input-page-parameter>
+  </view>
   <control-flow-rule id="__1">
     <from-activity-id>*</from-activity-id>
     <control-flow-case id="__8">
@@ -78,7 +89,7 @@
     </control-flow-case>
     <control-flow-case id="__24">
       <from-outcome>smenu_canalesAlaCartaDeportes</from-outcome>
-      <to-activity-id>canalesAlaCartaDeportes</to-activity-id>
+      <to-activity-id>selCanalesAlaCarta</to-activity-id>
     </control-flow-case>
     <control-flow-case id="__25">
       <from-outcome>smenu_canalesAlaCartaPeliculas</from-outcome>
@@ -105,7 +116,7 @@
     </control-flow-case>
     <control-flow-case id="__9">
       <from-outcome>irCacDeportes</from-outcome>
-      <to-activity-id>canalesAlaCartaDeportes</to-activity-id>
+      <to-activity-id>selCanalesAlaCarta</to-activity-id>
     </control-flow-case>
     <control-flow-case id="__11">
       <from-outcome>irCacPeliculas</from-outcome>

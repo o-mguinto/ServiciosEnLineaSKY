@@ -1,0 +1,42 @@
+.subTitleInt{
+    
+    font-family: 'Sky Text';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    /* identical to box height, or 100% */
+    
+    display: flex;
+    align-items: center;
+    
+    /* Text/Dark */
+    
+    color: #373737;
+    text-align: left;
+}
+.subTitleIntPoss{
+    position: absolute;
+    width: 38px;
+    height: 5px;
+    left: 0%;
+    top: 0.40%;
+    right: 90%;
+}
+
+.iconSeparatorSubMenu{
+    background: linear-gradient(90deg, #FF9E00 3.66%, #FF0000 32.25%, #B5007D 60.79%, #21429C 82.56%, #0071FF 95.63%);
+    border-radius: 20px;
+    transform: rotate(90deg);
+    
+    width: 38px;
+    height: 5px;
+    
+    /*position: absolute;
+    width: 38px;
+    height: 5px;
+    left: 0%;
+    top: 0.40%;
+    right: 98.5%;*/
+    text-align: left;
+}

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
 <f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core">
-    <af:document title="selPPE.jsf" id="d1">
+    <af:document title="selCanalesAlaCarta.jsf" id="d1">
         <af:form id="f1">
-            <af:resource type="css" source="/css/custom/selCust.css"/>
+        <af:resource type="css" source="/css/custom/selCust.css"/>
             <af:pageTemplate viewId="/WEB-INF/mx/com/sky/common/jsfTemplates/pagInternas_template.jsf"
                              value="#{bindings.ptb1}" id="pt1">
                 <f:facet name="contenido_facet">
@@ -22,11 +22,11 @@
                                                 <div class="iconSeparatorSubMenu" xmlns="http://www.w3.org/1999/xhtml">
                                                      
                                                 </div>
-                                                <h:outputText id="otMenu" value="#{lbl.smenu_PPE_PELICULAS}"
+                                                <h:outputText id="otMenu" value="#{lbl.smenu_CAC_DEPORTES}"
                                                               styleClass="subTitleInt"/>
                                             </af:panelGroupLayout>
                                         </div>
-                                    </div><af:region value="#{bindings.premiereTF1.regionModel}" id="r1"/>
+                                    </div><af:region value="#{bindings.deportesTF1.regionModel}" id="r1"/>
                                     <af:spacer width="10" height="10" id="s1"/>
                                     
                                     <div class="row">
@@ -35,13 +35,13 @@
                                             <div class="iconSeparatorSubMenu" xmlns="http://www.w3.org/1999/xhtml">
                                                      
                                                 </div>
-                                            <h:outputText id="otMenu2" value="#{lbl.smenu_PPE_ADULTOS}"
+                                            <h:outputText id="otMenu2" value="#{lbl.smenu_CAC_PELICULAS}"
                                                           styleClass="subTitleInt"/>                                                                                                          
                                                           
                                          </af:panelGroupLayout>           
                                         </div>
                                     </div>	
-                                    <af:region value="#{bindings.adultosTF1.regionModel}" id="r2"/>
+                                    <af:region value="#{bindings.peliculasTF1.regionModel}" id="r2"/>
                                     <af:spacer width="10" height="10" id="s2"/>
                                     
                                     <div class="row">
@@ -50,12 +50,12 @@
                                             <div class="iconSeparatorSubMenu" xmlns="http://www.w3.org/1999/xhtml">
                                                      
                                                 </div>
-                                            <h:outputText id="otMenu3" value="#{lbl.smenu_PPE_HISTORICO_EVENTOS}"
+                                            <h:outputText id="otMenu3" value="#{lbl.smenu_CAC_ADULTOS}"
                                                           styleClass="subTitleInt"/>    
                                              </af:panelGroupLayout>             
                                         </div>
                                     </div>	
-                                    <af:region value="#{bindings.contratacionesTF1.regionModel}" id="r3"/>
+                                    <af:region value="#{bindings.adultosTF1.regionModel}" id="r3"/>
                                 </div>
                             </af:panelGroupLayout>
                             

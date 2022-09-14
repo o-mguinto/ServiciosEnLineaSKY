@@ -1376,7 +1376,7 @@
                                                                 
                                                 </div>
                                             </div>
-                                            <div class="row renderFalse">
+                                            <div class="row">
                                                 <div class="col-12 right">
                                                     <af:navigationPane id="pt_np2" hint="buttons" level="1"
                                                                        var="submenu1" value="#{root_menu}"

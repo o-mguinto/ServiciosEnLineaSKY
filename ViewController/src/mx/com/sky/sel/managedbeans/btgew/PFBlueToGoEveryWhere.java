@@ -65,7 +65,11 @@ public class PFBlueToGoEveryWhere implements Serializable {
     private boolean servicioHotGo;
     private boolean servicioBTGEW;
     private boolean servicioBlim;
-    
+
+    /**
+     * Obtiene la categor&iacute;a de canales a la carta.
+     */
+    private String selCategoriaCA;
 
     public PFBlueToGoEveryWhere() {
         super();
@@ -521,5 +525,18 @@ public class PFBlueToGoEveryWhere implements Serializable {
 
     public boolean isServicioBlim() {
         return servicioBlim;
+    }
+
+    /**
+     * Inicializa la categor&iacute;a de canales a la carta.
+     * 
+     * @param selCategoriaCA Catego&iacute;a.
+     */
+    public void setSelCategoriaCA(String selCategoriaCA) {
+        this.selCategoriaCA = selCategoriaCA;
+    }
+
+    public String getSelCategoriaCA() {
+        return selCategoriaCA;
     }
 }

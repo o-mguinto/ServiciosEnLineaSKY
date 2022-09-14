@@ -140,6 +140,7 @@
     <page path="/pages/promociones/promociones.jsf" usageId="view_promocionesPageDef"/>
     <page path="/pages/pci/billetera.jsff" usageId="view_billeteraPageDef"/>
     <page path="/WEB-INF/submenus/pagosPorEvento/selPPE.jsf" usageId="view_selPPEPageDef"/>
+    <page path="/WEB-INF/submenus/canalesAlaCarta/selCanalesAlaCarta.jsf" usageId="view_selCanalesAlaCartaPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="view_bienvenidoPageDef" path="view.pageDefs.bienvenidoPageDef"/>
@@ -277,6 +278,7 @@
     <page id="view_promocionesPageDef" path="pages.promociones.promocionesPageDef"/>
     <page id="view_billeteraPageDef" path="pages.pci.billeteraPageDef"/>
     <page id="view_selPPEPageDef" path="pagosPorEvento.selPPEPageDef"/>
+    <page id="view_selCanalesAlaCartaPageDef" path="submenus.canalesAlaCarta.selCanalesAlaCartaPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="DCPortabilidad" path="model.DCPortabilidad"/>
