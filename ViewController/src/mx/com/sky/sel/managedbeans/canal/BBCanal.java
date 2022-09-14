@@ -41,6 +41,11 @@ public class BBCanal implements Serializable {
     private String categoriaSesion;
     private boolean mostrarHotGo;
     private boolean streaming;
+    
+    /**
+     * Obtiene la categor&iacute;a de canales a la carta.
+     */
+    private String selCategoriaCAC;
 
     public BBCanal() {
         canales = new CanalCarta[10];
@@ -68,7 +73,11 @@ public class BBCanal implements Serializable {
         List<CanalCarta> channels = null;
         ConfigMenu sesion = (ConfigMenu)JSFUtils.getBean("sesion");
         Suscriptor suscriptor = sesion.getSuscriptor();
+        
         categoriaSesion = sesion.getCategoriaCAC();
+        //Se sustituye por el valor del parámetro de la región
+        categoriaSesion = getSelCategoriaCAC();
+        
         categoriaLocal = categoriaSesion;
         LogPC.println(this, "categoriaSesion: " + categoriaSesion);
         String paqueteCuenta =suscriptor.getPaquete();
@@ -237,6 +246,7 @@ public class BBCanal implements Serializable {
     private boolean isCategoriaIgual() {
         ConfigMenu sesion = (ConfigMenu)JSFUtils.getBean("sesion");
         categoriaSesion = sesion.getCategoriaCAC();
+        categoriaSesion = getSelCategoriaCAC();
         return categoriaLocal.equalsIgnoreCase(categoriaSesion);
     }
 
@@ -313,5 +323,22 @@ public class BBCanal implements Serializable {
     public boolean isStreaming() {
         return streaming;
     }
+    
+    /**
+     * Inicializa la categor&iacute;a de canales a la carta.
+     * 
+     * @param selCategoriaCA Catego&iacute;a.
+     */
+    public void setSelCategoriaCAC(String selCategoriaCAC) {
+        this.selCategoriaCAC = selCategoriaCAC;
+    }
 
+    /**
+     * Obtiene la categor&iacute;a.
+     * 
+     * @return categor&iacute;a.
+     */
+    public String getSelCategoriaCAC() {
+        return selCategoriaCAC;
+    }
 }
